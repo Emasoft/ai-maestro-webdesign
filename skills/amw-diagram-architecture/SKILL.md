@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-architecture
-description: Convert a free-text system description into a clean, visually-balanced, layered architecture diagram in a user-selectable format (graph JSON for canvas renderers, Mermaid for docs, SVG for browsers, or PNG for sharing). Triggers on "draw my architecture", "architecture diagram for X", "map out my system as a layered diagram", "generate a Mermaid diagram of X", "export this architecture as SVG/PNG", "component diagram of this backend". Do NOT trigger on generic "design", "draw me a picture", "sketch the UI", "make a flowchart of the onboarding funnel" — those are design-principles or diagram-editorial territory.
+description: Convert a free-text system description into a clean, visually-balanced, layered architecture diagram in a user-selectable format (graph JSON for canvas renderers, SVG for browsers, or PNG for sharing). Triggers on "draw my architecture", "architecture diagram for X", "map out my system as a layered diagram", "export this architecture as SVG/PNG", "component diagram of this backend". Do NOT trigger on generic "design", "draw me a picture", "sketch the UI", "make a flowchart of the onboarding funnel" — those are design-principles or diagram-editorial territory. For Mermaid output, route through `amw-mermaid-diagram` instead — this skill does NOT emit Mermaid (one-renderer rule).
 version: 0.2.0
 ---
 
@@ -18,7 +18,9 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 ## Position in flow
 
-OUTPUT (Phase B). Structural architecture diagrammer — transforms a free-text system description into a single layered diagram rendered in the caller's chosen format. One graph, four surfaces: canvas-renderable graph JSON, Mermaid, SVG, or PNG (SVG + export instructions). Visual quality is a first-class constraint: 3–5 layers, 6–12 nodes, balanced layouts, bounded edges — a clean 8-node diagram always beats a cluttered 18-node one.
+OUTPUT (Phase B). Structural architecture diagrammer — transforms a free-text system description into a single layered diagram rendered in the caller's chosen format. One graph, three surfaces: canvas-renderable graph JSON, SVG, or PNG (SVG + export instructions). Visual quality is a first-class constraint: 3–5 layers, 6–12 nodes, balanced layouts, bounded edges — a clean 8-node diagram always beats a cluttered 18-node one.
+
+**Mermaid output is intentionally NOT emitted by this skill.** Per CLAUDE.md's one-renderer rule, all Mermaid generation routes through `../amw-mermaid-diagram/SKILL.md` (source authoring, 9 grammars) and `../amw-mermaid-render/SKILL.md` (rendering to SVG/ASCII). When Mermaid output is requested, this skill produces graph JSON; hand the JSON to `amw-mermaid-diagram` to emit Mermaid source.
 
 ## Trigger conditions
 
@@ -27,7 +29,6 @@ Fires on these specific phrasings:
 - "draw my architecture", "draw the system architecture"
 - "architecture diagram for <system>", "map out my system as an architecture diagram"
 - "generate a layered diagram of <system>", "component diagram of <backend>"
-- "give me a Mermaid diagram of this architecture", "export this as a Mermaid flowchart"
 - "render this architecture as SVG", "export the architecture as PNG"
 - "structure this system into layers", "visualise the system as a layered graph"
 - free-text paste of a technical system accompanied by an explicit visualisation request
@@ -51,14 +52,16 @@ Do NOT fire on:
 ```
 Input:
   description    (string, required)   — free-text system description
-  output_format  (string, optional)   — "graph" | "mermaid" | "svg" | "png"
+  output_format  (string, optional)   — "graph" | "svg" | "png"
                                         Default: "graph"
 
 Output:
   "graph"    → JSON object  { title, subtitle, layers, nodes, edges }
-  "mermaid"  → Mermaid string  (flowchart TD block with subgraphs + classDefs)
   "svg"      → SVG string  (self-contained, browser-renderable, ~820px wide)
   "png"      → Same SVG + appended PNG export instructions block
+
+For Mermaid output: produce "graph" then route the JSON through
+`../amw-mermaid-diagram/SKILL.md` (one-renderer rule).
 ```
 
 The output is the diagram. No prose wrapper, no explanation, unless the caller explicitly asks for one.
@@ -69,10 +72,9 @@ The output is the diagram. No prose wrapper, no explanation, unless the caller e
 2. **Stage 1 validation** — run every check in `references/validation.md` § Stage 1 on the raw graph: layer count (2–6 hard, 3–5 preferred), node count (4–14 hard, 8–10 preferred), balanced layout (≤ 5 nodes per layer), label/description quality, edge integrity (no danglers, no self-loops, no reverse duplicates, edge budget enforced), ID integrity, layer-order sequence. Apply every listed fix inline. If re-generation is required (too few layers or nodes), discard and repeat step 1.
 3. **Format transformation** — run the transform matching `output_format`, per `references/formats.md`:
    - `graph` → return the validated JSON as-is
-   - `mermaid` → emit `flowchart TD` + `subgraph` blocks + typed edges + `classDef` palette + `class` assignments
    - `svg` → run the layout algorithm (820px canvas, 160×64 node cards, centred per-layer rows, cubic-bezier downward edges, defs/grid/arrow marker, accent bars, title block)
    - `png` → same SVG + the standard five-line PNG-export instructions block appended after `</svg>`
-4. **Stage 2 validation** — run the format-specific checks in `references/validation.md` § Stage 2: Mermaid syntax (subgraph/node/edge counts match the graph, classDef block present, node IDs safe), SVG well-formedness (`<svg>` root + `<defs>` + arrow marker + no unescaped `&` / `<` in text), SVG layout sanity (node count, layer band count, no overflow, no overlap, edges drawn before nodes), PNG (SVG checks + instructions appended after SVG, never before). Apply every listed fix. If a re-generation trigger fires (≥ 2 Mermaid checks fail simultaneously, or any SVG layout-sanity check fails), discard and re-run step 3 from the validated graph.
+4. **Stage 2 validation** — run the format-specific checks in `references/validation.md` § Stage 2: SVG well-formedness (`<svg>` root + `<defs>` + arrow marker + no unescaped `&` / `<` in text), SVG layout sanity (node count, layer band count, no overflow, no overlap, edges drawn before nodes), PNG (SVG checks + instructions appended after SVG, never before). Apply every listed fix. If any SVG layout-sanity check fails, discard and re-run step 3 from the validated graph.
 5. **Return** — return the output. No prose wrapper.
 
 ## Versioning (optional, opt-in)
@@ -140,7 +142,7 @@ When the user asks to view a specific version (`show me v2 of the payment-flow d
 2. Convert the layered-graph into `bin/amw-ascii-render.py` input (the `layers` JSON mode is the structural match for architecture diagrams; the `diagram` mode is used for flowchart/ERD; `sequence` for sequence diagrams).
 3. Pipe to `bin/amw-ascii-render.py` and return the ASCII preview.
 
-ASCII preview is the default viewing format for a saved version because it is token-cheap and fits inline in chat. SVG / Mermaid / PNG are still available by re-running step 3 of the core pipeline on the loaded graph — same output formats, same validations.
+ASCII preview is the default viewing format for a saved version because it is token-cheap and fits inline in chat. SVG / PNG are still available by re-running step 3 of the core pipeline on the loaded graph — same output formats, same validations.
 
 ### Versioning operations (conversational, not slash-command)
 
@@ -222,8 +224,6 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-json-repair-recipe](./references/TECH-json-repair-recipe.md) — TECH-json-repair-recipe
   - **layer** (1 techniques)
     - [TECH-layer-palette-5-colors](./references/TECH-layer-palette-5-colors.md) — TECH-layer-palette-5-colors
-  - **mermaid** (1 techniques)
-    - [TECH-mermaid-subgraph-transform](./references/TECH-mermaid-subgraph-transform.md) — TECH-mermaid-subgraph-transform
   - **png** (1 techniques)
     - [TECH-png-export-bridge](./references/TECH-png-export-bridge.md) — TECH-png-export-bridge
   - **stage1** (1 techniques)
@@ -268,15 +268,6 @@ Every technique in this skill is documented as a single reference file under `./
     - Minimal example
     - Gotchas
     - Cross-references
-- **[./references/TECH-export-mermaid-plantuml-d2.md](./references/TECH-export-mermaid-plantuml-d2.md)**
-  - Description: one YAML, four output formats
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
 - **[./references/TECH-graph-json-schema.md](./references/TECH-graph-json-schema.md)**
   - Description: TECH-graph-json-schema
   - TOC:
@@ -298,15 +289,6 @@ Every technique in this skill is documented as a single reference file under `./
     - Cross-references
 - **[./references/TECH-layer-palette-5-colors.md](./references/TECH-layer-palette-5-colors.md)**
   - Description: TECH-layer-palette-5-colors
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-mermaid-subgraph-transform.md](./references/TECH-mermaid-subgraph-transform.md)**
-  - Description: TECH-mermaid-subgraph-transform
   - TOC:
     - What it does
     - When to use
@@ -387,7 +369,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. graph JSON / Mermaid source / layered SVG / PNG export). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. graph JSON / layered SVG / PNG export). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -450,7 +432,6 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 - **Overloaded layer (> 5 nodes after generation)** — Stage 1.3 fix: move the least-essential node to an adjacent layer; if every adjacent layer is also full, re-run generation with an explicit merge instruction.
 - **Too-few or too-many layers/nodes** — re-run generation. The skill does not silently stretch (too few) or truncate (too many) — it regenerates. Patching these conditions produces visually incoherent diagrams.
-- **Mermaid syntax breakage** — Stage 2 trigger: if more than 2 Mermaid checks fail at once, regenerate the Mermaid from the validated graph rather than patch. Common causes: hyphenated node IDs, unescaped quotes in labels, `(` / `)` in subgraph labels.
 - **SVG text overflow** — a label longer than `NODE_W = 160px` at 13pt wraps visually ugly. Stage 1.4 fix: truncate to 3 title-case words. If that still overflows, re-run generation and ask the model for a shorter label.
 - **Model timeout / parse failure** — the LLM returned prose instead of JSON, or the JSON is malformed. Apply the `repairAndParse` recipe from `references/prompts.md` in order (strip fences → extract outermost braces → strip trailing commas → normalise newlines in string values). If both attempts fail, re-run generation once; on a second failure, surface the raw parse error to the caller rather than fabricate a graph.
 - **Auth missing** (embedded / standalone callers only) — `ANTHROPIC_API_KEY` is not set; surface the error immediately, do not retry. Inside Claude.ai / Claude Code, the platform handles auth — this failure mode does not apply.
