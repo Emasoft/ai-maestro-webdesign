@@ -72,7 +72,6 @@ If the config uses dynamic features the static evaluator cannot resolve (Zod sch
 
 - `agents/amw-design-md-extractor-agent.md`
 - `skills/amw-design-md/references/TECH-10-tailwind-conversion.md`
-- `bin/amw-design-md-from-tailwind.mjs` (Node port)
-- `bin/amw-design-md-from-tailwind.ts` (TS reference variant)
+- `bin/amw-design-md-from-tailwind.mjs` (Node port — the live implementation)
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-contrast.py`

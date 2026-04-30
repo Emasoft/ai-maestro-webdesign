@@ -423,7 +423,7 @@ def main() -> int:
         "",
         "## Caveats",
         "",
-        "- Tailwind regex extraction is heuristic; it cannot evaluate JS so dynamic configs are not handled. For high-fidelity Tailwind extraction, use `bin/amw-design-md-from-tailwind.ts` instead.",
+        "- Tailwind regex extraction is heuristic; it cannot evaluate JS so dynamic configs are not handled. For high-fidelity Tailwind extraction, use `bin/amw-design-md-from-tailwind.mjs` instead.",
         "- Component inference is limited to the shadcn pattern (`primary` + `primary-foreground`). For other libraries, edit the components: section manually.",
         "- The do/don't section uses generic placeholder rules. Customize for the project's actual conventions.",
         "",

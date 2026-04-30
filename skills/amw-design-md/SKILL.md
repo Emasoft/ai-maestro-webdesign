@@ -77,7 +77,7 @@ Run `bin/amw-design-md-lint.sh <path>` for the official linter. Run `bin/amw-des
 Invoke `bin/amw-design-md-from-url.sh <url> <output-path>` which delegates DOM and computed-style extraction to the plugin's existing `amw-dev-browser` skill, then emits Variant 1 frontmatter.
 
 ### Extract a DESIGN.md from a Tailwind config
-Run `bin/amw-design-md-from-tailwind.ts --config <tailwind.config.ts> --css <globals.css> --out <DESIGN.md>`. Pure-local TypeScript port of the upstream tool. Resolves CSS-var references and annotates color pairs with WCAG-AA contrast.
+Run `node bin/amw-design-md-from-tailwind.mjs --config <tailwind.config.ts> --css <globals.css> --out <DESIGN.md>`. Pure-local Node.js port of the upstream tool. Resolves CSS-var references and annotates color pairs with WCAG-AA contrast.
 
 ### Extract a DESIGN.md from a codebase scan
 Run `bin/amw-design-md-from-codebase.py <project-root>`. Pure-Python scanner that detects shadcn/Tailwind/Chakra/vanilla-CSS/styled-components and emits a draft DESIGN.md.

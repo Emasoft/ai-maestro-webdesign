@@ -115,7 +115,7 @@ Plus an `extraction-notes.md` adjacent file with:
 
 ## When this is the wrong tool
 
-- The user has a Tailwind config and globals.css and wants pure mechanical conversion → use `bin/amw-design-md-from-tailwind.ts` instead (jiti-based; can eval the config). See `TECH-10-tailwind-conversion.md`.
+- The user has a Tailwind config and globals.css and wants pure mechanical conversion → use `bin/amw-design-md-from-tailwind.mjs` instead (jiti-based; can eval the config). See `TECH-10-tailwind-conversion.md`.
 - The user wants extraction from a deployed URL → use `bin/amw-design-md-from-url.sh`. See `TECH-07-url-extraction.md`.
 - The user has a finished DESIGN.md and wants to audit drift → use `amw-design-md-auditor-agent` Pass 2 (which calls this script under the hood).
 

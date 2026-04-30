@@ -12,7 +12,7 @@ status: stable
 
 Documents the high-fidelity mechanical conversion path from a Tailwind project (`tailwind.config.{ts,js,mjs,cjs}` + `globals.css` with `:root` CSS variables) to a Variant 1 DESIGN.md. Unlike `TECH-08-codebase-extraction.md` which is regex-based, this path uses `jiti` to actually evaluate the Tailwind config — so it handles dynamic values, computed configs, and shadcn-style HSL+CSS-variable patterns correctly.
 
-The bin script is `bin/amw-design-md-from-tailwind.ts`. Pure-local TypeScript, runtime deps `jiti` (TypeScript-config evaluator) and `picocolors` (CLI output). Both are zero-API-key, npm-installable.
+The bin script is `bin/amw-design-md-from-tailwind.mjs`. Pure-local Node.js, runtime deps `jiti` (TypeScript-config evaluator) and `picocolors` (CLI output). Both are zero-API-key, npm-installable.
 
 The agent owner is `amw-design-md-extractor-agent`.
 
@@ -31,7 +31,7 @@ The agent owner is `amw-design-md-extractor-agent`.
 ## Inputs
 
 ```bash
-node bin/amw-design-md-from-tailwind.ts \
+node bin/amw-design-md-from-tailwind.mjs \
   --config <path-to-tailwind.config.{ts,js,mjs,cjs}> \
   --css <path-to-globals.css> \
   [--out <output-path>] \
@@ -43,7 +43,7 @@ Required: `--config`, `--css`. Default output: `./DESIGN.md`.
 
 ## How it works (4-step pipeline)
 
-The TypeScript port mirrors the upstream `tailwind-to-design-md` 4-file architecture. The plugin's pure-local port lives at `bin/amw-design-md-from-tailwind.ts`.
+The Node.js port mirrors the upstream `tailwind-to-design-md` 4-file architecture. The plugin's pure-local port lives at `bin/amw-design-md-from-tailwind.mjs`.
 
 ### Step 1 — Loader (loader.ts equivalent)
 
@@ -203,4 +203,4 @@ If the project has shadcn's standard pairs (`primary` + `primary-foreground`, et
 
 - `./TECH-08-codebase-extraction.md` — heuristic regex-based codebase extraction (fallback when jiti not available)
 - `./TECH-12-companion-files.md` — emit `tokens.css` from the resulting DESIGN.md
-- `<plugin-root>/bin/amw-design-md-from-tailwind.ts` — the bin script
+- `<plugin-root>/bin/amw-design-md-from-tailwind.mjs` — the bin script
