@@ -224,19 +224,32 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
     - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
     - `severity: medium`/`severity: low` violations (e.g. raw `#FF0000` literal, suspect emoji density) are surfaced under `warnings` rather than `blocking_issues` — they are advisory unless the brand tokens say otherwise.
 
-12. **Preview render.**
-    - If `target_stack` is a static HTML (no build step), no preview compilation needed.
-    - If `target_stack` is `shadcn+next` / `shadcn+vite`, my output is a page component (`.tsx`) plus any supporting component files, not a full build. Main-agent does not expect me to spin up a dev server.
-    - Optionally (if `output_mode` requests it), run `python3 bin/amw-html-export.py <output.html> --format preview --output <slug>.preview.png` to emit a reference screenshot.
+12. **Render to staging path (lint-before-write).**
+    - Render the HTML to a staging path under `/tmp/amw-wireframe-<slug>-build.html` (one per locale: `<slug>.<locale>-build.html`). Do NOT write to `output_dir` yet.
+    - If `target_stack` is `shadcn+next` / `shadcn+vite`, my output is a page component (`.tsx`) plus any supporting component files, not a full build. Main-agent does not expect me to spin up a dev server. Render the `.tsx` artifacts to `/tmp/amw-wireframe-<slug>-build/` directory instead.
 
-13a. **HTML syntax validation gate.** For static HTML output (`target_stack=static-html`, `tailwind-vanilla`, `tailwind-v4`, `react-umd`), run `bash bin/amw-html-validate.sh <output.html>`. If `tidy` is installed it does a thorough W3C-aligned check; if not, the script falls back to a regex sanity check. PASS → proceed. FAIL → log the validator output in `warnings` (not a hard block — most tidy "errors" are advisory) and proceed. Hard-block only if structural problems are present (missing DOCTYPE, missing `<title>`, missing viewport meta).
+13. **HTML syntax validation gate (on the staging path).** For static HTML output (`target_stack=static-html`, `tailwind-vanilla`, `tailwind-v4`, `react-umd`), run `bash bin/amw-html-validate.sh /tmp/amw-wireframe-<slug>-build.html`. If `tidy` is installed it does a thorough W3C-aligned check; if not, the script falls back to a regex sanity check. PASS → proceed to step 14. FAIL on structural problems (missing DOCTYPE / `<title>` / viewport meta) → set `status=partial`, log in `blocking_issues`, do NOT promote to `output_dir`. FAIL on advisory tidy errors → log in `warnings` and proceed. The staging-first ordering means a hard-block leaves the project tree clean — no half-rendered HTML pollutes `output_dir`.
 
-13. **Write artifacts to disk.**
+14. **Structure / density audit on the staging path.** Run `python3 bin/amw-html-section-count.py /tmp/amw-wireframe-<slug>-build.html`. Parse the JSON output. Surface in the return contract as a `structure_summary` block alongside `artifact_paths`:
+    ```yaml
+    structure_summary:
+      section_count: <int>
+      word_count: <int>
+      reading_time_min: <int>
+      heading_violations: [...]
+    ```
+    If `heading_violations` is non-empty, mirror each entry into `warnings` with the exact `line + issue` text — main-agent and the accessibility-auditor downstream rely on this for early heading-skip detection.
+
+15. **Optional preview render (on the staging path).** If `output_mode` requests it, run `python3 bin/amw-html-export.py /tmp/amw-wireframe-<slug>-build.html --format preview --output /tmp/amw-wireframe-<slug>-build.preview.png` to emit a reference screenshot.
+
+16. **Promote staging to canonical output_dir.**
     - Resolve `output_dir` from input; if absent, consult `../skills/amw-design-principles/references/project-output-routing.md`.
-    - Write HTML file(s), optional CSS file (if externalized), optional tokens.json (for downstream verification).
+    - `mkdir -p` the destination, then `cp` the staging file(s) to `<output_dir>/<slug>.<locale>.html` and the optional preview PNG to `<output_dir>/<slug>.preview.png`. Optional CSS file (if externalized), optional tokens.json (for downstream verification) follow the same staging→promote pattern.
+    - On any promotion error (permission denied, disk full), keep the staging path intact, set `status=partial`, log the error in `blocking_issues`, and list the staging path under `artifact_paths` with `purpose: "did not promote to output_dir; staged at /tmp/..."`.
 
-14. **Assemble return contract.**
+17. **Assemble return contract.**
     - Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
+    - Include the `structure_summary` block from step 14 in the YAML header.
     - Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-wireframe-builder-<slug>.md`.
     - Return to main-agent.
 
@@ -298,6 +311,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Brand token resolution or validation | `../skills/amw-design-principles/color-system.md`, `../skills/amw-design-principles/typography-system.md`, `../skills/amw-design-principles/spacing-rhythm.md` | token contract rules (contrast floor, type scale, rhythm) |
 | Starter component needed (browser chrome, Tweaks protocol, animation timeline) | `../skills/amw-design-principles/starter-components/<component>.html` + `starter-components/react-babel-pins.md` when React UMD | hard-pinned invariants |
 | AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation `../skills/amw-design-principles/ai-slop-avoid.md` | mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
+| Structure summary + heading-hierarchy audit on rendered output | `bin/amw-html-section-count.py` (run on the staging path before promotion) | counts top-level sections, computes word-count + reading-time, flags `h2 without h1`, `h3 without h2`, etc. — output goes into the return contract's `structure_summary` block |
 | Locale direction (RTL) | `../skills/amw-design-principles/typography-system.md` (reading-direction section) | RTL layout rules |
 | ASCII contains an empty-state slot (`[ no items yet ]`, `[ search results: 0 ]`, etc.) | `../skills/amw-design-principles/starter-components/empty-state.html` if present, else use the inline empty-state pattern: heroicon → headline → 1-line context → primary action → optional secondary action | render an empty state that has clear next-action guidance, NOT just a sad face |
 | ASCII contains an error-state slot (`[ 404 ]`, `[ permission denied ]`, `[ server error ]`, `[ offline ]`) | `../skills/amw-design-principles/starter-components/error-state.html` if present, else use error-state pattern: status code → human headline → recovery action(s) → secondary "contact support" link | render error states that name the failure AND offer recovery, never blank pages or raw stack traces |
@@ -413,7 +427,7 @@ warnings:
 artifact_paths:
   - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.en.html"
     type: html
-    purpose: "Production HTML — English locale, shadcn+next component surface"
+    purpose: "Production HTML — English locale, shadcn+next component surface (promoted from /tmp/amw-wireframe-bora-bora-landing-build.html after lint PASS)"
   - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.fr.html"
     type: html
     purpose: "Production HTML — French locale"
@@ -423,6 +437,11 @@ artifact_paths:
   - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.preview.png"
     type: png
     purpose: "1440px reference screenshot (preview only, not production asset)"
+structure_summary:
+  section_count: 8
+  word_count: 1240
+  reading_time_min: 7
+  heading_violations: []
 recommendations:
   - "Invoke amw-accessibility-auditor-agent against both locale files; the French variant has tight line-box at 1024px that may trigger WCAG 1.4.10 reflow."
   - "Run amw-seo-strategist-agent (B mode) on both locales for on-page SEO; meta-description was injected from input but not audited."
@@ -567,4 +586,6 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `../bin/amw-validate-ascii.py` — validator (input gate)
 - `../bin/amw-ascii-parse.py` — IR parser
 - `../bin/amw-html-export.py` — preview renderer
+- `../bin/amw-html-validate.sh` — HTML lint gate (run on staging path before promotion)
+- `../bin/amw-html-section-count.py` — structure / heading audit (run on staging path before promotion)
 - `../CLAUDE.md` — plugin architecture overview

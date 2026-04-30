@@ -16,23 +16,33 @@ set -euo pipefail
 
 usage() {
   cat <<USAGE
-Usage: bash bin/amw-design-md-from-url.sh <URL> [-o OUT] [-n NAME]
+Usage: bash bin/amw-design-md-from-url.sh <URL> [-o OUT] [-n NAME] [--summary-only]
 
 Extract a Variant 1 DESIGN.md from a live URL.
 
 Options:
-  -o OUT     Output path. Default: ./DESIGN.md
-  -n NAME    Design system name. Default: from <title> or domain
+  -o OUT          Output path. Default: ./DESIGN.md
+  -n NAME         Design system name. Default: from <title> or domain
+  --summary-only  Probe the page and emit a JSON summary to stdout instead of
+                  writing a full DESIGN.md. Useful for detecting gradient-heavy
+                  heroes and noisy pages before committing to full extraction.
+                  Always exits 0 (the summary is informational).
 
-Pipeline:
+Pipeline (full extraction):
   1. dev-browser eval <URL> — captures DOM landmarks + computed styles + CSS vars
   2. post-process JSON → cluster colors, infer typography, spacing, radius
   3. emit Variant 1 DESIGN.md
   4. validate via amw-design-md-lint.sh + amw-design-md-contrast.py
 
+Pipeline (--summary-only):
+  1. dev-browser eval <URL> — captures DOM landmarks + computed styles + CSS vars
+  2. post-process JSON → count colors, fonts, radii, spacing steps
+  3. emit JSON summary to stdout with warnings for problematic extraction signals
+
 Exit codes:
-  0  DESIGN.md written and passes lint
-  1  validation failed (DESIGN.md still written; see warnings)
+  0  DESIGN.md written and passes lint  (full mode)
+  0  JSON summary emitted                (--summary-only mode)
+  1  validation failed (DESIGN.md still written; see warnings)  (full mode)
   2  invocation / network error
 USAGE
   exit 2
@@ -43,11 +53,13 @@ if [ $# -lt 1 ]; then usage; fi
 URL=""
 OUT="./DESIGN.md"
 NAME=""
+SUMMARY_ONLY=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
     -o) OUT="$2"; shift 2 ;;
     -n) NAME="$2"; shift 2 ;;
+    --summary-only) SUMMARY_ONLY=1; shift ;;
     -h|--help) usage ;;
     *)
       if [ -z "$URL" ]; then URL="$1"; shift
@@ -144,6 +156,120 @@ else
   "ogTitle": ""
 }
 JSONSTUB
+fi
+
+# --summary-only: probe page and emit JSON summary, then exit 0
+if [ "$SUMMARY_ONLY" = "1" ]; then
+  python3 - "$TMP_JSON" "$URL" <<'PYSUMMARY'
+import json
+import re
+import sys
+from collections import Counter
+from pathlib import Path
+
+def hex_re(s):
+    if not s: return None
+    s = s.strip()
+    m = re.match(r"^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$", s)
+    if m:
+        h = m.group(1)
+        if len(h) == 3:
+            h = "".join(c*2 for c in h)
+        return "#" + h.lower()
+    m = re.match(r"^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)", s)
+    if m:
+        r, g, b = (int(m.group(i)) for i in (1, 2, 3))
+        return "#%02x%02x%02x" % (r, g, b)
+    return None
+
+snapshot_path = sys.argv[1]
+src_url = sys.argv[2]
+
+snap = json.loads(Path(snapshot_path).read_text())
+
+# Collect colors
+colors = Counter()
+for key in ("h1", "h2", "body", "button", "input", "link"):
+    for s in snap.get(key, []) or []:
+        if not s: continue
+        for f in ("color", "backgroundColor"):
+            h = hex_re(s.get(f))
+            if h: colors[h] += 1
+for lk in ("nav", "header", "footer"):
+    s = snap.get(lk)
+    if s:
+        for f in ("color", "backgroundColor"):
+            h = hex_re(s.get(f))
+            if h: colors[h] += 1
+for v in (snap.get("cssVars") or {}).values():
+    h = hex_re(str(v))
+    if h: colors[h] += 1
+
+# Collect fonts
+fonts = Counter()
+for key in ("h1", "h2", "body", "button", "input", "link"):
+    for s in snap.get(key, []) or []:
+        if not s: continue
+        ff = s.get("fontFamily", "")
+        if ff:
+            primary = ff.split(",")[0].strip().strip('"\'')
+            if primary:
+                fonts[primary] += 1
+
+# Collect radii
+radii = Counter()
+for key in ("button", "input"):
+    for s in snap.get(key, []) or []:
+        if not s: continue
+        br = s.get("borderRadius", "")
+        if br:
+            m = re.match(r"^(\d+(?:\.\d+)?)px", br.strip())
+            if m:
+                radii[int(round(float(m.group(1))))] += 1
+
+# Collect spacing (padding values from body/button as a proxy)
+spacing_vals = Counter()
+for key in ("body", "button", "input"):
+    for s in snap.get(key, []) or []:
+        if not s: continue
+        for fld in ("padding", "margin"):
+            val = s.get(fld, "")
+            if val:
+                for part in val.split():
+                    m = re.match(r"^(\d+)px$", part.strip())
+                    if m:
+                        v = int(m.group(1))
+                        if v > 0:
+                            spacing_vals[f"{v}px"] += 1
+
+top_colors = colors.most_common(12)
+top_fonts = fonts.most_common(4)
+top_radii = sorted(radii.keys())[:4]
+top_spacing = sorted(spacing_vals.keys(), key=lambda x: int(x[:-2]))[:8]
+
+warnings = []
+if len(top_colors) > 10:
+    warnings.append("may be a gradient-heavy hero — consider --wait-for-selector for the main content")
+if len(top_fonts) > 4:
+    warnings.append("many font families detected — page may be using third-party widgets")
+if len(top_spacing) > 8:
+    warnings.append("noisy spacing — page may not have a coherent design system")
+
+summary = {
+    "url": src_url,
+    "color_count": len(top_colors),
+    "color_preview": [h for h, _ in top_colors[:3]],
+    "font_count": len(top_fonts),
+    "font_preview": [f for f, _ in top_fonts[:2]],
+    "radius_count": len(top_radii),
+    "radius_preview": [f"{r}px" for r in top_radii[:3]],
+    "spacing_step_count": len(top_spacing),
+    "spacing_preview": top_spacing[:4],
+    "warnings": warnings,
+}
+print(json.dumps(summary, indent=2))
+PYSUMMARY
+  exit 0
 fi
 
 # Step 2-3 — post-process JSON → Variant 1 DESIGN.md (delegated to inline Python)

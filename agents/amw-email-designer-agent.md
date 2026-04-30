@@ -213,28 +213,33 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 7. **Add Outlook VML fallbacks** for any background images or rounded-corner buttons. Wrap in `<!--[if mso]>...<![endif]-->` conditional comments.
 
-8. **Compile MJML to HTML** via `bash bin/amw-mjml-render.sh --render <input.mjml> <output.html>`. The script wraps `npx --yes mjml --validate strict` so the validator runs as a precondition; PASS produces the compiled HTML, FAIL reports up to 5 errors with line numbers and FIX hints. If `npx` is unavailable (Node.js < 22), document in `warnings` and emit MJML source only — the user must compile via `mjml.io` or install `mjml` CLI. For validate-only (no HTML emit), use `bash bin/amw-mjml-render.sh --validate <input.mjml>` (exit 0 = PASS).
+8. **Stage MJML source.** Write the MJML source to a staging path: `/tmp/amw-email-<slug>-build.mjml`. Do NOT write to `output_dir` yet.
 
-9. **Produce plain-text fallback.** Extract: preheader, headline, body, CTA label + URL, footer address, unsubscribe URL. Format as readable plain text with line breaks at 70 characters.
+9. **Compile MJML to HTML at staging.** Run `bash bin/amw-mjml-render.sh --render /tmp/amw-email-<slug>-build.mjml /tmp/amw-email-<slug>-build.html`. The script wraps `npx --yes mjml --validate strict` so the validator runs as a precondition; PASS produces the compiled HTML at the staging path, FAIL reports up to 5 errors with line numbers and FIX hints. On FAIL, set `status=partial`, log the validator output in `blocking_issues`, do NOT promote to `output_dir` — staging-first means broken templates stay in `/tmp` and never pollute the user's project tree. If `npx` is unavailable (Node.js < 22), document in `warnings` and emit MJML source only — the user must compile via `mjml.io` or install `mjml` CLI. For validate-only (no HTML emit), use `bash bin/amw-mjml-render.sh --validate /tmp/amw-email-<slug>-build.mjml` (exit 0 = PASS).
 
-10. **Insert dynamic variable placeholders.** For each entry in `dynamic_variables`, confirm the placeholder exists in MJML source at the appropriate slot. Document any missing placements.
+10. **Produce plain-text fallback at staging.** Extract: preheader, headline, body, CTA label + URL, footer address, unsubscribe URL. Format as readable plain text with line breaks at 70 characters. Write to `/tmp/amw-email-<slug>-build.txt`.
 
-11. **Verify contrast ratios.** Check `text` on `bg` and `text_dark` on `bg_dark`. Minimum 4.5:1 for body copy, 3:1 for large text (≥18px). Flag failures in `blocking_issues` if below WCAG AA threshold — email accessibility matters for screen-reader users receiving email.
+11. **Insert dynamic variable placeholders.** For each entry in `dynamic_variables`, confirm the placeholder exists in the staged MJML source at the appropriate slot. Document any missing placements.
 
-11.5. **Run AI-slop avoidance gate.** Run `Bash: python3 bin/amw-ai-slop-check.py <output.html> --severity-threshold high` against the compiled HTML (skip if MJML-only, no HTML produced — note in `warnings`).
-    - **Exit 0 → PASS**, continue to step 12.
-    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The email is not shippable until violations are resolved. Re-author with the violations addressed (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed).
+12. **Verify contrast ratios.** Check `text` on `bg` and `text_dark` on `bg_dark`. Minimum 4.5:1 for body copy, 3:1 for large text (≥18px). Flag failures in `blocking_issues` if below WCAG AA threshold — email accessibility matters for screen-reader users receiving email.
+
+13. **Run AI-slop avoidance gate (on staged HTML).** Run `Bash: python3 bin/amw-ai-slop-check.py /tmp/amw-email-<slug>-build.html --severity-threshold high` against the compiled HTML (skip if MJML-only, no HTML produced — note in `warnings`).
+    - **Exit 0 → PASS**, continue to step 14.
+    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The email is not shippable until violations are resolved. Re-author with the violations addressed and re-stage (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed). Because the gate runs on the staging path, no half-rendered file lands in `output_dir`.
     - **Exit 2 → INCONCLUSIVE**: file unreadable; emit a `warnings` entry and continue.
     - **Email-specific note:** the script's banned-font check (Rule 7: `Inter`/`Roboto`/`Arial`/`system-ui`) will likely flag every email I produce because Outlook 2016-2021 force-fallback to Arial regardless of the declared web-font. This is a false positive in the email domain. When the only flagged font is `Arial` AND the email uses it as an Outlook fallback (declared inside `<!--[if mso]>...<![endif]-->` or as the last entry of the font stack), document in `warnings` ("Arial flagged by ai-slop-check; permitted as Outlook fallback per email-rendering reality") and treat the entry as advisory rather than blocking. All other Rule 7 fonts remain hard violations.
     - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
 
-12. **Write artifacts to disk:**
-    - `<slug>.mjml` — MJML source
-    - `<slug>.html` — compiled HTML (if compilation available)
-    - `<slug>.txt` — plain-text fallback
-    - `<slug>-dark.png` — optional dark-mode preview sketch (ASCII representation if image rendering unavailable)
+14. **Promote staging to canonical output_dir.**
+    - Resolve `output_dir` from input; if absent, place under the project's `design/emails/` per `../skills/amw-design-principles/references/project-output-routing.md`.
+    - `mkdir -p` the destination, then `cp` the staging files to:
+      - `<output_dir>/<slug>.mjml` — MJML source
+      - `<output_dir>/<slug>.html` — compiled HTML (if compilation succeeded)
+      - `<output_dir>/<slug>.txt` — plain-text fallback
+      - `<output_dir>/<slug>-dark.png` — optional dark-mode preview sketch (ASCII representation if image rendering unavailable)
+    - On promotion error, keep staging files intact, set `status=partial`, log error in `blocking_issues`, list staging paths under `artifact_paths` with `purpose: "did not promote to output_dir; staged at /tmp/..."`.
 
-13. **Assemble return contract.** Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-email-designer-<slug>.md`.
+15. **Assemble return contract.** Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-email-designer-<slug>.md`.
 
 ---
 
@@ -377,10 +382,10 @@ warnings:
 artifact_paths:
   - path: "/Users/emanuele/project/design/emails/order-confirmation.mjml"
     type: html
-    purpose: "MJML source — order confirmation email with dark mode CSS and Outlook VML fallbacks"
+    purpose: "MJML source — order confirmation email with dark mode CSS and Outlook VML fallbacks (promoted from /tmp/amw-email-order-confirmation-build.mjml after MJML compile + AI-slop PASS)"
   - path: "/Users/emanuele/project/design/emails/order-confirmation.html"
     type: html
-    purpose: "Compiled HTML — ready for ESP upload (compiled from MJML source)"
+    purpose: "Compiled HTML — ready for ESP upload (compiled from staged MJML source, validated, promoted)"
   - path: "/Users/emanuele/project/design/emails/order-confirmation.txt"
     type: report
     purpose: "Plain-text fallback — full email content in readable plain text"

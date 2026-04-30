@@ -203,27 +203,46 @@ Priority-ordered.
    - Default: `portrait-medium` 1080×1440.
    - If `target_dimensions` is set, resize the template's root container and apply section-reflow CSS per the template's multi-size variants (most templates ship with media-query-gated variants for 7 canvas sizes).
 
-9. **Run AI-slop avoidance gate.** Run `Bash: python3 bin/amw-ai-slop-check.py <output.html> --severity-threshold high`.
-    - **Exit 0 → PASS**, continue to step 10.
-    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The artifact is not shippable until the violations are resolved. Re-author with the violations addressed (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed).
+9. **Render HTML to staging path (lint-before-write).**
+    - Render the self-contained HTML to a staging path: `/tmp/amw-infographic-<slug>-build.html`. CDN fonts (Google Fonts for Bebas Neue / Montserrat / Teko / Orbitron), Phosphor Icons CDN, optional Chart.js if the template uses it.
+    - Do NOT write to `output_dir` yet. PNG/PDF exports also run against the staging path.
+
+10. **Run AI-slop avoidance gate (on staging path).** Run `Bash: python3 bin/amw-ai-slop-check.py /tmp/amw-infographic-<slug>-build.html --severity-threshold high`.
+    - **Exit 0 → PASS**, continue to step 11.
+    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The artifact is not shippable until the violations are resolved. Re-author with the violations addressed and re-stage (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed). Because the gate runs on the staging path, no half-rendered file lands in `output_dir`.
     - **Exit 2 → INCONCLUSIVE**: file unreadable; emit a `warnings` entry and continue.
     - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate. Decision Criterion 4 remains the doctrine — the script enforces the mechanical subset; infographic-specific judgments (no ghost borders, no AI-stock testimonials, no unlabeled arrows on flow diagrams, no banned display fonts beyond the script's six) are still inspected by me before declaring done.
 
-10. **Density check.**
-    - Count content blocks in the rendered output. Target 8–15 on portrait-medium; ≥6 minimum; ≥4 on square/linkedin canvas.
-    - If below minimum, document in `warnings` with `recommendations=["Brief had N blocks; consider padding with [specific suggestions] to reach density floor."]`.
+11. **Structure / density audit (deterministic).** Run `python3 bin/amw-html-section-count.py /tmp/amw-infographic-<slug>-build.html`. Parse the JSON output. Surface in the return contract as a `structure_summary` block:
+    ```yaml
+    structure_summary:
+      section_count: <int>
+      word_count: <int>
+      reading_time_min: <int>
+      heading_violations: [...]
+    ```
+    Density thresholds (per Decision Criterion 7 / §8.2):
+    - Target **8–15 content blocks** on portrait-medium.
+    - Floor: **≥6** on portrait-medium; **≥4** on square / linkedin canvas.
+    - If `section_count` is below floor, append to `warnings`: `"Density below design-DNA minimum: N blocks (floor M). Pad the brief or accept sparse layout."` and to `recommendations`: a specific list of section types that would round out the piece.
+    - If `section_count > 15` on portrait-medium (over-dense), append to `recommendations`: `"high-density layout — consider section breaks or grouping into supporting infographics."`
+    This replaces the previous LLM-based density count — `amw-html-section-count.py` is faster and deterministic. Heading-hierarchy violations (e.g., infographic uses h3 without h2) are mirrored into `warnings` directly from the script's output.
 
-11. **Render outputs.**
-    - HTML: always emit the self-contained HTML file. CDN fonts (Google Fonts for Bebas Neue / Montserrat / Teko / Orbitron), Phosphor Icons CDN, optional Chart.js if the template uses it.
-    - PNG: run `python3 bin/amw-html-export.py <html> --format png --retina --out <slug>.png` if `output_formats` includes png.
-    - PDF: run `python3 bin/amw-html-export.py <html> --format pdf --print-safe --out <slug>.pdf` if `output_formats` includes pdf. Enforces 14pt body floor.
+12. **Render PNG / PDF outputs (on staging path).**
+    - PNG: run `python3 bin/amw-html-export.py /tmp/amw-infographic-<slug>-build.html --format png --retina --out /tmp/amw-infographic-<slug>-build.png` if `output_formats` includes png.
+    - PDF: run `python3 bin/amw-html-export.py /tmp/amw-infographic-<slug>-build.html --format pdf --print-safe --out /tmp/amw-infographic-<slug>-build.pdf` if `output_formats` includes pdf. Enforces 14pt body floor.
 
-12. **Validate outputs.**
+13. **Validate staged outputs.**
     - HTML: well-formed check, CSS validation via built-in parser, font-face load verification.
     - PNG: non-zero byte count, dimensions match `target_dimensions`.
     - PDF: non-zero byte count, page count ≥ 1.
 
-13. **Write artifacts**, populate return contract, write report, return.
+14. **Promote staging to canonical output_dir.**
+    - Resolve `output_dir` from input; if absent, consult `../skills/amw-design-principles/references/project-output-routing.md`.
+    - `mkdir -p` the destination, then `cp` the staging files to `<output_dir>/<slug>.html`, `<output_dir>/<slug>.png`, `<output_dir>/<slug>.pdf` per `output_formats`.
+    - On promotion error (permission denied, disk full), keep staging paths intact, set `status=partial`, log the error in `blocking_issues`, and list staging paths under `artifact_paths` with `purpose: "did not promote to output_dir; staged at /tmp/..."`.
+
+15. **Populate return contract**, write report, return.
 
 ---
 
@@ -277,6 +296,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Brand tokens conflict resolution | `../skills/amw-design-principles/color-system.md` | Contrast/palette rules |
 | Typography conflict resolution | `../skills/amw-design-principles/typography-system.md` | Type scale (with poster-scale carve-out) |
 | AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Banned pattern checklist |
+| Density / section / heading audit on staged HTML | `bin/amw-html-section-count.py` | Replaces LLM-based density count — counts top-level sections, word-count + reading-time, flags heading-skip violations; output goes into the return contract's `structure_summary` block |
 | Diagram embedding (when brief includes a diagram) | Hand off to `amw-diagram-producer-agent` via main-agent recommendation | — |
 | Diagram-as-infographic (when template is not a fit) | Fall back via recommendation to `amw-diagram-producer-agent` with `preferred_format=html` editorial | — |
 
@@ -420,13 +440,18 @@ warnings:
 artifact_paths:
   - path: "/Users/emanuele/project/design/infographics/acme-tokenomics.html"
     type: html
-    purpose: "Self-contained dense editorial infographic, CDN fonts + Phosphor Icons, portrait-medium 1080×1440"
+    purpose: "Self-contained dense editorial infographic, CDN fonts + Phosphor Icons, portrait-medium 1080×1440 (promoted from /tmp/amw-infographic-acme-tokenomics-build.html after lint + density PASS)"
   - path: "/Users/emanuele/project/design/infographics/acme-tokenomics.png"
     type: png
     purpose: "2× retina PNG render via bin/amw-html-export.py, 2160×2880 physical"
   - path: "/Users/emanuele/project/design/infographics/acme-tokenomics.pdf"
     type: pdf
     purpose: "Print-ready PDF, 14pt body floor, motion stripped"
+structure_summary:
+  section_count: 7
+  word_count: 380
+  reading_time_min: 2
+  heading_violations: []
 recommendations:
   - "Invoke amw-accessibility-auditor-agent on the HTML — infographic falls outside the 16px desktop body-copy floor by design, but contrast and ARIA structure still need audit."
   - "For social distribution consider re-rendering at twitter-x (1200×675) — may require section pruning; I can re-invoke with target_dimensions.canvas=twitter-x."
@@ -575,4 +600,6 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 - `../skills/amw-design-principles/references/project-output-routing.md`
 - `../bin/amw-html-export.py` — HTML → PNG/PDF pipeline
 - `../bin/amw-mermaid-render.sh` — Mermaid source embedding (rendered to SVG for infographic inlining)
+- `../bin/amw-html-section-count.py` — density / structure / heading audit on staged HTML
+- `../bin/amw-ai-slop-check.py` — AI-slop gate on staged HTML
 - `../CLAUDE.md` — plugin architecture overview

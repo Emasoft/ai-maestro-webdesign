@@ -215,6 +215,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint me
 | Interview-to-token mapping ambiguity | `../skills/amw-design-md/references/TECH-15-design-md-as-input.md` | How agents parse and use DESIGN.md tokens |
 | AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Ensure no slop patterns in prose sections |
 | Contrast verification needed | `bin/amw-design-md-contrast.py` | WCAG contrast check on every color pair before delivery |
+| Auditing an HTML mockup against the produced DESIGN.md | `bin/amw-html-section-count.py` | Counts top-level sections, derives word-count + reading-time, flags heading-hierarchy violations (`h2` without `h1`, `h3` without `h2`, etc.); used when main-agent attaches a reference HTML and asks me to verify the section-and-heading structure aligns with the DESIGN.md `## Layout` and component specs |
 
 I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-auditor-agent` (peer — routes through main-agent).
 
@@ -370,3 +371,4 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `bin/amw-design-md-emit-companions.py` — companion file generator
 - `bin/amw-design-md-lint.sh` — lint gate
 - `bin/amw-design-md-contrast.py` — WCAG contrast checker
+- `bin/amw-html-section-count.py` — section / heading audit on a reference HTML mockup

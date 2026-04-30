@@ -254,6 +254,9 @@ Cross-skill utilities live in `bin/`, not duplicated inside each skill:
 | `amw-html-validate.sh` | amw-validate-diagram.sh and any HTML validation flow (xmllint + tidy wrapper) |
 | `amw-validate-ascii.py` | amw-ascii-validator, amw-ascii-sketch, amw-ascii-to-html (Python ASCII validator — sole validator; replaces former Perl version) |
 | `amw-ai-slop-check.py` | amw-wireframe-builder-agent, amw-diagram-producer-agent, amw-infographic-builder-agent, amw-asset-generator-agent, amw-email-designer-agent (mechanical enforcement of `amw-design-principles/ai-slop-avoid.md`) |
+| `amw-validate-cross-refs.sh` | CI-time gate; called by maintainers / `/amw-doctor` |
+| `amw-skill-trigger-collision.py` | CI-time gate; called by maintainers / `/amw-doctor` |
+| `amw-html-section-count.py` | amw-wireframe-builder-agent, amw-infographic-builder-agent, amw-design-md-author-agent (replaces LLM-based section/heading audits) |
 
 When extracting a utility from a source skill, prefer upgrading it to `bin/` if at least two skills benefit. Skill-specific one-offs stay in the skill's own folder.
 

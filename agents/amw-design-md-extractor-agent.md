@@ -129,15 +129,35 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 ### Path A — `input_type=url`
 
 1. Run `/amw-doctor` checks inline (or trust main-agent's pre-flight). Confirm `dev-browser` and `node` are on PATH.
-2. Run:
+
+2. **Pre-extraction smoke probe.** Before committing to a full DESIGN.md write, run:
    ```bash
-   bash bin/amw-design-md-from-url.sh "<url>" "<output_path>"
+   bash bin/amw-design-md-from-url.sh "$url" --summary-only
    ```
-   The wrapper handles dev-browser invocation, computed-style extraction, screenshot capture, and emits a draft Variant 1 DESIGN.md.
-3. Read the draft. Read the sidecar `<output_path>.extraction-notes.md` if present.
-4. Augment the prose `## Overview` from the page meta-description / `<title>` / first `<h1>` if extraction-notes did not populate it.
-5. Run lint gate (§7 step 8).
-6. Run contrast check (§7 step 9) if `contrast_check=true`.
+   Parse the JSON output. Surface the summary in `recommendations[]`:
+   - `"Found {color_count} colors, {font_count} fonts, {spacing_step_count} spacing steps. Color preview: {color_preview}."`
+   - If any `warnings[]` entry is present, escalate it: `"Extraction may produce poor results — {warnings[0]}. Run with --wait-for-selector to scope to the main content, or proceed and re-extract if results are noisy."`
+
+   Main-agent decides whether to:
+   - Proceed with full extraction (continue to step 3)
+   - Ask user for a `--wait-for-selector` value (pass it as an extra arg to step 3)
+   - Try a different URL (e.g., the docs page rather than the marketing page)
+
+   This catches the gradient-trap pattern (12 mostly-purple colors from a Stripe-style hero) in ~2 seconds vs running full extraction + reading the resulting DESIGN.md to discover the problem.
+
+3. Run full extraction:
+   ```bash
+   bash bin/amw-design-md-from-url.sh "<url>" -o "<output_path>"
+   ```
+   The wrapper handles dev-browser invocation, computed-style extraction, and emits a draft Variant 1 DESIGN.md.
+
+4. Read the draft. Read the sidecar `<output_path>.extraction-notes.md` if present.
+
+5. Augment the prose `## Overview` from the page meta-description / `<title>` / first `<h1>` if extraction-notes did not populate it.
+
+6. Run lint gate (§7 step 8).
+
+7. Run contrast check (§7 step 9) if `contrast_check=true`.
 
 ### Path B — `input_type=tailwind`
 
@@ -351,7 +371,45 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
 
 Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-design-md-extractor-<slug>.md`.
 
-### Worked example — `status=ok`
+### Worked example — `status=ok` (URL path with smoke probe)
+
+```yaml
+---
+agent: amw-design-md-extractor-agent
+phase: B
+status: ok
+confidence: high
+execution_time_ms: 9140
+max_iterations: 2
+attempts_count: 1
+attempts_log:
+  - attempt: 1
+    failure_reason: null
+    duration_ms: 9140
+blocking_issues: []
+warnings:
+  - "WCAG contrast for `primary` (#7c3aed) / `surface` (#ffffff) measures 5.2:1 — passes WCAG AA normal-text. No action required."
+artifact_paths:
+  - path: "/Users/emanuele/project/DESIGN.md"
+    type: markdown
+    purpose: "Variant 1 DESIGN.md extracted from https://example.com"
+  - path: "/Users/emanuele/project/tokens.css"
+    type: css
+    purpose: ":root CSS custom properties derived from DESIGN.md (companion)"
+recommendations:
+  - "Smoke probe result: Found 6 colors, 2 fonts, 4 spacing steps. Color preview: ['#7c3aed', '#ffffff', '#1f2937']. No warnings from probe — page appears clean."
+  - "Run amw-design-md-auditor-agent in Mode A (spot-check) to verify DESIGN.md against the live page."
+  - "Pass DESIGN.md to amw-wireframe-builder-agent as canonical token source for Phase B HTML rendering."
+next_action: proceed
+report_path: "/Users/emanuele/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-url.md"
+---
+
+# AMW DESIGN.md Extractor — Phase B summary
+
+Pre-extraction smoke probe returned 6 colors, 2 fonts, 4 spacing steps — no gradient-trap signals detected. Proceeded with full extraction. Resolved 6 colors, 7 typography roles, 4 spacing values, 3 rounded values, and 2 component specs (button-primary, input). Lint gate: PASS (0 P0, 0 P1, 1 P2 warning).
+```
+
+### Worked example — `status=ok` (codebase path)
 
 ```yaml
 ---

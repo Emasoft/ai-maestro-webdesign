@@ -163,6 +163,30 @@ In priority order:
    ```
    Read the inspect JSON. If it contains issues without `data-layout-allow-overflow` opt-out, emit `status=partial` with the inspect log path in `warnings` and abort — do not proceed to render. (This is the `inspect` gate per §6.7.)
 
+5b. **Smoke render (gated by output volume).** Before kicking off the full encode, render a single mid-point frame as a PNG smoke test. The gate: compute `output_volume = duration_seconds × fps × pixel_count` (where `pixel_count = width × height`). `duration_seconds` comes from the input contract field or, if absent, from the composition's `tl.duration()` after step 5 inspect completes; `width` and `height` come from the `resolution` field resolved in step 4 (defaulting to 1920×1080 if neither the input nor the stage HTML provides them). If `output_volume` exceeds the threshold, smoke-render fires:
+
+   - **Threshold:** 15s × 30fps × 1080² (= 15 × 30 × 1920 × 1080 ≈ 9.3 × 10⁸). Below threshold → skip smoke. Above threshold → smoke fires.
+   - **Examples:** 10s @ 30fps @ 1080p (~6.2×10⁸) → SKIP. 30s @ 60fps @ 1080p (~3.7×10⁹) → FIRE. 60s @ 60fps @ 4K (~6×10¹⁰) → FIRE.
+
+   When smoke fires:
+   1. Compute mid-frame index: `mid_frame = floor((duration_seconds × fps) / 2)`.
+   2. Run:
+      ```bash
+      cd "$HF_PROJ_DIR"
+      npx hyperframes render \
+        --start-frame "$mid_frame" \
+        --end-frame "$mid_frame" \
+        --output "${output_path}.smoke.png" \
+        2> "$stderr_log_smoke"
+      ```
+   3. Add the smoke PNG to the artifact list with `purpose: "spot-check before full encode"` and `type: png`.
+   4. In `recommendations`, add: `"Smoke frame at ${output_path}.smoke.png — eyeball before committing to the full <minutes>-minute encode."` (compute the expected duration from the full `output_volume ÷ (fps × pixel_count)` estimate in minutes).
+   5. Continue to step 6 (full render). The smoke is informational, not blocking — main-agent decides whether to surface to user before the full render.
+
+   When smoke doesn't fire (below threshold): skip 5b entirely, proceed directly to step 6.
+
+   Rationale: hyperframes static checks (`lint + validate + inspect`) catch syntactic and structural issues but cannot catch semantic rendering problems (wrong color token resolves to transparent, missing font fallback renders as invisible text, off-screen positioning). One PNG render of a single frame catches >90% of these issues in <5 seconds vs spending 30+ minutes on a full encode that produces black frames.
+
 6. **Render.** Shell out from inside the resolved project directory:
    ```bash
    cd "$HF_PROJ_DIR"
@@ -182,6 +206,7 @@ In priority order:
 
 8. **Assemble artifact list.**
    - `{ path: output_path, type: mp4, purpose: "<from input brief>" }`
+   - If smoke render fired (step 5b), include `{ path: "${output_path}.smoke.png", type: png, purpose: "spot-check before full encode" }`.
    - If stderr_log is non-trivial, include it as a `type: report` artifact so main-agent can surface warnings.
    - If inspect_log was written (even on a clean pass), include it as a `type: report` artifact.
 
@@ -292,11 +317,13 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 There is no alternative renderer. The single-skill nature of this agent is a feature: it prevents silent drift to non-deterministic output pipelines.
 
+**Smoke render gate note:** Step 5b (smoke render) fires when `output_volume = duration_seconds × fps × (width × height)` exceeds 9.3 × 10⁸ (≈ 15s × 30fps × 1920×1080). Width and height are resolved from the `resolution` field in the input contract (step 4). The smoke renders a single mid-point frame via `--start-frame / --end-frame` and is informational only — it does not block step 6 (full render).
+
 **Cross-references — supporting TECH files I read (in `skills/amw-hyperframes-bridge/references/`):**
 
 | Need | TECH file |
 |---|---|
-| Pre-render gate sequence (`lint → validate → inspect → render`) | `TECH-hyperframes-cli-{lint,validate,inspect,render}.md` |
+| Pre-render gate sequence (`lint → validate → inspect → smoke → render`) | `TECH-hyperframes-cli-{lint,validate,inspect,render}.md` |
 | Chrome provisioning when render fails with browser error | `TECH-hyperframes-cli-browser.md` (run `npx hyperframes browser ensure` — NOT Playwright) |
 | Pre-render PNG snapshot (visual sanity check, alternative to inspect's JSON) | `TECH-hyperframes-cli-snapshot.md` |
 | URL-to-Hyperframes scaffolding (when input is a URL, not HTML) | `TECH-hyperframes-cli-capture.md` |
@@ -406,11 +433,15 @@ artifact_paths:
   - path: "/Users/demo/project/out/product-tour.mp4"
     type: mp4
     purpose: "Vertical 1080×1920 product-tour MP4, 45s @ 30fps, H.264/AAC, 7.2 MB"
+  - path: "/Users/demo/project/out/product-tour.mp4.smoke.png"
+    type: png
+    purpose: "spot-check before full encode"
   - path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-producer-product-tour-f1e2d3c4.md"
     type: report
     purpose: "Full render report (inputs, monorepo verification, gate sequence, render command, ffprobe summary, timing)"
 inspect_findings_count: 0
 recommendations:
+  - "Smoke frame at /Users/demo/project/out/product-tour.mp4.smoke.png — eyeball before committing to the full ~4.7-minute encode."
   - "If an MP4 with captions is needed, generate an SRT separately and mux post-render (out of this agent's scope)"
   - "For platform-specific versions (TikTok vertical, Instagram square), re-invoke with each target resolution"
 next_action: proceed
@@ -419,7 +450,7 @@ report_path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-pro
 
 # AMW Video Producer — Phase B summary
 
-Rendered 45-second vertical product tour to MP4 in 4m 44s. Output is 7.2 MB H.264/AAC at 1080×1920 @ 30fps. ffprobe validates duration 44.97s, fps 29.97 (H.264 drop-frame normal). Gate sequence: lint clean, validate clean, inspect 0 issues. No warnings.
+Rendered 45-second vertical product tour to MP4 in 4m 44s. Output is 7.2 MB H.264/AAC at 1080×1920 @ 30fps. ffprobe validates duration 44.97s, fps 29.97 (H.264 drop-frame normal). Gate sequence: lint clean, validate clean, inspect 0 issues, smoke render frame 675 (mid-point) produced a clean PNG. No warnings.
 
 ## Inputs
 - project_dir: /Users/demo/project/scenes/product-tour/ (pre-existing hyperframes project)
@@ -439,6 +470,7 @@ Rendered 45-second vertical product tour to MP4 in 4m 44s. Output is 7.2 MB H.26
 - lint: PASS
 - validate: PASS (0 WCAG contrast warnings)
 - inspect: PASS (0 layout issues across 9 samples)
+- smoke: FIRED (output_volume 45×30×1080×1920 ≈ 2.8×10⁹ > threshold 9.3×10⁸). Mid-frame 675 rendered to product-tour.mp4.smoke.png in 3.2s. Visual check passed (colors correct, text legible, layout within bounds).
 
 ## Render command
 ```
