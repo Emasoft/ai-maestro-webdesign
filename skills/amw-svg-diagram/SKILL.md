@@ -1,0 +1,100 @@
+---
+name: amw-svg-diagram
+description: Author OR edit a standalone SVG diagram — freeform node-and-edge, layered architecture, or structural flow. Triggers on narrow technical intents only — "create SVG diagram", "modify SVG diagram at <path>", "edit this .svg diagram", "render this structure as SVG", "/amw-create-or-modify-svg-diagram". Does NOT claim generic design / illustration / logo vocabulary — those go to design-principles / svg-creator. Thin dispatcher over ../amw-diagram-svg/ (freeform) and ../amw-diagram-architecture/ (layered). `svg-creator` stays gated to icons/logos/technical SVG.
+version: 0.1.0
+---
+
+# SVG Diagram — thin authoring + modify dispatcher
+
+> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Format spec (authoritative):** `../amw-diagram-formats/references/svg.md`.
+> **Modify pipeline (authoritative):** `../amw-diagram-formats/references/modify-flow.md`.
+
+This skill does not redefine SVG primitives / viewport rules / text centering / cairosvg rasterization / the 54-technique filter cookbook — every one of those lives once in `../amw-diagram-formats/references/svg.md`. The skill's job is to DISPATCH between `diagram-svg` (freeform node-and-edge) and `diagram-architecture` (layered tiered arch) for creation, and to run the shared modify-flow when the input is an existing `.svg`.
+
+## Activation
+
+Callable directly via the `/amw-create-or-modify-svg-diagram` command (user shortcut for users who already know they want an SVG diagram and have either a brief or an existing `.svg` to modify), or invoked by the `design-principles` orchestrator during **Phase B** when the approved deliverable is a standalone SVG diagram. An agent in Main-agent mode may also invoke this skill directly via the orchestrator without going through the command.
+
+
+This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+
+## Position in flow
+
+OUTPUT (terminal). Emits exactly one standalone `.svg` file (well-formed XML, `xmlns="http://www.w3.org/2000/svg"`, no external resources). Downstream of `design-principles` orchestration when the user has committed to an SVG-diagram deliverable. Upstream of `bin/amw-svg-render.py` (PNG preview), `/amw-convert-any-diagram-format` (SVG → ASCII / HTML / Mermaid / PNG).
+
+## Trigger conditions
+
+- "create an SVG diagram" / "build an SVG diagram of <subject>"
+- "render this structure as SVG"
+- "SVG architecture diagram / flowchart of <subject>"
+- "modify this SVG diagram" / "edit the SVG at `<path>`" / "update `<something>.svg>`"
+- "/amw-create-or-modify-svg-diagram <brief-or-path>"
+
+Do NOT activate on:
+- Generic "create an icon" / "design a logo" / "SVG pattern" — those are `../amw-svg-creator/` territory (which is GATED to icons/logos/technical SVG anyway).
+- Converting an existing diagram to SVG (`/amw-convert-any-diagram-format --to svg`).
+- Validating an SVG file only (`/amw-validate-any-diagram-format`).
+
+## Component detection table (excerpt)
+
+Full node-shape + edge + viewport + filter + animation catalog lives in `../amw-diagram-formats/references/svg.md` §2 + §8 (54 techniques). The 8 rows below are the most common dispatch cues — consult the ref for the rest.
+
+| SVG construct | IR node/edge kind | Ref |
+|---|---|---|
+| `<rect rx="20" ry="20">` | `node{shape:rect, kind:process, corner:rounded}` | `../amw-diagram-formats/references/svg.md` TECH-SV-15 |
+| `<ellipse> + <rect> + <ellipse>` (cylinder stack) | `node{kind:database}` | ref TECH-SV-16 |
+| `<circle>` | `node{kind:actor}` | ref TECH-SV-17 |
+| `<polygon>` 4-point diamond | `node{kind:decision}` | ref TECH-SV-18 |
+| `<rect stroke-dasharray="8 4">` | `node{kind:external-system}` | ref TECH-SV-19 |
+| `<line marker-end="url(#arrow)">` | `edge{style:solid, head:triangle}` | ref TECH-SV-20 |
+| `<line stroke-dasharray="8 4">` | `edge{style:dashed}` (async) | ref §2.2 |
+| `<g id="zone-*">` wrapping `<rect>` layer bg | layered arch zone (`layout:layered`) | ref TECH-SV-37 |
+
+## Pipeline (5 steps — matches shared modify-flow)
+
+1. **Detect** source shape. If `$ARGUMENTS` is a path to an existing `.svg` → **modify path**. If it's a brief → **create path** (further dispatch by `--kind`: `arch` → `../amw-diagram-architecture/`, default `freeform` → `../amw-diagram-svg/`).
+2. **Parse** (modify path only) via `bin/amw-parse-svg-diagram.py` → IR (schema: `../amw-diagram-formats/references/ir-schema.md`). Geometric interpretation: rects → nodes, lines/paths+markers → edges. Create path skips this step.
+3. **IR operation:**
+   - Create path → generate IR from the brief, route to `../amw-diagram-svg/SKILL.md` (freeform) or `../amw-diagram-architecture/SKILL.md` (layered arch), let the producer emit.
+   - Modify path → apply the user's requested edit to the IR (text substitution on `nodes[*].label` for MVP; structural operations once Phase 1 parsers land — see `../amw-diagram-formats/references/modify-flow.md` §5.3).
+4. **Re-render** via `bin/amw-diagram-ir.py emit --format svg` (wraps the chosen producer for create path; emits the patched IR back to SVG for modify path). The renderer reads from `../amw-diagram-formats/references/svg.md` §1-§4 (primitives, viewport, text).
+5. **Re-validate** via `bin/amw-validate-svg-diagram.sh` (wraps `xmllint --noout --nonet` + SVG-namespace check + no-remote-resource grep; unified PASS/FAIL contract per `../amw-diagram-formats/references/validation-dispatcher.md`). Followed by **render-verify**: `bin/amw-svg-render.py render <file>` emits a PNG preview; Claude visually inspects before `bin/amw-svg-render.py finish` finalises. A FAIL aborts and leaves the original file untouched. Retry budget = 3.
+
+## Dependencies
+
+- **runtime_binaries:** `python3 >= 3.8`, `xmllint` (libxml2) — both checked by `/amw-doctor`.
+- **python_packages:** `cairosvg` (for `bin/amw-svg-render.py` rasterization), `lxml` (`bin/amw-parse-svg-diagram.py`).
+- **npm:** none.
+- **Shared scripts:** `bin/amw-parse-svg-diagram.py`, `bin/amw-diagram-ir.py`, `bin/amw-validate-svg-diagram.sh`, `bin/amw-svg-render.py` (render / finish / status / reset).
+
+## Cross-references
+
+- `../amw-diagram-formats/references/svg.md` — authoritative SVG format spec + 54-technique catalog.
+- `../amw-diagram-formats/references/modify-flow.md` — authoritative 6-step modify pipeline.
+- `../amw-diagram-formats/references/ir-schema.md` — IR schema consumed by `bin/amw-diagram-ir.py`.
+- `../amw-diagram-formats/references/validation-dispatcher.md` — unified validator output contract.
+- `../amw-svg-creator/SKILL.md` — GATED SVG producer (icons / logos / patterns / animations). NOT this skill's dispatch target — this skill is for structural diagrams only.
+- `../amw-diagram-svg/SKILL.md` — create-path backend for `--kind freeform`.
+- `../amw-diagram-architecture/SKILL.md` — create-path backend for `--kind arch` (layered).
+- `../amw-ascii-to-svg/SKILL.md` — upstream when input is ASCII (ASCII → SVG path).
+- `../amw-design-principles/SKILL.md` — orchestrator.
+
+## Non-negotiables
+
+- Exactly one standalone `.svg` per invocation. Well-formed XML. `xmlns="http://www.w3.org/2000/svg"` on the root. (`../amw-diagram-formats/references/svg.md` §1.1)
+- No `<script>` in SVG output. No `<foreignObject>` with HTML. No remote `<image href="http...">`. (`../amw-diagram-formats/references/svg.md` §1.3)
+- Every emitted `.svg` passes `bin/amw-validate-svg-diagram.sh` AND render-verify (`bin/amw-svg-render.py render → finish` guard). A FAIL aborts; the original file is untouched.
+- Minimum 120-unit spacing on the active axis, 40-unit margin reserve — labels > 20 chars truncate with `...`. (`../amw-diagram-formats/references/svg.md` TECH-SV-21 + TECH-SV-22)
+- Animated SVGs carry the `@media (prefers-reduced-motion: reduce)` guard. (`../amw-diagram-formats/references/svg.md` TECH-SV-25)
+- Do NOT re-author the SVG spec inside this skill — reference `../amw-diagram-formats/references/svg.md`. If a rule is wrong, fix it there.
+
+## Failure modes
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `bin/amw-validate-svg-diagram.sh` FAIL | Unclosed tag, stray `&`, missing `xmlns`, `<script>` present | Return the validator report verbatim; do not guess-repair. |
+| `bin/amw-svg-render.py` refuses `finish` | `render` step was never called | Run `bin/amw-svg-render.py render <file>` first; visually inspect the PNG. |
+| `cairosvg` blank output | Content outside viewBox, unsupported filter | Reposition inside viewBox; simplify filters per `../amw-diagram-formats/references/svg.md` §5.2. |
+| Modify path hits retry budget 3 FAILs | Patch conflicts with existing SVG structure | Surface validator findings; ask the user to refine the edit. |
+| Parser returns empty IR (modify path) | SVG has no detectable diagram primitives (raw artwork) | Raw-source stub per `modify-flow.md` §5.3; warn that structural patching is unavailable. |

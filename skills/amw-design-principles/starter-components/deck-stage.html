@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+  Slide compliance:
+  - Every <section class="slide"> must carry a data-screen-label attribute
+  - Format "01 Title", "02 Agenda" (1-indexed! NOT 0-indexed)
+  - When the user says "page 5" they mean label "05", not array[4]
+  - This is a load-bearing attribute the user uses for comments/feedback location
+
+  Speaker Notes (optional, only when user explicitly requests):
+  1. In <head> add:
+     <script type="application/json" id="speaker-notes">
+     ["Slide 1 speaker text...", "Slide 2 speaker text...", ...]
+     </script>
+  2. Every time the slide changes, the go() function MUST call:
+     window.postMessage({slideIndexChanged: N}, '*');
+  This way the host's speaker-notes panel can sync and display the matching page's script.
+  (deck-stage.html ships with this call wired in; see the go() function below)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Deck Stage — slide deck scaffold</title>
+<style>
+  /* Canonical theme tokens — tweaks-block.html writes to these.
+     Defaults match the pre-refactor hardcoded values so rendering is unchanged.
+     Device-spec values (1920×1080 stage, slide typography scale 96/56/32,
+     black body outside the stage) stay hardcoded. */
+  :root {
+    --primary: #D97757;
+    --text: #444;
+    --bg: #f5f5f0;
+    --radius: 8px;
+    --font-size: 32px;
+  }
+
+  body { margin: 0; background: #000; font-family: ui-sans-serif, system-ui; overflow: hidden; }
+
+  /* Stage: fixed 1920×1080 canvas, transform: scale auto-fits viewport */
+  #stage {
+    position: relative;
+    width: 1920px; height: 1080px;
+    transform-origin: top left;
+    background: var(--bg);
+  }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    padding: 120px;
+    box-sizing: border-box;
+  }
+  .slide.active { display: flex; flex-direction: column; justify-content: center; }
+
+  /* Spec: 1920×1080 min font size 24px, body 40px+ is comfortable
+     (h1/h2 are device-spec slide scale; body p uses --font-size token) */
+  .slide h1 { font-size: 96px; margin: 0 0 40px; letter-spacing: -0.03em; line-height: 1.05; }
+  .slide h2 { font-size: 56px; margin: 0 0 24px; letter-spacing: -0.02em; }
+  .slide p  { font-size: var(--font-size); margin: 0 0 20px; max-width: 70%; line-height: 1.5; color: var(--text); }
+  .slide .num { position: absolute; top: 60px; right: 60px; font-size: 20px; color: #999; letter-spacing: 0.1em; }
+
+  /* Nav controls (outside the scaled layer so mobile taps still work) */
+  #nav { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 100; }
+  #nav button {
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+    color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 13px;
+  }
+  #nav button:hover { background: rgba(255,255,255,.2); }
+  #counter { color: rgba(255,255,255,.6); font-size: 12px; align-self: center; padding: 0 8px; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+  <!-- Slide 1 -->
+  <section class="slide active" data-screen-label="01 Title">
+    <div class="num">01</div>
+    <h1>Deck Stage scaffold</h1>
+    <p>Fixed 1920×1080 canvas · auto-scales to any viewport · keyboard/touch navigation</p>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide" data-screen-label="02 Agenda">
+    <div class="num">02</div>
+    <h2>Feature list</h2>
+    <p>· Left/right arrow keys switch slides<br>· localStorage remembers the current page<br>· Outer controls are not scaled</p>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide" data-screen-label="03 Typography">
+    <div class="num">03</div>
+    <h2>Typography spec</h2>
+    <p>H1 96px · H2 56px · body 32px<br>Min font size 24px · generous whitespace · information density is driven by content</p>
+  </section>
+
+</div>
+
+<div id="nav">
+  <button id="prev">←</button>
+  <span id="counter">1/3</span>
+  <button id="next">→</button>
+</div>
+
+<script>
+const STORAGE_KEY = 'deck-stage-current';
+const slides = document.querySelectorAll('.slide');
+const counter = document.getElementById('counter');
+let cur = Number(localStorage.getItem(STORAGE_KEY) || 0);
+cur = Math.max(0, Math.min(slides.length - 1, cur));
+
+function go(i) {
+  cur = (i + slides.length) % slides.length;
+  slides.forEach((s, idx) => s.classList.toggle('active', idx === cur));
+  counter.textContent = `${cur + 1}/${slides.length}`;
+  localStorage.setItem(STORAGE_KEY, cur);
+  // speaker-notes notification protocol
+  try { window.parent.postMessage({slideIndexChanged: cur}, '*'); } catch {}
+}
+go(cur);
+
+document.getElementById('prev').onclick = () => go(cur - 1);
+document.getElementById('next').onclick = () => go(cur + 1);
+window.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') go(cur + 1);
+  if (e.key === 'ArrowLeft') go(cur - 1);
+});
+
+// Adaptive scaling
+function fit() {
+  const stage = document.getElementById('stage');
+  const sx = window.innerWidth / 1920;
+  const sy = window.innerHeight / 1080;
+  const s = Math.min(sx, sy);
+  stage.style.transform = `scale(${s})`;
+  stage.style.left = (window.innerWidth  - 1920 * s) / 2 + 'px';
+  stage.style.top  = (window.innerHeight - 1080 * s) / 2 + 'px';
+}
+fit();
+window.addEventListener('resize', fit);
+</script>
+
+</body>
+</html>

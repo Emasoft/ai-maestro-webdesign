@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-maestro-webdesign/plugin/skills/amw-diagram-formats/schema.json",
+  "title": "diagram-ir/1.0",
+  "description": "Intermediate Representation for cross-format diagram conversion in the ai-maestro-webdesign plugin. Version is locked; schema evolution requires an ADR + explicit version bump.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "source_format", "kind", "nodes", "edges", "layout"],
+  "properties": {
+    "format": {
+      "description": "IR format identifier. MUST be 'diagram-ir/1.0'.",
+      "type": "string",
+      "const": "diagram-ir/1.0"
+    },
+    "source_format": {
+      "description": "The format the IR was parsed FROM. Used by emitters to apply format-specific re-styling on round-trip.",
+      "type": "string",
+      "enum": ["ascii", "html", "svg", "mermaid"]
+    },
+    "kind": {
+      "description": "Semantic diagram kind. Emitters may choose different templates per kind.",
+      "type": "string",
+      "enum": ["flowchart", "sequence", "state", "arch", "tree", "table", "freeform"]
+    },
+    "layout": {
+      "description": "Intended visual layout style for the emitter.",
+      "type": "string",
+      "enum": ["layered", "grid", "freeform", "sequence"]
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label"],
+        "properties": {
+          "id": {
+            "description": "Stable identifier. ASCII alphanumeric, underscore, dash. Used as the match key for IR diff.",
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_\\-]+$"
+          },
+          "label": {
+            "description": "Human-readable label. Rendered verbatim by emitters. For freeform raw-source IR, this carries the source text.",
+            "type": "string"
+          },
+          "bbox": {
+            "description": "Optional absolute bounding box. Lossy through ASCII round-trips.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x", "y", "w", "h"],
+            "properties": {
+              "x": {"type": "number"},
+              "y": {"type": "number"},
+              "w": {"type": "number"},
+              "h": {"type": "number"}
+            }
+          },
+          "rank": {
+            "description": "Optional layer / rank index for layered diagrams.",
+            "type": "integer"
+          },
+          "style": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "shape": {"type": "string"},
+              "fill": {"type": "string"},
+              "stroke": {"type": "string"},
+              "corner": {"type": "string"}
+            }
+          },
+          "annotations": {
+            "description": "Free-form tag list. Well-known tags include 'entry-point', 'raw-source' (= node.label carries verbatim source), 'decision', 'external'.",
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "from", "to"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_\\-]+$"
+          },
+          "from": {
+            "description": "Source node id. MUST match a nodes[i].id.",
+            "type": "string"
+          },
+          "to": {
+            "description": "Target node id. MUST match a nodes[i].id.",
+            "type": "string"
+          },
+          "label": {"type": "string"},
+          "style": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "arrow": {
+                "type": "string",
+                "enum": ["solid", "dashed", "dotted"]
+              },
+              "head": {
+                "type": "string",
+                "enum": ["triangle", "open", "none"]
+              }
+            }
+          },
+          "waypoints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["x", "y"],
+              "properties": {
+                "x": {"type": "number"},
+                "y": {"type": "number"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "title": {"type": "string"},
+        "author": {"type": "string"},
+        "description": {"type": "string"}
+      }
+    }
+  }
+}

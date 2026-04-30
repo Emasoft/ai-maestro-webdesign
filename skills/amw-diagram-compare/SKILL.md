@@ -1,0 +1,191 @@
+---
+name: amw-diagram-compare
+description: Structural comparison of two diagrams — diff two flowcharts, compare v1 and v2 of a diagram, find what changed between two diagram versions, cross-format diagram diff. Triggers on narrow technical intents only — "compare these diagrams", "diff two flowcharts", "what changed between v1 and v2 of this diagram", "structural diff of two diagrams", "amw-compare-diagrams". Source formats may differ (ASCII vs Mermaid is valid). PNG-as-input is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles.
+version: 0.1.0
+---
+
+# Diagram Compare — IR-level structural diff
+
+> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Diff algorithm (authoritative):** `../amw-diagram-formats/references/diff-algorithm.md`.
+> **IR schema (authoritative):** `../amw-diagram-formats/references/ir-schema.md`.
+> **Conversion matrix (authoritative):** `../amw-diagram-formats/references/conversion-matrix.md`.
+> **Format detection (authoritative):** `../amw-diagram-formats/references/detect-format.md`.
+
+This skill does not redefine IR or diff semantics — those live once in the shared reference library. The skill's job is to execute the parse → diff → report pipeline and surface findings to the user in a clear markdown report.
+
+## Activation
+
+Callable directly via the `/amw-compare-diagrams` command (user shortcut for users who already have two diagram paths and want a structural diff), or invoked by the `design-principles` orchestrator during **Phase B** when a compare task is part of a broader design workflow. An agent in Main-agent mode may also invoke this skill directly via the orchestrator without going through the command.
+
+
+This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+
+## Position in flow
+
+ANALYSIS (terminal). Accepts two diagram paths in any supported format (formats may differ). Emits a structured markdown diff report. Does not modify either input. Downstream consumers may use the report to guide edits via `/amw-create-or-modify-*-diagram`.
+
+## Trigger conditions
+
+- "compare these diagrams" / "diff these two diagrams"
+- "what changed between v1 and v2 of this diagram"
+- "show me the differences between these flowcharts"
+- "structural diff of two diagrams"
+- "/amw-compare-diagrams \<a\> \<b\>"
+
+Do NOT activate on:
+- Converting format (`/amw-convert-any-diagram-format`).
+- Validating a single diagram (`/amw-validate-any-diagram-format`).
+- Creating or editing diagrams (`wd-create-or-modify-*`).
+
+## PNG hard rule
+
+**PNG is OUTPUT-ONLY by plugin directive.** If either input `a` or `b` is PNG (`.png` extension or PNG magic bytes `\x89PNG\r\n\x1a\n`), refuse immediately:
+
+```
+PNG is output-only by plugin directive — compare the source artifacts instead.
+Provide the ASCII / HTML / SVG / Mermaid source that produced each PNG.
+```
+
+Exit 2. Both inputs must be source-format diagrams for comparison to proceed.
+
+## Comparison pipeline (6 steps)
+
+### Step 1 — Detect format of each input
+
+```bash
+fmt_a=$(bin/amw-diagram-detect-format.sh "$A_PATH")
+fmt_b=$(bin/amw-diagram-detect-format.sh "$B_PATH")
+```
+
+If `fmt_a == "png"` or `fmt_b == "png"` → emit the PNG refusal message and stop.
+
+If either is `unknown` → ask the user to clarify the format of the unrecognized file.
+
+Cross-format comparison is fully supported — an ASCII file vs a Mermaid file is valid. The IR normalization in Steps 2 and 3 bridges the formats.
+
+### Step 2 — Parse both to IR
+
+```bash
+bin/amw-diagram-ir.py parse --in "$A_PATH" --out "/tmp/${HASH}-a.ir.json"
+bin/amw-diagram-ir.py parse --in "$B_PATH" --out "/tmp/${HASH}-b.ir.json"
+```
+
+Both parsers must succeed. Per-format parsers:
+
+| Format | Backend |
+|---|---|
+| ASCII | `bin/amw-ascii-parse.py` (internal to `bin/amw-diagram-ir.py`) |
+| HTML | `bin/amw-parse-html-diagram.py` (Phase 1 Task 1a) |
+| SVG | `bin/amw-parse-svg-diagram.py` (Phase 1 Task 1b) |
+| Mermaid | `bin/amw-parse-mermaid-diagram.py` (Phase 1 Task 1c) |
+
+**Cross-format comparison and IR fidelity:** when comparing across formats, the IR normalizes structural content (nodes, edges, kinds, labels) but drops format-specific styling (CSS classes, SVG filters, ASCII box decoration). This is intentional — the diff focuses on **semantic changes**, not cosmetic ones. See `../amw-diagram-formats/references/ir-schema.md` §5 for the per-format lossy-conversion table.
+
+### Step 3 — Validate both IRs
+
+```bash
+bin/amw-diagram-ir.py validate --in "/tmp/${HASH}-a.ir.json"
+bin/amw-diagram-ir.py validate --in "/tmp/${HASH}-b.ir.json"
+```
+
+Dangling edges, missing required fields, or wrong IR version abort the diff before any comparison.
+
+### Step 4 — Compute structural diff
+
+```bash
+bin/amw-diagram-ir.py diff --a "/tmp/${HASH}-a.ir.json" --b "/tmp/${HASH}-b.ir.json" \
+  --out "/tmp/${HASH}-patch.json"
+```
+
+The diff algorithm is **id-based**: nodes and edges match by their `id` field. See `../amw-diagram-formats/references/diff-algorithm.md` §3 for matching semantics, §6 for id normalization if the two inputs use different id schemes.
+
+Patch op types (JSON list in `--out`):
+`change-kind`, `change-layout`, `add-node`, `remove-node`, `change-node`, `add-edge`, `remove-edge`, `change-edge`.
+
+### Step 5 — Render markdown report
+
+Convert the JSON patch to the canonical markdown layout from `../amw-diagram-formats/references/diff-algorithm.md` §5:
+
+```markdown
+# Diagram comparison
+
+- **A:** `<path-a>` (source_format=<fmt>, kind=<kind>, layout=<layout>, N nodes, M edges)
+- **B:** `<path-b>` (source_format=<fmt>, kind=<kind>, layout=<layout>, N nodes, M edges)
+
+## Summary
+...
+
+## Nodes added
+...
+
+## Nodes removed
+...
+
+## Nodes changed
+...
+
+## Edges added / Edges removed / Edges changed
+...
+```
+
+Color coding (markdown annotations; visual only when rendered):
+- Added nodes/edges → note as `+`
+- Removed nodes/edges → note as `-`
+- Changed label → note field as `~label`
+- Changed style → note as `~style`
+
+If the patch is empty → single line: `No structural differences between A and B.`
+
+### Step 6 — Write report to output path
+
+Default output path: `<cwd>/diagram-compare-<timestamp>.md` (or `--out <path>` override). Timestamp format: `$(date +%Y%m%d_%H%M%S%z)`.
+
+Report includes:
+1. The two input paths and their detected formats.
+2. The summary table (added / removed / changed counts per category).
+3. Sections for each op type with full node/edge details.
+4. A note on cross-format lossy comparison if formats differ (with a link to `../amw-diagram-formats/references/ir-schema.md` §5).
+
+## Cross-format comparison: lossy-conversion impact
+
+When A and B are in different formats, both are parsed to the same IR — but the IR is lossy. Example: comparing an ASCII diagram (`a.txt`) against its HTML rendering (`a.html`). The HTML version drops ASCII box characters; the ASCII version drops CSS styling. The diff will report changes in `style.*` fields that are actually just format-conversion artefacts, not semantic edits. The skill warns the user when formats differ:
+
+> "Note: A (`ascii`) and B (`html`) use different source formats. Styling differences may reflect format-conversion artefacts rather than intentional edits. Structure (nodes, edges, labels) is format-agnostic."
+
+## Failure modes
+
+| Symptom | Cause | Resolution |
+|---|---|---|
+| Either input is PNG | User supplied PNG instead of source artifact | Emit refusal message; ask for the source diagram |
+| `bin/amw-diagram-ir.py parse` fails for one input | Unsupported or empty diagram structure | Surface the error; recommend `/amw-validate-any-diagram-format` on the failing input first |
+| Both IRs parse but diff exits 2 | IR validation failure (dangling edge, bad version) | Surface `bin/amw-diagram-ir.py validate` output; the source diagram may need repair |
+| Patch reports many spurious `change-node` ops | Different id schemes across formats (e.g. ASCII → `n1/n2` vs Mermaid → user names) | Apply label-based id normalization per `../amw-diagram-formats/references/diff-algorithm.md` §6; re-diff |
+| Report file already exists at `--out` path | Prior compare run | Overwrite with new timestamp in filename; the old file is preserved in `/tmp/` |
+
+## Dependencies
+
+```yaml
+runtime_binaries:
+  - python3 >= 3.8   # bin/amw-diagram-ir.py, bin/amw-ascii-parse.py
+  - lxml             # bin/amw-parse-html-diagram.py (Phase 1 Task 1a)
+
+python_packages:
+  - lxml   # HTML parsing
+
+installed_via_wd_init: [python3]
+checked_by_wd_doctor:  [python3]
+```
+
+No new bin scripts needed — `bin/amw-diagram-ir.py diff` is the implementation.
+
+## Cross-references
+
+- `../amw-diagram-formats/references/diff-algorithm.md` — authoritative IR diff spec, patch op format, markdown report layout.
+- `../amw-diagram-formats/references/ir-schema.md` — IR shape and lossy-conversion table.
+- `../amw-diagram-formats/references/detect-format.md` — format sniffer spec.
+- `../amw-diagram-formats/references/conversion-matrix.md` — cross-format parse paths (Steps 2–3 use this).
+- `../amw-diagram-formats/references/modify-flow.md` — diff is a read-only sibling of the modify pipeline (shares Steps 1+2).
+- `../amw-diagram-convert/SKILL.md` — when comparing cross-format, both inputs go through IR parse (same pipeline entry).
+- `../amw-design-principles/SKILL.md` — orchestrator.
+- `/amw-compare-diagrams` — user-facing slash command.

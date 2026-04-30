@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>macOS Window — macOS-style window chrome scaffold</title>
+<style>
+  /* Canonical theme tokens — tweaks-block.html writes to these.
+     Defaults match pre-refactor hardcoded values so rendering is unchanged.
+     Device-spec values stay hardcoded: macOS traffic-light colors
+     (#ff5f56/#ffbd2e/#27c93f), titlebar/sidebar neutrals, toolbar 30×30 btns,
+     Sonoma 10px window corner, 220px sidebar width, 44px titlebar height. */
+  :root {
+    --primary: #0055d4;
+    --text: #1a1a1a;
+    --bg: #faf9f6;
+    --radius: 8px;
+    --font-size: 16px;
+  }
+
+  body { margin: 0; background: #d8d5cf; font-family: ui-sans-serif, system-ui; min-height: 100vh; display: grid; place-items: center; padding: 40px; }
+
+  /* macOS Sonoma–style window */
+  .window {
+    width: min(1100px, 95vw);
+    height: min(700px, 88vh);
+    background: #f0ede8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,.08),
+      0 30px 60px -20px rgba(0,0,0,.28),
+      0 20px 40px -15px rgba(0,0,0,.14);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Title bar */
+  .titlebar {
+    background: #e8e5e0;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    padding: 0 16px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  /* Traffic lights */
+  .lights { display: flex; gap: 8px; }
+  .lights span {
+    width: 12px; height: 12px; border-radius: 50%; display: block; flex-shrink: 0;
+  }
+  .lights .red    { background: #ff5f56; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.14); }
+  .lights .yellow { background: #ffbd2e; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.14); }
+  .lights .green  { background: #27c93f; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.14); }
+
+  /* Window title */
+  .window-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* Toolbar icon row (right side) */
+  .toolbar {
+    margin-left: auto;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+  }
+  .toolbar button {
+    width: 30px; height: 30px; border-radius: 6px;
+    background: transparent; border: none; cursor: pointer;
+    display: grid; place-items: center; color: #555;
+  }
+  .toolbar button:hover { background: rgba(0,0,0,.07); }
+  .toolbar .divider { width: 1px; height: 18px; background: rgba(0,0,0,.1); margin: 0 4px; }
+
+  /* Main area: sidebar + content */
+  .body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
+    background: #e2dfd9;
+    border-right: 1px solid rgba(0,0,0,.06);
+    padding: 12px 8px;
+    flex-shrink: 0;
+    overflow-y: auto;
+  }
+  .sidebar-section {
+    margin-bottom: 20px;
+  }
+  .sidebar-section .label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0 8px 6px;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+  }
+  .sidebar-item:hover { background: rgba(0,0,0,.06); }
+  /* Active item uses --primary for its text color. The tint (rgba 0,85,212,.12)
+     stays as a soft fallback — converting it to a live-derived tint of --primary
+     would require color-mix() or a precomputed tint variable which we keep
+     simple for now. */
+  .sidebar-item.active {
+    background: rgba(0,85,212,.12);
+    color: var(--primary);
+  }
+  .sidebar-item .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: currentColor; opacity: .4; flex-shrink: 0;
+  }
+
+  /* Main content — themeable surface: bg / h1 text / subtitle size flow
+     from --bg, --text, --font-size respectively. */
+  .main {
+    flex: 1;
+    background: var(--bg);
+    overflow-y: auto;
+    padding: 32px 36px;
+  }
+  .main h1 { font-size: 28px; margin: 0 0 8px; letter-spacing: -0.02em; color: var(--text); }
+  /* 16px = design-principles desktop body minimum for primary subtitle. */
+  .main .subtitle { font-size: var(--font-size); color: #777; margin: 0 0 28px; }
+
+  /* Content cards — radius flows from --radius, card-title text from --text */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .content-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px;
+    border: 1px solid rgba(0,0,0,.06);
+    cursor: pointer;
+    transition: box-shadow .15s;
+  }
+  .content-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .content-card .card-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  /* 14px lift (mobile floor) for card subtext — Finder-density 12px
+     is acceptable in a real Finder but this scaffold is a general starting
+     point for app UI content cards. */
+  .content-card .card-sub  { font-size: 14px; color: #888; line-height: 1.4; }
+  /* Tag chip — tag text color flows from --primary so the Tweaks panel can
+     retint the accent. Chip background (#eef) stays hardcoded as a neutral
+     tint; pairing it with a live-derived color-mix() would require fresh
+     CSS that is not supported in the older browsers the scaffold targets. */
+  .content-card .card-tag {
+    display: inline-block; margin-top: 10px;
+    font-size: 12px; /* scaffold baseline; real Finder uses 11px */ padding: 2px 7px; border-radius: 10px;
+    background: #eef; color: var(--primary);
+  }
+</style>
+</head>
+<body>
+
+<div class="window">
+  <div class="titlebar">
+    <div class="lights">
+      <span class="red"></span>
+      <span class="yellow"></span>
+      <span class="green"></span>
+    </div>
+
+    <span class="window-title">My App</span>
+
+    <div class="toolbar">
+      <!-- Sample toolbar icons: share / search / more -->
+      <button aria-label="Search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <div class="divider"></div>
+      <button aria-label="Share">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v14"/></svg>
+      </button>
+      <button aria-label="More">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="body">
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="label">Main</div>
+        <div class="sidebar-item active"><span class="dot"></span>Overview</div>
+        <div class="sidebar-item"><span class="dot"></span>Projects</div>
+        <div class="sidebar-item"><span class="dot"></span>Files</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="label">Other</div>
+        <div class="sidebar-item"><span class="dot"></span>Settings</div>
+        <div class="sidebar-item"><span class="dot"></span>Help</div>
+      </div>
+    </nav>
+
+    <main class="main">
+      <h1>macOS window content area</h1>
+      <p class="subtitle">Sidebar + main two-column layout, macOS Sonoma palette. Replace this area with your real content.</p>
+
+      <div class="card-grid">
+        <div class="content-card">
+          <div class="card-title">Card A</div>
+          <div class="card-sub">Description copy, one to two lines</div>
+          <span class="card-tag">Tag</span>
+        </div>
+        <div class="content-card">
+          <div class="card-title">Card B</div>
+          <div class="card-sub">Content description can be a bit longer to see the wrapping effect</div>
+          <span class="card-tag">Category</span>
+        </div>
+        <div class="content-card">
+          <div class="card-title">Card C</div>
+          <div class="card-sub">Third item, see how the grid adapts its column count</div>
+          <span class="card-tag">Other</span>
+        </div>
+        <div class="content-card">
+          <div class="card-title">Card D</div>
+          <div class="card-sub">Can be added or removed as content changes</div>
+          <span class="card-tag">Example</span>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

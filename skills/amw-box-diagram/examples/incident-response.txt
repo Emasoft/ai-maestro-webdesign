@@ -1,0 +1,65 @@
+  Incident Response Workflow
+
+                        ╭──────────────────────────────────────────╮
+                        │ 1. ALERT TRIGGERED                       │
+                        │ ──────────────────────────────────────── │
+                        │ PagerDuty → #incident-channel            │
+                        │ Severity: P1 (user-facing)               │
+                        │ Source: Grafana alert rule               │
+                        │ Runbook: wiki/runbook/api-5xx            │
+                        ╰──────────────────────────────────────────╯
+                                             │
+                                             ▾
+                          ╭──────────────────────────────────────╮
+                          │ 2. TRIAGE                            │
+                          │ ──────────────────────────────────── │
+                          │ On-call engineer assesses:           │
+                          │                                      │
+                          │   1. Check error rate (Grafana)      │
+                          │   2. Review recent deploys           │
+                          │   3. Check dependent services        │
+                          │   4. Assign severity / commander     │
+                          ╰──────────────────────────────────────╯
+                                             │
+              ┌──────────────────────────────┼──────────────────────────────┐
+              │                              │                              │
+              ▾                              ▾                              ▾
+╭──────────────────────────╮   ╭──────────────────────────╮   ╭──────────────────────────╮
+│ 3a. MITIGATE             │   │ 3b. INVESTIGATE          │   │ 3c. COMMUNICATE          │
+│ ──────────────────────── │   │ ──────────────────────── │   │ ──────────────────────── │
+│ Rollback last deploy     │   │ Tail logs: kubectl logs  │   │ Post to #incident-chan   │
+│ Scale up replicas 2x     │   │ Check traces in Jaeger   │   │ Notify stakeholders      │
+│ Enable circuit breaker   │   │ Query error spikes (DD)  │   │ Update status page       │
+│ Redirect to fallback     │   │ Diff config vs known     │   │ Log timeline in doc      │
+│ Update status page       │   │ DB slow query log review │   │ Escalate if no progress  │
+│ Monitor error rate drop  │   │ Check memory/CPU graphs  │   │ 15-min update cadence    │
+╰──────────────────────────╯   ╰──────────────────────────╯   ╰──────────────────────────╯
+              │                              │                              │
+              └──────────────────────────────┼──────────────────────────────┘
+                                             │
+                                             ▾
+                        ╭──────────────────────────────────────────╮
+                        │ 4. VERIFY RESOLUTION                     │
+                        │ ──────────────────────────────────────── │
+                        │ Confirm fix is deployed:                 │
+                        │   → Error rate back to baseline          │
+                        │   → Latency p99 < 200ms                  │
+                        │   → No new alerts for 15 min             │
+                        │   → Dependent services healthy           │
+                        │                                          │
+                        │ Close incident in PagerDuty              │
+                        │ Notify stakeholders: resolved            │
+                        ╰──────────────────────────────────────────╯
+                                             │
+                                             ▾
+                        ╭──────────────────────────────────────────╮
+                        │ 5. POST-MORTEM (within 48h)              │
+                        │ ──────────────────────────────────────── │
+                        │ Timeline: what happened when             │
+                        │ Root cause: 5 Whys analysis              │
+                        │ Impact: users affected, duration         │
+                        │ What went well in response               │
+                        │ What could be improved                   │
+                        │ Action items / owners / deadlines        │
+                        │ Schedule blameless review                │
+                        ╰──────────────────────────────────────────╯

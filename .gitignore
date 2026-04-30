@@ -1,0 +1,87 @@
+# macOS
+.DS_Store
+._*
+
+# Dev-only, never published (per ~/.claude/CLAUDE.md Rule 0.2)
+docs_dev/
+scripts_dev/
+samples_dev/
+examples_dev/
+tests_dev/
+downloads_dev/
+libs_dev/
+builds_dev/
+
+# Agent reports — may contain absolute paths, stack traces, PII
+# (per ~/.claude/rules/agent-reports-location.md)
+/reports/
+/reports_dev/
+
+# Source material — read-only references, not shipped with the plugin
+/SKILLS-TO-INTEGRATE/
+/claude-design-principles/
+
+# Local environments
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Bun
+node_modules/
+.pnp.*
+dist/
+build/
+.next/
+.turbo/
+.bun/
+bun.lockb
+
+# Plugin-specific build artifacts
+bin/__pycache__/
+bin/*.pyc
+
+# External vendored repos — only their build artifacts, not the source
+external/*/node_modules/
+external/*/dist/
+external/*/build/
+external/*/.turbo/
+external/*/.next/
+
+# Tool caches
+.rechecker/
+.tldr/
+.claude/
+.serena/
+.expect/
+
+# Test / CI output
+coverage/
+*.lcov
+.nyc_output/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Hyperframes vendored repo — managed as git submodule (see .gitmodules)
+# Excluded from this gitignore-comment because the submodule registration uses .gitmodules.

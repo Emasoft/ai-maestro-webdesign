@@ -1,0 +1,198 @@
+---
+name: amw-seo
+description: SEO + Core Web Vitals evaluation framework (E-E-A-T quality signals, LCP/INP/CLS, structured data, technical foundations). Triggers on "SEO", "core web vitals", "E-E-A-T", "structured data", "schema markup", "page performance ranking", "search ranking", NOT generic design intent.
+version: 0.1.0
+---
+
+# SEO Evaluation Reference
+
+> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Activation
+
+No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when the user requests SEO scoring alongside design work, or when `/amw-eval` triggers an SEO + UX combined audit. Also callable directly when the user explicitly names SEO, Core Web Vitals, E-E-A-T, or structured data.
+
+
+This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+
+## Position in flow
+VALIDATION / REFERENCE. Evaluation framework used alongside `ux-evaluator` when the user wants SEO + design quality scored together. Knowledge-base only — interprets measurements; does not capture them.
+
+## Trigger conditions
+- "audit SEO", "SEO review", "SEO score"
+- "core web vitals", "LCP", "INP", "CLS", "page experience"
+- "E-E-A-T", "experience expertise authoritativeness trust"
+- "structured data", "schema markup", "JSON-LD", "rich results"
+- "search ranking factors", "why does this page rank"
+- "is this page SEO-ready"
+
+Does NOT trigger on: generic "make this look better", pure visual critique, copywriting requests without search-intent framing.
+
+## Dependencies
+- runtime_binaries: none (framework is prose-encoded)
+- Pairs with `../amw-dev-browser/SKILL.md` for live capture: LCP candidate identification, resource sizes, layout shift observation, interaction latency
+- Pairs with `../amw-ux-evaluator/SKILL.md` when user requests combined UX + SEO scoring
+
+## Evaluation framework sections
+
+1. **E-E-A-T** — Experience, Expertise, Authoritativeness, Trust. Quality-evaluation lens, not a direct ranking factor; weighted heavily on YMYL topics.
+2. **Core Web Vitals** — LCP < 2.5s (loading), INP < 200ms (interactivity), CLS < 0.1 (visual stability). Rarely override poor content but hold back otherwise-good pages.
+3. **Technical SEO** — Crawl/index control (sitemap, robots.txt, canonical, status codes, HTTPS) plus performance and semantic HTML foundations.
+4. **Content SEO** — Page-level elements (title, meta description, H1, heading hierarchy, alt text) and quality signals (depth, originality, accuracy, clarity, usefulness).
+5. **Structured data** — Schema.org / JSON-LD types (Article, Organization, Person, FAQPage, Product, Review, BreadcrumbList) enable rich-result eligibility; do not boost rankings directly.
+6. **AI-assisted content** — Search engines evaluate output quality, not authorship method. Unedited AI output with factual errors or thin value is the failure mode.
+7. **Relative importance** — No fixed factor order. When pages compete closely: content quality > authority/trust > page experience > mobile optimization > technical accessibility.
+8. **Measurement** — Multi-signal validation: visibility (indexed pages, impressions), engagement (CTR, dwell), performance (CWV field data), coverage (index status), authority (mentions, links).
+
+## Technique selection
+
+Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
+
+- Is the user asking about this skill's domain?
+  - For "AI-assisted content principles" -> [TECH-seo-ai-content](./references/TECH-seo-ai-content.md)
+  - For "Content SEO — page elements + quality signals" -> [TECH-seo-content-quality](./references/TECH-seo-content-quality.md)
+  - For "Core Web Vitals — page-experience signals" -> [TECH-seo-cwv](./references/TECH-seo-cwv.md)
+  - For "E-E-A-T — Quality Evaluation Framework" -> [TECH-seo-eeat](./references/TECH-seo-eeat.md)
+  - For "Measurement — multi-signal SEO validation" -> [TECH-seo-measurement](./references/TECH-seo-measurement.md)
+  - For "Relative importance of SEO factors" -> [TECH-seo-relative-importance](./references/TECH-seo-relative-importance.md)
+  - For "Structured data (Schema.org / JSON-LD)" -> [TECH-seo-structured-data](./references/TECH-seo-structured-data.md)
+  - For "Technical SEO principles" -> [TECH-seo-technical](./references/TECH-seo-technical.md)
+
+## References
+
+Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
+
+- **[./references/TECH-seo-ai-content.md](./references/TECH-seo-ai-content.md)**
+  - Description: AI-assisted content principles
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-content-quality.md](./references/TECH-seo-content-quality.md)**
+  - Description: Content SEO — page elements + quality signals
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-cwv.md](./references/TECH-seo-cwv.md)**
+  - Description: Core Web Vitals — page-experience signals
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-eeat.md](./references/TECH-seo-eeat.md)**
+  - Description: E-E-A-T — Quality Evaluation Framework
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-measurement.md](./references/TECH-seo-measurement.md)**
+  - Description: Measurement — multi-signal SEO validation
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-relative-importance.md](./references/TECH-seo-relative-importance.md)**
+  - Description: Relative importance of SEO factors
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-structured-data.md](./references/TECH-seo-structured-data.md)**
+  - Description: Structured data (Schema.org / JSON-LD)
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+- **[./references/TECH-seo-technical.md](./references/TECH-seo-technical.md)**
+  - Description: Technical SEO principles
+  - TOC:
+    - What it does
+    - When to use
+    - How it works
+    - Minimal example
+    - Gotchas
+    - Cross-references
+
+<!-- end of references -->
+
+## Completion checklist
+
+Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
+
+- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
+- At least one `TECH-*.md` file from `skills/amw-seo/references/` was consulted and is cited in the final report.
+- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
+- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
+- User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
+
+## Output
+
+This skill produces TWO kinds of output:
+
+1. **Artifact(s)** — the actual work product (e.g. SEO evaluation report `.md` files (no measurements taken — interpretation only)). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+   - User-supplied path (honor verbatim)
+   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
+   - Existing `./design/<subtype>/` folder if present
+   - Generic fallback (`./design/references/` or `./reports/webdesigner/` created fresh)
+   - Last-resort scratch: `/tmp/amw-seo-<slug>/`
+
+   Every artifact file is listed with its path in the report (next item).
+
+2. **Job-completion report** — a markdown file at:
+   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
+
+   The report must contain, in order:
+   - **Inputs** — what the user provided + any auto-detected context
+   - **Method** — which TECH references were consulted, which pipeline steps ran
+   - **Artifacts** — bullet list, one per produced file, formatted as:
+     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
+   - **Deviations** — any step skipped or changed, with rationale
+
+   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
+
+Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
+
+**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+
+## Cross-references
+- `../amw-design-principles/SKILL.md` — orchestrator
+- `../amw-dev-browser/SKILL.md` — live page inspection for CWV capture
+- `../amw-ux-evaluator/SKILL.md` — pairs for combined UX + SEO scoring
+- `/amw-eval` — user-facing command that runs ux-evaluator + seo together
+
+## Non-negotiables
+- Does NOT claim generic design / UI work.
+- Knowledge-base only — does NOT run measurements itself; pairs with `dev-browser` for live capture.
+- Does NOT substitute for Lighthouse / PageSpeed Insights / CrUX — those measure; this skill interprets.
+- Does NOT promise ranking outcomes. SEO is probabilistic; factor weights shift over time.
+
+## Failure modes
+- JS-heavy SPA that does not render without JS → CWV capture misleading; flag and request SSR / pre-rendered variant before scoring.
+- Auth wall / paywalled page → cannot observe what crawlers see; request public-equivalent URL or admit evaluation is partial.
+- Offline environment → no live CWV, no structured-data validator access; restrict output to static-analysis findings and mark dynamic claims as unverified.
+- User asks for guaranteed ranking lift → decline; SEO evaluation reports quality signals, not predictions.

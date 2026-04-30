@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Browser Window — Browser Window Scaffold</title>
+<style>
+  /* Canonical theme tokens — tweaks-block.html writes to these.
+     Defaults match pre-refactor hardcoded values so rendering is unchanged.
+     Device-spec values stay hardcoded: browser chrome 12px window radius,
+     Safari traffic-light colors, address-bar grey, 28×28 desktop nav buttons. */
+  :root {
+    --primary: #D97757;
+    --text: #555;
+    --bg: #fafaf7;
+    --radius: 8px;
+    --font-size: 16px;
+  }
+
+  body { margin: 0; background: #e8e8e3; font-family: ui-sans-serif, system-ui; min-height: 100vh; display: grid; place-items: center; padding: 40px; }
+
+  .browser {
+    width: min(1280px, 95vw);
+    height: min(720px, 85vh);
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,.06),
+      0 30px 60px -20px rgba(0,0,0,.3),
+      0 20px 40px -15px rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Title bar */
+  .chrome {
+    background: #f0eeea;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Traffic lights */
+  .lights { display: flex; gap: 8px; }
+  .lights span {
+    width: 12px; height: 12px; border-radius: 50%; display: block;
+  }
+  .lights .red    { background: #ff5f56; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.15); }
+  .lights .yellow { background: #ffbd2e; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.15); }
+  .lights .green  { background: #27c93f; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.15); }
+
+  /* Nav buttons */
+  .nav-btns { display: flex; gap: 4px; color: #555; }
+  .nav-btns button {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: transparent; border: none; cursor: pointer;
+    display: grid; place-items: center;
+  }
+  .nav-btns button:hover { background: rgba(0,0,0,.06); }
+
+  /* Address bar */
+  .addr-bar {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(0,0,0,.05);
+  }
+  .addr-bar .lock { color: #3a9f55; }
+  .addr-bar .url  { color: #666; }
+  .addr-bar .url strong { color: #000; }
+
+  /* Right-side buttons */
+  .right-btns { display: flex; gap: 4px; color: #555; }
+  .right-btns button {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: transparent; border: none; cursor: pointer;
+    display: grid; place-items: center;
+  }
+  .right-btns button:hover { background: rgba(0,0,0,.06); }
+
+  /* Tab bar */
+  .tabs {
+    background: #f0eeea;
+    display: flex;
+    padding: 0 12px;
+    gap: 4px;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #666;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+  }
+  .tab.active { background: white; color: #000; }
+
+  /* Content area — themeable surface (bg/text/font-size flow from --tokens) */
+  .viewport {
+    flex: 1;
+    overflow-y: auto;
+    padding: 48px;
+    background: var(--bg);
+  }
+  .viewport h1 { font-size: 40px; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .viewport p  { color: var(--text); font-size: var(--font-size); max-width: 60ch; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<div class="browser">
+  <div class="chrome">
+    <div class="lights">
+      <span class="red"></span>
+      <span class="yellow"></span>
+      <span class="green"></span>
+    </div>
+
+    <div class="nav-btns">
+      <button aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button aria-label="Forward"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button aria-label="Reload"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></button>
+    </div>
+
+    <div class="addr-bar">
+      <span class="lock" aria-label="Secure connection"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+      <span class="url"><strong>yoursite.com</strong>/design</span>
+    </div>
+
+    <div class="right-btns">
+      <button aria-label="Share"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v14"/></svg></button>
+      <button aria-label="Menu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active">Page 1</div>
+    <div class="tab">New Tab</div>
+  </div>
+
+  <div class="viewport">
+    <h1>Browser Window</h1>
+    <p>Place your web design here. Safari/macOS-style window chrome is pre-configured: traffic lights, address bar, tab bar. The content viewport is free to replace as needed.</p>
+  </div>
+</div>
+
+</body>
+</html>

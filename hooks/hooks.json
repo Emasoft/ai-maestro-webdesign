@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "design|UI|mockup|wireframe|landing|prototype|poster|slide|deck|landing page|website|homepage|dashboard|infographic|diagram|flowchart|architecture|sketch|interface|mock|page|visual|style guide|brand guide|brand tokens",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '[ai-maestro-webdesign] amw-design-principles is the orchestrator for design/UI tasks. Apply its 3 hard rules — (1) gather context (existing UI kit / brand tokens / references) before designing, (2) produce at least 3 variants, (3) check ai-slop-avoid.md before delivery — before invoking any sub-skill. Use /amw-sketch for fast ASCII variants, /amw-extract-style to capture an existing site, /amw-doctor to check env.\\n'"
+          }
+        ]
+      }
+    ]
+  }
+}

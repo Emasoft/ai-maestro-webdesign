@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animations — Timeline animation scaffold</title>
+<style>
+  /* Canonical theme tokens — tweaks-block.html writes to these.
+     Defaults match pre-refactor hardcoded values so rendering is unchanged.
+     Device-spec stays hardcoded: 1920×1080 stage dims, slide-scale typography
+     (120px title / 36px subtitle), card 520px width, accent 8×140 bar. */
+  :root {
+    --primary: oklch(68% 0.19 40);
+    --text: #fafaf7;
+    --bg: #111;
+    --radius: 16px;
+    --font-size: 24px;
+  }
+
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui; min-height: 100vh; overflow: hidden; }
+
+  /* Stage: 1920×1080 fixed canvas, auto-scales */
+  #stage {
+    position: relative;
+    width: 1920px; height: 1080px;
+    background: var(--bg);
+    transform-origin: top left;
+    overflow: hidden;
+  }
+
+  .sprite {
+    position: absolute;
+    opacity: 0;
+    transition: none;
+  }
+
+  /* Demo scene elements — accent uses --primary (the themeable accent) */
+  .title   { top: 400px; left: 200px; font-size: 120px; font-weight: 700; letter-spacing: -0.04em; }
+  .subtitle{ top: 560px; left: 200px; font-size: 36px; color: #999; letter-spacing: -0.01em; }
+  .accent  { top: 380px; left: 160px; width: 8px; height: 140px; background: var(--primary); }
+
+  /* Card — radius + body font-size flow from tokens, kicker uses --primary */
+  .card {
+    top: 720px; left: 200px;
+    width: 520px; padding: 32px;
+    background: #1a1a1a; border: 1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius); font-size: var(--font-size);
+  }
+  .card strong { display: block; color: var(--primary); font-size: 16px; margin-bottom: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Controls (external, not scaled) */
+  #controls {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 16px; z-index: 100;
+    background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+    padding: 12px 20px; border-radius: 100px;
+  }
+  #controls button {
+    background: transparent; border: 1px solid rgba(255,255,255,.15);
+    color: white; padding: 6px 16px; border-radius: 100px;
+    font-size: 13px; cursor: pointer;
+  }
+  #controls button:hover { background: rgba(255,255,255,.1); }
+  #scrubber { flex: 1; width: 300px; }
+  #time { font-size: 12px; color: #aaa; font-family: ui-monospace, monospace; min-width: 60px; }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="sprite accent"    data-start="0.2" data-end="5"   data-enter="scaleY"></div>
+  <div class="sprite title"     data-start="0.5" data-end="5"   data-enter="slide-up">Animation timeline</div>
+  <div class="sprite subtitle"  data-start="1.0" data-end="5"   data-enter="fade">Each sprite declares start/end + motion type</div>
+  <div class="sprite card"      data-start="2.0" data-end="5"   data-enter="slide-up">
+    <strong>USAGE</strong>
+    Edit the data-start / data-end / data-enter on sprites in the HTML to build any motion design
+  </div>
+</div>
+
+<div id="controls">
+  <button id="playpause">▶</button>
+  <input id="scrubber" type="range" min="0" max="5000" value="0" step="10">
+  <span id="time">0.00 / 5.00</span>
+  <button id="reset">↺</button>
+</div>
+
+<script>
+// ============================================================
+// Minimal Stage + Sprite timeline engine (~50 LOC core)
+// ============================================================
+
+const sprites = [...document.querySelectorAll('.sprite')].map(el => ({
+  el,
+  start: parseFloat(el.dataset.start) * 1000,
+  end:   parseFloat(el.dataset.end)   * 1000,
+  enter: el.dataset.enter || 'fade',
+}));
+
+const DURATION = 5000;       // Total duration 5 seconds
+const ENTER_DUR = 600;       // Entrance animation duration
+const STORAGE_KEY = 'animations-curtime';   // Persist scrubber position across reloads (mirrors deck-stage.html's `deck-stage-current` key)
+// Restore curTime on load — clamp to [0, DURATION] in case the stored value was
+// written by a future version with a different DURATION constant.
+let curTime = (() => {
+  const raw = Number(localStorage.getItem(STORAGE_KEY));
+  if (!Number.isFinite(raw) || raw < 0) return 0;
+  return Math.min(raw, DURATION);
+})();
+let playing = false;
+let lastTs = 0;
+
+function persist() {
+  try { localStorage.setItem(STORAGE_KEY, String(curTime)); } catch (_) { /* private mode / quota — ignore */ }
+}
+
+// Easing
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+function applyFrame(t) {
+  for (const s of sprites) {
+    if (t < s.start) {
+      s.el.style.opacity = 0;
+      continue;
+    }
+    if (t > s.end) {
+      s.el.style.opacity = 0;
+      continue;
+    }
+    const localT = Math.min(1, (t - s.start) / ENTER_DUR);
+    const p = easeOut(localT);
+    s.el.style.opacity = p;
+
+    switch (s.enter) {
+      case 'slide-up':
+        s.el.style.transform = `translateY(${(1 - p) * 40}px)`;
+        break;
+      case 'scaleY':
+        s.el.style.transform = `scaleY(${p})`;
+        s.el.style.transformOrigin = 'top';
+        break;
+      case 'fade':
+      default:
+        s.el.style.transform = 'none';
+    }
+  }
+  document.getElementById('scrubber').value = t;
+  document.getElementById('time').textContent =
+    (t/1000).toFixed(2) + ' / ' + (DURATION/1000).toFixed(2);
+}
+
+function tick(ts) {
+  if (!playing) return;
+  if (!lastTs) lastTs = ts;
+  curTime += ts - lastTs;
+  lastTs = ts;
+  if (curTime > DURATION) { curTime = DURATION; playing = false; play.textContent = '▶'; }
+  applyFrame(curTime);
+  persist();   // Persist on every tick so a reload mid-playback resumes near the current frame.
+  if (playing) requestAnimationFrame(tick);
+}
+
+const play = document.getElementById('playpause');
+play.onclick = () => {
+  if (curTime >= DURATION) curTime = 0;
+  playing = !playing;
+  play.textContent = playing ? '⏸' : '▶';
+  if (playing) { lastTs = 0; requestAnimationFrame(tick); }
+  persist();
+};
+document.getElementById('reset').onclick = () => { curTime = 0; applyFrame(0); playing = false; play.textContent = '▶'; persist(); };
+document.getElementById('scrubber').oninput = e => { curTime = Number(e.target.value); applyFrame(curTime); playing = false; play.textContent = '▶'; persist(); };
+
+// Initial paint uses the restored curTime (not hardcoded 0) so a reload shows the last-seen frame.
+applyFrame(curTime);
+
+// Stage auto-scale to fit
+function fit() {
+  const stage = document.getElementById('stage');
+  const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = `scale(${s})`;
+  stage.style.left = (window.innerWidth  - 1920 * s) / 2 + 'px';
+  stage.style.top  = (window.innerHeight - 1080 * s) / 2 + 'px';
+}
+fit();
+window.addEventListener('resize', fit);
+</script>
+
+</body>
+</html>

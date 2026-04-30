@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Design Canvas — Multi-variant side-by-side canvas</title>
+<style>
+  /* Canonical theme tokens — tweaks-block.html writes to these.
+     Defaults match pre-refactor hardcoded values so rendering is unchanged.
+     The three option variants (A/B/C) are intentionally contrasting — their
+     backgrounds and colors stay hardcoded because each variant IS its own
+     complete design choice, not a themeable surface. */
+  :root {
+    --primary: #D97757;
+    --text: #333;
+    --bg: #f5f5f0;
+    --radius: 6px;
+    --font-size: 16px;
+  }
+
+  body {
+    margin: 0; padding: 40px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui;
+    min-height: 100vh;
+  }
+  header {
+    max-width: 1400px; margin: 0 auto 32px;
+  }
+  header h1 { margin: 0 0 8px; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; }
+  header p  { margin: 0; color: #666; font-size: 14px; }
+
+  .canvas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .cell {
+    background: white;
+    border: 1px solid #e5e5e0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.08);
+  }
+  .cell-label {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0e8;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .cell-label strong { font-size: 16px; }
+  .cell-label span { font-size: 12px; color: #999; }
+  .cell-frame {
+    aspect-ratio: 4/3;
+    display: grid; place-items: center;
+    padding: 24px;
+    background: #fafafa;
+  }
+
+  /* Variant A — Baseline */
+  .option-a { background: white; padding: 32px; width: 100%; border-radius: 4px; border: 1px solid #e5e5e0; text-align: center; }
+  .option-a h2 { margin: 0 0 8px; font-size: 20px; }
+  /* 16px = design-principles desktop body minimum. Scaffold is a desktop canvas. */
+  .option-a p  { margin: 0; color: #666; font-size: 16px; }
+
+  /* Variant B — Advanced */
+  .option-b { background: #111; color: white; padding: 40px 24px; width: 100%; border-radius: 4px; text-align: left; }
+  .option-b h2 { margin: 0 0 12px; font-size: 24px; font-weight: 400; }
+  .option-b p  { margin: 0; opacity: .7; font-size: 16px; }
+
+  /* Variant C — Experimental */
+  .option-c {
+    background: #f0ece2; padding: 32px; width: 100%; border-radius: 4px;
+    font-family: 'Times New Roman', serif; position: relative;
+  }
+  .option-c::before {
+    content: '03'; position: absolute; top: 16px; right: 20px;
+    font-size: 48px; color: rgba(0,0,0,.08); font-weight: 700;
+  }
+  .option-c h2 { margin: 0 0 20px; font-size: 28px; font-style: italic; }
+  .option-c p  { margin: 0; color: #444; font-size: 16px; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Multi-variant canvas</h1>
+  <p>Three variants side by side, from conservative to bold. Mix and match.</p>
+</header>
+
+<div class="canvas">
+  <div class="cell">
+    <div class="cell-label"><strong>Variant A</strong><span>Baseline · Strictly follows the design system</span></div>
+    <div class="cell-frame">
+      <div class="option-a">
+        <h2>Core headline</h2>
+        <p>Descriptive copy · Zero risk · Ready to ship</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-label"><strong>Variant B</strong><span>Advanced · Shifts one dimension of the system</span></div>
+    <div class="cell-frame">
+      <div class="option-b">
+        <h2>Core headline</h2>
+        <p>Descriptive copy · Dark inversion · Rhythm shift</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-label"><strong>Variant C</strong><span>Experimental · Breaks the system</span></div>
+    <div class="cell-frame">
+      <div class="option-c">
+        <h2>Core headline</h2>
+        <p>Descriptive copy · Editorial typography · Oversized numeral · Warm cream background</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

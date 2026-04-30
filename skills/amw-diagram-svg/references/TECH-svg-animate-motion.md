@@ -1,0 +1,149 @@
+---
+name: TECH-svg-animate-motion
+category: svg-arrow-marker
+source: SKILLS-TO-INTEGRATE/diagrams-skills/baybee-diagram/SKILL.md
+also-in:
+---
+
+# TECH-svg-animate-motion
+
+## What it does
+
+Animates elements along paths or as blinking / pulsing nodes using SMIL
+`<animateMotion>` and `<animate>` elements. Used subtly to suggest
+flow — data packets moving along an edge, a heartbeat on a service
+node, pulse markers on a queue.
+
+## When to use
+
+- **When the diagram is about flow** and the animation reinforces the
+  point (data pipeline, message passing, request-response cadence).
+- **Live embeds** (documentation sites, product marketing pages) where
+  the animation plays naturally.
+- **Never** in static exports (PNG, PDF, print) — the animation is lost;
+  keep the diagram readable without it.
+
+Do not use animation for decoration alone. If the reader wouldn't miss
+the animation, remove it.
+
+## How it works
+
+### Animate a dot along a path (data-in-transit pattern)
+
+```xml
+<defs>
+  <path id="flow-path" d="M 100 500 L 900 500"/>
+</defs>
+
+<!-- Dot travels along the path -->
+<circle r="10" fill="#38bdf8">
+  <animateMotion dur="2s" repeatCount="indefinite">
+    <mpath href="#flow-path"/>
+  </animateMotion>
+</circle>
+```
+
+### Blink a node (alert pattern)
+
+```xml
+<circle cx="500" cy="500" r="60" fill="#38bdf8">
+  <animate attributeName="opacity"
+           values="1;0.3;1" dur="1.5s"
+           repeatCount="indefinite"/>
+</circle>
+```
+
+### Pulse a ring (activation pattern)
+
+```xml
+<circle cx="500" cy="500" r="40" fill="none"
+        stroke="#38bdf8" stroke-width="4">
+  <animate attributeName="r" values="40;70;40"
+           dur="2s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="1;0;1"
+           dur="2s" repeatCount="indefinite"/>
+</circle>
+```
+
+## Mandatory attributes
+
+Every animation element must set:
+
+- `dur` — duration (e.g. `"2s"` or `"1.5s"`). Without it, the animation
+  doesn't play.
+- `repeatCount="indefinite"` — or a specific count like `"3"`.
+  Omitting it plays the animation once and freezes; usually not what
+  you want.
+
+## Minimal example
+
+Data pipeline with a packet animation:
+
+```xml
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10"
+            refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#0f172a"/>
+    </marker>
+    <path id="pipe" d="M 250 500 L 750 500"/>
+  </defs>
+
+  <g id="nodes">
+    <rect x="150" y="460" width="200" height="80" rx="20"
+          fill="#f1f5f9" stroke="#0f172a" stroke-width="4"/>
+    <rect x="650" y="460" width="200" height="80" rx="20"
+          fill="#f1f5f9" stroke="#0f172a" stroke-width="4"/>
+  </g>
+
+  <g id="connections">
+    <line x1="350" y1="500" x2="650" y2="500"
+          stroke="#0f172a" stroke-width="4"
+          marker-end="url(#arrow)"/>
+
+    <!-- Animated packet dot -->
+    <circle r="8" fill="#38bdf8">
+      <animateMotion dur="2s" repeatCount="indefinite"
+                     path="M 350 500 L 650 500"/>
+    </circle>
+  </g>
+
+  <g id="labels">
+    <text x="250" y="510" text-anchor="middle" font-size="22"
+          fill="#0f172a">Producer</text>
+    <text x="750" y="510" text-anchor="middle" font-size="22"
+          fill="#0f172a">Consumer</text>
+  </g>
+</svg>
+```
+
+## Gotchas
+
+- **SMIL is deprecated in Chrome but still works.** Chrome has threatened
+  to remove SMIL for years; as of 2026 it still renders. For truly long-
+  lived artifacts, consider CSS animations or Web Animations API
+  instead. For blog posts and short-term marketing, SMIL is fine.
+- **Keep animations slow.** Under 1s per cycle reads as flickering; 1.5-
+  2.5s is the sweet spot for "motion without distraction".
+- **Animate ≤3 elements per diagram.** More than 3 simultaneous motions
+  become a visual seizure trigger.
+- **Respect `prefers-reduced-motion`.** Wrap animations in a CSS media
+  query that disables them:
+  ```css
+  @media (prefers-reduced-motion: reduce) {
+    animateMotion, animate { display: none; }
+  }
+  ```
+  Note: CSS can't control SMIL directly; use JavaScript to remove the
+  elements when `matchMedia('(prefers-reduced-motion)').matches`.
+- **No external resources.** SMIL animations must stay self-contained —
+  no external path references, no loaded fonts mid-animation.
+
+## Cross-references
+
+- `../SKILL.md` — Optional Animation section
+- `TECH-arrow-marker-def.md` — arrow markers that pair with animations
+- `TECH-svg-group-structure.md` — animations live inside the
+  `#connections` group usually
+- `../../amw-design-principles/ai-slop-avoid.md` — don't overanimate; one
+  moving dot is plenty

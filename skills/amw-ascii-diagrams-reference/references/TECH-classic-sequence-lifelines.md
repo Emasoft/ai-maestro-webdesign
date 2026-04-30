@@ -1,0 +1,57 @@
+---
+name: TECH-classic-sequence-lifelines
+category: ascii-classic
+source: ascii-diagrams-skill-main/references/sequences-tables.md
+also-in: ascii-diagrams-skill-main/SKILL.md
+---
+
+# TECH-classic-sequence-lifelines — Client/Server/DB actor columns
+
+## What it does
+
+Renders a sequence diagram using classic ASCII lifeline columns. Actor
+names at top, `|` lifelines descending, `-- message -->` arrows between
+columns, timing implied by vertical order.
+
+## When to use
+
+- README documentation of request flows (REST, RPC, SQL)
+- ADR attachments showing event ordering across services
+- Code-comment annotations for complex interaction flows
+
+## How it works
+
+- Top row: actor names, each followed by their lifeline `|`.
+- Arrow rows: `|-- request -->|` or `|<-- response -----|`.
+- Empty rows: `|       |       |` keep vertical spacing without events.
+- Messages read top-to-bottom for chronology.
+
+## Minimal example
+
+```
+// Source: ascii-diagrams-skill-main/references/sequences-tables.md lines 6-16
+  Client          Server          Database
+    |                |                |
+    |-- GET /user -->|                |
+    |                |-- SELECT * --> |
+    |                |<-- rows -------|
+    |<-- 200 OK -----|                |
+    |                |                |
+```
+
+## Gotchas
+
+- Align every `|` to the same column per actor — off-by-one drift is the
+  most common bug (see
+  `../../amw-ascii-validator/references/TECH-vertical-line-continuity.md`).
+- 4+ actors rarely fit in 78 cols without abbreviating names.
+- For complex flows with alt/opt/par fragments, switch to
+  `TECH-render-mode-sequence.md` (JSON→ASCII renderer).
+
+## Cross-references
+
+- `../../amw-ascii-creator/references/TECH-render-mode-sequence.md`
+- `./TECH-classic-timeline-events.md`
+- `./sequences-tables.md` (legacy pattern file)
+- [`../SKILL.md`](../SKILL.md) — parent skill
+

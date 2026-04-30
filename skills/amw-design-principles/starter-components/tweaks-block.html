@@ -1,0 +1,147 @@
+<!--
+HARD INVARIANTS — postMessage protocol (do NOT violate these):
+1. The 'message' listener MUST be registered BEFORE posting '__edit_mode_available'.
+   If the listener is registered after the post, the host's activate message can
+   arrive before the listener exists and the toggle silently fails.
+2. '__edit_mode_set_keys' carries PARTIAL updates only (the single changed key).
+   Never send the full config object — the host merges, not replaces.
+3. The /*EDITMODE-BEGIN*/ ... /*EDITMODE-END*/ block MUST stay valid JSON
+   (double-quoted keys + string/number/boolean values). The host parses and
+   writes it back to disk; any syntax error bricks persistence.
+See CLAUDE.md §"Non-obvious conventions" for the rationale.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tweaks live-tuning template</title>
+<style>
+  :root {
+    --primary: #D97757;
+    --text: #1a1a1a;
+    --bg: #fafaf7;
+    --radius: 8px;
+    --font-size: 16px;
+  }
+  body { font-family: system-ui; background: var(--bg); color: var(--text); padding: 40px; font-size: var(--font-size); margin: 0; }
+  .card { background: white; padding: 24px; border-radius: var(--radius); border: 1px solid #e5e5e0; max-width: 600px; }
+  h1 { color: var(--primary); }
+
+  /* Tweaks panel */
+  #tweaks-panel {
+    position: fixed; bottom: 20px; right: 20px; width: 280px;
+    background: #111; color: #eee; padding: 16px; border-radius: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+    display: none; box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+  #tweaks-panel.visible { display: block; }
+  #tweaks-panel label { display: flex; justify-content: space-between; margin: 8px 0; align-items: center; }
+  #tweaks-panel input[type="color"] { width: 40px; height: 24px; border: none; background: transparent; }
+  #tweaks-panel input[type="range"] { width: 120px; }
+  #tweaks-panel h4 { margin: 0 0 12px; font-size: 13px; font-weight: 600; color: #D97757; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Tweaks template</h1>
+  <p>This is the main content area. The Tweaks panel in the bottom-right edits CSS variables live.</p>
+  <p>Primary color, font size, and border radius update immediately.</p>
+</div>
+
+<!-- Tweaks panel -->
+<div id="tweaks-panel">
+  <h4>Tweaks</h4>
+  <label>Primary color <input type="color" id="tk-color"></label>
+  <label>Font size <input type="range" id="tk-size" min="12" max="24" step="1"></label>
+  <label>Radius <input type="range" id="tk-radius" min="0" max="24" step="1"></label>
+</div>
+
+<script>
+// ============================================
+// TWEAKS tunable parameters (the host rewrites this JSON block)
+// ============================================
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "primaryColor": "#D97757",
+  "fontSize": 16,
+  "radius": 8,
+  "dark": false
+}/*EDITMODE-END*/;
+
+// ============================================
+// HOST two-way communication (full postMessage protocol)
+// ============================================
+// CRITICAL: register the listener BEFORE announcing
+// otherwise the host's activate message can arrive first and the toggle silently fails
+window.addEventListener('message', (e) => {
+  if (e.data?.type === '__activate_edit_mode') {
+    showTweaksPanel();
+  } else if (e.data?.type === '__deactivate_edit_mode') {
+    hideTweaksPanel();
+  }
+});
+
+// Only then announce: I support tweaks
+try { window.parent.postMessage({type: '__edit_mode_available'}, '*'); } catch {}
+
+// ============================================
+// Panel show/hide
+// ============================================
+function showTweaksPanel() {
+  document.getElementById('tweaks-panel').classList.add('visible');
+}
+function hideTweaksPanel() {
+  document.getElementById('tweaks-panel').classList.remove('visible');
+}
+
+// ============================================
+// DOM apply function
+// ============================================
+function applyToDOM(key, value) {
+  if (key === 'primaryColor') document.documentElement.style.setProperty('--primary', value);
+  if (key === 'fontSize') document.documentElement.style.setProperty('--font-size', value + 'px');
+  if (key === 'radius') document.documentElement.style.setProperty('--radius', value + 'px');
+  if (key === 'dark') document.body.classList.toggle('dark', value);
+}
+
+// Apply all defaults on init
+Object.entries(TWEAK_DEFAULTS).forEach(([k, v]) => applyToDOM(k, v));
+
+// ============================================
+// User tunes: partial update sent back to host
+// ============================================
+// Only send the changed key, never the full config
+function applyTweak(key, value) {
+  // 1. Apply immediately to the current page
+  applyToDOM(key, value);
+  // 2. Notify host to persist (partial update, only changed key)
+  try {
+    window.parent.postMessage({
+      type: '__edit_mode_set_keys',
+      edits: { [key]: value }
+    }, '*');
+  } catch {}
+}
+
+// ============================================
+// Bind controls
+// ============================================
+const $ = id => document.getElementById(id);
+$('tk-color').value = TWEAK_DEFAULTS.primaryColor;
+$('tk-size').value = TWEAK_DEFAULTS.fontSize;
+$('tk-radius').value = TWEAK_DEFAULTS.radius;
+
+$('tk-color').addEventListener('input', e => applyTweak('primaryColor', e.target.value));
+$('tk-size').addEventListener('input', e => applyTweak('fontSize', Number(e.target.value)));
+$('tk-radius').addEventListener('input', e => applyTweak('radius', Number(e.target.value)));
+
+// Standalone use: press T to toggle the tweaks panel
+window.addEventListener('keydown', e => {
+  if (e.key === 't' || e.key === 'T') {
+    $('tweaks-panel').classList.toggle('visible');
+  }
+});
+</script>
+
+</body>
+</html>

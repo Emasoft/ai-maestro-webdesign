@@ -1,0 +1,34 @@
+{
+  "name": "ai-maestro-webdesign",
+  "version": "0.1.0",
+  "description": "Consolidated web-design plugin: design judgment (Claude Design principles), ASCII sketch/parse, diagrams, infographics, style extraction, and preview. amw-design-principles orchestrates every sub-skill; amw-dev-browser is the only browser-automation primitive for input workflows.",
+  "author": {
+    "name": "Emasoft",
+    "email": "713559+Emasoft@users.noreply.github.com",
+    "url": "https://github.com/Emasoft"
+  },
+  "homepage": "https://github.com/Emasoft/ai-maestro-plugins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emasoft/ai-maestro-plugins"
+  },
+  "license": "MIT",
+  "keywords": [
+    "webdesign",
+    "ui",
+    "design",
+    "design-system",
+    "amw-ascii-sketch",
+    "wireframe",
+    "diagrams",
+    "infographics",
+    "amw-dev-browser",
+    "style-extraction",
+    "amw-design-principles",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "hooks": "./hooks/hooks.json",
+  "agents": "./agents/"
+}
