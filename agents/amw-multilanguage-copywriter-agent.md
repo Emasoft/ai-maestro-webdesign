@@ -185,6 +185,9 @@ In priority order:
 - **Example:** legal-expert flagged "guaranteed" in financial context; brief uses "guaranteed returns" in hero.
 - **Branch:** Rephrase ("designed for returns" / "targeting strong returns" / "aiming for results") while preserving marketing intent. Flag for legal-expert re-review. Document in "Locale notes". If no rephrasing can satisfy both the tone and the legal constraint, raise the conflict in `warnings`.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot copy-generation agent — I have no internal fix/retry/regenerate loop. I produce all locale variants in a single pass and return them. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

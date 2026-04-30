@@ -221,6 +221,13 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 11. **Verify contrast ratios.** Check `text` on `bg` and `text_dark` on `bg_dark`. Minimum 4.5:1 for body copy, 3:1 for large text (≥18px). Flag failures in `blocking_issues` if below WCAG AA threshold — email accessibility matters for screen-reader users receiving email.
 
+11.5. **Run AI-slop avoidance gate.** Run `Bash: python3 bin/amw-ai-slop-check.py <output.html> --severity-threshold high` against the compiled HTML (skip if MJML-only, no HTML produced — note in `warnings`).
+    - **Exit 0 → PASS**, continue to step 12.
+    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The email is not shippable until violations are resolved. Re-author with the violations addressed (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed).
+    - **Exit 2 → INCONCLUSIVE**: file unreadable; emit a `warnings` entry and continue.
+    - **Email-specific note:** the script's banned-font check (Rule 7: `Inter`/`Roboto`/`Arial`/`system-ui`) will likely flag every email I produce because Outlook 2016-2021 force-fallback to Arial regardless of the declared web-font. This is a false positive in the email domain. When the only flagged font is `Arial` AND the email uses it as an Outlook fallback (declared inside `<!--[if mso]>...<![endif]-->` or as the last entry of the font stack), document in `warnings` ("Arial flagged by ai-slop-check; permitted as Outlook fallback per email-rendering reality") and treat the entry as advisory rather than blocking. All other Rule 7 fonts remain hard violations.
+    - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
+
 12. **Write artifacts to disk:**
     - `<slug>.mjml` — MJML source
     - `<slug>.html` — compiled HTML (if compilation available)
@@ -257,6 +264,9 @@ Action: produce default mode only. Note in `warnings` that white-background emai
 ### 8.8 Dynamic variables referenced in `copy_blocks` but not listed in `dynamic_variables`
 Action: scan `copy_blocks` values for `{{...}}` patterns. Any pattern not in `dynamic_variables` is flagged in `warnings`: "Unlisted variable placeholder found in copy: {{order_total}} — add to dynamic_variables for data-pipeline documentation."
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. MJML compile via `bin/amw-mjml-render.sh` is a single-pass gate; if it fails I return `status=failed` rather than attempting programmatic fixes and retrying. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix
@@ -267,7 +277,7 @@ Action: scan `copy_blocks` values for `{{...}}` patterns. Any pattern not in `dy
 | Always — font-size floors | `../skills/amw-design-principles/typography-system.md` | Minimum 14px body, 22px headline |
 | RTL locale present | `../skills/amw-design-principles/typography-system.md` (reading-direction section) | RTL layout transformation rules |
 | Locale-specific copy gaps | Internalized knowledge of i18n / l10n formatting (dates per locale, addresses per country, currency formatting). Consult global Claude Code skill `localization-l10n` if user wants locale-specific deep dive (this is NOT a plugin skill — for plugin-internal copy authoring, route to `amw-multilanguage-copywriter-agent` via main-agent). | Locale formatting rules for dates, addresses in compliance footers |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Check for stock testimonial imagery, generic gradients |
+| AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation `../skills/amw-design-principles/ai-slop-avoid.md` | Mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
 
 I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain — email is not a webpage), `amw-infographics` (different output class).
 

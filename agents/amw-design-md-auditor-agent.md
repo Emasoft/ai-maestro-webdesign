@@ -181,6 +181,9 @@ Action: this is informational, not a finding. The token may be aspirational (not
 ### 8.5 DESIGN.md has `# TODO:` placeholder in a prose section
 Action: MINOR finding for each section with a `TODO:` placeholder. Aggregate into one finding if all prose sections have `TODO:` placeholders.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot audit agent — I have no internal fix/retry/regenerate loop. I perform the 5-pass DESIGN.md audit in a single invocation and return findings; I diagnose but never repair. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

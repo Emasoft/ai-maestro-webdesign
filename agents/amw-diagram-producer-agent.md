@@ -202,22 +202,27 @@ Priority-ordered.
 
 ### AI-slop avoidance gate (mandatory before declaring done — applies to ALL modes above)
 
-After the format-specific validate step (`bin/amw-validate-diagram.sh`) but BEFORE writing the return contract, run the AI-slop checklist against every emitted artifact:
+After the format-specific validate step (`bin/amw-validate-diagram.sh`) but BEFORE writing the return contract, run the mechanical AI-slop check against every emitted artifact whose format is HTML, SVG, or Mermaid (the script also accepts SVG and reads inline `<style>` blocks within it).
 
-- **Read the slop checklist:** `Read ../skills/amw-design-principles/ai-slop-avoid.md`.
-- **For HTML / SVG / Mermaid (rendered) outputs, verify:**
-  - No emoji-as-icon (use semantic SVG glyphs from `amw-svg-creator/` instead)
-  - No generic gradients on architecture-box / node fills (gradients are reserved for hero / decorative panels per `ai-slop-avoid.md`; structural diagram boxes use solid brand-token fills)
-  - No default AI cyan/purple palette unless `brand_tokens` explicitly declares those — every color must trace to a brand token
-  - No clip-art icons embedded inside boxes — diagram nodes use either text labels OR `amw-svg-creator/`-authored geometric icons
-  - No "default 3-card row" / "default 5-step process" composition without intent — the diagram must reflect the actual user content, not a template-shape ghost
-  - No fabricated arrows or unlabeled connections (every edge has a verb or relationship label)
-- **For ASCII outputs, verify:**
-  - No banned characters per `bin/amw-validate-ascii.py` (already gates this — confirm the validator was run)
-  - No "decorative" Unicode that adds no information (no `★ ✦ ✧ ✨` filler glyphs in arch diagrams)
-- **On match:** document in `warnings` (not a hard block unless the violation is structural — e.g., emoji-as-icon for a critical node). `status=partial` if user-visible quality is degraded.
+**Run:** `Bash: python3 bin/amw-ai-slop-check.py <artifact-path> --severity-threshold high`.
 
-This step is non-skippable. A diagram that PASSes structural validation but fails the slop checklist is still returned with `warnings` so the main-agent can decide whether to surface to the user.
+- **Exit 0 → PASS**, continue.
+- **Exit 1 → FAIL**: parse the JSON `violations` array; every `severity: high` entry becomes a `blocking_issues` entry in the return contract. The diagram is not shippable until the violations are resolved. Re-author with the violations addressed — do NOT re-render in a loop. Fail fast and emit `status=partial` with the violations listed.
+- **Exit 2 → INCONCLUSIVE**: artifact unreadable (rare for diagram outputs); emit a `warnings` entry and continue.
+
+The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
+
+**Diagram-specific judgments the script does NOT cover** (still authored / inspected by me):
+
+- **No emoji-as-icon** (use semantic SVG glyphs from `amw-svg-creator/` instead) — the script flags emoji density in `<h1>`/`<h2>`/`.hero`/`.cta` blocks; diagram-internal emoji are inspected manually.
+- **No default AI cyan/purple palette** unless `brand_tokens` explicitly declares those — every color must trace to a brand token.
+- **No clip-art icons embedded inside boxes** — diagram nodes use text labels or `amw-svg-creator/`-authored geometric icons.
+- **No "default 3-card row" / "default 5-step process"** composition without intent — the diagram must reflect the actual user content, not a template-shape ghost.
+- **No fabricated arrows or unlabeled connections** (every edge has a verb or relationship label).
+
+**For ASCII outputs:** the script does not run on ASCII; the existing `bin/amw-validate-ascii.py` is the gate (it catches banned characters, decorative Unicode, alignment drift). Confirm that validator was run before declaring done.
+
+This step is non-skippable. A diagram that PASSes structural validation but fails the AI-slop script is still returned with `blocking_issues` populated so the main-agent can surface to the user.
 
 ---
 
@@ -252,6 +257,9 @@ Example: the source URL is a marketing landing page with no landmarks. Action: e
 
 ### 8.10 Compare mode: two diagrams in different formats
 Example: compare a Mermaid and an SVG. Action: parse both into IR (they become comparable at the IR level), run the structural diff, emit report noting that the format difference itself is informational (not a structural difference). `status=ok`.
+
+### Iteration cap
+Per `../skills/amw-design-principles/references/iteration-budget.md`, my LLM-based generator regenerate loop has a hard cap of **3 attempts**. Each attempt consists of: generate/revise the diagram → run `bin/amw-validate-ascii.py` or the format-appropriate validator → on FAIL apply the validator's FIX hints and re-prompt. After 3 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never lower the quality bar or silently deliver a diagram that failed validation.
 
 ---
 
@@ -391,6 +399,12 @@ phase: B
 status: ok
 confidence: high
 execution_time_ms: 9840
+max_iterations: 3
+attempts_count: 1
+attempts_log:
+  - attempt: 1
+    failure_reason: null
+    duration_ms: 9840
 blocking_issues: []
 warnings:
   - "brand_tokens supplied but Mermaid emit uses stock theme 'default'; exact token match requires SVG. SVG variant provided."

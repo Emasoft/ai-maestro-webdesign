@@ -162,6 +162,17 @@ In priority order:
 
 2. **Reachability check.** `Bash: bash bin/amw-dev-browser-wrapper.sh shot "$artifact_url" /tmp/amw-reachability-check.png`. If this fails (timeout, DNS error, file not found for file:// URL), emit `status=failed` with `blocking_issues` citing unreachable artifact. No further scenarios attempted.
 
+2.5. **Smoke gate (early-fail, fast).** Before opening a persistent session and running the full battery, do a cheap 3-check smoke pass to catch obviously-broken artifacts that would just produce ~14 confirmation screenshots of the same broken state:
+   - **Smoke shot** at the canonical desktop viewport: `Bash: bash bin/amw-dev-browser-wrapper.sh shot "$artifact_url" /tmp/amw-smoke.png` (1440×900 — the default desktop the rest of the battery uses).
+   - **Console scrape**: `Bash: bash bin/amw-dev-browser-wrapper.sh dom "$artifact_url" /tmp/amw-smoke-dom.json` and grep its console-log section for any ERROR-level entries.
+   - **Body-text length**: from the same DOM dump, read `document.body.innerText.length`. A fully-blank page (white-screen-of-death, broken JS bootstrap that never renders) yields `< 100` chars.
+
+   **Smoke gate decision:**
+   - IF any ERROR-level console entry is present, OR body text length `< 100` chars: emit `status=partial` with the smoke evidence in `blocking_issues` (smoke screenshot path + console excerpt + body-text count) and SKIP the rest of step 3+. Return early. The artifact is clearly broken; running 14 more screenshots will not produce new information.
+   - IF smoke passes: continue to step 3.
+
+   Pass-only path: smoke evidence is recorded in the report's "Smoke gate" section as PASS, no `blocking_issues`. The desktop shot at `/tmp/amw-smoke.png` is moved into `screenshots/<ts>-smoke-desktop.png` and reused as the desktop reachability evidence (avoids taking another desktop shot in step 4).
+
 3. **Open persistent session.** `Bash: bash bin/amw-dev-browser-wrapper.sh open "$artifact_url"` — gives me a long-lived session across turn boundaries.
 
 4. **For each scenario:**
@@ -266,6 +277,9 @@ The ux-evaluator 3-dimension framework needs a specific component to score. If t
 ### dev-browser crash mid-test
 
 Report what succeeded before the crash. Emit `status=partial` with `blocking_issues` citing the crash. Recommend: "dev-browser crashed on scenario `<name>` — re-invoke with only the remaining scenarios, or run `dev-browser install` to re-provision Chromium if crash recurs".
+
+### Iteration cap
+Per `../skills/amw-design-principles/references/iteration-budget.md`, my per-scenario timeout budget is **10 s by default; 30 s when invoked with `retry_with:wait_timeout=30s`**. This cap is time-based, not attempt-count-based. A scenario that does not resolve within its timeout budget is marked INCONCLUSIVE and the test run continues with remaining scenarios. I do not loop indefinitely waiting for a slow page. The `attempts_log[]` in my return contract records each scenario's timeout configuration and actual duration.
 
 ---
 

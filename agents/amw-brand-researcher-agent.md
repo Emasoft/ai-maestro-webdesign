@@ -188,6 +188,9 @@ In priority order:
 - **Symptom:** `client_brand_notes = ""`.
 - **Branch:** Proceed with extraction, but in "Recommended direction for Phase A", enumerate 3-4 positioning options (e.g., "Option A: warm heritage serif; Option B: cool modern sans; Option C: dark jewel-tone") rather than a single recommendation. Flag "brand brief missing; main-agent should elicit positioning intent from user." `confidence = medium`.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot research agent — I have no internal fix/retry/regenerate loop. I browse competitor URLs and extract tokens in a single pass; if a URL is unreachable I flag it and continue rather than retrying in a loop. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

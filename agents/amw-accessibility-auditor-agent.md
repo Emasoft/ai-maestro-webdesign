@@ -206,6 +206,9 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 
 **Reduced-motion absent but animations are cosmetic** → still FAIL 2.3.3. WCAG does not have a "cosmetic" carve-out. The user can override via `known_constraints: ["2.3.3 waived — cosmetic animations only"]` if they accept the risk.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot audit agent — I have no internal fix/retry/regenerate loop. I audit the artifact once and return findings; I do not attempt to fix and re-audit in a loop. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

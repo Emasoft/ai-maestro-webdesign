@@ -273,6 +273,9 @@ Hyperframes has a fixed output pipeline. If the user wants H.265 and Hyperframes
 
 Hyperframes uses Puppeteer + `@puppeteer/browsers` (NOT Playwright) to manage its Chrome binary. If Chrome is not provisioned, the render command will fail with a Puppeteer-specific error. I surface it and recommend: `(cd external/hyperframes && npx hyperframes browser ensure)`. Running `npx playwright install chromium` will NOT fix this — Playwright's Chromium is a separate binary that Hyperframes does not use.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot render agent — I have no internal fix/retry/regenerate loop. Renders are deterministic; a failed render is a configuration issue, not a transient error that a retry loop could fix. I never retry on failure. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

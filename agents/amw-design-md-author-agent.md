@@ -196,6 +196,9 @@ Action: do not overwrite silently. Return `status=partial`, `blocking_issues=["O
 ### 8.6 `companion_targets` requested but DESIGN.md lint fails
 Action: do not run companion generation. The companions would derive from a broken DESIGN.md. Fix lint errors first; if they cannot be fixed, return `status=partial` and note that companion generation was skipped.
 
+### Iteration cap
+Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
+
 ---
 
 ## 9. Skill-Decision Matrix
@@ -300,6 +303,12 @@ phase: B
 status: ok
 confidence: high
 execution_time_ms: 4120
+max_iterations: 2
+attempts_count: 1
+attempts_log:
+  - attempt: 1
+    failure_reason: null
+    duration_ms: 4120
 blocking_issues: []
 warnings:
   - "Color 'midnight blue' resolved to #191970 (CSS named-color approximation) — replace with brand-exact hex."

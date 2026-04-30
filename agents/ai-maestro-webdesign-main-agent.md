@@ -259,6 +259,9 @@ Continue, but:
 
 The latest instruction wins, but the main-agent surfaces the contradiction: *"Round 4 said 'dark background', round 7 said 'light background' — going with light; say so if you want dark back."*
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot orchestrator — I have no internal fix/retry/regenerate loop. I spawn sub-agents and coordinate their outputs, but I do not loop over my own generation. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

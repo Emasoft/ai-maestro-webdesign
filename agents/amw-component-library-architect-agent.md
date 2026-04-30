@@ -227,6 +227,9 @@ Action: produce standard adjustments (increase line-height to 1.8, increase mini
 ### 8.7 `brand_tokens_seed.brand_primaries` contains more than 3 colors
 Action: use the first color as primary, second as accent/secondary, third as tertiary. Any beyond three are documented in `warnings` as "additional brand colors noted but not assigned a semantic role — extend the semantic layer manually if needed."
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot design-system authoring agent — I have no internal fix/retry/regenerate loop. I produce tokens, variant matrices, and export files in a single pass; the lint gate (`bin/amw-design-md-lint.sh runs before delivery`) is a single-pass advisory check, not a fix-and-retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

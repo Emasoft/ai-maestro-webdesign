@@ -217,10 +217,12 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
     - Apply `SEO_head.title_template` with `{H1}` substitution.
     - Inject `meta_description`, Open Graph tags, and any provided `structured_data_jsonld` script.
 
-11. **Run AI-slop avoidance gate.**
-    - Read `../skills/amw-design-principles/ai-slop-avoid.md` as a checklist.
-    - Grep the output HTML for: generic gradients on hero backgrounds, banned font names (Inter, Roboto, Arial if brand tokens say otherwise), emoji-as-icon, `scrollIntoView` (banned), three-card-row default, AI-generated stock testimonials.
-    - Any match → document in `warnings` (not a hard block unless it violates brand tokens).
+11. **Run AI-slop avoidance gate.** Run `Bash: python3 bin/amw-ai-slop-check.py <output.html> --severity-threshold high`.
+    - **Exit 0 → PASS**, continue to step 12.
+    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract; the artifact is not shippable until violations are resolved. Re-author with the violations addressed (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed).
+    - **Exit 2 → INCONCLUSIVE**: file unreadable; emit a `warnings` entry and continue.
+    - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
+    - `severity: medium`/`severity: low` violations (e.g. raw `#FF0000` literal, suspect emoji density) are surfaced under `warnings` rather than `blocking_issues` — they are advisory unless the brand tokens say otherwise.
 
 12. **Preview render.**
     - If `target_stack` is a static HTML (no build step), no preview compilation needed.
@@ -274,6 +276,9 @@ Example: `colors.bg = #fafafa` (light) + `colors.text = #f5f5f5` (near-white) �
 ### 8.10 ASCII uses a component pattern not in the detection table
 Action: read `../skills/amw-ascii-to-html/references/TECH-99.md` fallback rules. If still unmatched, emit a generic `<section><div>` shell with a TODO comment (`<!-- unmatched ASCII pattern at lines N-M: <excerpt> -->`), document in `warnings`, `status=partial`, `next_action=escalate_to_user` for a design-principles update.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot conversion agent — I have no internal fix/retry/regenerate loop. ASCII validation is a precondition gate (I fail fast on invalid input, I do not fix-and-retry); HTML lint is a one-pass advisory pass at the end. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix
@@ -292,7 +297,7 @@ Action: read `../skills/amw-ascii-to-html/references/TECH-99.md` fallback rules.
 | `target_stack` is `tailwind-v4` | `../skills/amw-tailwind-4/SKILL.md` | v4 syntax (`@theme`, `@import`, new color interpolation) |
 | Brand token resolution or validation | `../skills/amw-design-principles/color-system.md`, `../skills/amw-design-principles/typography-system.md`, `../skills/amw-design-principles/spacing-rhythm.md` | token contract rules (contrast floor, type scale, rhythm) |
 | Starter component needed (browser chrome, Tweaks protocol, animation timeline) | `../skills/amw-design-principles/starter-components/<component>.html` + `starter-components/react-babel-pins.md` when React UMD | hard-pinned invariants |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | banned patterns checklist |
+| AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation `../skills/amw-design-principles/ai-slop-avoid.md` | mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
 | Locale direction (RTL) | `../skills/amw-design-principles/typography-system.md` (reading-direction section) | RTL layout rules |
 | ASCII contains an empty-state slot (`[ no items yet ]`, `[ search results: 0 ]`, etc.) | `../skills/amw-design-principles/starter-components/empty-state.html` if present, else use the inline empty-state pattern: heroicon → headline → 1-line context → primary action → optional secondary action | render an empty state that has clear next-action guidance, NOT just a sad face |
 | ASCII contains an error-state slot (`[ 404 ]`, `[ permission denied ]`, `[ server error ]`, `[ offline ]`) | `../skills/amw-design-principles/starter-components/error-state.html` if present, else use error-state pattern: status code → human headline → recovery action(s) → secondary "contact support" link | render error states that name the failure AND offer recovery, never blank pages or raw stack traces |

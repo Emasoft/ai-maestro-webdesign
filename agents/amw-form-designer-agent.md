@@ -241,6 +241,9 @@ Action: use `#d7263d` (design-principles default danger). Document in `warnings`
 ### 8.7 Save-and-resume requested but no output_dir or server-side endpoint placeholder
 Action: produce a localStorage-only save-and-resume spec. Document in `warnings` that server-side persistence is unspecified. `status=ok`, `confidence=medium`.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. I produce form specs and HTML in a single pass; validation-UX decisions are authoring choices, not a retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

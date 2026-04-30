@@ -238,6 +238,9 @@ Main-agent arbitrates — per `authority-hierarchy.md`, user-research-analyst ha
 
 **Competitor URLs provided but unreachable** → proceed with the keyword cluster without competitor gap analysis. Warn: `"Competitor analysis incomplete — <N> URLs unreachable"`.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot analysis agent — I have no internal fix/retry/regenerate loop. I perform keyword research and SEO audit in a single pass and return findings. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

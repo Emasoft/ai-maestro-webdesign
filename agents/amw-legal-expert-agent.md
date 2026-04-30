@@ -174,6 +174,9 @@ In priority order:
 - **Symptom:** The user mentions a jurisdiction I cannot reliably map (e.g., a specific US state not in my table, an emerging law).
 - **Branch:** Flag "additional jurisdictions may apply" in "Requires human legal review". Map the frameworks I can, and stop short of inventing rules for the unknown jurisdiction. `confidence = medium`.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot analysis agent — I have no internal fix/retry/regenerate loop. I perform legal/compliance analysis in a single pass and return my findings. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

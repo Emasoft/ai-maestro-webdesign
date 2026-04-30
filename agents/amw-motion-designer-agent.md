@@ -230,6 +230,9 @@ Action: add `warnings` entry: "10+ distinct animation intents on one page risks 
 ### 8.7 `animation_library=framer-motion` but `target_stack=static-html`
 Action: `status=failed`, `blocking_issues=["Framer Motion requires a React runtime — incompatible with static-html target_stack. Use css-only, animations-html, anime-js, or gsap for static targets."]`, `next_action=retry_with:compatible_animation_library`.
 
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot spec-generation agent — I have no internal fix/retry/regenerate loop. I produce animation specs and CSS/JS in a single pass; incompatible combinations result in `status=failed` rather than an internal retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+
 ---
 
 ## 9. Skill-Decision Matrix

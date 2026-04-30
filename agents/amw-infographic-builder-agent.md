@@ -203,7 +203,11 @@ Priority-ordered.
    - Default: `portrait-medium` 1080×1440.
    - If `target_dimensions` is set, resize the template's root container and apply section-reflow CSS per the template's multi-size variants (most templates ship with media-query-gated variants for 7 canvas sizes).
 
-9. **Run AI-slop avoidance gate** per Decision Criterion 4.
+9. **Run AI-slop avoidance gate.** Run `Bash: python3 bin/amw-ai-slop-check.py <output.html> --severity-threshold high`.
+    - **Exit 0 → PASS**, continue to step 10.
+    - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The artifact is not shippable until the violations are resolved. Re-author with the violations addressed (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed).
+    - **Exit 2 → INCONCLUSIVE**: file unreadable; emit a `warnings` entry and continue.
+    - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate. Decision Criterion 4 remains the doctrine — the script enforces the mechanical subset; infographic-specific judgments (no ghost borders, no AI-stock testimonials, no unlabeled arrows on flow diagrams, no banned display fonts beyond the script's six) are still inspected by me before declaring done.
 
 10. **Density check.**
     - Count content blocks in the rendered output. Target 8–15 on portrait-medium; ≥6 minimum; ≥4 on square/linkedin canvas.
@@ -254,6 +258,9 @@ Action: insert labeled placeholder `[DIAGRAM: <intent>]`, document in `warnings`
 
 ### 8.10 Export pipeline (html-export.py) fails
 Example: Playwright Chromium is not installed (user skipped `/amw-init`). Action: HTML is always emitted (does not require export pipeline). PNG/PDF fall back to `blocking_issues=["bin/amw-html-export.py failed: <error>. HTML artifact is on disk; run /amw-init to install Playwright + Chromium for PNG/PDF export."]`, `status=partial`, `next_action=retry_with:after_playwright_install`.
+
+### Iteration cap (one-shot)
+Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. All validation gates (HTML well-formedness, CSS, byte count) are single-pass advisory checks; export pipeline failures are environmental, not content errors that a retry loop could fix. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
 
 ---
 

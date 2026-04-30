@@ -164,6 +164,13 @@ For each item in `asset_briefs`:
 
 6. **Validate.** For SVG: verify XML parses (no unclosed tags, `xmlns` present, all `<defs>` resolved). For pretext: verify no `system-ui` in font strings (TECH-77 ban), reduced-motion guards present on any animation. For Excalidraw: verify the PNG file is non-trivial size (>50KB typical for a real illustration) and matches the requested aspect ratio.
 
+6.5. **Run AI-slop avoidance gate.** For each SVG / HTML produced (Excalidraw PNGs are skipped — the script does not parse images), run `Bash: python3 bin/amw-ai-slop-check.py <artifact-path> --severity-threshold high`.
+    - **Exit 0 → PASS**, continue to step 7.
+    - **Exit 1 → FAIL**: parse the JSON `violations` array; every `severity: high` entry becomes a `blocking_issues` entry for that brief in the return contract. The artifact is not shippable until violations are resolved. Re-author with the violations addressed — do NOT re-render in a loop. Mark the brief as `status=partial` with violations listed.
+    - **Exit 2 → INCONCLUSIVE**: artifact unreadable; emit a `warnings` entry and continue.
+    - **Asset-specific note:** the AI-drawn SVG eye-pair heuristic (Rule 3) is most likely to trigger here, since asset-generator emits SVG. If the brief was a legitimate icon (e.g. a "people" icon that has two pupils-as-circles), the heuristic may produce a false positive — the gate is `--severity-threshold high`, so `medium`/`low` violations are advisory and do not block. If a high-severity violation is a clear false positive (extremely rare), document the rationale in `warnings` and proceed; do not silently bypass.
+    - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate. The `ai-slop-avoid.md` item-3 character/scene/avatar ban is still enforced upstream by the §7 step 2 gate-check (briefs are refused before production); the script is the post-production safety net.
+
 7. **Record.** For each produced file: append to `artifact_paths` with `path`, `type` (svg / html / png), `purpose` (one-line). Log the TECH references consulted.
 
 8. **Write report.** After processing all briefs, write the full markdown report to `$MAIN_ROOT/reports/webdesigner/<ts±tz>-amw-asset-generator-<slug>.md`.
@@ -205,6 +212,9 @@ Produce all allowed briefs. Refuse each forbidden brief individually (per §8 it
 ### All briefs fail (bulk gate failure or environment broken)
 
 Return `status=failed` with `blocking_issues` populated. No partial outputs. `next_action: escalate_to_user` if the issue is user-controllable (Gemini key), `stop` if the issue is environmental (plugin mis-installed).
+
+### Iteration cap
+Per `../skills/amw-design-principles/references/iteration-budget.md`, my LLM-based generator regenerate loop (SVG render-verify) has a hard cap of **3 attempts**. Each attempt consists of: generate/revise the SVG → run `bin/amw-svg-render.py` to produce a PNG preview → visually inspect → on FAIL apply fix hints and re-generate. After 3 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver an SVG that failed the render-verify loop.
 
 ---
 
@@ -322,6 +332,15 @@ phase: B
 status: partial
 confidence: medium
 execution_time_ms: 47300
+max_iterations: 3
+attempts_count: 2
+attempts_log:
+  - attempt: 1
+    failure_reason: "Search Icon render showed clipping on right edge — fixed stroke path and re-rendered"
+    duration_ms: 6100
+  - attempt: 2
+    failure_reason: null
+    duration_ms: 5800
 blocking_issues:
   - "Excalidraw PNG has misspelled text ('Architecutre' in the central label) — user must choose regenerate-at-cost or manual Pillow overlay"
 warnings:

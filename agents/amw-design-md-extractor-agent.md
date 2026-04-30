@@ -241,6 +241,9 @@ Action: skip companion generation. The companions would derive from a broken DES
 
 Action: this is likely a brand-by-design choice (e.g., a low-contrast luxury aesthetic). Surface every failing pair in `warnings`, set `confidence=medium` (not low — extraction itself was faithful), and recommend `amw-accessibility-auditor-agent` for a full audit. Do not modify the source's intentional contrast choices.
 
+### Iteration cap
+Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
+
 ---
 
 ## 9. Skill-Decision Matrix
@@ -357,6 +360,12 @@ phase: B
 status: ok
 confidence: high
 execution_time_ms: 7820
+max_iterations: 2
+attempts_count: 1
+attempts_log:
+  - attempt: 1
+    failure_reason: null
+    duration_ms: 7820
 blocking_issues: []
 warnings:
   - "WCAG contrast for `secondary` (#5b8def) / `secondary-foreground` (#ffffff) measures 3.86:1 — below 4.5:1 normal-text threshold. Source's design choice; flag for amw-accessibility-auditor-agent."
@@ -392,6 +401,12 @@ phase: B
 status: partial
 confidence: low
 execution_time_ms: 12340
+max_iterations: 2
+attempts_count: 1
+attempts_log:
+  - attempt: 1
+    failure_reason: "URL extraction caught a JS-heavy SPA — only 2 colors, 1 typography entry extracted"
+    duration_ms: 12340
 blocking_issues:
   - "URL extraction caught a JS-heavy SPA — only 2 colors, 1 typography entry extracted. Re-run with --wait-for-selector <hero-selector> or provide a server-rendered URL."
 warnings: []

@@ -13,6 +13,12 @@ phase: A | B
 status: ok | partial | failed
 confidence: high | medium | low
 execution_time_ms: <int>
+max_iterations: <int>        # hard cap for this agent's retry loop; 1 for one-shot agents
+attempts_count: <int>        # number of attempts actually made (1…max_iterations)
+attempts_log:                # one entry per attempt in execution order
+  - attempt: 1
+    failure_reason: "<one-line description, or null if this attempt succeeded>"
+    duration_ms: <int>
 blocking_issues:
   - "<single-line description of an issue that prevents main-agent from proceeding>"
 warnings:
@@ -53,6 +59,25 @@ Self-assessed confidence in the agent's output. An agent with high expertise in 
 
 ### `execution_time_ms` — optional, int
 Wall-clock time the agent spent on the job. Useful for main-agent to detect runaway sub-agents and for post-hoc performance tuning.
+
+### `max_iterations` — required, int
+The hard cap on retry/fix/regenerate loop attempts for this agent, as declared in
+`iteration-budget.md`. One-shot agents that have no internal retry loop set this to `1`.
+
+### `attempts_count` — required, int
+The number of attempts actually made during this invocation (`1 … max_iterations`).
+An agent that succeeds on the first pass sets `attempts_count: 1`.
+
+### `attempts_log` — required, list of objects
+Telemetry for each attempt, in execution order. One entry per attempt:
+- `attempt` — 1-indexed attempt number
+- `failure_reason` — one-line description of why the attempt failed, or `null` if it succeeded
+- `duration_ms` — wall-clock time for that attempt only (not cumulative)
+
+The last entry's `failure_reason` is `null` when `status=ok`, or a non-null string when
+`status=failed` (cap was hit). One-shot agents set `attempts_log: []`.
+
+See `iteration-budget.md` for the full contract, cap table, and fail-fast rules.
 
 ### `blocking_issues` — required (empty list ok), list of strings
 Issues that prevent main-agent from proceeding without intervention. Examples:
