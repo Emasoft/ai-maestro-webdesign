@@ -9,7 +9,7 @@ This file is the single authoritative spec for Mermaid within the `ai-maestro-we
 - `../../external/mermaid-render/` — vendored beautiful-mermaid backend
 - `../../bin/amw-mermaid-render.sh` — shell wrapper (SVG / PNG / ASCII)
 - `../../bin/amw-mermaid-lint.sh` (planned; Task 0c) — validator wrapper (`mmdc` dry-run)
-- `../../bin/amw-validate-ascii.pl` — warn-only gate on ASCII rendering
+- `../../bin/amw-validate-ascii.py` — warn-only gate on ASCII rendering
 - `./ir-schema.md` — when Mermaid is a source of the diagram IR
 - `./conversion-matrix.md` — Mermaid → {ASCII, HTML, SVG, PNG} cells
 - `./validation-dispatcher.md` — Mermaid validator branch
@@ -212,7 +212,7 @@ cat architecture.mmd | \
   bin/amw-mermaid-render.sh --input - --format ascii --use-ascii --out architecture.txt
 ```
 
-`--use-ascii` restricts to `+ - | > <`. Passes through `../../bin/amw-validate-ascii.pl` as **warn-only** (variable-width labels may trigger alignment warnings — fix is to shorten labels, not edit output).
+`--use-ascii` restricts to `+ - | > <`. Passes through `../../bin/amw-validate-ascii.py` as **warn-only** (variable-width labels may trigger alignment warnings — fix is to shorten labels, not edit output).
 
 ### 5.5 Batch rendering (parallel)
 
@@ -289,7 +289,7 @@ TECH-MM-13 cli-flag-surface-17: `--input --out --format --theme --bg --fg --line
 TECH-MM-14 stdin-auto-detect: if `--input` omitted AND stdin not a TTY, read from stdin | source: skills/amw-mermaid-render/SKILL.md:270-281 | applies-to: piped rendering workflows
 TECH-MM-15 ascii-output-unicode-default: default ASCII mode uses Unicode box-drawing (`│─┼└┘┐┌┤├`) | source: skills/amw-mermaid-render/SKILL.md:82 | applies-to: terminal screenshots
 TECH-MM-16 use-ascii-pure: `--use-ascii` restricts to `+ - | > <` for legacy terminals / plain-ASCII pipelines | source: skills/amw-mermaid-render/SKILL.md:84-85 | applies-to: old markdown renderers, legacy tooling
-TECH-MM-17 ascii-validator-warn-only: wrapper pipes ASCII through `../../bin/amw-validate-ascii.pl` as WARN (not FAIL) — variable-width labels are a known issue | source: skills/amw-mermaid-render/SKILL.md:86-92 | applies-to: ASCII output post-processing
+TECH-MM-17 ascii-validator-warn-only: wrapper pipes ASCII through `../../bin/amw-validate-ascii.py` as WARN (not FAIL) — variable-width labels are a known issue | source: skills/amw-mermaid-render/SKILL.md:86-92 | applies-to: ASCII output post-processing
 TECH-MM-18 newlines-over-semicolons: multi-statement input uses `\n` separators, not `;` — shells mangle semicolons in `echo` | source: skills/amw-mermaid-render/SKILL.md:283-298 | applies-to: multi-line piped inputs
 TECH-MM-19 batch-parallel-workers: `batch.mjs --workers 4` default, bump to 8 for 10+ diagrams; upper bound = CPU core count | source: skills/amw-mermaid-render/SKILL.md:348-367 | applies-to: bulk-render workflows
 TECH-MM-20 padding-ascii-tuning: `--padding-x 5 --padding-y 5 --box-border-padding 1` are the ASCII-mode spacing knobs | source: skills/amw-mermaid-render/SKILL.md:264-266 | applies-to: ASCII density tuning

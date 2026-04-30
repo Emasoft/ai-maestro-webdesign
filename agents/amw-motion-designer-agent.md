@@ -311,7 +311,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   ```
 - **Run bin scripts directly for mechanical operations** via Bash where applicable:
   ```
-  Bash: perl bin/amw-validate-ascii.pl /tmp/motion-ascii.txt   # if ASCII layout sketch is produced
+  Bash: python3 bin/amw-validate-ascii.py /tmp/motion-ascii.txt   # if ASCII layout sketch is produced
   ```
 - **Spawn `Task(subagent_type="general-purpose", ...)` for bounded internal sub-work** — per §10 Delegation Rules.
 - **Reference other amw-* agents by name in documentation** without attempting to call them.

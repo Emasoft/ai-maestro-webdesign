@@ -90,7 +90,7 @@ Do NOT activate on:
 - `--use-ascii` switches to pure ASCII (`+` `-` `|` `>` only) for
   environments with no Unicode support (legacy terminals, plain-ASCII log
   pipelines, very old markdown renderers).
-- The wrapper post-processes ASCII output through `../../bin/amw-validate-ascii.pl`
+- The wrapper post-processes ASCII output through `../../bin/amw-validate-ascii.py`
   as a **warn-only** gate. Mermaid's ASCII renderer is deterministic but
   its output width depends on the input labels — CJK characters, emoji,
   and long arrows can break column alignment. When this happens, the
@@ -394,7 +394,7 @@ Templates for all 5 types live under `../../external/mermaid-render/examples/`. 
    external stylesheets, scripts, or images. If the caller needs a fully
    CSP-locked SVG, strip the `@import url('https://fonts.googleapis.com/…')`
    line from the `<style>` block; the system font stack takes over.
-2. **ASCII output must pass `../../bin/amw-validate-ascii.pl` or warn loudly.**
+2. **ASCII output must pass `../../bin/amw-validate-ascii.py` or warn loudly.**
    The wrapper enforces this automatically — if the validator flags
    alignment issues, the stderr message is visible to the caller. Do not
    silence that warning; if it triggers, the fix is to shorten or rename
@@ -452,7 +452,7 @@ vendor-fetch instructions and `/amw-doctor` for the runtime probe.
 - `exit 3` — `node` not on PATH. Install Node.js ≥ 18.
 - `exit 1 + "Parse error on line N"` — invalid Mermaid syntax. Test it at https://mermaid.live first.
 - `exit 1 + "Unknown theme"` — theme name typo. Run `bin/amw-mermaid-render.sh --list-themes`.
-- `validate-ascii.pl` warnings on stderr — the ASCII output has variable-width glyphs. Fix the input labels (shorten, remove CJK/emoji) and re-render.
+- `validate-ascii.py` warnings on stderr — the ASCII output has variable-width glyphs. Fix the input labels (shorten, remove CJK/emoji) and re-render.
 
 ## Troubleshooting
 
@@ -650,7 +650,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-mermaid-render/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 

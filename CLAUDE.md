@@ -226,7 +226,7 @@ Cross-skill utilities live in `bin/`, not duplicated inside each skill:
 | `amw-preview-server.py` | amw-infographics interactive-builder, amw-ascii-sketch multi-variant preview |
 | `amw-ascii-parse.py` | amw-ascii-to-svg, amw-ascii-to-html |
 | `amw-ascii-render.py` | amw-ascii-validator, amw-ascii-sketch (perfect-ascii pure-Python renderer, 4 modes: diagram/table/layers/sequence, 78-col max) |
-| `amw-validate-ascii.pl` | amw-ascii-validator, amw-ascii-sketch, amw-ascii-to-html (alignment + width + wide-char + forbidden-char validator, with FIX hints) |
+| `amw-validate-ascii.py` | amw-ascii-validator, amw-ascii-sketch, amw-ascii-to-html (alignment + width + wide-char + forbidden-char validator, with FIX hints) |
 | `amw-designlang-wrapper.sh` | amw-design-extract |
 | `amw-dev-browser-wrapper.sh` | amw-dev-browser, amw-preview, amw-extract-style, any interactive-inspection workflow |
 | `amw-diagram-ir.py` | amw-diagram-convert, amw-diagram-compare, amw-html-diagram, amw-svg-diagram, amw-mermaid-diagram, amw-webpage-to-diagram, amw-diagram-webpage-sync (IR parse/validate/emit/diff) |
@@ -252,7 +252,7 @@ Cross-skill utilities live in `bin/`, not duplicated inside each skill:
 | `amw-mermaid-render.sh` | amw-mermaid-render, any skill that emits Mermaid source (wrapper over `external/mermaid-render/`; Mermaid text → SVG or ASCII) |
 | `amw-mjml-render.sh` | amw-email-designer-agent (MJML source → HTML email; requires mjml npm package) |
 | `amw-html-validate.sh` | amw-validate-diagram.sh and any HTML validation flow (xmllint + tidy wrapper) |
-| `amw-validate-ascii.py` | amw-ascii-validator, amw-ascii-sketch, amw-ascii-to-html (Python port of validate-ascii.pl; cross-platform fallback for Windows users without Perl) |
+| `amw-validate-ascii.py` | amw-ascii-validator, amw-ascii-sketch, amw-ascii-to-html (Python ASCII validator — sole validator; replaces former Perl version) |
 
 When extracting a utility from a source skill, prefer upgrading it to `bin/` if at least two skills benefit. Skill-specific one-offs stay in the skill's own folder.
 
@@ -310,7 +310,7 @@ The plan lives at `~/.claude/plans/jazzy-skipping-engelbart.md`. Completed 2026-
 **Diagrams + ASCII toolchain** (integrated from `SKILLS-TO-INTEGRATE/diagrams-skills/`):
 
 - `bin/amw-ascii-render.py` — perfect-ascii's pure-Python renderer (JSON → ASCII). 4 modes (diagram / table / layers / sequence), 78-col max. Alignment guaranteed by construction.
-- `bin/amw-validate-ascii.pl` — ascii-diagram-validator's Perl validator (ASCII → PASS/FAIL with `FIX:` hints). Catches width mismatches, nested-box corner drift, vertical `│` misalignment, wide-char leak (emoji/CJK), forbidden chars (`▼▲⟶⇒`).
+- `bin/amw-validate-ascii.py` — Python ASCII validator (ASCII → PASS/FAIL with `FIX:` hints). Catches width mismatches, nested-box corner drift, vertical `│` misalignment, wide-char leak (emoji/CJK), forbidden chars (`▼▲⟶⇒`).
 - `bin/amw-mermaid-render.sh` + `external/mermaid-render/` — Mermaid text → SVG or themed ASCII, vendored beautiful-mermaid backend.
 - `skills/amw-ascii-creator/` — SINGLE-artifact authoring (ASCII twin of svg-creator) with 2 modes: Mode A structured via ascii-render.py, Mode B freeform via validator loop.
 - `skills/amw-ascii-validator/` — documents the toolchain + the MANDATORY validation gate every ASCII emitter must pass before delivery.
@@ -320,7 +320,7 @@ The plan lives at `~/.claude/plans/jazzy-skipping-engelbart.md`. Completed 2026-
 - `skills/amw-excalidraw-illustrations/` — Gemini-API hand-drawn concept illustrations (GATED — explicit cost, `$GEMINI_API_KEY` required).
 - `skills/amw-text-visual-{workflows,arch,state,cheatsheets,retro}/` — 5 paste-into-PR ASCII visualization skills.
 
-All skills reference `amw-design-principles/SKILL.md` as orchestrator and require `bin/amw-validate-ascii.pl` pass before ASCII emission.
+All skills reference `amw-design-principles/SKILL.md` as orchestrator and require `bin/amw-validate-ascii.py` pass before ASCII emission.
 
 **Cross-format diagram toolchain (2026-04-22, Phases 0–4 of the 12-commands build):**
 

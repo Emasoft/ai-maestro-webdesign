@@ -25,7 +25,7 @@ works".
 
 ```bash
 # 1. Validate in a loop until PASS
-perl bin/amw-validate-ascii.pl /tmp/diagram.txt
+python3 bin/amw-validate-ascii.py /tmp/diagram.txt
 # exit 0 → continue
 
 # 2. Read back
@@ -46,7 +46,7 @@ Never:
 
 ```bash
 # Source: box-diagram-master/skills/amw-box-diagram/SKILL.md lines 21-22, 43-45
-python bin/amw-validate-ascii.pl /tmp/diagram.txt   # PASS
+python bin/amw-validate-ascii.py /tmp/diagram.txt   # PASS
 cat /tmp/diagram.txt                       # ← read back
 # paste the exact bytes of cat's output into the reply
 ```

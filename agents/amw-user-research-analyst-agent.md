@@ -204,7 +204,7 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 |---|---|---|
 | Need persona and journey-map frameworks | `../skills/amw-ux-designer/SKILL.md` | Pull the UX methodology template; apply the persona structure. |
 | Need to render journey map as Mermaid (default) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-mermaid-diagram/SKILL.md` | Emit Mermaid flowchart; render via `bin/amw-mermaid-render.sh`. |
-| Need to render journey map as ASCII (preference or low-fi) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-ascii-creator/SKILL.md` | Emit ASCII flowchart; validate via `bin/amw-validate-ascii.pl`. |
+| Need to render journey map as ASCII (preference or low-fi) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-ascii-creator/SKILL.md` | Emit ASCII flowchart; validate via `bin/amw-validate-ascii.py`. |
 | Need to diagram a data-source coverage table | (inline markdown table) | No skill needed — render directly as markdown. |
 | Need to note SEO-adjacent implications (search-intent clues from NPS verbatims) | (flag only) | Forward to `amw-seo-strategist-agent` via main-agent; do not do keyword research myself. |
 | Need to note brand-adjacent implications (tone of voice from interviews) | (flag only) | Forward to `amw-brand-researcher-agent` via main-agent. |
@@ -272,7 +272,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
   ```
   Bash: bash bin/amw-mermaid-render.sh <journey-map.mmd> --theme default --format svg --out <out>
   Bash: python3 bin/amw-ascii-render.py <journey-spec.json> --mode sequence
-  Bash: perl bin/amw-validate-ascii.pl <journey-ascii.txt>
+  Bash: python3 bin/amw-validate-ascii.py <journey-ascii.txt>
   ```
 - Reference other `amw-*` agents by name in report recommendations (documentation only — main-agent does the actual spawn).
 

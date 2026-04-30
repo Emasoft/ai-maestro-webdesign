@@ -1,11 +1,11 @@
 ---
 name: amw-create-or-modify-ascii-diagram
-description: "Shortcut for users who know they want a single ASCII diagram created or modified directly — dispatches to ascii-creator (Mode A/B) or the shared modify-flow, with mandatory bin/amw-validate-ascii.pl gate. An agent in Main-agent mode may also invoke skills/amw-ascii-creator/ directly via the orchestrator after Phase A approval, applying the full range of diagram types and authoring modes the skill exposes."
+description: "Shortcut for users who know they want a single ASCII diagram created or modified directly — dispatches to ascii-creator (Mode A/B) or the shared modify-flow, with mandatory bin/amw-validate-ascii.py gate. An agent in Main-agent mode may also invoke skills/amw-ascii-creator/ directly via the orchestrator after Phase A approval, applying the full range of diagram types and authoring modes the skill exposes."
 ---
 
 # /amw-create-or-modify-ascii-diagram
 
-Thin dispatcher over `skills/amw-ascii-creator/` (create path) and `skills/amw-diagram-formats/references/modify-flow.md` (modify path). Both paths share the same mandatory validation gate — `bin/amw-validate-ascii.pl` — before any file is written to the user's working directory.
+Thin dispatcher over `skills/amw-ascii-creator/` (create path) and `skills/amw-diagram-formats/references/modify-flow.md` (modify path). Both paths share the same mandatory validation gate — `bin/amw-validate-ascii.py` — before any file is written to the user's working directory.
 
 ## Dispatch
 
@@ -30,7 +30,7 @@ Thin dispatcher over `skills/amw-ascii-creator/` (create path) and `skills/amw-d
 - `skills/amw-ascii-creator/SKILL.md` — authoring flow (Mode A / Mode B).
 - `skills/amw-diagram-formats/references/modify-flow.md` — shared modify pipeline (authoritative).
 - `skills/amw-diagram-formats/references/ascii.md` — ASCII format spec + 95-technique catalog.
-- `bin/amw-validate-ascii.pl` — mandatory validation gate.
+- `bin/amw-validate-ascii.py` — mandatory validation gate.
 - `bin/amw-diagram-ir.py` — IR parse / emit (modify flow steps 2 + 5).
 - `bin/amw-diagram-detect-format.sh` — format sniffer (modify dispatch).
 - `/amw-ascii-to-html` — natural next step when the user wants HTML.

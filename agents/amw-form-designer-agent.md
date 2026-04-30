@@ -313,7 +313,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
 - **Run bin scripts directly for mechanical operations.** Every plugin script under `bin/` is a CLI tool I invoke through Bash:
   ```
   Bash: python3 bin/amw-ascii-render.py spec.json --mode diagram
-  Bash: perl bin/amw-validate-ascii.pl /tmp/form.txt
+  Bash: python3 bin/amw-validate-ascii.py /tmp/form.txt
   ```
 - **Spawn `Task(subagent_type="general-purpose", ...)` for bounded internal sub-work** — per §10 Delegation Rules.
 - **Reference other amw-* agents by name in documentation** (warnings, recommendations, report body) without attempting to call them.

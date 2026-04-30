@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""validate-ascii.py — Python port of bin/validate-ascii.pl.
+"""validate-ascii.py — ASCII diagram validator.
 
-Identical behavior for ASCII + Unicode inputs; additionally offers
-box-diagram-master's group-detection refinement for more precise error
-messages on multi-structure diagrams. Use this on Windows where Perl
-is not pre-installed.
+Checks ASCII + Unicode inputs; offers box-diagram-master's group-detection
+refinement for more precise error messages on multi-structure diagrams.
+Requires only Python 3.8+ stdlib — no Perl dependency needed.
 
 Checks (mirror of the Perl validator):
   1. Line-width consistency, per *box group* (group-aware — a diagram with

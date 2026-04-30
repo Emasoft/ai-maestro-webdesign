@@ -119,11 +119,11 @@ Concrete example — a timeout annotation between a request and its response:
 
 The note appears as a small boxed block between the Frontend and API lifelines right after message 1 (`POST /checkout`), reading `Timeout after 30s`. Keep note text under ~30 chars per line to respect the 78-col overall width cap; the renderer errors out if a note overflows.
 
-### `../../bin/amw-validate-ascii.pl` (ascii-diagram-validator) — primary
+### `../../bin/amw-validate-ascii.py` — ASCII diagram validator
 
-Perl script. Checks framed ASCII wireframes for:
+Pure-Python 3.8+ stdlib validator. Checks framed ASCII wireframes for:
 
-1. **Consistent line widths** — every line in the frame must have the same display width
+1. **Consistent line widths** — per structural box group (group-aware — avoids false positives on multi-structure diagrams)
 2. **Box corner alignment** — nested boxes must have vertically-aligned corners
 3. **Vertical line continuity** — `│` characters must align across rows
 4. **Horizontal connections** — corners must connect properly to horizontal lines
@@ -133,20 +133,10 @@ Perl script. Checks framed ASCII wireframes for:
 Exits 0 on PASS, 1 on FAIL. Every finding includes `FIX:` instructions.
 
 ```bash
-perl bin/amw-validate-ascii.pl /tmp/variant-a.txt
-```
-
-### `../../bin/amw-validate-ascii.py` (Windows-friendly Python port)
-
-Pure-Python 3.8+ stdlib re-implementation of the Perl script. Identical CLI surface, identical exit codes, identical `FIX:` hint format. Use this on Windows (where Perl is not pre-installed) or in any environment where a Python-only toolchain is preferred.
-
-```bash
 python3 bin/amw-validate-ascii.py /tmp/variant-a.txt
 ```
 
-**Key refinement over the Perl script:** the Python port adopts `box-diagram-master`'s **group-detection algorithm** for line-width checking. The Perl script picks the globally most-common line width as "expected" and flags every deviating line — which produces false positives on diagrams with multiple independent structures (e.g. a header row plus a fan-out plus a fan-in each at different widths). The Python port groups consecutive lines that share box-char column positions into one structural group, computes the expected width per group, and only flags intra-group deviations. The three canonical `box-diagram/examples/*.txt` PASS the Python validator and FAIL the Perl validator for exactly this reason — the Python behavior is the target.
-
-The two validators share everything else: the same forbidden-character ban list, the same vertical-continuity rules, the same nested-corner alignment checks, the same wide-char detection. In an ASCII-only diagram with one structural group, output is identical line-for-line.
+**Group-detection algorithm:** the validator groups consecutive lines that share box-char column positions into one structural group, computes the expected width per group, and only flags intra-group deviations. The three canonical `box-diagram/examples/*.txt` PASS this validator. This is the canonical behavior target for all ASCII output.
 
 ## Mandatory integration with `ascii-sketch`
 
@@ -154,7 +144,7 @@ Every variant `ascii-sketch` produces MUST pass the validator before the orchest
 
 ```
 1. Generate variant → write to /tmp/amw-sketch-<slug>-<variant>.txt
-2. perl bin/amw-validate-ascii.pl /tmp/amw-sketch-<slug>-<variant>.txt
+2. python3 bin/amw-validate-ascii.py /tmp/amw-sketch-<slug>-<variant>.txt
    - If PASS → proceed.
    - If FAIL → apply the emitted `FIX:` hints, re-validate. Loop until PASS.
 3. Present the validated variant to the user.
@@ -293,7 +283,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-ascii-validator/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
@@ -301,7 +291,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. validated ASCII `.txt` output + a `validate-ascii.pl` PASS log). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. validated ASCII `.txt` output + a `validate-ascii.py` PASS log). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -329,7 +319,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Dependencies
 
-- **runtime_binaries:** `perl >= 5.10` (pre-installed on macOS and most Linux distros — `/amw-doctor` checks) **OR** `python3 >= 3.8` (Windows-friendly fallback — `bin/amw-validate-ascii.py` has identical behavior)
+- **runtime_binaries:** `python3 >= 3.8` (system-required per plugin contract)
 - **python_packages:** none (pure stdlib)
 - **cpan / npm:** none
 
@@ -339,13 +329,12 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - `../amw-ascii-to-html/SKILL.md` — upstream consumer: validates the approved ASCII one last time before HTML conversion
 - `../amw-ascii-to-svg/SKILL.md` — upstream consumer: validates the ASCII input before parse
 - `../../bin/amw-ascii-render.py` — perfect-ascii renderer (pure Python, 78-col max, 4 modes)
-- `../../bin/amw-validate-ascii.pl` — alignment validator (Perl, primary, with FIX hints)
-- `../../bin/amw-validate-ascii.py` — alignment validator (Python port; group-aware width detection, Windows-friendly)
+- `../../bin/amw-validate-ascii.py` — alignment validator (Python; group-aware width detection, FIX hints)
 - `../amw-design-principles/ai-slop-avoid.md` — misaligned ASCII is a form of AI-slop visible in tokens
 
 ## Non-negotiables
 
-- Every variant `ascii-sketch` emits MUST pass `validate-ascii.pl` before presentation
+- Every variant `ascii-sketch` emits MUST pass `validate-ascii.py` before presentation
 - Forbidden characters (`▼ ▲ ▶ ◀ ⟶ ⇒`) must be substituted BEFORE emission, not after
 - CJK / emoji inclusion requires explicit double-width accounting in the frame
 - `perfect-ascii` output is trimmed-line (no fixed width per line); the frame validator does NOT apply to its output — route to one or the other depending on shape
@@ -356,7 +345,7 @@ This skill is also the entry point for **ALL diagram formats** when routed throu
 
 | Format | Backend |
 |---|---|
-| ASCII | `bin/amw-validate-ascii.pl` (primary) or `bin/amw-validate-ascii.py` (fallback) |
+| ASCII | `bin/amw-validate-ascii.py` |
 | SVG | `bin/amw-validate-svg-diagram.sh` (wraps `xmllint --noout` + namespace check) |
 | HTML | `bin/amw-validate-html-diagram.sh` (wraps `xmllint --html` + optional `tidy -e -q`) |
 | Mermaid | `bin/amw-mermaid-lint.sh` (wraps `mmdc` dry-run, parses stderr for errors) |

@@ -1,6 +1,6 @@
 ---
 name: amw-validate-any-diagram-format
-description: "Shortcut for users who want to validate a specific diagram file against its format rules directly — auto-detects ASCII/HTML/SVG/Mermaid, reports PASS/FAIL with FIX hints. An agent in Main-agent mode may also invoke the format-specific validators (bin/amw-validate-ascii.pl, bin/amw-validate-svg-diagram.sh, bin/amw-mermaid-lint.sh) directly as part of Phase B artifact validation."
+description: "Shortcut for users who want to validate a specific diagram file against its format rules directly — auto-detects ASCII/HTML/SVG/Mermaid, reports PASS/FAIL with FIX hints. An agent in Main-agent mode may also invoke the format-specific validators (bin/amw-validate-ascii.py, bin/amw-validate-svg-diagram.sh, bin/amw-mermaid-lint.sh) directly as part of Phase B artifact validation."
 ---
 
 # /amw-validate-any-diagram-format
@@ -19,7 +19,7 @@ Validate any supported diagram file. Auto-sniffs format and routes to the approp
 
 1. Detects format via `bin/amw-diagram-detect-format.sh <path>` → one of `ascii|html|svg|mermaid|png|unknown`.
 2. Dispatches to `bin/amw-validate-diagram.sh <path>`, which routes internally:
-   - **ascii** → `bin/amw-validate-ascii.pl` (Perl; primary) or `bin/amw-validate-ascii.py` (Python; fallback)
+   - **ascii** → `bin/amw-validate-ascii.py` (Python)
    - **svg** → `bin/amw-validate-svg-diagram.sh` (xmllint + namespace check)
    - **html** → `bin/amw-validate-html-diagram.sh` (xmllint --html + tidy if available)
    - **mermaid** → `bin/amw-mermaid-lint.sh` (mmdc dry-run)

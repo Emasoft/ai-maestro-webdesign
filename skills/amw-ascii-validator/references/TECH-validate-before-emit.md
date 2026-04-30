@@ -29,7 +29,7 @@ workflow step 4-6):
 ```
 1. Generate the diagram
 2. Write to a temp file
-3. Run: perl bin/amw-validate-ascii.pl <file>
+3. Run: python3 bin/amw-validate-ascii.py <file>
 4. If PASS → present to the user FROM THE FILE (never re-typed)
 5. If FAIL → apply every FIX: hint, goto 3
 6. After N retries with no convergence, STOP and propose a redesign

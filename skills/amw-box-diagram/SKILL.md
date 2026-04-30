@@ -1,6 +1,6 @@
 ---
 name: amw-box-diagram
-description: Author clean Unicode rounded-corner box diagrams (╭╮╰╯│─) for pipeline diagrams, workflow charts, microservices topologies, and incident-response flows. Triggers on narrow technical intents only — "box diagram of", "Unicode pipeline diagram", "fan-out diagram", "fan-in diagram", "pipeline box diagram", "rounded-corner box diagram", "microservices box topology", "incident-response flow diagram", "workflow box chart". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator, which routes here when the user needs a rectangular-box flow with clean rounded corners. All output MUST pass `../../bin/amw-validate-ascii.pl` before emission.
+description: Author clean Unicode rounded-corner box diagrams (╭╮╰╯│─) for pipeline diagrams, workflow charts, microservices topologies, and incident-response flows. Triggers on narrow technical intents only — "box diagram of", "Unicode pipeline diagram", "fan-out diagram", "fan-in diagram", "pipeline box diagram", "rounded-corner box diagram", "microservices box topology", "incident-response flow diagram", "workflow box chart". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator, which routes here when the user needs a rectangular-box flow with clean rounded corners. All output MUST pass `../../bin/amw-validate-ascii.py` before emission.
 version: 0.1.0
 ---
 
@@ -45,10 +45,10 @@ If the target context cannot render UTF-8 (old terminals, ancient CI log viewers
 
 ## Non-negotiables
 
-Every diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.pl` before presentation to the user. See `../amw-ascii-validator/SKILL.md` for the validator contract — same gate `../amw-ascii-sketch/` uses.
+Every diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.py` before presentation to the user. See `../amw-ascii-validator/SKILL.md` for the validator contract — same gate `../amw-ascii-sketch/` uses.
 
 ```bash
-perl bin/amw-validate-ascii.pl /tmp/box-diagram-<slug>.txt
+python3 bin/amw-validate-ascii.py /tmp/box-diagram-<slug>.txt
 ```
 
 The validator catches:
@@ -88,7 +88,7 @@ Additional non-negotiables beyond the validator:
 
 ## Extended connection-type vocabulary
 
-The base unidirectional arrows above (`▸ ▾ ▴ ◂`) are sufficient for simple flows. For richer relationships (sequence-style returns, class/interface associations, async hand-offs) draw on this extended set — all survive `validate-ascii.pl` because none introduce variable-width glyphs:
+The base unidirectional arrows above (`▸ ▾ ▴ ◂`) are sufficient for simple flows. For richer relationships (sequence-style returns, class/interface associations, async hand-offs) draw on this extended set — all survive `validate-ascii.py` because none introduce variable-width glyphs:
 
 | Connection type | Unicode form | Classic-ASCII form | When to use |
 |---|---|---|---|
@@ -103,7 +103,7 @@ The connector body is always the same horizontal (`─` or `-`); only the head c
 
 ## Semantic node shapes (optional authoring conventions)
 
-The default box in this skill is a rounded Unicode rectangle. For diagrams that need to distinguish **what kind of thing** each node is (database vs queue vs external dependency vs decision point), the following glyph conventions help the reader scan the diagram faster. These are **authoring conventions, not validator rules** — `validate-ascii.pl` does not require them, but readers familiar with the style will decode the diagram faster.
+The default box in this skill is a rounded Unicode rectangle. For diagrams that need to distinguish **what kind of thing** each node is (database vs queue vs external dependency vs decision point), the following glyph conventions help the reader scan the diagram faster. These are **authoring conventions, not validator rules** — `validate-ascii.py` does not require them, but readers familiar with the style will decode the diagram faster.
 
 - **Database** — rounded-corner "cylinder" using the same outer rounded corners as a normal box. The top/bottom separator rules are the same `─`. Width rules identical.
 
@@ -140,7 +140,7 @@ When mixing shapes in one diagram, keep them in the same column grid so the conn
 3. **Draw row by row.** Pad each content line to the border width: `│` + space + text + `' ' * (inner_width - len(text))` + space + `│`.
 4. **Connectors.** Vertical `│` must sit under the center of the box above; horizontal `─` counts = gap between box edges; fan-out uses `┌ ─ ┬ ─ ┐` across the top of the child row; fan-in uses `└ ─ ┴ ─ ┘` across the bottom.
 5. **Assert text fits BEFORE generating.** `assert len(text) <= inner_width` — one char overflow breaks everything.
-6. **Validate.** Run `perl bin/amw-validate-ascii.pl` on the file. Fix any `FIX:` hint, re-validate.
+6. **Validate.** Run `python3 bin/amw-validate-ascii.py` on the file. Fix any `FIX:` hint, re-validate.
 7. **Output from the file, never from memory.** Read the validated file, paste verbatim into the reply.
 
 ### Python helper pattern
@@ -246,7 +246,7 @@ Trigger phrasing: *"detailed incident-response flow"*, *"rich-content box diagra
 
 ## Canonical example files
 
-The `examples/` subdirectory contains the three gold-standard reference artifacts this skill was adapted from. Each one passes `../../bin/amw-validate-ascii.pl` verbatim. Use them as shape templates when building a new diagram — the column grid, fixed box widths, and junction spacing in each are non-trivial to reproduce by eye.
+The `examples/` subdirectory contains the three gold-standard reference artifacts this skill was adapted from. Each one passes `../../bin/amw-validate-ascii.py` verbatim. Use them as shape templates when building a new diagram — the column grid, fixed box widths, and junction spacing in each are non-trivial to reproduce by eye.
 
 | File | Shape | Use as template for |
 |---|---|---|
@@ -354,7 +354,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-box-diagram/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
@@ -396,9 +396,8 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Cross-references
 
-- `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; both validators (`validate-ascii.pl`, `validate-ascii.py`) share the same rule set
-- `../../bin/amw-validate-ascii.pl` — the primary validator (Perl, exits non-zero on failure, emits `FIX:` hints)
-- `../../bin/amw-validate-ascii.py` — pure-Python port (Windows-compatible, group-aware width detection for multi-structure diagrams)
+- `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; defines the rule set
+- `../../bin/amw-validate-ascii.py` — the validator (pure-Python, exits non-zero on failure, emits `FIX:` hints; Windows-compatible, group-aware width detection for multi-structure diagrams)
 - `../amw-ascii-sketch/SKILL.md` — upstream peer for wireframe layouts; this skill handles the flow-diagram side of the same output medium
 - `../amw-ascii-to-svg/SKILL.md` — downstream: convert an approved box diagram to SVG for editorial/print use
 - `../amw-ascii-diagrams-reference/SKILL.md` — classic-ASCII (`+--+`) counterpart for legacy contexts that cannot render UTF-8

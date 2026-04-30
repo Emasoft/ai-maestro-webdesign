@@ -12,7 +12,7 @@
 # --input -        reads Mermaid text from stdin (explicit form)
 # (no --input)     if stdin is a pipe (not a TTY), stdin is auto-consumed
 # --format svg     emits SVG to --out (or stdout)
-# --format ascii   emits ASCII to --out (or stdout), piped through validate-ascii.pl as a warn-only gate
+# --format ascii   emits ASCII to --out (or stdout), piped through validate-ascii.py as a warn-only gate
 # --theme <name>   one of the 15 built-in themes; see `--list-themes`
 # --list-themes    prints the built-in theme list and exits
 # --version        prints the wrapper version and exits
@@ -25,8 +25,8 @@
 #
 # Note on the ASCII gate: beautiful-mermaid's renderMermaidAscii() can emit
 # variable-width Unicode glyphs (CJK, emoji, long arrows) depending on the
-# input labels. We run bin/amw-validate-ascii.pl as a warn-only post-check so
-# the skill's house rule ("ASCII output MUST pass amw-validate-ascii.pl") is
+# input labels. We run bin/amw-validate-ascii.py as a warn-only post-check so
+# the skill's house rule ("ASCII output MUST pass amw-validate-ascii.py") is
 # still visible, but we don't fail the render — the Mermaid backend's
 # output is what it is, and re-running with different labels is the fix.
 
@@ -37,7 +37,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGIN_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 VENDOR_DIR="$PLUGIN_ROOT/external/mermaid-render"
-VALIDATOR="$SCRIPT_DIR/validate-ascii.pl"
+VALIDATOR="$SCRIPT_DIR/validate-ascii.py"
 
 WRAPPER_VERSION="1.0.0"
 
@@ -140,16 +140,16 @@ if ! node "$VENDOR_DIR/scripts/render.mjs" "${ARGS[@]}"; then
   exit 1
 fi
 
-# --- post-process ASCII output through validate-ascii.pl (warn-only) ----
+# --- post-process ASCII output through validate-ascii.py (warn-only) ----
 if [ "$FORMAT" = "ascii" ] && [ -n "$OUT_PATH" ] && [ -f "$OUT_PATH" ]; then
   if [ -x "$VALIDATOR" ] || [ -f "$VALIDATOR" ]; then
-    # validate-ascii.pl returns non-zero on issues. We intentionally ignore
+    # validate-ascii.py returns non-zero on issues. We intentionally ignore
     # its exit code here: the Mermaid backend is deterministic and a
     # validation failure usually means "your input labels produced
     # variable-width glyphs" — the fix is to rename labels, not to fail
     # the render. Surface the diagnostic to stderr and continue.
-    if ! perl "$VALIDATOR" "$OUT_PATH" >&2; then
-      echo "[mermaid-render] warn: validate-ascii.pl flagged issues in $OUT_PATH (see above). Output written anyway." >&2
+    if ! python3 "$VALIDATOR" "$OUT_PATH" >&2; then
+      echo "[mermaid-render] warn: validate-ascii.py flagged issues in $OUT_PATH (see above). Output written anyway." >&2
     fi
   fi
 fi

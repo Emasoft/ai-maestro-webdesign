@@ -114,13 +114,13 @@ If the user has not supplied enough context to answer any of the four questions,
 
 ## Validation gate (MANDATORY, runs between variant generation and presentation)
 
-Every variant this skill emits MUST pass `../../bin/amw-validate-ascii.pl` before being shown to the user. LLMs cannot count characters reliably — this validator is how the plugin compensates.
+Every variant this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user. LLMs cannot count characters reliably — this validator is how the plugin compensates.
 
 The flow:
 
 1. Generate a variant.
 2. Write it to `/tmp/amw-sketch-<slug>-<variant>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.pl /tmp/amw-sketch-<slug>-<variant>.txt`.
+3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-sketch-<slug>-<variant>.txt`.
 4. If PASS → include in the presented set.
 5. If FAIL → apply every `FIX:` hint in the validator output, re-run. Loop until PASS.
 6. Never present an un-validated variant.

@@ -1,6 +1,6 @@
 ---
 name: amw-text-visual-arch
-description: Produces layered ASCII architecture diagrams — context, container, or component level — for terminals, PRs, and ADRs. Triggers on narrow intents — "ascii architecture diagram", "text-only system diagram", "layered services in ASCII", "terminal-safe architecture sketch", "ADR-embeddable diagram", "PR-paste architecture overview". Does NOT trigger on generic "architecture", "system diagram", "draw the system" — those belong to design-principles / diagram-architecture / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.pl before delivery.
+description: Produces layered ASCII architecture diagrams — context, container, or component level — for terminals, PRs, and ADRs. Triggers on narrow intents — "ascii architecture diagram", "text-only system diagram", "layered services in ASCII", "terminal-safe architecture sketch", "ADR-embeddable diagram", "PR-paste architecture overview". Does NOT trigger on generic "architecture", "system diagram", "draw the system" — those belong to design-principles / diagram-architecture / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery.
 version: 0.1.0
 ---
 
@@ -151,13 +151,13 @@ Do not produce all three zoom levels in one response unless the user asks — it
 
 ## Validation gate (MANDATORY)
 
-Every diagram this skill emits MUST pass `../../bin/amw-validate-ascii.pl` before being shown to the user.
+Every diagram this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user.
 
 The flow:
 
 1. Draft the diagram.
 2. Write it to `/tmp/amw-tva-<slug>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.pl /tmp/amw-tva-<slug>.txt`.
+3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-tva-<slug>.txt`.
 4. If PASS → present in a fenced code block.
 5. If FAIL → apply every `FIX:` hint, re-run. Loop until PASS.
 6. Never present an un-validated diagram.
@@ -249,7 +249,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-text-visual-arch/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
@@ -289,7 +289,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
 - **npm_packages:** none
 - **mcp_servers:** none
-- **scripts:** `../../bin/amw-validate-ascii.pl` (mandatory), `../../bin/amw-ascii-render.py layers` (optional)
+- **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py layers` (optional)
 
 ## Cross-references
 
@@ -313,7 +313,7 @@ No dedicated slash command. Invoke via:
 
 ## Non-negotiables
 
-- Every diagram passes `../../bin/amw-validate-ascii.pl` before delivery. No exceptions.
+- Every diagram passes `../../bin/amw-validate-ascii.py` before delivery. No exceptions.
 - 78-column terminal ceiling / 100-column GitHub ceiling. Never exceed 100.
 - No tab characters.
 - One zoom level per diagram; multi-zoom requests stack two diagrams, not merge them.

@@ -55,7 +55,7 @@ from each branch.
 - Keep decision branches left/right labeled explicitly (`yes` / `no`, not
   `T` / `F` unless the audience is familiar).
 - Use `+` for every corner and junction — this is the anchor for
-  `bin/amw-validate-ascii.pl`'s corner-alignment check.
+  `bin/amw-validate-ascii.py`'s corner-alignment check.
 
 ## Cross-references
 

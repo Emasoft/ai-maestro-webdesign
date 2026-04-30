@@ -49,7 +49,7 @@ An iteration loop would:
 ```bash
 # Parse L=2, action="Add 1 space(s)" — apply, re-validate.
 sed -i '2s/$/ /' /tmp/diagram.txt
-perl bin/amw-validate-ascii.pl /tmp/diagram.txt
+python3 bin/amw-validate-ascii.py /tmp/diagram.txt
 # Loop until exit 0.
 ```
 

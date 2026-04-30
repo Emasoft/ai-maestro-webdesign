@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-creator
-description: Produce ONE validated perfect-ASCII artifact from a brief — structured diagrams via bin/amw-ascii-render.py (perfect-ascii JSON → ASCII), freeform wireframes via hand-author-validate-iterate loop using bin/amw-validate-ascii.pl. Triggers on narrow authoring intents only — "ASCII diagram of", "ASCII wireframe of", "create an ASCII flowchart", "perfect ASCII of", "build an ASCII mockup", "finalize ASCII for <subject>". Does NOT trigger on generic design intent — those go to design-principles → ascii-sketch (plan-phase, 3 variants). This is the FINISHING skill: one invocation, one validated .txt file delivered. ascii-to-html consumes its output.
+description: Produce ONE validated perfect-ASCII artifact from a brief — structured diagrams via bin/amw-ascii-render.py (perfect-ascii JSON → ASCII), freeform wireframes via hand-author-validate-iterate loop using bin/amw-validate-ascii.py. Triggers on narrow authoring intents only — "ASCII diagram of", "ASCII wireframe of", "create an ASCII flowchart", "perfect ASCII of", "build an ASCII mockup", "finalize ASCII for <subject>". Does NOT trigger on generic design intent — those go to design-principles → ascii-sketch (plan-phase, 3 variants). This is the FINISHING skill: one invocation, one validated .txt file delivered. ascii-to-html consumes its output.
 version: 0.1.0
 ---
 
@@ -69,7 +69,7 @@ Structured output from `ascii-render.py` is NOT expected to pass the frame-width
 
 ### Mode B — Freeform wireframe (framed rectangular UI mockup)
 
-Use when the brief describes a RECTANGULAR artifact — dashboard, mobile frame, editorial poster, newspaper-column layout. The renderer cannot produce these; they are hand-authored, and alignment is enforced by `../../bin/amw-validate-ascii.pl`.
+Use when the brief describes a RECTANGULAR artifact — dashboard, mobile frame, editorial poster, newspaper-column layout. The renderer cannot produce these; they are hand-authored, and alignment is enforced by `../../bin/amw-validate-ascii.py`.
 
 **Workflow:**
 
@@ -86,7 +86,7 @@ Use when the brief describes a RECTANGULAR artifact — dashboard, mobile frame,
 4. Write to `/tmp/ascii-creator-<slug>.txt`.
 5. Validate:
    ```bash
-   perl ../../bin/amw-validate-ascii.pl /tmp/ascii-creator-<slug>.txt
+   perl ../../bin/amw-validate-ascii.py /tmp/ascii-creator-<slug>.txt
    ```
 6. If FAIL — read the `FIX:` hints. They are exact ("Move '│' on line 5 right by 1 position(s) to column 64"). Apply every hint, re-validate. Loop until PASS.
 7. Save final: `cp /tmp/ascii-creator-<slug>.txt <working-dir>/<Descriptive Name>.txt`
@@ -300,7 +300,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-ascii-creator/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
@@ -405,9 +405,9 @@ sequence diagram with labelled messages and Unicode lifelines. Mode B
 freeform wireframes usually imply `unicode` (box-drawing of a UI frame);
 a user explicitly asking for a "retro terminal" look wants `clasico`.
 
-## Banned characters (severity-rated — enforced by validate-ascii.pl)
+## Banned characters (severity-rated — enforced by validate-ascii.py)
 
-<!-- Source: bin/amw-validate-ascii.pl lines 72-98 (%forbidden_chars table) -->
+<!-- Source: bin/amw-validate-ascii.py lines 72-98 (%forbidden_chars table) -->
 
 The validator flags these as forbidden because they render at variable
 width in most monospaced fonts. They are tiered by severity so the FIX
@@ -463,23 +463,23 @@ If the user insists on including an emoji or CJK char, account for its 2-col wid
 
 - **runtime_binaries (system):** `python3 >= 3.8`, `perl >= 5.10` — both pre-installed on macOS and most Linux distros. `/amw-doctor` checks.
 - **python_packages / npm / mcp:** none — both tools are pure-stdlib in their respective languages.
-- **Shared scripts:** `../../bin/amw-ascii-render.py` (pure-Python renderer, 4 modes, 78-col max), `../../bin/amw-validate-ascii.pl` (alignment + width + wide-char + forbidden-char validator).
+- **Shared scripts:** `../../bin/amw-ascii-render.py` (pure-Python renderer, 4 modes, 78-col max), `../../bin/amw-validate-ascii.py` (alignment + width + wide-char + forbidden-char validator).
 
 ## Cross-references
 
 - `../amw-ascii-sketch/SKILL.md` — upstream when the user wants to ITERATE. Sketch produces 3 variants for plan-phase iteration; once a direction is chosen, the result can either (a) pass through this skill to finalize the ASCII artifact file, or (b) pass directly to `ascii-to-html` for conversion.
-- `../amw-ascii-validator/SKILL.md` — documents the underlying validator tool-chain (`bin/amw-ascii-render.py`, `bin/amw-validate-ascii.pl`) and the validation contract.
+- `../amw-ascii-validator/SKILL.md` — documents the underlying validator tool-chain (`bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`) and the validation contract.
 - `../amw-ascii-to-html/SKILL.md` — downstream when the freeform wireframe should become HTML. Consumes Mode B output directly.
 - `../amw-ascii-to-svg/SKILL.md` — downstream when the structured diagram should become SVG. Consumes Mode A output.
 - `../amw-design-principles/SKILL.md` — orchestrator that routes here when the brief implies a single ASCII artifact rather than a variant set.
 - `../amw-box-diagram/examples/` — **gold-standard Mode B reference diagrams** (`incident-response.txt`, `ci-cd-pipeline.txt`, `microservices.txt`). Read before authoring non-trivial wireframes.
 - `../../bin/amw-ascii-render.py` — renderer (JSON → ASCII)
-- `../../bin/amw-validate-ascii.pl` — validator (ASCII → PASS/FAIL + FIX hints)
+- `../../bin/amw-validate-ascii.py` — validator (ASCII → PASS/FAIL + FIX hints)
 
 ## Non-negotiables
 
 - One invocation emits **exactly one** `.txt` file. For multi-variant exploration, use `../amw-ascii-sketch/`.
-- Mode B output must PASS `bin/amw-validate-ascii.pl` before being saved to the working directory.
+- Mode B output must PASS `bin/amw-validate-ascii.py` before being saved to the working directory.
 - Mode A output must successfully execute `bin/amw-ascii-render.py` (non-zero exit = not delivered).
 - Banned characters are substituted BEFORE authoring, not during FIX iteration — don't rely on the validator to catch them.
 - Descriptive English filename (`Login Flow.txt`, `Dashboard Overview.txt`), never `diagram.txt` / `output.txt`.
@@ -500,7 +500,7 @@ If the user insists on including an emoji or CJK char, account for its 2-col wid
 
 ## Modify flow (shared)
 
-When the user points at an existing `.txt` / `.ascii` / `.md` file and asks to edit it (rather than author from scratch), this skill runs the **shared modify pipeline** instead of Mode A or Mode B. The pipeline is: **detect format → parse to IR (`bin/amw-diagram-ir.py parse`) → diff-aware IR patch → re-render (`bin/amw-diagram-ir.py emit --format ascii`) → re-validate (`bin/amw-validate-ascii.pl`)**. The full, authoritative 6-step spec — including retry budget, atomic-move semantics, and per-format emitter fast paths — lives at `../amw-diagram-formats/references/modify-flow.md`. Do NOT re-implement the pipeline locally; reference that file.
+When the user points at an existing `.txt` / `.ascii` / `.md` file and asks to edit it (rather than author from scratch), this skill runs the **shared modify pipeline** instead of Mode A or Mode B. The pipeline is: **detect format → parse to IR (`bin/amw-diagram-ir.py parse`) → diff-aware IR patch → re-render (`bin/amw-diagram-ir.py emit --format ascii`) → re-validate (`bin/amw-validate-ascii.py`)**. The full, authoritative 6-step spec — including retry budget, atomic-move semantics, and per-format emitter fast paths — lives at `../amw-diagram-formats/references/modify-flow.md`. Do NOT re-implement the pipeline locally; reference that file.
 
 User intents that trigger the modify path (vs. create):
 
@@ -508,4 +508,4 @@ User intents that trigger the modify path (vs. create):
 - "change the label of box X" / "rename the `Login` node to `Auth`" / "replace `DB` with `Primary DB`"
 - "add a connector from A to B" / "remove the edge between Gateway and Worker" / "insert a box between X and Y"
 
-All three intents resolve to the same pipeline; the only thing that varies is step 3 (patch). MVP patching is text substitution on the parsed IR's `nodes[*].label` and `edges[*]` fields (see `../amw-diagram-formats/references/modify-flow.md` §5.1 for ASCII-specific guidance). Every modified artifact re-passes `bin/amw-validate-ascii.pl` before save — a modify that would FAIL validation is rejected and the original file is left untouched.
+All three intents resolve to the same pipeline; the only thing that varies is step 3 (patch). MVP patching is text substitution on the parsed IR's `nodes[*].label` and `edges[*]` fields (see `../amw-diagram-formats/references/modify-flow.md` §5.1 for ASCII-specific guidance). Every modified artifact re-passes `bin/amw-validate-ascii.py` before save — a modify that would FAIL validation is rejected and the original file is left untouched.

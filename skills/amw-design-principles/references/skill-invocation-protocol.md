@@ -26,7 +26,7 @@ This loads the skill's knowledge into the agent's context. The agent then execut
 
 **Run bin scripts directly for mechanical operations.** Every plugin script under `bin/` is a CLI tool. Agents invoke them through Bash:
 ```
-Bash: perl bin/amw-validate-ascii.pl input.txt
+Bash: python3 bin/amw-validate-ascii.py input.txt
 Bash: python3 bin/amw-ascii-render.py spec.json --mode diagram
 Bash: bash bin/amw-validate-diagram.sh artifact.svg
 ```
@@ -85,7 +85,7 @@ Input: approved ASCII file at /tmp/approved.txt, brand tokens at /tmp/tokens.jso
 
 Step 1: Read skills/amw-ascii-to-html/SKILL.md
 Step 2: Read skills/amw-ascii-to-html/references/TECH-01-responsive-breakpoints.md
-Step 3: Bash: perl bin/amw-validate-ascii.pl /tmp/approved.txt
+Step 3: Bash: python3 bin/amw-validate-ascii.py /tmp/approved.txt
 Step 4: Emit HTML file by writing directly to design/mockups/<slug>.html
 Step 5: Bash: python3 bin/amw-html-export.py design/mockups/<slug>.html --format preview
 Step 6: Return YAML header with artifact_paths

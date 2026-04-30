@@ -292,7 +292,7 @@ Slash command: `/amw-sketch <intent>`.
 
 | Sub-skill | Use when |
 |---|---|
-| `../amw-ascii-creator/` | User already knows what they want — produce ONE validated perfect-ASCII artifact (flowchart, table, sequence, layered arch, or framed wireframe) in a single invocation. Mode A uses bin/amw-ascii-render.py; Mode B hand-authors and runs bin/amw-validate-ascii.pl. |
+| `../amw-ascii-creator/` | User already knows what they want — produce ONE validated perfect-ASCII artifact (flowchart, table, sequence, layered arch, or framed wireframe) in a single invocation. Mode A uses bin/amw-ascii-render.py; Mode B hand-authors and runs bin/amw-validate-ascii.py. |
 | `../amw-ascii-validator/` | Validate hand-authored ASCII OR render perfect ASCII from structured JSON — the toolchain that enforces alignment across every ASCII emitter in this plugin. |
 | `../amw-ascii-to-html/` | User approved an ASCII wireframe → generate responsive HTML using design-principles tokens + starter-components chrome. Consumes output from ascii-sketch (plan-phase) OR ascii-creator (single-artifact). |
 | `../amw-ascii-to-svg/` | User has an ASCII box-and-arrow diagram → render clean SVG. Consumes output from ascii-creator Mode A. |
@@ -318,7 +318,7 @@ Slash commands: `/amw-ascii-to-html`, `/amw-ascii-to-svg`, `/amw-create-or-modif
 
 ### Text visualization — ASCII artifacts for PRs, ADRs, terminals, and chat
 
-These executors are distinct from the `diagram-*` skills above: they produce **monospaced ASCII only**, designed to paste unmodified into GitHub PRs, issue comments, Slack, Notion, READMEs, ADRs, and terminal output. They are not renderers to SVG or HTML — if the user wants pixels, run one of these first to approve the ASCII, then hand off to `../amw-ascii-to-svg/` or `../amw-ascii-to-html/`. Every artifact these skills emit passes `../../bin/amw-validate-ascii.pl` before delivery (LLMs cannot count monospace columns reliably — the validator is how the plugin compensates).
+These executors are distinct from the `diagram-*` skills above: they produce **monospaced ASCII only**, designed to paste unmodified into GitHub PRs, issue comments, Slack, Notion, READMEs, ADRs, and terminal output. They are not renderers to SVG or HTML — if the user wants pixels, run one of these first to approve the ASCII, then hand off to `../amw-ascii-to-svg/` or `../amw-ascii-to-html/`. Every artifact these skills emit passes `../../bin/amw-validate-ascii.py` before delivery (LLMs cannot count monospace columns reliably — the validator is how the plugin compensates).
 
 | Sub-skill | Use when |
 |---|---|

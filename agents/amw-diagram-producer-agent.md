@@ -58,7 +58,7 @@ The matrix in §9 encodes the default choices. I deviate from the default when t
   - `../skills/amw-diagram-compare/SKILL.md` — IR-level structural diff
   - `../skills/amw-webpage-to-diagram/SKILL.md` — HTML/URL → IR → diagram
   - `../skills/amw-diagram-webpage-sync/SKILL.md` — diagram edit → re-emit webpage
-- Shared bin scripts: `bin/amw-validate-diagram.sh` (dispatch), `bin/amw-diagram-ir.py` (IR parse/emit/diff), `bin/amw-diagram-detect-format.sh` (sniff), `bin/amw-mermaid-render.sh`, `bin/amw-ascii-render.py`, `bin/amw-validate-ascii.pl`, `bin/parse-{html,svg,mermaid}-diagram.py`, `bin/amw-mermaid-lint.sh`.
+- Shared bin scripts: `bin/amw-validate-diagram.sh` (dispatch), `bin/amw-diagram-ir.py` (IR parse/emit/diff), `bin/amw-diagram-detect-format.sh` (sniff), `bin/amw-mermaid-render.sh`, `bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`, `bin/parse-{html,svg,mermaid}-diagram.py`, `bin/amw-mermaid-lint.sh`.
 
 ### What I do NOT know / what I am NOT responsible for
 
@@ -142,7 +142,7 @@ Priority-ordered.
 
 1. **Audience + medium + content type determine format.** The matrix in §9 is my primary decision tool. I deviate only when the input explicitly overrides (`preferred_format` is set) or when the chosen format fails to accommodate the content (e.g., ASCII is picked but the diagram has 40 nodes → document the scale mismatch in `warnings` and upgrade to SVG/Mermaid).
 
-2. **Validate before declaring done.** Every emitted diagram passes through `bin/amw-validate-diagram.sh` (format-dispatch validator) or a format-specific validator (`bin/amw-validate-ascii.pl` for ASCII, `bin/amw-mermaid-lint.sh` for Mermaid). A validator FAIL is a `status=failed` or `status=partial` condition — never a silent pass.
+2. **Validate before declaring done.** Every emitted diagram passes through `bin/amw-validate-diagram.sh` (format-dispatch validator) or a format-specific validator (`bin/amw-validate-ascii.py` for ASCII, `bin/amw-mermaid-lint.sh` for Mermaid). A validator FAIL is a `status=failed` or `status=partial` condition — never a silent pass.
 
 3. **PNG is output-only.** I refuse PNG input (Decision Criterion — see §3 Hard domain boundary). When the requested format is PNG, I emit via SVG-then-convert or HTML-then-export; I never hand-author PNG.
 
@@ -165,7 +165,7 @@ Priority-ordered.
 3. **If `preferred_format` is set**, override matrix pick and record the user's format choice in the report.
 4. **Read the target skill's SKILL.md** — load the recipe.
 5. **Author the diagram** in the target format:
-   - **ASCII** — emit structured JSON to `bin/amw-ascii-render.py` OR hand-author validated Unicode-box ASCII, then validate with `bin/amw-validate-ascii.pl`.
+   - **ASCII** — emit structured JSON to `bin/amw-ascii-render.py` OR hand-author validated Unicode-box ASCII, then validate with `bin/amw-validate-ascii.py`.
    - **HTML** — emit editorial HTML per `diagram-editorial` 13-type library, apply brand tokens as CSS custom properties.
    - **SVG** — emit SVG per `diagram-svg` or `svg-diagram` primitives, apply brand tokens.
    - **Mermaid** — emit Mermaid source per the grammar, validate with `bin/amw-mermaid-lint.sh`.
@@ -213,7 +213,7 @@ After the format-specific validate step (`bin/amw-validate-diagram.sh`) but BEFO
   - No "default 3-card row" / "default 5-step process" composition without intent — the diagram must reflect the actual user content, not a template-shape ghost
   - No fabricated arrows or unlabeled connections (every edge has a verb or relationship label)
 - **For ASCII outputs, verify:**
-  - No banned characters per `bin/amw-validate-ascii.pl` (already gates this — confirm the validator was run)
+  - No banned characters per `bin/amw-validate-ascii.py` (already gates this — confirm the validator was run)
   - No "decorative" Unicode that adds no information (no `★ ✦ ✧ ✨` filler glyphs in arch diagrams)
 - **On match:** document in `warnings` (not a hard block unless the violation is structural — e.g., emoji-as-icon for a critical node). `status=partial` if user-visible quality is degraded.
 
@@ -236,7 +236,7 @@ Action: `status=failed`, `blocking_issues=["PNG input not supported; PNG has no 
 Example: `source_format=mermaid`, `bin/amw-diagram-detect-format.sh` returns `svg`. Action: treat as detected format, document mismatch in `warnings`, and verify the emit target is still the user's requested `preferred_format`. If detected format matches `preferred_format`, this is a no-op (source file is already the target); return `status=ok` with a `warnings` entry noting the redundant request.
 
 ### 8.5 Validator-FAIL on emitted diagram
-Example: ASCII passes structural emit but fails `bin/amw-validate-ascii.pl` due to column drift in auto-generated output. Action: attempt one auto-repair pass (rerun the author step with the validator's `FIX:` hints). If second pass still FAILs, return `status=partial` with the validator output in `blocking_issues` — main-agent decides whether to retry or escalate.
+Example: ASCII passes structural emit but fails `bin/amw-validate-ascii.py` due to column drift in auto-generated output. Action: attempt one auto-repair pass (rerun the author step with the validator's `FIX:` hints). If second pass still FAILs, return `status=partial` with the validator output in `blocking_issues` — main-agent decides whether to retry or escalate.
 
 ### 8.6 `brand_tokens` provided but format is ASCII or Mermaid
 Action: ASCII ignores tokens entirely (it is token-blind by format). Mermaid can approximate via themes — pick the closest stock theme and document in `warnings` that this is an approximation. `status=ok`.
@@ -350,7 +350,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   ```
   Bash: bash bin/amw-validate-diagram.sh design/diagrams/checkout.svg
   Bash: bash bin/amw-mermaid-render.sh design/diagrams/flow.mmd --theme default --format svg --out design/diagrams/flow.svg
-  Bash: perl bin/amw-validate-ascii.pl design/diagrams/topology.txt
+  Bash: python3 bin/amw-validate-ascii.py design/diagrams/topology.txt
   Bash: bash bin/amw-mermaid-lint.sh design/diagrams/flow.mmd
   Bash: python3 bin/amw-diagram-ir.py --emit svg < ir.json > out.svg
   Bash: bash bin/amw-diagram-detect-format.sh design/diagrams/unknown.file
@@ -433,7 +433,7 @@ Authored a Mermaid flowchart for the checkout flow (8 nodes, 3 branches). Canoni
 |---|---|---|
 | checkout-flow.mmd | bin/amw-mermaid-lint.sh | PASS (0 syntax errors) |
 | checkout-flow.svg | bin/amw-validate-diagram.sh | PASS (SVG well-formed, diagram-ir schema-valid) |
-| checkout-flow.ascii.txt | bin/amw-validate-ascii.pl | PASS (width 82 cols — warnings only, no FAIL) |
+| checkout-flow.ascii.txt | bin/amw-validate-ascii.py | PASS (width 82 cols — warnings only, no FAIL) |
 | checkout-flow.png | (visual only) | Rendered at 1200×675, 2× retina |
 
 ## Content map (node list)
@@ -544,7 +544,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 - `../bin/amw-diagram-detect-format.sh` — format sniffer
 - `../bin/amw-mermaid-render.sh` — Mermaid → SVG/ASCII/PNG renderer
 - `../bin/amw-mermaid-lint.sh` — Mermaid syntax lint
-- `../bin/amw-validate-ascii.pl` — ASCII validator
+- `../bin/amw-validate-ascii.py` — ASCII validator
 - `../bin/amw-html-export.py` — HTML → PNG/PDF export
 - `../bin/amw-ascii-render.py` — JSON → ASCII renderer
 - `../CLAUDE.md` — plugin architecture overview

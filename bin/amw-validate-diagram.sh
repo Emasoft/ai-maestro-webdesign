@@ -5,7 +5,7 @@
 #   bin/validate-diagram.sh <path>
 #
 # Auto-detects format via bin/diagram-detect-format.sh and routes to:
-#   ascii    -> bin/validate-ascii.pl (or bin/validate-ascii.py on fallback)
+#   ascii    -> bin/validate-ascii.py
 #   svg      -> bin/validate-svg-diagram.sh
 #   html     -> bin/validate-html-diagram.sh
 #   mermaid  -> bin/mermaid-lint.sh
@@ -47,12 +47,10 @@ fmt="$("$detect" "$input")"
 
 case "$fmt" in
   ascii)
-    if command -v perl >/dev/null 2>&1 && [ -x "$SELF_DIR/validate-ascii.pl" ]; then
-      exec perl "$SELF_DIR/validate-ascii.pl" "$input"
-    elif command -v python3 >/dev/null 2>&1 && [ -x "$SELF_DIR/validate-ascii.py" ]; then
+    if command -v python3 >/dev/null 2>&1 && [ -x "$SELF_DIR/validate-ascii.py" ]; then
       exec python3 "$SELF_DIR/validate-ascii.py" "$input"
     else
-      echo "ERROR: no ASCII validator available (need perl or python3)." >&2
+      echo "ERROR: no ASCII validator available (need python3)." >&2
       exit 3
     fi
     ;;

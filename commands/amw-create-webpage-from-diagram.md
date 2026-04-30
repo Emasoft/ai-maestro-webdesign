@@ -28,7 +28,7 @@ Thin wrapper — no new backing skill. Chains `bin/amw-diagram-detect-format.sh`
      bin/amw-diagram-ir.py parse  --in <diagram-path> --out /tmp/amw-mkpage-<hash>-ir.json
      bin/amw-diagram-ir.py emit   --in /tmp/amw-mkpage-<hash>-ir.json --format ascii --out /tmp/amw-mkpage-<hash>.ascii
      ```
-     Validate the intermediate ASCII with `bin/amw-validate-ascii.pl /tmp/amw-mkpage-<hash>.ascii`. FAIL → abort and surface the validator FIX hints.
+     Validate the intermediate ASCII with `bin/amw-validate-ascii.py /tmp/amw-mkpage-<hash>.ascii`. FAIL → abort and surface the validator FIX hints.
 5. **Hand off to `/amw-ascii-to-html`.** Invoke `/amw-ascii-to-html <ascii-path>` with the (original or converted) ASCII. That command handles the tokens prompt, chrome selection, Tweaks block, React/Babel pins, and AI-slop gate. The final `.html` is written to `<--out>` if supplied, otherwise the default `/amw-ascii-to-html` output path.
 6. **Report.** On success: print both the intermediate ASCII path (for user inspection) and the final `.html` path. Also print the known-lossiness note (§ below).
 
@@ -64,7 +64,7 @@ When running non-interactively (batch mode), pass `--ascii-approved` to `/amw-as
 - `skills/amw-ascii-to-html/SKILL.md` — final HTML emission step.
 - `skills/amw-diagram-formats/references/ir-schema.md` — lossy-conversion table.
 - `skills/amw-diagram-formats/references/conversion-matrix.md` — canonical N×N routing rules.
-- `bin/amw-diagram-detect-format.sh`, `bin/amw-diagram-ir.py`, `bin/amw-validate-ascii.pl` — backing tools.
+- `bin/amw-diagram-detect-format.sh`, `bin/amw-diagram-ir.py`, `bin/amw-validate-ascii.py` — backing tools.
 - `/amw-ascii-to-html` — terminal step.
 - `/amw-convert-any-diagram-format` — alternative when SVG→HTML direct-wrap is desired (no re-ASCII round-trip).
 - `/amw-modify-webpage-from-diagram` — pair command for editing an existing webpage from a new diagram.

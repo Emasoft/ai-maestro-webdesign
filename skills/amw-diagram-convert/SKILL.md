@@ -163,7 +163,7 @@ See `../amw-diagram-formats/references/png.md` for DPI / background / padding op
 ```yaml
 runtime_binaries:
   - python3 >= 3.8   # bin/amw-diagram-ir.py, bin/amw-ascii-parse.py, bin/amw-ascii-render.py
-  - perl >= 5.10     # bin/amw-validate-ascii.pl (post-convert gate for ASCII targets)
+  - perl >= 5.10     # bin/amw-validate-ascii.py (post-convert gate for ASCII targets)
   - xmllint          # bin/amw-validate-svg-diagram.sh, bin/amw-validate-html-diagram.sh
   - mmdc             # bin/amw-mermaid-render.sh, mermaid-lint.sh (Mermaid targets)
   - cairosvg         # bin/amw-svg-render.py --png (SVG→PNG and ASCII→PNG)

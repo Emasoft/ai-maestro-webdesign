@@ -39,7 +39,7 @@ Exit code summary:
 1. validate-diagram.sh receives a path.
 2. Call bin/amw-diagram-detect-format.sh <path> -> fmt.
 3. Route:
-     fmt == "ascii"    -> exec perl bin/amw-validate-ascii.pl <path>
+     fmt == "ascii"    -> exec python3 bin/amw-validate-ascii.py <path>
                           (fall back: python3 bin/amw-validate-ascii.py <path>)
      fmt == "svg"      -> exec bin/amw-validate-svg-diagram.sh <path>
      fmt == "html"     -> exec bin/amw-validate-html-diagram.sh <path>
@@ -67,7 +67,7 @@ Do not localize, do not rephrase — the message is a grep anchor for downstream
 
 ## 4. Per-format validator specs
 
-### 4.1 ASCII — `bin/amw-validate-ascii.pl` (primary) and `bin/amw-validate-ascii.py` (fallback)
+### 4.1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback)
 
 Already specified in `../../amw-ascii-validator/SKILL.md`. Relevant for this dispatcher:
 

@@ -76,7 +76,7 @@ These live in `bin/`, not in this skill. The skill documents them; it does not o
 - `bin/amw-diagram-detect-format.sh` — sniffs format; see `./references/detect-format.md`.
 - `bin/amw-validate-diagram.sh` — top-level validator dispatcher; see `./references/validation-dispatcher.md`.
 - `bin/amw-validate-html-diagram.sh`, `bin/amw-validate-svg-diagram.sh`, `bin/amw-mermaid-lint.sh` — per-format validator wrappers (see the corresponding references/*.md).
-- `bin/amw-validate-ascii.pl`, `bin/amw-validate-ascii.py` — ASCII validators; the contract lines up with the unified output format. See `../amw-ascii-validator/SKILL.md`.
+- `bin/amw-validate-ascii.py`, `bin/amw-validate-ascii.py` — ASCII validators; the contract lines up with the unified output format. See `../amw-ascii-validator/SKILL.md`.
 
 ## Locked decisions (do not re-litigate)
 

@@ -46,7 +46,7 @@ The plugin's `/wd-init` command includes an opt-in step that does this.
 ## Usage
 
 Prefer the wrapper at `bin/mermaid-render.sh` in the plugin root — it adds
-stdin support, the `validate-ascii.pl` post-check for ASCII output, and the
+stdin support, the `validate-ascii.py` post-check for ASCII output, and the
 "run /wd-init" hint when this directory is missing.
 
 Direct use (for debugging):

@@ -46,7 +46,7 @@ Three framings guide every decision:
 - The full decision tree of `skills/amw-pretext/` — which `TECH-NN-*.md` file corresponds to a given typographic technique (78 references total). I do not memorize all 78; I read the `SKILL.md` technique-selection tree and pull only the relevant TECH file.
 - The strict scope of `skills/amw-excalidraw-illustrations/` — white background, rough-sketch aesthetic, integrated in-panel text, educational / slide use cases only. Gemini 3 Pro model. 16:9 / 1:1 / 4:3 aspect ratios only.
 - The plugin's `bin/amw-svg-render.py` render-verify-finish loop — I cannot ship an SVG without at least one `render` call before `finish`, and I know the iteration ranges per asset type.
-- The plugin's `bin/amw-validate-ascii.pl` validator — used when `pretext` output embeds ASCII art (typographic ASCII techniques).
+- The plugin's `bin/amw-validate-ascii.py` validator — used when `pretext` output embeds ASCII art (typographic ASCII techniques).
 - The project-output-routing rules — icons to `design/icons/`, patterns to `design/patterns/`, typography to `design/typography/`, hand-drawn to `design/illustrations/`. User-supplied path overrides always.
 
 ### What I do NOT know and MUST NOT guess
@@ -159,7 +159,7 @@ For each item in `asset_briefs`:
 
 5. **Produce.**
    - **SVG path (svg-creator):** Write draft SVG to path. Run `python3 bin/amw-svg-render.py render <path>`. Visually inspect the PNG preview (the render-verify loop is mandatory). Fix if needed, re-render. On success, `python3 bin/amw-svg-render.py finish <path>` — the finish-guard refuses to complete if `render` was never called.
-   - **Pretext path (pretext):** Read the specific `TECH-NN-*.md` file. Write an HTML fragment (or full HTML page for a standalone demo) applying the documented API pattern. Include the wrapper-module pattern from TECH-64 (lineHeight conversion) and the font-loading sync from TECH-17. If the output includes ASCII (TECH-37 / TECH-55), run `perl bin/amw-validate-ascii.pl` on the ASCII block and embed it only after PASS.
+   - **Pretext path (pretext):** Read the specific `TECH-NN-*.md` file. Write an HTML fragment (or full HTML page for a standalone demo) applying the documented API pattern. Include the wrapper-module pattern from TECH-64 (lineHeight conversion) and the font-loading sync from TECH-17. If the output includes ASCII (TECH-37 / TECH-55), run `python3 bin/amw-validate-ascii.py` on the ASCII block and embed it only after PASS.
    - **Excalidraw path (excalidraw-illustrations):** Build the concept prompt following the skill's prompt template (white background, hand-drawn aesthetic, in-panel labels). Call the Gemini REST endpoint via the Python stdlib `urllib` pattern documented in `skills/amw-excalidraw-illustrations/SKILL.md`. Save the returned PNG. Inspect the in-panel text — if misspelled or illegible, surface in warnings; do NOT automatically regenerate (each regen costs money).
 
 6. **Validate.** For SVG: verify XML parses (no unclosed tags, `xmlns` present, all `<defs>` resolved). For pretext: verify no `system-ui` in font strings (TECH-77 ban), reduced-motion guards present on any animation. For Excalidraw: verify the PNG file is non-trivial size (>50KB typical for a real illustration) and matches the requested aspect ratio.
@@ -291,7 +291,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 ### DO
 
 - **Read skill files for know-how.** `Read skills/amw-svg-creator/SKILL.md`, `Read skills/amw-svg-creator/references/TECH-icon-construction.md`, `Read skills/amw-pretext/SKILL.md`, `Read skills/amw-pretext/references/TECH-35-text-on-path.md`, `Read skills/amw-excalidraw-illustrations/SKILL.md`.
-- **Run bin scripts directly.** `Bash: python3 bin/amw-svg-render.py render <draft.svg>`, `Bash: python3 bin/amw-svg-render.py finish <draft.svg>`, `Bash: perl bin/amw-validate-ascii.pl <ascii-block.txt>`.
+- **Run bin scripts directly.** `Bash: python3 bin/amw-svg-render.py render <draft.svg>`, `Bash: python3 bin/amw-svg-render.py finish <draft.svg>`, `Bash: python3 bin/amw-validate-ascii.py <ascii-block.txt>`.
 - **Spawn `Task(subagent_type="general-purpose", ...)` for independent sub-work** — e.g. when producing 20 icons in parallel, one Task per icon, each loading only the one icon's brief + TECH-icon-construction.
 - **Reference other amw-* agents by name when documenting data hand-offs** — "my assets feed `amw-wireframe-builder-agent` via main-agent."
 
@@ -450,5 +450,5 @@ Violation of any of these is not a "judgment call" — it is a spec violation. I
 - `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase B hand-off table (assets → wireframe-builder via main-agent).
 - `../skills/amw-design-principles/references/agent-reports-location.md` — `$MAIN_ROOT/reports/webdesigner/` path + timestamp format.
 - `../bin/amw-svg-render.py` — render-verify-finish loop (mandatory for svg-creator outputs).
-- `../bin/amw-validate-ascii.pl` — ASCII validator (used when pretext TECH-37 / TECH-55 emit ASCII blocks).
+- `../bin/amw-validate-ascii.py` — ASCII validator (used when pretext TECH-37 / TECH-55 emit ASCII blocks).
 - `../CLAUDE.md` — plugin architecture overview.

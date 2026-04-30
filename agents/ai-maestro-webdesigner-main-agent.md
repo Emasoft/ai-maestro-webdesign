@@ -275,7 +275,7 @@ Main-agent mostly delegates to sub-agents in Phase B. In Phase A, it invokes ski
 | User-flow in Mermaid | `../skills/amw-mermaid-diagram/` (rendered via `../skills/amw-mermaid-render/`) |
 | UX flow from PRD | `../skills/amw-ux-flows/` |
 | Infographic low-fi layout | `../skills/amw-infographics/` |
-| ASCII validation before presenting | `bin/amw-validate-ascii.pl` via `../skills/amw-ascii-validator/` |
+| ASCII validation before presenting | `bin/amw-validate-ascii.py` via `../skills/amw-ascii-validator/` |
 | Reference library for ASCII idioms | `../skills/amw-ascii-diagrams-reference/` |
 | Reference library for design heuristics | `../skills/amw-design-principles/references/design-heuristics.md` |
 | User has no design system AND no reference URL AND `amw-design-principles/references/design-heuristics.md` does not cover the case | `../skills/amw-ui-ux-reasoning/SKILL.md` (last-resort fallback per CLAUDE.md "the `last resort` fallback is `ui-ux-reasoning`") |
@@ -390,7 +390,7 @@ Main-agent follows `../skills/amw-design-principles/references/skill-invocation-
 ### DO
 
 - **Read skill files for know-how** — `Read skills/amw-ascii-sketch/SKILL.md` and its `references/*.md`.
-- **Run bin scripts directly** — `perl bin/amw-validate-ascii.pl`, `python3 bin/amw-ascii-render.py`, `bash bin/amw-validate-diagram.sh`.
+- **Run bin scripts directly** — `python3 bin/amw-validate-ascii.py`, `python3 bin/amw-ascii-render.py`, `bash bin/amw-validate-diagram.sh`.
 - **Spawn `Task(subagent_type="general-purpose", ...)` for bounded internal work** when a chunk would otherwise flood the main-agent's context.
 - **Reference other `amw-*` agents by name in data hand-off documentation** — the actual spawning happens from the main-agent's own context (one-way tree).
 

@@ -156,7 +156,7 @@ No extension match, no content to sniff → **unknown**. Exit 1.
 1. **Mermaid-in-markdown** (§4.1) — users must save as `.mmd` for the sniffer to catch Mermaid.
 2. **Multi-format files** (e.g. `.html` with embedded `data:image/svg+xml`) classify as the outer format only. The dispatcher relies on this — inner content is handled by the per-format parsers.
 3. **Compressed / binary SVG** (`svgz`) is NOT supported. Users must decompress first.
-4. **Mixed-ASCII** (ASCII + Unicode + emoji) classifies as ASCII, but `bin/amw-validate-ascii.pl` will flag the emoji / Unicode as "forbidden" at validation time (see `./validation-dispatcher.md`).
+4. **Mixed-ASCII** (ASCII + Unicode + emoji) classifies as ASCII, but `bin/amw-validate-ascii.py` will flag the emoji / Unicode as "forbidden" at validation time (see `./validation-dispatcher.md`).
 
 ## 6. Callers
 

@@ -85,3 +85,6 @@ yarn-error.log*
 
 # Hyperframes vendored repo — managed as git submodule (see .gitmodules)
 # Excluded from this gitignore-comment because the submodule registration uses .gitmodules.
+
+# Janitor heartbeat state (per-session, transient)
+.janitor/

@@ -272,7 +272,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 - **Read skill files for know-how.** When I need line-breaking rules, I read `../skills/amw-pretext/SKILL.md` and specific reference files. When I need per-script font-size floors, I read `../skills/amw-design-principles/typography-system.md`.
 - **Reference other amw-* agents by name when documenting hand-offs.** E.g., "Pass the copy blocks to `amw-wireframe-builder-agent` via main-agent so the HTML skeleton is filled with locale-specific content."
-- **Run bin scripts directly if needed** (rare for this agent): mostly irrelevant to copywriting, occasionally `bin/amw-validate-ascii.pl` if checking ASCII layout copy.
+- **Run bin scripts directly if needed** (rare for this agent): mostly irrelevant to copywriting, occasionally `bin/amw-validate-ascii.py` if checking ASCII layout copy.
 
 ### DON'T
 

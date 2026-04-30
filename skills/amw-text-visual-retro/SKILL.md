@@ -1,6 +1,6 @@
 ---
 name: amw-text-visual-retro
-description: Produces ASCII retrospective grids, milestone timelines, and heatmaps for team retros, experiment readouts, and launch post-mortems — designed to paste cleanly into PR descriptions, GitHub Discussions, or Slack. Triggers on narrow intents — "ASCII retro template", "text-only retrospective grid", "start-stop-continue in ASCII", "experiment readout in monospace", "launch heatmap in text", "post-mortem grid as ASCII". Does NOT trigger on generic "retro", "post-mortem", "review" — those might be documentation tasks. Output is ASCII only; every diagram passes bin/amw-validate-ascii.pl before delivery.
+description: Produces ASCII retrospective grids, milestone timelines, and heatmaps for team retros, experiment readouts, and launch post-mortems — designed to paste cleanly into PR descriptions, GitHub Discussions, or Slack. Triggers on narrow intents — "ASCII retro template", "text-only retrospective grid", "start-stop-continue in ASCII", "experiment readout in monospace", "launch heatmap in text", "post-mortem grid as ASCII". Does NOT trigger on generic "retro", "post-mortem", "review" — those might be documentation tasks. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery.
 version: 0.1.0
 ---
 
@@ -136,13 +136,13 @@ Entries without one of these are noise. If the user hasn't named a date or owner
 
 ## Validation gate (MANDATORY)
 
-Every retro artifact this skill emits MUST pass `../../bin/amw-validate-ascii.pl` before being shown to the user.
+Every retro artifact this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user.
 
 The flow:
 
 1. Draft the artifact.
 2. Write it to `/tmp/amw-tvr-<slug>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.pl /tmp/amw-tvr-<slug>.txt`.
+3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-tvr-<slug>.txt`.
 4. If PASS → present in a fenced code block.
 5. If FAIL → apply every `FIX:` hint, re-run. Loop until PASS.
 6. Never present an un-validated artifact.
@@ -236,7 +236,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-text-visual-retro/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
@@ -276,7 +276,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
 - **npm_packages:** none
 - **mcp_servers:** none
-- **scripts:** `../../bin/amw-validate-ascii.pl` (mandatory), `../../bin/amw-ascii-render.py table` (optional for heatmaps)
+- **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py table` (optional for heatmaps)
 
 ## Cross-references
 
@@ -299,7 +299,7 @@ No dedicated slash command. Invoke via:
 
 ## Non-negotiables
 
-- Every artifact passes `../../bin/amw-validate-ascii.pl` before delivery. No exceptions.
+- Every artifact passes `../../bin/amw-validate-ascii.py` before delivery. No exceptions.
 - 80-column width ceiling.
 - No tabs.
 - No emoji or variable-width glyphs. Heatmap markers are exactly `[ ]  [~]  [+]  [++]  [!]`.

@@ -363,7 +363,7 @@ TECH-95 find_wireframe_components-to-fields: `find_wireframe_components()` extra
 TECH-96 MAX_GRID_DIM-guard: `to_grid()` caps at `MAX_GRID_DIM` — oversized wireframes get truncated with a warning; never silently fail | source: bin/amw-ascii-parse.py:106 (to_grid) | applies-to: oversize-input failure mode
 TECH-97 layout-json-intermediate: pipeline emits `/tmp/amw-ascii-html-<slug>-layout.json` from parser — HTML templater reads this, never the raw ASCII | source: ascii-to-html/SKILL.md:47 (existing) | applies-to: stage separation (parse vs render)
 TECH-98 safe-arrowhead-glyph-preserve: `▾ ▴ ▸ ◂` (1-col) preserved in emitted HTML text nodes (do NOT replace with `▼ ▲`) | source: ascii-creator/references/techniques.md:TECH-07 + ascii-parse.py:find_arrows | applies-to: dropdown glyph / arrow-in-text rendering
-TECH-99 validate-alignment-pre-parse: run `bin/amw-validate-ascii.pl` BEFORE parse; hard-stop on FAIL (misaligned ASCII → broken HTML grid) | source: ascii-validator/SKILL.md + bin/amw-validate-ascii.pl | applies-to: pipeline step 1 gate
+TECH-99 validate-alignment-pre-parse: run `bin/amw-validate-ascii.py` BEFORE parse; hard-stop on FAIL (misaligned ASCII → broken HTML grid) | source: ascii-validator/SKILL.md + bin/amw-validate-ascii.py | applies-to: pipeline step 1 gate
 TECH-100 empty-line-in-box-to-padding: `│                 │` all-space row → extra `padding-top` on the next block, not `<br>`, not empty `<p>` | source: ascii-creator/references/techniques.md:TECH-13 | applies-to: breathing-room rows inside cards
 
 ---

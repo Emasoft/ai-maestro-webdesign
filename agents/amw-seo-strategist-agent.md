@@ -246,7 +246,7 @@ Main-agent arbitrates — per `authority-hierarchy.md`, user-research-analyst ha
 |---|---|---|
 | Need the full SEO rubric | `../skills/amw-seo/SKILL.md` | Anchor my per-criterion checks; reuse the rubric's evaluation tables. |
 | Need to diagram IA as Mermaid (default) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-mermaid-diagram/SKILL.md` | Emit Mermaid for the IA diagram; render via `bin/amw-mermaid-render.sh`. |
-| Need to diagram IA as ASCII (user preference or low-fi phase) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-ascii-creator/SKILL.md` | Emit ASCII variant; validate via `bin/amw-validate-ascii.pl`. |
+| Need to diagram IA as ASCII (user preference or low-fi phase) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-ascii-creator/SKILL.md` | Emit ASCII variant; validate via `bin/amw-validate-ascii.py`. |
 | Need to render the artifact and inspect head elements | `../skills/amw-dev-browser/SKILL.md` | Use `dev-browser` for rendered HTML dump, console/network logs. |
 | Need structured-data examples | `../skills/amw-seo/SKILL.md` references | Pull schema.org type tables and JSON-LD examples. |
 | Need to flag an accessibility-adjacent issue (alt text missing) | (flag only) | Forward to `amw-accessibility-auditor-agent` via main-agent; do not audit WCAG myself. |

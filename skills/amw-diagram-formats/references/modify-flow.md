@@ -136,7 +136,7 @@ The "atomic move on PASS" rule prevents partial outputs: a failed validate leave
 - Parse uses `bin/amw-ascii-parse.py` → structured boxes+connectors → IR (see `../../bin/amw-diagram-ir.py::parse_ascii`).
 - Patch: direct edits on `nodes[*].label`, `edges[*]`.
 - Emit uses `bin/amw-ascii-render.py` (if structure is usable) OR falls back to raw-source passthrough.
-- Validate: `bin/amw-validate-ascii.pl` (or `.py` on Windows).
+- Validate: `bin/amw-validate-ascii.py` (or `.py` on Windows).
 
 Known limitation: not every hand-authored ASCII wireframe has clean boxes + connectors that `ascii-parse.py` can extract. When extraction yields zero boxes, parse falls through to raw-source stub; patching in that case is text editing only (no structural operations available until Phase 1).
 

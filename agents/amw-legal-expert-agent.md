@@ -252,7 +252,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 - **Read skill files for know-how.** When I need accessibility rules, I read `../skills/amw-ux-designer/SKILL.md` and specific reference files. When I need layout rules that legal elements must not violate, I read `../skills/amw-design-principles/ai-slop-avoid.md` and `../skills/amw-design-principles/color-system.md`.
 - **Reference other amw-* agents by name when documenting hand-offs.** E.g., "Pass the mandatory-element list to `amw-wireframe-builder-agent` via main-agent so the cookie banner, privacy-link footer, and accessibility statement are included in the HTML."
-- **Run bin scripts directly if needed** (rare for this agent): `Bash: perl bin/amw-validate-ascii.pl` if I need to verify an ASCII artifact, for example.
+- **Run bin scripts directly if needed** (rare for this agent): `Bash: python3 bin/amw-validate-ascii.py` if I need to verify an ASCII artifact, for example.
 
 ### DON'T
 

@@ -25,7 +25,7 @@ OUTPUT (terminal — Phase B). Converts an already-validated, already-approved A
 - `../amw-ascii-creator/SKILL.md` — Mode B freeform wireframe, validator-PASS.
 - User-supplied ASCII pasted into `$ARGUMENTS` (direct mode — flag to the user that the iteration loop was skipped).
 
-All three producers guarantee the ASCII has already passed `bin/amw-validate-ascii.pl`. This skill does NOT re-validate by default; it gates on validator-PASS (TECH-99).
+All three producers guarantee the ASCII has already passed `bin/amw-validate-ascii.py`. This skill does NOT re-validate by default; it gates on validator-PASS (TECH-99).
 
 ## Trigger conditions
 
@@ -41,7 +41,7 @@ Anything matching "design a landing page" / "make a mockup" / "build a dashboard
 
 ## Preconditions (all three must hold)
 
-1. **Validator-PASS.** Input ASCII passed `bin/amw-validate-ascii.pl`. If the upstream producer skipped validation, re-run it; hard-stop on FAIL (TECH-99).
+1. **Validator-PASS.** Input ASCII passed `bin/amw-validate-ascii.py`. If the upstream producer skipped validation, re-run it; hard-stop on FAIL (TECH-99).
 2. **Explicit approval.** User said exactly one of `yes`, `ship it`, `convert it`, `that's the one`, `perfect`, `done`. Silence, "looks good", "sure", "ok", "fine" do NOT count — STOP and ask once: *"To confirm — convert this ASCII to HTML now?"*
 3. **Tokens on file.** Design tokens exist from a prior `/amw-extract-style` run OR the user supplied an inline palette OR the user explicitly opted into starter-components defaults. NEVER invent tokens (TECH-63, TECH-24).
 
@@ -72,7 +72,7 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
 
 ## Conversion pipeline
 
-1. **Validate** with `bin/amw-validate-ascii.pl --in <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
+1. **Validate** with `bin/amw-validate-ascii.py --in <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
 2. **Parse** with `bin/amw-ascii-parse.py --in <source> --mode wireframe --out /tmp/amw-ascii-html-<slug>-layout.json`. This runs `detect_format`, `to_grid`, `find_boxes`, `find_arrows`, `find_wireframe_components`. (TECH-91..TECH-97)
 3. **Pattern-match** each box/line against the component detection table above. Unknown shapes become literal text inside a `<div>` with a comment listing the glyphs that did not match — so the user can extend the parser if needed.
 4. **Emit** semantic HTML:
@@ -127,7 +127,7 @@ Run these before saving. Each is pulled from `ai-slop-avoid.md`:
 ```yaml
 runtime_binaries:
   - python3   # runs bin/amw-ascii-parse.py
-  - perl      # runs bin/amw-validate-ascii.pl
+  - perl      # runs bin/amw-validate-ascii.py
 
 python_packages: []   # ascii-parse.py is stdlib-only
 
@@ -164,14 +164,14 @@ external_services:
 - `../amw-design-principles/SKILL.md` — orchestrator (ALWAYS activate this first when user says "design").
 - `../amw-ascii-sketch/SKILL.md` — upstream producer of the approved ASCII.
 - `../amw-ascii-creator/SKILL.md` — upstream single-artifact authoring skill.
-- `../amw-ascii-validator/SKILL.md` — the mandatory validation gate (wraps `bin/amw-validate-ascii.pl` + `bin/amw-ascii-render.py`).
+- `../amw-ascii-validator/SKILL.md` — the mandatory validation gate (wraps `bin/amw-validate-ascii.py` + `bin/amw-ascii-render.py`).
 - `../amw-design-principles/starter-components/` — canonical chrome + tweaks protocol.
 - `../amw-design-principles/ai-slop-avoid.md` — output-ban list (final gate).
 - `../amw-design-principles/color-system.md` — oklch tokens.
 - `../amw-design-principles/typography-system.md` — type scale + fallback stacks.
 - `../amw-design-principles/spacing-rhythm.md` — 8pt grid + radius + shadow tokens.
 - `../../bin/amw-ascii-parse.py` — parser.
-- `../../bin/amw-validate-ascii.pl` — validator.
+- `../../bin/amw-validate-ascii.py` — validator.
 - `../amw-dev-browser/SKILL.md` — preview pipeline (optional).
 - `/amw-ascii-to-html` — user-facing slash command.
 - `/amw-preview` — automatic next step when requested.

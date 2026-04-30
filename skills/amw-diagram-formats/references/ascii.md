@@ -12,7 +12,7 @@ This file is the single authoritative spec for ASCII diagrams in the `ai-maestro
 - `../../text-visual-{workflows,arch,state,cheatsheets,retro}/SKILL.md` — specialized ASCII archetypes
 - `../../bin/amw-ascii-parse.py` — tokenizer (IR input)
 - `../../bin/amw-ascii-render.py` — renderer (4 JSON modes)
-- `../../bin/amw-validate-ascii.pl` — validator (Perl, mandatory gate)
+- `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate)
 - `../../bin/amw-validate-ascii.py` — validator (Python mirror)
 - `./ir-schema.md` — when ASCII is a source of the diagram IR
 - `./conversion-matrix.md` — ASCII → {HTML, SVG, Mermaid, PNG} cells
@@ -126,7 +126,7 @@ All modes output ≤78 columns. All modes go through the same Grid primitive (TE
 
 ## 5. Validation rules
 
-Validator: `../../bin/amw-validate-ascii.pl` (canonical) + `../../bin/amw-validate-ascii.py` (Python mirror). Output contract per `./validation-dispatcher.md`.
+Validator: `../../bin/amw-validate-ascii.py` (canonical) + `../../bin/amw-validate-ascii.py` (Python mirror). Output contract per `./validation-dispatcher.md`.
 
 ### 5.1 Checks
 
@@ -139,7 +139,7 @@ Validator: `../../bin/amw-validate-ascii.pl` (canonical) + `../../bin/amw-valida
 
 ### 5.2 Validation is MANDATORY before delivery
 
-Every skill that emits ASCII MUST pipe through `../../bin/amw-validate-ascii.pl` and refuse to ship on FAIL. `mermaid-render` pipes ASCII output through the validator as warn-only (variable-width Mermaid labels are a known issue). All other emitters fail-fast.
+Every skill that emits ASCII MUST pipe through `../../bin/amw-validate-ascii.py` and refuse to ship on FAIL. `mermaid-render` pipes ASCII output through the validator as warn-only (variable-width Mermaid labels are a known issue). All other emitters fail-fast.
 
 ---
 
@@ -154,7 +154,7 @@ Every skill that emits ASCII MUST pipe through `../../bin/amw-validate-ascii.pl`
 | S5 | `diagram-skill/ASCII-STYLES.md` | TECH-63 .. TECH-72 | DB shapes, sync/async edges, grouping containers |
 | S6 | `baybee-diagram` (SVG ASCII equivalents) | TECH-73 .. TECH-77 | Actors, decisions, spacing, label truncation |
 | S7 | `diagram-design-editorial` | TECH-78 .. TECH-87 | 4px grid, one-accent, density, editorial masthead |
-| S8 | `bin/amw-validate-ascii.pl` (in-repo) | TECH-88 .. TECH-90 | Structural pairing rules enforced by validator |
+| S8 | `bin/amw-validate-ascii.py` (in-repo) | TECH-88 .. TECH-90 | Structural pairing rules enforced by validator |
 | S9 | Cross-cutting style rules | TECH-91 .. TECH-95 | Mix bans, widths, blank gaps |
 
 Total: **95 techniques**, 9 sources.
@@ -275,9 +275,9 @@ TECH-87 right-justified-user-slot: user profile badge `│...                   
 
 ### S8 — Structural pairing rules (enforced by validator)
 
-TECH-88 left-right-walls-same-col: every `│` on the left wall must sit in identical column across all body rows | source: bin/amw-validate-ascii.pl (VERTICAL_MISALIGNED rule) | applies-to: any framed Mode B artifact
-TECH-89 same-width-lines: pad trailing spaces so every line inside the frame has IDENTICAL width | source: bin/amw-validate-ascii.pl (WIDTH_MISMATCH rule) | applies-to: everything framed
-TECH-90 junction-char-align: `├` on the frame left aligns with `┤` on the same row, both aligned with vertical walls above/below | source: bin/amw-validate-ascii.pl (VERTICAL_MISALIGNED rule) | applies-to: dashboard cross-rules, section dividers
+TECH-88 left-right-walls-same-col: every `│` on the left wall must sit in identical column across all body rows | source: bin/amw-validate-ascii.py (VERTICAL_MISALIGNED rule) | applies-to: any framed Mode B artifact
+TECH-89 same-width-lines: pad trailing spaces so every line inside the frame has IDENTICAL width | source: bin/amw-validate-ascii.py (WIDTH_MISMATCH rule) | applies-to: everything framed
+TECH-90 junction-char-align: `├` on the frame left aligns with `┤` on the same row, both aligned with vertical walls above/below | source: bin/amw-validate-ascii.py (VERTICAL_MISALIGNED rule) | applies-to: dashboard cross-rules, section dividers
 
 ### S9 — Cross-cutting style rules
 

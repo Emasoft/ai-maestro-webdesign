@@ -17,8 +17,7 @@ Run the following checks in parallel where possible, collect the results, and pr
 |---|---|---|
 | node | `node --version` | v22.0.0 |
 | git | `git --version` | any |
-| python3 | `python3 --version` | 3.8.0 (also required for `bin/amw-validate-ascii.py` — the Windows-friendly Python port of the Perl validator) |
-| perl | `perl --version \| head -2 \| tail -1` | 5.10 (for `bin/amw-validate-ascii.pl`) — optional if `python3` is available and callers use `bin/amw-validate-ascii.py` instead |
+| python3 | `python3 --version` | 3.8.0 (required for `bin/amw-validate-ascii.py` — the Python ASCII validator) |
 
 ### 2. Installed at runtime by `/amw-init`
 
@@ -79,8 +78,7 @@ Check that these paths exist (use `test -e`):
 - `bin/amw-svg-render.py`
 - `bin/amw-html-export.py`
 - `bin/amw-ascii-render.py`
-- `bin/amw-validate-ascii.pl` (Perl validator — primary)
-- `bin/amw-validate-ascii.py` (Python port — Windows-friendly, group-aware width detection)
+- `bin/amw-validate-ascii.py` (Python ASCII validator)
 - `bin/amw-mermaid-render.sh`
 - `bin/amw-diagram-ir.py` (Phase 0 — IR parser / emitter / validator / diff)
 - `bin/amw-diagram-detect-format.sh` (Phase 0 — format sniffer)

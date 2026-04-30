@@ -126,10 +126,10 @@ When the diagram lives inside a `//` / `#` / `*` comment block:
 
 ## Non-negotiables
 
-Every ASCII diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.pl` before presentation to the user. See `../amw-ascii-validator/SKILL.md` for the validator contract.
+Every ASCII diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.py` before presentation to the user. See `../amw-ascii-validator/SKILL.md` for the validator contract.
 
 ```bash
-perl bin/amw-validate-ascii.pl /tmp/ascii-diagram-<slug>.txt
+python3 bin/amw-validate-ascii.py /tmp/ascii-diagram-<slug>.txt
 ```
 
 Beyond the mechanical validator:
@@ -339,7 +339,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-ascii-diagrams-reference/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.pl`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
+- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
@@ -381,8 +381,8 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Cross-references
 
-- `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; all emitted ASCII passes `validate-ascii.pl`
-- `../../bin/amw-validate-ascii.pl` — the validator itself (Perl, exits non-zero on failure, emits `FIX:` hints)
+- `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; all emitted ASCII passes `validate-ascii.py`
+- `../../bin/amw-validate-ascii.py` — the validator itself (Python, exits non-zero on failure, emits `FIX:` hints)
 - `../amw-box-diagram/SKILL.md` — Unicode rounded-corner counterpart for terminal / GitHub-README contexts
 - `../amw-ascii-sketch/SKILL.md` — framed rectangular wireframe layouts (different output medium)
 - `../amw-ascii-to-svg/SKILL.md` — downstream: convert an approved ASCII diagram to SVG
