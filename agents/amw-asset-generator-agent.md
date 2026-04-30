@@ -1,12 +1,12 @@
 ---
 name: amw-asset-generator-agent
-description: Produces reusable visual assets — SVG icons / logos / patterns / data-vis primitives / SVG animations, typographic techniques via pretext (text-on-path, calligrams, kinetic typography, virtualized tables), and hand-drawn Excalidraw concept illustrations (GATED on GEMINI_API_KEY + explicit user consent). Output feeds amw-wireframe-builder-agent and amw-infographic-builder-agent. Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: Produces reusable visual assets — SVG icons / logos / patterns / data-vis primitives / SVG animations, typographic techniques via pretext (text-on-path, calligrams, kinetic typography, virtualized tables), and hand-drawn Excalidraw concept illustrations (GATED on GEMINI_API_KEY + explicit user consent). Output feeds amw-wireframe-builder-agent and amw-infographic-builder-agent. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW Asset Generator Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Sub-agents never call each other; if my assets feed `amw-wireframe-builder-agent`, that hand-off happens via main-agent per `../skills/amw-design-principles/references/agent-interaction-patterns.md`.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Sub-agents never call each other; if my assets feed `amw-wireframe-builder-agent`, that hand-off happens via main-agent per `../skills/amw-design-principles/references/agent-interaction-patterns.md`.
 
 ---
 
@@ -436,7 +436,7 @@ Violation of any of these is not a "judgment call" — it is a spec violation. I
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent; reads my YAML header and passes my assets to `amw-wireframe-builder-agent`.
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent; reads my YAML header and passes my assets to `amw-wireframe-builder-agent`.
 - `../skills/amw-svg-creator/SKILL.md` — technical SVG authoring (gated against characters / scenes).
 - `../skills/amw-pretext/SKILL.md` — typographic techniques (78 TECH references).
 - `../skills/amw-excalidraw-illustrations/SKILL.md` — hand-drawn concept illustrations (gated on GEMINI_API_KEY + user consent).

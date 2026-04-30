@@ -1,12 +1,12 @@
 ---
 name: amw-design-md-author-agent
-description: Tier-3 production specialist that authors a DESIGN.md from a design brief, codebase scan, URL, or interactive 5-question interview. Activates on narrow DESIGN.md-creation language only — "create a DESIGN.md for X", "make a design system markdown", "generate a DESIGN.md from this brief", "author a DESIGN.md", "DESIGN.md from this codebase". Does NOT activate on broad design vocabulary such as "design a landing page" or "build a website". Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Tier-3 production specialist that authors a DESIGN.md from a design brief, codebase scan, URL, or interactive 5-question interview. Activates on narrow DESIGN.md-creation language only — "create a DESIGN.md for X", "make a design system markdown", "generate a DESIGN.md from this brief", "author a DESIGN.md", "DESIGN.md from this codebase". Does NOT activate on broad design vocabulary such as "design a landing page" or "build a website". Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW DESIGN.md Author Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, which passes the DESIGN.md to the appropriate production pipeline.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, which passes the DESIGN.md to the appropriate production pipeline.
 
 ---
 
@@ -349,7 +349,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `./amw-design-md-auditor-agent.md` — audit mode for produced DESIGN.md
 - `./amw-design-md-extractor-agent.md` — URL / Tailwind / codebase extraction peer (routes through main-agent)
 - `./amw-wireframe-builder-agent.md` — primary consumer of produced DESIGN.md

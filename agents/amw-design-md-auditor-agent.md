@@ -1,12 +1,12 @@
 ---
 name: amw-design-md-auditor-agent
-description: Tier-2 discovery specialist that performs a 5-pass audit of a DESIGN.md file — structural integrity, token drift against codebase, accessibility (WCAG contrast), section completeness, and cross-token consistency. Activates on narrow DESIGN.md-audit language only — "audit DESIGN.md", "review DESIGN.md", "check DESIGN.md", "validate DESIGN.md", "DESIGN.md drift check", "check DESIGN.md against codebase". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly. Has NO veto power.
+description: Tier-2 discovery specialist that performs a 5-pass audit of a DESIGN.md file — structural integrity, token drift against codebase, accessibility (WCAG contrast), section completeness, and cross-token consistency. Activates on narrow DESIGN.md-audit language only — "audit DESIGN.md", "review DESIGN.md", "check DESIGN.md", "validate DESIGN.md", "DESIGN.md drift check", "check DESIGN.md against codebase". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly. Has NO veto power.
 model: sonnet
 ---
 
 # AMW DESIGN.md Auditor Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to main-agent as a structured findings report.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to main-agent as a structured findings report.
 
 ---
 
@@ -345,7 +345,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `./amw-design-md-author-agent.md` — repair agent (for fixing findings)
 - `./amw-accessibility-auditor-agent.md` — holistic WCAG audit (distinct from my contrast pass)
 - `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format

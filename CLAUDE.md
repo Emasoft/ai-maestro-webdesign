@@ -18,7 +18,7 @@ ai-maestro-webdesign/
 ├── LICENSE                      MIT (plugin); sub-skill originals preserved per-skill
 ├── .gitignore
 ├── agents/                      Agent layer — 1 main-agent + 19 amw-* specialized sub-agents (4 tiers)
-│   ├── ai-maestro-webdesigner-main-agent.md  Tier 1 — PRIMARY ORCHESTRATOR (main-agent mode, user-facing)
+│   ├── ai-maestro-webdesign-main-agent.md  Tier 1 — PRIMARY ORCHESTRATOR (main-agent mode, user-facing)
 │   │                                         -- Tier 2 — Discovery / Research (Phase A primarily) --
 │   ├── amw-legal-expert-agent.md             Legal/compliance specialist (VETO on mandatory elements)
 │   ├── amw-multilanguage-copywriter-agent.md Multilingual copy + RTL + microcopy
@@ -106,7 +106,7 @@ The philosophy and template are canonical at `skills/amw-design-principles/refer
 
 ### Tier 1 — Primary orchestrator
 
-`agents/ai-maestro-webdesigner-main-agent.md` (opus) — The main orchestrator. Activated on broad design intent ("create a landing page for X", "design a dashboard for Y"). Runs Phase A (interactive discovery + low-fi iteration) and delegates Phase B (implementation) to sub-agents. This is the ONLY agent that talks to the user.
+`agents/ai-maestro-webdesign-main-agent.md` (opus) — The main orchestrator. Activated on broad design intent ("create a landing page for X", "design a dashboard for Y"). Runs Phase A (interactive discovery + low-fi iteration) and delegates Phase B (implementation) to sub-agents. This is the ONLY agent that talks to the user.
 
 ### Tier 2 — Discovery / Research sub-agents (Phase A primarily)
 
@@ -160,7 +160,7 @@ New sub-agents follow the pattern `amw-<role>-agent.md` and are placed in `agent
 
 ### Delegation rule (hard invariants)
 
-1. Sub-agents NEVER interact with the user directly. All user communication flows through `ai-maestro-webdesigner-main-agent`.
+1. Sub-agents NEVER interact with the user directly. All user communication flows through `ai-maestro-webdesign-main-agent`.
 2. Delegation is one-way: main-agent → sub-agent → main-agent. Sub-agents do NOT call peer sub-agents directly (prevents loops and keeps context isolated).
 3. Sub-agents return structured YAML headers per the canonical schema; main-agent parses the header mechanically and only reads the full markdown body when the summary is insufficient.
 4. Veto-holding sub-agents (legal-expert, accessibility-auditor) block Phase B forward progress on their veto domain until user override or resolution.
@@ -183,7 +183,7 @@ Every other skill in `skills/` has its `description` deliberately narrowed to **
 The orchestrator distinguishes two modes on every incoming request:
 
 - **Command mode** — the user invokes a `/amw-*` command with explicit parameters. Dispatch directly to the target skill; no approval loop.
-- **Main-agent mode** — the user states requirements without a concrete format. Phase A (conversational, low-fi, low-token ASCII iteration) runs first via `agents/ai-maestro-webdesigner-main-agent.md`; Phase B (sub-agent spawning, real artifacts) starts ONLY after explicit satisfaction tokens are received.
+- **Main-agent mode** — the user states requirements without a concrete format. Phase A (conversational, low-fi, low-token ASCII iteration) runs first via `agents/ai-maestro-webdesign-main-agent.md`; Phase B (sub-agent spawning, real artifacts) starts ONLY after explicit satisfaction tokens are received.
 
 The Phase A → Phase B approval gate is a hard invariant: `amw-design-principles` MUST NOT spawn sub-agents or produce real artifacts (HTML, SVG, PNG, MP4) until the user has confirmed the low-fi direction with `yes`, `ship it`, `approved`, `that's the one`, `perfect`, `done`, `go ahead`, or `let's do it`. Commands are a subset of what each sub-skill enables; an agent in Main-agent mode may invoke any technique any skill exposes, not just those surfaced by commands.
 

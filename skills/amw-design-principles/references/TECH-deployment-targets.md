@@ -1,7 +1,7 @@
 ---
 name: TECH-deployment-targets
 category: design-principles-deployment
-source: ai-maestro-webdesigner-main-agent §15 (Production deployment doctrine)
+source: ai-maestro-webdesign-main-agent §15 (Production deployment doctrine)
 also-in: globalCC skills `vercel-development`, `netlify-development`, `cloudflare-development` for platform-specific deep dives
 ---
 

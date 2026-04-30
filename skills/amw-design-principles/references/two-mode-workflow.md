@@ -5,13 +5,13 @@ sub-skill in this plugin pick between **Command mode** and **Main-agent mode** a
 execute accordingly. All orchestrator and sub-skill behavior described here
 overrides informal descriptions elsewhere.
 
-> **Main-agent mode is EXECUTED BY `agents/ai-maestro-webdesigner-main-agent.md`** (or by any upstream orchestrator that follows the same Phase A/B contract defined in this document). The main-agent is the primary agent that runs the interactive discovery loop (Phase A) and delegates implementation (Phase B) to specialized `amw-*` sub-agents. See `../../agents/ai-maestro-webdesigner-main-agent.md` for the full agent definition.
+> **Main-agent mode is EXECUTED BY `agents/ai-maestro-webdesign-main-agent.md`** (or by any upstream orchestrator that follows the same Phase A/B contract defined in this document). The main-agent is the primary agent that runs the interactive discovery loop (Phase A) and delegates implementation (Phase B) to specialized `amw-*` sub-agents. See `../../agents/ai-maestro-webdesign-main-agent.md` for the full agent definition.
 
 ---
 
 ## 0. Sub-agent delegation (Main-agent mode only)
 
-When operating in Main-agent mode, the `ai-maestro-webdesigner-main-agent` may spawn specialized sub-agents prefixed with `amw-` (ai-maestro-webdesigner). These agents are exclusively subordinate to the main-agent — they never interact with the user directly.
+When operating in Main-agent mode, the `ai-maestro-webdesign-main-agent` may spawn specialized sub-agents prefixed with `amw-` (ai-maestro-webdesigner). These agents are exclusively subordinate to the main-agent — they never interact with the user directly.
 
 ### Naming convention
 
@@ -124,7 +124,7 @@ Activate Main-agent mode when the message:
 - Is ambiguous about format, tool, or fidelity.
 
 Main-agent mode means: **the user has requirements but has not committed to any
-specific format or sub-skill.** Enter Phase A via `agents/ai-maestro-webdesigner-main-agent.md`.
+specific format or sub-skill.** Enter Phase A via `agents/ai-maestro-webdesign-main-agent.md`.
 
 ### Tie-breaking rule
 
@@ -396,7 +396,7 @@ and visual direction. The first HTML output is wrong. The user requests changes.
 The agent re-generates HTML — at 100x the token cost of ASCII iteration. Three
 rounds of HTML re-generation = the same cost as 300 rounds of ASCII iteration.
 
-Correct behavior: detect Main-agent mode, enter Phase A via `agents/ai-maestro-webdesigner-main-agent.md`, propose 3 ASCII variants,
+Correct behavior: detect Main-agent mode, enter Phase A via `agents/ai-maestro-webdesign-main-agent.md`, propose 3 ASCII variants,
 iterate until the satisfaction gate is passed.
 
 ### Starting Phase B before explicit approval

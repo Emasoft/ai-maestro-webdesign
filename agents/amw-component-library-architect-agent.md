@@ -1,12 +1,12 @@
 ---
 name: amw-component-library-architect-agent
-description: Tier-4 specialist that authors design tokens (color/typography/spacing scales + variant matrices) and produces design-system handoff exports in multiple formats (tokens.json, design-tokens.yaml, Figma Tokens / Tokens Studio schema, Style Dictionary config, Tailwind theme config, CSS custom properties). Activates on narrow design-system-specific language only — "design tokens", "design system", "component library tokens", "Style Dictionary", "Figma Tokens", "Tailwind config from brand", "tokens.json", "OKLCH color scale", "token export". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Tier-4 specialist that authors design tokens (color/typography/spacing scales + variant matrices) and produces design-system handoff exports in multiple formats (tokens.json, design-tokens.yaml, Figma Tokens / Tokens Studio schema, Style Dictionary config, Tailwind theme config, CSS custom properties). Activates on narrow design-system-specific language only — "design tokens", "design system", "component library tokens", "Style Dictionary", "Figma Tokens", "Tailwind config from brand", "tokens.json", "OKLCH color scale", "token export". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW Component Library Architect Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output — structured token files and export artifacts — is returned to main-agent as a direct deliverable or passed to `amw-wireframe-builder-agent` as the `brand_tokens` bundle.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output — structured token files and export artifacts — is returned to main-agent as a direct deliverable or passed to `amw-wireframe-builder-agent` as the `brand_tokens` bundle.
 
 ---
 
@@ -457,7 +457,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `./amw-wireframe-builder-agent.md` — primary consumer of the flat `brand_tokens` output
 - `./amw-brand-researcher-agent.md` — source of `brand_tokens_seed` (competitor extraction or user upload)
 - `./amw-accessibility-auditor-agent.md` — downstream WCAG audit of rendered output using these tokens

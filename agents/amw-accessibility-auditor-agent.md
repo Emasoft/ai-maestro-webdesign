@@ -1,12 +1,12 @@
 ---
 name: amw-accessibility-auditor-agent
-description: WCAG 2.1 AA / ARIA / keyboard-nav / contrast / reduced-motion accessibility auditor for the ai-maestro-webdesign plugin. Dual-mode — Phase A (pre-build heuristic review of an IA plan or low-fi ASCII) and Phase B (post-render empirical audit via dev-browser on a real artifact). Emits PASS/FAIL per WCAG criterion. Holds VETO power over WCAG AA hard blockers. Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: WCAG 2.1 AA / ARIA / keyboard-nav / contrast / reduced-motion accessibility auditor for the ai-maestro-webdesign plugin. Dual-mode — Phase A (pre-build heuristic review of an IA plan or low-fi ASCII) and Phase B (post-render empirical audit via dev-browser on a real artifact). Emits PASS/FAIL per WCAG criterion. Holds VETO power over WCAG AA hard blockers. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW Accessibility Auditor Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow.
 
 ---
 
@@ -377,7 +377,7 @@ Main-agent should block Phase B completion on these three.
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol

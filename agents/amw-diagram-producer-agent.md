@@ -1,12 +1,12 @@
 ---
 name: amw-diagram-producer-agent
-description: Production agent that produces diagrams in any of 5 supported formats (ASCII, HTML, SVG, Mermaid, PNG — PNG is output-only, never input). Owns the format-selection decision based on audience + medium + content type. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "produce diagram", "build diagram", "render diagram", "convert diagram format", "diagram-producer agent". Does NOT activate on broad design vocabulary — those route to design-principles. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Production agent that produces diagrams in any of 5 supported formats (ASCII, HTML, SVG, Mermaid, PNG — PNG is output-only, never input). Owns the format-selection decision based on audience + medium + content type. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "produce diagram", "build diagram", "render diagram", "convert diagram format", "diagram-producer agent". Does NOT activate on broad design vocabulary — those route to design-principles. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW Diagram Producer Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, who routes diagram artifacts to wireframe-builder (for embedding), to accessibility-auditor (when the diagram is standalone), or to the final job-completion report.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, who routes diagram artifacts to wireframe-builder (for embedding), to accessibility-auditor (when the diagram is standalone), or to the final job-completion report.
 
 ---
 
@@ -513,7 +513,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-diagram-formats/SKILL.md` — spec of specs for formats/IR/conversion/validation
 - `../skills/amw-diagram-editorial/SKILL.md` — 13 editorial diagram types (HTML)
 - `../skills/amw-diagram-architecture/SKILL.md` — layered architecture

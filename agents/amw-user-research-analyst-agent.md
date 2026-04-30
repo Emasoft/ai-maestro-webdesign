@@ -1,12 +1,12 @@
 ---
 name: amw-user-research-analyst-agent
-description: User research synthesizer for the ai-maestro-webdesign plugin. Converts user-provided context (interviews, surveys, analytics, support tickets, NPS verbatims, heatmaps) into structured personas and user-journey maps. Holds IA / content-hierarchy authority (no veto — main-agent may arbitrate against SEO or other inputs). Outputs via ux-designer + ux-flows skills. Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: User research synthesizer for the ai-maestro-webdesign plugin. Converts user-provided context (interviews, surveys, analytics, support tickets, NPS verbatims, heatmaps) into structured personas and user-journey maps. Holds IA / content-hierarchy authority (no veto — main-agent may arbitrate against SEO or other inputs). Outputs via ux-designer + ux-flows skills. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW User Research Analyst Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow.
 
 ---
 
@@ -436,7 +436,7 @@ flowchart LR
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol

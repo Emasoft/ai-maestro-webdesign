@@ -1,12 +1,12 @@
 ---
 name: amw-seo-strategist-agent
-description: SEO keyword research and information-architecture strategist for the ai-maestro-webdesign plugin. Dual-mode — Phase A (keyword cluster, IA plan, hreflang strategy, structured-data plan) and Phase B (on-page SEO audit, JSON-LD injection, rendered-page crawl checks). Uses the SEO skill rubric and ux-flows for IA diagramming. No veto power — SEO recommendations are consulting input that main-agent may weight against user-research-analyst's IA authority. Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: SEO keyword research and information-architecture strategist for the ai-maestro-webdesign plugin. Dual-mode — Phase A (keyword cluster, IA plan, hreflang strategy, structured-data plan) and Phase B (on-page SEO audit, JSON-LD injection, rendered-page crawl checks). Uses the SEO skill rubric and ux-flows for IA diagramming. No veto power — SEO recommendations are consulting input that main-agent may weight against user-research-analyst's IA authority. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW SEO Strategist Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow.
 
 ---
 
@@ -429,7 +429,7 @@ Phase B returns the same YAML schema with `phase: B`, `artifact_paths` including
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol

@@ -1,12 +1,12 @@
 ---
 name: amw-infographic-builder-agent
-description: Production agent that produces dense editorial infographics as HTML + PNG + PDF using the infographics skill's 24-template library and 175-design-DNA set. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "produce infographic", "build infographic", "render infographic from data brief", "export infographic as PNG", "infographic-builder agent". Does NOT activate on broad design vocabulary, on diagram briefs, or on wireframe briefs — those route to design-principles, diagram-producer, and wireframe-builder respectively. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Production agent that produces dense editorial infographics as HTML + PNG + PDF using the infographics skill's 24-template library and 175-design-DNA set. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "produce infographic", "build infographic", "render infographic from data brief", "export infographic as PNG", "infographic-builder agent". Does NOT activate on broad design vocabulary, on diagram briefs, or on wireframe briefs — those route to design-principles, diagram-producer, and wireframe-builder respectively. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW Infographic Builder Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, who routes infographic artifacts to the final job-completion report, or to accessibility-auditor when the infographic is a standalone webpage.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, who routes infographic artifacts to the final job-completion report, or to accessibility-auditor when the infographic is a standalone webpage.
 
 ---
 
@@ -550,7 +550,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-infographics/SKILL.md` — core skill
 - `../skills/amw-infographics/templates/` — 24 templates
 - `../skills/amw-infographics/resources/style-details.md` — 1062-line DNA corpus

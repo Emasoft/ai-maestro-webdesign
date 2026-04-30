@@ -1,12 +1,12 @@
 ---
 name: amw-multilanguage-copywriter-agent
-description: Multilingual copy producer for the ai-maestro-webdesign plugin. Produces web copy in any locale, handles pluralization, grammatical gender, cultural adaptation, and RTL considerations. Uses pretext typography references for optimal line-breaking. Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: Multilingual copy producer for the ai-maestro-webdesign plugin. Produces web copy in any locale, handles pluralization, grammatical gender, cultural adaptation, and RTL considerations. Uses pretext typography references for optimal line-breaking. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW Multilingual Copywriter Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent, who integrates it into the broader workflow.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent, who integrates it into the broader workflow.
 
 ---
 
@@ -490,7 +490,7 @@ For Arabic, Hebrew, and other RTL locales:
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — judgment-layer philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T block

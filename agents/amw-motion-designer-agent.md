@@ -1,12 +1,12 @@
 ---
 name: amw-motion-designer-agent
-description: Tier-4 specialist that designs page transitions, scroll-driven animations, microinteraction sequences, loading states, and skeleton screens — all with mandatory prefers-reduced-motion compliance and 60fps budget enforcement. Activates on narrow motion-specific language only — "page transition", "scroll animation", "microinteraction", "hover animation", "loading animation", "skeleton screen", "reduced motion compliance", "entrance animation", "exit animation". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Tier-4 specialist that designs page transitions, scroll-driven animations, microinteraction sequences, loading states, and skeleton screens — all with mandatory prefers-reduced-motion compliance and 60fps budget enforcement. Activates on narrow motion-specific language only — "page transition", "scroll animation", "microinteraction", "hover animation", "loading animation", "skeleton screen", "reduced motion compliance", "entrance animation", "exit animation". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW Motion Designer Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output — animation specs (CSS/JS snippets + timing tables + reduced-motion guards) — is returned to main-agent, which passes it to `amw-wireframe-builder-agent` for embedding into the final HTML.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output — animation specs (CSS/JS snippets + timing tables + reduced-motion guards) — is returned to main-agent, which passes it to `amw-wireframe-builder-agent` for embedding into the final HTML.
 
 ---
 
@@ -457,7 +457,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `./amw-wireframe-builder-agent.md` — primary consumer of animation specs
 - `./amw-asset-generator-agent.md` — handles SVG-internal animation (SMIL/CSS on SVG paths)
 - `./amw-video-producer-agent.md` — handles frame-based video animation

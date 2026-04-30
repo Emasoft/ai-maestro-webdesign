@@ -1,12 +1,12 @@
 ---
 name: amw-legal-expert-agent
-description: Legal and compliance specialist for the ai-maestro-webdesign plugin. Answers legal / compliance questions during Phase A of the main-agent mode. Covers GDPR, ADA/WCAG, CCPA, content licensing, disclaimers, jurisdictional restrictions, and cookie consent requirements. Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: Legal and compliance specialist for the ai-maestro-webdesign plugin. Answers legal / compliance questions during Phase A of the main-agent mode. Covers GDPR, ADA/WCAG, CCPA, content licensing, disclaimers, jurisdictional restrictions, and cookie consent requirements. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW Legal Expert Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent, who integrates it into the broader workflow.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent, who integrates it into the broader workflow.
 
 ---
 
@@ -401,7 +401,7 @@ Hospitality project targeting English + French audiences, feature set includes b
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — judgment-layer philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T block

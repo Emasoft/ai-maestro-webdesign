@@ -1,12 +1,12 @@
 ---
 name: amw-video-producer-agent
-description: Renders composed HTML timeline scenes to MP4 video via hyperframes-bridge and the vendored external/hyperframes/ monorepo. Narrow triggers only — HTML-to-MP4 composition rendering, never generic "make a video" requests. Validates monorepo presence before rendering (fail-fast). Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: Renders composed HTML timeline scenes to MP4 video via hyperframes-bridge and the vendored external/hyperframes/ monorepo. Narrow triggers only — HTML-to-MP4 composition rendering, never generic "make a video" requests. Validates monorepo presence before rendering (fail-fast). Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW Video Producer Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents never call each other; if another agent needs my MP4, main-agent reads my `artifact_paths` and passes the path forward.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents never call each other; if another agent needs my MP4, main-agent reads my `artifact_paths` and passes the path forward.
 
 ---
 
@@ -532,7 +532,7 @@ I have **no veto power**. Production agents do not hold veto per `../skills/amw-
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent; receives the MP4 path in my YAML header.
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent; receives the MP4 path in my YAML header.
 - `../skills/amw-hyperframes-bridge/SKILL.md` — the only skill this agent uses. Authoritative source for the shell-out command + attribute schema.
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — the 14-section template.
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML header schema.

@@ -43,7 +43,7 @@ Full spec: `./references/two-mode-workflow.md`. Summary here — read the full s
 
 ### Main-agent mode (requirements path)
 
-> **Executed by `../../agents/ai-maestro-webdesigner-main-agent.md`** (or any upstream orchestrator following the same Phase A/B contract). See that agent for the full interactive discovery flow, resource-gathering checklist, sub-agent delegation rules, and Phase B spawning roster.
+> **Executed by `../../agents/ai-maestro-webdesign-main-agent.md`** (or any upstream orchestrator following the same Phase A/B contract). See that agent for the full interactive discovery flow, resource-gathering checklist, sub-agent delegation rules, and Phase B spawning roster.
 >
 > The `agents/` folder ships 1 main-agent + 19 amw-* sub-agents across 4 tiers (discovery, production, specialists, QA). All sub-agents follow the canonical 14-section template documented at `./references/agent-authoring-philosophy.md`. Cross-agent data hand-offs and the one-way tree topology are in `./references/agent-interaction-patterns.md`. Veto power (legal-expert, accessibility-auditor) and conflict-resolution rules are in `./references/authority-hierarchy.md`. The YAML return-contract schema every sub-agent emits is at `./references/sub-agent-return-contract.md`. The DO/DON'T rules agents follow when invoking skills are at `./references/skill-invocation-protocol.md`.
 
@@ -346,7 +346,7 @@ Slash commands: `/amw-eval`, `/amw-preview`, `/amw-doctor`, `/amw-init`.
 
 ### Tier-4 specialists (on-demand, Phase B only)
 
-`amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, and `amw-component-library-architect-agent` are spawned by `ai-maestro-webdesigner-main-agent` when the brief surfaces form / email / motion / token-system intent. They have no veto power and produce specs or exports consumed by Tier-3 producers. They are agents, not skills — invoke them via Task delegation, not skill activation. Full roster and delegation rules: `../../agents/ai-maestro-webdesigner-main-agent.md` and `./references/two-mode-workflow.md`.
+`amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, and `amw-component-library-architect-agent` are spawned by `ai-maestro-webdesign-main-agent` when the brief surfaces form / email / motion / token-system intent. They have no veto power and produce specs or exports consumed by Tier-3 producers. They are agents, not skills — invoke them via Task delegation, not skill activation. Full roster and delegation rules: `../../agents/ai-maestro-webdesign-main-agent.md` and `./references/two-mode-workflow.md`.
 
 ---
 

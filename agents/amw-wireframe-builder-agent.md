@@ -1,12 +1,12 @@
 ---
 name: amw-wireframe-builder-agent
-description: Production agent that converts an approved, validator-PASS ASCII wireframe into production-ready HTML with brand tokens, shadcn/ui integration, Tailwind v4 styling, and responsive fit. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "build wireframe HTML", "produce HTML from approved ASCII", "render approved wireframe", "convert approved ASCII to production HTML". Does NOT activate on broad design vocabulary — those route to design-principles. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Production agent that converts an approved, validator-PASS ASCII wireframe into production-ready HTML with brand tokens, shadcn/ui integration, Tailwind v4 styling, and responsive fit. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "build wireframe HTML", "produce HTML from approved ASCII", "render approved wireframe", "convert approved ASCII to production HTML". Does NOT activate on broad design vocabulary — those route to design-principles. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW Wireframe Builder Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the Phase B workflow and passes it to downstream auditors (accessibility-auditor, seo-strategist, browser-tester).
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the Phase B workflow and passes it to downstream auditors (accessibility-auditor, seo-strategist, browser-tester).
 
 ---
 
@@ -544,7 +544,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `../skills/amw-ascii-to-html/SKILL.md` — core translation skill
 - `../skills/amw-shadcn-ui/SKILL.md` — component surface for shadcn stacks
 - `../skills/amw-tailwind-4/SKILL.md` — Tailwind v4 syntax reference

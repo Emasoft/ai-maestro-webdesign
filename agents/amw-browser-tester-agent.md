@@ -1,12 +1,12 @@
 ---
 name: amw-browser-tester-agent
-description: Runs dev-browser scenario tests on Phase B artifacts — no-console-errors, renders-above-fold, mobile-viewport-layout, interactive-spot-checks, accessibility-keyboard-nav. Emits PASS/FAIL/INCONCLUSIVE per scenario with mandatory screenshot evidence. dev-browser is the ONLY browser-automation primitive (no Playwright, no Chrome DevTools MCP). Spawned exclusively by ai-maestro-webdesigner-main-agent — never by the user directly.
+description: Runs dev-browser scenario tests on Phase B artifacts — no-console-errors, renders-above-fold, mobile-viewport-layout, interactive-spot-checks, accessibility-keyboard-nav. Emits PASS/FAIL/INCONCLUSIVE per scenario with mandatory screenshot evidence. dev-browser is the ONLY browser-automation primitive (no Playwright, no Chrome DevTools MCP). Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
 # AMW Browser Tester Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents never call each other; if `amw-accessibility-auditor-agent` or `amw-seo-strategist-agent` also need to run on the same artifact, main-agent orchestrates us in sequence or parallel.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents never call each other; if `amw-accessibility-auditor-agent` or `amw-seo-strategist-agent` also need to run on the same artifact, main-agent orchestrates us in sequence or parallel.
 
 ---
 
@@ -542,7 +542,7 @@ I have **no veto power**. Per `../skills/amw-design-principles/references/author
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent; consumes my verdicts and decides next steps.
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent; consumes my verdicts and decides next steps.
 - `../skills/amw-dev-browser/SKILL.md` — the only browser-automation primitive. Authoritative invocation patterns.
 - `../skills/amw-ux-evaluator/SKILL.md` — optional UX-quality scoring layer (3-dimension framework).
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — the 14-section template.

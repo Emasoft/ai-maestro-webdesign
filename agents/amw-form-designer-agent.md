@@ -1,12 +1,12 @@
 ---
 name: amw-form-designer-agent
-description: Tier-4 specialist that designs booking, contact, checkout, and multi-step forms with full validation UX, error states, and accessibility-of-forms. Activates on narrow form-specific language only — "design a contact form", "checkout form UX", "multi-step form", "form validation UX", "form error states", "form a11y", "booking form", "signup form flow". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesigner-main-agent; never invoked by the user directly.
+description: Tier-4 specialist that designs booking, contact, checkout, and multi-step forms with full validation UX, error states, and accessibility-of-forms. Activates on narrow form-specific language only — "design a contact form", "checkout form UX", "multi-step form", "form validation UX", "form error states", "form a11y", "booking form", "signup form flow". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
 model: sonnet
 ---
 
 # AMW Form Designer Agent
 
-> I am spawned by `ai-maestro-webdesigner-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, which passes my form spec to `amw-wireframe-builder-agent` for final HTML rendering.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to main-agent, which passes my form spec to `amw-wireframe-builder-agent` for final HTML rendering.
 
 ---
 
@@ -445,7 +445,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesigner-main-agent.md` — spawning agent
+- `./ai-maestro-webdesign-main-agent.md` — spawning agent
 - `./amw-wireframe-builder-agent.md` — primary consumer of form spec
 - `./amw-accessibility-auditor-agent.md` — downstream WCAG audit of rendered form HTML
 - `./amw-multilanguage-copywriter-agent.md` — error message copy for non-English locales
