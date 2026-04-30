@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-to-svg
-description: DEPRECATED — superseded by amw-diagram-convert (which uses the IR pivot for any-to-any conversion across ASCII/HTML/SVG/Mermaid/PNG). Kept as a low-level primitive for direct ASCII→SVG paths and for the /amw-ascii-to-svg slash command (backward compatibility). New code should route through amw-diagram-convert. Triggers narrowly on the legacy phrasings only.
+description: Deprecated. See ../amw-diagram-convert/ for the IR-pivot conversion path. This file remains as a low-level primitive callable from /amw-ascii-to-svg only — it has no auto-trigger phrases.
 version: 0.2.0
 ---
 

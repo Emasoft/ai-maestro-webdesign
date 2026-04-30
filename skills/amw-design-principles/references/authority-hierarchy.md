@@ -13,6 +13,10 @@ This document specifies who wins when two amw-* sub-agents return recommendation
 | Legal / compliance mandatory elements | `amw-legal-expert-agent` | **YES** | main-agent; if user overrides, mark user-accepted-risk in job report |
 | WCAG AA hard blockers | `amw-accessibility-auditor-agent` | **YES** | main-agent; if user overrides, mark user-accepted-risk in job report |
 | Artifact format / rendering technique | production agent (wireframe-builder, diagram-producer, etc.) | no | main-agent |
+| Form architecture / validation UX | `amw-form-designer-agent` | no | accessibility-auditor wins on a11y blockers; user-research-analyst wins on flow disputes |
+| Motion / animation / scroll behavior | `amw-motion-designer-agent` | no | accessibility-auditor wins on `prefers-reduced-motion` and vestibular-safety blockers |
+| Email layout / MJML / table-grid | `amw-email-designer-agent` | no | accessibility-auditor wins on alt-text + plain-text-fallback; legal-expert wins on unsubscribe / sender-ID compliance |
+| Design tokens / variant matrix | `amw-component-library-architect-agent` | no | brand-researcher wins on brand-fidelity (token values must round-trip to brand source); accessibility-auditor wins on contrast |
 
 ## Veto power — what it means
 
