@@ -92,6 +92,7 @@ I do NOT activate on: "design the test plan" (that's main-agent), "debug this te
 
 ```
 {
+  "frozen_spec_path": "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>",
   "artifact_url": "<file:// or http://... URL — must be reachable by dev-browser>",
   "artifact_type": "webpage" | "dashboard" | "infographic" | "diagram" | "form" | "slide",
   "scenarios": [
@@ -126,6 +127,12 @@ I do NOT activate on: "design the test plan" (that's main-agent), "debug this te
 - If `scenarios` is absent or empty, I run the default battery (no-console-errors, renders-above-fold, mobile-viewport-layout, accessibility-keyboard-nav, core-web-vitals, links-resolve; interactive-spot-checks only if the artifact has obvious primary CTAs I can identify from the DOM).
 - If `viewport_sizes` is null, I run desktop + mobile.
 - `include_ux_eval=true` runs ux-evaluator on the desktop screenshot alongside the binary tests.
+
+**Frozen-spec path resolution.** When `frozen_spec_path` is present (the Phase B fan-out mode), I read the JSON and resolve only the keys I need: `output_dir`, `wcag_target`. Other input fields above are still accepted for backward compatibility AND for command-mode invocation (e.g., `/amw-<command>` direct calls bypass main-agent and pass individual fields directly), but when `frozen_spec_path` is set, the JSON's keys take precedence over any individual fields with the same semantics.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 ---
 

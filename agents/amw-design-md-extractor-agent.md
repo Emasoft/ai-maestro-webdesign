@@ -90,6 +90,7 @@ I do NOT activate on generic vocabulary. The plugin's main flow already handles 
 Main-agent passes a structured input shaped as follows:
 
 ```yaml
+frozen_spec_path: "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>"  # optional; present in Phase B fan-out mode only
 input_type: "url | tailwind | codebase"             # required
 url: "https://example.com"                          # required if input_type=url
 tailwind_config_path: "/abs/path/tailwind.config.ts" # required if input_type=tailwind
@@ -103,6 +104,12 @@ contrast_check: true                                # optional; default true. Ru
 ```
 
 A missing required field for the chosen `input_type` is `status=failed` / `next_action=escalate_to_user`.
+
+**Frozen-spec path resolution.** This agent is rarely invoked in Phase B fan-out mode — extraction from a live URL or codebase is predominantly a Phase A or command-mode operation. When `frozen_spec_path` is present, I read the JSON for context only (notably `output_dir` if set) but do not rely on frozen-spec keys as primary inputs, since extraction by definition requires a live source. Command-mode invocation (e.g., `/amw-extract-style`) is the dominant usage pattern and passes individual fields directly.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 ---
 

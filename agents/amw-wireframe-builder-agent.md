@@ -96,6 +96,7 @@ My activation gate is conditional on Phase B context being established by main-a
 Main-agent passes a structured input shaped as follows:
 
 ```yaml
+frozen_spec_path: "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>"  # optional; present in Phase B fan-out mode only
 approved_ascii_path: "/abs/path/to/approved-variant.txt"   # required; must have passed bin/amw-validate-ascii.py upstream
 brand_tokens:                                              # required; from amw-brand-researcher-agent or user upload
   colors:
@@ -146,6 +147,12 @@ SEO_head:                                                  # optional; from amw-
   meta_description: "..."
   structured_data_jsonld: {...}
 ```
+
+**Frozen-spec path resolution.** When `frozen_spec_path` is present (the Phase B fan-out mode), I read the JSON and resolve only the keys I need: `approved_ascii_path`, `brand_tokens_path`, `ia_structure_path`, `copy_blocks_path`, `legal_mandatory_elements_path`, `seo_head_path`, `target_stack`, `locales`, `output_dir`. Other input fields below are still accepted for backward compatibility AND for command-mode invocation (e.g., `/amw-<command>` direct calls bypass main-agent and pass individual fields directly), but when `frozen_spec_path` is set, the JSON's keys take precedence over any individual fields with the same semantics.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 A missing required field is a `status=failed` / `next_action=escalate_to_user` return. A missing optional field is normal — I proceed without it and note absence in `warnings` only when the output would be materially weaker (e.g., no `brand_tokens.source` means I cannot cite provenance in the report).
 

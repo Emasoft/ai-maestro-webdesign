@@ -114,6 +114,7 @@ At least one of `ia_plan_path`, `ascii_path`, or `component_specs` must be provi
 ### Phase B input contract
 
 ```yaml
+frozen_spec_path: "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>"  # optional; present in Phase B fan-out mode only
 mode: B
 artifact_url: <file:// or http:// URL of the rendered artifact>  # required
 artifact_type: webpage | dashboard | infographic | diagram | form
@@ -124,6 +125,12 @@ locale: <ISO 639-1 code>
 wcag_level: AA                         # default; explicitly settable to A or AAA
 include_aaa_warnings: true | false     # default false
 ```
+
+**Frozen-spec path resolution.** When `frozen_spec_path` is present (the Phase B fan-out mode), I read the JSON and resolve only the keys I need: `output_dir`, `wcag_target`. Other input fields above are still accepted for backward compatibility AND for command-mode invocation (e.g., `/amw-<command>` direct calls bypass main-agent and pass individual fields directly), but when `frozen_spec_path` is set, the JSON's keys take precedence over any individual fields with the same semantics.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 ---
 

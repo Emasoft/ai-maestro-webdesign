@@ -103,6 +103,7 @@ I activate on **narrow, technical** phrases from main-agent only.
 ## 5. Input Contract
 
 ```yaml
+frozen_spec_path: "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>"  # optional; present in Phase B fan-out mode only
 diagram_brief: "Free text describing what the diagram should communicate."   # required
 preferred_format: null | ascii | html | svg | mermaid | png                  # optional; null = I pick
 target_medium: terminal | readme | adr | blog-post | slide-deck | marketing-page | social-image | printed-pdf  # optional; defaults to "readme"
@@ -133,6 +134,12 @@ Four operation modes distinguished by which fields are populated:
 | WEBPAGE_TO_DIAGRAM | `source_url` + optional `preferred_format` |
 
 If more than one mode is populated, I infer intent from `diagram_brief` and document the choice in `warnings`. If none is populated, return `status=failed` with `blocking_issues=["Input contract is ambiguous: no author/convert/compare/webpage fields populated."]`.
+
+**Frozen-spec path resolution.** When `frozen_spec_path` is present (the Phase B fan-out mode), I read the JSON and resolve only the keys I need: `design_md_path`, `output_dir`. Other input fields above are still accepted for backward compatibility AND for command-mode invocation (e.g., `/amw-<command>` direct calls bypass main-agent and pass individual fields directly), but when `frozen_spec_path` is set, the JSON's keys take precedence over any individual fields with the same semantics.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 ---
 

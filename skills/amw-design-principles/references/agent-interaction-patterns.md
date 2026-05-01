@@ -32,6 +32,10 @@ researcher research    expert    strategist  language
 
 Each discovery sub-agent returns a YAML-headed report. Main-agent aggregates the outputs and synthesizes three ASCII variants via the `ascii-sketch` skill (or equivalent low-fi artifact per the Phase A palette). User iterates; main-agent re-synthesizes. Satisfaction gate terminates Phase A.
 
+**Important: as of P1-1, Phase B data hand-offs are mediated through `phase-a-frozen-spec.json` (canonical schema at `./phase-a-frozen-spec.md`).** The tables below document which Phase A agent's output ends up in which spec field; main-agent runs `bin/amw-freeze-phase-a.sh` at Phase A.5 to aggregate them, and every Phase B sub-agent receives only the spec's path (not the individual paths). The individual-path columns below are kept for reference / future plan changes, but in production every Phase B sub-agent reads the JSON and resolves only the keys it needs.
+
+The "Frozen-spec key" column applies to Phase A → Phase B carries (the rows whose downstream consumer is a Phase B agent). Phase A → Phase A carries (rows where one discovery agent feeds another within Phase A) bypass the frozen spec — main-agent passes those directly because the frozen spec is not yet emitted.
+
 ### Phase A data hand-offs (carried by main-agent between sub-agent invocations)
 
 | From agent | Output field | To agent | Input field | When |
@@ -86,27 +90,33 @@ builder    producer builder      generator producer
 
 ### Phase B data hand-offs
 
-| From agent | Output field | To agent | Input field | Purpose |
-|---|---|---|---|---|
-| brand-researcher (from Phase A) | `extracted_tokens` | wireframe-builder | `brand_tokens` | apply color / font / spacing in HTML output |
-| user-research-analyst (from Phase A) | `IA_structure` | wireframe-builder | `section_order` | respect section hierarchy in HTML |
-| multilanguage-copywriter (Phase B) | `copy_blocks_per_locale` | wireframe-builder | `copy_content` | inject final copy into HTML slots |
-| seo-strategist (Phase A) | `H1_H2_structure` | wireframe-builder | `heading_text` | locked headings |
-| legal-expert | `mandatory_elements` | wireframe-builder | `required_fragments` | cookie banner, disclaimers must be present |
-| wireframe-builder | `artifact_path` (the final HTML) | accessibility-auditor (B) | `artifact_url` (file://…) | audit target |
-| wireframe-builder | `artifact_path` | seo-strategist (B) | `artifact_url` | on-page SEO audit target |
-| wireframe-builder | `artifact_path` | browser-tester | `artifact_url` + `scenarios` | dev-browser scenario tests |
-| diagram-producer | `artifact_paths` (SVG/PNG/Mermaid) | wireframe-builder | `embedded_diagrams` | if diagrams are embedded in the HTML page |
-| infographic-builder | `artifact_path` | accessibility-auditor (B) | `artifact_url` | separate infographic page audit |
-| video-producer | `artifact_path` (MP4) | main-agent | final report only | videos don't need accessibility audit beyond closed captions handled by video-producer itself |
-| asset-generator | `artifact_paths` (SVG icons/logos) | wireframe-builder | `asset_library` | embed or link from HTML |
-| **form-designer** (Tier 4) | `form_spec` (HTML structure + validation rules + error-state copy slots) | wireframe-builder | `form_blocks` | wireframe-builder renders the layout; form-designer owns the form architecture |
-| **motion-designer** (Tier 4) | `motion_spec` (CSS @keyframes / JS snippets + timing + reduced-motion guards) | wireframe-builder | `motion_blocks` | wireframe-builder embeds the spec; motion-designer owns the animation semantics |
-| **component-library-architect** (Tier 4) | `tokens.json` / `tailwind.config.ts` / `design-tokens.yaml` | brand-researcher (Phase A re-eval) OR wireframe-builder (Phase B) | `brand_tokens` | architect produces canonical token export; consumer agents read from it |
-| **email-designer** (Tier 4) | `mjml_source` + `plain_text_fallback` + `dark_mode_variant` | main-agent | final report (separate render path — NOT routed to wireframe-builder) | email is a different artifact class; main-agent collects directly |
-| brand-researcher | `extracted_tokens` (Phase A) | component-library-architect (Phase B if requested) | `brand_tokens_seed` | architect derives a full token system from the seed |
-| user-research-analyst | `personas + onboarding_flow` | wireframe-builder | `IA_structure` + `empty_state_specs` | wireframe-builder embeds the empty-state guidance the analyst flagged |
-| multilanguage-copywriter | `microcopy_per_context` | wireframe-builder | injected into form / button / toast / empty-state slots | microcopy specialist work is part of copywriter, not a separate agent |
+The `Frozen-spec key` column shows which `phase-a-frozen-spec.json` field carries the data. Inputs sourced from earlier Phase B sub-agents (e.g. `wireframe-builder`'s `artifact_path`) are NOT in the frozen spec — main-agent threads those directly via the running artifact inventory because they are produced after Phase A.5.
+
+| From agent | Output field | To agent | Input field | Frozen-spec key | Purpose |
+|---|---|---|---|---|---|
+| brand-researcher (from Phase A) | `extracted_tokens` | wireframe-builder | `brand_tokens` | `brand_tokens_path` | apply color / font / spacing in HTML output |
+| user-research-analyst (from Phase A) | `IA_structure` | wireframe-builder | `section_order` | `ia_structure_path` | respect section hierarchy in HTML |
+| multilanguage-copywriter (Phase B) | `copy_blocks_per_locale` | wireframe-builder | `copy_content` | `copy_blocks_path` | inject final copy into HTML slots |
+| seo-strategist (Phase A) | `H1_H2_structure` | wireframe-builder | `heading_text` | `ia_structure_path` (H1/H2 seed) + `seo_head_path` (head fragments) | locked headings |
+| legal-expert | `mandatory_elements` | wireframe-builder | `required_fragments` | `legal_mandatory_elements_path` | cookie banner, disclaimers must be present |
+| design-md author/extractor (Phase A) | `DESIGN.md` | wireframe-builder, accessibility-auditor (B), component-library-architect | `design_md_path` | `design_md_path` | canonical token + section reference |
+| user-research-analyst (Phase A) | `personas` | wireframe-builder, copywriter, form-designer | `personas` (microcopy / empty-state tuning) | `personas_path` | persona-driven content choices |
+| (Phase A approved ASCII) | the approved variant | wireframe-builder | `approved_ascii` (layout source-of-truth) | `approved_ascii_path` + `approved_ascii_sha256` | wireframe-builder validates checksum then translates to HTML |
+| (Phase A target / locales / wcag) | run-level config | every Phase B sub-agent | `target_stack`, `locales`, `wcag_target`, `output_dir` | `target_stack`, `locales`, `wcag_target`, `output_dir` | implementation target + accessibility level + output path |
+| wireframe-builder | `artifact_path` (the final HTML) | accessibility-auditor (B) | `artifact_url` (file://…) | (not in spec — running artifact inventory) | audit target |
+| wireframe-builder | `artifact_path` | seo-strategist (B) | `artifact_url` | (not in spec) | on-page SEO audit target |
+| wireframe-builder | `artifact_path` | browser-tester | `artifact_url` + `scenarios` | (not in spec) | dev-browser scenario tests |
+| diagram-producer | `artifact_paths` (SVG/PNG/Mermaid) | wireframe-builder | `embedded_diagrams` | (not in spec) | if diagrams are embedded in the HTML page |
+| infographic-builder | `artifact_path` | accessibility-auditor (B) | `artifact_url` | (not in spec) | separate infographic page audit |
+| video-producer | `artifact_path` (MP4) | main-agent | final report only | (not in spec) | videos don't need accessibility audit beyond closed captions handled by video-producer itself |
+| asset-generator | `artifact_paths` (SVG icons/logos) | wireframe-builder | `asset_library` | (not in spec) | embed or link from HTML |
+| **form-designer** (Tier 4) | `form_spec` (HTML structure + validation rules + error-state copy slots) | wireframe-builder | `form_blocks` | (not in spec — produced in Phase B) | wireframe-builder renders the layout; form-designer owns the form architecture |
+| **motion-designer** (Tier 4) | `motion_spec` (CSS @keyframes / JS snippets + timing + reduced-motion guards) | wireframe-builder | `motion_blocks` | (not in spec — produced in Phase B) | wireframe-builder embeds the spec; motion-designer owns the animation semantics |
+| **component-library-architect** (Tier 4) | `tokens.json` / `tailwind.config.ts` / `design-tokens.yaml` | wireframe-builder (Phase B) | `brand_tokens` | `brand_tokens_path` (when architect's output replaces brand-researcher's) | architect produces canonical token export; consumer agents read from it |
+| **email-designer** (Tier 4) | `mjml_source` + `plain_text_fallback` + `dark_mode_variant` | main-agent | final report (separate render path — NOT routed to wireframe-builder) | (consumes spec; emits independent artifact) | email is a different artifact class; main-agent collects directly |
+| brand-researcher | `extracted_tokens` (Phase A) | component-library-architect (Phase B if requested) | `brand_tokens_seed` | `brand_tokens_path` | architect derives a full token system from the seed |
+| user-research-analyst | `personas + onboarding_flow` | wireframe-builder | `IA_structure` + `empty_state_specs` | `personas_path` + `ia_structure_path` | wireframe-builder embeds the empty-state guidance the analyst flagged |
+| multilanguage-copywriter | `microcopy_per_context` | wireframe-builder | injected into form / button / toast / empty-state slots | `copy_blocks_path` | microcopy specialist work is part of copywriter, not a separate agent |
 
 ### Phase B sequencing rules
 
@@ -133,14 +143,14 @@ Main-agent's orchestration doctrine (§15 of main-agent spec) captures the exact
 
 For every sub-agent invocation, main-agent's steps are:
 
-1. **Prepare the input** — take relevant fields from prior sub-agents' YAML headers + report bodies, assemble into the input contract shape the callee expects
+1. **Prepare the input** — for Phase A invocations, take relevant fields from prior sub-agents' YAML headers + report bodies. For Phase B invocations, the input contract is a single `frozen_spec_path` (per Phase A.5; see `./phase-a-frozen-spec.md`) plus any artifact paths produced by upstream Phase B sub-agents
 2. **Spawn the sub-agent** via Task(subagent_type=<agent-name>, prompt=<input>)
 3. **Parse the YAML header** — check `status`, `blocking_issues`, `next_action`
 4. **Decide** — proceed / retry / escalate / stop (per the return-contract consumption pseudo-code)
 5. **Record** — add the artifact paths to the running artifact inventory for the final job-completion report
 6. **Aggregate** — merge any warnings into the running warning list; merge any recommendations into the running recommendations list
 
-Main-agent does NOT re-read the full sub-agent report unless the summary in the YAML header + 2-3-sentence opener is insufficient for the next step. This is how context is preserved.
+Main-agent does NOT re-read the full sub-agent report unless the summary in the YAML header + 2-3-sentence opener is insufficient for the next step. This is how context is preserved. The frozen spec (Phase A.5) is what makes Phase B input preparation O(1) instead of O(N) sub-agents — main-agent prepares the spec once, then every Phase B input contract is just one path.
 
 ## Error propagation
 
@@ -160,10 +170,11 @@ A tree topology is chosen over a mesh for three reasons:
 2. **Context isolation.** Each sub-agent sees only its own input + shared references. Cross-domain contamination (brand-researcher's aesthetic preferences leaking into legal-expert's compliance reasoning) is structurally prevented.
 3. **Loop safety.** A mesh topology with sub-agents calling each other creates potential for circular dependencies (A calls B, B calls C, C calls A). A tree cannot.
 
-The cost is that main-agent carries the data-plumbing burden: reading output from N sub-agents and assembling M input contracts. The benefit is that the entire workflow is inspectable and the agents themselves remain simple, single-purpose.
+The cost is that main-agent carries the data-plumbing burden: reading output from N sub-agents and assembling M input contracts. The benefit is that the entire workflow is inspectable and the agents themselves remain simple, single-purpose. Phase A.5 (`./phase-a-frozen-spec.md`) reduces the data-plumbing cost for the Phase A → Phase B hand-off from O(N) per-agent contracts to O(1) — one frozen JSON, N agents read it.
 
 ## Enforcement
 
 - Every sub-agent spec documents the data it expects as input (§5) and what it produces as output (§13 + body). The cross-references to other agents use this document as the spec-of-specs.
 - Main-agent's §15 Orchestration Doctrine cites this document.
 - Smoke test: every hand-off in the table above is cross-checked against the sender's output schema and the receiver's input schema.
+- Phase B input contracts are defined as `frozen_spec_path` only (per `./phase-a-frozen-spec.md`); any agent's §5 that lists individual paths instead of `frozen_spec_path` is non-compliant with P1-1.

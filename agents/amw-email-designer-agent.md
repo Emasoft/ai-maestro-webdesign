@@ -94,6 +94,7 @@ I activate on **narrow, email-specific** phrases from main-agent only.
 Main-agent passes a structured input shaped as follows:
 
 ```yaml
+frozen_spec_path: "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>"  # optional; present in Phase B fan-out mode only
 email_purpose: "order-confirmation | welcome | password-reset | receipt | abandoned-cart | newsletter | digest | invoice | [custom]"  # required
 email_type: "transactional | marketing"  # required; drives compliance footer rule
 brand_tokens:                            # required; from amw-brand-researcher-agent or design-principles defaults
@@ -136,6 +137,12 @@ output_dir: "/abs/path/to/design/emails/"  # optional
 A missing required field (`email_purpose`, `email_type`, `brand_tokens`, `copy_blocks`, `locales`, `slug`) is `status=failed` / `next_action=escalate_to_user`.
 
 For `email_type=marketing`, missing `footer_legal`, `footer_address`, or `unsubscribe_url` is a `blocking_issues` entry — these are CAN-SPAM structural requirements.
+
+**Frozen-spec path resolution.** When `frozen_spec_path` is present (the Phase B fan-out mode), I read the JSON and resolve only the keys I need: `brand_tokens_path`, `copy_blocks_path`, `design_md_path`, `locales`, `output_dir`. Other input fields above are still accepted for backward compatibility AND for command-mode invocation (e.g., `/amw-<command>` direct calls bypass main-agent and pass individual fields directly), but when `frozen_spec_path` is set, the JSON's keys take precedence over any individual fields with the same semantics.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 ---
 

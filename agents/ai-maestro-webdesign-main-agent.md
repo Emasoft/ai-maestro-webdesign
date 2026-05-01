@@ -504,7 +504,7 @@ The main-agent does not hold veto power itself — its job is to enforce the oth
 
 ## 15. Orchestration Doctrine
 
-This section is the non-deterministic core — it describes how the main-agent makes judgment calls that the recipe layer does not cover. It cites `../skills/amw-design-principles/references/authority-hierarchy.md`, `../skills/amw-design-principles/references/agent-interaction-patterns.md`, and `../skills/amw-design-principles/references/sub-agent-return-contract.md` as the binding shared contracts.
+This section is the non-deterministic core — it describes how the main-agent makes judgment calls that the recipe layer does not cover. It cites `../skills/amw-design-principles/references/authority-hierarchy.md`, `../skills/amw-design-principles/references/agent-interaction-patterns.md`, `../skills/amw-design-principles/references/sub-agent-return-contract.md`, and `../skills/amw-design-principles/references/phase-a-frozen-spec.md` as the binding shared contracts.
 
 ### When to spawn which sub-agents
 
@@ -520,7 +520,60 @@ After Phase A approval, when handing off to Phase B production agents, **always 
 
 Do **not** spawn `amw-brand-researcher-agent` "just to see what the market looks like" without a specific design decision pending. Do not spawn `amw-legal-expert-agent` speculatively — wait for a legal-adjacent decision point.
 
-**Phase B — proactive, parallel.** After the satisfaction gate, main-agent spawns all applicable production + auditor sub-agents in a coordinated batch, respecting sequencing rules (see §7.B.2). Typical flow:
+### Phase A.5 — Spec Freeze (between satisfaction gate and Phase B fan-out)
+
+After the user emits a satisfaction token (`yes`, `ship it`, `that's the one`, etc.) but BEFORE I fan out to Phase B sub-agents, I run `bin/amw-freeze-phase-a.sh` to aggregate all Phase A outputs into a canonical `phase-a-frozen-spec.json`. Every Phase B sub-agent I spawn receives ONLY this file's path. Each reads only the keys it needs.
+
+This replaces the prior pattern (paraphrasing N Phase A YAML headers into N Phase B input contracts) with a single source-of-truth file that costs ~30K fewer orchestrator tokens per multi-artifact workflow.
+
+Procedure:
+
+1. Verify all required Phase A sub-agent reports exist on disk (their `report_path` / `artifact_path` from the return contract).
+2. Identify the canonical assets:
+   - `approved_ascii_path` — the ASCII variant the user approved in Phase A
+   - `brand_tokens_path` — from `amw-brand-researcher-agent`
+   - `design_md_path` — from `amw-design-md-author-agent` OR `amw-design-md-extractor-agent` (whichever ran), or user-supplied
+   - `ia_structure_path` — from `amw-user-research-analyst-agent` (or main-agent's own derivation)
+   - `copy_blocks_path` — from `amw-multilanguage-copywriter-agent` (when locales > 1)
+   - `legal_mandatory_elements_path` — from `amw-legal-expert-agent` (when regulatory requirements apply)
+   - `seo_head_path` — from `amw-seo-strategist-agent` (Phase A mode emits keywords / IA; Phase B mode emits structured-data)
+   - `personas_path` — from `amw-user-research-analyst-agent` (when persona research was run)
+3. Run:
+
+   ```bash
+   bash bin/amw-freeze-phase-a.sh \
+     --approved-ascii  "<abs path>" \
+     --brand-tokens    "<abs path>" \
+     --design-md       "<abs path>" \
+     --ia              "<abs path>" \
+     --copy            "<abs path | omit>" \
+     --legal           "<abs path | omit>" \
+     --seo-head        "<abs path | omit>" \
+     --personas        "<abs path | omit>" \
+     --target-stack    "shadcn+next" \
+     --locales         "en,fr" \
+     --output-dir      "<abs path>" \
+     --wcag-target     "AA" \
+     --out             "$MAIN_ROOT/reports/webdesigner/phase-a-frozen/<ts±tz>-frozen-spec.json"
+   ```
+
+4. Capture the output path. This is the `frozen_spec_path` I pass to every Phase B sub-agent's input contract.
+5. Phase B fan-out begins. Every sub-agent's input contract gets `frozen_spec_path: <abs-path>` and ONLY that path. The sub-agent reads only the keys it needs.
+
+When a Phase B sub-agent reports back, the report's path is logged but NOT folded into the spec. The frozen spec is immutable for the run.
+
+When the user re-iterates Phase A (sends "actually, can we change the copy" after partial Phase B has run), I:
+
+1. Cancel any in-flight Phase B work.
+2. Iterate Phase A as needed.
+3. Re-emit a NEW frozen spec with a new timestamp.
+4. Re-fan-out Phase B with the new `frozen_spec_path`.
+
+The old spec stays on disk for audit trail; downstream tools read the most recent.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema and the consumption matrix per Phase B sub-agent.
+
+**Phase B — proactive, parallel.** After the satisfaction gate (and after Phase A.5 has emitted the frozen spec), main-agent spawns all applicable production + auditor sub-agents in a coordinated batch, respecting sequencing rules (see §7.B.2). Typical flow:
 
 1. **Pre-production (parallel):** `amw-asset-generator-agent`, `amw-diagram-producer-agent` if diagrams are embedded.
 2. **Production (awaits pre-production):** `amw-wireframe-builder-agent`, `amw-infographic-builder-agent`, `amw-video-producer-agent` (video runs independent of wireframe).
@@ -609,7 +662,7 @@ The judgment layer is this section. It is what makes the main-agent a profession
 
 ## Cross-references
 
-**Governing contracts:** `agent-authoring-philosophy.md`, `two-mode-workflow.md`, `sub-agent-return-contract.md`, `skill-invocation-protocol.md`, `authority-hierarchy.md`, `agent-interaction-patterns.md`, `project-output-routing.md`, `ai-slop-avoid.md` (all under `../skills/amw-design-principles/` or its `references/` subfolder).
+**Governing contracts:** `agent-authoring-philosophy.md`, `two-mode-workflow.md`, `sub-agent-return-contract.md`, `skill-invocation-protocol.md`, `authority-hierarchy.md`, `agent-interaction-patterns.md`, `phase-a-frozen-spec.md`, `project-output-routing.md`, `ai-slop-avoid.md` (all under `../skills/amw-design-principles/` or its `references/` subfolder).
 
 **Sub-agent roster (one-way tree, rooted here):** `amw-legal-expert-agent` (veto), `amw-accessibility-auditor-agent` (veto), `amw-multilanguage-copywriter-agent`, `amw-brand-researcher-agent`, `amw-seo-strategist-agent`, `amw-user-research-analyst-agent`, `amw-wireframe-builder-agent`, `amw-diagram-producer-agent`, `amw-infographic-builder-agent`, `amw-asset-generator-agent`, `amw-video-producer-agent`, `amw-browser-tester-agent`, `amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, `amw-component-library-architect-agent`, `amw-design-md-author-agent`, `amw-design-md-extractor-agent`, `amw-design-md-auditor-agent`.
 

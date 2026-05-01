@@ -127,6 +127,7 @@ business_context:
 ### Phase B input contract
 
 ```yaml
+frozen_spec_path: "<abs path to phase-a-frozen-spec.json | absent for command-mode invocation>"  # optional; present in Phase B fan-out mode only
 mode: B
 artifact_url: <file:// or http:// URL of rendered HTML>   # required
 artifact_path: <absolute path on disk — fallback>
@@ -136,6 +137,12 @@ locale: <ISO 639-1 code>
 hreflang_map: [{locale: <code>, url: <alt-locale URL>}]   # from Phase A
 structured_data_plan: <JSON-LD type planned in Phase A, if any>
 ```
+
+**Frozen-spec path resolution.** When `frozen_spec_path` is present (the Phase B fan-out mode), I read the JSON and resolve only the keys I need: `output_dir`, `seo_head_path`, `locales`. Other input fields above are still accepted for backward compatibility AND for command-mode invocation (e.g., `/amw-<command>` direct calls bypass main-agent and pass individual fields directly), but when `frozen_spec_path` is set, the JSON's keys take precedence over any individual fields with the same semantics.
+
+Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
+
+See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
 
 ---
 
