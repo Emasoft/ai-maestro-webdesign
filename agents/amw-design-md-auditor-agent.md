@@ -354,6 +354,6 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format
 - `../skills/amw-design-md/references/audit-passes.md` — per-pass check definitions
 - `../skills/amw-design-md/references/review-rubric.md` — severity classification rubric
-- `bin/amw-design-md-lint.sh` — structural lint
-- `bin/amw-design-md-validate.py` — deep validation
-- `bin/amw-design-md-contrast.py` — WCAG contrast check
+- `../bin/amw-design-md-lint.sh` — structural lint
+- `../bin/amw-design-md-validate.py` — deep validation
+- `../bin/amw-design-md-contrast.py` — WCAG contrast check

@@ -140,4 +140,4 @@ Example:
 - [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md) — static schema validation (runs first in the gate sequence)
 - [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — final step; only reached after `inspect` passes
 - `../SKILL.md` — bridge invocation pattern and full gate sequence
-- `agents/amw-video-producer-agent.md` §6.7 — inspect as the mandatory pre-render gate in the video producer agent
+- `../../../agents/amw-video-producer-agent.md` §6.7 — inspect as the mandatory pre-render gate in the video producer agent

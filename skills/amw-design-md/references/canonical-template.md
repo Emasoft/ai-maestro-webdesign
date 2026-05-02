@@ -217,10 +217,10 @@ Fix any errors before delivering.
 
 ## Cross-references
 
-- `../canonical-spec-google-alpha.md` — full spec
-- `../TECH-01-yaml-frontmatter.md` — YAML authoring tips
-- `../TECH-02-color-tokens.md` — color authoring
-- `../TECH-03-typography-tokens.md` — typography authoring
-- `../TECH-04-component-tokens.md` — component variants
-- `../TECH-06-do-donts.md` — actionable do/don't authoring
-- `../../ai-slop-avoid.md` — what NOT to write
+- `canonical-spec-google-alpha.md` — full spec
+- `TECH-01-yaml-frontmatter.md` — YAML authoring tips
+- `TECH-02-color-tokens.md` — color authoring
+- `TECH-03-typography-tokens.md` — typography authoring
+- `TECH-04-component-tokens.md` — component variants
+- `TECH-06-do-donts.md` — actionable do/don't authoring
+- `../../amw-design-principles/ai-slop-avoid.md` — what NOT to write

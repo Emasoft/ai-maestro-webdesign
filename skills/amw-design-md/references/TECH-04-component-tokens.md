@@ -206,4 +206,4 @@ This is accepted; the AI agent reads the prose and applies the derivation to the
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
 - [TECH-05-token-references](./TECH-05-token-references.md) — `{path.to.token}` syntax
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how wireframe-builder consumes these tokens
-- `../canonical-spec-google-alpha.md` — full Components spec
+- `canonical-spec-google-alpha.md` — full Components spec

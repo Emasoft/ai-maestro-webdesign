@@ -334,8 +334,8 @@ bash <plugin-root>/bin/amw-design-md-lint.sh DESIGN.v1.md
 
 ## Cross-references
 
-- `../community-9-section-spec.md` — full Variant 2 spec
-- `../canonical-template.md` — Variant 1 template
-- `../review-rubric.md` — Variant 2 quality scoring
-- `../audit-passes.md` — 5-pass audit
-- `../TECH-13-converting-variant2-to-1.md` — V2 → V1 conversion details
+- `community-9-section-spec.md` — full Variant 2 spec
+- `canonical-template.md` — Variant 1 template
+- `review-rubric.md` — Variant 2 quality scoring
+- `audit-passes.md` — 5-pass audit
+- `TECH-13-converting-variant2-to-1.md` — V2 → V1 conversion details

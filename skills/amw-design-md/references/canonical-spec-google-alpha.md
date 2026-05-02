@@ -322,5 +322,5 @@ the rounded-md scale and the primary/secondary/tertiary color hierarchy.
 - [canonical-template](./canonical-template.md) — fillable Variant 1 skeleton
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — authoring the YAML frontmatter
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the linter and pure-Python validator
-- `<plugin-root>/bin/amw-design-md-lint.sh` — wrapper around `npx @google/design.md`
-- `<plugin-root>/bin/amw-design-md-validate.py` — pure-Python offline validator
+- `../../../bin/amw-design-md-lint.sh` — wrapper around the official @google design.md npm linter (invoked via npx)
+- `../../../bin/amw-design-md-validate.py` — pure-Python offline validator

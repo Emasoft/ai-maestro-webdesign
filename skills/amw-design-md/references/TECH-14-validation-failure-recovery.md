@@ -199,6 +199,6 @@ When a user is editing a DESIGN.md by hand and a validator fails:
 - [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component property whitelist
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution rules
 - [review-rubric](./review-rubric.md) — the rubric checks (S*, T*, R*, A*, C*)
-- `<plugin-root>/bin/amw-design-md-lint.sh`
-- `<plugin-root>/bin/amw-design-md-validate.py`
-- `<plugin-root>/bin/amw-design-md-contrast.py`
+- `../../../bin/amw-design-md-lint.sh`
+- `../../../bin/amw-design-md-validate.py`
+- `../../../bin/amw-design-md-contrast.py`

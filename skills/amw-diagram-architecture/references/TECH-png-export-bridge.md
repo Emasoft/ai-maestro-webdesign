@@ -99,7 +99,7 @@ To save as PNG:
 
 - [formats](formats.md) — the full transform spec for all 4 formats
 - [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — the transform that produces the SVG
-- `../../bin/amw-svg-render.py` — optional local rasteriser (Python +
+- `../../../bin/amw-svg-render.py` — optional local rasteriser (Python +
   cairosvg)
 - [validation](validation.md) — Stage 2 PNG checks (instructions after SVG, etc.)
 - [`../SKILL.md`](../SKILL.md) — parent skill

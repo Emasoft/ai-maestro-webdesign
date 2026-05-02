@@ -224,8 +224,8 @@ Before starting Pass 1:
 - [review-rubric](./review-rubric.md) — single-file pass/fail checklist
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
 - [community-9-section-spec](./community-9-section-spec.md) — Variant 2 spec
-- `<plugin-root>/bin/amw-design-md-lint.sh` — official linter
-- `<plugin-root>/bin/amw-design-md-validate.py` — pure-Python validator
-- `<plugin-root>/bin/amw-design-md-contrast.py` — contrast checker
-- `<plugin-root>/bin/amw-design-md-from-codebase.py` — codebase scanner (used in Pass 2)
+- `../../../bin/amw-design-md-lint.sh` — official linter
+- `../../../bin/amw-design-md-validate.py` — pure-Python validator
+- `../../../bin/amw-design-md-contrast.py` — contrast checker
+- `../../../bin/amw-design-md-from-codebase.py` — codebase scanner (used in Pass 2)
 - `../../../agents/amw-design-md-auditor-agent.md` — the agent that runs the 5 passes

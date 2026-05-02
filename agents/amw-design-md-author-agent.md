@@ -374,10 +374,10 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of produced DESIGN.md
 - `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format and token contracts
 - `../skills/amw-design-md/references/canonical-spec-google-alpha.md` — full Variant 1 spec
-- `bin/amw-design-md-from-codebase.py` — codebase extraction driver
-- `bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver
-- `bin/amw-design-md-from-url.sh` — URL extraction driver
-- `bin/amw-design-md-emit-companions.py` — companion file generator
-- `bin/amw-design-md-lint.sh` — lint gate
-- `bin/amw-design-md-contrast.py` — WCAG contrast checker
-- `bin/amw-html-section-count.py` — section / heading audit on a reference HTML mockup
+- `../bin/amw-design-md-from-codebase.py` — codebase extraction driver
+- `../bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver
+- `../bin/amw-design-md-from-url.sh` — URL extraction driver
+- `../bin/amw-design-md-emit-companions.py` — companion file generator
+- `../bin/amw-design-md-lint.sh` — lint gate
+- `../bin/amw-design-md-contrast.py` — WCAG contrast checker
+- `../bin/amw-html-section-count.py` — section / heading audit on a reference HTML mockup

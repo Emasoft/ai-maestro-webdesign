@@ -202,5 +202,5 @@ If the project has shadcn's standard pairs (`primary` + `primary-foreground`, et
 ## Cross-references
 
 - [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — heuristic regex-based codebase extraction (fallback when jiti not available)
-- [TECH-12-companion-files](./TECH-12-companion-files.md) — emit `tokens.css` from the resulting DESIGN.md
-- `<plugin-root>/bin/amw-design-md-from-tailwind.mjs` — the bin script
+- [TECH-12-companion-files](./TECH-12-companion-files.md) — emit `<tokens.css>` from the resulting DESIGN.md
+- `../../../bin/amw-design-md-from-tailwind.mjs` — the bin script

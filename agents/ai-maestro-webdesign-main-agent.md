@@ -283,6 +283,7 @@ Main-agent mostly delegates to sub-agents in Phase B. In Phase A, it invokes ski
 | Reference library for design heuristics | `../skills/amw-design-principles/design-heuristics.md` |
 | User has no design system AND no reference URL AND `../skills/amw-design-principles/design-heuristics.md` does not cover the case | `../skills/amw-ui-ux-reasoning/SKILL.md` (last-resort fallback per CLAUDE.md "the `last resort` fallback is `ui-ux-reasoning`") |
 | Need full UX process methodology (heuristic eval, design-thinking handoff, dual-track discovery) | `../skills/amw-ux-designer/SKILL.md` |
+| Phase A spot-check on a low-fi mockup (Position / Visual-Weight / Spacing rubric, before satisfaction gate) | `../skills/amw-ux-evaluator/SKILL.md` — qualitative scoring layer; can be invoked on a single ASCII variant as a sanity check without spawning the browser-tester sub-agent (Phase B is where the full version, with browser snapshots, runs) |
 | Hand-drawn concept illustration (whiteboard / educational sketch) reachable as a Phase B output via main-agent | `../skills/amw-excalidraw-illustrations/` (gated on GEMINI_API_KEY + user consent) — main-agent surfaces consent prompt before invoking via `amw-asset-generator-agent` |
 
 ### Phase A — sub-agent delegation by main-agent
@@ -662,7 +663,7 @@ The judgment layer is this section. It is what makes the main-agent a profession
 
 ## Cross-references
 
-**Governing contracts:** `agent-authoring-philosophy.md`, `two-mode-workflow.md`, `sub-agent-return-contract.md`, `skill-invocation-protocol.md`, `authority-hierarchy.md`, `agent-interaction-patterns.md`, `phase-a-frozen-spec.md`, `project-output-routing.md`, `ai-slop-avoid.md` (all under `../skills/amw-design-principles/` or its `references/` subfolder).
+**Governing contracts:** `../skills/amw-design-principles/references/agent-authoring-philosophy.md`, `../skills/amw-design-principles/references/two-mode-workflow.md`, `../skills/amw-design-principles/references/sub-agent-return-contract.md`, `../skills/amw-design-principles/references/skill-invocation-protocol.md`, `../skills/amw-design-principles/references/authority-hierarchy.md`, `../skills/amw-design-principles/references/agent-interaction-patterns.md`, `../skills/amw-design-principles/references/phase-a-frozen-spec.md`, `../skills/amw-design-principles/references/project-output-routing.md`, `../skills/amw-design-principles/ai-slop-avoid.md`.
 
 **Sub-agent roster (one-way tree, rooted here):** `amw-legal-expert-agent` (veto), `amw-accessibility-auditor-agent` (veto), `amw-multilanguage-copywriter-agent`, `amw-brand-researcher-agent`, `amw-seo-strategist-agent`, `amw-user-research-analyst-agent`, `amw-wireframe-builder-agent`, `amw-diagram-producer-agent`, `amw-infographic-builder-agent`, `amw-asset-generator-agent`, `amw-video-producer-agent`, `amw-browser-tester-agent`, `amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, `amw-component-library-architect-agent`, `amw-design-md-author-agent`, `amw-design-md-extractor-agent`, `amw-design-md-auditor-agent`.
 

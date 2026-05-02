@@ -532,9 +532,9 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md` — lint failure recovery
 - `../skills/amw-dev-browser/SKILL.md` — interactive browser primitive
 - `../skills/amw-design-extract/SKILL.md` — sibling URL-extraction skill (looser format)
-- `bin/amw-design-md-from-url.sh` — URL extraction driver
-- `bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver
-- `bin/amw-design-md-from-codebase.py` — codebase scanner driver
-- `bin/amw-design-md-emit-companions.py` — companion file generator
-- `bin/amw-design-md-lint.sh` — lint gate
-- `bin/amw-design-md-contrast.py` — WCAG contrast checker
+- `../bin/amw-design-md-from-url.sh` — URL extraction driver
+- `../bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver
+- `../bin/amw-design-md-from-codebase.py` — codebase scanner driver
+- `../bin/amw-design-md-emit-companions.py` — companion file generator
+- `../bin/amw-design-md-lint.sh` — lint gate
+- `../bin/amw-design-md-contrast.py` — WCAG contrast checker

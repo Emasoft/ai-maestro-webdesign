@@ -71,6 +71,6 @@ node scripts/render.mjs \
 
 - [TECH-enriched-mode](TECH-enriched-mode.md) — the programmatic equivalent for Node/TS.
 - [TECH-built-in-themes](TECH-built-in-themes.md) — when you'd rather NOT handcraft every token.
-- `bin/amw-mermaid-render.sh` — the plugin-shipped shell wrapper.
+- `../../../bin/amw-mermaid-render.sh` — the plugin-shipped shell wrapper.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

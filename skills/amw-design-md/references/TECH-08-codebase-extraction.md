@@ -141,4 +141,4 @@ Plus an `extraction-notes.md` adjacent file with:
 - [TECH-07-url-extraction](./TECH-07-url-extraction.md) — URL extraction
 - [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — Tailwind-specific extraction (more accurate for TW projects)
 - [audit-passes](./audit-passes.md) — Pass 2 (drift) uses this internally
-- `<plugin-root>/bin/amw-design-md-from-codebase.py` — the bin script
+- `../../../bin/amw-design-md-from-codebase.py` — the bin script

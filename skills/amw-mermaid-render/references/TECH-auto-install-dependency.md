@@ -77,6 +77,6 @@ npm install beautiful-mermaid
 ## Cross-references
 
 - [TECH-batch-rendering](TECH-batch-rendering.md) — uses the same loader.
-- `external/mermaid-render/` — the plugin's vendored copy lives there.
+- `../../../external/mermaid-render/` — the plugin's vendored copy lives there.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

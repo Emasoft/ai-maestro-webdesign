@@ -153,6 +153,6 @@ This transparency lets the user accept or reject suspect tokens before the file 
 
 - [TECH-07-url-extraction](./TECH-07-url-extraction.md) — single-URL extraction (subset of this flow)
 - [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — when local source is available (preferred)
-- `<plugin-root>/bin/amw-dev-browser-wrapper.sh` — browser primitive
+- `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive
 - `../../amw-dev-browser/SKILL.md` — dev-browser skill spec
 - `../../../agents/amw-design-md-extractor-agent.md` — the agent that owns this flow

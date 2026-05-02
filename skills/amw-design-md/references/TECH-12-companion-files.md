@@ -268,4 +268,4 @@ Drift fails the audit. The fix is always: re-run the emitter, do not hand-edit.
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how downstream agents consume the companion files
 - [review-rubric](./review-rubric.md) — `X1`-`X6` drift checks
-- `<plugin-root>/bin/amw-design-md-emit-companions.py` — the bin script
+- `../../../bin/amw-design-md-emit-companions.py` — the bin script

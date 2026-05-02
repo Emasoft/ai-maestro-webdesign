@@ -246,7 +246,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my LLM-bas
 | "balanced headline", "widow-free multiline title" | `skills/amw-pretext/` | TECH-26-balanced-headline | Use before `text-wrap: balance` if older-browser support needed. |
 | "auto-fit font", "largest font that stays within N lines" | `skills/amw-pretext/` | TECH-27-auto-fit-font-size | Binary search on font size. |
 | "shrink-wrap container width" | `skills/amw-pretext/` | TECH-25-shrinkwrap-width | Tightest multiline width. |
-| "hand-drawn", "Excalidraw", "whiteboard sketch", "conceptual illustration for a slide" | `skills/amw-excalidraw-illustrations/` | SKILL.md prompt template | GATED — requires all 3 consent flags. |
+| "hand-drawn", "Excalidraw", "whiteboard sketch", "conceptual illustration for a slide" | `skills/amw-excalidraw-illustrations/` | SKILL.md prompt template | GATED — requires ALL 3 consent flags TRUE: (1) `allow_excalidraw=true` in my input contract; (2) `gemini_api_key_available=true` (env var `$GEMINI_API_KEY` set at session level); (3) `user_excalidraw_consent_given=true` (user explicitly acknowledged Gemini API cost during Phase A conversation). Any flag false → silent refusal of THIS brief, continue with remaining briefs. |
 | "character", "mascot", "avatar", "portrait", "draw a cat/dog/person" | **REFUSE** | Cite `ai-slop-avoid.md` item 3 | Offer placeholder rect or real-asset routing. |
 | "photorealistic", "painterly", "vector illustration of <subject>" | **REFUSE** | Cite `ai-slop-avoid.md` item 3 | Not Excalidraw's domain (that's constrained to white-bg hand-drawn concept only). |
 
@@ -474,7 +474,7 @@ Violation of any of these is not a "judgment call" — it is a spec violation. I
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — how to invoke skills without re-triggering the orchestrator.
 - `../skills/amw-design-principles/references/authority-hierarchy.md` — conflict resolution (I have no veto).
 - `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase B hand-off table (assets → wireframe-builder via main-agent).
-- `../skills/amw-design-principles/references/agent-reports-location.md` — `$MAIN_ROOT/reports/webdesigner/` path + timestamp format.
+- `../skills/amw-design-principles/references/agent-reports-location.md` — the canonical reports directory under the main-repo root (resolved via the MAIN_ROOT shell variable, then the reports/webdesigner subdirectory) plus the timestamp format the agent emits.
 - `../bin/amw-svg-render.py` — render-verify-finish loop (mandatory for svg-creator outputs).
 - `../bin/amw-validate-ascii.py` — ASCII validator (used when pretext TECH-37 / TECH-55 emit ASCII blocks).
 - `../CLAUDE.md` — plugin architecture overview.

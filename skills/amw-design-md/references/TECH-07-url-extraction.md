@@ -160,7 +160,7 @@ A draft that fails contrast (extracted colors fail WCAG-AA) is marked `partial` 
 - [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — extracting from a local codebase instead of URL
 - [TECH-09-multipage-extraction](./TECH-09-multipage-extraction.md) — multi-page sessions including login
 - [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — extracting from tailwind config (different path)
-- `<plugin-root>/bin/amw-design-md-from-url.sh` — the bin script
-- `<plugin-root>/bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
+- `../../../bin/amw-design-md-from-url.sh` — the bin script
+- `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
 - `../../amw-dev-browser/SKILL.md` — dev-browser skill spec
 - `../../../agents/amw-design-md-extractor-agent.md` — the agent

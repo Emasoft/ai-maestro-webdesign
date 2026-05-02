@@ -192,4 +192,4 @@ typography:
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
 - [TECH-05-token-references](./TECH-05-token-references.md) — using `{typography.X}` in components
 - [TECH-cjk-localization](./TECH-cjk-localization.md) — CJK font / size / line-height adjustments
-- `../canonical-spec-google-alpha.md` — full Typography spec
+- `canonical-spec-google-alpha.md` — full Typography spec

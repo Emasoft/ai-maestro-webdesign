@@ -68,7 +68,7 @@ const svg = await renderMermaid(diagram, {
 ## Cross-references
 
 - [TECH-enriched-mode](TECH-enriched-mode.md) — override specific derived tokens.
-- [TECH-built-in-themes](TECH-built-in-themes.md) — the 15 pre-baked `bg/fg` pairs.
+- [TECH-built-in-themes](TECH-built-in-themes.md) — the 15 pre-baked background/foreground color pairs.
 - [TECH-shiki-theme-import](TECH-shiki-theme-import.md) — map a VS Code theme to a Mono Mode pair.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

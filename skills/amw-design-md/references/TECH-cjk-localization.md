@@ -1264,16 +1264,16 @@ developers:
 ## Cross-references
 
 - `../SKILL.md` — design-md skill orchestrator
-- `../../amw-multilanguage-copywriter/SKILL.md` — handles JP keigo levels,
+- `../../../agents/amw-multilanguage-copywriter-agent.md` — handles JP keigo levels,
   KO speech levels, CN politeness register; copy translation
-- `../../amw-design-principles/references/typography-system.md` —
+- `../../amw-design-principles/typography-system.md` —
   generic typography rules; this TECH file extends with CJK-specific values
-- `../../amw-seo/references/<seo-tech-files>` — for `hreflang`,
-  schema.org `inLanguage`, title-length impacts (when this skill exists in
-  the plugin)
-- `../../amw-form-designer/SKILL.md` — for CJK address forms with
-  big-endian order, postal-code autoload (when this skill exists)
-- `../../amw-accessibility-auditor/SKILL.md` — for CJK screen-reader
+- `../../amw-seo/SKILL.md` — for `hreflang`,
+  schema.org `inLanguage`, title-length impacts (referenced via the SEO
+  skill's references/ folder)
+- `../../../agents/amw-form-designer-agent.md` — for CJK address forms with
+  big-endian order, postal-code autoload
+- `../../../agents/amw-accessibility-auditor-agent.md` — for CJK screen-reader
   pronunciation requirements (`lang` attribute is mandatory accessibility
   primitive)
 

@@ -181,6 +181,6 @@ After authoring a draft DESIGN.md, the author agent:
 - [audit-passes](./audit-passes.md) — 5-pass audit (broader than the rubric)
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
 - [community-9-section-spec](./community-9-section-spec.md) — Variant 2 spec
-- `<plugin-root>/bin/amw-design-md-validate.py` — runs `S*` / `T*` checks
-- `<plugin-root>/bin/amw-design-md-contrast.py` — runs `A1` / `A2`
-- `<plugin-root>/bin/amw-design-md-lint.sh` — runs the official linter
+- `../../../bin/amw-design-md-validate.py` — runs `S*` / `T*` checks
+- `../../../bin/amw-design-md-contrast.py` — runs `A1` / `A2`
+- `../../../bin/amw-design-md-lint.sh` — runs the official linter

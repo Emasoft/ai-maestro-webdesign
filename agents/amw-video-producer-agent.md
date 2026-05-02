@@ -317,6 +317,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | "render this HTML as MP4" | `skills/amw-hyperframes-bridge/` | The only path. |
 | "HTML to video" | `skills/amw-hyperframes-bridge/` | The only path. |
 | "rasterize composition" | `skills/amw-hyperframes-bridge/` | The only path. |
+| Pre-render slop check on input HTML composition | `bin/amw-ai-slop-check.py` | MUST run before render (Step 5b smoke and Step 6 full). Catches gradient-mesh backgrounds, fake testimonials, AI-mauve/teal palette in keyframes, dual-emoji eye-pairs in SVGs. If the HTML composition fails the slop gate, refuse with `status=failed` + `blocking_issues=["composition fails ai-slop gate: ..."]` and route back to main-agent for re-author. |
 | "make a video" (unqualified) | **REFUSE** — ambiguous | Main-agent must clarify what input exists. |
 | "motion graphic from scratch" | **OUT OF SCOPE** — composition authoring | Route back to main-agent for wireframe-builder / pretext-kinetic authoring. |
 | "add captions to the MP4" | **OUT OF SCOPE** — post-processing | Separate concern; main-agent handles via a different agent or CLI step. |

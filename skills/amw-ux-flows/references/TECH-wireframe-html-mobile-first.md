@@ -159,4 +159,4 @@ Login screen wireframe:
 - [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — inter-screen linking rules
 - [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — the "every screen has an outgoing
   link" rule
-- [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the `INDEX.md` inventory shape
+- [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the `<INDEX.md>` inventory shape

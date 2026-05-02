@@ -118,7 +118,7 @@ Agent: A single-shape diagram is a sentence. Instead:
 
 - `../SKILL.md` — the orchestrator; this rule runs at the top of every
   request
-- Each of the 13 `TECH-type-*.md` files carries its own "when to use"
+- Each of the 13 `<TECH-type-*.md>` files in this same directory carries its own "when to use"
   stricture that narrows further
 - [TECH-density-4-of-10](TECH-density-4-of-10.md) — density rule; a subject that needs 15+
   nodes should split, not pick a denser type

@@ -292,4 +292,4 @@ The plugin's default canonical output is Variant 1. Variant 2 is accepted as inp
 - [community-9-section-template](./community-9-section-template.md) — fillable Variant 2 skeleton
 - [review-rubric](./review-rubric.md) — Variant 2 quality scoring
 - [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
-- `<plugin-root>/bin/amw-design-md-convert-v2-to-v1.py` — conversion bin script
+- `../../../bin/amw-design-md-convert-v2-to-v1.py` — conversion bin script

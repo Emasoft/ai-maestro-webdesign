@@ -95,6 +95,6 @@ The author agent fills `{{primary-hex}}`, `{{surface-hex}}`, etc. by reading the
 
 ## Cross-references
 
-- `../canonical-spec-google-alpha.md` — what's normative in DESIGN.md
-- `../TECH-12-companion-files.md` — the tokens.css / tokens.json / component-inventory companion files
-- `../TECH-15-design-md-as-input.md` — how downstream Phase B agents consume DESIGN.md
+- `canonical-spec-google-alpha.md` — what's normative in DESIGN.md
+- `TECH-12-companion-files.md` — the tokens.css / tokens.json / component-inventory companion files
+- `TECH-15-design-md-as-input.md` — how downstream Phase B agents consume DESIGN.md

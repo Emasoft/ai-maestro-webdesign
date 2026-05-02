@@ -116,5 +116,5 @@ Here's your diagram:
 - [TECH-canvas-1000x1000](TECH-canvas-1000x1000.md) — the canvas constraint (complements these
   rules)
 - [TECH-svg-group-structure](TECH-svg-group-structure.md) — the structural convention
-- `../../bin/amw-svg-render.py` — render-verify-fix loop; treat its output
+- `../../../bin/amw-svg-render.py` — render-verify-fix loop; treat its output
   as ground truth for "valid SVG that renders"

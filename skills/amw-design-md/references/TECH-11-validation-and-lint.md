@@ -150,7 +150,7 @@ This catches drift introduced by hand-edits before merge.
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — frontmatter rules
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
 - [TECH-14-validation-failure-recovery](./TECH-14-validation-failure-recovery.md) — what to do when validation fails
-- `<plugin-root>/bin/amw-design-md-lint.sh`
-- `<plugin-root>/bin/amw-design-md-validate.py`
-- `<plugin-root>/bin/amw-design-md-contrast.py`
-- `<plugin-root>/bin/amw-design-md-diff.sh`
+- `../../../bin/amw-design-md-lint.sh`
+- `../../../bin/amw-design-md-validate.py`
+- `../../../bin/amw-design-md-contrast.py`
+- `../../../bin/amw-design-md-diff.sh`
