@@ -1,0 +1,41 @@
+name: cross-refs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'agents/**/*.md'
+      - 'skills/**/*.md'
+      - 'commands/**/*.md'
+      - 'bin/amw-validate-cross-refs.sh'
+      - '.github/workflows/cross-refs.yml'
+  pull_request:
+    paths:
+      - 'agents/**/*.md'
+      - 'skills/**/*.md'
+      - 'commands/**/*.md'
+      - 'bin/amw-validate-cross-refs.sh'
+      - '.github/workflows/cross-refs.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cross-refs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate plugin cross-references
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run cross-references validator (strict mode)
+        run: bash bin/amw-validate-cross-refs.sh --strict
+
+      - name: Report on success
+        if: success()
+        run: echo "All cited paths in Cross-references blocks resolve on disk."
