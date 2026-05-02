@@ -12,7 +12,7 @@ author: ai-maestro-webdesign
 
 ## Overview
 
-Last-resort fallback library consulted only when design-principles has exhausted Rule 1 context-gathering with no result. Collapses an infinite-choice space into a confirmable shortlist: 3 style + 3 palette + 3 font DNA candidates drawn from 67 UI styles, 161 color palettes, and 57 font pairings — all pre-filtered against `amw-design-principles/ai-slop-avoid.md`. Produces named anchors only; the user picks, then `amw-ascii-sketch` resumes with those anchors.
+Last-resort fallback library consulted only when design-principles has exhausted Rule 1 context-gathering with no result. Collapses an infinite-choice space into a confirmable shortlist: 3 style + 3 palette + 3 font DNA candidates drawn from 67 UI styles, 161 color palettes, and 57 font pairings — all pre-filtered against `../amw-design-principles/ai-slop-avoid.md`. Produces named anchors only; the user picks, then `amw-ascii-sketch` resumes with those anchors.
 
 ## Instructions
 
@@ -278,6 +278,20 @@ This skill produces TWO kinds of output:
 Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+
+## Examples
+
+Example 1 — fallback activation:
+- **Input**: User says "I don't have a design system, pick a style for me" after `amw-design-principles` exhausted Rule 1 (no design-system docs, no brand tokens, no reference URL).
+- **Output**: Three contrasting style anchors (e.g., Glassmorphism / Brutalist / Refined-modern) with ascii-friendly palette + font-pairing summaries. User picks one; orchestrator passes the chosen anchors to `amw-ascii-sketch` for Rule-2 plan-phase variants.
+
+Example 2 — industry-aware guardrails:
+- **Input**: Fallback activation for a "finance dashboard" use case.
+- **Output**: Three anchors filtered against finance industry anti-patterns — playful fonts and neon palettes are excluded a priori. The user receives only style candidates that survive both the raw taxonomy AND the industry-specific reasoning rules.
+
+Example 3 — ai-slop filter applied before emission:
+- **Input**: Raw taxonomy match returns Inter/Roboto pairing and a purple-blue gradient.
+- **Output**: Pairing rejected by `ai-slop-avoid` filter; substituted with a non-trope alternative (e.g., Söhne / IBM Plex Sans + a flat oklch palette). User sees only post-filter candidates.
 
 ## Resources
 

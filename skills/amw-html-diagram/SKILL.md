@@ -59,7 +59,7 @@ Full table + technique-level citations live in `../amw-diagram-formats/reference
 | `<article class="card">` with heading + body | `node{shape:rect, kind:card}` | `../amw-diagram-formats/references/html.md` TECH-71 |
 | `<button type="button">` (min-h 44px) | `node{kind:cta}` | ref TECH-70 + TECH-16 |
 | `<nav role="tablist"><button role="tab">` | `node{kind:tab-group}` + edges to panels | ref TECH-08 + TECH-43 |
-| Inline `<svg>` with `<rect>` + `<line marker-end>` | structural IR (`nodes[]`, `edges[]`) | ref §1.1 + `./svg.md` TECH-SV-20 |
+| Inline `<svg>` with `<rect>` + `<line marker-end>` | structural IR (`nodes[]`, `edges[]`) | ref §1.1 + `<./svg.md>` TECH-SV-20 |
 | `<table><thead><th scope>` | `node{kind:table}` (cells as child nodes) | ref TECH-82 + TECH-49 |
 | `<ol class="stages">` / `<ol class="timeline">` | edges with `order` attribute | ref TECH-79 + TECH-87 |
 | `<article role="alert" aria-live="polite">` | `node{kind:alert, annotations:["alert"]}` | ref TECH-75 + TECH-47 |
@@ -112,7 +112,7 @@ See the worked examples in `../amw-diagram-editorial/SKILL.md` (editorial path) 
 - Exactly one self-contained `.html` per invocation. Inline CSS + inline SVG. No external `<link>` to CDN CSS, no npm install, no bundler. (`../amw-diagram-formats/references/html.md` TECH-61)
 - Every emitted `.html` passes `bin/amw-validate-html-diagram.sh` AND the AI-slop-avoid 12-item checklist. A FAIL aborts; the original file is untouched.
 - Tweaks block (when included) preserves the three invariants verbatim — listener-before-announce, partial-keys only, valid JSON EDITMODE block. (`../amw-diagram-formats/references/html.md` §3)
-- React/Babel pins are exact — `react@18.3.1`, `react-dom@18.3.1`, `@babel/standalone@7.29.0` — with integrity hashes. No `react@18` shorthand, no `type="module"`. (`../amw-diagram-formats/references/html.md` §4)
+- React/Babel pins are exact — `react@18.3.1`, `react-dom@18.3.1`, `<@babel/standalone@7.29.0>` — with integrity hashes. No `react@18` shorthand, no `type="module"`. (`../amw-diagram-formats/references/html.md` §4)
 - `scrollIntoView` is banned everywhere. Use `window.scrollTo({top, behavior:'smooth'})` with manual offset. (`../amw-diagram-formats/references/html.md` TECH-29)
 - Do NOT re-author the HTML spec inside this skill — reference `../amw-diagram-formats/references/html.md`. If a rule is wrong, fix it there.
 

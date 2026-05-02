@@ -11,7 +11,7 @@ version: 0.1.0
 
 ## Overview
 
-Owns the DESIGN.md format end-to-end: author, lint, validate, audit, convert, and emit companion files (tokens.css, tokens.json, component-inventory.md). Supports both the official Variant 1 (`@google/design.md`) and the community 9-section Variant 2.
+Owns the DESIGN.md format end-to-end: author, lint, validate, audit, convert, and emit companion files (tokens.css, tokens.json, component-inventory.md). Supports both the official Variant 1 (`<@google/design.md>`) and the community 9-section Variant 2.
 
 ---
 
@@ -25,7 +25,7 @@ This skill is **autonomous and self-contained** — any agent can read this SKIL
 
 INPUT or OUTPUT (peer status). DESIGN.md is one of six input formats the plugin accepts:
 
-1. User provides a DESIGN.md (Variant 1 official `@google/design.md` or Variant 2 community 9-section)
+1. User provides a DESIGN.md (Variant 1 official `<@google/design.md>` or Variant 2 community 9-section)
 2. User provides an ASCII wireframe / sketch
 3. User provides a mockup image
 4. User provides a slideshow
@@ -63,7 +63,7 @@ Does NOT fire on:
 
 The skill ships:
 
-- **Two canonical specs** documented in `references/canonical-spec-google-alpha.md` (Variant 1 — official `@google/design.md`, primary) and `references/community-9-section-spec.md` (Variant 2 — VoltAgent community 9-section, accepted-with-mapping).
+- **Two canonical specs** documented in `references/canonical-spec-google-alpha.md` (Variant 1 — official `<@google/design.md>`, primary) and `references/community-9-section-spec.md` (Variant 2 — VoltAgent community 9-section, accepted-with-mapping).
 - **16 TECH-NN reference files** under `references/TECH-*.md` covering frontmatter, color tokens, typography tokens, component tokens, token references, do/don'ts authoring, URL extraction, codebase extraction, multi-page extraction, Tailwind conversion, validation/lint, companion files, V2→V1 conversion, validation failure recovery, DESIGN.md as input, and CJK localization (`references/TECH-cjk-localization.md`).
 - **Three templates** under `references/` — Variant 1 skeleton, Variant 2 skeleton, and a CLAUDE.md snippet for projects that adopt DESIGN.md.
 - **Two audit/quality docs** — `references/review-rubric.md` (DESIGN.md quality scoring) and `references/audit-passes.md` (5-pass audit: structural / drift / a11y / completeness / consistency).
@@ -117,7 +117,7 @@ When the user provides a DESIGN.md and then proceeds to Phase B (HTML rendering)
 
 ## Hard rules
 
-1. The skill produces Variant 1 (official `@google/design.md`) as canonical output by default. Variant 2 is accepted as input via the converter.
+1. The skill produces Variant 1 (official `<@google/design.md>`) as canonical output by default. Variant 2 is accepted as input via the converter.
 2. The skill runs no paywalled service, no API key beyond what `amw-dev-browser` already requires, and no Chrome extension. The official CLI is `npx`-installable, no API key, no remote calls.
 3. The skill never re-emits broad design vocabulary in tool-call text — that would re-trigger the orchestrator. See `../amw-design-principles/references/skill-invocation-protocol.md`.
 4. Every authored DESIGN.md MUST pass `bin/amw-design-md-lint.sh` before being delivered. Lint failure halts delivery.

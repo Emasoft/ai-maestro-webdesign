@@ -293,7 +293,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint me
 | AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Ensure no slop patterns in prose sections |
 | Validation failure recovery | `../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md` | What to do when lint fails persistently |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-author-agent` or `amw-design-md-auditor-agent` (peers — route through main-agent).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-author-agent` or `amw-design-md-auditor-agent` (peers — route through main-agent).
 
 ---
 
@@ -335,7 +335,7 @@ Action: this is normal in brand systems (e.g., `primary` and `accent` both `#0a2
 Action: emit them under the closest canonical key. If no canonical key fits, document the orphan tokens in `warnings` and suggest the user run `amw-design-md-auditor-agent` for the structural audit.
 
 ### Pattern 6: User wants Variant 2 (community 9-section) output
-Action: extract to Variant 1 first (canonical). Note in `recommendations` that V1→V2 conversion is not yet implemented in `bin/`; the user can manually re-format the prose sections per `references/templates/community-9-section-template.md`.
+Action: extract to Variant 1 first (canonical). Note in `recommendations` that V1→V2 conversion is not yet implemented in `bin/`; the user can manually re-format the prose sections per `../skills/amw-design-md/references/community-9-section-template.md`.
 
 ---
 
@@ -368,7 +368,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
 ### DON'T
 
 - **Do not issue `/amw-<command>` prompts.** These re-trigger the orchestrator.
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only.
 - **Do not invoke Playwright / Puppeteer / Chrome DevTools MCP directly.** All interactive browser automation flows through `amw-dev-browser` via `bin/amw-design-md-from-url.sh`.
 - **Do not author prose from imagination.** Source-derived prose only; gaps stay as `# TODO:`.
 
@@ -511,7 +511,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 7. **Never produce HTML, wireframes, or code artifacts.** Output is DESIGN.md and its companions only.
 
-8. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only.
+8. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only.
 
 9. **Never re-emit broad design vocabulary in tool-call text** ("design a landing page", "build a UI"). It re-triggers the orchestrator. Use specific, narrow phrases that name the artifact (`DESIGN.md`, "tokens.css", "extracted Variant 1 frontmatter").
 

@@ -82,7 +82,7 @@ Every entry below is an authoritative, hand-maintained source. Consumer skills a
 | `./references/ir-schema.md` | IR JSON schema in prose + examples + lossy-conversion table per format. | `diagram-ir.py`, every `wd-*-diagram*` command, every parser in `bin/` |
 | `./references/conversion-matrix.md` | Canonical N×N table. PNG-input cells = `impossible`. Every dispatch rule for `/amw-convert-any-diagram-format`. | `diagram-convert`, `/amw-convert-any-diagram-format`, `/amw-create-webpage-from-diagram` |
 | `./references/modify-flow.md` | Shared detect → parse → IR-patch → re-render → re-validate pipeline. | All 4 `wd-create-or-modify-*-diagram` commands; `diagram-webpage-sync` |
-| `./references/diff-algorithm.md` | IR-level structural diff algorithm (node-id match, edge set diff, markdown report). | `diagram-compare`, `/amw-compare-diagrams`, `bin/amw-diagram-ir-diff.py` |
+| `./references/diff-algorithm.md` | IR-level structural diff algorithm (node-id match, edge set diff, markdown report). | `diagram-compare`, `/amw-compare-diagrams`, `bin/amw-diagram-ir.py --diff` |
 | `./references/detect-format.md` | Format detection decision tree (magic lines, extensions, content sniffing). | `bin/amw-diagram-detect-format.sh`, every dispatcher |
 | `./references/validation-dispatcher.md` | Unified `PASS \| FAIL: <line>: <message> [FIX: <hint>]` output contract. | `ascii-validator`, `/amw-validate-any-diagram-format`, every per-format validator wrapper |
 | `./schema.json` | Machine-readable JSON Schema (draft-07) for the IR. Consumed by `bin/amw-diagram-ir.py`. | `bin/amw-diagram-ir.py validate`, any JSON-schema-aware tooling |
@@ -101,7 +101,7 @@ These live in `bin/`, not in this skill. The skill documents them; it does not o
 
 Per user directive 2026-04-22:
 
-- **IR version is diagram-ir version 1.0 (schema ID `diagram-ir/1.0`).** Schema evolution requires an ADR and a bump — NOT in scope for Phase 0.
+- **IR version is diagram-ir version 1.0 (schema ID `<diagram-ir/1.0>`).** Schema evolution requires an ADR and a bump — NOT in scope for Phase 0.
 - **PNG is OUTPUT-ONLY.** Every PNG-as-SOURCE conversion cell is `impossible`; the validator dispatcher refuses PNG inputs with a fixed message.
 - **Mermaid backend is `mmdc`** (no Kroki).
 - **SVG validator is `xmllint --noout`** (no `svg-validator` npm wrapper).
@@ -115,7 +115,7 @@ Per user directive 2026-04-22:
 2. Locate the needed file using the Reference index table: format spec, IR schema, conversion matrix, detect-format contract, validation dispatcher, modify-flow, or diff algorithm.
 3. Reference files via relative paths (`../amw-diagram-formats/references/<name>.md`); never copy the prose inline into other skills.
 4. Before performing any cross-format operation, check the conversion matrix at `references/conversion-matrix.md` for the correct cell type (`direct`, `via IR`, `via X`, `wrap`, or `impossible`).
-5. Consult `references/locked-decisions.md` for immutable rules established by user directive; do not override these decisions.
+5. Consult `<references/locked-decisions.md>` for immutable rules established by user directive; do not override these decisions.
 
 Consumers reference this library via relative paths (`../amw-diagram-formats/references/<name>.md`). Never copy the prose inline. Use the Reference index table to find the right file for each concern (format spec, IR schema, conversion matrix, etc.). See `## Locked decisions` for immutable rules established by user directive.
 

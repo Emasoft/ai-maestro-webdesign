@@ -54,8 +54,8 @@ Four-screen inventory:
 
 ## Gotchas
 
-- **Relative links, not absolute.** `[login.html](./login.html)`, not
-  `[login.html](/docs/ux-flows/wireframes/login.html)`. Absolute paths
+- **Relative links, not absolute.** `[my-screen.html](<./my-screen.html>)`, not
+  `[my-screen.html](</docs/ux-flows/wireframes/my-screen.html>)`. Absolute paths
   break when the directory moves.
 - **Related UCs are space-separated**, not comma-separated — so a single
   cell can enumerate multiple UCs without ambiguity when the UCs

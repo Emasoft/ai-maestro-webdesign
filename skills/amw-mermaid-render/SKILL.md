@@ -77,8 +77,9 @@ Do NOT activate on:
 ### SVG — themed, high fidelity
 
 - Mostly self-contained. One external reference: the SVG `<style>` block
-  contains a single `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@...')`
-  declaration so the Inter font renders correctly when embedded in HTML.
+  contains a single `@import url(...)` declaration pointing to the Google
+  Fonts CSS2 endpoint for `Inter` (with the appropriate weight axis range)
+  so the Inter font renders correctly when embedded in HTML.
   If the skill user needs a **fully offline** / CSP-strict SVG (no
   outbound font fetch), post-process the output by deleting the
   `@import url(...)` line — the SVG will then fall back to
@@ -410,7 +411,7 @@ Templates for all 5 types live under `../../external/mermaid-render/examples/`. 
    for Inter.** The backend inlines everything else — styles, arrowheads,
    theme CSS variables. Do NOT post-process the SVG to add additional
    external stylesheets, scripts, or images. If the caller needs a fully
-   CSP-locked SVG, strip the `@import url('https://fonts.googleapis.com/css2?...')`
+   CSP-locked SVG, strip the `@import url('<https://fonts.googleapis.com/css2?...>')`
    line from the `<style>` block; the system font stack takes over.
 2. **ASCII output must pass `../../bin/amw-validate-ascii.py` or warn loudly.**
    The wrapper enforces this automatically — if the validator flags

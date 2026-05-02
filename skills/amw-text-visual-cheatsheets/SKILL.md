@@ -169,7 +169,7 @@ For tabular panels, `../../bin/amw-ascii-render.py` in `table` mode guarantees c
 4. Add the footer (last-tested date, source link, owner).
 5. Run the validation gate per panel. Loop until PASS.
 6. Present each panel in its own fenced code block under a section header.
-7. If the user intends to commit this to a repo, suggest a canonical location (e.g. `docs/cli-cheatsheet.md`). Do not write until approved.
+7. If the user intends to commit this to a repo, suggest a canonical location (e.g. `<docs/cli-cheatsheet.md>`). Do not write until approved.
 
 ## Technique selection
 

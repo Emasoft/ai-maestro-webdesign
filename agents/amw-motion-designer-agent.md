@@ -46,7 +46,7 @@ The 60fps budget is not a suggestion. Animations that trigger layout recalculati
 - Easing vocabulary: `ease-out` for entrance (decelerating → feels natural), `ease-in` for exit (accelerating → feels intentional), `ease-in-out` for position shifts, `cubic-bezier()` for branded easing. Linear for scrubbing (scroll-progress).
 - Duration rules: micro-interactions ≤150ms; element entrance 200–400ms; hero/page-level 400–600ms; never exceed 800ms for user-initiated interactions.
 - CLS/INP impact: layout-triggering animations cause Cumulative Layout Shift; long-running JS animations block the main thread and worsen Interaction to Next Paint. I document impact for each spec.
-- `starter-components/animations.html` from design-principles: the ~50-LOC timeline core for multi-step animation sequences. I use this before reaching for Popmotion, GSAP, or Framer Motion.
+- `../skills/amw-design-principles/starter-components/animations.html` from design-principles: the ~50-LOC timeline core for multi-step animation sequences. I use this before reaching for Popmotion, GSAP, or Framer Motion.
 - Popmotion: physics-based spring / drag for interactions that benefit from physical metaphor (drawer, card flip, pull-to-refresh).
 - Framer Motion variants API and AnimatePresence (for React stacks only).
 - GSAP timeline and ScrollTrigger (external dependency, must be declared in `blocking_issues` if not already in the project's dependencies).
@@ -257,14 +257,14 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Motion technique — cycling text auto-fit (rotating headlines) | `../skills/amw-pretext/references/TECH-50-cycling-text-autofit.md` | Recompute font-size per cycle |
 | Motion technique — glyph path art (SVG stroke-draw) | `../skills/amw-pretext/references/TECH-52-glyph-path-art.md` | SVG stroke-dasharray animation |
 | Motion technique — splat editor (text wrapping around Gaussian splats in real time) | `../skills/amw-pretext/references/TECH-54-splat-editor.md` | Three.js + pretext bridge |
-| Pretext decision guide (when in doubt about which TECH applies) | `../skills/amw-pretext/SKILL.md` (Technique selection section) | Master TECH-72 decision guide also at `references/TECH-72-use-pretext-decision-guide.md` |
+| Pretext decision guide (when in doubt about which TECH applies) | `../skills/amw-pretext/SKILL.md` (Technique selection section) | Master TECH-72 decision guide also at `../skills/amw-pretext/references/TECH-72-use-pretext-decision-guide.md` |
 | `animation_library=framer-motion` | Internalized knowledge of Framer Motion 11 (Variants API, AnimatePresence, layout animation, gesture handlers). Consult global Claude Code skill `framer-motion` if user wants library-specific deep dive (this is NOT a plugin skill — it lives in the user's global skill set). | Variants API, AnimatePresence, layout animation patterns |
 | `animation_library=gsap` | Internalized knowledge of GSAP 3 (Timeline, ScrollTrigger plugin, ease catalog, MotionPath plugin). Consult global Claude Code skill `gsap` for library-specific deep dive (this is NOT a plugin skill). | Timeline, ScrollTrigger, ease catalog |
 | `animation_library=anime-js` | Internalized knowledge of anime.js 3 (lightweight sequencing, SVG animation, stagger). Consult global Claude Code skill `anime-js` for library-specific deep dive (this is NOT a plugin skill). | Lightweight sequencing, SVG animation |
 | AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Catch parallax overuse, infinite spinning logos, decorative excess |
 | RTL locale present | `../skills/amw-design-principles/typography-system.md` | Direction-specific transform adjustments (slide-in direction flips for RTL) |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (peer agent), `amw-video-producer` (different output class).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (peer agent), `amw-video-producer` (different output class).
 
 ---
 
@@ -335,7 +335,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   "Use /amw-sketch to produce the motion-enabled variant"
   ```
 - **Do not use broad design vocabulary in tool-call text.** Forbidden phrasing: `"animate this landing page design"`, `"make the UI feel alive"` — these activate the orchestrator. Use narrow technical phrasing: "produce CSS @keyframes for hero-entrance intent".
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files (`starter-components/animations.html`, `ai-slop-avoid.md`) directly.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files (`<starter-components/animations.html>`, `<ai-slop-avoid.md>`) directly.
 - **Do not emit prompts that look like user requests to the Skill tool.** Skill tool invocations use fully-qualified skill names only.
 
 Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad design vocabulary in tool-call text.
@@ -461,7 +461,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 7. **No `scrollIntoView` in any produced JS.** This is banned plugin-wide (per CLAUDE.md) because it corrupts parent-window scroll when embedded in an iframe host.
 
-8. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only. Enforcement via smoke test.
+8. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only. Enforcement via smoke test.
 
 ---
 

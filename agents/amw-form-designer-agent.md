@@ -177,7 +177,7 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 1. **Verify preconditions.** Confirm `form_purpose`, `fields`, `locales`, `target_stack`, and `slug` are populated. Confirm any `payment_provider` field types have a corresponding `payment_provider` block.
 
 2. **Load form reference specs.**
-   - Read `../skills/amw-shadcn-ui/docs/components/form.mdx` (or the relevant form/input components) when `target_stack` includes shadcn.
+   - Read `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` (or the relevant form/input components) when `target_stack` includes shadcn.
    - Read `../skills/amw-tailwind-4/SKILL.md` if `target_stack=tailwind-v4`.
    - Read `../skills/amw-design-principles/color-system.md` to resolve `danger`, `success`, and `muted` token semantics if `brand_tokens` are provided.
    - Read `../skills/amw-design-principles/spacing-rhythm.md` for field gap and label-offset calculation.
@@ -257,7 +257,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
-| Always — shadcn stack | `../skills/amw-shadcn-ui/docs/components/form.mdx`, `input.mdx`, `select.mdx`, `checkbox.mdx` | shadcn form component API |
+| Always — shadcn stack | `../skills/amw-shadcn-ui/docs/components/radix/field.mdx`, `input.mdx`, `select.mdx`, `checkbox.mdx` | shadcn form component API |
 | Always — token resolution | `../skills/amw-design-principles/color-system.md`, `../skills/amw-design-principles/spacing-rhythm.md` | danger/success/muted token semantics, spacing |
 | `target_stack=tailwind-v4` | `../skills/amw-tailwind-4/SKILL.md` | v4 syntax for form utility classes |
 | Multi-step with complex ASCII layout | `bin/amw-ascii-render.py` (Mode: diagram, 78-col) | structured ASCII form-step sketch |
@@ -265,7 +265,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | check form output for pattern anti-patterns |
 | Locale-specific error copy | Internalized knowledge of i18n / l10n error-message conventions per locale. Consult global Claude Code skill `localization-l10n` if user wants locale-specific deep dive (this is NOT a plugin skill — it lives in the user's global skill set; for plugin-internal copy authoring, route to `amw-multilanguage-copywriter-agent` via main-agent). | locale-appropriate error message framing |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (peer agent — data flows through main-agent).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (peer agent — data flows through main-agent).
 
 ---
 
@@ -316,7 +316,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
 
 - **Read skill files for know-how.** When I need to produce a form that honors a skill's contract, I read the skill's `SKILL.md` and referenced files directly:
   ```
-  Read skills/amw-shadcn-ui/docs/components/form.mdx
+  Read skills/amw-shadcn-ui/docs/components/radix/field.mdx
   Read skills/amw-design-principles/color-system.md
   Read skills/amw-tailwind-4/SKILL.md
   ```
@@ -338,7 +338,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   ```
   Instead, read the target skill and execute the recipe directly via tool calls.
 - **Do not use broad design vocabulary in tool-call text.** Forbidden phrasing: `"design a checkout UI"`, `"build the form page"` — these match the trigger-phrase dispatcher and activate the orchestrator. Use narrow technical phrasing.
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files (`color-system.md`, `spacing-rhythm.md`, `ai-slop-avoid.md`) directly.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files (`color-system.md`, `spacing-rhythm.md`, `ai-slop-avoid.md`) directly.
 - **Do not emit prompts that look like user requests to the Skill tool.** Skill tool invocations use fully-qualified skill names only.
 
 Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad design vocabulary in tool-call text. A match is a failure.
@@ -449,7 +449,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 6. **Never produce a report without a worked ARIA annotation for at least the first invalid state of each field.** ARIA annotations without error-state coverage are incomplete specs.
 
-7. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only. Enforcement via smoke test.
+7. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only. Enforcement via smoke test.
 
 ---
 
@@ -460,7 +460,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `./amw-accessibility-auditor-agent.md` — downstream WCAG audit of rendered form HTML
 - `./amw-multilanguage-copywriter-agent.md` — error message copy for non-English locales
 - `./amw-legal-expert-agent.md` — mandatory consent fields (GDPR checkboxes, CAN-SPAM opt-in)
-- `../skills/amw-shadcn-ui/docs/components/form.mdx` — shadcn form component API
+- `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` — shadcn form component API
 - `../skills/amw-design-principles/color-system.md` — danger/success token semantics
 - `../skills/amw-design-principles/spacing-rhythm.md` — field gap and label-offset rules
 - `../skills/amw-design-principles/ai-slop-avoid.md` — form anti-pattern checklist

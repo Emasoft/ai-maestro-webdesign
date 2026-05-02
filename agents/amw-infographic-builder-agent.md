@@ -338,7 +338,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 If the brief doesn't clearly match one template, propose 2-3 candidate templates in `recommendations` with the trade-off, and let main-agent ask the user.
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator — cannot re-enter), `amw-ascii-*` skills (not infographic-relevant), `amw-wireframe-builder` skills (different output class), `amw-diagram-*` skills directly (diagram-producer's domain).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator — cannot re-enter), `amw-ascii-*` skills (not infographic-relevant), `amw-wireframe-builder` skills (different output class), `amw-diagram-*` skills directly (diagram-producer's domain).
 
 ---
 
@@ -416,7 +416,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   ```
   Instead, read the target skill and execute the recipe directly.
 - **Do not use broad design vocabulary in tool-call text.** Forbidden: "design a tokenomics page", "build a pretty infographic". Use narrow technical phrasing.
-- **Do not invoke `amw-design-principles/SKILL.md` as orchestrator.** I read specific reference files.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as orchestrator.** I read specific reference files.
 - **Do not invent data.** No "plausible" numbers, no "placeholder TVL", no AI-generated testimonials. All content must come from `data_brief`.
 - **Do not use generic display fonts** (Inter, Roboto, Arial, Helvetica, Plus Jakarta Sans, Syne, Outfit, Space Grotesk, Rajdhani as heading).
 - **Do not use emoji as icons** (Phosphor Icons only).
@@ -577,7 +577,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 
 8. **Never skip the density check.** If below minimum, I document and recommend; I do not silently emit a sparse piece and claim `status=ok`.
 
-9. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** I read specific reference files.
+9. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** I read specific reference files.
 
 10. **Never produce a file not listed in `artifact_paths`.** Every file I write to disk appears in the return contract.
 

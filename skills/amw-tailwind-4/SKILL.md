@@ -16,9 +16,9 @@ Lazy-loaded reference corpus for Tailwind CSS v4. Covers utilities, variants, `@
 
 1. Classify the user's question: migration, utility lookup, config/directive (`@theme`/`@utility`/`@custom-variant`/`@source`/`@reference`/`@apply`), variant, browser compatibility, or refactor/review.
 2. Check whether `references/docs/` exists; if not, stop and ask the user to run the sync script (`scripts/sync_tailwind_docs.py --accept-docs-license`) before answering v4-specific questions from the synced snapshot.
-3. For migration questions: read `references/gotchas.md` first, then `references/docs/upgrade-guide.mdx` and `references/docs/compatibility.mdx`.
+3. For migration questions: read `references/gotchas.md` first, then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>`.
 4. For implementation or review: read `references/engineering-playbook.md` first, then pull the specific utility/directive MDX only if needed.
-5. For a specific utility or variant: open the matching MDX file in `references/docs/` directly (e.g. `references/docs/hover-focus-and-other-states.mdx`).
+5. For a specific utility or variant: open the matching MDX file in `references/docs/` directly (e.g. `<references/docs/hover-focus-and-other-states.mdx>`).
 6. Extract only the specific answer; do not reload the full snapshot.
 7. If the snapshot is absent or stale and the user cannot sync, answer from `references/gotchas.md` + `references/engineering-playbook.md` for common questions; for anything requiring authoritative doc text, stop and ask the user to sync rather than guessing.
 
@@ -69,7 +69,7 @@ Before the first use of this skill, sync the Tailwind v4 docs snapshot into `ref
 python3 skills/amw-tailwind-4/scripts/sync_tailwind_docs.py --accept-docs-license
 ```
 
-This clones the tailwindcss.com repo (shallow), copies `src/docs/` into `references/docs/`, copies the docs sidebar index into `references/docs-index.tsx`, and writes commit metadata into `references/docs-source.txt`.
+This clones the tailwindcss.com repo (shallow), copies `src/docs/` into `references/docs/`, copies the docs sidebar index into `<references/docs-index.tsx>`, and writes commit metadata into `references/docs-source.txt`.
 
 Optional flags:
 
@@ -87,7 +87,7 @@ Optional flags:
 - `references/engineering-playbook.md` — implementation / refactor / review guide covering the abstraction ladder, tokens, custom utilities, component classes, `@apply` discipline, responsive strategy, and review checklist. Always available (does not need the sync).
 - `references/docs-source.txt` — sync metadata (upstream repo, commit SHA, commit date, snapshot date). Ships with a pre-populated sentinel commit; gets overwritten by the sync script on each run.
 - `references/docs/` — synced Tailwind v4 MDX snapshot. **Not present until the user runs the sync script.**
-- `references/docs-index.tsx` — synced sidebar index mapping categories to doc slugs. **Not present until the user runs the sync script.**
+- `<references/docs-index.tsx>` — synced sidebar index mapping categories to doc slugs. **Not present until the user runs the sync script.**
 - `scripts/sync_tailwind_docs.py` — the sync script itself.
 
 ## Reading strategy
@@ -96,9 +96,9 @@ When invoked:
 
 1. Parse the user's question to classify it: migration, utility lookup, config/directive, variant, compatibility, review, or refactor.
 2. Check whether `references/docs/` exists. If it does not, stop and ask the user to run the sync command from the Setup section — do not attempt to answer v4-specific docs questions from memory.
-3. For migration questions: read `references/gotchas.md` first (fast), then `references/docs/upgrade-guide.mdx` and `references/docs/compatibility.mdx` from the synced snapshot.
+3. For migration questions: read `references/gotchas.md` first (fast), then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>` from the synced snapshot.
 4. For implementation, refactor, or review: read `references/engineering-playbook.md` first, then pull the specific utility/directive doc only if needed.
-5. For a specific utility or variant: open the matching MDX file in `references/docs/` (for example `references/docs/hover-focus-and-other-states.mdx`, `references/docs/theme.mdx`, `references/docs/functions-and-directives.mdx`).
+5. For a specific utility or variant: open the matching MDX file in `references/docs/` (for example `<references/docs/hover-focus-and-other-states.mdx>`, `<references/docs/theme.mdx>`, `<references/docs/functions-and-directives.mdx>`).
 6. Treat MDX exports (`export const title`, `export const description`) as metadata. Treat JSX callouts (`<TipInfo>`, `<TipBad>`) as guidance text.
 7. Extract the specific answer; do not reload the whole snapshot.
 

@@ -442,7 +442,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
   - Layer 3 — logic / services / agents: `oklch(65% 0.13 190)` / hex `#4FA9A3` (teal-accent)
   - Layer 4 — tools / integrations: `oklch(78% 0.14 85)` / hex `#D9A441` (amber-accent)
   - Layer 5 — data / storage: `oklch(60% 0.09 140)` / hex `#6E9B6A` (sage-accent)
-  The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by `design-principles/ai-slop-avoid.md` item #1. Substituting tokens from `design-principles/color-system.md` is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
+  The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by `../amw-design-principles/ai-slop-avoid.md` item #1. Substituting tokens from `../amw-design-principles/color-system.md` is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
 - **Validation is mandatory, not advisory.** Every Stage 1 and Stage 2 check must pass before return. Surfacing an error to the caller is the last resort — apply the listed fixes first, regenerate if the triggers fire.
 
 ## Error Handling

@@ -199,7 +199,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Mode B drift | Direct file reads on codebase CSS/TS config files | Extract codebase-used tokens for comparison |
 | AI-slop final gate on prose sections | `../skills/amw-design-principles/ai-slop-avoid.md` | Flag slop patterns in DESIGN.md prose |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-author-agent` (peer — routes through main-agent).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-author-agent` (peer — routes through main-agent).
 
 ---
 
@@ -261,7 +261,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
 
 - **Do not issue `/amw-<command>` prompts.** These re-trigger the orchestrator.
 - **Do not author or repair DESIGN.md.** Return findings only.
-- **Do not run `amw-design-principles/SKILL.md` as an orchestrator.**
+- **Do not run `<amw-design-principles/SKILL.md>` as an orchestrator.**
 
 ---
 
@@ -342,7 +342,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 6. **I do NOT activate on generic 'design a landing page' intent.** The plugin's main flow already handles that without DESIGN.md.
 
-7. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only.
+7. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only.
 
 ---
 

@@ -16,8 +16,8 @@ PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + se
 
 ## Instructions
 
-1. Read or request the PRD (or feature list) — if `docs/product/prd.md` exists, read it; otherwise ask the user; do not synthesize use cases from nothing.
-2. **Phase 1 — Use Case Extraction**: document each use case with ID, actors, preconditions, main flow, alternative flows, postconditions; save to `docs/ux-flows/use-cases.md`; present to user and wait for explicit confirmation before Phase 2.
+1. Read or request the PRD (or feature list) — if `<docs/product/prd.md>` exists, read it; otherwise ask the user; do not synthesize use cases from nothing.
+2. **Phase 1 — Use Case Extraction**: document each use case with ID, actors, preconditions, main flow, alternative flows, postconditions; save to `<docs/ux-flows/use-cases.md>`; present to user and wait for explicit confirmation before Phase 2.
 3. **Phase 2 — Mermaid Diagrams**: read `references/mermaid-patterns.md` first; generate a master screen-map flowchart plus per-use-case flow/state/sequence diagrams under `docs/ux-flows/diagrams/`; max 15-20 nodes per diagram.
 4. **Phase 3 — HTML Wireframes**: for each screen, copy `assets/wireframe-template.html` and fill it in (self-contained, mobile-first 375px, dashed-border greyscale, inline CSS only); add inter-screen navigation links.
 5. **Phase 4 — Handoff**: compile `UX-FLOWS.md` linking all artifacts; route to `../amw-ascii-sketch/` for ASCII iteration, `../amw-ascii-to-html/` for production HTML lift, or `../amw-diagram-editorial/` if Mermaid diagrams need editorial upgrade.
@@ -75,7 +75,7 @@ Designing app flows runs through four mandatory phases in order. Do not skip, su
 
 ### Phase 1 — Use Case Extraction
 
-Read `docs/product/prd.md` if it exists. If no PRD is available, ask the user for the feature list or use case descriptions — do not synthesize use cases from nothing.
+Read `<docs/product/prd.md>` if it exists. If no PRD is available, ask the user for the feature list or use case descriptions — do not synthesize use cases from nothing.
 
 For each use case, document:
 
@@ -89,18 +89,18 @@ For each use case, document:
 | Alternative Flows | Branches, error paths, edge cases |
 | Postconditions | What is true after the flow completes |
 
-Save to `docs/ux-flows/use-cases.md`. Present the list to the user for approval. **Do not advance to Phase 2 without explicit confirmation.**
+Save to `<docs/ux-flows/use-cases.md>`. Present the list to the user for approval. **Do not advance to Phase 2 without explicit confirmation.**
 
 ### Phase 2 — Mermaid Diagrams
 
 Read `references/mermaid-patterns.md` for syntax patterns before generating any diagram.
 
-1. **Master screen map** — one `graph TD` flowchart at `docs/ux-flows/diagrams/screen-map.md` showing every screen + general navigation paths of the entire app.
+1. **Master screen map** — one `graph TD` flowchart at `<docs/ux-flows/diagrams/screen-map.md>` showing every screen + general navigation paths of the entire app.
 2. **Per-use-case diagrams** — for each approved use case, generate three diagrams under `docs/ux-flows/diagrams/{use-case-id}/`:
    - `flow.md` — `graph TD` flowchart with screen-to-screen navigation + decision nodes.
    - `states.md` — `stateDiagram-v2` with app states (loading, error, success, idle, ...).
    - `sequence.md` — `sequenceDiagram` with frontend-backend interaction + HTTP methods.
-3. **Index** — `docs/ux-flows/diagrams/INDEX.md` listing all diagrams with cross-links.
+3. **Index** — `<docs/ux-flows/diagrams/INDEX.md>` listing all diagrams with cross-links.
 
 Constraints:
 - Max 15-20 nodes per diagram. Split complex flows into sub-diagrams linked via `[[Sub-flow]]` nodes.
@@ -123,12 +123,12 @@ Constraints:
    - Tappable list items / cards: wrap the whole element in `<a class="wf-link">`.
    - **No dead ends** — every screen has at least one outgoing link (back button, tab bar, or action).
    - **No JavaScript** — pure HTML `<a>` navigation only. No onclick, no form submits.
-3. **Save and index.** Save wireframes to `docs/ux-flows/wireframes/`. Generate `docs/ux-flows/wireframes/INDEX.md` with screen name, file link, related use cases, key elements, outgoing links.
+3. **Save and index.** Save wireframes to `docs/ux-flows/wireframes/`. Generate `<docs/ux-flows/wireframes/INDEX.md>` with screen name, file link, related use cases, key elements, outgoing links.
 4. **Offer browser preview.** After generation, proactively propose opening the entry screen via `bin/amw-dev-browser-wrapper.sh mobile file://$(pwd)/docs/ux-flows/wireframes/<entry>.html` (375px mobile viewport matches the wireframe target). Do not wait to be asked.
 
 ### Phase 4 — Consolidation and Handoff
 
-Generate `docs/ux-flows/UX-FLOWS.md` with:
+Generate `<docs/ux-flows/UX-FLOWS.md>` with:
 
 - Master screen map (link to `screen-map.md`).
 - Screen inventory table (screen, purpose, wireframe, use cases).

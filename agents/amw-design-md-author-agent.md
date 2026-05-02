@@ -226,7 +226,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint me
 | Contrast verification needed | `bin/amw-design-md-contrast.py` | WCAG contrast check on every color pair before delivery |
 | Auditing an HTML mockup against the produced DESIGN.md | `bin/amw-html-section-count.py` | Counts top-level sections, derives word-count + reading-time, flags heading-hierarchy violations (`h2` without `h1`, `h3` without `h2`, etc.); used when main-agent attaches a reference HTML and asks me to verify the section-and-heading structure aligns with the DESIGN.md `## Layout` and component specs |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-auditor-agent` (peer — routes through main-agent).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-auditor-agent` (peer — routes through main-agent).
 
 ---
 
@@ -295,7 +295,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
 ### DON'T
 
 - **Do not issue `/amw-<command>` prompts.** These re-trigger the orchestrator.
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only.
 - **Do not attempt to produce HTML or wireframes.** Return `status=failed` if asked.
 
 ---
@@ -362,7 +362,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 6. **I do NOT activate on generic 'design a landing page' intent.** The plugin's main flow already handles that without DESIGN.md.
 
-7. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only.
+7. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only.
 
 ---
 

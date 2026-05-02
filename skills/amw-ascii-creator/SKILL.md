@@ -114,7 +114,7 @@ Never present or save a FAILing artifact. The whole value of "perfect ASCII" is 
 
 ### Technique catalog
 
-The full technique catalog (95 validated patterns + the 12 JSON-render techniques migrated from `perfect-ascii`) is shared across skills under `diagram-formats/references/ascii.md`. For the JSON-rendering side specifically, this skill's own `references/` directory holds one `.md` per technique extracted from the `perfect-ascii` source:
+The full technique catalog (95 validated patterns + the 12 JSON-render techniques migrated from `perfect-ascii`) is shared across skills under `../amw-diagram-formats/references/ascii.md`. For the JSON-rendering side specifically, this skill's own `references/` directory holds one `.md` per technique extracted from the `perfect-ascii` source:
 
 | TECH-ID | Category | One-line description |
 |---|---|---|

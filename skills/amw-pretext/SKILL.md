@@ -986,7 +986,7 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 
 ## Non-negotiables
 
-- Never activate on "make the type nice" / "pick a font" — those belong to `design-principles/typography-system.md`.
+- Never activate on "make the type nice" / "pick a font" — those belong to `../amw-design-principles/typography-system.md`.
 - No Framer Motion, no GSAP — plugin-wide ban. Pretext's frame-by-frame Canvas / SVG approach IS the approved kinetic-text alternative.
 - The font string passed to `prepare()` MUST be loaded and byte-identical to what the renderer uses.
 - `prepare()` MUST live outside animation / render loops. `layout()` is the hot path.

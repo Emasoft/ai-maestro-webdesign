@@ -166,7 +166,7 @@ For heatmaps, `../../bin/amw-ascii-render.py` in `table` mode guarantees column 
 5. Run the validation gate. Loop until PASS.
 6. Present inside a fenced code block (no language tag).
 7. Add a `Next Checkpoint` line below — the date the team will review progress on the action items. Ask if not given.
-8. Offer to save a canonical copy (e.g. `docs/retros/2026-Q2-sprint-04.md`). Do not write until user approves.
+8. Offer to save a canonical copy (e.g. `<docs/retros/2026-Q2-sprint-04.md>`). Do not write until user approves.
 
 ## Technique selection
 

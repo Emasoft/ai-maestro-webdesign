@@ -252,7 +252,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Catch token naming anti-patterns (generic names, hex-named tokens) |
 | Default — design-token authoring output is a Variant 1 DESIGN.md | `../skills/amw-design-md/SKILL.md` + `../skills/amw-design-md/references/canonical-spec-google-alpha.md` | Style Dictionary / Figma-tokens / W3C-DTCG exports are DERIVED from the DESIGN.md (via `bin/amw-design-md-emit-companions.py` — emits `tokens.css`, `tokens.json`, `component-inventory.md`, `usage-prompt.md`), never the other way around. The DESIGN.md is the source of truth; companions are downstream artifacts. Lint gate: `bin/amw-design-md-lint.sh` runs before delivery. |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain).
 
 ---
 
@@ -325,7 +325,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   "Invoke /amw-ascii-to-html with these tokens"
   ```
 - **Do not use broad design vocabulary in tool-call text.** Forbidden: `"design a color system for the brand"`, `"create a design language"` — these activate the orchestrator. Use narrow technical phrasing: "produce OKLCH shade scale from #0a2540".
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files (`color-system.md`, `typography-system.md`, `spacing-rhythm.md`) directly.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files (`color-system.md`, `typography-system.md`, `spacing-rhythm.md`) directly.
 - **Do not emit prompts that look like user requests to the Skill tool.** Skill tool invocations use fully-qualified skill names only.
 
 Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad design vocabulary in tool-call text.
@@ -461,7 +461,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 7. **Never name tokens after their visual appearance.** Token names like `color-blue-500` for a `primary` semantic role are a partial anti-pattern — fine as primitive names, but the semantic layer names must be intent-based (`color-interactive-bg`, `color-danger-text`). A component reference to `color-blue-500` will break when the brand pivots from blue to green.
 
-8. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files (`color-system.md`, `typography-system.md`, `spacing-rhythm.md`) directly. Enforcement via smoke test.
+8. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files (`color-system.md`, `typography-system.md`, `spacing-rhythm.md`) directly. Enforcement via smoke test.
 
 ---
 

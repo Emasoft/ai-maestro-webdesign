@@ -204,7 +204,7 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
    - Inject `<html lang="..">` per locale. For RTL locales (ar, he), set `dir="rtl"` and flip Tailwind / shadcn directional utilities.
 
 6. **Render HTML scaffold.**
-   - Start from the appropriate starter-component when applicable: `starter-components/browser-window.html` for outer chrome, `starter-components/animations.html` for timeline animations.
+   - Start from the appropriate starter-component when applicable: `../skills/amw-design-principles/starter-components/browser-window.html` for outer chrome, `../skills/amw-design-principles/starter-components/animations.html` for timeline animations.
    - Inject brand tokens as CSS custom properties in `:root` (or the shadcn `@layer base` block when `target_stack` is shadcn).
    - Render each ASCII IR node as its mapped component, binding copy and tokens.
 
@@ -294,7 +294,7 @@ Example: ASCII declares a 5-column grid with fixed 240px columns (1200px minimum
 Example: `colors.bg = #fafafa` (light) + `colors.text = #f5f5f5` (near-white) → contrast ratio < 4.5:1. Action: emit HTML with tokens as given (user's choice is authoritative), but add a `warnings` entry with the calculated ratio and a suggested fix. Accessibility-auditor will catch this downstream; my job is to flag it early.
 
 ### 8.10 ASCII uses a component pattern not in the detection table
-Action: read `../skills/amw-ascii-to-html/references/TECH-99.md` fallback rules. If still unmatched, emit a generic `<section><div>` shell with a TODO comment (`<!-- unmatched ASCII pattern at lines N-M: <excerpt> -->`), document in `warnings`, `status=partial`, `next_action=escalate_to_user` for a design-principles update.
+Action: read `<../skills/amw-ascii-to-html/references/TECH-99.md>` fallback rules. If still unmatched, emit a generic `<section><div>` shell with a TODO comment (`<!-- unmatched ASCII pattern at lines N-M: <excerpt> -->`), document in `warnings`, `status=partial`, `next_action=escalate_to_user` for a design-principles update.
 
 ### Iteration cap (one-shot)
 Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot conversion agent — I have no internal fix/retry/regenerate loop. ASCII validation is a precondition gate (I fail fast on invalid input, I do not fix-and-retry); HTML lint is a one-pass advisory pass at the end. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
@@ -307,7 +307,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 |---|---|---|
 | Always (core translation) | `../skills/amw-ascii-to-html/SKILL.md` + referenced TECH-NN docs | Component-detection table and pattern recipes |
 | `target_stack` includes `shadcn` | `../skills/amw-shadcn-ui/SKILL.md` + `../skills/amw-shadcn-ui/docs/components/<component-slug>.mdx` for each component used | shadcn-specific API, theming, install patterns |
-| ASCII shows tabular data with sort / filter / pagination affordances (column headers with sort glyphs, pagination footer, filter inputs above table) | `../skills/amw-shadcn-ui/docs/components/base/data-table.mdx` (or `radix/data-table.mdx`) | Sortable / filterable / paginated TanStack-Table-backed shadcn data-table — `target_stack=shadcn` only; for vanilla, fall back to `<table>` with hand-coded sort handlers |
+| ASCII shows tabular data with sort / filter / pagination affordances (column headers with sort glyphs, pagination footer, filter inputs above table) | `../skills/amw-shadcn-ui/docs/components/base/data-table.mdx` (or `../skills/amw-shadcn-ui/docs/components/radix/data-table.mdx`) | Sortable / filterable / paginated TanStack-Table-backed shadcn data-table — `target_stack=shadcn` only; for vanilla, fall back to `<table>` with hand-coded sort handlers |
 | ASCII shows static tabular data (read-only, no interactivity) | `../skills/amw-shadcn-ui/docs/components/base/table.mdx` | Plain semantic `<table>` styling |
 | ASCII shows command palette / typeahead search overlay | `../skills/amw-shadcn-ui/docs/components/base/command.mdx` | cmdk-backed command menu |
 | ASCII shows date / range picker | `../skills/amw-shadcn-ui/docs/components/base/calendar.mdx` + `date-picker.mdx` | Calendar + date-picker combo |
@@ -316,12 +316,12 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | ASCII shows article / blog post layout (long-form prose, byline, reading time, OG image) | `../skills/amw-ascii-to-html/references/TECH-article-template.md` + `../skills/amw-seo/SKILL.md` for JSON-LD Article schema | semantic `<article>` / `<header>` / `<time datetime>`, reading-time computation, OG image dimensions, Twitter Card meta |
 | `target_stack` is `tailwind-v4` | `../skills/amw-tailwind-4/SKILL.md` | v4 syntax (`@theme`, `@import`, new color interpolation) |
 | Brand token resolution or validation | `../skills/amw-design-principles/color-system.md`, `../skills/amw-design-principles/typography-system.md`, `../skills/amw-design-principles/spacing-rhythm.md` | token contract rules (contrast floor, type scale, rhythm) |
-| Starter component needed (browser chrome, Tweaks protocol, animation timeline) | `../skills/amw-design-principles/starter-components/<component>.html` + `starter-components/react-babel-pins.md` when React UMD | hard-pinned invariants |
+| Starter component needed (browser chrome, Tweaks protocol, animation timeline) | `../skills/amw-design-principles/starter-components/<component>.html` + `../skills/amw-design-principles/starter-components/react-babel-pins.md` when React UMD | hard-pinned invariants |
 | AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation `../skills/amw-design-principles/ai-slop-avoid.md` | mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
 | Structure summary + heading-hierarchy audit on rendered output | `bin/amw-html-section-count.py` (run on the staging path before promotion) | counts top-level sections, computes word-count + reading-time, flags `h2 without h1`, `h3 without h2`, etc. — output goes into the return contract's `structure_summary` block |
 | Locale direction (RTL) | `../skills/amw-design-principles/typography-system.md` (reading-direction section) | RTL layout rules |
-| ASCII contains an empty-state slot (`[ no items yet ]`, `[ search results: 0 ]`, etc.) | `../skills/amw-design-principles/starter-components/empty-state.html` if present, else use the inline empty-state pattern: heroicon → headline → 1-line context → primary action → optional secondary action | render an empty state that has clear next-action guidance, NOT just a sad face |
-| ASCII contains an error-state slot (`[ 404 ]`, `[ permission denied ]`, `[ server error ]`, `[ offline ]`) | `../skills/amw-design-principles/starter-components/error-state.html` if present, else use error-state pattern: status code → human headline → recovery action(s) → secondary "contact support" link | render error states that name the failure AND offer recovery, never blank pages or raw stack traces |
+| ASCII contains an empty-state slot (`[ no items yet ]`, `[ search results: 0 ]`, etc.) | `<../skills/amw-design-principles/starter-components/empty-state.html>` if present, else use the inline empty-state pattern: heroicon → headline → 1-line context → primary action → optional secondary action | render an empty state that has clear next-action guidance, NOT just a sad face |
+| ASCII contains an error-state slot (`[ 404 ]`, `[ permission denied ]`, `[ server error ]`, `[ offline ]`) | `<../skills/amw-design-principles/starter-components/error-state.html>` if present, else use error-state pattern: status code → human headline → recovery action(s) → secondary "contact support" link | render error states that name the failure AND offer recovery, never blank pages or raw stack traces |
 | ASCII contains a loading-state slot (`[ loading… ]`, `[ skeleton ]`, `[ spinner ]`) | inline skeleton pattern (preserve layout, animate via `animation: pulse 2s infinite`); honor `prefers-reduced-motion` | render perceptually-stable loading states; preserve layout dimensions to avoid CLS |
 | Form section detected (`[ form: ... ]`, fields like `email`, `name`, `password`, `submit`) | hand off to `amw-form-designer-agent` via main-agent — return PARTIAL with `recommendations: ["spawn amw-form-designer-agent for <form-purpose>"]` and an empty form scaffold | Tier-4 specialist owns form architecture; I render the layout shell only |
 | PWA / installable / offline / "add to home screen" / `manifest.json` / service-worker / install-banner / `apple-touch-icon` requested in input or implied by brief | `../skills/amw-ascii-to-html/references/TECH-pwa.md` | manifest.json schema, service-worker template (cache-first / network-first / stale-while-revalidate), `beforeinstallprompt` UX, full icon set requirements, Lighthouse PWA thresholds. Coordinates icon generation with `amw-asset-generator-agent` via main-agent. |
@@ -329,7 +329,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Motion section detected (`[ animate hero on scroll ]`, `[ marquee ]`, transition specs) | hand off to `amw-motion-designer-agent` via main-agent — return PARTIAL with `recommendations: ["spawn amw-motion-designer-agent for <motion-spec>"]` and a static-fallback HTML | Tier-4 specialist owns motion specs; I embed the spec they return |
 | Input contract carries `design_md_path` (a Variant 1 DESIGN.md is the canonical token source for this run) | `../skills/amw-design-md/SKILL.md` + `../skills/amw-design-md/references/TECH-15-design-md-as-input.md`; lint via `bin/amw-design-md-lint.sh` BEFORE rendering any HTML | Treat DESIGN.md tokens as canonical (override `brand_tokens` if both supplied). On lint failure (P0/P1 errors), STOP — return `status=failed` with the lint error list in `blocking_issues` and `next_action=escalate_to_user`. Never render HTML against a broken DESIGN.md. |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator — cannot re-enter), `amw-ascii-sketch` (Phase A only), `amw-infographics` (different output class — infographic-builder-agent's domain), `diagram-*` (diagram-producer-agent's domain), `amw-form-designer-agent` / `amw-motion-designer-agent` directly (per the one-way tree topology — main-agent fans out to peer specialists, not me).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator — cannot re-enter), `amw-ascii-sketch` (Phase A only), `amw-infographics` (different output class — infographic-builder-agent's domain), `diagram-*` (diagram-producer-agent's domain), `amw-form-designer-agent` / `amw-motion-designer-agent` directly (per the one-way tree topology — main-agent fans out to peer specialists, not me).
 
 ---
 
@@ -406,7 +406,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   ```
   Instead, read the target skill and execute the recipe directly via tool calls.
 - **Do not use broad design vocabulary in tool-call text.** Forbidden phrasing like `"design a dashboard"`, `"build a landing page"`, `"mockup for a website"` — these match the trigger-phrase dispatcher and activate the orchestrator. Use narrow technical phrasing.
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** I read its specific reference files (color-system.md, ai-slop-avoid.md, starter-components/*) — I do not read the SKILL.md as an activation.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** I read its specific reference files (color-system.md, ai-slop-avoid.md, starter-components/*) — I do not read the SKILL.md as an activation.
 - **Do not emit prompts that look like user requests to the Skill tool.** Skill tool invocations use fully-qualified skill names only, and I do not pass English descriptions and let the selector guess.
 
 Enforcement: main-agent's smoke test greps my report output for `/amw-` substrings and for broad design vocabulary in tool-call text. A match is a failure.
@@ -554,18 +554,18 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 3. **Never edit legal mandatory element HTML fragments.** The content in `legal_mandatory_elements[i].html_fragment` is veto-power content from legal-expert. I inject verbatim. Rewording, re-localizing, re-attributing, or inserting alternate markup is forbidden.
 
-4. **Never break tweaks-block postMessage invariants.** When I use `starter-components/tweaks-block.html`:
+4. **Never break tweaks-block postMessage invariants.** When I use `../skills/amw-design-principles/starter-components/tweaks-block.html`:
    - The `message` listener is registered BEFORE `__edit_mode_available` is posted (race condition guard).
    - `__edit_mode_set_keys` carries PARTIAL updates only (never the full config object).
    - The `/*EDITMODE-BEGIN*/ ... /*EDITMODE-END*/` block is valid JSON (double-quoted keys + string values).
 
-5. **Never break React/Babel pinning in starter-components.** `react@18.3.1`, `babel@7.29.0`, exact integrity hashes, no `type="module"`. Per `starter-components/react-babel-pins.md`.
+5. **Never break React/Babel pinning in starter-components.** `react@18.3.1`, `babel@7.29.0`, exact integrity hashes, no `type="module"`. Per `../skills/amw-design-principles/starter-components/react-babel-pins.md`.
 
 6. **Never use `scrollIntoView`.** Banned per CLAUDE.md (corrupts parent-window scroll when embedded in iframe host). Use manual offset + `window.scrollTo({top, behavior: 'smooth'})`.
 
 7. **Never hard-code colors/spacing/fonts.** All values route through `brand_tokens` → CSS custom properties or Tailwind tokens. No `color: #0a2540` in a style attribute; always `color: var(--primary)`.
 
-8. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** I read specific reference files from that skill. I do not re-trigger the orchestrator. Enforcement via smoke test.
+8. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** I read specific reference files from that skill. I do not re-trigger the orchestrator. Enforcement via smoke test.
 
 9. **Never claim `status=ok` when the AI-slop gate produced a warning that violates a brand token.** Example: if brand tokens say `fonts.display=Bebas Neue` and my output uses Inter somewhere, that is not a warning — it is a bug. Return `status=partial` and flag it.
 

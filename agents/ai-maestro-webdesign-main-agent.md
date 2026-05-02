@@ -280,8 +280,8 @@ Main-agent mostly delegates to sub-agents in Phase B. In Phase A, it invokes ski
 | Infographic low-fi layout | `../skills/amw-infographics/` |
 | ASCII validation before presenting | `bin/amw-validate-ascii.py` via `../skills/amw-ascii-validator/` |
 | Reference library for ASCII idioms | `../skills/amw-ascii-diagrams-reference/` |
-| Reference library for design heuristics | `../skills/amw-design-principles/references/design-heuristics.md` |
-| User has no design system AND no reference URL AND `amw-design-principles/references/design-heuristics.md` does not cover the case | `../skills/amw-ui-ux-reasoning/SKILL.md` (last-resort fallback per CLAUDE.md "the `last resort` fallback is `ui-ux-reasoning`") |
+| Reference library for design heuristics | `../skills/amw-design-principles/design-heuristics.md` |
+| User has no design system AND no reference URL AND `../skills/amw-design-principles/design-heuristics.md` does not cover the case | `../skills/amw-ui-ux-reasoning/SKILL.md` (last-resort fallback per CLAUDE.md "the `last resort` fallback is `ui-ux-reasoning`") |
 | Need full UX process methodology (heuristic eval, design-thinking handoff, dual-track discovery) | `../skills/amw-ux-designer/SKILL.md` |
 | Hand-drawn concept illustration (whiteboard / educational sketch) reachable as a Phase B output via main-agent | `../skills/amw-excalidraw-illustrations/` (gated on GEMINI_API_KEY + user consent) — main-agent surfaces consent prompt before invoking via `amw-asset-generator-agent` |
 
@@ -401,8 +401,8 @@ Main-agent follows `../skills/amw-design-principles/references/skill-invocation-
 
 - **Do not issue `/amw-<command>` prompts.** They re-trigger the slash-command dispatcher and the orchestrator. Read the target skill and execute its recipe directly.
 - **Do not use broad design vocabulary in tool-call text.** "Design a dashboard", "build a landing page" match the trigger-phrase dispatcher and re-activate the orchestrator. Use narrow technical phrasing.
-- **Do not invoke `amw-design-principles/SKILL.md` itself.** It is the upstream orchestrator; reading it from this agent would usurp it. Read specific reference files only.
-- **Do not invoke `amw-design-principles/starter-components/` as orchestrator activations.** Read them as file references.
+- **Do not invoke `<amw-design-principles/SKILL.md>` itself.** It is the upstream orchestrator; reading it from this agent would usurp it. Read specific reference files only.
+- **Do not invoke `<amw-design-principles/starter-components/>` as orchestrator activations.** Read them as file references.
 - **Do not pass vague English descriptions to the Skill tool.** Always use fully-qualified skill names.
 
 See `skill-invocation-protocol.md` for the full DO/DON'T block, worked examples, and enforcement notes.
@@ -514,7 +514,7 @@ This section is the non-deterministic core — it describes how the main-agent m
 - User says "it needs to be GDPR-compliant" → spawn `amw-legal-expert-agent` with the jurisdiction context, before proposing variants that touch forms or cookies.
 - User provides interview notes about their customers → spawn `amw-user-research-analyst-agent` to synthesize personas before proposing IA structure.
 - User asks for SEO-friendly structure → spawn `amw-seo-strategist-agent` (Phase A mode) with the brief, before settling on H1/H2.
-- User provides a DESIGN.md (Variant 1 official `@google/design.md` or Variant 2 community 9-section) as a brand reference, OR explicitly asks for one as the deliverable → spawn `amw-design-md-extractor-agent` (when extracting from URL/Tailwind/codebase), `amw-design-md-author-agent` (when authoring from a brief or 5-Q interview), or `amw-design-md-auditor-agent` (when reviewing an existing DESIGN.md). When the user supplies a DESIGN.md without asking, surface a one-line acknowledgment ("Got the DESIGN.md — I'll pass it as the canonical token source to wireframe-builder and the auditors") and proceed.
+- User provides a DESIGN.md (Variant 1 official `<@google/design.md>` or Variant 2 community 9-section) as a brand reference, OR explicitly asks for one as the deliverable → spawn `amw-design-md-extractor-agent` (when extracting from URL/Tailwind/codebase), `amw-design-md-author-agent` (when authoring from a brief or 5-Q interview), or `amw-design-md-auditor-agent` (when reviewing an existing DESIGN.md). When the user supplies a DESIGN.md without asking, surface a one-line acknowledgment ("Got the DESIGN.md — I'll pass it as the canonical token source to wireframe-builder and the auditors") and proceed.
 
 After Phase A approval, when handing off to Phase B production agents, **always pass the DESIGN.md path** (whether user-provided, extractor-produced, or author-produced) as the canonical `design_md_path` field of every consumer's input contract — wireframe-builder, accessibility-auditor, and component-library-architect all accept it. Lint gate (`bin/amw-design-md-lint.sh`) runs upstream once; downstream agents trust the gate.
 

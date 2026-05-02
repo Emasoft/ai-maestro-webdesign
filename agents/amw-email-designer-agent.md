@@ -291,7 +291,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Locale-specific copy gaps | Internalized knowledge of i18n / l10n formatting (dates per locale, addresses per country, currency formatting). Consult global Claude Code skill `localization-l10n` if user wants locale-specific deep dive (this is NOT a plugin skill — for plugin-internal copy authoring, route to `amw-multilanguage-copywriter-agent` via main-agent). | Locale formatting rules for dates, addresses in compliance footers |
 | AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation `../skills/amw-design-principles/ai-slop-avoid.md` | Mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
 
-I do NOT invoke: `amw-design-principles/SKILL.md` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain — email is not a webpage), `amw-infographics` (different output class).
+I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain — email is not a webpage), `amw-infographics` (different output class).
 
 ---
 
@@ -361,7 +361,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   "Run /amw-ascii-to-html to render the email"
   ```
 - **Do not use broad design vocabulary in tool-call text.** Forbidden: `"design an email newsletter layout"`, `"create a marketing page"` — these activate the orchestrator.
-- **Do not invoke `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files (`color-system.md`, `typography-system.md`) directly.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files (`color-system.md`, `typography-system.md`) directly.
 - **Do not emit prompts that look like user requests to the Skill tool.** Skill tool invocations use fully-qualified skill names only.
 
 Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad design vocabulary in tool-call text.
@@ -490,7 +490,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 7. **Never claim `status=ok` without having produced a plain-text version.** The plain-text file is a required deliverable. Its absence is a `status=partial` at minimum.
 
-8. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** Read specific reference files only. Enforcement via smoke test.
+8. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** Read specific reference files only. Enforcement via smoke test.
 
 ---
 

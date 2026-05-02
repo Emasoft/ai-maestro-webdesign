@@ -145,7 +145,7 @@ Use when the user says "show me each", "piece by piece", "step by step", "let me
    ```
    Tell the user once: *"Preview running at http://localhost:7883 — it auto-refreshes on every render."*
 2. **Plan components** — state the archetype, density target, and component list. Get an explicit go-ahead.
-3. **Render one component at a time** to `.infographic/.preview.html` as a full self-contained HTML document. Ask for approval before locking it in.
+3. **Render one component at a time** to `<.infographic/.preview.html>` as a full self-contained HTML document. Ask for approval before locking it in.
 4. **Approval gate** — only write approved components to the state file `{cwd}/.infographic/{project}.json`. Verbatim HTML, no re-generation.
 5. **Assemble** on user command (`assemble`, `finalize`, `done`) — stitch approved components, wrap with header/footer, run Reduction Pass, export via `html-export.py`.
 

@@ -102,7 +102,7 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
    - Listener registered BEFORE `__edit_mode_available` is posted (TECH-05).
    - `__edit_mode_set_keys` carries partial updates only (TECH-06).
    - `/*EDITMODE-BEGIN*/.../*EDITMODE-END*/` stays valid JSON with double-quoted keys AND values (TECH-04).
-7. **React/Babel pins** — if and ONLY if the wireframe requires React (live state, interactive charts). Use the exact CDN URLs + integrity hashes in `starter-components/react-babel-pins.md` (TECH-01). Name every styles object with a component prefix (TECH-02).
+7. **React/Babel pins** — if and ONLY if the wireframe requires React (live state, interactive charts). Use the exact CDN URLs + integrity hashes in `../amw-design-principles/starter-components/react-babel-pins.md` (TECH-01). Name every styles object with a component prefix (TECH-02).
 8. **AI-slop gate** — mentally walk `ai-slop-avoid.md` top to bottom. Self-check every rule 1..26 and the density principle. Any FAIL → revise the section and re-check. Record PASS per rule in the file header comment. (TECH-19..TECH-30)
 9. **Smoke test** — optionally load in `dev-browser` and check console for zero errors. Do NOT run this inside the plan phase if the user just asked for a static file.
 10. **Save** to `<cwd>/<Descriptive Filename>.html` (Title-Case, no `v2`/`v3`). Return the file path + AI-slop checklist + a one-line summary.

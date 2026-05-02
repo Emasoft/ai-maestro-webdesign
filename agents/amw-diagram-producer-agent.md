@@ -393,7 +393,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. R
   ```
   Instead, read the target skill and execute the recipe directly.
 - **Do not use broad design vocabulary in tool-call text.** Forbidden: "design a diagram for this architecture", "build a pretty picture of X". Use narrow technical phrasing: "emit a Mermaid flowchart grammar for the 6-node checkout flow described in <path>".
-- **Do not invoke `amw-design-principles/SKILL.md` as orchestrator.** I read specific reference files.
+- **Do not invoke `<amw-design-principles/SKILL.md>` as orchestrator.** I read specific reference files.
 - **Do not attempt to parse PNG input.** Refuse per Decision Criterion 3. No OCR, no image-to-text fallback.
 - **Do not emit prompts that look like user requests to the Skill tool selector.**
 
@@ -569,7 +569,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 
 6. **Never delegate the format-selection decision.** The matrix application is my core judgment.
 
-7. **Never run `amw-design-principles/SKILL.md` as an orchestrator.** I read specific reference files. Enforcement via smoke test.
+7. **Never run `<amw-design-principles/SKILL.md>` as an orchestrator.** I read specific reference files. Enforcement via smoke test.
 
 8. **Never produce a file not listed in `artifact_paths`.** Silent side-files break main-agent's artifact inventory.
 
