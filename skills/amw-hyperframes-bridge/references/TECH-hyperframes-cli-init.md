@@ -36,7 +36,7 @@ npx hyperframes init my-video --non-interactive
 
 ### Registry templates (`--example`)
 
-> **Note:** Only `blank` is bundled in the CLI (`templates/generators.ts` `BUNDLED_TEMPLATES`). All other templates are fetched from `https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry` and **fail without internet access**.
+> **Note:** Only `blank` is bundled in the CLI (`templates/generators.ts` `BUNDLED_TEMPLATES`). All other templates are fetched from the Hyperframes template registry (requires internet access) and **fail without internet access**.
 
 - `blank` — empty composition *(bundled — works offline)*
 - `warm-grain` — warm palette + grain overlay *(remote registry)*

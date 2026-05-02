@@ -1,12 +1,26 @@
 ---
 name: amw-seo
-description: SEO + Core Web Vitals evaluation framework (E-E-A-T quality signals, LCP/INP/CLS, structured data, technical foundations). Triggers on "SEO", "core web vitals", "E-E-A-T", "structured data", "schema markup", "page performance ranking", "search ranking", NOT generic design intent.
+description: SEO + Core Web Vitals evaluation framework (E-E-A-T quality signals, LCP/INP/CLS, structured data, technical foundations). Triggers on "SEO", "core web vitals", "E-E-A-T", "structured data", "schema markup", "page performance ranking", "search ranking", NOT generic design intent. Use when evaluating or improving a webpage's SEO, Core Web Vitals, or structured data markup. Trigger with explicit "SEO", "core web vitals", or "structured data" phrasing.
 version: 0.1.0
 ---
 
 # SEO Evaluation Reference
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+SEO evaluation and Core Web Vitals interpretation framework. Knowledge-base only — interprets measurements from `amw-dev-browser` or user-supplied data; does not capture metrics itself. Covers 8 evaluation areas: E-E-A-T quality signals, Core Web Vitals (LCP/INP/CLS), technical SEO, content SEO, structured data / JSON-LD, AI-assisted content principles, relative importance of factors, and multi-signal measurement. Pairs with `amw-ux-evaluator` for combined UX + SEO scoring.
+
+## Instructions
+
+1. Classify the user's SEO concern into one of the 8 evaluation areas (E-E-A-T, Core Web Vitals, Technical SEO, Content SEO, Structured Data, AI-assisted content, Relative importance, Measurement).
+2. Walk the `## Technique selection` tree top-down and open only the single TECH reference file whose TOC matches the current concern.
+3. Gather live metrics when needed via `../amw-dev-browser/SKILL.md` (LCP candidate identification, resource sizes, layout shift observation, interaction latency); interpret them through the framework — this skill does not capture metrics itself.
+4. Score against the relevant thresholds (LCP < 2.5s, INP < 200ms, CLS < 0.1 for Core Web Vitals; E-E-A-T signals for content quality) and produce a prioritized list of findings.
+5. When a combined UX + SEO audit is requested, pair with `../amw-ux-evaluator/SKILL.md` — run both evaluations and merge the finding lists by priority.
+
+Walk the `## Technique selection` tree to pick the matching TECH reference for the user's SEO concern. Read only the file whose TOC matches the current need.
 
 ## Activation
 
@@ -28,7 +42,7 @@ VALIDATION / REFERENCE. Evaluation framework used alongside `ux-evaluator` when 
 
 Does NOT trigger on: generic "make this look better", pure visual critique, copywriting requests without search-intent framing.
 
-## Dependencies
+## Prerequisites
 - runtime_binaries: none (framework is prose-encoded)
 - Pairs with `../amw-dev-browser/SKILL.md` for live capture: LCP candidate identification, resource sizes, layout shift observation, interaction latency
 - Pairs with `../amw-ux-evaluator/SKILL.md` when user requests combined UX + SEO scoring
@@ -169,7 +183,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -179,7 +193,11 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Cross-references
+## Examples
+
+See each TECH file under `./references/` for the "Minimal example" section. E.g. `TECH-seo-cwv.md` shows a PageSpeed Insights interpretation workflow; `TECH-seo-structured-data.md` shows a JSON-LD Article schema snippet.
+
+## Resources
 - `../amw-design-principles/SKILL.md` — orchestrator
 - `../amw-dev-browser/SKILL.md` — live page inspection for CWV capture
 - `../amw-ux-evaluator/SKILL.md` — pairs for combined UX + SEO scoring
@@ -191,7 +209,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - Does NOT substitute for Lighthouse / PageSpeed Insights / CrUX — those measure; this skill interprets.
 - Does NOT promise ranking outcomes. SEO is probabilistic; factor weights shift over time.
 
-## Failure modes
+## Error Handling
 - JS-heavy SPA that does not render without JS → CWV capture misleading; flag and request SSR / pre-rendered variant before scoring.
 - Auth wall / paywalled page → cannot observe what crawlers see; request public-equivalent URL or admit evaluation is partial.
 - Offline environment → no live CWV, no structured-data validator access; restrict output to static-analysis findings and mark dynamic claims as unverified.

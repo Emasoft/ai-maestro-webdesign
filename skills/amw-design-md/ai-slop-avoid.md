@@ -71,7 +71,7 @@ The review rubric (`T6`) requires minimum 3 of each. Fewer indicates the file wa
 The whole point of Section 9 is to give the AI a TL;DR at the bottom of the file (LLMs attend strongly to recent context). Missing the quick reference defeats the format.
 
 ### S19. Mermaid component-state diagram absent
-The 9-section template (`templates/community-9-section-template.md`) includes a `mermaid stateDiagram-v2` block under Section 4. Reviewers consider its absence a minor failure (rubric `S5/S6`).
+The 9-section template (`references/community-9-section-template.md`) includes a `mermaid stateDiagram-v2` block under Section 4. Reviewers consider its absence a minor failure (rubric `S5/S6`).
 
 ## Conversion slop
 

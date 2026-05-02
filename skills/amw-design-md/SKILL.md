@@ -1,6 +1,6 @@
 ---
 name: amw-design-md
-description: Author, lint, extract, audit, and convert DESIGN.md design-system specifications. Triggers on narrow DESIGN.md-specific phrasing only - "create DESIGN.md", "author DESIGN.md", "lint DESIGN.md", "extract DESIGN.md from this URL", "extract DESIGN.md from this Tailwind config", "extract DESIGN.md from this codebase", "audit DESIGN.md", "convert DESIGN.md", "design-token spec", "design-system markdown", "DESIGN.md companions", "design.md frontmatter validation". Do NOT trigger on generic vocabulary like "design", "design system", "make a UI", "extract design tokens", "build a token spec" - those route to amw-design-principles or amw-design-extract via the orchestrator.
+description: Author, lint, extract, audit, and convert DESIGN.md design-system specifications. Triggers on narrow DESIGN.md-specific phrasing only - "create DESIGN.md", "author DESIGN.md", "lint DESIGN.md", "extract DESIGN.md from this URL", "extract DESIGN.md from this Tailwind config", "extract DESIGN.md from this codebase", "audit DESIGN.md", "convert DESIGN.md", "design-token spec", "design-system markdown", "DESIGN.md companions", "design.md frontmatter validation". Do NOT trigger on generic vocabulary like "design", "design system", "make a UI", "extract design tokens", "build a token spec" - those route to amw-design-principles or amw-design-extract via the orchestrator. Use when authoring, linting, auditing, or converting a DESIGN.md design-system specification file. Trigger with /amw-design-md-create or /amw-design-md-lint.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill owns the DESIGN.md format end-to-end (author, parse, lint, validate, audit, convert, emit companions). It does NOT replace the orchestrator. DESIGN.md is one of several optional input formats accepted by the plugin (peer to ASCII wireframes, mockup images, slideshows, URL "copy this style" briefs, and prose). Triggers are DESIGN.md-specific only.
+
+## Overview
+
+Owns the DESIGN.md format end-to-end: author, lint, validate, audit, convert, and emit companion files (tokens.css, tokens.json, component-inventory.md). Supports both the official Variant 1 (`@google/design.md`) and the community 9-section Variant 2.
 
 ---
 
@@ -61,14 +65,27 @@ The skill ships:
 
 - **Two canonical specs** documented in `references/canonical-spec-google-alpha.md` (Variant 1 — official `@google/design.md`, primary) and `references/community-9-section-spec.md` (Variant 2 — VoltAgent community 9-section, accepted-with-mapping).
 - **16 TECH-NN reference files** under `references/TECH-*.md` covering frontmatter, color tokens, typography tokens, component tokens, token references, do/don'ts authoring, URL extraction, codebase extraction, multi-page extraction, Tailwind conversion, validation/lint, companion files, V2→V1 conversion, validation failure recovery, DESIGN.md as input, and CJK localization (`references/TECH-cjk-localization.md`).
-- **Three templates** under `references/templates/` — Variant 1 skeleton, Variant 2 skeleton, and a CLAUDE.md snippet for projects that adopt DESIGN.md.
+- **Three templates** under `references/` — Variant 1 skeleton, Variant 2 skeleton, and a CLAUDE.md snippet for projects that adopt DESIGN.md.
 - **Two audit/quality docs** — `references/review-rubric.md` (DESIGN.md quality scoring) and `references/audit-passes.md` (5-pass audit: structural / drift / a11y / completeness / consistency).
 - **Ten bin scripts** under `<plugin-root>/bin/amw-design-md-*` — pure-local Python and TypeScript ports plus thin shell wrappers around the official `npx @google/design.md` CLI.
+
+## Prerequisites
+
+Standard plugin runtime — no skill-specific prerequisites beyond the global plugin dependencies.
+
+## Instructions
+
+1. Identify the requested operation: author, lint/validate, extract from URL, extract from Tailwind config, extract from codebase, audit, convert Variant 2 → Variant 1, emit companion files, or diff two revisions.
+2. For authoring: read `references/canonical-template.md`, fill from brief/interview/codebase/URL using the appropriate bin script, then validate with `bin/amw-design-md-lint.sh`.
+3. For extraction: choose `bin/amw-design-md-from-url.sh`, `bin/amw-design-md-from-tailwind.mjs`, or `bin/amw-design-md-from-codebase.py` based on the source type.
+4. For auditing: spawn `amw-design-md-auditor-agent`; the auditor runs the 5-pass audit and writes a `<file>.critique.md` adjacent to the input.
+5. For companion file generation: run `bin/amw-design-md-emit-companions.py` to produce `tokens.css`, `tokens.json`, `component-inventory.md`, and `usage-prompt.md`.
+6. Validate every DESIGN.md output before delivery; fail fast if the linter reports errors.
 
 ## Operations the skill exposes
 
 ### Author a DESIGN.md
-Read `references/templates/canonical-template.md`. Fill from a brief / interview / codebase scan / URL extraction (delegating to one of the bin scripts as appropriate). Validate via `bin/amw-design-md-lint.sh` before declaring done.
+Read `references/canonical-template.md`. Fill from a brief / interview / codebase scan / URL extraction (delegating to one of the bin scripts as appropriate). Validate via `bin/amw-design-md-lint.sh` before declaring done.
 
 ### Lint / validate a DESIGN.md
 Run `bin/amw-design-md-lint.sh <path>` for the official linter. Run `bin/amw-design-md-validate.py <path>` for offline pure-Python validation (frontmatter + section order + token-reference resolution).
@@ -106,15 +123,27 @@ When the user provides a DESIGN.md and then proceeds to Phase B (HTML rendering)
 4. Every authored DESIGN.md MUST pass `bin/amw-design-md-lint.sh` before being delivered. Lint failure halts delivery.
 5. WCAG-AA contrast checks via `bin/amw-design-md-contrast.py` are run on every authored DESIGN.md. Failures go to `warnings`, not silent omission.
 
-## Cross-references
+## Output
+
+Produces a single artifact at the path specified in §Operations — a DESIGN.md file (Variant 1) plus optional companion files.
+
+## Error Handling
+
+On failure, the skill emits a non-zero exit code or returns a structured error in the response. See bin/ scripts for tool-specific error semantics.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `./ai-slop-avoid.md` — DESIGN.md-specific anti-patterns
 - `./references/canonical-spec-google-alpha.md` — Variant 1 spec, source-cited
 - `./references/community-9-section-spec.md` — Variant 2 spec, source-cited
 - `./references/extension-sections-10-14.md` — optional Naming / Page Specs / Composite Components / Token Mapping / i18n
-- `./references/templates/canonical-template.md` — Variant 1 skeleton
-- `./references/templates/community-9-section-template.md` — Variant 2 skeleton
-- `./references/templates/claude-md-snippet.md` — CLAUDE.md addition for projects using DESIGN.md
+- `./references/canonical-template.md` — Variant 1 skeleton
+- `./references/community-9-section-template.md` — Variant 2 skeleton
+- `./references/claude-md-snippet.md` — CLAUDE.md addition for projects using DESIGN.md
 - `./references/review-rubric.md` — quality-scoring rubric
 - `./references/audit-passes.md` — 5-pass audit
 - `./references/TECH-01-yaml-frontmatter.md` through `TECH-15-design-md-as-input.md`

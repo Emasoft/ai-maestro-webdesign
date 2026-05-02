@@ -1,12 +1,27 @@
 ---
 name: amw-pretext
-description: Pretext-driven typography, text measurement, layout, integration patterns, virtualized tables, ASCII-on-canvas, calligrams, and 3D/motion text — triggers on "pretext", "@chenglou/pretext", "text-on-path", "balanced headline", "shrink-wrap text", "virtualized list", "masonry", "text around obstacles", "kinetic typography", "auto-fit font", "DOM-free text", "pretext API". Does NOT claim generic design vocabulary — the orchestrator "design-principles" retains those triggers.
+description: Pretext-driven typography, text measurement, layout, integration patterns, virtualized tables, ASCII-on-canvas, calligrams, and 3D/motion text — triggers on "pretext", "@chenglou/pretext", "text-on-path", "balanced headline", "shrink-wrap text", "virtualized list", "masonry", "text around obstacles", "kinetic typography", "auto-fit font", "DOM-free text", "pretext API". Does NOT claim generic design vocabulary — the orchestrator "design-principles" retains those triggers. Use when applying pretext-based typography, text measurement, or advanced layout techniques. Trigger with explicit "pretext" or "@chenglou/pretext" phrasing.
 version: 0.1.0
 ---
 
 # Pretext
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`. Do not activate for generic "make the type nice" requests — those stay in the base typography system. Activate only on the narrow triggers above.
+
+## Overview
+
+Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou/pretext` — a headless, DOM-free text measurement library — across 78 technique files covering API functions, measurement prerequisites, layout patterns, obstacle-aware flow, kinetic typography, virtualized tables, 3D/motion text, integration patterns, and workflow assemblies. Routes each narrow trigger (shrink-wrap, text-on-path, balanced headline, virtualized list, etc.) to the matching TECH file. Output reuses existing project typography tokens; pretext never introduces new fonts or motion systems.
+
+## Instructions
+
+1. Walk the `## Technique selection` tree top-down to identify the matching technique category (API function, measurement prerequisite, layout pattern, obstacle routing, kinetic typography, virtualized tables, 3D/motion, integration, workflow assembly).
+2. Open only the relevant `references/TECH-NN-<slug>.md` file — do not load the whole catalog.
+3. Follow the TECH file's "How it works" section; call `prepare()` (or the appropriate pretext API function) exactly once before calling any layout function.
+4. Reuse the project's existing typography tokens — do not introduce new fonts or motion systems; pretext exposes per-line metrics but does not own typographic decisions.
+5. Handle the resize path explicitly: call `clearCache()` on font-change or after every `ResizeObserver` tick when measurement validity has changed.
+6. Validate the font-string parity constraint (same CSS font string in both pretext and the renderer) before shipping; see `TECH-18-font-string-parity.md`.
+
+See the `## How to use this skill` section below for the authoritative step-by-step decision workflow, and the `## Technique selection` tree to pick the relevant TECH reference file.
 
 ## Activation
 
@@ -922,7 +937,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -941,13 +956,27 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 5. **Handle resize** ([TECH-66](references/TECH-66-resize-observer-pattern.md)) — re-layout never re-prepare.
 6. **Validate against the font strategy** ([TECH-77](references/TECH-77-font-strategy.md)) — named fonts, `document.fonts.ready`, no `system-ui`.
 
-## Dependencies
+## Prerequisites
 
 - **Runtime (user installs — NOT auto-installed by the plugin):** `@chenglou/pretext` via npm / bun — adds ~15 KB to the user's bundle. Documented in each TECH file; not mandatory for every design task.
 - **Optional runtime companions:** `opentype.js@1.3.4` (glyph paths), `flubber@0.4.2` (glyph morph), `canvas` (Node SSR). All loaded conditionally by the TECH that needs them.
 - **Plugin-side:** none — this skill is pure documentation / routing.
 
-## Cross-references
+## Examples
+
+Each TECH file under `./references/` contains a "Minimal example" section with near-runnable code. Start with `TECH-72-use-pretext-decision-guide.md` to determine if pretext is needed, then read the matching TECH file for the specific technique.
+
+## Error Handling
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Measurement results differ from browser render | Font string mismatch between `prepare()` call and CSS/canvas renderer | Follow TECH-18: font-string parity — pass the exact same CSS font string to both. |
+| Layout produces wrong line count after resize | `prepare()` called in the resize loop | `prepare()` must be called once at stable font load time; only call `layout()` on resize. See TECH-66. |
+| Canvas text blurry on retina | Missing HiDPI backing-store scaling | Scale canvas by `devicePixelRatio` at setup. See TECH non-negotiables. |
+| `@chenglou/pretext` not found | Library not installed in user's project | `npm install @chenglou/pretext` or `bun add @chenglou/pretext`. Not auto-installed by this plugin. |
+| `system-ui` measurement drift across OS | Font resolved differently per OS | Use named, loaded fonts only. See TECH-77 (font strategy). |
+
+## Resources
 
 - [`../amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md) — orchestrator; pretext must reuse the design-principles typography tokens, not introduce new fonts.
 - [`../amw-design-principles/typography-system.md`](../amw-design-principles/typography-system.md) — type scale + families pretext extends (never replaces).

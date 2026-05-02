@@ -1,12 +1,36 @@
 ---
 name: amw-tailwind-4
-description: Tailwind CSS v4 reference — utilities, variants, @theme blocks, @utility/@custom-variant directives, PostCSS/CLI/Vite tooling changes, and v3 to v4 migration. Triggers on "tailwind v4", "tailwind 4", "tailwind config", "tailwind migration", "upgrade tailwind", "@theme", "@utility", "@apply", "@source", "@reference", "tailwind variants", "tailwind prefix", "arbitrary value", "tailwind breakpoint". Does NOT trigger on generic "style my page", "CSS help", or framework-agnostic layout questions — the orchestrator routes those elsewhere.
+description: Tailwind CSS v4 reference — utilities, variants, @theme blocks, @utility/@custom-variant directives, PostCSS/CLI/Vite tooling changes, and v3 to v4 migration. Triggers on "tailwind v4", "tailwind 4", "tailwind config", "tailwind migration", "upgrade tailwind", "@theme", "@utility", "@apply", "@source", "@reference", "tailwind variants", "tailwind prefix", "arbitrary value", "tailwind breakpoint". Does NOT trigger on generic "style my page", "CSS help", or framework-agnostic layout questions — the orchestrator routes those elsewhere. Use when looking up Tailwind CSS v4 utility classes, directives, or migration guidance. Trigger with explicit "tailwind v4", "@theme", or "@utility" phrasing.
 version: 0.1.0
 ---
 
 # Tailwind CSS v4 Reference
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`. This skill is an executor-reference under the design-principles rules. It does not own broad design intent.
+
+## Overview
+
+Lazy-loaded reference corpus for Tailwind CSS v4. Covers utilities, variants, `@theme`/`@utility`/`@custom-variant`/`@source`/`@reference`/`@apply` directives, PostCSS/CLI/Vite tooling changes, browser compatibility, source-scanning behavior, and the complete v3 → v4 migration path. Two always-available reference files (`references/gotchas.md` + `references/engineering-playbook.md`) cover the most common migration breakage points and component-abstraction ladder without needing a docs sync. Full authoritative answers require the synced MDX snapshot (`references/docs/`).
+
+## Instructions
+
+1. Classify the user's question: migration, utility lookup, config/directive (`@theme`/`@utility`/`@custom-variant`/`@source`/`@reference`/`@apply`), variant, browser compatibility, or refactor/review.
+2. Check whether `references/docs/` exists; if not, stop and ask the user to run the sync script (`scripts/sync_tailwind_docs.py --accept-docs-license`) before answering v4-specific questions from the synced snapshot.
+3. For migration questions: read `references/gotchas.md` first, then `references/docs/upgrade-guide.mdx` and `references/docs/compatibility.mdx`.
+4. For implementation or review: read `references/engineering-playbook.md` first, then pull the specific utility/directive MDX only if needed.
+5. For a specific utility or variant: open the matching MDX file in `references/docs/` directly (e.g. `references/docs/hover-focus-and-other-states.mdx`).
+6. Extract only the specific answer; do not reload the full snapshot.
+7. If the snapshot is absent or stale and the user cannot sync, answer from `references/gotchas.md` + `references/engineering-playbook.md` for common questions; for anything requiring authoritative doc text, stop and ask the user to sync rather than guessing.
+
+See `## Reading strategy` below.
+
+## Output
+
+This skill produces no standalone artifacts — it provides Tailwind v4 lookup answers, migration guidance, and code snippets. Any HTML/CSS output incorporating Tailwind classes is assembled by `amw-ascii-to-html` or `amw-wireframe-builder-agent`.
+
+## Examples
+
+See `references/gotchas.md` for v3→v4 migration examples and `references/engineering-playbook.md` for `@theme` token design and `@apply` discipline patterns.
 
 ## Activation
 
@@ -31,10 +55,10 @@ Invoke this skill when the question is specifically about Tailwind v4:
 
 Do NOT invoke this skill for generic "style my page" requests, framework-agnostic CSS questions, or design-intent work — those belong to the orchestrator or to `design-principles` sub-skills (color-system, spacing-rhythm, typography-system).
 
-## Dependencies
+## Prerequisites
 
 - `runtime_binaries`: `python3`, `git`, network access (all three are required only for the first-use docs sync; after sync, this skill works fully offline).
-- The full Tailwind v4 docs snapshot (~194 MDX files) is NOT bundled with this skill. The upstream repo `tailwindlabs/tailwindcss.com` is source-available but not open-source, so the user must sync the snapshot locally and accept the upstream license.
+- The full Tailwind v4 docs snapshot (~194 MDX files) is NOT bundled with this skill. The upstream repo at `https://github.com/tailwindlabs/tailwindcss.com` is source-available but not open-source, so the user must sync the snapshot locally and accept the upstream license.
 
 ## Setup (first use)
 
@@ -45,7 +69,7 @@ Before the first use of this skill, sync the Tailwind v4 docs snapshot into `ref
 python3 skills/amw-tailwind-4/scripts/sync_tailwind_docs.py --accept-docs-license
 ```
 
-This clones `tailwindlabs/tailwindcss.com` (shallow), copies `src/docs/` into `references/docs/`, copies the docs sidebar index into `references/docs-index.tsx`, and writes commit metadata into `references/docs-source.txt`.
+This clones the tailwindcss.com repo (shallow), copies `src/docs/` into `references/docs/`, copies the docs sidebar index into `references/docs-index.tsx`, and writes commit metadata into `references/docs-source.txt`.
 
 Optional flags:
 
@@ -86,7 +110,7 @@ If the user is offline or cannot run the sync:
 - `references/engineering-playbook.md` alone covers the abstraction ladder, when to create tokens vs utilities vs component classes, `@apply` discipline, and the review checklist.
 - For anything that requires authoritative doc text (exact utility flag names, exact variant syntax, full upgrade-guide steps), stop and ask the user to sync the docs rather than guessing.
 
-## Cross-references
+## Resources
 
 - `../amw-shadcn-ui/SKILL.md` — shadcn/ui ships Tailwind-based components; migration and `@theme` token design should stay aligned.
 - `../amw-design-principles/color-system.md` — the oklch token approach in design-principles can be expressed as `@theme` variables (`--color-*`) that Tailwind v4 auto-promotes into utilities.
@@ -101,7 +125,7 @@ If the user is offline or cannot run the sync:
 - The sync command is the single source of truth for docs freshness. When a Tailwind v4 release changes behavior, the fix is to re-run sync, not to edit this SKILL.md.
 - English-only content across the skill. No third-language characters in any file.
 
-## Failure modes
+## Error Handling
 
 - **Sync fails (network/git error):** report the exact command and error to the user; fall back to `references/gotchas.md` + `references/engineering-playbook.md` for non-doc-lookup questions.
 - **Upstream repo structure changes (docs moved out of `src/docs/`):** the sync script raises a clear error; update `scripts/sync_tailwind_docs.py` and re-test. Do not silently adapt to stale paths.

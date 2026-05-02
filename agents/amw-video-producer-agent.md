@@ -425,7 +425,7 @@ Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
 
 ### Worked example
 
-Input: render a project at `scenes/product-tour/` (pre-existing hyperframes project dir) at 1080×1920 vertical, 30 fps, 45s, output to `out/product-tour.mp4`. Monorepo is present and installed.
+Input: render a project at `scenes/product-tour/` (pre-existing hyperframes project dir) at 1080×1920 vertical, 30 fps, 45s, output to the video file. Monorepo is present and installed.
 
 ```yaml
 ---

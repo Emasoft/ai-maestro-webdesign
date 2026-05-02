@@ -1,12 +1,20 @@
 ---
 name: amw-text-visual-state
-description: Produces ASCII state machines and storyboards that model user journeys, retention loops, issue-triage lifecycles, and other stateful processes — for PRs, ADRs, growth docs, and product specs. Triggers on narrow intents — "ASCII state machine", "text state diagram", "user journey states in ASCII", "retention loop as text", "issue lifecycle diagram in monospace", "state transitions I can paste in a PR". Does NOT trigger on generic "state", "journey", "lifecycle", "transitions" alone — those belong to design-principles / ux-flows / diagram-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery.
+description: Produces ASCII state machines and storyboards that model user journeys, retention loops, issue-triage lifecycles, and other stateful processes — for PRs, ADRs, growth docs, and product specs. Triggers on narrow intents — "ASCII state machine", "text state diagram", "user journey states in ASCII", "retention loop as text", "issue lifecycle diagram in monospace", "state transitions for a PR". Does NOT trigger on generic "state", "journey", "lifecycle", "transitions" alone — those belong to design-principles / ux-flows / diagram-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery. Use when producing an ASCII state machine or user-journey storyboard for a PR, ADR, or product spec. Trigger with "ASCII state machine" or "text state diagram" phrasing.
 version: 0.1.0
 ---
 
 # Text-Visual State — ASCII state machines
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Produces ASCII state machines and user-journey storyboards that model stateful processes — user lifecycle, issue triage, experiment status, order lifecycle — using `[STATE]` bracket notation with labeled `-->` transition arrows, guard conditions, and optional metric/dashboard links. Every diagram passes a completeness check (all states have in/out edges) and `bin/amw-validate-ascii.py` before delivery. Width ceiling: 78 columns terminal, 100 GitHub ADR.
+
+## Examples
+
+See the `## Diagram format` section below for a skeleton state machine and an annotated form with metrics.
 
 ## Activation
 
@@ -101,7 +109,7 @@ This keeps the state machine falsifiable — a reviewer can follow the link to v
 
 ## Extended connection types
 
-State machines sometimes need to show reverse transitions (undo/rollback), reciprocal state pairs (open/close handshake), dependency relationships between state machines (submachine depends on parent), or plain state associations. Use this vocabulary when the standard `-->` / `..>` set is not expressive enough. Source: adapted from `diagram-skill-main/ASCII-STYLES.md` lines 183-193.
+State machines sometimes need to show reverse transitions (undo/rollback), reciprocal state pairs (open/close handshake), dependency relationships between state machines (submachine depends on parent), or plain state associations. Use this vocabulary when the standard `-->` / `..>` set is not expressive enough. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
 
 | Type | Glyph | Meaning |
 |---|---|---|
@@ -143,7 +151,7 @@ The flow:
 
 For state machines with many states and transitions (>10), prefer `../../bin/amw-ascii-render.py` in `diagram` mode with explicit boxes and connectors — the renderer guarantees alignment by construction. See `../amw-ascii-validator/SKILL.md` for the JSON schema.
 
-## Action
+## Instructions
 
 1. Confirm the four inputs (states, triggers, guards/actions, start/end). One bundled question.
 2. Run the completeness check on the state list before drafting.
@@ -242,7 +250,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -252,7 +260,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10`
 - **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
@@ -260,7 +268,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py diagram` (optional)
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator. Rule 1 (context) binds — without a real state list, the diagram is fabrication.
 - `../amw-ascii-validator/SKILL.md` — validation contract.
@@ -291,7 +299,7 @@ No dedicated slash command. Invoke via:
 - No fabricated states or triggers. If the user has not specified, ask.
 - Does NOT emit HTML or SVG. ASCII only.
 
-## Failure modes and recovery
+## Error Handling
 
 | Failure mode | Recovery |
 |---|---|

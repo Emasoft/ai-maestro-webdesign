@@ -406,9 +406,9 @@ Required fields: name, address, priceRange, starRating, image, url.
 ## hreflang plan
 
 ```html
-<link rel="alternate" hreflang="en" href="https://brand.com/bora-bora/" />
-<link rel="alternate" hreflang="fr" href="https://brand.com/fr/bora-bora/" />
-<link rel="alternate" hreflang="x-default" href="https://brand.com/bora-bora/" />
+<link rel="alternate" hreflang="en" href="https://example.com/bora-bora/" />
+<link rel="alternate" hreflang="fr" href="https://example.com/fr/bora-bora/" />
+<link rel="alternate" hreflang="x-default" href="https://example.com/bora-bora/" />
 ```
 
 ## Limitations

@@ -1,12 +1,33 @@
 ---
 name: amw-shadcn-ui
-description: shadcn/ui component usage, theming, forms, charts, and framework integration (Next.js / Vite / Remix / Astro / Laravel / Gatsby). Triggers on "shadcn component", "data-table", "shadcn form", "shadcn theme", "dark mode for shadcn", "install shadcn", registry questions, accessibility of Radix-based components, NOT generic "UI library" or "React component".
+description: shadcn/ui component usage, theming, forms, charts, and framework integration (Next.js / Vite / Remix / Astro / Laravel / Gatsby). Triggers on "shadcn component", "data-table", "shadcn form", "shadcn theme", "dark mode for shadcn", "install shadcn", registry questions, accessibility of Radix-based components, NOT generic "UI library" or "React component". Use when selecting, theming, or integrating a shadcn/ui component into a project. Trigger with explicit "shadcn" phrasing or component name.
 version: 0.1.0
 ---
 
 # shadcn/ui Reference
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Lazy-loaded documentation corpus covering 50+ shadcn/ui components, theming, forms, charts, dark mode, registry, RTL, and per-framework installation (Next.js, Vite, Remix, Astro, Laravel, Gatsby). Reference-only skill — answers shadcn-specific implementation questions once `design-principles` has set intent. 201 MDX files organized under `docs/`. Does not produce designs; routes general UI intent back to the orchestrator.
+
+## Instructions
+
+1. Identify the specific shadcn/ui component or feature from the user's question (component name, theming, framework install, dark mode, registry, forms, charts, RTL).
+2. Read ONLY the relevant MDX file from `docs/`: component pages live under `docs/components/radix/<name>.mdx` (Radix-based) or `docs/components/base/<name>.mdx` (Base UI); install guides under `docs/installation/<framework>.mdx`.
+3. Extract the install command, component source, and usage pattern from that single file.
+4. If the question is cross-cutting (theming + a specific component), read the theming page plus the single component page only — never the whole directory.
+
+See the `## Reading strategy` section below for the authoritative 4-step approach to loading only the relevant MDX file.
+
+## Examples
+
+See `docs/components/radix/data-table.mdx`, `docs/forms/`, `docs/dark-mode/next.mdx`, and `docs/installation/next.mdx` for worked code examples per component, framework, and feature.
+
+## Output
+
+This skill produces no standalone artifacts — it provides component source snippets and guidance. Any HTML/CSS output is assembled by `amw-ascii-to-html` or `amw-wireframe-builder-agent` using the shadcn component source extracted here.
 
 ## Activation
 
@@ -21,7 +42,7 @@ REFERENCE. Lazy-loaded documentation corpus of 201 MDX files covering 50+ compon
 ## Trigger conditions
 Specific shadcn/ui questions. The orchestrator routes general "how do I build a UI" to the design-principles / ascii-sketch pipeline; this skill only activates when the user explicitly names shadcn/ui, or when extracted tokens (from /amw-extract-style) indicate a shadcn-based target, or when the user asks about a component by its shadcn identifier (e.g. "data-table", "dropdown-menu", "sheet", "toast").
 
-## Dependencies
+## Prerequisites
 - runtime_binaries: none (the docs are static MDX)
 - Optional companion skill: `../amw-tailwind-4/SKILL.md` — shadcn/ui is Tailwind-native
 - Runtime peers (in the user's target project, not the plugin): Radix UI primitives, Tailwind CSS, React Hook Form + Zod (for forms), Recharts (for charts)
@@ -43,7 +64,7 @@ Do NOT load the entire docs/ corpus. When invoked:
 3. Extract the install command, component source, and usage pattern.
 4. If the question is cross-cutting (theming + a specific component), read the theming page plus the single component page — never the whole directory.
 
-## Cross-references
+## Resources
 - `../amw-design-principles/SKILL.md` — orchestrator
 - `../amw-tailwind-4/SKILL.md` — Tailwind v4 reference pairs naturally with shadcn
 - `../amw-design-principles/color-system.md` — shadcn uses CSS custom properties; align with design-principles' oklch structure where possible
@@ -55,7 +76,7 @@ Do NOT load the entire docs/ corpus. When invoked:
 - Docs are read-only; do not modify the MDX files.
 - When emitting shadcn component source, use the copy-paste CLI pattern (install via `npx shadcn@latest add <component>`), not npm-imported monolithic components.
 
-## Failure modes
+## Error Handling
 - Requested component is not in the docs corpus — surface the gap rather than invent.
 - Framework-specific question outside the installation guides (e.g. SolidStart, SvelteKit) — defer to design-principles or the user.
 - User confuses shadcn/ui with Material UI / Chakra / Radix UI primitives directly — clarify that shadcn/ui is a copy-paste recipe layer on top of Radix + Tailwind, not an npm component library.

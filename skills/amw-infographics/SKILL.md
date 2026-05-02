@@ -1,15 +1,29 @@
 ---
 name: amw-infographics
-description: Dense editorial infographics as HTML + PNG + PDF from a structured data brief — tokenomics, whitepaper summaries, ecosystem maps, roadmaps, airdrop guides, staking breakdowns, stat posters, NFT showcases. Triggers on narrow data-infographic intents like "infographic", "tokenomics graphic", "ecosystem map", "turn these stats into a graphic". NOT for generic design (see design-principles), editorial diagrams (see diagram-editorial), or freeform SVG (see svg-creator). Full template-to-intent selector in the Template selection section.
+description: Dense editorial infographics as HTML + PNG + PDF from a structured data brief — tokenomics, whitepaper summaries, ecosystem maps, roadmaps, airdrop guides, staking breakdowns, stat posters, NFT showcases. Triggers on narrow data-infographic intents like "infographic", "tokenomics graphic", "ecosystem map", "turn these stats into a graphic". NOT for generic design (see design-principles), editorial diagrams (see diagram-editorial), or freeform SVG (see svg-creator). Full template-to-intent selector in the Template selection section. Use when producing a dense editorial infographic as HTML, PNG, or PDF from a structured data brief. Trigger with /amw-create-or-modify-html-diagram or explicit "infographic" phrasing.
 version: 0.2.0
 author: ai-maestro-webdesign
-source: Distilled from the public `create-infographics` skill (175-design DNA analysis). The template library, component CSS patterns, and type playbooks are preserved. Compressed into this plugin's house style — scripts are shared through `bin/`, resources stay as on-demand references.
 ---
 
 # Infographics
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill is an executor. Its triggers are data-infographic-specific only — `design-principles` routes here when the user has real data or a structured brief and wants a shareable, dense editorial graphic.
+
+## Overview
+
+Produces dense editorial infographics as self-contained HTML + retina PNG + print-ready PDF from a 24-template library and 175-design DNA set. Three execution modes: Interactive Builder (component-by-component with live preview), One-Shot (full infographic in one pass from a complete data brief), and Guided Creative (two composition options before building). Near-black backgrounds, warm+cool accent palettes, all-caps condensed display fonts, high content density (8–15 blocks on portrait-medium). Not a generic webpage renderer — closer to a crypto research poster or game cheat sheet.
+
+## Instructions
+
+1. Classify the invocation mode: Interactive Builder (step-by-step with live preview at `localhost:7883`), One-Shot (full pass from a complete data brief), or Guided Creative (two composition options first).
+2. For One-Shot and Guided Creative: ask the three Design Brief questions (brand, platform, key insight); classify the content type, archetype, and dominant component.
+3. Build the infographic as a single self-contained HTML with required head includes (Google Fonts, Phosphor Icons, optional Chart.js); apply playbook colors/fonts; all CSS inline with `:root` custom properties.
+4. Run the Anti-Frontend Checklist and Reduction Pass per the Quality Gate in `## Execution modes`.
+5. Export via `bin/amw-html-export.py -i {file}.html -o {name} -f all --width {W} --scale 2`.
+6. See the `## Execution modes` section below for the three authoritative mode workflows (Interactive Builder, One-Shot, Guided Creative).
+
+See the `## Execution modes` section below for the three authoritative mode workflows (Interactive Builder, One-Shot, Guided Creative).
 
 ## Activation
 
@@ -174,7 +188,7 @@ Run both passes:
 
 **Final quality check** — no fabricated data, display font is not banned, Phosphor CDN included, canvas width matches platform, background mode matches request, footer present (unless user said no), all labels directly on charts (annotation-first), logo present (95% of real pieces), type-specific playbook applied if one fits.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** `python3 ≥ 3.8`.
 - **runtime_binaries (installed via `/amw-init`):** Playwright + Chromium (`python3 -m playwright install chromium --with-deps`), optional Inkscape or pdf2svg for SVG export.
@@ -184,7 +198,11 @@ Run both passes:
 - **CDN assets (run-time):** Google Fonts (Bebas Neue, Teko, Orbitron, Montserrat), Phosphor Icons, optional Chart.js. Offline environments need the CDN resolvable — `html-export.py` spins up a local HTTP server so Playwright resolves them cleanly.
 - **Shared scripts:** `../../bin/amw-html-export.py` (PNG / PDF / SVG export), `../../bin/amw-preview-server.py` (Mode A live preview).
 
-## Cross-references
+## Examples
+
+See `examples/` for 15 rendered PNG reference outputs covering each template family, and `templates/` for the 24 fully-built reference HTML pieces with `{{PLACEHOLDER}}` variables.
+
+## Resources
 
 - `../amw-design-principles/SKILL.md` — upstream orchestrator; route here only when the user has structured data and wants a dense editorial graphic.
 - `../amw-design-principles/ai-slop-avoid.md` — final AI-slop scan every HTML output must pass.
@@ -204,7 +222,7 @@ Run both passes:
 - `examples/` — 15 rendered PNG reference outputs for each template family.
 - `evals/evals.json` — 5 scenario test prompts + expected outcomes.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
@@ -1095,7 +1113,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 

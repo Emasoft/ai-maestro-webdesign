@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-validator
-description: Render pixel-perfect ASCII diagrams from structured JSON and/or validate hand-authored ASCII wireframes for alignment bugs before they ship. Triggers on narrow technical intents only — "validate this ASCII", "check my ASCII alignment", "render this as perfect ASCII", "ASCII diagram from JSON", "fix ASCII box alignment", "why is my ASCII misaligned". Does NOT trigger on generic design intent ("design a page", "wireframe a dashboard") — those belong to ascii-sketch / design-principles. This is the MANDATORY validation gate for any ASCII emitted by ascii-sketch or /amw-sketch.
+description: Render pixel-perfect ASCII diagrams from structured JSON and/or validate hand-authored ASCII wireframes for alignment bugs before they ship. Triggers on narrow technical intents only — "validate this ASCII", "check my ASCII alignment", "render this as perfect ASCII", "ASCII diagram from JSON", "fix ASCII box alignment", "why is my ASCII misaligned". Does NOT trigger on generic design intent ("design a page", "wireframe a dashboard") — those belong to ascii-sketch / design-principles. This is the MANDATORY validation gate for any ASCII emitted by ascii-sketch or /amw-sketch. Use when validating or rendering pixel-perfect ASCII diagrams for alignment correctness. Trigger with /amw-validate-any-diagram-format.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > **Mandatory validation gate.** Every ASCII variant emitted by `ascii-sketch` / `/amw-sketch` MUST pass the validator before being shown to the user. LLMs cannot count characters — this skill is how the plugin compensates.
+
+## Overview
+
+Mandatory validation gate that every ASCII variant must pass before being shown to the user. Provides two tools: `bin/amw-validate-ascii.py` (alignment checker with FIX hints) and `bin/amw-ascii-render.py` (JSON→ASCII renderer). LLMs cannot count characters; this skill compensates.
 
 ## Activation
 
@@ -163,6 +167,15 @@ The validator flags these characters as "forbidden" because they render at varia
 
 Wireframes that must include emoji (e.g. user-content mockups) should escape the validator by accounting for the double-width in the frame explicitly.
 
+## Instructions
+
+1. Understand the two validator tools: `bin/amw-ascii-render.py` (JSON → ASCII renderer) and `bin/amw-validate-ascii.py` (ASCII → PASS/FAIL validator with FIX hints).
+2. For rendering, pass a JSON spec to `amw-ascii-render.py`; it guarantees alignment by construction for structured diagram types.
+3. For validation, run `bin/amw-validate-ascii.py <file>` against any hand-authored ASCII; PASS means the artifact is alignment-safe.
+4. When the output is FAIL, read each `FIX:` hint (they are exact column-level instructions); apply every hint, then re-validate.
+5. Iterate until PASS; never deliver or commit a FAIL artifact.
+6. For multi-format workflows, reference the technique selection tree below to pick the relevant TECH reference file.
+
 ## Technique selection
 
 Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
@@ -307,7 +320,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -317,13 +330,17 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `python3 >= 3.8` (system-required per plugin contract)
 - **python_packages:** none (pure stdlib)
 - **cpan / npm:** none
 
-## Cross-references
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `../amw-ascii-sketch/SKILL.md` — upstream consumer: calls this validator before emitting variants
 - `../amw-ascii-to-html/SKILL.md` — upstream consumer: validates the approved ASCII one last time before HTML conversion
@@ -362,7 +379,7 @@ All per-format validators conform to the same unified output contract — `PASS:
 
 Full routing rules and per-format validator specs: `../amw-diagram-formats/references/validation-dispatcher.md`.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|

@@ -1,12 +1,20 @@
 ---
 name: amw-text-visual-retro
-description: Produces ASCII retrospective grids, milestone timelines, and heatmaps for team retros, experiment readouts, and launch post-mortems — designed to paste cleanly into PR descriptions, GitHub Discussions, or Slack. Triggers on narrow intents — "ASCII retro template", "text-only retrospective grid", "start-stop-continue in ASCII", "experiment readout in monospace", "launch heatmap in text", "post-mortem grid as ASCII". Does NOT trigger on generic "retro", "post-mortem", "review" — those might be documentation tasks. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery.
+description: Produces ASCII retrospective grids, milestone timelines, and heatmaps for team retros, experiment readouts, and launch post-mortems — designed to paste cleanly into PR descriptions, GitHub Discussions, or Slack. Triggers on narrow intents — "ASCII retro template", "text-only retrospective grid", "start-stop-continue in ASCII", "experiment readout in monospace", "launch heatmap in text", "post-mortem grid as ASCII". Does NOT trigger on generic "retro", "post-mortem", "review" — those might be documentation tasks. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery. Use when producing an ASCII retrospective grid, milestone timeline, or heatmap for a team retro or post-mortem. Trigger with "ASCII retro template" or "start-stop-continue in ASCII" phrasing.
 version: 0.1.0
 ---
 
 # Text-Visual Retro — ASCII retrospectives and readouts
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Produces ASCII retrospective grids, milestone timelines, and heatmaps for team retros, experiment readouts, and launch post-mortems — designed to paste cleanly into PR descriptions, GitHub Discussions, or Slack. Three template archetypes: grid (categories side-by-side), milestone timeline (temporal story), and heatmap (density/frequency readout). Width ceiling 80 columns. Every artifact passes `bin/amw-validate-ascii.py` before delivery.
+
+## Examples
+
+See the `## Template archetypes` section below for minimal examples of a grid, milestone timeline, and heatmap.
 
 ## Activation
 
@@ -109,7 +117,7 @@ Legend: [ ] 0,  [~] 1,  [+] 2-3,  [++] 4-6,  [!] 7+
 
 ## Extended connection types
 
-Retro grids, timelines, and heatmaps occasionally need arrows — an action item that feeds the next sprint, a root cause that triggered a secondary incident, a before/after pair that shares a relation. Use this vocabulary when the retro doc needs to show relationships alongside the grid. Source: adapted from `diagram-skill-main/ASCII-STYLES.md` lines 183-193.
+Retro grids, timelines, and heatmaps occasionally need arrows — an action item that feeds the next sprint, a root cause that triggered a secondary incident, a before/after pair that shares a relation. Use this vocabulary when the retro doc needs to show relationships alongside the grid. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
 
 | Type | Glyph | Meaning |
 |---|---|---|
@@ -149,7 +157,7 @@ The flow:
 
 For heatmaps, `../../bin/amw-ascii-render.py` in `table` mode guarantees column alignment. Strongly recommended when the heatmap has >5 columns. See `../amw-ascii-validator/SKILL.md` for the JSON schema.
 
-## Action
+## Instructions
 
 1. Confirm the four inputs (categories, highlights, owners, distribution target). One bundled question for missing pieces.
 2. Pick an archetype — grid, timeline, or heatmap — based on the retro shape. Announce choice in one sentence.
@@ -260,7 +268,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -270,7 +278,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10`
 - **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
@@ -278,7 +286,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py table` (optional for heatmaps)
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator.
 - `../amw-ascii-validator/SKILL.md` — validation contract.
@@ -309,7 +317,7 @@ No dedicated slash command. Invoke via:
 - Every artifact ends with a `Next Checkpoint` line.
 - Does NOT emit HTML or SVG. ASCII only.
 
-## Failure modes and recovery
+## Error Handling
 
 | Failure mode | Recovery |
 |---|---|

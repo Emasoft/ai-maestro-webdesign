@@ -1,14 +1,17 @@
 ---
 name: amw-design-principles
-description: Orchestrator for any web, UI, slide, prototype, poster, or design task. Enforces three hard rules — (1) gather design context before designing, (2) always produce at least three variants, (3) reject catalogued AI-slop patterns — and routes to the appropriate executor skill in ai-maestro-webdesign. Triggers on any design intent ("design a page", "build a landing page", "mockup", "UI for", "prototype", "wireframe", "slide deck", "poster", "dashboard", "website", "brand", "style"). The plan phase runs in ASCII via /amw-sketch until the user is explicitly satisfied; HTML is generated only after approval.
+description: Orchestrator for any web, UI, slide, prototype, poster, or design task. Enforces three hard rules — (1) gather design context before designing, (2) always produce at least three variants, (3) reject catalogued AI-slop patterns — and routes to the appropriate executor skill in ai-maestro-webdesign. Triggers on any design intent ("design a page", "build a landing page", "mockup", "UI for", "prototype", "wireframe", "slide deck", "poster", "dashboard", "website", "brand", "style"). The plan phase runs in ASCII via /amw-sketch until the user is explicitly satisfied; HTML is generated only after approval. Use when the user requests any web design, UI, prototype, landing page, or other visual design artifact. Trigger with /amw-sketch or /amw-eval.
 version: 2.0.0
 author: ai-maestro-webdesign
-source: Distilled and rewritten in English from the Claude Design system prompt as publicly archived in elder-plinius/CL4R1T4S. All rights to the original prompt belong to Anthropic. This skill is a learning/interpretation layer, not a redistribution.
 ---
 
 # Design Principles — the orchestrator
 
 > **Core insight:** good design is not guessed from scratch; it grows out of existing context. This skill compresses the Claude Design judgment set into an executable checklist and routes technical execution to the sub-skills in this plugin.
+
+## Overview
+
+Orchestrator for any web, UI, slide, prototype, poster, or design task. Enforces three hard rules (gather context, produce three variants, reject AI-slop) and routes to the appropriate executor skill. The plan phase runs in ASCII via `amw-ascii-sketch` until the user is explicitly satisfied; HTML is generated only after approval.
 
 ---
 
@@ -127,6 +130,20 @@ Specific patterns are an instant tell for AI generation. The complete list is in
 Every HTML output runs a final scan against `ai-slop-avoid.md` before delivery.
 
 ---
+
+## Prerequisites
+
+Standard plugin runtime — no skill-specific prerequisites beyond the global plugin dependencies.
+
+## Instructions
+
+1. Read the brief and decide if this skill fires (broad design vocabulary: design, UI, mockup, landing page, wireframe, prototype, slide, deck, poster, website).
+2. Gather context: request UI kit, brand assets, or reference examples; use `amw-ui-ux-reasoning` as last resort if none are available.
+3. Run the question checklist from `question-templates.md` (ask ≥ 10 questions), then declare the visual system (font + palette + spacing rhythm).
+4. Run `/amw-sketch` to iterate ≥ 3 ASCII variants with the user; loop until an explicit satisfaction token is received.
+5. Apply the AI-slop-avoid.md gate over the approved direction before conversion.
+6. Convert to HTML via `/amw-ascii-to-html`, apply tokens, and deliver via `/amw-preview`.
+7. Route specialized requests (diagrams, infographics, video, SEO, forms) to the appropriate executor skill.
 
 ## 🧭 ASCII-first plan phase (the default workflow)
 
@@ -339,7 +356,7 @@ These skills do NOT ship dedicated slash commands (text-visual output overlaps h
 | `../amw-shadcn-ui/` | Need to emit copy-paste shadcn/ui components. |
 | `../amw-tailwind-4/` | Tailwind v4 config / migration questions. |
 | `../amw-ascii-diagrams-reference/` | Reference library of validated ASCII archetypes (flowcharts, state-machines, trees, data-structures, network-topology, sequences-tables, graphs-annotations) distilled from the CHI'24 paper on 2,156 real diagrams in Linux/Chromium/LLVM/TensorFlow. Consulted by ascii-sketch / ascii-creator / text-visual-* when selecting a canonical pattern. |
-| `../amw-diagram-formats/` | **Meta-skill (cross-reference, not executor).** Authoritative specs for every diagram-format concern: format specs (ASCII/HTML/SVG/Mermaid), the IR schema (`diagram-ir/1.0`), the N×N conversion matrix, the format-detection contract, the validate-dispatcher, the modify-flow pipeline, and the IR-level diff algorithm. All diagram-authoring and diagram-conversion skills import their rules from here — do NOT re-author these specs in the consumer skills. Never triggers independently; consulted implicitly whenever a diagram skill needs a spec. |
+| `../amw-diagram-formats/` | **Meta-skill (cross-reference, not executor).** Authoritative specs for every diagram-format concern: format specs (ASCII/HTML/SVG/Mermaid), the IR schema (diagram-ir version 1.0), the N×N conversion matrix, the format-detection contract, the validate-dispatcher, the modify-flow pipeline, and the IR-level diff algorithm. All diagram-authoring and diagram-conversion skills import their rules from here — do NOT re-author these specs in the consumer skills. Never triggers independently; consulted implicitly whenever a diagram skill needs a spec. |
 | `./references/project-output-routing.md` | Detection rules for project-inferred artifact output paths. Every sub-skill references this before writing artifacts instead of hardcoding `/tmp/amw-<skill>/`. Consult when the user has not specified an output path — the doc determines the right folder based on `package.json`, existing design folders, Claude design markers, and framework conventions. |
 
 Slash commands: `/amw-eval`, `/amw-preview`, `/amw-doctor`, `/amw-init`.
@@ -349,6 +366,22 @@ Slash commands: `/amw-eval`, `/amw-preview`, `/amw-doctor`, `/amw-init`.
 `amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, and `amw-component-library-architect-agent` are spawned by `ai-maestro-webdesign-main-agent` when the brief surfaces form / email / motion / token-system intent. They have no veto power and produce specs or exports consumed by Tier-3 producers. They are agents, not skills — invoke them via Task delegation, not skill activation. Full roster and delegation rules: `../../agents/ai-maestro-webdesign-main-agent.md` and `./references/two-mode-workflow.md`.
 
 ---
+
+## Output
+
+Produces a single artifact at the path specified in §7-step execution flow — an HTML file (plan-phase → ASCII → approval → HTML), SVG, or other format as directed by the executor skill.
+
+## Error Handling
+
+On failure, the skill emits a non-zero exit code or returns a structured error in the response. See bin/ scripts for tool-specific error semantics.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
+
+See the referenced files in this skill's `references/` directory and the cross-skill links above.
 
 ## 📁 File-management rules
 

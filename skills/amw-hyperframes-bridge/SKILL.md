@@ -1,6 +1,6 @@
 ---
 name: amw-hyperframes-bridge
-description: HTML composition to MP4 video rendering via the external Hyperframes monorepo. Triggers on "render HTML as video", "HTML to MP4", "website to video", "create video from HTML", "rasterize composition to mp4". Does NOT trigger on generic "animation" or "video" requests — those route to pretext, starter-components/animations.html, or the user's own pipeline.
+description: HTML composition to MP4 video rendering via the external Hyperframes monorepo. Triggers on "render HTML as video", "HTML to MP4", "website to video", "create video from HTML", "rasterize composition to mp4". Does NOT trigger on generic "animation" or "video" requests — those route to pretext, starter-components/animations.html, or the user's own pipeline. Use when rendering an HTML composition to an MP4 video file via the Hyperframes backend. Trigger with explicit "render HTML as video" or "HTML to MP4" phrasing.
 version: 0.1.0
 ---
 
@@ -8,6 +8,21 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > **External dependency wrapper.** The actual Hyperframes monorepo lives at `../../external/hyperframes/` (cloned by `/amw-init` step 6 if the user opts in, OR by this skill on first render as a fallback). This skill documents the shell-out pattern; it does NOT vendor the monorepo.
+
+## Overview
+
+Renders HTML compositions to MP4 video by shelling out to the Hyperframes monorepo (`external/hyperframes/`). Accepts a single HTML scene file or a full Hyperframes project directory. Runs the mandatory pre-render gate (`lint → validate → inspect → render`) before calling `npx hyperframes render --output <mp4>`. Returns the MP4 path and a job-completion report. No re-implementation of the Hyperframes pipeline inside the plugin — shell-out only.
+
+## Instructions
+
+1. Verify the external repo with two checks: `external/hyperframes/package.json` must exist, and `npx hyperframes render --help` must respond; fail fast if either check fails.
+2. Resolve the project directory: use `project_dir` if provided, or scaffold a temp project from `html_scene_path`; fail immediately if neither is supplied.
+3. Run the pre-render gate sequence in order: `lint → validate → inspect → render` (abort if any step returns non-zero).
+4. Execute `cd "$HF_PROJ_DIR" && npx hyperframes render --output <mp4>`; collect the output path.
+5. Confirm the MP4 file exists and is non-empty; report the output path and any `inspect` warnings.
+6. See the `## Invocation pattern` section below for the authoritative execution steps.
+
+See the `## Invocation pattern` section below for the authoritative execution steps.
 
 ## Activation
 
@@ -35,7 +50,7 @@ Do NOT invoke on generic mentions of "animation", "motion", "video playback", or
 - `../amw-pretext/` (typographic motion — `pretext-art/` is a deprecated redirect)
 - The user's own pipeline
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system prerequisites):** Node.js >= 22, git
 - **runtime_binaries (installed by `/amw-init`):** Bun (Hyperframes's package manager), FFmpeg. Chrome is managed by Hyperframes itself via `hyperframes browser ensure` (uses Puppeteer + `@puppeteer/browsers` internally — NOT Playwright).
@@ -442,6 +457,10 @@ Every technique in this skill is documented as a single reference file under `./
 
 <!-- end of references -->
 
+## Examples
+
+See the worked examples in the per-step reference files under `./references/TECH-hyperframes-capture-step-*.md` (7-step website-to-video pipeline) and the composition authoring guide at `./references/TECH-hyperframes-composition-core.md`.
+
 ## Completion checklist
 
 Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
@@ -476,7 +495,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -486,7 +505,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/starter-components/animations.html` — the ~50-LOC Stage + Sprite timeline engine used for in-browser previews; Hyperframes shares the same rhythm.
 - `../../bin/amw-html-export.py` — **NOT a substitute.** `html-export` renders a single frame to PNG/PDF; Hyperframes renders a multi-frame MP4 using Puppeteer + Chrome (managed by `hyperframes browser ensure`) + FFmpeg.
@@ -502,7 +521,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - Do NOT substitute `html-export.py` — single-frame PNG is not video.
 - The user MUST run `/amw-init` before first use to install Bun + FFmpeg and clone the external repo. Chrome is provisioned by running `(cd external/hyperframes && npx hyperframes browser ensure)` once after cloning.
 
-## Failure modes
+## Error Handling
 
 - **`external/hyperframes/` missing** — first-use clone step was skipped. Run `/amw-init` or clone manually (see Dependencies).
 - **`npx hyperframes render --help` fails** — monorepo cloned but `bun install` not run. `cd external/hyperframes && bun install`.

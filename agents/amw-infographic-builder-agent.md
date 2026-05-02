@@ -52,7 +52,7 @@ I reason in three layers, in priority order:
 
 - The infographics skill: `../skills/amw-infographics/SKILL.md` — 24-template index, 175-design-DNA corpus, 7 canvas sizes, 4 archetypes (Stacked Reference default, Flow Poster, Hub & Spoke, Stat Poster, Cheat Sheet).
 - The template library: `../skills/amw-infographics/templates/` — 24 HTML templates including tokenomics, roadmap, ecosystem, stats-poster, staking-yield, nft-showcase, whitepaper-overview, airdrop-guide, game-cheat-sheet, game-event, crypto-explainer, defi-protocol, token-economics, token-flywheel, branded-minimal, dark-modern, light-editorial, data-story, comparison, how-it-works, feature-roster, listicle, modern-timeline, event-schedule.
-- The reference corpus: `../skills/amw-infographics/resources/style-details.md` (1062 lines, style DNA), `resources/layout-patterns.md` (842 lines, layout patterns), `resources/platform-sizes.md` (canvas sizes).
+- The reference corpus: `../skills/amw-infographics/resources/style-details.md` (1062 lines, style DNA), `../skills/amw-infographics/resources/layout-patterns.md` (842 lines, layout patterns), `../skills/amw-infographics/resources/platform-sizes.md` (canvas sizes).
 - The export pipeline: `bin/amw-html-export.py` (Playwright + Chromium, emits PNG at 2× retina and print-ready PDF).
 - AI-slop avoidance: `../skills/amw-design-principles/ai-slop-avoid.md` — the infographic-specific banned patterns are subset of the general list.
 - Design-principles token system (for tokens-provided mode): `../skills/amw-design-principles/color-system.md`, `typography-system.md`, `spacing-rhythm.md`.
@@ -178,7 +178,7 @@ Priority-ordered.
 
 1. **Load skill knowledge.**
    - Read `../skills/amw-infographics/SKILL.md` — template index, design DNA, non-negotiable rules.
-   - Read `../skills/amw-infographics/resources/style-details.md` and `resources/layout-patterns.md` only the sections relevant to the chosen template (lazy-load).
+   - Read `../skills/amw-infographics/resources/style-details.md` and `../skills/amw-infographics/resources/layout-patterns.md` only the sections relevant to the chosen template (lazy-load).
    - Read `../skills/amw-infographics/resources/platform-sizes.md` for canvas-size mapping.
 
 2. **Classify the brief's content type.**

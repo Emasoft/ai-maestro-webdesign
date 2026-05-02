@@ -1,15 +1,33 @@
 ---
 name: amw-ui-ux-reasoning
-description: LAST-RESORT fallback library — 161 reasoning rules, 67 UI styles, 161 color palettes, 57 font pairings, 24 landing-page patterns — consulted ONLY when design-principles confirms no design system, no brand tokens, no reference exists. Narrow triggers — "pick a style for me", "I have no design system", "choose a palette for me", "suggest a font pairing", "what UI style should I use", "make it look professional (no preference)". Do NOT trigger on generic design intent.
+description: LAST-RESORT fallback library — 161 reasoning rules, 67 UI styles, 161 color palettes, 57 font pairings, 24 landing-page patterns — consulted ONLY when design-principles confirms no design system, no brand tokens, no reference exists. Narrow triggers — "pick a style for me", "I have no design system", "choose a palette for me", "suggest a font pairing", "what UI style should I use", "make it look professional (no preference)". Do NOT trigger on generic design intent. Use when no design system or brand tokens are available and a fallback style, palette, or font pairing must be selected. Trigger with "pick a style for me", "choose a palette for me", or "suggest a font pairing" phrasing.
 version: 0.1.0
 author: ai-maestro-webdesign
-source: Adapted from the public ui-ux-pro-max-skill by ara.so (nextlevelbuilder/ui-ux-pro-max-skill, MIT). Rewritten for this plugin's orchestrated flow; the upstream CLI and Python API are demoted to optional. Taxonomy credit belongs to the upstream author.
 ---
 
 # UI/UX Reasoning (Last-Resort Library)
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > Only run this skill when design-principles has determined that Rule 1 context-gathering has no anchor — no UI kit, no brand tokens, no reference URL, no existing components, and the user cannot name a style. If any anchor exists, skip this skill entirely.
+
+## Overview
+
+Last-resort fallback library consulted only when design-principles has exhausted Rule 1 context-gathering with no result. Collapses an infinite-choice space into a confirmable shortlist: 3 style + 3 palette + 3 font DNA candidates drawn from 67 UI styles, 161 color palettes, and 57 font pairings — all pre-filtered against `amw-design-principles/ai-slop-avoid.md`. Produces named anchors only; the user picks, then `amw-ascii-sketch` resumes with those anchors.
+
+## Instructions
+
+1. Confirm the activation condition: only proceed if design-principles has already attempted Rule 1 context-gathering and found no anchors (no UI kit, no brand tokens, no reference URL, no existing components); if any anchor exists, stop and route back to `../amw-design-principles/`.
+2. Acknowledge the fallback in one sentence: "No anchors found — presenting three visual-DNA candidates from 67 styles / 161 palettes / 57 font pairings, filtered against ai-slop."
+3. Present three style candidates (name, 3-5 keywords, best-for, one-sentence feel), pre-filtered against `../amw-design-principles/ai-slop-avoid.md`.
+4. Present three palette candidates (mood tag, primary/secondary/CTA/background/text, one-sentence industry fit) and three font-pair candidates (heading + body, pairing rationale, tone).
+5. Ask the user to pick one from each column (or mix); do not emit HTML, ASCII wireframes, or CSS here — those belong to `../amw-ascii-sketch/`.
+
+See `## Usage` below.
+
+## Prerequisites
+
+- **runtime_binaries:** none — the reasoning library is inlined in companion reference files.
+- **npm_packages (optional):** `uipro-cli` (`npm install -g uipro-cli`) exposes the same taxonomy as a CLI. Not wired into the orchestrator; the skill works identically without it.
 
 ## Activation
 
@@ -251,7 +269,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -261,7 +279,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator that routes here as a fallback
 - `../amw-ascii-sketch/SKILL.md` — resumes variant exploration once anchors are picked
@@ -270,7 +288,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - `../amw-design-principles/ai-slop-avoid.md` — mandatory filter applied BEFORE emission
 - `../amw-design-principles/question-templates.md` — the upstream checklist used to confirm no anchor exists
 
-## Failure modes
+## Error Handling
 
 - **Activating too eagerly.** Triggering on "design a landing page" instead of "pick a style for me". Orchestrator must have exhausted Rule 1 first.
 - **Single-option output.** Emitting "I suggest Glassmorphism" instead of three candidates. Violates Rule 2.

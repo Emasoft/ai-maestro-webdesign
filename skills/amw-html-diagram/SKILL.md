@@ -1,6 +1,6 @@
 ---
 name: amw-html-diagram
-description: Author OR edit an HTML-rendered diagram — editorial architecture / flowchart / sequence / state / ER / timeline / swimlane / quadrant / tree / layer / venn / funnel / pyramid / nested wall, or an infographic-style dense editorial page. Triggers on narrow technical intents only — "create HTML diagram", "modify HTML diagram at <path>", "render this structure as HTML", "edit this .html diagram", "/amw-create-or-modify-html-diagram". Does NOT claim generic design / UI / landing-page vocabulary — those go to design-principles. Thin dispatcher over ../amw-diagram-editorial/ (13-archetype create) and ../amw-infographics/ (dense HTML).
+description: Author OR edit an HTML-rendered diagram — editorial architecture / flowchart / sequence / state / ER / timeline / swimlane / quadrant / tree / layer / venn / funnel / pyramid / nested wall, or an infographic-style dense editorial page. Triggers on narrow technical intents only — "create HTML diagram", "modify HTML diagram at a file path", "render this structure as HTML", "edit this .html diagram", "/amw-create-or-modify-html-diagram". Does NOT claim generic design / UI / landing-page vocabulary — those go to design-principles. Thin dispatcher over ../amw-diagram-editorial/ (13-archetype create) and ../amw-infographics/ (dense HTML). Use when authoring or editing an HTML-rendered editorial diagram or infographic-style page. Trigger with /amw-create-or-modify-html-diagram.
 version: 0.1.0
 ---
 
@@ -11,6 +11,20 @@ version: 0.1.0
 > **Modify pipeline (authoritative):** `../amw-diagram-formats/references/modify-flow.md`.
 
 This skill does not redefine HTML / SVG / a11y / Tweaks / React-pins / AI-slop-avoid rules — every one of those lives once in `../amw-diagram-formats/references/html.md`. The skill's job is to DISPATCH to the right backing producer (editorial vs infographic) and to run the shared modify-flow when the input is an existing `.html`.
+
+## Overview
+
+Thin dispatcher for HTML-rendered diagrams and infographic-style pages. Accepts either a new brief or an existing `.html` file. Routes create requests to `amw-diagram-editorial` (13-archetype editorial diagrams) or `amw-infographics` (dense HTML/PNG/PDF infographics) based on `--style editorial|infographic` or brief cues. Routes modify requests through the shared 5-step modify-flow (parse → IR → patch → re-render → validate). Emits exactly one self-contained `.html` file per invocation.
+
+## Instructions
+
+1. Detect whether the input is a brief (create path) or an existing `.html` file (modify path).
+2. For create path: dispatch to `../amw-diagram-editorial/` (editorial diagrams, default) or `../amw-infographics/` (dense infographics) based on `--style editorial|infographic` or brief cues.
+3. For modify path: parse the existing file to IR with `bin/amw-parse-html-diagram.py`, apply the requested edit to the IR, and re-render via `bin/amw-diagram-ir.py emit --format html`.
+4. Validate the output with `bin/amw-validate-html-diagram.sh`; a FAIL aborts and leaves the original file untouched (retry budget = 3).
+5. See the `## Pipeline (5 steps — matches shared modify-flow)` section below for the authoritative execution sequence.
+
+See the `## Pipeline (5 steps — matches shared modify-flow)` section below for the authoritative execution sequence.
 
 ## Activation
 
@@ -65,14 +79,22 @@ Full table + technique-level citations live in `../amw-diagram-formats/reference
 
 Before save, the AI-slop-avoid 12-item checklist runs — see `../amw-diagram-formats/references/html.md` §5 for the full list and the final grep command. Any FAIL → revise the affected region and re-check; record the rule that triggered in the file-header comment.
 
-## Dependencies
+## Output
+
+Produces one self-contained `.html` file (inline CSS + inline SVG, no external build) at the user-supplied path or a descriptive default. On validation failure the original file is left untouched. See the Pipeline section for the full output contract.
+
+## Prerequisites
 
 - **runtime_binaries:** `python3 >= 3.8` (for `bin/amw-parse-html-diagram.py`, `bin/amw-diagram-ir.py`), `xmllint` (libxml2), `tidy` (HTML Tidy) — installed by `/amw-init`; checked by `/amw-doctor`.
 - **python_packages:** `lxml` (HTML parsing in `bin/amw-parse-html-diagram.py`).
 - **npm:** none. Emitted HTML uses pinned React/Babel UMD CDN ONLY if the artifact is interactive (see `../amw-diagram-formats/references/html.md` §4).
 - **Shared scripts:** `bin/amw-parse-html-diagram.py`, `bin/amw-diagram-ir.py`, `bin/amw-validate-html-diagram.sh`, `bin/amw-html-export.py` (optional PNG export).
 
-## Cross-references
+## Examples
+
+See the worked examples in `../amw-diagram-editorial/SKILL.md` (editorial path) and `../amw-infographics/SKILL.md` (infographic path), and the technique catalog at `../amw-diagram-formats/references/html.md`.
+
+## Resources
 
 - `../amw-diagram-formats/references/html.md` — authoritative HTML format spec + 100-technique catalog.
 - `../amw-diagram-formats/references/modify-flow.md` — authoritative 6-step modify pipeline.
@@ -94,7 +116,7 @@ Before save, the AI-slop-avoid 12-item checklist runs — see `../amw-diagram-fo
 - `scrollIntoView` is banned everywhere. Use `window.scrollTo({top, behavior:'smooth'})` with manual offset. (`../amw-diagram-formats/references/html.md` TECH-29)
 - Do NOT re-author the HTML spec inside this skill — reference `../amw-diagram-formats/references/html.md`. If a rule is wrong, fix it there.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|

@@ -1,12 +1,20 @@
 ---
 name: amw-text-visual-workflows
-description: Produces ASCII flowcharts and timelines for multi-step workflows — PR lifecycle, launch plan, triage ops, incident response — that paste cleanly into GitHub PRs, issues, Slack, Notion, and terminal output. Triggers on narrow intents — "ascii flowchart", "text timeline", "workflow diagram in monospace", "PR-safe flowchart", "paste-into-GitHub flow diagram", "timeline I can drop in a comment". Does NOT trigger on generic "design", "diagram", "chart", "draw a flow" — those belong to design-principles / diagram-* / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery.
+description: Produces ASCII flowcharts and timelines for multi-step workflows — PR lifecycle, launch plan, triage ops, incident response — that paste cleanly into GitHub PRs, issues, Slack, Notion, and terminal output. Triggers on narrow intents — "ascii flowchart", "text timeline", "workflow diagram in monospace", "PR-safe flowchart", "paste-into-GitHub flow diagram", "timeline for a comment". Does NOT trigger on generic "design", "diagram", "chart", "draw a flow" — those belong to design-principles / diagram-* / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery. Use when producing an ASCII flowchart or timeline for a PR, launch plan, or incident-response workflow. Trigger with "ascii flowchart", "text timeline", or "PR-safe flowchart" phrasing.
 version: 0.1.0
 ---
 
 # Text-Visual Workflows — ASCII flowcharts and timelines
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Produces ASCII flowcharts and timelines for multi-step workflows — PR lifecycle, launch plan, triage operations, incident response — that paste cleanly into GitHub PRs, issues, Slack, Notion, and terminal output. Three diagram archetypes: branching flowchart, linear timeline with calendar markers, and swimlane parallel-track timeline. Width ceiling: 78 columns terminal, 100 GitHub. Every diagram passes `bin/amw-validate-ascii.py` before delivery. ASCII only — no HTML or SVG output.
+
+## Examples
+
+See the `## Diagram archetypes` section below for minimal skeleton examples of a flowchart, timeline, and swimlane.
 
 ## Activation
 
@@ -122,7 +130,7 @@ Each row is one lane; `==` fills the active window for that lane on that date ra
 
 ## Extended connection types
 
-When a flowchart or timeline needs to show response paths, handshakes, non-deterministic transitions, or plain relations alongside the core `-->` / `==>` / `~~>` vocabulary, use this extended set. Pick one style per diagram; do not mix within a single figure. Source: adapted from `diagram-skill-main/ASCII-STYLES.md` lines 183-193.
+When a flowchart or timeline needs to show response paths, handshakes, non-deterministic transitions, or plain relations alongside the core `-->` / `==>` / `~~>` vocabulary, use this extended set. Pick one style per diagram; do not mix within a single figure. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
 
 | Type | Glyph | Meaning |
 |---|---|---|
@@ -150,7 +158,7 @@ The flow:
 
 For strongly-structured flowcharts (many branches, nested decisions) prefer `../../bin/amw-ascii-render.py` with the `diagram` mode — the renderer guarantees alignment by construction. See `../amw-ascii-validator/SKILL.md` for the JSON schema.
 
-## Action
+## Instructions
 
 1. Confirm the three inputs (steps, medium, metadata). Ask one question per missing piece, bundled.
 2. Pick one archetype — flowchart, timeline, or swimlane. Announce the choice to the user in one sentence ("using a flowchart because your workflow has three decision points").
@@ -259,7 +267,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -269,7 +277,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10` (for the validator)
 - **python_packages:** none (optional `python3` if using `bin/amw-ascii-render.py`)
@@ -277,7 +285,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py` (optional, for JSON-driven flowcharts)
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator. Rules 1 and 2 (context, variants) apply; for a flowchart, "variants" means offering a flowchart shape vs a timeline shape vs a swimlane if the intent is ambiguous.
 - `../amw-ascii-validator/SKILL.md` — the validation contract.
@@ -308,7 +316,7 @@ This skill does NOT ship its own slash command. Invoke it via:
 - Every actor / owner / SLA is either present or the user was asked for it. Do not fabricate `@someone` or `<24h`.
 - Does NOT emit HTML or SVG. This skill is ASCII only.
 
-## Failure modes and recovery
+## Error Handling
 
 | Failure mode | Recovery |
 |---|---|

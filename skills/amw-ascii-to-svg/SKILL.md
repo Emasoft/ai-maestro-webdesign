@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-to-svg
-description: Deprecated. See ../amw-diagram-convert/ for the IR-pivot conversion path. This file remains as a low-level primitive callable from /amw-ascii-to-svg only — it has no auto-trigger phrases.
+description: Deprecated. See ../amw-diagram-convert/ for the IR-pivot conversion path. This file remains as a low-level primitive callable from /amw-ascii-to-svg only — it has no auto-trigger phrases. Use when the /amw-ascii-to-svg command is explicitly invoked. Trigger with /amw-ascii-to-svg.
 version: 0.2.0
 ---
 
@@ -11,6 +11,10 @@ version: 0.2.0
 > The `amw-diagram-convert` skill internally calls this skill's `bin/amw-ascii-parse.py` for the ASCII parsing step, so the IR-pivot path subsumes everything documented below.
 >
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Deprecated direct ASCII→SVG parser and router. Parses ASCII box-drawing input, classifies the diagram type, and routes rendering to the correct diagram sub-skill. Retained for backward compatibility with the `/amw-ascii-to-svg` command; new workflows should use `amw-diagram-convert`.
 
 ## Activation
 
@@ -35,7 +39,7 @@ Input can be passed as:
 - Inline ASCII pasted after the `/amw-ascii-to-svg` command
 - Content inside a fenced code block in chat (strip the fence first)
 
-## Action
+## Instructions
 
 1. Detect format (unicode / ASCII / mermaid). Ask user if ambiguous.
 2. Invoke `../../bin/amw-ascii-parse.py --in <source> --mode diagram --out /tmp/amw-ascii-<slug>-graph.json` to tokenize into a node/edge graph.
@@ -50,12 +54,20 @@ Input can be passed as:
 7. Visual-verify loop: render → view → fix → render, max 3 iterations. If still broken after 3, report what failed.
 8. Deliver paths to the user. Do NOT inline the SVG into chat.
 
-## Dependencies
+## Output
+
+Produces a single artifact at the path specified in §Instructions — an SVG file rendered by the target diagram sub-skill.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Prerequisites
 
 - `python3` — runs `bin/amw-ascii-parse.py` and `bin/amw-svg-render.py`
 - `cairosvg` — auto-installed by `bin/amw-svg-render.py` on first run
 
-## Cross-references
+## Resources
 
 - `../../bin/amw-ascii-parse.py` — tokenizer
 - `../../bin/amw-svg-render.py` — render-verify-finish loop
@@ -83,7 +95,7 @@ Input can be passed as:
 - No AI-drawn illustration — nodes stay geometric.
 - No Framer Motion or GSAP.
 
-## Failure modes
+## Error Handling
 
 - Ambiguous input format (mixed Unicode and ASCII markers) — ask the user to pick one and re-paste.
 - Dense or overlapping lines that the tokenizer cannot disambiguate — ask the user to space the diagram out or supply an explicit edge list.

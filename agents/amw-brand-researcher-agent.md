@@ -305,7 +305,7 @@ warnings:
   - "2 of 7 reference URLs cluster tightly in warm-neutral serif — commoditized ground; recommended direction pushes toward cool modern differentiator"
   - "Client brand notes 'quiet luxury' collides with 4 of 7 competitors also in quiet-luxury territory — suggest direction adjustment or differentiation on execution layer"
 artifact_paths:
-  - path: "/Users/emanuelesabetta/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/20260424_150305+0200-brand-researcher-hospitality-bora-bora.md"
+  - path: "${CLAUDE_PROJECT_DIR}/reports/webdesigner/20260424_150305+0200-brand-researcher-hospitality-bora-bora.md"
     type: report
     purpose: "Full brand-landscape report: per-site profiles, cross-site summary, positioning whitespace, recommended Phase A directions"
 recommendations:
@@ -314,7 +314,7 @@ recommendations:
   - "Main-agent: pair with amw-user-research-analyst-agent to confirm audience will respond to the whitespace direction"
   - "Main-agent: run amw-accessibility-auditor first-pass on proposed palette before variant generation"
 next_action: proceed
-report_path: "/Users/emanuelesabetta/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/20260424_150305+0200-brand-researcher-hospitality-bora-bora.md"
+report_path: "${CLAUDE_PROJECT_DIR}/reports/webdesigner/20260424_150305+0200-brand-researcher-hospitality-bora-bora.md"
 ---
 
 # Brand Researcher — Phase A summary

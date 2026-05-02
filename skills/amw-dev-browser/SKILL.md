@@ -1,6 +1,6 @@
 ---
 name: amw-dev-browser
-description: Browser automation and page-state capture via the `dev-browser` CLI. Triggers on narrow technical intents only — "go to URL", "click on", "fill form", "take screenshot", "scrape", "automate the browser", "test the website", "inspect DOM", "mobile screenshot". Does NOT trigger on design vocabulary ("design a page", "build a landing page", "mockup", "prototype") — those belong to the `design-principles` orchestrator, which routes here when a design workflow needs to capture a real page.
+description: Browser automation and page-state capture via the `dev-browser` CLI. Triggers on narrow technical intents only — "go to URL", "click on", "fill form", "take screenshot", "scrape", "automate the browser", "test the website", "inspect DOM", "mobile screenshot". Does NOT trigger on design vocabulary ("design a page", "build a landing page", "mockup", "prototype") — those belong to the `design-principles` orchestrator, which routes here when a design workflow needs to capture a real page. Use when automating a browser, taking screenshots, filling forms, or scraping a live page. Trigger with /amw-preview.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill is an executor. Its triggers are technical only — `design-principles` routes design intent here when a workflow needs to capture, inspect, or automate a real web page.
+
+## Overview
+
+Browser automation and page-state capture via the `dev-browser` CLI. The plugin's single authorized browser-automation primitive for input capture — screenshots, DOM dumps, interactive navigation, form filling. Rendering pipelines that use Playwright for output emission (HTML → PNG/PDF/MP4) are separate and are NOT substitutes for this skill.
 
 ## Activation
 
@@ -34,13 +38,22 @@ Activate only on explicit browser-automation or page-capture intents:
 
 Do **not** activate on design-intent vocabulary ("design a page", "build a landing page", "mockup", "prototype", "wireframe"). Those are owned by `design-principles`, which will call this skill only when a design workflow needs a real page as input (e.g. `/amw-extract-style <url>`).
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** `node >= 22`
 - **runtime_binaries (installed via `/amw-init`):** `dev-browser` CLI — installed with `npm install -g dev-browser` followed by `dev-browser install` (the second command provisions the sandboxed Chromium profile).
 - **python_packages:** none
 - **npm_packages:** `dev-browser` (global, as above)
 - **mcp_servers:** none
+
+## Instructions
+
+1. Use `bin/amw-dev-browser-wrapper.sh` as the stable entry point for all plugin-internal automation; avoid calling `dev-browser` raw.
+2. For screenshots: call `bin/amw-dev-browser-wrapper.sh shot <url> [outfile]` (desktop) or `mobile <url> [outfile]` (mobile viewport).
+3. For DOM capture: call `bin/amw-dev-browser-wrapper.sh dom <url> [outfile]` to get the serialized DOM.
+4. For interactive or persistent sessions: use `open <url>` to keep the browser alive across agent turns.
+5. For any capability not covered by the wrapper shortcuts, use `pass-through …` to forward a raw `dev-browser` argument vector.
+6. This skill is the ONLY browser-automation primitive in the plugin — do not wire live-page inspection through Chrome DevTools MCP, Playwright MCP, or any other browser wrapper.
 
 ## Usage
 
@@ -60,7 +73,15 @@ dev-browser --help
 
 The wrapper is the stable entry point other plugin code depends on; the raw CLI is fine for ad-hoc exploration.
 
-## Cross-references
+## Output
+
+Produces screenshots (PNG), DOM dumps (HTML/text), or interactive session state depending on the invocation. Output path is determined by the caller or the wrapper script's default.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `../../bin/amw-dev-browser-wrapper.sh` — plugin-standard wrapper (the canonical invocation path).
 - `../amw-design-extract/SKILL.md` — downstream consumer: combines `dev-browser` screenshots + DOM dumps with the `designlang` extractor to produce token sets.
@@ -75,7 +96,7 @@ The wrapper is the stable entry point other plugin code depends on; the raw CLI 
 - **Rendering backends elsewhere are OUTPUT-only.** `html-export.py` and `hyperframes-bridge` use Playwright internally to convert HTML artefacts to PNG / PDF / MP4. They do **not** replace this skill for input capture. Never propose them as substitutes.
 - **Do NOT bake secrets or cookies into scripts.** `dev-browser` maintains a persistent, sandboxed profile — use it for session state; never paste credentials into prompt arguments.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

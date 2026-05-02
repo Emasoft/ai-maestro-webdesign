@@ -1,6 +1,6 @@
 ---
 name: amw-svg-creator
-description: Produce polished technical SVG — icons, logos, badges, patterns, data-vis primitives, SVG animations — with a mandatory render-verify-deliver loop. Triggers on narrow technical intents like "SVG icon", "SVG logo", "SVG pattern", "SVG animation", "polished SVG finish". GATED — does NOT accept illustration, character, mascot, scene, portrait, avatar, or "draw a cat/dog/person" requests (banned by design-principles/ai-slop-avoid.md item 3). Full trigger list in Trigger conditions section.
+description: Produce polished technical SVG — icons, logos, badges, patterns, data-vis primitives, SVG animations — with a mandatory render-verify-deliver loop. Triggers on narrow technical intents like "SVG icon", "SVG logo", "SVG pattern", "SVG animation", "polished SVG finish". GATED — does NOT accept illustration, character, mascot, scene, portrait, avatar, or "draw a cat/dog/person" requests (banned by design-principles/ai-slop-avoid.md item 3). Full trigger list in Trigger conditions section. Use when creating a polished SVG icon, logo, badge, pattern, or data-vis primitive. Trigger with explicit "SVG icon", "SVG logo", or "SVG pattern" phrasing.
 version: 0.2.0
 ---
 
@@ -9,6 +9,25 @@ version: 0.2.0
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > **GATED — icons / logos / technical SVG / patterns / animations only.**
 > Characters, scenes, mascots, portraits, avatars, people, animals, and any "draw me X" illustration request are **forbidden** by `../amw-design-principles/ai-slop-avoid.md` item 3 ("AI-drawn SVG illustrations / mascots / scenes"). If the user asks for any of those, STOP and explain: "design-principles bans AI-drawn character/scene SVG; use a real asset or a placeholder box instead." Do not attempt a "quick one" or a "simplified" version — the ban is absolute.
+
+## Overview
+
+Produces polished technical SVG (icons, logos, badges, patterns, data-vis primitives, SVG animations) via a mandatory render-verify-deliver loop using `bin/amw-svg-render.py`. GATED to geometric/technical SVG only — character illustrations, scenes, mascots, and any "draw me X" requests are absolutely refused. The render-verify loop (`write → render → view PNG → assess → fix → finish`) is non-negotiable: `finish` aborts if `render` was never called.
+
+## Instructions
+
+1. Confirm the request falls within scope (icons, logos, badges, patterns, data-vis primitives, SVG animations) — if it requests a character, scene, mascot, avatar, or "draw me X", stop immediately and cite `ai-slop-avoid.md` item 3; offer a placeholder box instead.
+2. Write the SVG source (primitives only: `<rect>`, `<circle>`, `<ellipse>`, `<polygon>`, `<path>`, `<line>`, `<g>`, `<defs>`, `<filter>`, `<animate>`); for icons use 24×24 viewBox, 2px stroke, `fill="none"`, `stroke="currentColor"`.
+3. Call `bin/amw-svg-render.py render <file.svg>` to rasterize — this is non-negotiable; `finish` aborts if `render` was never called.
+4. View the output PNG (`bin/amw-svg-render.py view <file.png>`) and assess for alignment, legibility at 64px, contrast, and animation correctness.
+5. Fix any issues in the SVG source and re-render until the PNG assessment passes.
+6. Call `bin/amw-svg-render.py finish <file.svg>` to deliver the final artifact with an optimized copy.
+
+See the `## Mandatory workflow` section below for the authoritative 6-step render-verify-deliver loop.
+
+## Examples
+
+See `examples/README.md` for in-scope examples (icons, logos, patterns, data-vis primitives, animations). Advanced SVG techniques (filter chains, noise texture, gradients) are documented in `references/advanced-techniques.md`.
 
 ## Activation
 
@@ -74,7 +93,7 @@ WRITE SVG → RENDER → VIEW PNG → ASSESS → FIX → RENDER → VIEW → ...
    - Data-vis with many series, animated SVGs: **3–5** iterations.
 6. **Finish** with `python3 ../../bin/amw-svg-render.py finish <draft.svg> [name.svg]`. `finish` **refuses to deliver** if `render` was never called — the guard is by design. Claude must visually inspect the PNG at least once before shipping.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** `python3` (available on all supported platforms).
 - **runtime_binaries (installed via `/amw-init`):** `cairosvg` — auto-pip-installed by `bin/amw-svg-render.py` on first call, so users on a freshly-cloned plugin do not need to pre-install.
@@ -105,7 +124,7 @@ Apply these inside the SVG while building. Each is expanded in `references/advan
 </svg>
 ```
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/ai-slop-avoid.md` — item 3 is the gating rule. Re-read it if tempted to stretch scope.
 - `../amw-design-principles/color-system.md` — use `oklch` tokens when the user supplied them; never raw `#000` / `#fff`.
@@ -127,7 +146,7 @@ Apply these inside the SVG while building. Each is expanded in `references/advan
 - **Animated SVGs include reduced-motion fallback.** Non-negotiable; users on `prefers-reduced-motion` must see a still frame.
 - **Do not claim broad design vocabulary.** `design-principles` owns "design", "UI", "landing page", "mockup" — execute only when the orchestrator routes here or the request is unambiguously technical SVG.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
@@ -491,7 +510,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 

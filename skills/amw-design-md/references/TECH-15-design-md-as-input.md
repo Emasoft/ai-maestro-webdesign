@@ -182,7 +182,7 @@ The user accepts the fallback or provides a corrected DESIGN.md.
 
 ## CLAUDE.md-coupled projects
 
-When a project uses DESIGN.md AND has `CLAUDE.md` snippet from `templates/claude-md-snippet.md`, the wireframe-builder reads BOTH:
+When a project uses DESIGN.md AND has `CLAUDE.md` snippet from `claude-md-snippet.md`, the wireframe-builder reads BOTH:
 
 - DESIGN.md as the token source.
 - CLAUDE.md as additional do/don't rules layered on top.
@@ -214,4 +214,4 @@ In all 6 cases, the wireframe-builder's `brand_tokens` input contract is the sam
 - `./TECH-12-companion-files.md` — alternative consumption via tokens.css
 - `./TECH-11-validation-and-lint.md` — the lint gate
 - `./TECH-13-converting-variant2-to-1.md` — V2 input handling
-- `./templates/claude-md-snippet.md` — coupled CLAUDE.md
+- `./claude-md-snippet.md` — coupled CLAUDE.md

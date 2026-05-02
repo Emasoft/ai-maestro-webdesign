@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-svg
-description: Natural-language request to SVG diagram primitives — flowcharts, architecture diagrams, system illustrations with nodes, edges, and arrowheads. Triggers on narrow technical intents only — "draw a flowchart of X", "SVG diagram of X", "render the data flow as SVG", "draw the architecture as SVG", "sketch the system as SVG", "make a node-and-arrow diagram". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "prototype") — those belong to the `design-principles` orchestrator, which routes here when a workflow needs an SVG diagram.
+description: Natural-language request to SVG diagram primitives — flowcharts, architecture diagrams, system illustrations with nodes, edges, and arrowheads. Triggers on narrow technical intents only — "draw a flowchart of X", "SVG diagram of X", "render the data flow as SVG", "draw the architecture as SVG", "sketch the system as SVG", "make a node-and-arrow diagram". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "prototype") — those belong to the `design-principles` orchestrator, which routes here when a workflow needs an SVG diagram. Use when authoring or editing a standalone SVG flowchart or architecture diagram with nodes and edges. Trigger with /amw-create-or-modify-svg-diagram.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > Executor. Narrow technical triggers only — the orchestrator routes here for structured node-and-edge visuals.
+
+## Overview
+
+Natural-language-to-SVG diagram generator for flowcharts, architecture diagrams, and system illustrations. Produces one self-contained `.svg` file composed from standard primitives (`<rect>`, `<circle>`, `<path>`, `<marker>`, etc.) with a 0–1000 viewBox, flat colors, and optional SMIL animation. Mandatory render-verify loop via `bin/amw-svg-render.py` before delivery.
 
 ## Activation
 
@@ -30,7 +34,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 Do **not** activate on "design a page", "UI", "landing page", "mockup", "prototype" — `design-principles` owns those. For layered software-architecture diagrams (tiered boxes, labelled zones) route to `../amw-diagram-architecture/SKILL.md` instead.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** none (pure LLM → SVG markup)
 - **python_packages:** none (optional `cairosvg` used by `../../bin/amw-svg-render.py`)
@@ -185,7 +189,7 @@ turns the diagram into noise and is the fast-track to an AI-slop pattern.
 
 After writing the `.svg`, run `python3 ../../bin/amw-svg-render.py <path>` to rasterize and visually verify. If the render shows overlap, clipped text, missing arrowheads, or invalid XML, fix the SVG and re-run. Do not ship unverified output.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/color-system.md` — design-principles prefers `oklch`. Source slate palette (`#0f172a` / `#f1f5f9` / `#334155` / `#38bdf8`) is the mechanical default; substitute user tokens when supplied. Never emit raw `#000` / `#fff`.
 - `../amw-design-principles/typography-system.md` — keep in-node font sizes in the `18`–`28` band.
@@ -193,6 +197,15 @@ After writing the `.svg`, run `python3 ../../bin/amw-svg-render.py <path>` to ra
 - `../amw-ascii-to-svg/SKILL.md` — upstream, routes here when input is ASCII.
 - `../amw-diagram-architecture/SKILL.md` — route there for layered architecture instead.
 - Slash command: `/amw-ascii-to-svg`.
+
+## Instructions
+
+1. Determine whether this is a create or modify request: a natural-language brief → create path; an existing `.svg` file or path → modify path (parse to IR first via `bin/amw-diagram-ir.py parse`).
+2. Author the SVG inside a `1000×1000 viewBox` using the four logical group structure (`background`, `nodes`, `connections`, `labels`); substitute the user's oklch tokens when supplied.
+3. Use the node-shape vocabulary (rect for services, cylinder for databases, diamond for decisions, parallelogram for I/O) and the stroke-width-4-palette from the technique reference.
+4. Define arrow markers in `<defs>`; draw connections before nodes so arrow heads are not occluded.
+5. Validate the SVG with `bin/amw-validate-diagram.sh`; fix any well-formedness or layout issues before delivery.
+6. Save to a `.svg` file with a descriptive English name and return the file path.
 
 ## Technique selection
 
@@ -283,6 +296,10 @@ Every technique in this skill is documented as a single reference file under `./
 
 <!-- end of references -->
 
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
 ## Completion checklist
 
 Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
@@ -315,7 +332,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -334,7 +351,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **Always run `bin/amw-svg-render.py` before delivery.** Source skill rules make render-verify mandatory.
 - **Do not claim broad design vocabulary.** `design-principles` owns "design", "UI", "landing page" — execute only when the orchestrator routes here or the request is unambiguously an SVG diagram.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

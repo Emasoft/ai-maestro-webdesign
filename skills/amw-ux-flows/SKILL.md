@@ -1,15 +1,32 @@
 ---
 name: amw-ux-flows
-description: PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + sequence) → mobile-first clickable HTML wireframes with inter-screen navigation → consolidated handoff document. Narrow triggers — "user flows from the PRD", "wireframe this feature", "generate a screen map", "document use cases", "clickable prototype for <feature>", "flow diagram for <screen>", "state diagram for <screen>", "sequence diagram for <API>". Do NOT trigger on generic "design a page", "style the UI", "make it look nice" — those stay with design-principles.
+description: PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + sequence) → mobile-first clickable HTML wireframes with inter-screen navigation → consolidated handoff document. Narrow triggers — "user flows from the PRD", "wireframe this feature", "generate a screen map", "document use cases", "clickable prototype for a feature", "flow diagram for a screen", "state diagram for a screen", "sequence diagram for an API". Do NOT trigger on generic "design a page", "style the UI", "make it look nice" — those stay with design-principles. Use when converting a PRD or feature list into user flows, Mermaid diagrams, and HTML wireframes. Trigger with "user flows from the PRD", "wireframe this feature", or "generate a screen map" phrasing.
 version: 0.1.0
 author: ai-maestro-webdesign
-source: Adapted from the public ux-flow-designer skill by Thomas Praun (MIT). Rewritten for this plugin's orchestrated flow; Chrome-DevTools-MCP dependency replaced with `../amw-dev-browser/`; Figma Dev Mode MCP path preserved.
 ---
 
 # UX Flows
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill is an executor. Triggers are PRD-to-wireframe-specific only — generic design vocabulary stays with the orchestrator.
+
+## Overview
+
+PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + sequence) → mobile-first 375px clickable HTML wireframes with inter-screen navigation → consolidated handoff document (`UX-FLOWS.md`). Bridges Product and Visual Design. Four mandatory phases in order — none skippable. Wireframes are prototype-grade only (dashed-border greyscale, no brand tokens); production HTML routes downstream to `amw-ascii-to-html`. Optional Figma Dev Mode MCP export on explicit user request.
+
+## Instructions
+
+1. Read or request the PRD (or feature list) — if `docs/product/prd.md` exists, read it; otherwise ask the user; do not synthesize use cases from nothing.
+2. **Phase 1 — Use Case Extraction**: document each use case with ID, actors, preconditions, main flow, alternative flows, postconditions; save to `docs/ux-flows/use-cases.md`; present to user and wait for explicit confirmation before Phase 2.
+3. **Phase 2 — Mermaid Diagrams**: read `references/mermaid-patterns.md` first; generate a master screen-map flowchart plus per-use-case flow/state/sequence diagrams under `docs/ux-flows/diagrams/`; max 15-20 nodes per diagram.
+4. **Phase 3 — HTML Wireframes**: for each screen, copy `assets/wireframe-template.html` and fill it in (self-contained, mobile-first 375px, dashed-border greyscale, inline CSS only); add inter-screen navigation links.
+5. **Phase 4 — Handoff**: compile `UX-FLOWS.md` linking all artifacts; route to `../amw-ascii-sketch/` for ASCII iteration, `../amw-ascii-to-html/` for production HTML lift, or `../amw-diagram-editorial/` if Mermaid diagrams need editorial upgrade.
+
+See the four-phase workflow in `## Usage` below.
+
+## Examples
+
+See `references/TECH-4-phase-mandatory-workflow.md` for a complete run through all four phases with minimal PRD input.
 
 ## Activation
 
@@ -45,7 +62,7 @@ Fires on these specific phrasings:
 
 Do NOT fire on: "design a landing page", "make a nice dashboard", "build the UI" — those are design-principles' vocabulary. Do NOT fire on bare "flowchart" either — route that to `../amw-diagram-architecture/` when it is a system diagram, or to `../amw-diagram-svg/` for a freeform diagram.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** none — Mermaid is text-only and Claude renders the blocks; HTML wireframes are self-contained.
 - **runtime_binaries (bundled):** `../../bin/amw-dev-browser-wrapper.sh` — the plugin-standard browser wrapper; used for optional wireframe preview in Phase 3.
@@ -125,7 +142,7 @@ After the handoff document is written, inform the user:
 - Only requires Figma desktop app with Dev Mode MCP Server enabled (2-step setup in `references/figma-integration.md`).
 - If interested, the user says "export to figma" and the setup steps are presented.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator
 - `../amw-dev-browser/SKILL.md` — wireframe preview primitive (replaces the upstream skill's Chrome-DevTools-MCP dependency)
@@ -319,7 +336,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -340,7 +357,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **Respect design-principles Rule 1.** If no PRD and no feature list, stop and ask — do not synthesize use cases.
 - **Never silent on Figma.** Always present prerequisites before touching the Dev Mode MCP — per the upstream skill's original protocol.
 
-## Failure modes
+## Error Handling
 
 - **No PRD, no feature list.** The skill cannot proceed. Ask the user; optionally route them to `product-manager-toolkit` via `references/install-commands.md`.
 - **Phase 2 stops before Phase 3.** The user gets Mermaid diagrams without a clickable prototype — a violation of this skill's contract. The orchestrator should abort and re-enter Phase 3.

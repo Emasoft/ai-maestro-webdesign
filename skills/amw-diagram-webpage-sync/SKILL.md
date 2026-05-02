@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-webpage-sync
-description: Re-emit an existing webpage (`.html`) from an edited diagram source (ASCII / SVG / Mermaid). Chains diagram → IR → ASCII → HTML and overwrites the target page after moving the original to `.bak`. Surfaces a structural diff showing what changed. Triggers on narrow technical intents only — "edit the diagram in my webpage", "modify the webpage from this diagram", "sync this diagram back into my HTML", "/amw-modify-webpage-from-diagram". Does NOT claim generic design vocabulary. Refuses pages whose diagram is embedded as `<img src="*.png">` per plugin directive.
+description: Re-emit an existing webpage (`.html`) from an edited diagram source (ASCII / SVG / Mermaid). Chains diagram → IR → ASCII → HTML and overwrites the target page after moving the original to `.bak`. Surfaces a structural diff showing what changed. Triggers on narrow technical intents only — "edit the diagram in my webpage", "modify the webpage from this diagram", "sync this diagram back into my HTML", "/amw-modify-webpage-from-diagram". Does NOT claim generic design vocabulary. Refuses pages whose diagram is embedded as a raster image tag per plugin directive. Use when syncing an edited diagram back into its source webpage. Trigger with /amw-modify-webpage-from-diagram.
 version: 0.1.0
 ---
 
@@ -12,6 +12,22 @@ version: 0.1.0
 > **HTML format spec:** `../amw-diagram-formats/references/html.md`.
 
 This skill owns the **reverse leg** of the webpage round-trip: a user has edited a diagram (ASCII / SVG / Mermaid), and wants the webpage regenerated from it. The MVP strategy is **full re-emission** — run the ascii-to-html pipeline end-to-end, back up the old `.html` to `.bak`, and show a structural diff of what changed.
+
+## Overview
+
+Re-emits an existing webpage from an edited diagram source (ASCII / SVG / Mermaid). Chains diagram → IR → ASCII → HTML via a 7-step pipeline, backs up the original `.html` to `.bak` before overwriting, and surfaces both an IR-level structural diff and an HTML-level diff of what changed. PNG-embedded diagram regions are refused by plugin directive.
+
+## Instructions
+
+1. Read the target webpage and reject if the primary diagram region is a PNG (`<img src="*.png">` or `data:image/png;base64,...`).
+2. Parse the current page to IR with `bin/amw-parse-html-diagram.py`; parse the new diagram to IR with `bin/amw-diagram-ir.py parse`.
+3. Compute the structural diff with `bin/amw-diagram-ir.py diff` and surface the add/remove/move operations as a Markdown summary before overwriting.
+4. Apply the patch via full re-emission: ASCII → `/amw-ascii-to-html`; SVG/Mermaid → emit intermediate ASCII first via IR, then `/amw-ascii-to-html`.
+5. Run `bin/amw-html-diff.py` to produce the HTML-level structural diff; save the original to `<webpage>.bak` atomically before overwriting.
+6. Validate with `bin/amw-validate-diagram.sh`; on PASS announce the `.bak` path and both diff summaries; on FAIL restore from `.bak` and exit 1.
+7. See the `## Pipeline (7 steps)` section below for the authoritative execution sequence.
+
+See the `## Pipeline (7 steps)` section below for the authoritative execution sequence.
 
 ## MVP limits (explicit, per plugin directive 2026-04-22)
 
@@ -55,7 +71,7 @@ Do NOT activate on:
 6. **Run html-diff.** Call `bin/amw-html-diff.py --before <webpage>.bak --after <webpage> --out /tmp/amw-sync-<hash>-html-patch.json`. This reports what structurally changed at the HTML level (landmarks added / removed / reordered, headings renamed, inline SVGs added / removed). Pass this summary to the user alongside the IR-level patch from step 4.
 7. **Validate + announce.** `bin/amw-validate-diagram.sh <webpage>` (HTML branch). On PASS, announce the `.bak` location, the IR-level summary, and the HTML-level summary. On FAIL: restore from `.bak` (atomic move back), surface the validator FIX hints, exit 1.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|
@@ -65,7 +81,7 @@ Do NOT activate on:
 | IR-level diff empty but HTML-level diff non-empty | Token change or chrome change altered the output without changing structure | Normal — surface both diffs so the user knows the change is styling-only. |
 | New diagram has more landmarks than old | User added structure (e.g. a new `<section>`) | Patch includes `add` operations; the re-emit covers them automatically. |
 
-## Dependencies
+## Prerequisites
 
 ```yaml
 runtime_binaries:
@@ -77,6 +93,14 @@ python_packages:
   - beautifulsoup4    # OPTIONAL
 ```
 
+## Output
+
+Produces a rewritten `.html` at the original path plus a `.bak` backup of the original. Surfaces both an IR-level structural diff (nodes/edges added/removed/changed) and an HTML-level diff showing structural changes at the landmark level. On validation failure, restores from `.bak` automatically.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
 ## Non-negotiables
 
 - **PNG-embedded refusal is absolute.** Any `<img src="*.png">` or `data:image/png;base64,...` in the diagram region → abort with the standard message. No OCR.
@@ -85,7 +109,7 @@ python_packages:
 - **The IR is the pivot.** Even ASCII→ASCII sync goes through IR so the diff summary works uniformly.
 - Inherits the three hard rules from `../amw-design-principles/SKILL.md` via the `/amw-ascii-to-html` hand-off (tokens, variants on the greenfield path, AI-slop gate).
 
-## Cross-references
+## Resources
 
 - `../amw-diagram-formats/references/modify-flow.md` — shared 6-step pipeline (§7.1 documents the webpage-sync composition).
 - `../amw-diagram-formats/references/ir-schema.md` — IR schema consumed.

@@ -1,12 +1,20 @@
 ---
 name: amw-text-visual-cheatsheets
-description: Produces portable ASCII CLI command panels — tabular cheat sheets summarizing workflows for tools like gh, git, kubectl, deploy scripts — with macOS/Linux and Windows variants side by side. Triggers on narrow intents — "ASCII cheat sheet", "CLI reference panel in monospace", "command grid I can paste in a README", "gh cheat sheet", "terminal command panel". Does NOT trigger on generic "cheat sheet", "guide", "docs" — those are documentation tasks for general skills. Output is ASCII only; every panel passes bin/amw-validate-ascii.py before delivery.
+description: Produces portable ASCII CLI command panels — tabular cheat sheets summarizing workflows for tools like gh, git, kubectl, deploy scripts — with macOS/Linux and Windows variants side by side. Triggers on narrow intents — "ASCII cheat sheet", "CLI reference panel in monospace", "command grid for pasting in a README", "gh cheat sheet", "terminal command panel". Does NOT trigger on generic "cheat sheet", "guide", "docs" — those are documentation tasks for general skills. Output is ASCII only; every panel passes bin/amw-validate-ascii.py before delivery. Use when creating a portable ASCII CLI cheat-sheet panel for a README or PR description. Trigger with "ASCII cheat sheet" or "CLI reference panel in monospace" phrasing.
 version: 0.1.0
 ---
 
 # Text-Visual Cheatsheets — ASCII CLI command panels
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Produces portable ASCII CLI command panels — tabular cheat sheets with rows for actions and columns for platforms (macOS/Linux bash/zsh + Windows PowerShell/CMD). Sections split by workflow stage. Destructive commands starred with footnote caveats. Width ceiling: 100 columns for GitHub READMEs, 80 for terminal `--help`. Every panel passes `bin/amw-validate-ascii.py` before delivery. ASCII only — no HTML or SVG output.
+
+## Examples
+
+See the `## Panel format` section below for a minimal standard-layout panel example.
 
 ## Activation
 
@@ -113,7 +121,7 @@ A single monolithic 20-row panel is nearly unreadable. Two five-row panels with 
 
 ## Extended connection types
 
-Cheat sheets are mostly tabular, but occasionally a panel needs an inline command-flow annotation ("command A pipes to command B", "set-env then run") or a cross-reference arrow (`see also ---▷ ...`). Use this vocabulary when the panel needs to show relationships alongside the command grid. Source: adapted from `diagram-skill-main/ASCII-STYLES.md` lines 183-193.
+Cheat sheets are mostly tabular, but occasionally a panel needs an inline command-flow annotation ("command A pipes to command B", "set-env then run") or a cross-reference arrow (`see also ---▷ ...`). Use this vocabulary when the panel needs to show relationships alongside the command grid. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
 
 | Type | Glyph | Meaning |
 |---|---|---|
@@ -153,7 +161,7 @@ The flow:
 
 For tabular panels, `../../bin/amw-ascii-render.py` in `table` mode guarantees column alignment by construction. Strongly recommended when the panel has more than 5 columns or more than 10 rows. See `../amw-ascii-validator/SKILL.md` for the JSON schema.
 
-## Action
+## Instructions
 
 1. Confirm the three inputs (categories, platform variants, notes). One bundled question for missing pieces.
 2. Group commands into sections; never emit a single monolithic table for mixed workflows.
@@ -252,7 +260,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -262,7 +270,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10`
 - **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
@@ -270,7 +278,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py table` (strongly recommended for >5 columns or >10 rows)
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator.
 - `../amw-ascii-validator/SKILL.md` — validation contract.
@@ -300,7 +308,7 @@ No dedicated slash command. Invoke via:
 - Destructive commands are starred and explained in a footnote.
 - Does NOT emit HTML or SVG. ASCII only.
 
-## Failure modes and recovery
+## Error Handling
 
 | Failure mode | Recovery |
 |---|---|

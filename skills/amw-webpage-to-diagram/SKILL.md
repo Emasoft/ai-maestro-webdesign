@@ -1,6 +1,6 @@
 ---
 name: amw-webpage-to-diagram
-description: Extract the structural diagram of a webpage (URL or local `.html`) and emit it in a chosen format (ASCII / SVG / Mermaid — default ASCII). Triggers on narrow technical intents only — "extract diagram from webpage", "diagram this URL", "what's the structure of https://...", "sitemap from this HTML", "landmark diagram of this page", "/amw-create-diagram-from-webpage". Does NOT claim generic "design a page" / "build a landing page" vocabulary — those go to design-principles. Refuses every PNG input (file or URL returning image/*) per plugin directive.
+description: Extract the structural diagram of a webpage (URL or local `.html`) and emit it in a chosen format (ASCII / SVG / Mermaid — default ASCII). Triggers on narrow technical intents only — "extract diagram from webpage", "diagram this URL", "what's the structure of https://...", "sitemap from this HTML", "landmark diagram of this page", "/amw-create-diagram-from-webpage". Does NOT claim generic "design a page" / "build a landing page" vocabulary — those go to design-principles. Refuses every PNG input (file or URL returning image/*) per plugin directive. Use when extracting a structural diagram from a live URL or local HTML file. Trigger with /amw-create-diagram-from-webpage.
 version: 0.1.0
 ---
 
@@ -14,6 +14,21 @@ version: 0.1.0
 This skill owns one direction of the webpage round-trip: **URL/HTML → IR → target format**. It is a specialization of `parse-html-diagram.py` — where that tool focuses on inline-`<svg>` diagrams, this skill treats the whole page as a structural graph: every HTML5 landmark (`<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<aside>`, `<header>`) becomes an IR node, every internal anchor link becomes an IR edge, and every nested `<svg>` diagram is attached as children of its containing landmark.
 
 HTML-as-target is a no-op (already HTML) — the dispatcher skips it. PNG-as-target is reachable via the standard IR → SVG → rasterize chain in `diagram-convert`, but the typical ask is ASCII (for round-trip editing) or Mermaid (for embedding in markdown).
+
+## Overview
+Extracts the structural diagram of a webpage (URL or local `.html`) and emits it in a chosen format — ASCII (default, for round-trip editing), SVG, or Mermaid. Treats HTML5 landmarks (`<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<aside>`, `<header>`) as IR nodes and internal anchor links as IR edges. Uses `bin/amw-dom-to-ir.py` for DOM-to-IR extraction and `bin/amw-dev-browser-wrapper.sh` for post-JS HTML capture. Refuses all PNG input absolutely. One leg of the webpage round-trip — the reverse leg is `amw-diagram-webpage-sync`.
+
+## Instructions
+
+1. Classify input: URL (`http(s)://`), local `.html`/`.htm` path, or `.png` path — refuse PNG input immediately with the standard refusal message.
+2. For URLs, send a `HEAD` request to check `Content-Type`; if it starts with `image/`, refuse as PNG; for local files check the first 8 bytes for PNG magic.
+3. Fetch HTML: use `bin/amw-dev-browser-wrapper.sh` (post-JS rendered DOM) for URLs; fall back to `urllib.request` when the wrapper is unavailable.
+4. Parse DOM to IR with `bin/amw-dom-to-ir.py --in <html> --out <ir.json> [--target-kind arch|flowchart|tree]`; default target-kind is `arch` (HTML5 landmarks as nodes, anchor links as edges).
+5. Emit to the chosen format via `bin/amw-diagram-ir.py emit --in <ir> --format <ascii|svg|mermaid> --out <out-path>`; skip emission if target format is `html` (already HTML).
+6. Validate with `bin/amw-validate-diagram.sh <out-path>`; a FAIL surfaces FIX hints verbatim and leaves a `.tentative` file on disk — no retry budget here (failures indicate a parser bug, not a fixable IR patch).
+7. Return the output file path.
+
+See `## Pipeline (7 steps)` below.
 
 ## Activation
 
@@ -49,7 +64,7 @@ Do NOT activate on:
 6. **Emit to target format.** If target is `html` (no-op — already HTML), skip emission and report the input path. Otherwise, chain to `bin/amw-diagram-ir.py emit --in <ir> --format <target> --out <out-path>`. ASCII is the default (pair-able with `/amw-modify-diagram-of-webpage` for round-trip editing).
 7. **Validate.** Run `bin/amw-validate-diagram.sh <out-path>`. A FAIL aborts the skill, surfaces FIX hints verbatim, and leaves the emitted file (marked `.tentative`) on disk for inspection. Retry budget is NOT applied here — validation failure is usually a parser bug, not a fixable IR patch.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|
@@ -59,7 +74,10 @@ Do NOT activate on:
 | URL 4xx / 5xx | Target page unreachable or auth-gated | Report the HTTP status verbatim; ask the user to supply a local `.html` export instead. |
 | Validation FAIL on emitted ASCII | Downstream renderer produced misaligned output | Save the IR to `/tmp/amw-page-<hash>.json` for inspection; ask the user to rerun with `--target-kind flowchart` (less strict alignment). |
 
-## Dependencies
+## Output
+One diagram file per invocation in the user's chosen format (ASCII `.txt` by default, `.svg`, or `.mmd`). Output path follows project-inference rules from `../amw-design-principles/references/project-output-routing.md`. The original HTML is never modified.
+
+## Prerequisites
 
 ```yaml
 runtime_binaries:
@@ -83,7 +101,10 @@ npm_packages:
 - **IR is the pivot.** Even when the target is HTML, the path is DOM → IR → HTML (the no-op case is just "don't re-emit"). Bypassing IR for direct HTML rewriting is OUT of scope — use `/amw-modify-webpage-from-diagram` or `/amw-ascii-to-html` for that.
 - Inherits the three hard rules from `../amw-design-principles/SKILL.md` (context, variants, AI-slop refusal) whenever the downstream target is a design artifact (e.g. emitting ASCII for a `/amw-ascii-to-html` round-trip).
 
-## Cross-references
+## Examples
+See `../amw-diagram-webpage-sync/SKILL.md` for a complete round-trip example (extract → edit → re-apply).
+
+## Resources
 
 - `../amw-diagram-formats/references/html.md` — authoritative HTML format spec (consumed via `bin/amw-parse-html-diagram.py` for nested SVGs).
 - `../amw-diagram-formats/references/ir-schema.md` — IR schema produced by `bin/amw-dom-to-ir.py`.

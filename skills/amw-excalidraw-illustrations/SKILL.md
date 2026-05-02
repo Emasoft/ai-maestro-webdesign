@@ -1,6 +1,6 @@
 ---
 name: amw-excalidraw-illustrations
-description: Generate hand-drawn Excalidraw-style conceptual illustrations via the Gemini API — white background, rough-sketch aesthetic, integrated in-panel text (speech bubbles, labelled frames) for educational material, slides, and concept diagrams. GATED — requires a user-provided `GEMINI_API_KEY` and explicit per-call consent because each call incurs a cost on Google's Gemini quota. Triggers on narrow phrasings only — "Excalidraw-style illustration of X", "hand-drawn concept diagram", "sketchy educational illustration", "whiteboard sketch of this concept for my slide". Does NOT trigger on broad design intent ("design a page", "UI", "landing page", "mockup") or on other diagram intents (flowchart, architecture, SVG diagram) — those route to design-principles, diagram-architecture, or diagram-svg.
+description: Generate hand-drawn Excalidraw-style conceptual illustrations via the Gemini API — white background, rough-sketch aesthetic, integrated in-panel text (speech bubbles, labelled frames) for educational material, slides, and concept diagrams. GATED — requires a user-provided `GEMINI_API_KEY` and explicit per-call consent because each call incurs a cost on Google's Gemini quota. Triggers on narrow phrasings only — "Excalidraw-style illustration of X", "hand-drawn concept diagram", "sketchy educational illustration", "whiteboard sketch of this concept for my slide". Does NOT trigger on broad design intent ("design a page", "UI", "landing page", "mockup") or on other diagram intents (flowchart, architecture, SVG diagram) — those route to design-principles, diagram-architecture, or diagram-svg. Use when generating a hand-drawn Excalidraw-style concept illustration via the Gemini API. Trigger with /amw-create-excalidraw-like-diagram-png.
 version: 0.1.0
 ---
 
@@ -11,6 +11,10 @@ version: 0.1.0
 > This skill is an executor. Its triggers are narrow — hand-drawn / Excalidraw / whiteboard-style educational illustration only. The orchestrator routes here for conceptual, illustration-heavy slide or document material where the deliberate rough-sketch aesthetic is the point; everything else stays outside this skill.
 >
 > **Documented exception to `../amw-design-principles/ai-slop-avoid.md` item 3 ("no AI-drawn illustrations").** That rule targets AI-painted people, landscapes, and product shots rendered in photoreal or vector-illustration style — all of which have stiff lines, wrong proportions, and visibly degrade the whole piece. This skill is the carved-out exception **only** because its output is tightly constrained: white background, hand-drawn Excalidraw roughness, concept-diagram / whiteboard use case, integrated labelled text. The constraint itself is what keeps the output from looking like generic AI-illustration slop. Do not use this skill for anything that does not meet all four of those constraints.
+
+## Overview
+
+Generates hand-drawn Excalidraw-style conceptual illustrations via the Gemini API (model `gemini-3-pro-image-preview`). Produces PNG output in 16:9, 1:1, or 4:3 aspect ratios. Style anchor: white background, rough-sketch aesthetic, text always inside speech bubbles or labeled frames, max 4 concept panels per image. GATED — requires `GEMINI_API_KEY` and explicit per-call user consent.
 
 ## Activation
 
@@ -44,7 +48,7 @@ Do NOT fire on:
 - SVG icon / logo / technical-figure requests — `../amw-svg-creator/` owns those (gated differently)
 - photoreal or vector-illustration requests — refuse and refer back to design-principles' ai-slop-avoid item 3: ask the user for a real asset, do not generate
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** `python3 ≥ 3.8` — used to call the Gemini REST endpoint directly and (optionally) overlay fallback text via Pillow.
 - **python_packages:**
@@ -214,7 +218,7 @@ Do not silently regenerate. Do not silently ship a broken image. Do not invent a
 - **Minimum font size inside the illustration.** The generated text must be readable at the target surface size (slide: 1920×1080 minimum font 24px in the rendered output; print: equivalent of 14px at final print DPI). If the image is going into a slide and the preview shows tiny text, regenerate with a "LARGER TEXT" emphasis in the prompt rather than shipping as-is.
 - **Maximum number of concept panels per image.** Four. Beyond four, the text gets too small and the model's spelling starts failing. Split into multiple images.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator. The three hard rules (context before designing, at least three variants, reject AI slop) apply here — except that the "three variants" rule in a single Gemini session is expensive, so for this skill the variants step means three different *concepts / compositions* offered to the user **before** any call is made, not three separate Gemini calls.
 - `../amw-design-principles/ai-slop-avoid.md` — this skill is a **documented exception** to item 3 (AI-drawn illustrations), **only** within the strict constraints stated at the top of this file. Do not extend to non-Excalidraw illustration requests.
@@ -228,6 +232,15 @@ Do not silently regenerate. Do not silently ship a broken image. Do not invent a
 - `references/prompt-template-en.md` / `references/prompt-template-es.md` — filled-in prompt examples.
 - `scripts/generate.py` — the two-phase (visual-first, text-overlay-second) fallback generator with Pillow.
 - Source inspiration: [Ray Amjad](https://github.com/theramjad) — the AI-generated Excalidraw-style illustrations and the narrative-prompt approach that the original source skill was modelled on; the in-prompt "text in frames, many icons, narrative scenes" pattern comes from that work.
+
+## Instructions
+
+1. Confirm that `GEMINI_API_KEY` is set; this skill is gated — refuse immediately with a cost and key requirement note if absent.
+2. Ask for the target aspect ratio (16:9, 1:1, or 4:3) and confirm the concept brief before generating.
+3. Build the prompt using the prompt template in `## Prompt template`; fill in the concept, include framed text and icon narrative instructions, and embed the two reference images as base64 style anchors.
+4. Call the Gemini API via the Python core call pattern; check for a valid image in the response.
+5. Run the verification loop: load the PNG, check for framed text regions and icon density, and iterate (up to the retry budget) if the illustration lacks narrative density.
+6. Save the final PNG with a descriptive English filename and report the artifact path and cost estimate.
 
 ## Technique selection
 
@@ -319,6 +332,10 @@ Every technique in this skill is documented as a single reference file under `./
 
 <!-- end of references -->
 
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in `references/prompt-template-en.md` / `references/prompt-template-es.md`.
+
 ## Completion checklist
 
 Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
@@ -351,7 +368,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -372,7 +389,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **Do not use this skill for non-Excalidraw illustration intent.** Photo-realistic, vector-flat, logo-style, character-illustration — all of those are refused and routed back to `design-principles` with ai-slop-avoid item 3 cited.
 - **Do not self-trigger on broad design vocabulary.** `design`, `UI`, `landing page`, `mockup`, `prototype`, `make a picture` — those are `design-principles`' territory and it routes here only when the specific illustration-style constraint is in scope.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Recovery |
 |---|---|---|

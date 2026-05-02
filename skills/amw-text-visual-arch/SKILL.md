@@ -1,12 +1,20 @@
 ---
 name: amw-text-visual-arch
-description: Produces layered ASCII architecture diagrams — context, container, or component level — for terminals, PRs, and ADRs. Triggers on narrow intents — "ascii architecture diagram", "text-only system diagram", "layered services in ASCII", "terminal-safe architecture sketch", "ADR-embeddable diagram", "PR-paste architecture overview". Does NOT trigger on generic "architecture", "system diagram", "draw the system" — those belong to design-principles / diagram-architecture / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery.
+description: Produces layered ASCII architecture diagrams — context, container, or component level — for terminals, PRs, and ADRs. Triggers on narrow intents — "ascii architecture diagram", "text-only system diagram", "layered services in ASCII", "terminal-safe architecture sketch", "ADR-embeddable diagram", "PR-paste architecture overview". Does NOT trigger on generic "architecture", "system diagram", "draw the system" — those belong to design-principles / diagram-architecture / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery. Use when creating a terminal-safe layered ASCII architecture diagram for a PR, ADR, or README. Trigger with explicit "ascii architecture diagram" or "terminal-safe architecture sketch" phrasing.
 version: 0.1.0
 ---
 
 # Text-Visual Architecture — ASCII system diagrams
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+Produces layered ASCII architecture diagrams at context, container, or component zoom level for paste-compatible use in terminal output, GitHub PRs, markdown ADRs, and code comments. Uses standard `+---+` box glyphs with labeled protocol arrows. Every diagram passes `bin/amw-validate-ascii.py` before delivery. For the same structure rendered as SVG, route to `amw-diagram-architecture` after ASCII approval.
+
+## Examples
+
+See the `## Diagram framing` section below for minimal examples of context, container, and component diagrams.
 
 ## Activation
 
@@ -118,7 +126,7 @@ Inside one service, break out modules / packages / classes.
 
 ## Extended connection types
 
-Architecture diagrams often need to show more than just "A calls B" — request/response pairs, handshakes, compile-time dependencies, plain associations. Use this vocabulary when the short `->` / `=>` / `~>` set is not expressive enough. Pick one style per diagram; do not mix styles within a single figure. Source: adapted from `diagram-skill-main/ASCII-STYLES.md` lines 183-193.
+Architecture diagrams often need to show more than just "A calls B" — request/response pairs, handshakes, compile-time dependencies, plain associations. Use this vocabulary when the short `->` / `=>` / `~>` set is not expressive enough. Pick one style per diagram; do not mix styles within a single figure. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
 
 | Type | Glyph | Meaning |
 |---|---|---|
@@ -164,7 +172,7 @@ The flow:
 
 For layered architectures with uniform rows, use `../../bin/amw-ascii-render.py` in `layers` mode — the renderer guarantees alignment by construction. See `../amw-ascii-validator/SKILL.md` for the JSON schema.
 
-## Action
+## Instructions
 
 1. Confirm the four inputs (components, interactions, context, zoom level). One bundled question for missing pieces.
 2. Pick the zoom level. Announce the choice in one sentence.
@@ -273,7 +281,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -283,7 +291,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10`
 - **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
@@ -291,7 +299,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py layers` (optional)
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator. Rule 1 (context) matters especially here: without knowing the real services, the diagram is a fabrication.
 - `../amw-ascii-validator/SKILL.md` — validation contract.
@@ -322,7 +330,7 @@ No dedicated slash command. Invoke via:
 - No fabricated services. If the user has not named a component, ask rather than invent.
 - Does NOT emit HTML or SVG. ASCII only.
 
-## Failure modes and recovery
+## Error Handling
 
 | Failure mode | Recovery |
 |---|---|

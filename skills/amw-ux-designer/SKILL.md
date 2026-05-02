@@ -1,12 +1,30 @@
 ---
 name: amw-ux-designer
-description: UX-process methodology reference — user research plans, persona creation, journey maps (empathy maps), usability-test protocols, accessibility audits (WCAG AA), information architecture (card sort / tree test). Triggers on "user research plan", "persona template", "heuristic review", "WCAG audit", "task analysis", "IA review", "journey map". Does NOT trigger on "design a page", "build a UI", "landing page", "mockup", "wireframe a dashboard" (design-principles orchestrator), "user flow diagram" or "PRD to flows" (ux-flows), "evaluate this page" (ux-evaluator). Methodology deliverables only, not final visual design.
+description: UX-process methodology reference — user research plans, persona creation, journey maps (empathy maps), usability-test protocols, accessibility audits (WCAG AA), information architecture (card sort / tree test). Triggers on "user research plan", "persona template", "heuristic review", "WCAG audit", "task analysis", "IA review", "journey map". Does NOT trigger on "design a page", "build a UI", "landing page", "mockup", "wireframe a dashboard" (design-principles orchestrator), "user flow diagram" or "PRD to flows" (ux-flows), "evaluate this page" (ux-evaluator). Methodology deliverables only, not final visual design. Use when producing a UX research plan, persona, journey map, or usability-test protocol. Trigger with "user research plan", "persona template", or "journey map" phrasing.
 version: 0.1.0
 ---
 
 # UX Designer
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+
+## Overview
+
+UX-process methodology reference covering the full 5-phase research-to-handoff lifecycle: Discover (user research, interviews, 5 Whys), Define (personas, journey maps, empathy maps), Ideate (task flows, IA card sort), Prototype & Test (usability-test protocols, moderated/unmoderated), and Handoff (WCAG AA checklists, microcopy review). Produces written deliverables only — personas, journey maps, IA sitemaps, usability plans, WCAG checklists. Visual output routes downstream to `amw-ascii-sketch` or `amw-ux-flows`.
+
+## Instructions
+
+1. Identify the UX-methodology deliverable requested: persona, user journey map, empathy map, research plan, usability-test protocol, IA sitemap, WCAG AA checklist, or microcopy review.
+2. Walk the `## Technique selection` tree and open the relevant TECH reference file from `references/` (e.g. `TECH-ux-persona-template.md`, `TECH-ux-process-discover.md`).
+3. Read the appropriate rule file from `rules/` for the deliverable type (e.g. `rules/research.md` for interviews/personas, `rules/accessibility.md` for WCAG).
+4. Produce the structured deliverable using the template in the TECH file (persona: goals/pain points/behaviors/quote; research plan: interview script + participant criteria + synthesis method; WCAG checklist: criteria + pass/fail per component).
+5. Route downstream when done: PRD + wireframes → `../amw-ux-flows/`; visual iterations → `../amw-ascii-sketch/`; evaluation of an existing design → `../amw-ux-evaluator/`.
+
+See `## Usage` below.
+
+## Examples
+
+See `references/TECH-ux-persona-template.md` for a complete persona example ("Sarah, The Busy Parent") and `references/TECH-ux-process-discover.md` for a user-research plan example.
 
 ## Activation
 
@@ -32,7 +50,7 @@ Activate only on UX-process-specific phrases:
 
 Do **not** activate on generic "design a page", "make a UI", "landing page", "wireframe a dashboard" — those belong to the orchestrator (`design-principles`).
 
-## Dependencies
+## Prerequisites
 - runtime_binaries: none (methodology reference)
 - python_packages: none
 - npm_packages: none
@@ -214,7 +232,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -224,7 +242,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Cross-references
+## Resources
 - `../amw-design-principles/SKILL.md` — orchestrator; applies the three hard rules
 - `../amw-ux-flows/SKILL.md` — PRD → wireframes pipeline (when the user has a PRD)
 - `../amw-ux-evaluator/SKILL.md` — validation at the end of the UX process
@@ -239,7 +257,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - Accessibility is not negotiable: every design-review deliverable includes a WCAG AA section.
 - Priority order when issues conflict: User Needs → Accessibility → Usability → Visual Hierarchy → Consistency.
 
-## Failure modes
+## Error Handling
 - Generating personas without requiring real research input (anti-pattern).
 - Recommending visual design changes instead of returning methodology output.
 - Skipping accessibility review on design-review deliverables.

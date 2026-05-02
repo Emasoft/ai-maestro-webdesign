@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-convert
-description: Cross-format diagram conversion — convert a diagram from one format to another across the full 5-format matrix (ASCII, HTML, SVG, Mermaid, PNG). Triggers on narrow technical intents only — "convert this diagram to X", "turn my ASCII into SVG", "cross-format diagram conversion", "convert this flowchart to mermaid", "amw-convert-any-diagram-format", "turn my SVG into ASCII", "export this diagram as PNG", "transform my mermaid to HTML". PNG-as-source is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles.
+description: Cross-format diagram conversion — convert a diagram from one format to another across the full 5-format matrix (ASCII, HTML, SVG, Mermaid, PNG). Triggers on narrow technical intents only — "convert this diagram to X", "turn my ASCII into SVG", "cross-format diagram conversion", "convert this flowchart to mermaid", "amw-convert-any-diagram-format", "turn my SVG into ASCII", "export this diagram as PNG", "transform my mermaid to HTML". PNG-as-source is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles. Use when converting a diagram from one format to another across the five-format matrix. Trigger with /amw-convert-any-diagram-format.
 version: 0.1.0
 ---
 
@@ -13,6 +13,10 @@ version: 0.1.0
 > **Validation contract (authoritative):** `../amw-diagram-formats/references/validation-dispatcher.md`.
 
 This skill does not redefine format semantics — every conversion rule lives once in `../amw-diagram-formats/references/conversion-matrix.md`. The skill's job is to execute the dispatch algorithm and run the post-conversion validation gate.
+
+## Overview
+
+Cross-format diagram conversion across the full 5-format matrix (ASCII, HTML, SVG, Mermaid, PNG). Accepts a source diagram file in any supported format and emits a converted file in the requested target format via a 6-step pipeline: detect → parse to IR → (optional IR ops) → emit → validate → write. PNG as source is refused by plugin directive; PNG is a valid target from any other format.
 
 ## Activation
 
@@ -52,6 +56,15 @@ Provide the ASCII / HTML / SVG / Mermaid source instead.
 Detection uses both PNG magic bytes (`\x89PNG\r\n\x1a\n`) and `.png` extension — either alone triggers refusal. No OCR fallback, no best-effort reinterpretation. Exit 2.
 
 PNG remains a valid TARGET for every other source format (see §PNG-as-target below).
+
+## Instructions
+
+1. Detect the source format with `bin/amw-diagram-detect-format.sh`; refuse immediately if source is PNG (PNG is output-only).
+2. For conversions labeled "via IR" in the conversion matrix: parse the source to IR with `bin/amw-diagram-ir.py parse`; for "direct" cells, skip this step.
+3. Optionally apply IR-level mutations (label renames, structural edits) before emission if the caller requests a normalize-then-edit workflow.
+4. Emit to the target format using the dispatch table in `../amw-diagram-formats/references/conversion-matrix.md`; for two-step paths chain two conversions.
+5. Validate the output with `bin/amw-validate-diagram.sh`; a FAIL aborts the skill and surfaces FIX hints verbatim.
+6. Save the output artifact and report the file path; document the conversion path taken.
 
 ## Conversion pipeline (6 steps)
 
@@ -147,7 +160,7 @@ All four non-PNG sources support PNG as a direct target:
 
 See `../amw-diagram-formats/references/png.md` for DPI / background / padding options per backend.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Resolution |
 |---|---|---|
@@ -158,7 +171,15 @@ See `../amw-diagram-formats/references/png.md` for DPI / background / padding op
 | `cairosvg` missing for SVG→PNG | Dependency not installed | `exit 3`; direct user to `/amw-init` / `/amw-doctor` |
 | `playwright` missing for HTML→PNG | Dependency not installed | `exit 3`; direct user to `/amw-init` / `/amw-doctor` |
 
-## Dependencies
+## Output
+
+Produces one converted diagram file at the output path (default: `<source-basename>.<target-ext>` in the same directory as the source). Intermediate files for multi-step conversions are written to `/tmp/amw-convert-<HASH>-step-N.<ext>`.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Prerequisites
 
 ```yaml
 runtime_binaries:
@@ -177,7 +198,7 @@ installed_via_wd_init: [xmllint, mmdc, playwright, cairosvg]
 checked_by_wd_doctor:  [xmllint, mmdc, playwright, cairosvg, python3, perl]
 ```
 
-## Cross-references
+## Resources
 
 - `../amw-diagram-formats/references/conversion-matrix.md` — authoritative N×N conversion dispatch table.
 - `../amw-diagram-formats/references/detect-format.md` — format sniffer spec.

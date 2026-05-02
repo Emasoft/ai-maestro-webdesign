@@ -181,5 +181,5 @@ These are gold. They tell the agent things it could not infer from tokens alone.
 
 - `./review-rubric.md` — rubric `T6` (minimum 3 of each)
 - `../ai-slop-avoid.md` — anti-patterns S13, S14
-- `./templates/canonical-template.md` — Variant 1 placeholder
-- `./templates/community-9-section-template.md` — Variant 2 placeholder
+- `./canonical-template.md` — Variant 1 placeholder
+- `./community-9-section-template.md` — Variant 2 placeholder

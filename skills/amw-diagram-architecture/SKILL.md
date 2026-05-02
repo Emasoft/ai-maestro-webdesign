@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-architecture
-description: Convert a free-text system description into a clean, visually-balanced, layered architecture diagram in a user-selectable format (graph JSON for canvas renderers, SVG for browsers, or PNG for sharing). Triggers on "draw my architecture", "architecture diagram for X", "map out my system as a layered diagram", "export this architecture as SVG/PNG", "component diagram of this backend". Do NOT trigger on generic "design", "draw me a picture", "sketch the UI", "make a flowchart of the onboarding funnel" — those are design-principles or diagram-editorial territory. For Mermaid output, route through `amw-mermaid-diagram` instead — this skill does NOT emit Mermaid (one-renderer rule).
+description: Convert a free-text system description into a clean, visually-balanced, layered architecture diagram in a user-selectable format (graph JSON for canvas renderers, SVG for browsers, or PNG for sharing). Triggers on "draw my architecture", "architecture diagram for X", "map out my system as a layered diagram", "export this architecture as SVG/PNG", "component diagram of this backend". Do NOT trigger on generic "design", "draw me a picture", "sketch the UI", "make a flowchart of the onboarding funnel" — those are design-principles or diagram-editorial territory. For Mermaid output, route through `amw-mermaid-diagram` instead — this skill does NOT emit Mermaid (one-renderer rule). Use when converting a free-text system description into a layered architecture diagram. Trigger with /amw-create-or-modify-svg-diagram.
 version: 0.2.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.2.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill is an executor. Triggers are architecture-diagram-specific only.
+
+## Overview
+
+Converts a free-text system description into a clean, visually-balanced, layered architecture diagram. Supports three output formats: canvas-renderable graph JSON, SVG (browser-renderable), and PNG (SVG + export instructions). Visual quality is a first-class constraint — 3–5 layers, 6–12 nodes. Includes opt-in on-disk versioning for iterative refinement.
 
 ## Activation
 
@@ -41,7 +45,7 @@ Do NOT fire on:
 - user-flow / UX journey charts — those are `ux-flows`
 - "convert this ASCII diagram to SVG" — the ASCII-input path is `ascii-to-svg`; that skill may route to this one when the ASCII subject is architectural
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** none — the pipeline is pure text-to-diagram, driven by an LLM call
 - **API access:** Claude (a capable modern Sonnet or Opus model — e.g. `claude-sonnet-4-6` or newer Opus) for the graph-generation LLM call. When running inside Claude.ai or Claude Code, the platform supplies authentication; embedded or standalone callers must supply their own `ANTHROPIC_API_KEY`.
@@ -167,7 +171,7 @@ validation, bumps the version via the versioning flow above, and renders the
 new ASCII preview inline. This is the conversational companion to the YAML
 versioning layout — they share one storage substrate.
 
-Source: ported and translated from `diagram-skill-main/SKILL.md` (originally
+Source: ported and translated from the diagram-skill-main source (originally
 Spanish — "Agrega un servicio de cache", etc.). Translated to English below.
 
 | User says | Skill does |
@@ -205,6 +209,15 @@ Spanish — "Agrega un servicio de cache", etc.). Translated to English below.
 
 (This versioning feature subsumes the scope of the upstream read-only `diagram-skill-main` source, which produced ASCII-previewed versioned architecture / flowchart / sequence / ERD diagrams on disk. That source's slash-command surface — `/diagram new`, `/diagram history`, `/diagram rollback` — is intentionally NOT reimplemented as slash commands in this plugin; the conversational triggers above replace them. The plugin reserves the `/amw-*` namespace for capabilities that cannot be invoked via natural-language intent alone.)
 
+## Instructions
+
+1. Call the LLM with the system prompt from `references/prompts.md` (assistant prefill `{` to force JSON output) to generate the graph; enforce 3–5 layers, 6–12 nodes, and the edge budget rule.
+2. Run Stage 1 validation per `references/validation.md`: check layer count, node count, balanced layout, label quality, edge integrity, and ID integrity; apply all listed fixes inline.
+3. Select the output format (`graph`, `svg`, or `png`) and run the matching format transformation from `references/formats.md`.
+4. Run Stage 2 validation (format-specific checks); fix any SVG well-formedness or layout-sanity issues; if re-generation is required, discard and repeat from step 1.
+5. If versioning is enabled, write the output and update `history.yaml` with the new version entry.
+6. Return the output without a prose wrapper; report artifact paths.
+
 ## Technique selection
 
 Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
@@ -236,6 +249,10 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-version-history-yaml](./references/TECH-version-history-yaml.md) — v1 / v2 / ... + history.yaml + rollback
   - **yaml** (1 techniques)
     - [TECH-yaml-canonical-schema](./references/TECH-yaml-canonical-schema.md) — `meta / nodes / edges / groups / notes`
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in `references/examples.md`.
 
 ## References
 
@@ -385,7 +402,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -395,7 +412,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/color-system.md` — when emitting SVG palettes, prefer mapping the five-layer hex palette into oklch for print/contrast parity with the rest of the plugin's output surface
 - `../amw-design-principles/typography-system.md` — node label and description legibility must respect the minimum-font thresholds (desktop body ≥ 16px, slides ≥ 24px) when the SVG is scaled for presentation
@@ -428,7 +445,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
   The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by `design-principles/ai-slop-avoid.md` item #1. Substituting tokens from `design-principles/color-system.md` is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
 - **Validation is mandatory, not advisory.** Every Stage 1 and Stage 2 check must pass before return. Surfacing an error to the caller is the last resort — apply the listed fixes first, regenerate if the triggers fire.
 
-## Failure modes
+## Error Handling
 
 - **Overloaded layer (> 5 nodes after generation)** — Stage 1.3 fix: move the least-essential node to an adjacent layer; if every adjacent layer is also full, re-run generation with an explicit merge instruction.
 - **Too-few or too-many layers/nodes** — re-run generation. The skill does not silently stretch (too few) or truncate (too many) — it regenerates. Patching these conditions produces visually incoherent diagrams.

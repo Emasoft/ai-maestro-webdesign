@@ -1,15 +1,18 @@
 ---
 name: amw-diagram-editorial
-description: Editorial-quality HTML+SVG diagrams with brand-matched styling — 13 fixed types (architecture, flowchart, sequence, state machine, ER, timeline, swimlane, quadrant, nested, tree, layer stack, Venn, pyramid/funnel). Triggers on narrow editorial-diagram intents like "sequence diagram", "ER diagram", "blog-ready architecture diagram". NOT for generic design intent, freeform SVG, or pure architecture-graph JSON — those belong to design-principles, svg-creator, and diagram-architecture respectively. Full trigger list in Trigger conditions section.
+description: Editorial-quality HTML+SVG diagrams with brand-matched styling — 13 fixed types (architecture, flowchart, sequence, state machine, ER, timeline, swimlane, quadrant, nested, tree, layer stack, Venn, pyramid/funnel). Triggers on narrow editorial-diagram intents like "sequence diagram", "ER diagram", "blog-ready architecture diagram". NOT for generic design intent, freeform SVG, or pure architecture-graph JSON — those belong to design-principles, svg-creator, and diagram-architecture respectively. Full trigger list in Trigger conditions section. Use when creating a polished editorial HTML+SVG diagram of one of the 13 supported diagram types. Trigger with /amw-create-or-modify-html-diagram.
 version: 0.1.0
 author: ai-maestro-webdesign
-source: Adapted from the public diagram-design-editorial skill by ara.so / Daily 2026 Skills (cathrynlavery/diagram-design). Rewritten in this plugin's house style; the upstream 13-type taxonomy, design-system rules, and brand-onboarding flow are preserved. Upstream credit belongs to the original author.
 ---
 
 # Diagram Editorial
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill is an executor. Its triggers are editorial-diagram-specific only — `design-principles` routes here when the user wants a blog-ready or documentation-ready diagram and has committed to one of the 13 canonical types.
+
+## Overview
+
+Editorial-quality HTML+SVG diagrams with brand-matched styling. Supports 13 fixed diagram types (architecture, flowchart, sequence, state machine, ER, timeline, swimlane, quadrant, nested, tree, layer stack, Venn, pyramid/funnel). Emits self-contained HTML with inline CSS and inline SVG, respecting the 4px grid, oklch palette, WCAG AA, and the three-family typography system.
 
 ## Activation
 
@@ -50,7 +53,7 @@ Activate only on editorial-diagram intents that name one of the 13 canonical typ
 
 Do NOT activate on generic intent ("draw a picture", "design a page", "make an illustration"). Those are `design-principles`' territory and it will route here once the user commits to a specific type.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** none at run-time — the HTML output opens in any browser. `node ≥ 22` is needed only if the user pairs this skill with `../amw-dev-browser/` for preview screenshots.
 - **runtime_binaries (installed via `/amw-init`):** none required. Optional: `dev-browser` CLI for `/amw-preview`, `python ≥ 3.8` + `cairosvg` for `bin/amw-svg-render.py` render-verify loop.
@@ -100,7 +103,7 @@ To match the user's existing site:
 
 **First-run gate.** If the default tokens are still in place on first use in a new project, pause and ask the user: *"Run onboarding, paste tokens manually, or proceed with default (stone + rust)?"* Do not guess.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — upstream orchestrator; route here only when the user has committed to a specific editorial type.
 - `../amw-design-principles/color-system.md` — oklch palette + WCAG AA — extracted tokens must validate against this.
@@ -114,6 +117,15 @@ To match the user's existing site:
 - `references/troubleshooting.md` — symptom-to-fix table (misaligned grid, brand-color mismatch, font loading, contrast failure, too dense, wrong type chosen).
 - `references/primitive-sketchy.md` — cross-type `<feTurbulence>` + `<feDisplacementMap>` filter for hand-drawn essay-style variants, full parameter reference.
 - `references/primitive-annotation.md` — cross-type italic Instrument Serif callout with dashed Bézier leader line for in-margin asides, full geometry spec.
+
+## Instructions
+
+1. Identify the diagram type from the user's intent using the 13-type selection table (architecture, ER, flowchart, layers, nested, pyramid, sequence, swimlane, timeline, decision-matrix, metrics, funnel, or dependency).
+2. Run the 60-second brand onboarding: extract or confirm primary, secondary, accent, and neutral colors plus typeface; apply these as the editorial design system tokens.
+3. Select the relevant TECH reference file(s) from the technique selection tree below and read only the needed file.
+4. Author the HTML+SVG diagram following the editorial design system: 4px grid snap, three-family typography, WCAG-AA contrast on every color pair.
+5. Render and visually inspect the output with `bin/amw-svg-render.py` or in `dev-browser`; apply AI-slop gate.
+6. Export the final artifact and write the job-completion report with all artifact paths.
 
 ## Technique selection
 
@@ -352,6 +364,10 @@ Every technique in this skill is documented as a single reference file under `./
 
 <!-- end of references -->
 
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
 ## Completion checklist
 
 Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
@@ -384,7 +400,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -405,7 +421,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **oklch colors, WCAG AA.** All palette changes go through `../amw-design-principles/color-system.md` validation. Do not hard-code hex without oklch equivalents in the token file.
 - **This skill does not substitute for `../amw-diagram-svg/`, `../amw-diagram-architecture/`, or `../amw-svg-creator/`.** If the user wants a freeform shape, an architecture graph, or an icon, route back to `design-principles` and let it pick.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-compare
-description: Structural comparison of two diagrams — diff two flowcharts, compare v1 and v2 of a diagram, find what changed between two diagram versions, cross-format diagram diff. Triggers on narrow technical intents only — "compare these diagrams", "diff two flowcharts", "what changed between v1 and v2 of this diagram", "structural diff of two diagrams", "amw-compare-diagrams". Source formats may differ (ASCII vs Mermaid is valid). PNG-as-input is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles.
+description: Structural comparison of two diagrams — diff two flowcharts, compare v1 and v2 of a diagram, find what changed between two diagram versions, cross-format diagram diff. Triggers on narrow technical intents only — "compare these diagrams", "diff two flowcharts", "what changed between v1 and v2 of this diagram", "structural diff of two diagrams", "amw-compare-diagrams". Source formats may differ (ASCII vs Mermaid is valid). PNG-as-input is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles. Use when comparing two diagrams structurally across any supported formats. Trigger with /amw-compare-diagrams.
 version: 0.1.0
 ---
 
@@ -13,6 +13,10 @@ version: 0.1.0
 > **Format detection (authoritative):** `../amw-diagram-formats/references/detect-format.md`.
 
 This skill does not redefine IR or diff semantics — those live once in the shared reference library. The skill's job is to execute the parse → diff → report pipeline and surface findings to the user in a clear markdown report.
+
+## Overview
+
+Structural comparison of two diagrams via IR-level diff. Accepts any two source-format diagrams (ASCII, HTML, SVG, or Mermaid; formats may differ). Parses both to the shared IR, computes an id-based structural patch, and renders a markdown diff report showing added/removed/changed nodes and edges. PNG input is refused — provide source-format artifacts instead.
 
 ## Activation
 
@@ -48,6 +52,15 @@ Provide the ASCII / HTML / SVG / Mermaid source that produced each PNG.
 ```
 
 Exit 2. Both inputs must be source-format diagrams for comparison to proceed.
+
+## Instructions
+
+1. Detect the format of each input with `bin/amw-diagram-detect-format.sh`; refuse immediately if either input is PNG.
+2. Parse both inputs to IR using `bin/amw-diagram-ir.py parse`; cross-format comparison is fully supported via IR normalization.
+3. Validate both IR documents with `bin/amw-diagram-ir.py validate`; abort on dangling edges or schema errors.
+4. Compute the structural diff with `bin/amw-diagram-ir.py diff`; the diff focuses on semantic changes (nodes, edges, labels), not cosmetic styling.
+5. Format the diff report as a Markdown summary (added/removed/moved nodes and edges); present to the user before overwriting anything.
+6. Save the diff report and both IR files to `/tmp/` with a content-addressed hash in the filename.
 
 ## Comparison pipeline (6 steps)
 
@@ -153,7 +166,7 @@ When A and B are in different formats, both are parsed to the same IR — but th
 
 > "Note: A (`ascii`) and B (`html`) use different source formats. Styling differences may reflect format-conversion artefacts rather than intentional edits. Structure (nodes, edges, labels) is format-agnostic."
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Resolution |
 |---|---|---|
@@ -163,7 +176,15 @@ When A and B are in different formats, both are parsed to the same IR — but th
 | Patch reports many spurious `change-node` ops | Different id schemes across formats (e.g. ASCII → `n1/n2` vs Mermaid → user names) | Apply label-based id normalization per `../amw-diagram-formats/references/diff-algorithm.md` §6; re-diff |
 | Report file already exists at `--out` path | Prior compare run | Overwrite with new timestamp in filename; the old file is preserved in `/tmp/` |
 
-## Dependencies
+## Output
+
+Produces a markdown diff report at the output path (default: `<cwd>/diagram-compare-<timestamp>.md`). The report lists the two input paths and their detected formats, a summary table (added/removed/changed counts), and sections for each op type. Written by Step 6 of the comparison pipeline.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Prerequisites
 
 ```yaml
 runtime_binaries:
@@ -179,7 +200,7 @@ checked_by_wd_doctor:  [python3]
 
 No new bin scripts needed — `bin/amw-diagram-ir.py diff` is the implementation.
 
-## Cross-references
+## Resources
 
 - `../amw-diagram-formats/references/diff-algorithm.md` — authoritative IR diff spec, patch op format, markdown report layout.
 - `../amw-diagram-formats/references/ir-schema.md` — IR shape and lossy-conversion table.

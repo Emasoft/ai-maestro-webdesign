@@ -47,11 +47,11 @@ Seven steps, each with a gate:
 
 ## Minimal example
 
-User: "Capture https://acme.com and make me a 25-second product launch video for Instagram Stories"
+User: "Capture `https://example.com` and make me a 25-second product launch video for Instagram Stories"
 
 Pipeline:
 
-1. Capture acme.com: extract colors, fonts, hero copy, product screenshots
+1. Capture the target site: extract colors, fonts, hero copy, product screenshots
 2. DESIGN.md: distilled brand reference (palette, type, tone, anti-patterns)
 3. SCRIPT.md: 25-sec narration, 5 beats: hook → problem → solution → proof → CTA
 4. STORYBOARD.md: per-beat storyboard with camera, motion, assets

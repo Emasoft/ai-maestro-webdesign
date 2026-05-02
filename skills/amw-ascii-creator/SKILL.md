@@ -1,6 +1,7 @@
 ---
 name: amw-ascii-creator
-description: Produce ONE validated perfect-ASCII artifact from a brief — structured diagrams via bin/amw-ascii-render.py (perfect-ascii JSON → ASCII), freeform wireframes via hand-author-validate-iterate loop using bin/amw-validate-ascii.py. Triggers on narrow authoring intents only — "ASCII diagram of", "ASCII wireframe of", "create an ASCII flowchart", "perfect ASCII of", "build an ASCII mockup", "finalize ASCII for <subject>". Does NOT trigger on generic design intent — those go to design-principles → ascii-sketch (plan-phase, 3 variants). This is the FINISHING skill: one invocation, one validated .txt file delivered. ascii-to-html consumes its output.
+description: >-
+  Produce ONE validated perfect-ASCII artifact from a brief — structured diagrams via bin/amw-ascii-render.py (perfect-ascii JSON → ASCII), freeform wireframes via hand-author-validate-iterate loop using bin/amw-validate-ascii.py. Use when converting a finalized brief into a single validated ASCII file ready for ascii-to-html. Triggers on narrow authoring intents only — "ASCII diagram of", "ASCII wireframe of", "create an ASCII flowchart", "perfect ASCII of", "build an ASCII mockup", "finalize ASCII for a subject". Does NOT trigger on generic design intent — those go to design-principles → ascii-sketch (plan-phase, 3 variants). This is the FINISHING skill — one invocation, one validated .txt file delivered. ascii-to-html consumes its output.
 version: 0.1.0
 ---
 
@@ -8,6 +9,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > **Single-artifact authoring skill.** The plugin's plan-phase is `../amw-ascii-sketch/` (iterates three variants). This skill is for the opposite case — the user already knows what diagram they want, and wants ONE perfect ASCII file delivered. It is the ASCII twin of `../amw-svg-creator/`.
+
+## Overview
+
+Produces ONE validated perfect-ASCII artifact from a brief. Uses `bin/amw-ascii-render.py` for structured diagrams (Mode A) or a hand-author-validate-iterate loop via `bin/amw-validate-ascii.py` (Mode B). The finishing skill — one invocation, one validated `.txt` file delivered.
 
 ## Activation
 
@@ -37,6 +42,15 @@ This skill does NOT:
 Do NOT trigger on:
 - "design a dashboard" / "mockup a UI" — broad design vocabulary, orchestrator's job
 - "show me three options" / "iterate in ASCII" — plan-phase, `../amw-ascii-sketch/`'s job
+
+## Instructions
+
+1. Classify the brief as Mode A (structured: flowchart, table, layers, sequence) or Mode B (freeform rectangular wireframe/mockup).
+2. For Mode A: build the JSON spec, run `bin/amw-ascii-render.py`, sanity-check the rendered output, fix JSON errors and re-render until correct.
+3. For Mode B: author the ASCII frame, substitute banned characters before writing, save to `/tmp/ascii-creator-<slug>.txt`, run `bin/amw-validate-ascii.py`.
+4. Iterate on FIX hints from the validator until the output reaches PASS status; apply every hint, re-validate.
+5. Apply the matching style preset (`detallado`, `unicode`, `clasico`, or `compacto`) based on brief context or explicit request.
+6. Save the validated artifact with a descriptive English filename; write the job-completion report to `reports/webdesigner/`.
 
 ## Two authoring modes (the skill classifies automatically)
 
@@ -324,7 +338,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -459,13 +473,17 @@ break on some fonts). The validator reports the tier in the error code
 
 If the user insists on including an emoji or CJK char, account for its 2-col width explicitly in the frame (the frame right-edge shifts right by 1 for each 2-col char on that row).
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** `python3 >= 3.8`, `perl >= 5.10` — both pre-installed on macOS and most Linux distros. `/amw-doctor` checks.
 - **python_packages / npm / mcp:** none — both tools are pure-stdlib in their respective languages.
 - **Shared scripts:** `../../bin/amw-ascii-render.py` (pure-Python renderer, 4 modes, 78-col max), `../../bin/amw-validate-ascii.py` (alignment + width + wide-char + forbidden-char validator).
 
-## Cross-references
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `../amw-ascii-sketch/SKILL.md` — upstream when the user wants to ITERATE. Sketch produces 3 variants for plan-phase iteration; once a direction is chosen, the result can either (a) pass through this skill to finalize the ASCII artifact file, or (b) pass directly to `ascii-to-html` for conversion.
 - `../amw-ascii-validator/SKILL.md` — documents the underlying validator tool-chain (`bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`) and the validation contract.
@@ -485,7 +503,7 @@ If the user insists on including an emoji or CJK char, account for its 2-col wid
 - Descriptive English filename (`Login Flow.txt`, `Dashboard Overview.txt`), never `diagram.txt` / `output.txt`.
 - If a FIX iteration hits 8+ retries, STOP — the brief may be structurally impossible at the chosen frame width; propose widening the frame or switching modes.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|

@@ -1,6 +1,6 @@
 ---
 name: amw-design-extract
-description: Extract a design system (colors, fonts, spacing, shadows, tokens) from a live URL using the `designlang` CLI. Triggers on "extract design tokens", "copy the style of", "get colors and fonts from URL", "reverse-engineer design system", "generate tailwind config from site", "clone visual design". Do NOT trigger on generic "design", "style my page", "build the UI" — those are design-principles' territory.
+description: Extract a design system (colors, fonts, spacing, shadows, tokens) from a live URL using the `designlang` CLI. Triggers on "extract design tokens", "copy the style of", "get colors and fonts from URL", "reverse-engineer design system", "generate tailwind config from site", "clone visual design". Do NOT trigger on generic "design", "style my page", "build the UI" — those are design-principles' territory. Use when extracting a design system from a live URL to obtain its colors, fonts, and spacing tokens. Trigger with /amw-extract-style.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > This skill is an executor. Triggers are URL-extraction-specific only.
+
+## Overview
+
+Extracts a design system (colors, fonts, spacing, shadows, tokens) from a live URL using the `designlang` CLI. Outputs multi-format token dumps (Tailwind config, shadcn theme, React tokens, Figma tokens, CSS variables, W3C tokens).
 
 ## Activation
 
@@ -36,11 +40,20 @@ Fires on these specific phrasings:
 
 Do NOT fire on: "design a landing page", "style my page", "build the UI", "make it look clean". Those are design-principles' vocabulary — the orchestrator decides when to call this skill.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** `node ≥ 22`, `npx`
 - **runtime_binaries (via /amw-init):** `designlang` (npm package, lazy-installed by `npx` on first call; its internal Playwright browser is fetched by designlang itself, not by this plugin)
 - **Optional upstream:** `../amw-dev-browser/` — pairs with this skill when a screenshot + DOM capture is needed alongside token extraction (combined via `/amw-extract-style`)
+
+## Instructions
+
+1. Invoke `bin/amw-designlang-wrapper.sh` with one of four subcommands: `tokens`, `colors`, `fonts`, or `css` plus the target URL.
+2. For a full token dump (`tokens` subcommand), the wrapper emits eight files per URL (W3C tokens, Tailwind theme, shadcn theme, React theme, Figma variables, CSS vars, preview HTML, and report).
+3. Locate the output directory printed to stdout (default `$TMPDIR/ai-maestro-webdesign-tokens/<slug>/`), or override with `DL_OUT_DIR`.
+4. Pass the relevant output files (e.g. `css-vars.css`, `tailwind.theme.css`) to downstream skills (`ascii-to-html`, `svg-creator`, `tailwind-4`).
+5. For combined screenshot + token extraction, use `/amw-extract-style <url>` which pairs this skill with `../amw-dev-browser/`.
+6. Document the token source and output paths in the job-completion report.
 
 ## Usage
 
@@ -80,7 +93,11 @@ A full `tokens` run emits eight files per URL:
 
 For user-facing invocation, the command is `/amw-extract-style <url>`. That command combines this skill with `../amw-dev-browser/` so the user also gets a rendered screenshot alongside the token dump — one call, two inputs for design-principles.
 
-## Cross-references
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `../../bin/amw-designlang-wrapper.sh` — plugin-standard wrapper (the only valid invocation path)
 - `../amw-dev-browser/SKILL.md` — pairs with dev-browser for screenshot + DOM + style capture
@@ -234,7 +251,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -244,7 +261,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Failure modes
+## Error Handling
 
 - **`npx: command not found`** — Node.js is not installed. User must install node ≥ 22 (surfaced by `/amw-doctor`).
 - **First call stalls for 30–90 s** — expected. `npx` is downloading `designlang` and its Playwright browser on first use. Subsequent calls are cached.

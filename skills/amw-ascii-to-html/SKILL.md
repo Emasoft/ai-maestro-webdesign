@@ -1,12 +1,17 @@
 ---
 name: amw-ascii-to-html
-description: Convert a validated ASCII wireframe into responsive, accessible, Tweaks-compatible HTML. Triggers on narrow technical intents only — "convert this ASCII to HTML", "render this wireframe as HTML", "ascii-to-html", "turn my ASCII mockup into a webpage", "/amw-ascii-to-html". Does NOT trigger on generic "design a landing page" — that belongs to design-principles. Upstream consumer: user's `/amw-sketch` → approved variant. Orchestrated by design-principles.
+description: >-
+  Convert a validated ASCII wireframe into responsive, accessible, Tweaks-compatible HTML. Use when the user has an approved ASCII wireframe and needs it rendered as a real webpage. Triggers on narrow technical intents only — "convert this ASCII to HTML", "render this wireframe as HTML", "ascii-to-html", "turn my ASCII mockup into a webpage", "/amw-ascii-to-html". Does NOT trigger on generic "design a landing page" — that belongs to design-principles. Upstream consumer is the user's /amw-sketch approved variant. Orchestrated by design-principles.
 version: 0.2.0
 ---
 
 # ASCII → HTML converter
 
 > Orchestrated by `../amw-design-principles/SKILL.md`. Terminal step of the `/amw-sketch` plan-phase loop. Do not run without explicit user approval of the ASCII (see Satisfaction Gate).
+
+## Overview
+
+Converts a validated ASCII wireframe into a single-file responsive, accessible, Tweaks-compatible HTML page. Terminal step of the plan phase — runs only after the user has explicitly approved an ASCII sketch.
 
 This skill is a SYNTHESIS — it composes techniques from 9 sources (starter-components, AI-slop rules, ui-ux-pro-max, ux-designer+a11y, create-infographics, diagram-design-editorial, ascii-creator catalog, CHI'24 ASCII classics, and the in-repo `ascii-parse.py`). Every design decision below cites a `TECH-NN` from `references/techniques.md`.
 
@@ -70,6 +75,15 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
 | `+---+|   |+---+` classic mode (detect_format = ascii) | `<pre class="classic-ascii">` preserving chars | — | mono font | TECH-88, TECH-94 |
 | Empty row `│                │` inside box | extra `padding-top` on next child (not `<br>`) | — | `--space-*` | TECH-100 |
 
+## Instructions
+
+1. Validate the ASCII input with `bin/amw-validate-ascii.py`; stop and surface errors if FAIL.
+2. Parse with `bin/amw-ascii-parse.py --mode wireframe` to produce a layout JSON; pattern-match each box/line against the component detection table.
+3. Emit semantic HTML using `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<table>`, and `<footer>` mapped from the ASCII structure.
+4. Apply design tokens from `/amw-extract-style` or a user-supplied palette to `:root { --primary; --text; --bg; --radius; ... }`.
+5. Insert the optional Tweaks block (if requested), React/Babel pins (if React is needed), and run the AI-slop gate checklist.
+6. Optionally smoke-test in `dev-browser`, then save to `<cwd>/<Descriptive Filename>.html` and return the file path.
+
 ## Conversion pipeline
 
 1. **Validate** with `bin/amw-validate-ascii.py --in <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
@@ -122,7 +136,15 @@ Run these before saving. Each is pulled from `ai-slop-avoid.md`:
 - `../amw-design-principles/starter-components/tweaks-block.html` — live-edit protocol (TECH-04, TECH-05, TECH-06, TECH-13).
 - `../amw-design-principles/starter-components/react-babel-pins.md` — version lock spec (TECH-01, TECH-02, TECH-03).
 
-## Dependencies
+## Output
+
+Produces a single artifact at the path specified in §Conversion pipeline — a self-contained `.html` file with inline CSS and JS, no external dependencies except the CDN pins declared in starter-components.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Prerequisites
 
 ```yaml
 runtime_binaries:
@@ -147,7 +169,7 @@ external_services:
 - No Framer Motion, no GSAP. Timeline core first, Popmotion as physics fallback. (TECH-12)
 - Inherits the three hard rules from `../amw-design-principles/SKILL.md` — context gathered, variants offered upstream, AI-slop refused.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|
@@ -159,7 +181,7 @@ external_services:
 | Slop-gate FAIL (rule 1..26) | Default tokens leaked, emoji in header, purple gradient, etc. | Revise the affected section once and re-check. Record the rule that triggered. |
 | React pin mismatch | User upgraded `react@18` → UMD integrity hash mismatch | Re-pin to `react@18.3.1` exactly; restore the three CDN lines from `react-babel-pins.md`. |
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator (ALWAYS activate this first when user says "design").
 - `../amw-ascii-sketch/SKILL.md` — upstream producer of the approved ASCII.

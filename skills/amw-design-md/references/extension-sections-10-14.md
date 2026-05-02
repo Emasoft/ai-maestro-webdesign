@@ -260,5 +260,5 @@ Default behavior: 1-9 only (Variant 2 base) or Variant 1 (8 sections + frontmatt
 
 - `./canonical-spec-google-alpha.md` — Variant 1 (no extension support)
 - `./community-9-section-spec.md` — Variant 2 base
-- `./templates/community-9-section-template.md` — Variant 2 skeleton with optional 10-14 placeholders
+- `./community-9-section-template.md` — Variant 2 skeleton with optional 10-14 placeholders
 - `./TECH-13-converting-variant2-to-1.md` — what gets dropped when extensions are present and we convert to V1

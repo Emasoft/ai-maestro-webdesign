@@ -4,7 +4,7 @@
 
 This is the **Variant 2** format. It dominates real-world DESIGN.md files in the wild (the 58-brand pre-paywall corpus and the parallel 98-brand `design-swatches` corpus). When a user provides a Variant 2 file, the plugin accepts it and converts to Variant 1 (canonical) via `bin/amw-design-md-convert-v2-to-v1.py`.
 
-When the user explicitly asks for Variant 2 output (because they are matching an existing collection), the plugin can author Variant 2 directly using `references/templates/community-9-section-template.md`.
+When the user explicitly asks for Variant 2 output (because they are matching an existing collection), the plugin can author Variant 2 directly using `references/community-9-section-template.md`.
 
 ---
 
@@ -268,7 +268,7 @@ The plugin's default canonical output is Variant 1. Variant 2 is accepted as inp
 
 - `./canonical-spec-google-alpha.md` — Variant 1 spec
 - `./extension-sections-10-14.md` — optional Variant 2 extensions
-- `./templates/community-9-section-template.md` — fillable Variant 2 skeleton
+- `./community-9-section-template.md` — fillable Variant 2 skeleton
 - `./review-rubric.md` — Variant 2 quality scoring
 - `./TECH-13-converting-variant2-to-1.md` — V2 → V1 conversion details
 - `<plugin-root>/bin/amw-design-md-convert-v2-to-v1.py` — conversion bin script

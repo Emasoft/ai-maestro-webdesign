@@ -146,16 +146,16 @@ A luxury-resort landing page with two locales (English + French), GDPR scope, fu
 ```bash
 bash bin/amw-freeze-phase-a.sh \
   --approved-ascii "/tmp/amw-sketch-serene-isles-final.txt" \
-  --brand-tokens   "/Users/c/projects/serene-isles/research/brand/tokens.json" \
-  --design-md      "/Users/c/projects/serene-isles/DESIGN.md" \
-  --ia             "/Users/c/projects/serene-isles/research/ia.json" \
-  --copy           "/Users/c/projects/serene-isles/copy/copy-en-fr.json" \
-  --legal          "/Users/c/projects/serene-isles/legal/cookie-banner.html" \
-  --seo-head       "/Users/c/projects/serene-isles/seo/head-fragments.json" \
-  --personas       "/Users/c/projects/serene-isles/research/personas.md" \
+  --brand-tokens   "${CLAUDE_PROJECT_DIR}/research/brand/tokens.json" \
+  --design-md      "${CLAUDE_PROJECT_DIR}/DESIGN.md" \
+  --ia             "${CLAUDE_PROJECT_DIR}/research/ia.json" \
+  --copy           "${CLAUDE_PROJECT_DIR}/copy/copy-en-fr.json" \
+  --legal          "${CLAUDE_PROJECT_DIR}/legal/cookie-banner.html" \
+  --seo-head       "${CLAUDE_PROJECT_DIR}/seo/head-fragments.json" \
+  --personas       "${CLAUDE_PROJECT_DIR}/research/personas.md" \
   --target-stack   "shadcn+next" \
   --locales        "en,fr" \
-  --output-dir     "/Users/c/projects/serene-isles/design/mockups" \
+  --output-dir     "${CLAUDE_PROJECT_DIR}/design/mockups" \
   --wcag-target    "AA" \
   --out            "/Users/c/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/phase-a-frozen/20260430_183012+0200-frozen-spec.json"
 ```
@@ -168,16 +168,16 @@ bash bin/amw-freeze-phase-a.sh \
   "frozen_spec_version": "1",
   "approved_ascii_path": "/tmp/amw-sketch-serene-isles-final.txt",
   "approved_ascii_sha256": "d32a60d704a684a8313dc90ab28f800465c0e6c08a60e9274dd4ce0986751739",
-  "brand_tokens_path": "/Users/c/projects/serene-isles/research/brand/tokens.json",
-  "design_md_path": "/Users/c/projects/serene-isles/DESIGN.md",
-  "ia_structure_path": "/Users/c/projects/serene-isles/research/ia.json",
-  "copy_blocks_path": "/Users/c/projects/serene-isles/copy/copy-en-fr.json",
-  "legal_mandatory_elements_path": "/Users/c/projects/serene-isles/legal/cookie-banner.html",
-  "seo_head_path": "/Users/c/projects/serene-isles/seo/head-fragments.json",
-  "personas_path": "/Users/c/projects/serene-isles/research/personas.md",
+  "brand_tokens_path": "${CLAUDE_PROJECT_DIR}/research/brand/tokens.json",
+  "design_md_path": "${CLAUDE_PROJECT_DIR}/DESIGN.md",
+  "ia_structure_path": "${CLAUDE_PROJECT_DIR}/research/ia.json",
+  "copy_blocks_path": "${CLAUDE_PROJECT_DIR}/copy/copy-en-fr.json",
+  "legal_mandatory_elements_path": "${CLAUDE_PROJECT_DIR}/legal/cookie-banner.html",
+  "seo_head_path": "${CLAUDE_PROJECT_DIR}/seo/head-fragments.json",
+  "personas_path": "${CLAUDE_PROJECT_DIR}/research/personas.md",
   "target_stack": "shadcn+next",
   "locales": ["en", "fr"],
-  "output_dir": "/Users/c/projects/serene-isles/design/mockups",
+  "output_dir": "${CLAUDE_PROJECT_DIR}/design/mockups",
   "wcag_target": "AA"
 }
 ```

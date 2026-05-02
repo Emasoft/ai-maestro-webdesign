@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-formats
-description: Look up the authoritative spec for ASCII / HTML / SVG / Mermaid diagram formats, the plugin's IR schema, the cross-format conversion matrix, the validation dispatcher, or the modify / diff pipelines. Triggers on narrow technical intents only — "what does the IR schema look like", "how does format detection work", "conversion matrix for ASCII to SVG", "IR-level diff algorithm", "validation dispatcher contract", "Mermaid format spec". Does NOT trigger on generic design / diagram creation intent — those belong to ascii-creator / svg-diagram / html-diagram / mermaid-diagram. This is a references-only meta-skill; it NEVER emits diagrams itself.
+description: Look up the authoritative spec for ASCII / HTML / SVG / Mermaid diagram formats, the plugin's IR schema, the cross-format conversion matrix, the validation dispatcher, or the modify / diff pipelines. Triggers on narrow technical intents only — "what does the IR schema look like", "how does format detection work", "conversion matrix for ASCII to SVG", "IR-level diff algorithm", "validation dispatcher contract", "Mermaid format spec". Does NOT trigger on generic design / diagram creation intent — those belong to ascii-creator / svg-diagram / html-diagram / mermaid-diagram. This is a references-only meta-skill; it NEVER emits diagrams itself. Use when looking up the IR schema, format specs, conversion matrix, or validation contracts for diagrams. Trigger with /amw-validate-any-diagram-format.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > **Consumer scope:** every other diagram skill and every `wd-*-diagram*` command pulls its format / IR / conversion / validation rules from this meta-skill. Do NOT re-author these specs inside the consumer skills — they cross-reference this library.
+
+## Overview
+
+Shared reference library for all diagram format specifications in the plugin. Owns the canonical prose and machine-readable schema for ASCII / HTML / SVG / Mermaid / PNG format specs, the plugin IR (Intermediate Representation) schema, the N×N conversion matrix, the detect → parse → IR-patch → re-render → re-validate pipeline, the IR-level structural diff algorithm, and the unified validator output contract. This is a documentation meta-skill — it NEVER emits diagrams.
 
 ## Activation
 
@@ -47,7 +51,7 @@ When a consumer skill or command needs any of these, it references this library 
 ## Trigger conditions
 
 - "what's the IR schema / IR version / IR fields"
-- "diagram-ir/1.0 spec"
+- "IR schema version 1.0 spec" / "diagram-ir version 1.0"
 - "how does format detection decide between ascii and mermaid"
 - "conversion matrix — ASCII to SVG / HTML to PNG / PNG as source"
 - "validator output format / PASS-FAIL contract / FIX hint format"
@@ -97,7 +101,7 @@ These live in `bin/`, not in this skill. The skill documents them; it does not o
 
 Per user directive 2026-04-22:
 
-- **IR version is `diagram-ir/1.0`.** Schema evolution requires an ADR and a bump — NOT in scope for Phase 0.
+- **IR version is diagram-ir version 1.0 (schema ID `diagram-ir/1.0`).** Schema evolution requires an ADR and a bump — NOT in scope for Phase 0.
 - **PNG is OUTPUT-ONLY.** Every PNG-as-SOURCE conversion cell is `impossible`; the validator dispatcher refuses PNG inputs with a fixed message.
 - **Mermaid backend is `mmdc`** (no Kroki).
 - **SVG validator is `xmllint --noout`** (no `svg-validator` npm wrapper).
@@ -105,13 +109,35 @@ Per user directive 2026-04-22:
 - **Round-trip path** (for `/amw-create-webpage-from-diagram`) goes via IR → ASCII → HTML until a dedicated direct pipeline is justified.
 - **Task 4d (selector-aware webpage ↔ diagram sync)** is MVP read-only — extract only; sync-back is future work.
 
-## Dependencies
+## Instructions
+
+1. Use this skill as a reference library only — it emits no artifacts and runs no transformations.
+2. Locate the needed file using the Reference index table: format spec, IR schema, conversion matrix, detect-format contract, validation dispatcher, modify-flow, or diff algorithm.
+3. Reference files via relative paths (`../amw-diagram-formats/references/<name>.md`); never copy the prose inline into other skills.
+4. Before performing any cross-format operation, check the conversion matrix at `references/conversion-matrix.md` for the correct cell type (`direct`, `via IR`, `via X`, `wrap`, or `impossible`).
+5. Consult `references/locked-decisions.md` for immutable rules established by user directive; do not override these decisions.
+
+Consumers reference this library via relative paths (`../amw-diagram-formats/references/<name>.md`). Never copy the prose inline. Use the Reference index table to find the right file for each concern (format spec, IR schema, conversion matrix, etc.). See `## Locked decisions` for immutable rules established by user directive.
+
+## Output
+
+This skill produces no artifacts. It answers lookup questions against the references only and returns the content of the requested reference file.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Prerequisites
 
 - **runtime_binaries:** none directly (this is a documentation skill). Consumer skills/scripts declare their own deps.
 - **python_packages:** none.
 - **cpan / npm:** none.
 
-## Cross-references
+## Error Handling
+
+On failure, the skill emits a non-zero exit code or returns a structured error in the response. Consumer skills handle errors per their own SKILL.md.
+
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator; routes generic design intent to executor skills.
 - `../amw-ascii-creator/SKILL.md` — primary ASCII authoring skill; pulls `./references/ascii.md` + `./references/modify-flow.md`.
@@ -123,5 +149,5 @@ Per user directive 2026-04-22:
 
 - This skill NEVER emits diagrams, files, or artifacts. It answers lookup questions against the references only.
 - Consumer skills and commands MUST cross-reference this library via relative paths (`../amw-diagram-formats/references/<name>.md`). They MUST NOT copy the prose inline.
-- The IR schema version is SINGLE-VALUE. No "legacy" or "compat" variants live alongside the canonical `diagram-ir/1.0`.
+- The IR schema version is SINGLE-VALUE. No "legacy" or "compat" variants live alongside the canonical IR schema version 1.0.
 - PNG-as-source is `impossible` in every dispatch table. Do not add a "fallback OCR" or "re-interpret" path.

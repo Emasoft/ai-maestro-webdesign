@@ -1,6 +1,6 @@
 ---
 name: amw-box-diagram
-description: Author clean Unicode rounded-corner box diagrams (╭╮╰╯│─) for pipeline diagrams, workflow charts, microservices topologies, and incident-response flows. Triggers on narrow technical intents only — "box diagram of", "Unicode pipeline diagram", "fan-out diagram", "fan-in diagram", "pipeline box diagram", "rounded-corner box diagram", "microservices box topology", "incident-response flow diagram", "workflow box chart". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator, which routes here when the user needs a rectangular-box flow with clean rounded corners. All output MUST pass `../../bin/amw-validate-ascii.py` before emission.
+description: Author clean Unicode rounded-corner box diagrams (╭╮╰╯│─) for pipeline diagrams, workflow charts, microservices topologies, and incident-response flows. Triggers on narrow technical intents only — "box diagram of", "Unicode pipeline diagram", "fan-out diagram", "fan-in diagram", "pipeline box diagram", "rounded-corner box diagram", "microservices box topology", "incident-response flow diagram", "workflow box chart". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator, which routes here when the user needs a rectangular-box flow with clean rounded corners. All output MUST pass `../../bin/amw-validate-ascii.py` before emission. Use when creating a Unicode rounded-corner box diagram for pipelines or topology charts. Trigger with /amw-create-or-modify-ascii-diagram.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > Executor. Narrow technical triggers only — the orchestrator routes here for clean rectangular Unicode box diagrams (pipelines, fan-out/fan-in, layered service topologies).
+
+## Overview
+
+Authors clean Unicode rounded-corner box diagrams (`╭╮╰╯│─`) for pipelines, workflow charts, microservices topologies, and incident-response flows. All output must pass `bin/amw-validate-ascii.py` before emission.
 
 ## Activation
 
@@ -256,6 +260,15 @@ The `examples/` subdirectory contains the three gold-standard reference artifact
 
 Before authoring a new diagram, open the closest example and match its column offsets, inner box widths, and junction patterns. When in doubt, copy the example and rename the labels — alignment stays correct as long as the new label fits inside the original `inner_width`.
 
+## Instructions
+
+1. Open the closest canonical example from `examples/` (incident-response, ci-cd-pipeline, or microservices) and use it as the alignment baseline.
+2. Author or edit boxes using the Unicode rounded-corner set (`╭╮╰╯│─`) with consistent `inner_width` across all boxes in a row.
+3. Construct fan-out/fan-in junctions using `┌┬┐` / `└┴┘` patterns; use `▸ ▾` for arrow heads (not the banned `▶ ▼`).
+4. Validate with `bin/amw-validate-ascii.py`; all box corners must share exact column offsets.
+5. Iterate on FIX hints until PASS; never present an unvalidated diagram.
+6. Save the artifact with a descriptive English filename and write the job-completion report to `reports/webdesigner/`.
+
 ## Technique selection
 
 Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
@@ -378,7 +391,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -388,13 +401,17 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10` (pre-installed on macOS and most Linux distros — `/amw-doctor` checks) **OR** `python3 >= 3.8` (Windows-friendly fallback — `bin/amw-validate-ascii.py` has identical behavior)
 - **python_packages:** none (pure stdlib)
 - **cpan / npm:** none
 
-## Cross-references
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; defines the rule set
 - `../../bin/amw-validate-ascii.py` — the validator (pure-Python, exits non-zero on failure, emits `FIX:` hints; Windows-compatible, group-aware width detection for multi-structure diagrams)
@@ -404,7 +421,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - `../amw-diagram-svg/SKILL.md` — when the caller wants an SVG output directly (skip the ASCII round trip)
 - `../amw-design-principles/ai-slop-avoid.md` — misaligned boxes are a form of AI-slop
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|

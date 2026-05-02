@@ -1,15 +1,30 @@
 ---
 name: amw-ux-evaluator
-description: Systematic UX evaluation of a rendered UI via a 3-dimension framework (Position, Visual Weight, Spacing) cross-checked against Balsamiq, Nielsen, and Material conventions. Narrow triggers — "evaluate UX", "review this component", "review UX", "check button design", "evaluate layout", "score this layout", "UX feedback on", "evaluate this page against heuristics", "run UX audit". Does NOT trigger on generic design-intent vocabulary ("design a page", "build a landing page", "mockup", "prototype", "style my page") — those belong to the `design-principles` orchestrator.
+description: Systematic UX evaluation of a rendered UI via a 3-dimension framework (Position, Visual Weight, Spacing) cross-checked against Balsamiq, Nielsen, and Material conventions. Narrow triggers — "evaluate UX", "review this component", "review UX", "check button design", "evaluate layout", "score this layout", "UX feedback on", "evaluate this page against heuristics", "run UX audit". Does NOT trigger on generic design-intent vocabulary ("design a page", "build a landing page", "mockup", "prototype", "style my page") — those belong to the `design-principles` orchestrator. Use when systematically evaluating a rendered UI component or layout against heuristics. Trigger with /amw-eval or explicit "evaluate UX" / "run UX audit" phrasing.
 version: 0.1.0
 author: ai-maestro-webdesign
-source: Adapted from the public `ux-evaluator` skill (92Bilal26/TaskPilotAI, MIT). Rewritten for this plugin's orchestrated flow; the 3-dimension framework and Balsamiq reference corpus are preserved.
 ---
 
 # UX Evaluator
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > Executor skill. Triggers are evaluation-specific only — `design-principles` routes already-rendered HTML here when the workflow calls for scored feedback before ship.
+
+## Overview
+
+Systematic UX evaluation of rendered HTML or live URLs using a 3-dimension framework: Position (reading flow, adjacency conventions), Visual Weight (hierarchy, fill vs ghost vs icon-only), and Spacing (gaps, touch targets, rhythm). Each dimension scores Pass / Warn / Fail with concrete selector + computed-style evidence. Cross-checks against Balsamiq, Nielsen, and Material conventions. Produces a structured evaluation report with prioritized recommendations (P1 = UX-breaking, P2 = suboptimal, P3 = polish). Read-only — never modifies HTML.
+
+## Instructions
+
+1. Gather context: identify the component (hero, navbar, CTA stack, form, pricing card), the evaluation trigger, and the input source (local HTML → `Read`; live URL → `../amw-dev-browser/`).
+2. Score the three dimensions — Position (reading flow, adjacency), Visual Weight (fill vs ghost vs icon-only, hierarchy), and Spacing (gaps, touch targets, rhythm) — using concrete selector + computed-style evidence; each dimension gets Pass / Warn / Fail.
+3. Produce a structured Markdown evaluation report with every Fail/Warn citing the selector, computed-style value, and the convention violated; prioritize findings as P1 (UX-breaking), P2 (suboptimal), P3 (polish).
+
+See `## Usage` below.
+
+## Examples
+
+See `references/TECH-uxeval-output-format.md` for a complete evaluation report example ("Pricing Page CTA Evaluation").
 
 ## Activation
 
@@ -28,7 +43,7 @@ Activate only on explicit evaluation intents: "evaluate the UX of this page", "r
 
 Do **not** activate on generic design intent ("design a landing page", "make it look nicer", "build the UI", "style my page"). Those are owned by `design-principles`, which routes here only once an HTML artifact exists. Skip when the user has already committed and just wants implementation.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries (system):** none beyond plugin baseline (`node ≥ 22`).
 - **runtime_binaries (via /amw-init):** none unique. Live-URL inspection delegates DOM + computed-style capture to `../amw-dev-browser/`; static HTML is read from disk directly.
@@ -188,7 +203,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -207,7 +222,7 @@ Full reference in `references/balsamiq-button-principles.md`. Summary:
 - **Forms:** labels above/left of inputs; submit bottom, right-aligned or full-width; errors adjacent; label-to-input 0.25–0.5 rem; field-to-field 1–1.5 rem.
 - **Industry cross-check:** button order secondary LEFT, primary RIGHT (GitHub, Stripe, Google, Notion). Theme toggle far right after user menu or in settings (GitHub, VS Code Docs, Stripe Docs). Utility controls icon-only, subordinate to primary actions.
 
-## Cross-references
+## Resources
 
 - `../amw-dev-browser/SKILL.md` — source of live-page DOM + computed-style capture when the input is a URL.
 - `../amw-design-principles/spacing-rhythm.md` — grid / alignment / whitespace rules the evaluator enforces.
@@ -229,7 +244,7 @@ Full reference in `references/balsamiq-button-principles.md`. Summary:
 - **Prioritization is mandatory.** Every recommendation carries P1 / P2 / P3.
 - **Run the `ai-slop-avoid.md` scan before emitting a Pass.** A component can satisfy the 3 dimensions and still be AI-slop-shaped; the final check is non-skippable.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

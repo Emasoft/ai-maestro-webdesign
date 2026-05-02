@@ -1,9 +1,8 @@
 ---
 name: amw-mermaid-render
-description: Render Mermaid diagram text to themed SVG or terminal/markdown ASCII via the vendored beautiful-mermaid backend. Triggers on "render mermaid as SVG", "mermaid to SVG", "mermaid ASCII", "mermaid ASCII for terminal", "themed mermaid diagram", "flowchart to SVG", "sequence diagram to SVG", "mermaid flowchart/state/class/ER diagram render", "batch render .mmd files", "apply dracula/tokyo-night theme to mermaid". This is the ONLY Mermaid renderer in the plugin — all skills that produce Mermaid source text must delegate rendering here. See body for what does NOT trigger this skill.
+description: Render Mermaid diagram text to themed SVG or terminal/markdown ASCII via the vendored beautiful-mermaid backend. Triggers on "render mermaid as SVG", "mermaid to SVG", "mermaid ASCII", "mermaid ASCII for terminal", "themed mermaid diagram", "flowchart to SVG", "sequence diagram to SVG", "mermaid flowchart/state/class/ER diagram render", "batch render .mmd files", "apply dracula/tokyo-night theme to mermaid". This is the ONLY Mermaid renderer in the plugin — all skills that produce Mermaid source text must delegate rendering here. See body for what does NOT trigger this skill. Use when rendering Mermaid source text to themed SVG or terminal ASCII output. Trigger with /amw-create-or-modify-mermaid-diagram.
 version: 1.0.0
 author: ai-maestro-webdesign
-source: Consolidated from three upstream skills — lukilabs/beautiful-mermaid (MIT), Pretty-mermaid-skills (MIT, author Alex), and agent-skill-diagramming-flows. All three wrap the same npm package beautiful-mermaid@^0.1.3. The vendored wrapper scripts live at external/mermaid-render/; the npm library itself is fetched at install time (not vendored).
 ---
 
 # Mermaid Render
@@ -12,6 +11,25 @@ source: Consolidated from three upstream skills — lukilabs/beautiful-mermaid (
 > This skill is an executor. `design-principles` routes here when the user
 > has committed to a Mermaid diagram and wants it as SVG (for docs/slides)
 > or ASCII (for terminal/markdown/READMEs).
+
+## Overview
+
+Renders Mermaid diagram source text to themed SVG or Unicode/ASCII output via the vendored `beautiful-mermaid` backend (`external/mermaid-render/`). The plugin's single Mermaid renderer — all skills that produce `.mmd` source must delegate rendering here. Supports 15 built-in themes, 2-color Mono Mode derivation, 7-color enriched palette, transparent backgrounds, and batch directory rendering. ASCII output is post-processed through `bin/amw-validate-ascii.py` as a warn-only gate.
+
+## Prerequisites
+
+Standard plugin runtime — no skill-specific prerequisites beyond the global plugin dependencies.
+
+## Instructions
+
+1. Confirm the input is Mermaid source text (fenced block or `.mmd` file); if not, route back to `../amw-design-principles/` for format selection.
+2. Select a theme from the 15 built-in options or supply `--bg` + `--fg` for Mono Mode derivation (all other tokens auto-derived); default recommendation for technical docs is `tokyo-night`.
+3. Choose output format: `--format svg` (default, themed SVG with Inter font @import) or `--format ascii` (Unicode box-drawing; add `--use-ascii` for pure-ASCII environments).
+4. Invoke `bin/amw-mermaid-render.sh --input <file.mmd> --format <svg|ascii> --theme <name>` (or `--bg #hex --fg #hex` for Mono Mode); for batch rendering pass a directory path.
+5. For ASCII output, check stderr for alignment warnings from `bin/amw-validate-ascii.py` (warn-only gate); if warnings appear, shorten node labels and re-render — do not edit the rendered text directly.
+6. Return the SVG string or ASCII block to the caller; save to disk only when the user requests a file output.
+
+See the `## Usage` section below for the full flag surface and shell invocation patterns.
 
 ## Activation
 
@@ -59,7 +77,7 @@ Do NOT activate on:
 ### SVG — themed, high fidelity
 
 - Mostly self-contained. One external reference: the SVG `<style>` block
-  contains a single `@import url('https://fonts.googleapis.com/css2?family=Inter:…')`
+  contains a single `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@...')`
   declaration so the Inter font renders correctly when embedded in HTML.
   If the skill user needs a **fully offline** / CSP-strict SVG (no
   outbound font fetch), post-process the output by deleting the
@@ -392,7 +410,7 @@ Templates for all 5 types live under `../../external/mermaid-render/examples/`. 
    for Inter.** The backend inlines everything else — styles, arrowheads,
    theme CSS variables. Do NOT post-process the SVG to add additional
    external stylesheets, scripts, or images. If the caller needs a fully
-   CSP-locked SVG, strip the `@import url('https://fonts.googleapis.com/…')`
+   CSP-locked SVG, strip the `@import url('https://fonts.googleapis.com/css2?...')`
    line from the `<style>` block; the system font stack takes over.
 2. **ASCII output must pass `../../bin/amw-validate-ascii.py` or warn loudly.**
    The wrapper enforces this automatically — if the validator flags
@@ -437,7 +455,7 @@ If `external/mermaid-render/` is missing, the wrapper exits with code 2
 and tells the user to run `/amw-init`. See `/amw-init` step 7 for the
 vendor-fetch instructions and `/amw-doctor` for the runtime probe.
 
-## Cross-references
+## Resources
 
 - Orchestrator: `../amw-design-principles/SKILL.md`
 - Validator the ASCII path pipes through: `../amw-ascii-validator/SKILL.md`
@@ -446,7 +464,7 @@ vendor-fetch instructions and `/amw-doctor` for the runtime probe.
 - Vendored backend + LICENSE: `../../external/mermaid-render/`
 - Shell wrapper: `../../bin/amw-mermaid-render.sh`
 
-## Failure modes
+## Error Handling
 
 - `exit 2` — `external/mermaid-render/` missing. Run `/amw-init`.
 - `exit 3` — `node` not on PATH. Install Node.js ≥ 18.
@@ -471,6 +489,10 @@ add `@font-face` in your host page.
 **CJK / emoji breaking ASCII alignment** — expected. The Mermaid ASCII
 renderer doesn't know those characters are double-width. Rename the
 node labels or switch to SVG output.
+
+## Examples
+
+See the `## Usage` section above for worked shell invocation examples (SVG render, ASCII render, custom palette, transparent background, batch directory). Template files for all 5 supported diagram types live under `../../external/mermaid-render/examples/`.
 
 ## Technique selection
 
@@ -674,7 +696,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 

@@ -288,7 +288,7 @@ warnings:
   - "Imagery source not declared; user must verify license for all stock photography before launch"
   - "French-language locale triggers additional ePrivacy Directive requirements beyond baseline GDPR"
 artifact_paths:
-  - path: "/Users/emanuelesabetta/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/20260424_142530+0200-legal-expert-hospitality-bora-bora.md"
+  - path: "${CLAUDE_PROJECT_DIR}/reports/webdesigner/20260424_142530+0200-legal-expert-hospitality-bora-bora.md"
     type: report
     purpose: "Full legal brief: applicable frameworks, mandatory elements, conditional requirements, licensing flags, items requiring human legal review"
 recommendations:
@@ -297,7 +297,7 @@ recommendations:
   - "Main-agent: confirm with user whether ROI / 'guaranteed' language is in scope; if yes, flag financial-disclaimer block in hero area"
   - "Main-agent: ask user for explicit confirmation of imagery license status before Phase B asset-generation"
 next_action: proceed
-report_path: "/Users/emanuelesabetta/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/20260424_142530+0200-legal-expert-hospitality-bora-bora.md"
+report_path: "${CLAUDE_PROJECT_DIR}/reports/webdesigner/20260424_142530+0200-legal-expert-hospitality-bora-bora.md"
 ---
 
 # Legal Expert — Phase A summary

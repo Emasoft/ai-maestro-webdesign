@@ -303,7 +303,7 @@ the rounded-md scale and the primary/secondary/tertiary color hierarchy.
 
 - `./community-9-section-spec.md` — Variant 2 (parallel community format)
 - `./extension-sections-10-14.md` — optional extensions (Naming / Page Specs / Composite Components / Token Mapping / i18n)
-- `./templates/canonical-template.md` — fillable Variant 1 skeleton
+- `./canonical-template.md` — fillable Variant 1 skeleton
 - `./TECH-01-yaml-frontmatter.md` — authoring the YAML frontmatter
 - `./TECH-11-validation-and-lint.md` — running the linter and pure-Python validator
 - `<plugin-root>/bin/amw-design-md-lint.sh` — wrapper around `npx @google/design.md`

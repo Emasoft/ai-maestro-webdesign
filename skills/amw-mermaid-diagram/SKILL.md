@@ -1,6 +1,6 @@
 ---
 name: amw-mermaid-diagram
-description: Author OR edit Mermaid diagram source — flowchart, sequenceDiagram, stateDiagram-v2, classDiagram, erDiagram, gantt, pie, journey, mindmap. Triggers on narrow technical intents only — "create Mermaid diagram", "modify Mermaid at <path>", "edit this .mmd file", "write mermaid source for <subject>", "/amw-create-or-modify-mermaid-diagram". Does NOT claim generic design vocabulary. Distinct from mermaid-render (which only renders source → SVG/PNG/ASCII). This skill owns AUTHORING + MODIFYING Mermaid source text.
+description: Author OR edit Mermaid diagram source — flowchart, sequenceDiagram, stateDiagram-v2, classDiagram, erDiagram, gantt, pie, journey, mindmap. Triggers on narrow technical intents only — "create Mermaid diagram", "modify Mermaid at a file path", "edit this .mmd file", "write mermaid source for a subject", "/amw-create-or-modify-mermaid-diagram". Does NOT claim generic design vocabulary. Distinct from mermaid-render (which only renders source → SVG/PNG/ASCII). This skill owns AUTHORING + MODIFYING Mermaid source text. Use when authoring or editing Mermaid diagram source text across any of the nine supported grammar types. Trigger with /amw-create-or-modify-mermaid-diagram.
 version: 0.1.0
 ---
 
@@ -11,6 +11,21 @@ version: 0.1.0
 > **Modify pipeline (authoritative):** `../amw-diagram-formats/references/modify-flow.md`.
 
 This skill does not redefine Mermaid grammar / themes / mmdc flags / output paths / the 40-technique catalog — every one of those lives once in `../amw-diagram-formats/references/mermaid.md`. The skill's job is to AUTHOR Mermaid source text from a natural-language brief (for all 9 grammar types), and to run the shared modify-flow when the input is an existing `.mmd` / `.mermaid` file. Rendering is delegated to `../amw-mermaid-render/` — this skill produces and mutates the SOURCE; it does not emit SVG/PNG/ASCII directly.
+
+## Overview
+
+Thin authoring and modify skill for Mermaid diagram source text. Accepts a natural-language brief (create path) or an existing `.mmd` / `.mermaid` file (modify path). Runs the shared 5-step modify-flow (detect → parse → IR → re-render to Mermaid source → lint). Supports all 9 Mermaid grammar types: flowchart, sequenceDiagram, stateDiagram-v2, classDiagram, erDiagram, gantt, pie, journey, mindmap. Validates emitted source via `bin/amw-mermaid-lint.sh` (`mmdc` dry-run). Delegates actual SVG/PNG/ASCII rendering to `amw-mermaid-render`.
+
+## Instructions
+
+1. Detect whether the input is a natural-language brief (create path) or an existing `.mmd`/`.mermaid` file with a Mermaid grammar header (modify path).
+2. For modify path: parse to IR with `bin/amw-parse-mermaid-diagram.py`; apply the requested edit to `nodes[*].label` or `edges[*].label` in the IR.
+3. For create path: select the grammar type from the brief (flowchart for "flow/process", sequenceDiagram for "request/response", erDiagram for "schema/DB", etc.); emit grammar directly.
+4. Re-render to Mermaid source text via `bin/amw-diagram-ir.py emit --format mermaid`.
+5. Validate with `bin/amw-mermaid-lint.sh` (mmdc dry-run); a FAIL aborts and leaves the original file untouched (retry budget = 3).
+6. See the `## Pipeline (5 steps — matches shared modify-flow)` section below for the authoritative execution sequence.
+
+See the `## Pipeline (5 steps — matches shared modify-flow)` section below for the authoritative execution sequence.
 
 ## Activation
 
@@ -70,14 +85,14 @@ bin/amw-mermaid-render.sh --input <file>.mmd --format svg --theme tokyo-night --
 
 See `../amw-mermaid-render/SKILL.md` and `../amw-diagram-formats/references/mermaid.md` §5 for the full output-path options (SVG default, PNG via cairosvg, ASCII via `--format ascii`, pure-ASCII via `--use-ascii`).
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `python3 >= 3.8`, `node >= 22`, `mmdc` (mermaid-cli) — all checked by `/amw-doctor`; `mmdc` installed by `/amw-init`.
 - **python_packages:** none (`bin/amw-parse-mermaid-diagram.py` is stdlib-only).
 - **npm:** `@mermaid-js/mermaid-cli` (for `mmdc` dry-run validation); auto-installed by the vendored `external/mermaid-render/` if absent.
 - **Shared scripts:** `bin/amw-parse-mermaid-diagram.py`, `bin/amw-diagram-ir.py`, `bin/amw-mermaid-lint.sh`, `bin/amw-mermaid-render.sh` (for downstream rendering only — not part of this skill's pipeline).
 
-## Cross-references
+## Resources
 
 - `../amw-diagram-formats/references/mermaid.md` — authoritative Mermaid format spec + 40-technique catalog.
 - `../amw-diagram-formats/references/modify-flow.md` — authoritative 6-step modify pipeline.
@@ -97,7 +112,7 @@ See `../amw-mermaid-render/SKILL.md` and `../amw-diagram-formats/references/merm
 - This skill does NOT render `.mmd` → SVG/PNG/ASCII — that is `../amw-mermaid-render/`'s role. The two skills are intentionally separated.
 - Do NOT re-author the Mermaid spec inside this skill — reference `../amw-diagram-formats/references/mermaid.md`. If a rule is wrong, fix it there.
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|
@@ -106,6 +121,10 @@ See `../amw-mermaid-render/SKILL.md` and `../amw-diagram-formats/references/merm
 | Modify path hits retry budget 3 FAILs | Patch conflicts with grammar structure | Surface the lint report; ask the user to refine the edit. |
 | Parser returns empty IR (modify path) | File is NOT Mermaid (missing header) or uses an unsupported grammar | Raw-source stub per `modify-flow.md` §5.4; warn that structural patching is unavailable until the Phase 1 grammar parser lands. |
 | User asks for render | Wrong skill — produce / modify the `.mmd` here, then call `bin/amw-mermaid-render.sh` or route through `../amw-mermaid-render/`. |
+
+## Examples
+
+See the technique reference files under `./references/` for grammar examples (e.g. `TECH-flowchart-grammar.md`, `TECH-sequence-grammar.md`, `TECH-er-grammar.md`) and the worked minimal examples in each file's "Minimal example" section.
 
 ## Technique selection
 
@@ -332,7 +351,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 

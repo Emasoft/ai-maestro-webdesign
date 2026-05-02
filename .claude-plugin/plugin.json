@@ -8,10 +8,7 @@
     "url": "https://github.com/Emasoft"
   },
   "homepage": "https://github.com/Emasoft/ai-maestro-plugins",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Emasoft/ai-maestro-plugins"
-  },
+  "repository": "https://github.com/Emasoft/ai-maestro-plugins",
   "license": "MIT",
   "keywords": [
     "webdesign",
@@ -28,7 +25,5 @@
     "claude-code"
   ],
   "skills": "./skills/",
-  "commands": "./commands/",
-  "hooks": "./hooks/hooks.json",
-  "agents": "./agents/"
+  "commands": "./commands/"
 }

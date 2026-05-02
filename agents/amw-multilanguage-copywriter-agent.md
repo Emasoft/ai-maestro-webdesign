@@ -306,7 +306,7 @@ warnings:
   - "Arabic hero copy produced at fluent tier — recommend native review before production"
   - "Legal constraint flagged: 'guaranteed' rephrased to 'designed for'; re-check with legal-expert on updated wording"
 artifact_paths:
-  - path: "/Users/emanuelesabetta/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/20260424_144210+0200-multilanguage-copywriter-hospitality-bora-bora.md"
+  - path: "${CLAUDE_PROJECT_DIR}/reports/webdesigner/20260424_144210+0200-multilanguage-copywriter-hospitality-bora-bora.md"
     type: report
     purpose: "Full copy deliverable: per-locale per-section blocks, locale notes, flagged for review, character-limit data"
 recommendations:
@@ -315,7 +315,7 @@ recommendations:
   - "Main-agent: arrange native Vietnamese review before Phase B production of Vietnamese locale"
   - "Main-agent: send updated 'designed for returns' phrasing back to legal-expert for sign-off"
 next_action: proceed
-report_path: "/Users/emanuelesabetta/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/20260424_144210+0200-multilanguage-copywriter-hospitality-bora-bora.md"
+report_path: "${CLAUDE_PROJECT_DIR}/reports/webdesigner/20260424_144210+0200-multilanguage-copywriter-hospitality-bora-bora.md"
 ---
 
 # Multilingual Copywriter — Phase B summary

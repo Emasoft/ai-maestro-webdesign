@@ -1,12 +1,16 @@
 ---
 name: amw-ascii-sketch
-description: Runs the ASCII plan-phase iteration loop. Triggers when design-principles has decided that a webpage design's plan phase is best explored in ASCII before committing to HTML. Specific triggers — "sketch this in ASCII", "give me layout variants", "propose 3 wireframes in ASCII", "iterate on the layout in ASCII", "ASCII mockup", "box-drawing wireframe". Does NOT self-trigger on broad "design", "make a page", "UI", "landing page", "mockup", "prototype" — those belong to design-principles, which then routes here as its default plan-phase executor.
+description: Runs the ASCII plan-phase iteration loop. Triggers when design-principles has decided that a webpage design's plan phase is best explored in ASCII before committing to HTML. Specific triggers — "sketch this in ASCII", "give me layout variants", "propose 3 wireframes in ASCII", "iterate on the layout in ASCII", "ASCII mockup", "box-drawing wireframe". Does NOT self-trigger on broad "design", "make a page", "UI", "landing page", "mockup", "prototype" — those belong to design-principles, which then routes here as its default plan-phase executor. Use when iterating on a webpage layout in ASCII before committing to HTML. Trigger with /amw-sketch.
 version: 0.1.0
 ---
 
 # ASCII Sketch — plan-phase loop
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md` — this skill is the **default** plan-phase executor for webpage design in this plugin. It is not a fast-path alternative; it is the first thing that should run after design-principles has captured context.
+
+## Overview
+
+Runs the ASCII plan-phase iteration loop. Produces three layout variants per turn in pure ASCII, iterates on user feedback, and hands off to `amw-ascii-to-html` only after the user explicitly approves a direction. Keeps plan-phase cost at ~1% of HTML iteration.
 
 ## Activation
 
@@ -90,6 +94,15 @@ For freeform wireframes (full-page web layouts, hero+nav+footer, dashboard page 
 - **Synchronous feedback.** ASCII is rendered instantly in chat — no file write, no browser round trip, no `dev-browser` screenshot, no `amw-preview` step.
 - **Easy to describe edits against.** Layout changes map naturally to ASCII ("move the CTA to the right of the hero", "make the feature row 2×2 instead of 3×1", "swap the sidebar to the right edge"). Describing the same edit against rendered HTML is always slower and more error-prone.
 - **Commits to nothing.** Typography, color, radius, shadow, and other token choices do not exist in ASCII — so they cannot over-constrain layout decisions. The user picks a skeleton first, tokens after.
+
+## Instructions
+
+1. Run the orchestrator check once (Step 1): gather design system, brand tokens, or references; ask for them if absent.
+2. Emit three ASCII variants — Baseline (A), Advanced (B), Experimental (C) — using `bin/amw-validate-ascii.py` before presenting each.
+3. Ask for explicit feedback: which direction the user prefers, any layout edits, and confirm they are not yet satisfied.
+4. On ambiguous acknowledgement, probe before proceeding; on a picks/tweaks response, emit a revised single ASCII and loop back to step 3.
+5. Continue iterating until the user provides an explicit satisfaction token (`yes`, `ship it`, `convert it`, `that's the one`, `perfect`, `done`).
+6. On approval, save the final `.txt` to `/tmp/amw-sketch-<slug>-final.txt` and hand off to `../amw-ascii-to-html/`.
 
 ## The loop (this is the shape of the skill, not a one-shot)
 
@@ -293,7 +306,15 @@ Even at ASCII fidelity — before ever emitting a variant to the user — scan e
 
 If a variant slides toward any of these, rework it before showing the user. Do not ship slop and rely on the user to catch it.
 
-## Dependencies
+## Output
+
+Three ASCII layout variants per iteration, each labelled A / B / C, presented in chat only (no file writes). After approval, the selected variant is passed to `amw-ascii-to-html` for HTML conversion.
+
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Prerequisites
 
 - **runtime_binaries:** none.
 - **python_packages:** none.
@@ -304,7 +325,7 @@ If a variant slides toward any of these, rework it before showing the user. Do n
 
 `../../bin/amw-ascii-parse.py` is referenced only by the downstream `ascii-to-html` skill for parsing the handed-off file; it is not invoked from within this loop.
 
-## Cross-references
+## Resources
 
 - `../amw-design-principles/SKILL.md` — orchestrator. The three hard rules apply to every variant emitted here.
 - `../amw-design-principles/ai-slop-avoid.md` — applied per variant as described above.
@@ -326,7 +347,7 @@ If a variant slides toward any of these, rework it before showing the user. Do n
 - Does NOT dump prose paragraphs between iterations. Captions stay to one or two lines. Each iteration turn is one ASCII block plus one question.
 - Does NOT auto-trigger on the broad design vocabulary (`design`, `UI`, `landing page`, `mockup`, `prototype`, `make a page`). Those belong to `../amw-design-principles/`, which then routes here.
 
-## Failure modes and how to recover
+## Error Handling
 
 | Failure mode | Recovery |
 |---|---|

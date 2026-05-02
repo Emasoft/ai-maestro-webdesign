@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-diagrams-reference
-description: Professional ASCII diagrams for code comments, docs, ADRs, and technical communication using the classic `+--+` / `|` / `-` character set — flowchart conventions, state machines, tree / hierarchy forms, data-structure layouts, network topologies, sequence diagrams, tables, and annotation patterns. Triggers on narrow technical intents only — "ASCII flowchart in a code comment", "state-machine diagram for this protocol", "tree view of this directory", "packet layout diagram", "network topology ASCII", "sequence diagram in ASCII", "before/after ASCII comparison", "annotate these bit fields". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator.
+description: Professional ASCII diagrams for code comments, docs, ADRs, and technical communication using the classic `+--+` / `|` / `-` character set — flowchart conventions, state machines, tree / hierarchy forms, data-structure layouts, network topologies, sequence diagrams, tables, and annotation patterns. Triggers on narrow technical intents only — "ASCII flowchart in a code comment", "state-machine diagram for this protocol", "tree view of this directory", "packet layout diagram", "network topology ASCII", "sequence diagram in ASCII", "before/after ASCII comparison", "annotate these bit fields". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator. Use when authoring technical ASCII diagrams for code comments, docs, or ADRs. Trigger with /amw-create-or-modify-ascii-diagram.
 version: 0.1.0
 ---
 
@@ -8,6 +8,10 @@ version: 0.1.0
 
 > **Orchestrated by:** `../amw-design-principles/SKILL.md`.
 > Executor. Narrow technical triggers only — the orchestrator routes here when the user wants a text-based diagram for code comments / READMEs / ADRs / design docs, rendered with the classic `+--+ | -` ASCII character set.
+
+## Overview
+
+Reference library of battle-tested ASCII diagram forms for code comments, READMEs, ADRs, and technical documentation — distilled from the CHI'24 paper on ASCII drawings. Routes to the closest pattern file under `references/` and adapts it to the caller's identifiers.
 
 ## Activation
 
@@ -147,6 +151,15 @@ Beyond the mechanical validator:
 - **No labels**: unlabeled boxes and lines are meaningless — always label.
 - **Inconsistent spacing**: pick a spacing pattern and stick with it across the whole diagram.
 - **Proportional font assumptions**: never assume characters have different widths.
+
+## Instructions
+
+1. Identify the diagram archetype from the user's intent (flowchart, state machine, tree, data structure, network topology, sequence, DAG, or annotation).
+2. Select the closest reference file from `references/` using the category table; do not re-invent patterns.
+3. Copy the matching pattern and substitute real identifiers from the user's code or brief.
+4. Decide context: classic `+--+` ASCII for source-file comments or maximum portability, Unicode box-drawing (`┌─┐`) for GitHub-rendered READMEs.
+5. Validate with `bin/amw-validate-ascii.py`; if running inside a comment block, re-validate after adding the language comment prefix.
+6. Emit the validated diagram; never present a FAIL output.
 
 ## Technique selection
 
@@ -363,7 +376,7 @@ This skill produces TWO kinds of output:
    - **Inputs** — what the user provided + any auto-detected context
    - **Method** — which TECH references were consulted, which pipeline steps ran
    - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- [path/to/artifact.ext](./path/to/artifact.ext) — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
+     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
    - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
    - **Deviations** — any step skipped or changed, with rationale
 
@@ -373,13 +386,17 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
-## Dependencies
+## Prerequisites
 
 - **runtime_binaries:** `perl >= 5.10` (pre-installed on macOS and most Linux distros — `/amw-doctor` checks), `python3 >= 3.8`
 - **python_packages:** none (pure stdlib)
 - **cpan / npm:** none
 
-## Cross-references
+## Examples
+
+See the worked examples in the per-mode sub-sections above and in references/.
+
+## Resources
 
 - `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; all emitted ASCII passes `validate-ascii.py`
 - `../../bin/amw-validate-ascii.py` — the validator itself (Python, exits non-zero on failure, emits `FIX:` hints)
@@ -396,7 +413,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - [`references/sequences-tables.md`](references/sequences-tables.md) — request flows, timelines, tables
 - [`references/graphs-annotations.md`](references/graphs-annotations.md) — DAGs, code annotations, before/after
 
-## Failure modes
+## Error Handling
 
 | Symptom | Cause | Fix |
 |---|---|---|
