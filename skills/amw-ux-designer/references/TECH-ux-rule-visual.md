@@ -4,6 +4,21 @@ category: ux-rule-visual
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/rules/visual-design.md
 also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Establishing hierarchy](#establishing-hierarchy)
+  - [Typography scale](#typography-scale)
+  - [Color usage](#color-usage)
+  - [Layout](#layout)
+  - [Design-system essentials](#design-system-essentials)
+  - [Component documentation](#component-documentation)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Rule — Visual Design (hierarchy + design system)
 
@@ -88,7 +103,7 @@ Typography scale at 1.25× ratio:
 
 ## Cross-references
 
-- `TECH-ux-rule-research.md`, `TECH-ux-rule-accessibility.md`, `TECH-ux-rule-ia.md`, `TECH-ux-rule-interaction.md`
+- [TECH-ux-rule-research](TECH-ux-rule-research.md), [TECH-ux-rule-accessibility](TECH-ux-rule-accessibility.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md)
 - `../../amw-design-principles/typography-system.md`
 - `../../amw-design-principles/color-system.md`
 - `../../amw-design-principles/spacing-rhythm.md`

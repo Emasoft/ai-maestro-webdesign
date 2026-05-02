@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The decision table](#the-decision-table)
+- [The rule](#the-rule)
+- [Chart.js when yes](#chartjs-when-yes)
+- [Chart.js loading](#chartjs-loading)
+- [The canvas size trick](#the-canvas-size-trick)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Chart selection — decision tree for chart type
 
@@ -77,10 +88,10 @@ Chart.js needs an explicit container height or it'll render at 0px.
 
 ## Cross-references
 
-- `TECH-svg-pie-chart.md` — the most-used SVG chart.
-- `TECH-waffle-chart.md` — the single-percentage alternative.
-- `TECH-line-chart.md` — when to use Chart.js line.
-- `TECH-bar-chart-css.md` — the CSS horizontal bar.
-- `TECH-radar-chart.md` — Chart.js radar for game stats.
+- [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — the most-used SVG chart.
+- [TECH-waffle-chart](TECH-waffle-chart.md) — the single-percentage alternative.
+- [TECH-line-chart](TECH-line-chart.md) — when to use Chart.js line.
+- [TECH-bar-chart-css](TECH-bar-chart-css.md) — the CSS horizontal bar.
+- [TECH-radar-chart](TECH-radar-chart.md) — Chart.js radar for game stats.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

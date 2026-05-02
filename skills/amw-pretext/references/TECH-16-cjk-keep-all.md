@@ -4,6 +4,15 @@ category: measure
 source: pretext-skills/amw-pretext-text-measurement/SKILL.md
 also-in: SKILL-13.md, SKILL-21.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # CJK keep-all word-break
 

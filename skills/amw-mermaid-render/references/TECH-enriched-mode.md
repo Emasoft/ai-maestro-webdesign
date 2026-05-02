@@ -4,6 +4,15 @@ category: mermaid-theme
 source: diagrams-skills/beautiful-mermaid-main/references/themes.md
 also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Enriched Mode — override specific derived tokens
 
@@ -55,8 +64,8 @@ const svg = await renderMermaid(diagram, {
 
 ## Cross-references
 
-- `TECH-mono-mode.md` — the fall-through rules.
-- `TECH-built-in-themes.md` — pre-baked palettes that use this shape.
-- `TECH-theme-selection-guide.md` — when to even reach for Enriched Mode.
+- [TECH-mono-mode](TECH-mono-mode.md) — the fall-through rules.
+- [TECH-built-in-themes](TECH-built-in-themes.md) — pre-baked palettes that use this shape.
+- [TECH-theme-selection-guide](TECH-theme-selection-guide.md) — when to even reach for Enriched Mode.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

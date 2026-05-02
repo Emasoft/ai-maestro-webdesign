@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [CSS](#css)
+- [HTML](#html)
+- [Arrow labels (mandatory)](#arrow-labels-mandatory)
+- [When to use a horizontal flow instead](#when-to-use-a-horizontal-flow-instead)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `flywheel_loop` — rectangular nodes → circular back to start
 
@@ -134,9 +145,9 @@ circularity. Flywheel is specifically for closed loops.
 
 ## Cross-references
 
-- `TECH-flow-with-arrows-component.md` — linear alternative.
-- `TECH-token-economics-playbook.md` — where flywheels appear most.
-- `TECH-flow-poster-archetype.md` — archetype for flywheel-dominant
+- [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — linear alternative.
+- [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — where flywheels appear most.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — archetype for flywheel-dominant
   pieces.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

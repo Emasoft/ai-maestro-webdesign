@@ -592,7 +592,7 @@ I have **no veto power**. Per `../skills/amw-design-principles/references/author
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent; consumes my verdicts and decides next steps.
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent; consumes my verdicts and decides next steps.
 - `../skills/amw-dev-browser/SKILL.md` — the only browser-automation primitive. Authoritative invocation patterns.
 - `../skills/amw-ux-evaluator/SKILL.md` — optional UX-quality scoring layer (3-dimension framework).
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — the 14-section template.
@@ -602,5 +602,5 @@ I have **no veto power**. Per `../skills/amw-design-principles/references/author
 - `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase B data-flow (my verdicts feed back to main-agent; if WCAG concerns surface, main-agent routes to `amw-accessibility-auditor-agent`).
 - `../skills/amw-design-principles/references/agent-reports-location.md` — report + screenshot + console-log path rules.
 - `../bin/amw-dev-browser-wrapper.sh` — plugin-standard wrapper (canonical invocation path).
-- `./amw-accessibility-auditor-agent.md` — peer agent for full WCAG AA audit (via main-agent).
+- [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — peer agent for full WCAG AA audit (via main-agent).
 - `../CLAUDE.md` — plugin architecture overview.

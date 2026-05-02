@@ -4,6 +4,18 @@ category: hyperframes-capture-step
 source: external/hyperframes/skills/website-to-hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Narration style rules](#narration-style-rules)
+  - [Format](#format)
+- [Gate](#gate)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Step 3 — Write SCRIPT.md
 
@@ -71,5 +83,5 @@ Word count: ~80 words. At Kokoro 160 wpm default → ~30 seconds. Matches the re
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-step-2-design.md`, `TECH-hyperframes-capture-step-4-storyboard.md`, `TECH-hyperframes-capture-step-5-vo.md`
+- [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md), [TECH-hyperframes-capture-step-4-storyboard](TECH-hyperframes-capture-step-4-storyboard.md), [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md)
 - `../SKILL.md`

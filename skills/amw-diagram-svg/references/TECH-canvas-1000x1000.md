@@ -4,6 +4,15 @@ category: svg-shape
 source: SKILLS-TO-INTEGRATE/diagrams-skills/baybee-diagram/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-canvas-1000x1000
 
@@ -96,8 +105,8 @@ Embedded inside responsive HTML:
 ## Cross-references
 
 - `../SKILL.md` — canvas is defined in the Usage section
-- `TECH-svg-group-structure.md` — recommended layering inside the canvas
-- `TECH-stroke-width-4-palette.md` — default strokes at this canvas size
-- `TECH-node-shape-vocabulary.md` — the shapes fit this canvas grid
+- [TECH-svg-group-structure](TECH-svg-group-structure.md) — recommended layering inside the canvas
+- [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — default strokes at this canvas size
+- [TECH-node-shape-vocabulary](TECH-node-shape-vocabulary.md) — the shapes fit this canvas grid
 - `../../amw-diagram-architecture/references/TECH-svg-layered-layout.md` —
   alternative fixed-width 820 canvas for layered architecture diagrams

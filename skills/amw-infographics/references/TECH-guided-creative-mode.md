@@ -4,6 +4,19 @@ category: infographic-builder
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The flow](#the-flow)
+- [The two-option presentation](#the-two-option-presentation)
+- [Example presentation](#example-presentation)
+- [User selection handling](#user-selection-handling)
+- [Step 5 — one-shot build](#step-5-one-shot-build)
+- [Step 6 — Live Editor Block](#step-6-live-editor-block)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Guided Creative (Mode C) — show two directions before building
 
@@ -106,11 +119,11 @@ Apply changes when the user pastes updates.
 
 ## Cross-references
 
-- `TECH-one-shot-mode.md` — the build step after selection.
-- `TECH-interactive-builder-mode.md` — the component-by-component
+- [TECH-one-shot-mode](TECH-one-shot-mode.md) — the build step after selection.
+- [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the component-by-component
   alternative.
-- `TECH-stacked-reference-archetype.md` — the default archetype.
-- `TECH-flow-poster-archetype.md` — for flow-dominant picks.
-- `TECH-cheat-sheet-archetype.md` — for the densest mode.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default archetype.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — for flow-dominant picks.
+- [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — for the densest mode.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

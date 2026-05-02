@@ -4,6 +4,15 @@ category: text-visual-retro
 source: cc-plugin-text-visualizations-main/skills/tools-visual-retro/SKILL.md
 also-in: cc-plugin-text-visualizations-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-grid-side-by-side — `Went Well` / `Needs Attention` 2-column grid
 
@@ -56,9 +65,9 @@ highlights with owners and metric deltas.
 
 ## Cross-references
 
-- `./TECH-milestone-timeline.md`
-- `./TECH-heatmap-intensity-markers.md`
-- `./TECH-owner-action-items.md`
+- [TECH-milestone-timeline](./TECH-milestone-timeline.md)
+- [TECH-heatmap-intensity-markers](./TECH-heatmap-intensity-markers.md)
+- [TECH-owner-action-items](./TECH-owner-action-items.md)
 - `../../amw-ascii-diagrams-reference/references/TECH-classic-before-after-comparison.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

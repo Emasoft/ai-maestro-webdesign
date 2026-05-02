@@ -63,7 +63,7 @@ Good (every state reachable and leaveable):
 
 ## Cross-references
 
-- `./TECH-state-machine-legend.md`
-- `./TECH-state-guards-and-actions.md`
+- [TECH-state-machine-legend](./TECH-state-machine-legend.md)
+- [TECH-state-guards-and-actions](./TECH-state-guards-and-actions.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

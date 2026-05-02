@@ -68,7 +68,7 @@ Component details:
 
 ## Cross-references
 
-- `./TECH-c4-zoom-levels.md`
-- `./TECH-platform-component-tags.md`
+- [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
+- [TECH-platform-component-tags](./TECH-platform-component-tags.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

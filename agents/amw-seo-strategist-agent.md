@@ -439,7 +439,7 @@ Phase B returns the same YAML schema with `phase: B`, `artifact_paths` including
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol

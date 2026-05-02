@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-bezier-annotation-callout
 
@@ -95,8 +104,8 @@ Attributed to `diagram-design-editorial/SKILL.md` lines 416-436:
 ## Cross-references
 
 - `../SKILL.md` — Primitives section
-- `primitive-annotation.md` — the full primitive spec this technique
+- [primitive-annotation](primitive-annotation.md) — the full primitive spec this technique
   generalises
-- `TECH-three-family-typography.md` — the rule that keeps italic serif
+- [TECH-three-family-typography](TECH-three-family-typography.md) — the rule that keeps italic serif
   reserved for this role
-- `design-system.md` — `muted` token, dash pattern convention
+- [design-system](design-system.md) — `muted` token, dash pattern convention

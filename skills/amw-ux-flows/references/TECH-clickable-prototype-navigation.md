@@ -4,6 +4,17 @@ category: ux-flow-wireframe
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Navigation wrapper class](#navigation-wrapper-class)
+  - [Patterns](#patterns)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-clickable-prototype-navigation
 
@@ -168,13 +179,13 @@ Home screen with tab bar + navigable cards:
 - **No form submits.** If a screen has a form, the "submit" button is
   an `<a href="next.html" class="wf-link">` like any other button —
   the wireframe doesn't actually process inputs. See
-  `TECH-no-dead-end-screens.md`.
+  [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md).
 
 ## Cross-references
 
 - `../SKILL.md` — Phase 3 of the workflow
-- `TECH-wireframe-html-mobile-first.md` — the full HTML scaffold
-- `TECH-no-dead-end-screens.md` — companion rule (every screen has ≥1
+- [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the full HTML scaffold
+- [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — companion rule (every screen has ≥1
   outgoing link)
-- `TECH-wireframe-index-inventory.md` — the inventory that tracks
+- [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the inventory that tracks
   link targets

@@ -4,6 +4,15 @@ category: designlang-url-extract
 source: SKILLS-TO-INTEGRATE/web-design/designlang-design-extract/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `--interactions` — hover / focus / active state capture
 
@@ -50,5 +59,5 @@ Output includes:
 
 ## Cross-references
 
-- `TECH-designlang-full-mode.md`
+- [TECH-designlang-full-mode](TECH-designlang-full-mode.md)
 - `../SKILL.md`

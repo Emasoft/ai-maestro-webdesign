@@ -4,6 +4,15 @@ category: typography
 source: pretext-skills/use-pretext/SKILL.md
 also-in: SKILL-21.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Exact-line truncate with "Read more"
 

@@ -468,7 +468,7 @@ Client brand notes "quiet luxury" collide partially with commoditized ground. Ma
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — judgment-layer philosophy
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML schema
 - `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T block

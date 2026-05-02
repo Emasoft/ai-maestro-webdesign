@@ -4,6 +4,15 @@ category: ascii-unicode
 source: box-diagram-master/skills/amw-box-diagram/SKILL.md
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-fan-out-fan-in-junctions — `┌┬┐` / `└┴┘` to diverge and rejoin
 
@@ -79,8 +88,8 @@ Full fan-out + fan-in (source: box-diagram-master/README.md lines 16-26):
 
 ## Cross-references
 
-- `./TECH-unicode-rounded-corner-set.md`
-- `./TECH-python-helper-pattern.md`
+- [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
+- [TECH-python-helper-pattern](./TECH-python-helper-pattern.md)
 - `../../amw-box-diagram/examples/ci-cd-pipeline.txt`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

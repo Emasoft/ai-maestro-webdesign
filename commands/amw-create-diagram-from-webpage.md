@@ -23,7 +23,7 @@ Thin dispatcher over `skills/amw-webpage-to-diagram/`. Given a URL or local `.ht
 2. **PNG gate.** If input ends in `.png` OR (URL HEAD returns `Content-Type: image/*`) OR (local file magic is PNG) → exit 2 with `REFUSE: PNG-embedded diagram cannot be modified — provide the source artifact`.
 3. **HTML-target shortcut.** If `--to html` → print a hint: *"Target format HTML is a no-op — the input already is HTML. Use `/amw-modify-webpage-from-diagram` if you want to modify it from a diagram."* Exit 0.
 4. **Target default.** If `--to` is omitted → default to `ascii` (pair-able with `/amw-modify-diagram-of-webpage` for round-trip editing).
-5. **Extract.** Invoke `skills/amw-webpage-to-diagram/SKILL.md` pipeline (steps 1–7): detect mime → refuse PNG → fetch HTML via `bin/amw-dev-browser-wrapper.sh` (URL) or read local → `bin/amw-dom-to-ir.py --in <html> --out /tmp/amw-page-<hash>.json --target-kind arch` → `bin/amw-diagram-ir.py emit --in <ir> --format <target> --out <out>` → `bin/amw-validate-diagram.sh <out>`.
+5. **Extract.** Invoke [SKILL](skills/amw-webpage-to-diagram/SKILL.md) pipeline (steps 1–7): detect mime → refuse PNG → fetch HTML via `bin/amw-dev-browser-wrapper.sh` (URL) or read local → `bin/amw-dom-to-ir.py --in <html> --out /tmp/amw-page-<hash>.json --target-kind arch` → `bin/amw-diagram-ir.py emit --in <ir> --format <target> --out <out>` → `bin/amw-validate-diagram.sh <out>`.
 6. **Report.** On PASS: print the output path and a one-line summary (nodes+edges count). On FAIL: leave the tentative output as `<out>.tentative` and surface the validator FIX hints verbatim.
 
 ## Output
@@ -42,9 +42,9 @@ Thin dispatcher over `skills/amw-webpage-to-diagram/`. Given a URL or local `.ht
 
 ## Cross-references
 
-- `skills/amw-webpage-to-diagram/SKILL.md` — primary backing skill.
-- `skills/amw-diagram-formats/references/html.md` — HTML format spec.
-- `skills/amw-diagram-formats/references/ir-schema.md` — IR schema produced.
+- [SKILL](skills/amw-webpage-to-diagram/SKILL.md) — primary backing skill.
+- [html](skills/amw-diagram-formats/references/html.md) — HTML format spec.
+- [ir-schema](skills/amw-diagram-formats/references/ir-schema.md) — IR schema produced.
 - `bin/amw-dom-to-ir.py`, `bin/amw-diagram-ir.py`, `bin/amw-validate-diagram.sh` — backing tools.
 - `/amw-modify-diagram-of-webpage` — chains this command with a user-edit pause, then `/amw-modify-webpage-from-diagram` on apply.
 - `/amw-convert-any-diagram-format` — use when you want further format conversion on the extracted IR.

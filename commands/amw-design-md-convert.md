@@ -69,8 +69,8 @@ If lint fails, surface the error list and recommend `/amw-design-md-audit <outpu
 
 ## Cross-references
 
-- `skills/amw-design-md/references/TECH-13-converting-variant2-to-1.md`
-- `skills/amw-design-md/references/community-9-section-spec.md`
-- `skills/amw-design-md/references/canonical-spec-google-alpha.md`
+- [TECH-13-converting-variant2-to-1](skills/amw-design-md/references/TECH-13-converting-variant2-to-1.md)
+- [community-9-section-spec](skills/amw-design-md/references/community-9-section-spec.md)
+- [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
 - `bin/amw-design-md-convert-v2-to-v1.py`
 - `bin/amw-design-md-lint.sh`

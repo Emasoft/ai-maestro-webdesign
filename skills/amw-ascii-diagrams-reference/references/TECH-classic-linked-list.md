@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/data-structures.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-linked-list — head → node → node → NULL chain
 
@@ -54,11 +63,11 @@ Stack/queue variant (source: lines 27-35):
 - Circular / cyclic lists need an arrow going back to the head — route it
   underneath the chain to avoid crossing the forward arrows.
 - Pointer arithmetic diagrams (arrays of structs) are better drawn with
-  `TECH-classic-struct-byte-offsets.md`.
+  [TECH-classic-struct-byte-offsets](TECH-classic-struct-byte-offsets.md).
 
 ## Cross-references
 
-- `./TECH-classic-struct-byte-offsets.md`
-- `./data-structures.md` (legacy pattern file)
+- [TECH-classic-struct-byte-offsets](./TECH-classic-struct-byte-offsets.md)
+- [data-structures](./data-structures.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

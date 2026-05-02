@@ -4,6 +4,15 @@ category: svg-render-loop
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [24×24 UI icons](#2424-ui-icons)
+- [64×64+ app icons — depth + shine](#6464-app-icons-depth-shine)
+- [Test legibility at small size](#test-legibility-at-small-size)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Icon construction — 24×24 stroke-based + app icons
 
@@ -84,9 +93,9 @@ icons that look clear at 200px are illegible at 24.
 
 ## Cross-references
 
-- `TECH-paint-order-and-spread-method.md` — `paint-order="stroke fill"`
+- [TECH-paint-order-and-spread-method](TECH-paint-order-and-spread-method.md) — `paint-order="stroke fill"`
   for halo-style icons.
-- `TECH-multi-stop-gradients.md` — the gradient patterns for app icons.
-- `TECH-drop-shadow-filter.md` — the shadow used under app icons.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the gradient patterns for app icons.
+- [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the shadow used under app icons.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

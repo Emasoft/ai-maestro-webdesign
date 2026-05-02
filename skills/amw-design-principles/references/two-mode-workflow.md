@@ -1,3 +1,40 @@
+## Table of Contents
+
+- [0. Sub-agent delegation (Main-agent mode only)](#0-sub-agent-delegation-main-agent-mode-only)
+  - [Naming convention](#naming-convention)
+  - [One-way delegation rule](#one-way-delegation-rule)
+  - [Delegation timing](#delegation-timing)
+  - [Full sub-agent roster (19 amw-* agents across four tiers)](#full-sub-agent-roster-19-amw-agents-across-four-tiers)
+  - [Cross-references](#cross-references)
+- [1. Mode Detection](#1-mode-detection)
+  - [Command mode signals (fast path — dispatch immediately)](#command-mode-signals-fast-path-dispatch-immediately)
+  - [Main-agent mode signals (requirements path — enter Phase A first)](#main-agent-mode-signals-requirements-path-enter-phase-a-first)
+  - [Tie-breaking rule](#tie-breaking-rule)
+- [2. Phase A — Iterative Low-Fi Loop](#2-phase-a-iterative-low-fi-loop)
+  - [Inputs](#inputs)
+  - [Low-fi artifact types (pick the cheapest that fits)](#low-fi-artifact-types-pick-the-cheapest-that-fits)
+  - [Iteration rules](#iteration-rules)
+  - [RDD (Requirements Design Document) — auto-pass Phase A](#rdd-requirements-design-document-auto-pass-phase-a)
+  - [Satisfaction gate (hard stop — non-skippable)](#satisfaction-gate-hard-stop-non-skippable)
+  - [What Phase A does NOT include](#what-phase-a-does-not-include)
+- [3. Phase B — Implementation and Spawning](#3-phase-b-implementation-and-spawning)
+  - [Transition protocol](#transition-protocol)
+  - [Sub-agent spawning rules](#sub-agent-spawning-rules)
+  - [Non-conversation rule](#non-conversation-rule)
+  - [Job-completion report](#job-completion-report)
+- [4. Scenario Testing via dev-browser (mandatory in Phase B)](#4-scenario-testing-via-dev-browser-mandatory-in-phase-b)
+  - [What a scenario test covers](#what-a-scenario-test-covers)
+  - [dev-browser is the ONLY input-automation primitive](#dev-browser-is-the-only-input-automation-primitive)
+  - [Scenario test output format](#scenario-test-output-format)
+- [5. Anti-Patterns](#5-anti-patterns)
+  - [Skipping Phase A when requirements are vague](#skipping-phase-a-when-requirements-are-vague)
+  - [Starting Phase B before explicit approval](#starting-phase-b-before-explicit-approval)
+  - [Spawning sub-agents during Phase A](#spawning-sub-agents-during-phase-a)
+  - [Talking to the user during Phase B](#talking-to-the-user-during-phase-b)
+  - [Treating commands as the only path to a skill](#treating-commands-as-the-only-path-to-a-skill)
+  - [Omitting scenario tests from Phase B](#omitting-scenario-tests-from-phase-b)
+
+
 # Two Operating Modes — Formal Spec
 
 This document is the authoritative spec for how `design-principles` and every
@@ -74,15 +111,15 @@ Sub-agents return structured findings to the main-agent. The main-agent integrat
 
 Tier 4 specialists have **no veto power**. They produce specs/exports that Tier 3 producers (typically `amw-wireframe-builder-agent`) consume for final HTML rendering. `amw-email-designer-agent` is the exception — it is its own render path because email is not a webpage.
 
-The plugin ships 20 agents total (1 main-agent + 7 Tier-2 + 8 Tier-3 + 4 Tier-4 amw-* specialists). Full specifications live at `../../agents/<name>.md`; the canonical agent-authoring philosophy is at `./agent-authoring-philosophy.md`.
+The plugin ships 20 agents total (1 main-agent + 7 Tier-2 + 8 Tier-3 + 4 Tier-4 amw-* specialists). Full specifications live at `../../agents/<name>.md`; the canonical agent-authoring philosophy is at [agent-authoring-philosophy](./agent-authoring-philosophy.md).
 
 ### Cross-references
 
-- `./agent-authoring-philosophy.md` — why agents differ from skills (recipe layer vs judgment layer); mandatory 14-section template
-- `./sub-agent-return-contract.md` — YAML header schema every amw-* sub-agent returns to main-agent
-- `./agent-interaction-patterns.md` — explicit data hand-offs between agents in Phase A and Phase B; the one-way tree topology
-- `./skill-invocation-protocol.md` — DO/DON'T block for how agents invoke skills without re-triggering the orchestrator
-- `./authority-hierarchy.md` — conflict-resolution rules; veto power for legal-expert and accessibility-auditor
+- [agent-authoring-philosophy](./agent-authoring-philosophy.md) — why agents differ from skills (recipe layer vs judgment layer); mandatory 14-section template
+- [sub-agent-return-contract](./sub-agent-return-contract.md) — YAML header schema every amw-* sub-agent returns to main-agent
+- [agent-interaction-patterns](./agent-interaction-patterns.md) — explicit data hand-offs between agents in Phase A and Phase B; the one-way tree topology
+- [skill-invocation-protocol](./skill-invocation-protocol.md) — DO/DON'T block for how agents invoke skills without re-triggering the orchestrator
+- [authority-hierarchy](./authority-hierarchy.md) — conflict-resolution rules; veto power for legal-expert and accessibility-auditor
 
 ---
 
@@ -291,11 +328,11 @@ absent artifacts.
    embedded in the HTML.
 
 **Return contracts:** every sub-agent returns a YAML header per
-`./sub-agent-return-contract.md`. Main-agent parses the header (not the body)
+[sub-agent-return-contract](./sub-agent-return-contract.md). Main-agent parses the header (not the body)
 to decide proceed / retry / escalate / stop.
 
 **Authority and vetoes:** sub-agent conflicts are resolved per
-`./authority-hierarchy.md`. Legal-expert and accessibility-auditor have veto
+[authority-hierarchy](./authority-hierarchy.md). Legal-expert and accessibility-auditor have veto
 power over mandatory regulatory / WCAG AA blockers; other agents hold
 non-veto authority in their respective domains.
 

@@ -1,3 +1,17 @@
+## Table of Contents
+
+- [Topology invariants](#topology-invariants)
+- [Phase A data flow](#phase-a-data-flow)
+  - [Phase A data hand-offs (carried by main-agent between sub-agent invocations)](#phase-a-data-hand-offs-carried-by-main-agent-between-sub-agent-invocations)
+- [Phase B data flow](#phase-b-data-flow)
+  - [Phase B data hand-offs](#phase-b-data-hand-offs)
+  - [Phase B sequencing rules](#phase-b-sequencing-rules)
+- [What main-agent does between sub-agent calls](#what-main-agent-does-between-sub-agent-calls)
+- [Error propagation](#error-propagation)
+- [Why this topology (instead of peer-to-peer)](#why-this-topology-instead-of-peer-to-peer)
+- [Enforcement](#enforcement)
+
+
 # Agent interaction patterns — data hand-offs across the 13-agent roster
 
 This document specifies who talks to whom, when, and what data flows between them. It exists because an agent roster without explicit data-flow documentation forces main-agent to re-pass, re-fetch, or silently drop information between sub-agent calls.
@@ -32,7 +46,7 @@ researcher research    expert    strategist  language
 
 Each discovery sub-agent returns a YAML-headed report. Main-agent aggregates the outputs and synthesizes three ASCII variants via the `ascii-sketch` skill (or equivalent low-fi artifact per the Phase A palette). User iterates; main-agent re-synthesizes. Satisfaction gate terminates Phase A.
 
-**Important: as of P1-1, Phase B data hand-offs are mediated through `phase-a-frozen-spec.json` (canonical schema at `./phase-a-frozen-spec.md`).** The tables below document which Phase A agent's output ends up in which spec field; main-agent runs `bin/amw-freeze-phase-a.sh` at Phase A.5 to aggregate them, and every Phase B sub-agent receives only the spec's path (not the individual paths). The individual-path columns below are kept for reference / future plan changes, but in production every Phase B sub-agent reads the JSON and resolves only the keys it needs.
+**Important: as of P1-1, Phase B data hand-offs are mediated through `phase-a-frozen-spec.json` (canonical schema at [phase-a-frozen-spec](./phase-a-frozen-spec.md)).** The tables below document which Phase A agent's output ends up in which spec field; main-agent runs `bin/amw-freeze-phase-a.sh` at Phase A.5 to aggregate them, and every Phase B sub-agent receives only the spec's path (not the individual paths). The individual-path columns below are kept for reference / future plan changes, but in production every Phase B sub-agent reads the JSON and resolves only the keys it needs.
 
 The "Frozen-spec key" column applies to Phase A → Phase B carries (the rows whose downstream consumer is a Phase B agent). Phase A → Phase A carries (rows where one discovery agent feeds another within Phase A) bypass the frozen spec — main-agent passes those directly because the frozen spec is not yet emitted.
 
@@ -143,7 +157,7 @@ Main-agent's orchestration doctrine (§15 of main-agent spec) captures the exact
 
 For every sub-agent invocation, main-agent's steps are:
 
-1. **Prepare the input** — for Phase A invocations, take relevant fields from prior sub-agents' YAML headers + report bodies. For Phase B invocations, the input contract is a single `frozen_spec_path` (per Phase A.5; see `./phase-a-frozen-spec.md`) plus any artifact paths produced by upstream Phase B sub-agents
+1. **Prepare the input** — for Phase A invocations, take relevant fields from prior sub-agents' YAML headers + report bodies. For Phase B invocations, the input contract is a single `frozen_spec_path` (per Phase A.5; see [phase-a-frozen-spec](./phase-a-frozen-spec.md)) plus any artifact paths produced by upstream Phase B sub-agents
 2. **Spawn the sub-agent** via Task(subagent_type=<agent-name>, prompt=<input>)
 3. **Parse the YAML header** — check `status`, `blocking_issues`, `next_action`
 4. **Decide** — proceed / retry / escalate / stop (per the return-contract consumption pseudo-code)
@@ -160,7 +174,7 @@ If a sub-agent returns `status=failed` or `next_action=escalate_to_user`:
 - **Failure in a discovery agent (Phase A)** → main-agent decides between (a) skip the domain and proceed with degraded context, (b) ask user for help, (c) retry with adjusted input. The decision is guided by the agent's `recommendations`.
 - **Failure in an auditor (Phase B)** → main-agent flags but does not stop. The auditor's domain is reported as "unaudited" in the final job-completion report with the reason.
 
-Veto-power failures (legal-expert, accessibility-auditor) are treated specially per `authority-hierarchy.md` — they block forward progress on the affected work stream until user override or resolution.
+Veto-power failures (legal-expert, accessibility-auditor) are treated specially per [authority-hierarchy](authority-hierarchy.md) — they block forward progress on the affected work stream until user override or resolution.
 
 ## Why this topology (instead of peer-to-peer)
 
@@ -170,11 +184,11 @@ A tree topology is chosen over a mesh for three reasons:
 2. **Context isolation.** Each sub-agent sees only its own input + shared references. Cross-domain contamination (brand-researcher's aesthetic preferences leaking into legal-expert's compliance reasoning) is structurally prevented.
 3. **Loop safety.** A mesh topology with sub-agents calling each other creates potential for circular dependencies (A calls B, B calls C, C calls A). A tree cannot.
 
-The cost is that main-agent carries the data-plumbing burden: reading output from N sub-agents and assembling M input contracts. The benefit is that the entire workflow is inspectable and the agents themselves remain simple, single-purpose. Phase A.5 (`./phase-a-frozen-spec.md`) reduces the data-plumbing cost for the Phase A → Phase B hand-off from O(N) per-agent contracts to O(1) — one frozen JSON, N agents read it.
+The cost is that main-agent carries the data-plumbing burden: reading output from N sub-agents and assembling M input contracts. The benefit is that the entire workflow is inspectable and the agents themselves remain simple, single-purpose. Phase A.5 ([phase-a-frozen-spec](./phase-a-frozen-spec.md)) reduces the data-plumbing cost for the Phase A → Phase B hand-off from O(N) per-agent contracts to O(1) — one frozen JSON, N agents read it.
 
 ## Enforcement
 
 - Every sub-agent spec documents the data it expects as input (§5) and what it produces as output (§13 + body). The cross-references to other agents use this document as the spec-of-specs.
 - Main-agent's §15 Orchestration Doctrine cites this document.
 - Smoke test: every hand-off in the table above is cross-checked against the sender's output schema and the receiver's input schema.
-- Phase B input contracts are defined as `frozen_spec_path` only (per `./phase-a-frozen-spec.md`); any agent's §5 that lists individual paths instead of `frozen_spec_path` is non-compliant with P1-1.
+- Phase B input contracts are defined as `frozen_spec_path` only (per [phase-a-frozen-spec](./phase-a-frozen-spec.md)); any agent's §5 that lists individual paths instead of `frozen_spec_path` is non-compliant with P1-1.

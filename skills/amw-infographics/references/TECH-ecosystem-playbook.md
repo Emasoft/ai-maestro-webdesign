@@ -4,6 +4,23 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Color system](#color-system)
+- [Typography](#typography)
+- [Standard component prevalence (across 22 pieces)](#standard-component-prevalence-across-22-pieces)
+- [Visual properties](#visual-properties)
+- [Signature layout pattern](#signature-layout-pattern)
+- [The partner grid pattern (signature)](#the-partner-grid-pattern-signature)
+- [Section header pill badge](#section-header-pill-badge)
+- [CSS variables](#css-variables)
+- [Reference template](#reference-template)
+- [Target density](#target-density)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Ecosystem playbook — 13% (22/175)
 
@@ -159,9 +176,9 @@ partners into 3-col grids, don't leave whitespace between logos.
 
 ## Cross-references
 
-- `TECH-per-type-signature-palettes.md` — the color system.
-- `TECH-hub-spoke-archetype.md` — alternative for platform-centric layouts.
-- `TECH-section-header-pill.md` — the section pill component.
-- `TECH-glow-system.md` — the neon glow patterns.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+- [TECH-hub-spoke-archetype](TECH-hub-spoke-archetype.md) — alternative for platform-centric layouts.
+- [TECH-section-header-pill](TECH-section-header-pill.md) — the section pill component.
+- [TECH-glow-system](TECH-glow-system.md) — the neon glow patterns.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

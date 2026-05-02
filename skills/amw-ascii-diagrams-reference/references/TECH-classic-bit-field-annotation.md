@@ -59,12 +59,12 @@ With pointer-style annotation (source: graphs-annotations.md lines 23-32):
   convention in a caption.
 - Annotations with `+---` arrows eat vertical space; prefer them for
   diagrams where the annotation IS the point (register docs), not where
-  the layout is the point (`TECH-classic-struct-byte-offsets.md`).
+  the layout is the point ([TECH-classic-struct-byte-offsets](TECH-classic-struct-byte-offsets.md)).
 
 ## Cross-references
 
-- `./TECH-classic-struct-byte-offsets.md`
-- `./TECH-classic-annotation-pointer-arrows.md`
-- `./data-structures.md`, `./graphs-annotations.md` (legacy pattern files)
+- [TECH-classic-struct-byte-offsets](./TECH-classic-struct-byte-offsets.md)
+- [TECH-classic-annotation-pointer-arrows](./TECH-classic-annotation-pointer-arrows.md)
+- [data-structures](./data-structures.md), [graphs-annotations](./graphs-annotations.md) (legacy pattern files)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

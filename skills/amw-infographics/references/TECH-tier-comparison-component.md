@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [CSS — the base table](#css-the-base-table)
+- [CSS — the tier badges](#css-the-tier-badges)
+- [HTML](#html)
+- [Custom tier names and colors](#custom-tier-names-and-colors)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `tier_comparison` — tier badge table
 
@@ -100,8 +111,8 @@ Match the badge color to the tier meaning:
 
 ## Cross-references
 
-- `TECH-dense-table-component.md` — the base table pattern.
-- `TECH-game-overview-playbook.md` — rarity tiers in game content.
-- `TECH-signature-palette.md` — how tiers relate to brand colors.
+- [TECH-dense-table-component](TECH-dense-table-component.md) — the base table pattern.
+- [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — rarity tiers in game content.
+- [TECH-signature-palette](TECH-signature-palette.md) — how tiers relate to brand colors.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

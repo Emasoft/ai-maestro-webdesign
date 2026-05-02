@@ -4,6 +4,19 @@ category: uiux-rule
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Accessibility](#accessibility)
+  - [Responsive](#responsive)
+  - [Performance](#performance)
+  - [Interaction](#interaction)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Universal pre-delivery checklist
 
@@ -76,7 +89,7 @@ for item in ds.checklist:
 ## Cross-references
 
 - `../SKILL.md`
-- `TECH-uiux-design-system-generator.md`
-- `TECH-uiux-rules-catalog.md` — industry-specific anti-patterns stack on top of this baseline
+- [TECH-uiux-design-system-generator](TECH-uiux-design-system-generator.md)
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — industry-specific anti-patterns stack on top of this baseline
 - `../../amw-design-principles/ai-slop-avoid.md` — non-skippable final filter
 - `../../amw-ux-evaluator/SKILL.md` — pairs with this checklist at delivery time

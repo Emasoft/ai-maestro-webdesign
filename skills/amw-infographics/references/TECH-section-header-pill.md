@@ -4,6 +4,19 @@ category: infographic-template
 source: image-generation/create-infographics/resources/style-details.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [CSS](#css)
+- [HTML](#html)
+- [The four visual layers](#the-four-visual-layers)
+- [When to use](#when-to-use)
+- [Variants](#variants)
+  - [Without glow (cleaner)](#without-glow-cleaner)
+  - [Wider (title-sized)](#wider-title-sized)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Section header pill badge (ecosystem signature)
 
@@ -85,8 +98,8 @@ Use for primary section titles in hero headers.
 
 ## Cross-references
 
-- `TECH-ecosystem-playbook.md` — where this pattern is mandatory.
-- `TECH-section-band.md` — the full-width alternative.
-- `TECH-glow-system.md` — the glow system this uses.
+- [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — where this pattern is mandatory.
+- [TECH-section-band](TECH-section-band.md) — the full-width alternative.
+- [TECH-glow-system](TECH-glow-system.md) — the glow system this uses.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

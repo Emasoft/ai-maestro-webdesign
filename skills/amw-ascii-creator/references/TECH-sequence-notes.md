@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-sequence-notes — inline boxed annotations between lifelines
 
@@ -65,6 +74,6 @@ is wrapped if it exceeds the column span width.
 
 ## Cross-references
 
-- `./TECH-render-mode-sequence.md`
+- [TECH-render-mode-sequence](./TECH-render-mode-sequence.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

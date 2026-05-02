@@ -4,6 +4,18 @@ category: infographic-archetype
 source: image-generation/create-infographics/resources/style-details.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Gradient mesh background](#gradient-mesh-background)
+- [SVG noise grain](#svg-noise-grain)
+- [Scanline overlay (Cyber aesthetic)](#scanline-overlay-cyber-aesthetic)
+- [Paper texture (Editorial aesthetic)](#paper-texture-editorial-aesthetic)
+- [Glassmorphism accent panels](#glassmorphism-accent-panels)
+- [Background decoration hierarchy](#background-decoration-hierarchy)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Background depth — radial gradient orbs, scanlines, paper texture
 
@@ -165,8 +177,8 @@ Playful/Loud:     Gradient mesh, saturation OK
 
 ## Cross-references
 
-- `TECH-glow-system.md` — the complementary element-level glows.
-- `TECH-signature-palette.md` — what `--primary-rgb` resolves to.
+- [TECH-glow-system](TECH-glow-system.md) — the complementary element-level glows.
+- [TECH-signature-palette](TECH-signature-palette.md) — what `--primary-rgb` resolves to.
 - `../../amw-svg-creator/references/TECH-mesh-gradient-workaround.md` —
   the gradient mesh technique in depth.
 - [`../SKILL.md`](../SKILL.md) — parent skill

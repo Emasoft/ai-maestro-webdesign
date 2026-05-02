@@ -4,6 +4,16 @@ category: excalidraw-gemini
 source: SKILLS-TO-INTEGRATE/diagrams-skills/amw-excalidraw-illustrations-skill-main.zip
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [API call shape](#api-call-shape)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-reference-image-priming
 
@@ -110,8 +120,8 @@ parts = [
 
 - `../SKILL.md` — model + reference-images requirement
 - `../scripts/generate.py` — the reference-loading helper
-- `TECH-prompt-template-structure.md` — the accompanying text prompt
-- `TECH-letter-by-letter-spelling-block.md` — the spell-out technique
+- [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — the accompanying text prompt
+- [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the spell-out technique
   that makes text render correctly
-- `TECH-gemini-pro-vs-flash-model-choice.md` — which model to call with
+- [TECH-gemini-pro-vs-flash-model-choice](TECH-gemini-pro-vs-flash-model-choice.md) — which model to call with
   the references

@@ -4,6 +4,17 @@ category: uxeval-prio
 source: SKILLS-TO-INTEGRATE/web-design/ux-evaluator/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Assignment rule](#assignment-rule)
+  - [Output structure](#output-structure)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Priority rubric (P1 / P2 / P3)
 
@@ -64,6 +75,6 @@ Pricing-page CTA evaluation:
 
 ## Cross-references
 
-- `TECH-uxeval-3-dimension-framework.md` — where Fail / Warn come from
-- `TECH-uxeval-output-format.md` — full report template
+- [TECH-uxeval-3-dimension-framework](TECH-uxeval-3-dimension-framework.md) — where Fail / Warn come from
+- [TECH-uxeval-output-format](TECH-uxeval-output-format.md) — full report template
 - `../SKILL.md`

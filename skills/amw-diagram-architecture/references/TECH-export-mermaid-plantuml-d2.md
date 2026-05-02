@@ -4,6 +4,15 @@ category: yaml-versioning
 source: diagram-skill-main/REFERENCE.md
 also-in: diagram-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-export-mermaid-plantuml-d2 — one YAML, four output formats
 
@@ -105,8 +114,8 @@ edges:
 
 ## Cross-references
 
-- `./TECH-yaml-canonical-schema.md`
-- `./TECH-arrow-vocabulary.md`
-- `./formats.md` (existing reference)
+- [TECH-yaml-canonical-schema](./TECH-yaml-canonical-schema.md)
+- [TECH-arrow-vocabulary](./TECH-arrow-vocabulary.md)
+- [formats](./formats.md) (existing reference)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

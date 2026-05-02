@@ -1,3 +1,27 @@
+## Table of Contents
+
+- [1. The pipeline](#1-the-pipeline)
+- [2. Create vs modify dispatch](#2-create-vs-modify-dispatch)
+- [3. Step-by-step detail](#3-step-by-step-detail)
+  - [Step 1 — Detect](#step-1-detect)
+  - [Step 2 — Parse to IR](#step-2-parse-to-ir)
+  - [Step 3 — Patch](#step-3-patch)
+  - [Step 4 — (loop point)](#step-4-loop-point)
+  - [Step 5 — Emit](#step-5-emit)
+  - [Step 6 — Re-validate](#step-6-re-validate)
+- [4. Work directory and file naming](#4-work-directory-and-file-naming)
+- [5. Per-format guidance](#5-per-format-guidance)
+  - [5.1 ASCII modify (MVP structural)](#51-ascii-modify-mvp-structural)
+  - [5.2 HTML modify (MVP raw-source; Phase 1 structural)](#52-html-modify-mvp-raw-source-phase-1-structural)
+  - [5.3 SVG modify (MVP raw-source; Phase 1 structural)](#53-svg-modify-mvp-raw-source-phase-1-structural)
+  - [5.4 Mermaid modify (MVP raw-source; Phase 1 structural)](#54-mermaid-modify-mvp-raw-source-phase-1-structural)
+- [6. Conversion is a modify-flow variant](#6-conversion-is-a-modify-flow-variant)
+- [7. Composition with round-trip skills](#7-composition-with-round-trip-skills)
+  - [7.1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`)](#71-diagram-webpage-sync-amw-modify-webpage-from-diagram)
+  - [7.2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`)](#72-webpage-to-diagram-amw-modify-diagram-of-webpage)
+- [8. Related references](#8-related-references)
+
+
 # Modify flow — shared pipeline for create-or-modify commands
 
 **Authoritative spec for the "modify" path** used by all 4 `wd-create-or-modify-*-diagram` commands:
@@ -63,7 +87,7 @@ Each per-format skill also publishes its own dispatch specifics in the command `
 fmt="$(bin/amw-diagram-detect-format.sh "$INPUT_PATH")"
 ```
 
-See `./detect-format.md`. If `fmt == "png"`, abort with the standard PNG refusal. If `fmt == "unknown"`, ask the user to disambiguate via `--format`.
+See [detect-format](./detect-format.md). If `fmt == "png"`, abort with the standard PNG refusal. If `fmt == "unknown"`, ask the user to disambiguate via `--format`.
 
 ### Step 2 — Parse to IR
 
@@ -71,7 +95,7 @@ See `./detect-format.md`. If `fmt == "png"`, abort with the standard PNG refusal
 bin/amw-diagram-ir.py parse --in "$INPUT_PATH" --out "$WORK_DIR/ir.json"
 ```
 
-MVP: only ASCII parses to a structural IR. HTML / SVG / Mermaid parse to a **raw-source stub** (see `./ir-schema.md` §4). Phase 1 replaces these stubs with native parsers; the modify-flow does not change.
+MVP: only ASCII parses to a structural IR. HTML / SVG / Mermaid parse to a **raw-source stub** (see [ir-schema](./ir-schema.md) §4). Phase 1 replaces these stubs with native parsers; the modify-flow does not change.
 
 The IR is validated immediately after parsing:
 
@@ -163,7 +187,7 @@ Known limitation: not every hand-authored ASCII wireframe has clean boxes + conn
 
 ## 6. Conversion is a modify-flow variant
 
-`/amw-convert-any-diagram-format` is a modify-flow with an **empty patch** (step 3 is a no-op) and a different target format (step 5 emits to `$TARGET`, not `$SOURCE_FMT`). See `./conversion-matrix.md` for the cell-by-cell dispatch, but the 6-step pipeline is identical.
+`/amw-convert-any-diagram-format` is a modify-flow with an **empty patch** (step 3 is a no-op) and a different target format (step 5 emits to `$TARGET`, not `$SOURCE_FMT`). See [conversion-matrix](./conversion-matrix.md) for the cell-by-cell dispatch, but the 6-step pipeline is identical.
 
 This means improvements to the modify-flow (better parsers, stricter validation) automatically benefit every cross-format conversion.
 
@@ -195,8 +219,8 @@ Phase 0 / 1: MVP extract only (step 1). Phase 2 adds step 3 (selector-aware sync
 
 ## 8. Related references
 
-- `./ir-schema.md` — what the IR looks like (step 2 output shape).
-- `./conversion-matrix.md` — step 5 target-format table.
-- `./detect-format.md` — step 1 decision tree.
-- `./validation-dispatcher.md` — step 6 contract.
-- `./diff-algorithm.md` — consumed by `/amw-compare-diagrams`, which is a related but NON-modify pipeline (it does steps 1+2 on two inputs and then diffs the IRs).
+- [ir-schema](./ir-schema.md) — what the IR looks like (step 2 output shape).
+- [conversion-matrix](./conversion-matrix.md) — step 5 target-format table.
+- [detect-format](./detect-format.md) — step 1 decision tree.
+- [validation-dispatcher](./validation-dispatcher.md) — step 6 contract.
+- [diff-algorithm](./diff-algorithm.md) — consumed by `/amw-compare-diagrams`, which is a related but NON-modify pipeline (it does steps 1+2 on two inputs and then diffs the IRs).

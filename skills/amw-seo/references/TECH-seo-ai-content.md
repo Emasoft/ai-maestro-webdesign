@@ -4,6 +4,17 @@ category: seo-technical
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Effective use](#effective-use)
+  - [Risky use](#risky-use)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: AI-assisted content principles
 
@@ -68,6 +79,6 @@ The first is generic; an editor (human) replaced it with specifics the AI didn't
 
 ## Cross-references
 
-- `TECH-seo-eeat.md` — quality lens AI content must pass
-- `TECH-seo-content-quality.md`
+- [TECH-seo-eeat](TECH-seo-eeat.md) — quality lens AI content must pass
+- [TECH-seo-content-quality](TECH-seo-content-quality.md)
 - `../SKILL.md`

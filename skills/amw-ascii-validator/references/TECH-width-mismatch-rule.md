@@ -52,8 +52,8 @@ Issues Found:
 
 ## Cross-references
 
-- `./TECH-fix-hint-actionable-format.md`
-- `./TECH-group-aware-width-detection.md`
-- `./TECH-wide-character-detection.md`
+- [TECH-fix-hint-actionable-format](./TECH-fix-hint-actionable-format.md)
+- [TECH-group-aware-width-detection](./TECH-group-aware-width-detection.md)
+- [TECH-wide-character-detection](./TECH-wide-character-detection.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

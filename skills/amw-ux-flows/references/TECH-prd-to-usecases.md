@@ -4,6 +4,15 @@ category: ux-flow-prd
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-prd-to-usecases
 
@@ -116,7 +125,7 @@ Registration use case:
 ## Cross-references
 
 - `../SKILL.md` — Phase 1 of the workflow
-- `TECH-4-phase-mandatory-workflow.md` — the overall pipeline
-- `TECH-use-case-document-schema.md` — the file shape written to disk
-- `TECH-mermaid-flowchart-screen-map.md` — Phase 2 consumes these use
+- [TECH-4-phase-mandatory-workflow](TECH-4-phase-mandatory-workflow.md) — the overall pipeline
+- [TECH-use-case-document-schema](TECH-use-case-document-schema.md) — the file shape written to disk
+- [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — Phase 2 consumes these use
   cases

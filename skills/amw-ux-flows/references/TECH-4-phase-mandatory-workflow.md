@@ -4,6 +4,19 @@ category: ux-flow-prd
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Phase 1 — Use case extraction (Phase-1 gate)](#phase-1-use-case-extraction-phase-1-gate)
+  - [Phase 2 — Mermaid diagrams](#phase-2-mermaid-diagrams)
+  - [Phase 3 — HTML wireframes (MANDATORY)](#phase-3-html-wireframes-mandatory)
+  - [Phase 4 — Consolidation handoff](#phase-4-consolidation-handoff)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-4-phase-mandatory-workflow
 
@@ -31,7 +44,7 @@ Input: PRD (`docs/product/prd.md`) or user-supplied feature list.
 Output: `docs/ux-flows/use-cases.md` with 5-12 structured use cases.
 Gate: user approves the list before Phase 2 starts.
 
-See `TECH-prd-to-usecases.md`.
+See [TECH-prd-to-usecases](TECH-prd-to-usecases.md).
 
 ### Phase 2 — Mermaid diagrams
 
@@ -43,9 +56,9 @@ Output: `docs/ux-flows/diagrams/` with:
 - `{uc-id}/sequence.md` — per-UC `sequenceDiagram` with HTTP methods
 - `INDEX.md` — catalog with cross-links
 
-See `TECH-mermaid-flowchart-screen-map.md`,
-`TECH-mermaid-state-diagram-screen.md`,
-`TECH-mermaid-sequence-authenticated.md`.
+See [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md),
+[TECH-mermaid-state-diagram-screen](TECH-mermaid-state-diagram-screen.md),
+[TECH-mermaid-sequence-authenticated](TECH-mermaid-sequence-authenticated.md).
 
 ### Phase 3 — HTML wireframes (MANDATORY)
 
@@ -59,8 +72,8 @@ The skill does NOT ask the user whether to continue to Phase 3 — it
 just runs. Skipping Phase 3 breaks the "clickable prototype" deliverable
 that downstream `ui-ux-pro-max` consumers expect.
 
-See `TECH-wireframe-html-mobile-first.md`,
-`TECH-clickable-prototype-navigation.md`.
+See [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md),
+[TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md).
 
 ### Phase 4 — Consolidation handoff
 
@@ -74,7 +87,7 @@ Output: `docs/ux-flows/UX-FLOWS.md` — master handoff document with:
 - Open questions for downstream UI design
 
 Optionally, after Phase 4 completes, offer Figma export via the Dev Mode
-MCP Server — see `TECH-figma-code-to-canvas-export.md`. Never silently
+MCP Server — see [TECH-figma-code-to-canvas-export](TECH-figma-code-to-canvas-export.md). Never silently
 attempt Figma; always inform requirements first.
 
 ## Minimal example
@@ -119,13 +132,13 @@ step.
   without a clickable prototype think "the design is half-done". The
   4-phase guarantee is part of the skill's contract.
 - **Figma export is opt-in** — mention it at the end of Phase 4, but do
-  not attempt it. See `TECH-figma-code-to-canvas-export.md` for the
+  not attempt it. See [TECH-figma-code-to-canvas-export](TECH-figma-code-to-canvas-export.md) for the
   opt-in protocol.
 
 ## Cross-references
 
 - `../SKILL.md` — the workflow section
-- `TECH-prd-to-usecases.md` — Phase 1 details
-- `TECH-mermaid-flowchart-screen-map.md` — Phase 2 screen map
-- `TECH-wireframe-html-mobile-first.md` — Phase 3 wireframe template
-- `TECH-figma-code-to-canvas-export.md` — optional Phase 5
+- [TECH-prd-to-usecases](TECH-prd-to-usecases.md) — Phase 1 details
+- [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — Phase 2 screen map
+- [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — Phase 3 wireframe template
+- [TECH-figma-code-to-canvas-export](TECH-figma-code-to-canvas-export.md) — optional Phase 5

@@ -4,6 +4,19 @@ category: infographic-export
 source: image-generation/create-infographics/resources/platform-sizes.md
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The size table](#the-size-table)
+- [Safe zones per platform](#safe-zones-per-platform)
+- [CSS — fixed-aspect platforms](#css-fixed-aspect-platforms)
+- [Font size scaling by platform](#font-size-scaling-by-platform)
+- [Density by format](#density-by-format)
+- [Watermark / attribution per platform](#watermark-attribution-per-platform)
+- [Export commands](#export-commands)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Platform sizing — Twitter, Instagram, LinkedIn, Pinterest
 
@@ -130,8 +143,8 @@ python scripts/export.py -i infographic.html -o output/pinterest -f png --width 
 
 ## Cross-references
 
-- `TECH-export-pipeline.md` — the export script.
-- `TECH-design-brief.md` — platform is Question 3 in the brief.
-- `TECH-dense-editorial-dna.md` — density targets by format.
+- [TECH-export-pipeline](TECH-export-pipeline.md) — the export script.
+- [TECH-design-brief](TECH-design-brief.md) — platform is Question 3 in the brief.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — density targets by format.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

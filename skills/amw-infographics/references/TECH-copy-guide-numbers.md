@@ -4,6 +4,22 @@ category: infographic-archetype
 source: image-generation/create-infographics/resources/copy-guide.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The number format table](#the-number-format-table)
+- [Labeling rules](#labeling-rules)
+- [Currency](#currency)
+- [Headline formulas (ALL CAPS + verb-first OR noun phrase)](#headline-formulas-all-caps-verb-first-or-noun-phrase)
+  - [Type A — Verb-first (action, how-it-works, airdrop)](#type-a-verb-first-action-how-it-works-airdrop)
+  - [Type B — Noun phrase (token-economics, stats, reports)](#type-b-noun-phrase-token-economics-stats-reports)
+  - [Type C — Mission statement (launch, profile)](#type-c-mission-statement-launch-profile)
+- [Subtitle rules](#subtitle-rules)
+- [Per-component word budgets](#per-component-word-budgets)
+- [Common mistakes to avoid](#common-mistakes-to-avoid)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Number formatting rules
 
@@ -124,8 +140,8 @@ article. Cut it.
 
 ## Cross-references
 
-- `TECH-typography-scale.md` — size rules for hero numbers.
-- `TECH-copy-guide-bullets.md` — bullet list rules.
-- `TECH-inline-token-coloring.md` — `$TOKEN` span styling.
+- [TECH-typography-scale](TECH-typography-scale.md) — size rules for hero numbers.
+- [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — bullet list rules.
+- [TECH-inline-token-coloring](TECH-inline-token-coloring.md) — `$TOKEN` span styling.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

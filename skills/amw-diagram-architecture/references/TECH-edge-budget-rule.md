@@ -94,10 +94,10 @@ tradeoff — visual clarity over exhaustive completeness.
 
 ## Cross-references
 
-- `prompts.md` — rule is in the LLM system prompt
-- `validation.md` — Stage 1 edge-integrity section
-- `TECH-graph-json-schema.md` — schema constraint table includes this
-- `TECH-stage1-graph-validation.md` — how the rule is enforced
+- [prompts](prompts.md) — rule is in the LLM system prompt
+- [validation](validation.md) — Stage 1 edge-integrity section
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — schema constraint table includes this
+- [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — how the rule is enforced
 - `../../amw-diagram-editorial/references/TECH-density-4-of-10.md` — the
   editorial analogue (node density cap)
 - [`../SKILL.md`](../SKILL.md) — parent skill

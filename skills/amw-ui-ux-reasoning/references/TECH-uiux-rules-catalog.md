@@ -4,6 +4,16 @@ category: uiux-rule
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Top 10 distinctive rules — broken out as individual TECH files](#top-10-distinctive-rules-broken-out-as-individual-tech-files)
+- [Cross-references](#cross-references)
+
 
 # TECH: Reasoning-rules catalog (161 rules)
 
@@ -65,16 +75,16 @@ rules = engine.search("fintech payment app")
 
 ## Top 10 distinctive rules — broken out as individual TECH files
 
-- `TECH-uiux-rule-fintech.md`
-- `TECH-uiux-rule-healthcare.md`
-- `TECH-uiux-rule-luxury-ecommerce.md`
-- `TECH-uiux-rule-saas-dashboard.md`
-- `TECH-uiux-rule-food-restaurant.md`
+- [TECH-uiux-rule-fintech](TECH-uiux-rule-fintech.md)
+- [TECH-uiux-rule-healthcare](TECH-uiux-rule-healthcare.md)
+- [TECH-uiux-rule-luxury-ecommerce](TECH-uiux-rule-luxury-ecommerce.md)
+- [TECH-uiux-rule-saas-dashboard](TECH-uiux-rule-saas-dashboard.md)
+- [TECH-uiux-rule-food-restaurant](TECH-uiux-rule-food-restaurant.md)
 
 Remaining 156 rules are addressable via the upstream CLI; this catalog documents their structure.
 
 ## Cross-references
 
-- `TECH-uiux-styles-catalog.md`, `TECH-uiux-palettes-catalog.md`, `TECH-uiux-font-pairings-catalog.md`, `TECH-uiux-lp-patterns-catalog.md` — sibling catalogs
+- [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md), [TECH-uiux-lp-patterns-catalog](TECH-uiux-lp-patterns-catalog.md) — sibling catalogs
 - `../SKILL.md`
 - `../../amw-design-principles/ai-slop-avoid.md` — mandatory filter applied BEFORE emission

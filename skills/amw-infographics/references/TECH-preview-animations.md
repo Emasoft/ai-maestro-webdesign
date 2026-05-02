@@ -4,6 +4,19 @@ category: infographic-builder
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Per-component animation table](#per-component-animation-table)
+- [Stat counter — JS](#stat-counter-js)
+- [Bar chart — CSS transition](#bar-chart-css-transition)
+- [Feature card stagger — CSS](#feature-card-stagger-css)
+- [SVG line draw](#svg-line-draw)
+- [The export capture](#the-export-capture)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Preview entrance animations — browser only
 
@@ -126,8 +139,8 @@ state — static final frame.
 
 ## Cross-references
 
-- `TECH-interactive-builder-mode.md` — the mode these are used in.
-- `TECH-preview-server.md` — where these animations play.
-- `TECH-export-pipeline.md` — how the post-animation state is captured.
+- [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the mode these are used in.
+- [TECH-preview-server](TECH-preview-server.md) — where these animations play.
+- [TECH-export-pipeline](TECH-export-pipeline.md) — how the post-animation state is captured.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

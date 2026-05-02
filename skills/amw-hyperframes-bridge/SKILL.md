@@ -100,7 +100,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    npx hyperframes validate
    npx hyperframes inspect --json  # abort if any errors (non-zero exit with --strict)
    ```
-   See `./references/TECH-hyperframes-cli-lint.md`, `./references/TECH-hyperframes-cli-validate.md`, `./references/TECH-hyperframes-cli-inspect.md`.
+   See [TECH-hyperframes-cli-lint](./references/TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-validate](./references/TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](./references/TECH-hyperframes-cli-inspect.md).
 
    > **Gate-sequence note:** The bridge's sequence (`lint → validate → inspect → render`) intentionally extends upstream's (`lint → inspect → preview → render`, see `external/hyperframes/skills/hyperframes-cli/SKILL.md:14-17`) by adding `validate` for unattended Phase B pipelines and dropping `preview` (a developer-loop primitive).
 
@@ -109,7 +109,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    cd "$HF_PROJ_DIR"
    npx hyperframes render --output <abs-mp4-path>
    ```
-   Additional flags as needed (`--fps`, `--quality`, `--format`, `--hdr`, etc.) — see `./references/TECH-hyperframes-cli-render.md`.
+   Additional flags as needed (`--fps`, `--quality`, `--format`, `--hdr`, etc.) — see [TECH-hyperframes-cli-render](./references/TECH-hyperframes-cli-render.md).
 
 5. **Return the MP4 path** to the caller. If the project dir was a temp scaffold (`html_scene_path` path), remove it after the report is written.
 
@@ -459,7 +459,7 @@ Every technique in this skill is documented as a single reference file under `./
 
 ## Examples
 
-See the worked examples in the per-step reference files under `./references/TECH-hyperframes-capture-step-*.md` (7-step website-to-video pipeline) and the composition authoring guide at `./references/TECH-hyperframes-composition-core.md`.
+See the worked examples in the per-step reference files under `./references/TECH-hyperframes-capture-step-*.md` (7-step website-to-video pipeline) and the composition authoring guide at [TECH-hyperframes-composition-core](./references/TECH-hyperframes-composition-core.md).
 
 ## Completion checklist
 

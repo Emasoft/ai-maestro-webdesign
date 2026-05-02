@@ -4,6 +4,17 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The basic filter](#the-basic-filter)
+- [Colored glow variant](#colored-glow-variant)
+- [`stdDeviation` tuning](#stddeviation-tuning)
+- [Filter region](#filter-region)
+- [When to use](#when-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Soft glow filter
 
@@ -83,8 +94,8 @@ gets clipped.
 
 ## Cross-references
 
-- `TECH-drop-shadow-filter.md` — the negative cousin (shadow instead of glow).
-- `TECH-colored-shadows.md` — color theory for tinted glows.
-- `TECH-specular-diffuse-lighting.md` — physics-based alternative.
+- [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the negative cousin (shadow instead of glow).
+- [TECH-colored-shadows](TECH-colored-shadows.md) — color theory for tinted glows.
+- [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based alternative.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

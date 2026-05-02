@@ -1,3 +1,11 @@
+## Table of Contents
+
+- [Snippet — paste into the project's `CLAUDE.md`](#snippet-paste-into-the-projects-claudemd)
+- [Where this goes in CLAUDE.md](#where-this-goes-in-claudemd)
+- [What `{{placeholders}}` get filled with](#what-placeholders-get-filled-with)
+- [Cross-references](#cross-references)
+
+
 # CLAUDE.md snippet for projects using DESIGN.md
 
 When a project adopts DESIGN.md as its visual source of truth, the project's `CLAUDE.md` (the file Claude Code reads at session start) MUST instruct Claude to read DESIGN.md before generating any UI. The snippet below is what `amw-design-md-author-agent` adds to a project's `CLAUDE.md` (or includes alongside an authored DESIGN.md as a starter).

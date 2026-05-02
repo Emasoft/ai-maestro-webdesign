@@ -4,6 +4,16 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [HTML (excerpt — see source for full)](#html-excerpt-see-source-for-full)
+- [CSS](#css)
+- [The hero bar signature](#the-hero-bar-signature)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Annotated bar chart — SVG with callout + benchmark
 
@@ -113,9 +123,9 @@ crossing the chart. No Chart.js dependency.
 
 ## Cross-references
 
-- `TECH-svg-pie-chart.md` — alternative chart for proportions.
-- `TECH-annotation-first.md` — the "labels on chart" principle this
+- [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative chart for proportions.
+- [TECH-annotation-first](TECH-annotation-first.md) — the "labels on chart" principle this
   implements.
-- `TECH-slope-chart.md` — for before/after stories.
+- [TECH-slope-chart](TECH-slope-chart.md) — for before/after stories.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

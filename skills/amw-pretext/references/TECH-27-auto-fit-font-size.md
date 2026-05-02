@@ -4,6 +4,15 @@ category: typography
 source: pretext-skills/amw-pretext-skill-main/SKILL.md
 also-in: pretext-skill-main/patterns.md, SKILL-17 (SmartPage)
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Auto-fit font size (largest font that stays within N lines)
 

@@ -4,6 +4,19 @@ category: hyperframes-composition
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [The twelve rules](#the-twelve-rules)
+  - [Determinism clause](#determinism-clause)
+  - [Animation scope clause](#animation-scope-clause)
+  - [Animation conflict clause](#animation-conflict-clause)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Non-negotiable composition rules
 
@@ -78,6 +91,6 @@ Pre-render checklist:
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`, `TECH-hyperframes-timeline-contract.md`, `TECH-hyperframes-data-attributes.md`, `TECH-hyperframes-scene-transitions.md`
-- `TECH-hyperframes-cli-lint.md` — the linter that catches most of these
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md), [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md)
+- [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md) — the linter that catches most of these
 - `../SKILL.md`

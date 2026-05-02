@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-render-mode-diagram — grid-based flowchart/block-diagram renderer
 
@@ -71,8 +80,8 @@ vertical; same-row as horizontal.
 
 ## Cross-references
 
-- `./TECH-json-render-four-modes.md`
-- `./TECH-lane-labeled-diagrams.md`
-- `./TECH-multi-line-box-body.md`
+- [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
+- [TECH-lane-labeled-diagrams](./TECH-lane-labeled-diagrams.md)
+- [TECH-multi-line-box-body](./TECH-multi-line-box-body.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -34,7 +34,7 @@ Inspect `$ARGUMENTS`:
 
 ### 2. Spawn `amw-design-md-author-agent`
 
-Pass the structured input contract per `agents/amw-design-md-author-agent.md` §5. Wait for the agent's YAML return contract.
+Pass the structured input contract per [amw-design-md-author-agent](agents/amw-design-md-author-agent.md) §5. Wait for the agent's YAML return contract.
 
 ### 3. If `input_type=interview`, conduct the 5-question interview
 
@@ -73,9 +73,9 @@ After the agent returns, show:
 
 ## Cross-references
 
-- `agents/amw-design-md-author-agent.md`
-- `skills/amw-design-md/SKILL.md`
-- `skills/amw-design-md/references/canonical-spec-google-alpha.md`
+- [amw-design-md-author-agent](agents/amw-design-md-author-agent.md)
+- [SKILL](skills/amw-design-md/SKILL.md)
+- [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
 - `skills/amw-design-md/references/templates/canonical-template.md`
 - `bin/amw-design-md-lint.sh` (lint gate)
 - `bin/amw-design-md-contrast.py` (WCAG check)

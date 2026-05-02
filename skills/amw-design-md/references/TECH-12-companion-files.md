@@ -255,7 +255,7 @@ Args:
 
 ## Synchronization rule
 
-Hard rule: companion files MUST stay in sync with DESIGN.md. The auditor agent's Pass 2 (drift) check (`X1`-`X6` of `review-rubric.md`) verifies this:
+Hard rule: companion files MUST stay in sync with DESIGN.md. The auditor agent's Pass 2 (drift) check (`X1`-`X6` of [review-rubric](review-rubric.md)) verifies this:
 
 - Every color in DESIGN.md appears in `tokens.json` with matching value.
 - Every CSS variable in `tokens.css` matches a DESIGN.md token.
@@ -265,7 +265,7 @@ Drift fails the audit. The fix is always: re-run the emitter, do not hand-edit.
 
 ## Cross-references
 
-- `./TECH-05-token-references.md` — reference resolution
-- `./TECH-15-design-md-as-input.md` — how downstream agents consume the companion files
-- `./review-rubric.md` — `X1`-`X6` drift checks
+- [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
+- [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how downstream agents consume the companion files
+- [review-rubric](./review-rubric.md) — `X1`-`X6` drift checks
 - `<plugin-root>/bin/amw-design-md-emit-companions.py` — the bin script

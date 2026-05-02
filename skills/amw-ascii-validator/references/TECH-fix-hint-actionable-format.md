@@ -4,6 +4,15 @@ category: ascii-validate
 source: ascii-diagram-validator-main/validate_ascii.pl
 also-in: ascii-diagram-validator-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-fix-hint-actionable-format — every finding carries a mechanical FIX:
 
@@ -64,8 +73,8 @@ python3 bin/amw-validate-ascii.py /tmp/diagram.txt
 
 ## Cross-references
 
-- `./TECH-width-mismatch-rule.md`
-- `./TECH-vertical-line-continuity.md`
-- `./TECH-forbidden-chars-banlist.md`
+- [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
+- [TECH-vertical-line-continuity](./TECH-vertical-line-continuity.md)
+- [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

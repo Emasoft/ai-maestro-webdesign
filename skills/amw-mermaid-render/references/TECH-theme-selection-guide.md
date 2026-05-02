@@ -79,9 +79,9 @@ node scripts/render.mjs -i diagram.mmd -o out.svg -t zinc-light
 
 ## Cross-references
 
-- `TECH-built-in-themes.md` — the full catalog.
-- `TECH-enriched-mode.md` — when the chosen theme is 80% right and
+- [TECH-built-in-themes](TECH-built-in-themes.md) — the full catalog.
+- [TECH-enriched-mode](TECH-enriched-mode.md) — when the chosen theme is 80% right and
   needs one tweak.
-- `TECH-mono-mode.md` — when no pre-baked theme fits at all.
+- [TECH-mono-mode](TECH-mono-mode.md) — when no pre-baked theme fits at all.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

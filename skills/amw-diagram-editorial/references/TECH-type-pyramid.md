@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-pyramid
 
@@ -105,7 +114,7 @@ and the top too thin — split into two diagrams or switch to a bar chart.
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-tree.md` — if the hierarchy is strictly parent-child
-- `TECH-type-layers.md` — if the bands are equal-width
+- [TECH-type-tree](TECH-type-tree.md) — if the hierarchy is strictly parent-child
+- [TECH-type-layers](TECH-type-layers.md) — if the bands are equal-width
   abstraction layers, not narrowing tiers
-- `design-system.md` — mono-value annotation convention
+- [design-system](design-system.md) — mono-value annotation convention

@@ -4,6 +4,18 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Horizontal flow — CSS](#horizontal-flow-css)
+- [Vertical connector — CSS](#vertical-connector-css)
+- [HTML](#html)
+- [Arrow icons — Phosphor only](#arrow-icons-phosphor-only)
+- [Label rule — mandatory](#label-rule-mandatory)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `flow_with_arrows` — horizontal flow nodes with arrow connectors
 
@@ -136,8 +148,8 @@ fit, use a smaller font or a shorter label.
 
 ## Cross-references
 
-- `TECH-arrows-and-connectors.md` — broader arrow patterns.
-- `TECH-flywheel-loop-component.md` — circular variant.
-- `TECH-step-process-component.md` — numbered-steps variant.
+- [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — broader arrow patterns.
+- [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
+- [TECH-step-process-component](TECH-step-process-component.md) — numbered-steps variant.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

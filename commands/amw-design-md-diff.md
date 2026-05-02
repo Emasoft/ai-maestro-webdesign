@@ -59,5 +59,5 @@ The wrapper invokes `npx @google/design.md diff <a> <b>` for the structured diff
 
 - `bin/amw-design-md-diff.sh`
 - `bin/amw-design-md-validate.py` (used by Python fallback)
-- `skills/amw-design-md/references/canonical-spec-google-alpha.md`
-- `skills/amw-design-md/references/TECH-11-validation-and-lint.md`
+- [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
+- [TECH-11-validation-and-lint](skills/amw-design-md/references/TECH-11-validation-and-lint.md)

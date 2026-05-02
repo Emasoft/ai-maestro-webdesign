@@ -4,6 +4,19 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/render.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Flags](#flags)
+  - [Quality guidance](#quality-guidance)
+  - [Transparent video](#transparent-video)
+- [Minimal example](#minimal-example)
+  - [Workers tuning](#workers-tuning)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes render` — capture composition to MP4 / WebM
 
@@ -114,6 +127,6 @@ Run `npx hyperframes benchmark` to find the optimal setting for your machine.
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-lint.md`, `TECH-hyperframes-cli-preview.md`, `TECH-hyperframes-cli-validate.md`, `TECH-hyperframes-cli-inspect.md`
-- `TECH-hyperframes-cli-doctor.md` — environment health check if render fails
+- [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md)
+- [TECH-hyperframes-cli-doctor](TECH-hyperframes-cli-doctor.md) — environment health check if render fails
 - `../SKILL.md`

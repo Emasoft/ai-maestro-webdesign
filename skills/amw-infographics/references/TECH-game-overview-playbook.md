@@ -4,6 +4,25 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Color system](#color-system)
+- [Typography — two sub-variants](#typography-two-sub-variants)
+  - [Standard game](#standard-game)
+  - [Pixel / retro game](#pixel-retro-game)
+- [Standard component prevalence (across 25 pieces)](#standard-component-prevalence-across-25-pieces)
+- [Visual properties](#visual-properties)
+- [Signature layout pattern](#signature-layout-pattern)
+- [Character card grid (signature pattern)](#character-card-grid-signature-pattern)
+- [Light-mode sub-variant](#light-mode-sub-variant)
+- [CSS variables (standard)](#css-variables-standard)
+- [CSS variables (pixel)](#css-variables-pixel)
+- [Reference template](#reference-template)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Game-Overview playbook — 14% (25/175)
 
@@ -133,9 +152,9 @@ right default for THAT sub-type.
 
 ## Cross-references
 
-- `TECH-per-type-signature-palettes.md` — the color system.
-- `TECH-character-card-grid.md` — the signature component.
-- `TECH-radar-chart.md` — for character stat comparisons.
-- `TECH-tier-comparison-component.md` — rarity tables.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+- [TECH-character-card-grid](TECH-character-card-grid.md) — the signature component.
+- [TECH-radar-chart](TECH-radar-chart.md) — for character stat comparisons.
+- [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — rarity tables.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [CSS](#css)
+- [HTML](#html)
+- [The connector line trick](#the-connector-line-trick)
+- [Horizontal variant](#horizontal-variant)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `step_process` — numbered steps with connector line
 
@@ -144,8 +155,8 @@ For landscape canvases, flip to horizontal:
 
 ## Cross-references
 
-- `TECH-flow-with-arrows-component.md` — when steps aren't numbered.
-- `TECH-airdrop-guide-playbook.md` — the playbook that uses this heavily.
-- `TECH-arrows-and-connectors.md` — horizontal variant uses arrows.
+- [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — when steps aren't numbered.
+- [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — the playbook that uses this heavily.
+- [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — horizontal variant uses arrows.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

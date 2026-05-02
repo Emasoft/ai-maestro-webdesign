@@ -4,6 +4,17 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Recommended layout](#recommended-layout)
+- [Why this works](#why-this-works)
+- [Naming conventions](#naming-conventions)
+- [Minimal example — integrated with batch render](#minimal-example-integrated-with-batch-render)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Diagram file organization — folder layout for `.mmd` libraries
 
@@ -81,6 +92,6 @@ done
 
 - `../../amw-mermaid-render/references/TECH-batch-rendering.md` — the
   batch script.
-- `TECH-flowchart-grammar.md` — what goes inside each file.
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — what goes inside each file.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,15 @@ category: designlang-diff
 source: SKILLS-TO-INTEGRATE/web-design/designlang-design-extract/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `designlang brands` — N-way brand comparison matrix
 
@@ -46,6 +55,6 @@ npx designlang brands stripe.com vercel.com github.com linear.app
 
 ## Cross-references
 
-- `TECH-designlang-diff.md` — pairwise version
-- `TECH-designlang-score.md` — rank the N brands before comparing
+- [TECH-designlang-diff](TECH-designlang-diff.md) — pairwise version
+- [TECH-designlang-score](TECH-designlang-score.md) — rank the N brands before comparing
 - `../SKILL.md`

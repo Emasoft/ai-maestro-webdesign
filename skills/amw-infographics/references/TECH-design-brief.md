@@ -4,6 +4,21 @@ category: infographic-builder
 source: image-generation/create-infographics/resources/design-brief.md
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The 3 minimum questions](#the-3-minimum-questions)
+- [The 5 full-brief questions](#the-5-full-brief-questions)
+- [Aesthetic direction mapping (Question 2)](#aesthetic-direction-mapping-question-2)
+- [Rules](#rules)
+- [Skip-brief defaults](#skip-brief-defaults)
+- [Thesis extraction (from data)](#thesis-extraction-from-data)
+  - [Thesis formula](#thesis-formula)
+- [Tone → palette mapping](#tone-palette-mapping)
+- [Audience sophistication → density](#audience-sophistication-density)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Design Brief — 3 (or 5) intake questions
 
@@ -123,9 +138,9 @@ If no clear thesis: present two candidates and ask which direction.
 
 ## Cross-references
 
-- `TECH-interactive-builder-mode.md` — brief runs before A1.
-- `TECH-one-shot-mode.md` — brief runs before Step 1.
-- `TECH-signature-palette.md` — the Bold/Cyber default palette.
-- `TECH-platform-sizing.md` — Question 3 mapping.
+- [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — brief runs before A1.
+- [TECH-one-shot-mode](TECH-one-shot-mode.md) — brief runs before Step 1.
+- [TECH-signature-palette](TECH-signature-palette.md) — the Bold/Cyber default palette.
+- [TECH-platform-sizing](TECH-platform-sizing.md) — Question 3 mapping.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

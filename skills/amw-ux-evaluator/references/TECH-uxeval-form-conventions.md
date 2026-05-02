@@ -4,6 +4,19 @@ category: uxeval-dim
 source: SKILLS-TO-INTEGRATE/web-design/ux-evaluator/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Position](#position)
+  - [Visual weight](#visual-weight)
+  - [Spacing](#spacing)
+  - [Accessibility floor](#accessibility-floor)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Form conventions (labels / submit / errors / spacing)
 
@@ -83,7 +96,7 @@ Email signup form done right:
 
 ## Cross-references
 
-- `TECH-uxeval-button-conventions.md`, `TECH-uxeval-navigation-conventions.md`
+- [TECH-uxeval-button-conventions](TECH-uxeval-button-conventions.md), [TECH-uxeval-navigation-conventions](TECH-uxeval-navigation-conventions.md)
 - `../../amw-ux-designer/references/TECH-ux-rule-accessibility.md`
 - `../../amw-ux-designer/references/TECH-ux-rule-interaction.md` — microcopy for errors
 - `../SKILL.md`

@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [HTML](#html)
+- [CSS](#css)
+- [Y-jitter convention](#y-jitter-convention)
+- [Annotations — median line, ranges](#annotations-median-line-ranges)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Dot plot — distribution + individual points
 
@@ -93,8 +104,8 @@ shape without forcing them to read every dot.
 
 ## Cross-references
 
-- `TECH-chart-selection-guide.md` — when to reach for dot plot.
-- `TECH-annotated-bar-chart.md` — bar alternative.
-- `TECH-slope-chart.md` — 2-point alternative.
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to reach for dot plot.
+- [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — bar alternative.
+- [TECH-slope-chart](TECH-slope-chart.md) — 2-point alternative.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-selection-rule
 
@@ -111,7 +120,7 @@ Agent: A single-shape diagram is a sentence. Instead:
   request
 - Each of the 13 `TECH-type-*.md` files carries its own "when to use"
   stricture that narrows further
-- `TECH-density-4-of-10.md` — density rule; a subject that needs 15+
+- [TECH-density-4-of-10](TECH-density-4-of-10.md) — density rule; a subject that needs 15+
   nodes should split, not pick a denser type
 - `../../amw-design-principles/ai-slop-avoid.md` — Default-to-deletion is
   codified there

@@ -4,6 +4,15 @@ category: ascii-unicode
 source: box-diagram-master/skills/amw-box-diagram/SKILL.md
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-output-from-validated-file — read back, never re-type
 

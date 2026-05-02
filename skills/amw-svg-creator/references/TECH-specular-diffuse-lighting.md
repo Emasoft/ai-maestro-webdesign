@@ -4,6 +4,16 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Specular — shiny surface](#specular-shiny-surface)
+- [Diffuse — matte surface](#diffuse-matte-surface)
+- [When to use](#when-to-use)
+- [When NOT to use](#when-not-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `feSpecularLighting` + `feDiffuseLighting` — physics-based shading
 
@@ -76,10 +86,10 @@ horizon.
 
 ## Cross-references
 
-- `TECH-soft-glow-filter.md` — simpler alternative when you just
+- [TECH-soft-glow-filter](TECH-soft-glow-filter.md) — simpler alternative when you just
   want a halo.
-- `TECH-glassmorphism-filter.md` — specular + displacement for glass.
-- `TECH-five-zone-lighting.md` — the artistic model for when you
+- [TECH-glassmorphism-filter](TECH-glassmorphism-filter.md) — specular + displacement for glass.
+- [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — the artistic model for when you
   don't want physics.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -1,3 +1,9 @@
+## Table of Contents
+
+- [Sequence Diagrams](#sequence-diagrams)
+- [Tables](#tables)
+
+
 > Reference library for the ASCII Diagrams Reference skill. Source: CHI'24 paper analysis. Every example validates against ../../bin/amw-validate-ascii.py.
 
 # Sequences, Timelines, and Tables

@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The math](#the-math)
+- [HTML](#html)
+- [CSS — primary shade coloring](#css-primary-shade-coloring)
+- [Positioning](#positioning)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Proportional circles — area = value
 
@@ -102,7 +113,7 @@ interest rather than baseline-aligning everything.
 
 ## Cross-references
 
-- `TECH-chart-selection-guide.md` — decision tree for chart type.
-- `TECH-svg-pie-chart.md` — alternative for normalized percentages.
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — decision tree for chart type.
+- [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative for normalized percentages.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

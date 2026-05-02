@@ -4,6 +4,17 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/resources/style-details.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The color table](#the-color-table)
+- [CSS tokens](#css-tokens)
+- [Chain badge component](#chain-badge-component)
+- [Table row left-border per chain](#table-row-left-border-per-chain)
+- [When to use](#when-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Blockchain chain color-coding
 
@@ -107,10 +118,10 @@ HTML:
 
 ## Cross-references
 
-- `TECH-dense-table-component.md` — the table this pattern lives in.
-- `TECH-ecosystem-playbook.md` — multi-chain ecosystems use this
+- [TECH-dense-table-component](TECH-dense-table-component.md) — the table this pattern lives in.
+- [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — multi-chain ecosystems use this
   heavily.
-- `TECH-signature-palette.md` — brand colors (which don't override
+- [TECH-signature-palette](TECH-signature-palette.md) — brand colors (which don't override
   chain colors).
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

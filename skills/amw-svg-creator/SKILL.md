@@ -27,7 +27,7 @@ See the `## Mandatory workflow` section below for the authoritative 6-step rende
 
 ## Examples
 
-See `examples/README.md` for in-scope examples (icons, logos, patterns, data-vis primitives, animations). Advanced SVG techniques (filter chains, noise texture, gradients) are documented in `references/advanced-techniques.md`.
+See [README](examples/README.md) for in-scope examples (icons, logos, patterns, data-vis primitives, animations). Advanced SVG techniques (filter chains, noise texture, gradients) are documented in [advanced-techniques](references/advanced-techniques.md).
 
 ## Activation
 
@@ -101,7 +101,7 @@ WRITE SVG → RENDER → VIEW PNG → ASSESS → FIX → RENDER → VIEW → ...
 
 ## Visual-quality techniques
 
-Apply these inside the SVG while building. Each is expanded in `references/advanced-techniques.md`.
+Apply these inside the SVG while building. Each is expanded in [advanced-techniques](references/advanced-techniques.md).
 
 - **Multi-stop gradients (4+ stops).** Two-stop gradients look flat; use 4–8 stops with subtle hue shifts. For radial fills (logo spheres, badge centres) offset the light source with `fx="0.3" fy="0.3"`.
 - **Five-zone lighting.** Even on a flat logo, a bright light area + true-color mid-tone + cool-hued form shadow (blue / purple / teal, never black) + subtle reflected-light sliver reads more dimensional than a single tint.
@@ -132,8 +132,8 @@ Apply these inside the SVG while building. Each is expanded in `references/advan
 - `../../bin/amw-svg-render.py` — the render-verify-finish loop; see `render`, `finish`, `status`, `reset` subcommands.
 - `../amw-diagram-svg/SKILL.md` — upstream when the request is a freeform node-and-edge diagram.
 - `../amw-ascii-to-svg/SKILL.md` — upstream when the input is ASCII that needs SVG finish.
-- `references/advanced-techniques.md` — full cookbook: filter chains, `feTurbulence` parameter guide, `feComponentTransfer` color grading, material simulation, pattern / background recipes, animation timing. Note: the cookbook retains character-construction sections from the upstream skill — **those sections are out of scope here**; consult them only if you are debugging a diagram element that happens to share the same filter technique.
-- `examples/README.md` — in-scope examples (icons, logos, patterns, data-vis primitives, animations). The previously-archived character examples (`cat-astronaut.svg`, `fox-yoga-static.svg`) that shipped with the upstream skill have been moved out of `examples/` to `docs_dev/examples_archive/svg-creator-characters/` so they no longer read as templates for this GATED skill.
+- [advanced-techniques](references/advanced-techniques.md) — full cookbook: filter chains, `feTurbulence` parameter guide, `feComponentTransfer` color grading, material simulation, pattern / background recipes, animation timing. Note: the cookbook retains character-construction sections from the upstream skill — **those sections are out of scope here**; consult them only if you are debugging a diagram element that happens to share the same filter technique.
+- [README](examples/README.md) — in-scope examples (icons, logos, patterns, data-vis primitives, animations). The previously-archived character examples (`cat-astronaut.svg`, `fox-yoga-static.svg`) that shipped with the upstream skill have been moved out of `examples/` to `docs_dev/examples_archive/svg-creator-characters/` so they no longer read as templates for this GATED skill.
 
 ## Non-negotiables
 

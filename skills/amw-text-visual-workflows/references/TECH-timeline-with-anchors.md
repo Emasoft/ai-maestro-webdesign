@@ -59,7 +59,7 @@ Plan      Build     QA        Launch
 
 ## Cross-references
 
-- `./TECH-swimlane-parallel-tracks.md`
+- [TECH-swimlane-parallel-tracks](./TECH-swimlane-parallel-tracks.md)
 - `../../amw-text-visual-retro/references/TECH-milestone-timeline.md`
 - `../../amw-ascii-diagrams-reference/references/TECH-classic-timeline-events.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill

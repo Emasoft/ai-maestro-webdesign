@@ -4,6 +4,15 @@ category: ascii-validate
 source: box-diagram-master/skills/amw-box-diagram/SKILL.md
 also-in: ascii-diagram-validator-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-validate-before-emit — never show un-validated ASCII
 
@@ -62,7 +71,7 @@ fi
 
 ## Cross-references
 
-- `./TECH-fix-hint-actionable-format.md`
+- [TECH-fix-hint-actionable-format](./TECH-fix-hint-actionable-format.md)
 - `../../amw-ascii-creator/SKILL.md` (Mode B workflow step 4-7)
 - `../../amw-box-diagram/SKILL.md` (Workflow section)
 - [`../SKILL.md`](../SKILL.md) — parent skill

@@ -4,6 +4,18 @@ category: hyperframes-registry
 source: external/hyperframes/skills/hyperframes-registry/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Include pattern](#include-pattern)
+  - [Required attributes on the include](#required-attributes-on-the-include)
+  - [Verification](#verification)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Wiring registry blocks into host compositions
 
@@ -90,6 +102,6 @@ Host `index.html`:
 
 ## Cross-references
 
-- `TECH-hyperframes-registry-add.md`, `TECH-hyperframes-registry-components.md`
-- `TECH-hyperframes-composition-core.md`, `TECH-hyperframes-data-attributes.md`
+- [TECH-hyperframes-registry-add](TECH-hyperframes-registry-add.md), [TECH-hyperframes-registry-components](TECH-hyperframes-registry-components.md)
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md)
 - `../SKILL.md`

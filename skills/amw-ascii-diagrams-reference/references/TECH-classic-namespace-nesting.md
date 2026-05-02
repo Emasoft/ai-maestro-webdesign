@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/network-topology.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-namespace-nesting — Linux netns + overlay/underlay
 
@@ -62,9 +71,9 @@ via overlay, with veth pairs living on the underlay.
 
 ## Cross-references
 
-- `./TECH-classic-k8s-topology.md`
-- `./TECH-classic-multi-service-architecture.md`
+- [TECH-classic-k8s-topology](./TECH-classic-k8s-topology.md)
+- [TECH-classic-multi-service-architecture](./TECH-classic-multi-service-architecture.md)
 - `../../amw-ascii-validator/references/TECH-box-corner-alignment.md`
-- `./network-topology.md` (legacy pattern file)
+- [network-topology](./network-topology.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

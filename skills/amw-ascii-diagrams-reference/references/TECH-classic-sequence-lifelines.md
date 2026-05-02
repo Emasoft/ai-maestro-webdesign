@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/sequences-tables.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-sequence-lifelines — Client/Server/DB actor columns
 
@@ -51,7 +60,7 @@ columns, timing implied by vertical order.
 ## Cross-references
 
 - `../../amw-ascii-creator/references/TECH-render-mode-sequence.md`
-- `./TECH-classic-timeline-events.md`
-- `./sequences-tables.md` (legacy pattern file)
+- [TECH-classic-timeline-events](./TECH-classic-timeline-events.md)
+- [sequences-tables](./sequences-tables.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

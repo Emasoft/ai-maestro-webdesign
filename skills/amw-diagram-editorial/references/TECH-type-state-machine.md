@@ -112,5 +112,5 @@ Order lifecycle:
 - `../SKILL.md` — 13-type selection table
 - `../../amw-ux-flows/references/TECH-mermaid-state-diagram-screen.md` —
   Mermaid equivalent for per-screen UI state
-- `TECH-type-flowchart.md` — if the intent is decision logic, not lifecycle
-- `design-system.md` — dot/double-circle terminal marker sizing
+- [TECH-type-flowchart](TECH-type-flowchart.md) — if the intent is decision logic, not lifecycle
+- [design-system](design-system.md) — dot/double-circle terminal marker sizing

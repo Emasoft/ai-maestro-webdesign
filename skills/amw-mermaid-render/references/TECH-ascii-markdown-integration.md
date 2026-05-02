@@ -69,9 +69,9 @@ const ascii = renderMermaidAscii(diagram, { useAscii: true })
 
 ## Cross-references
 
-- `TECH-ascii-render-api.md` — the renderer function.
-- `TECH-ascii-padding-options.md` — tuning for width-constrained output.
-- `TECH-terminal-output-ansi.md` — ANSI color escape codes on top of
+- [TECH-ascii-render-api](TECH-ascii-render-api.md) — the renderer function.
+- [TECH-ascii-padding-options](TECH-ascii-padding-options.md) — tuning for width-constrained output.
+- [TECH-terminal-output-ansi](TECH-terminal-output-ansi.md) — ANSI color escape codes on top of
   plain ASCII.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

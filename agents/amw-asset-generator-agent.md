@@ -462,7 +462,7 @@ Violation of any of these is not a "judgment call" — it is a spec violation. I
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent; reads my YAML header and passes my assets to `amw-wireframe-builder-agent`.
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent; reads my YAML header and passes my assets to `amw-wireframe-builder-agent`.
 - `../skills/amw-svg-creator/SKILL.md` — technical SVG authoring (gated against characters / scenes).
 - `../skills/amw-pretext/SKILL.md` — typographic techniques (78 TECH references).
 - `../skills/amw-excalidraw-illustrations/SKILL.md` — hand-drawn concept illustrations (gated on GEMINI_API_KEY + user consent).

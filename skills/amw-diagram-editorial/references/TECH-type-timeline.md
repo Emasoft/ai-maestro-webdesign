@@ -102,8 +102,8 @@ Horizontal timeline, one accent event:
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-state-machine.md` — if the "events" are really state
+- [TECH-type-state-machine](TECH-type-state-machine.md) — if the "events" are really state
   transitions, that's a different primitive
 - `../../amw-text-visual-retro/SKILL.md` — ASCII timeline cousin for retros
   and milestone docs
-- `design-system.md` — mono-date convention
+- [design-system](design-system.md) — mono-date convention

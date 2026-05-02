@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-json-render-four-modes — JSON → ASCII, four exclusive modes
 
@@ -66,10 +75,10 @@ Output (2-box vertical flowchart):
 
 ## Cross-references
 
-- `./TECH-render-mode-diagram.md`
-- `./TECH-render-mode-table.md`
-- `./TECH-render-mode-layers.md`
-- `./TECH-render-mode-sequence.md`
+- [TECH-render-mode-diagram](./TECH-render-mode-diagram.md)
+- [TECH-render-mode-table](./TECH-render-mode-table.md)
+- [TECH-render-mode-layers](./TECH-render-mode-layers.md)
+- [TECH-render-mode-sequence](./TECH-render-mode-sequence.md)
 - `../../amw-ascii-validator/SKILL.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

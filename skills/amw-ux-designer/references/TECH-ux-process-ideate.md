@@ -4,6 +4,15 @@ category: ux-process
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: UX process — Ideate & Design (Phase 3)
 
@@ -48,7 +57,7 @@ Cheapest to test: #2. Build a greyscale wireframe, walk Sarah through it in a 20
 
 ## Cross-references
 
-- `TECH-ux-process-define.md` — upstream (Phase 2)
-- `TECH-ux-process-prototype.md` — downstream (Phase 4)
+- [TECH-ux-process-define](TECH-ux-process-define.md) — upstream (Phase 2)
+- [TECH-ux-process-prototype](TECH-ux-process-prototype.md) — downstream (Phase 4)
 - `../../amw-ascii-sketch/SKILL.md` — ASCII-first implementation of this phase
 - `../SKILL.md`

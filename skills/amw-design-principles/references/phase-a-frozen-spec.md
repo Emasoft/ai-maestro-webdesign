@@ -1,3 +1,15 @@
+## Table of Contents
+
+- [Schema](#schema)
+  - [Field reference](#field-reference)
+- [Producers](#producers)
+- [Consumers](#consumers)
+- [Mutability](#mutability)
+- [Path conventions](#path-conventions)
+- [Worked example](#worked-example)
+- [Cross-references](#cross-references)
+
+
 # Phase A.5 Frozen Spec — canonical Phase B input contract
 
 This document defines the `phase-a-frozen-spec.json` schema and the protocol around it. The frozen spec is the single source of truth that every Phase B sub-agent reads at startup. It exists because the prior pattern — main-agent paraphrasing N Phase A YAML headers into N Phase B input contracts — burned an estimated **~30K orchestrator tokens per multi-artifact workflow** in redundant data-plumbing (4× duplicate `ai-slop-avoid.md` reads, 3× `color-system.md` reads, 6× return-contract spec reads, plus the per-sub-agent paraphrase passes). With the frozen spec, the cost is one `bin/amw-freeze-phase-a.sh` invocation and one absolute path passed into every Phase B input contract.
@@ -186,8 +198,8 @@ bash bin/amw-freeze-phase-a.sh \
 
 ## Cross-references
 
-- `./agent-interaction-patterns.md` — data hand-off table; every row maps to a key in the frozen spec.
-- `./sub-agent-return-contract.md` — the YAML headers Phase A sub-agents return; main-agent harvests `report_path` / `artifact_path` values from those headers when assembling the spec.
-- `./two-mode-workflow.md` — the Phase A satisfaction gate and the Phase A → Phase B transition.
+- [agent-interaction-patterns](./agent-interaction-patterns.md) — data hand-off table; every row maps to a key in the frozen spec.
+- [sub-agent-return-contract](./sub-agent-return-contract.md) — the YAML headers Phase A sub-agents return; main-agent harvests `report_path` / `artifact_path` values from those headers when assembling the spec.
+- [two-mode-workflow](./two-mode-workflow.md) — the Phase A satisfaction gate and the Phase A → Phase B transition.
 - `../../../bin/amw-freeze-phase-a.sh` — the producer script (only main-agent invokes it).
 - `../../../agents/ai-maestro-webdesign-main-agent.md` §15 — the orchestration doctrine that mandates Phase A.5 between satisfaction gate and Phase B fan-out.

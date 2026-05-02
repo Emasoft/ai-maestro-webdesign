@@ -4,6 +4,23 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Color system](#color-system)
+- [Typography](#typography)
+- [Standard component prevalence (across 17 pieces)](#standard-component-prevalence-across-17-pieces)
+- [Visual properties](#visual-properties)
+- [Signature layout pattern](#signature-layout-pattern)
+- [The amber+blue value split (signature)](#the-amberblue-value-split-signature)
+- [The claim-steps horizontal flow](#the-claim-steps-horizontal-flow)
+- [CSS variables](#css-variables)
+- [Reference template](#reference-template)
+- [Archetype preference](#archetype-preference)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Airdrop-Guide playbook — 10% (17/175)
 
@@ -132,10 +149,10 @@ simpler guides.
 
 ## Cross-references
 
-- `TECH-per-type-signature-palettes.md` — the color system.
-- `TECH-cheat-sheet-archetype.md` — the default archetype.
-- `TECH-step-process-component.md` — the claim steps.
-- `TECH-dense-table-component.md` — the eligibility table.
-- `TECH-progress-bar-vesting.md` — the vesting bar.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+- [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — the default archetype.
+- [TECH-step-process-component](TECH-step-process-component.md) — the claim steps.
+- [TECH-dense-table-component](TECH-dense-table-component.md) — the eligibility table.
+- [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting bar.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

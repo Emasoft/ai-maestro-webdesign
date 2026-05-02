@@ -4,6 +4,17 @@ category: svg-animation
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The minimum implementation](#the-minimum-implementation)
+- [Why `0.01ms` instead of `0s`](#why-001ms-instead-of-0s)
+- [SMIL equivalent](#smil-equivalent)
+- [When it's OK to ignore](#when-its-ok-to-ignore)
+- [When it's partially OK](#when-its-partially-ok)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `prefers-reduced-motion` — mandatory accessibility override
 
@@ -85,9 +96,9 @@ duration rather than removed entirely:
 
 ## Cross-references
 
-- `TECH-css-smil-animation.md` — the animations this governs.
-- `TECH-atmospheric-effects.md` — stars / rain that need this override.
-- `TECH-character-incremental-construction.md` — animated characters
+- [TECH-css-smil-animation](TECH-css-smil-animation.md) — the animations this governs.
+- [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — stars / rain that need this override.
+- [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — animated characters
   need it too.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

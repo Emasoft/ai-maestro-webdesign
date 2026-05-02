@@ -4,6 +4,31 @@ category: infographic-archetype
 source: image-generation/create-infographics/resources/color-palettes.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Dark palettes (99% of work)](#dark-palettes-99-of-work)
+  - [1. AMBER DARK — signature](#1-amber-dark-signature)
+  - [2. CYBER TEAL](#2-cyber-teal)
+  - [3. GAMING RED](#3-gaming-red)
+  - [4. HOT PINK WEB3](#4-hot-pink-web3)
+  - [5. EMERALD GAMING](#5-emerald-gaming)
+  - [6. ROYAL PURPLE GAMING](#6-royal-purple-gaming)
+  - [7. NAVY CRYPTO](#7-navy-crypto)
+  - [8. WARM GOLD DARK](#8-warm-gold-dark)
+  - [9. RETRO PIXEL / ARCADE](#9-retro-pixel-arcade)
+  - [10. LIME CYBERPUNK](#10-lime-cyberpunk)
+- [Standout palettes](#standout-palettes)
+  - [11. NEON ACID](#11-neon-acid)
+  - [12. SUNSET HORIZON](#12-sunset-horizon)
+  - [13. EARTHY TECH](#13-earthy-tech)
+- [Light mode palettes (rare, <1%)](#light-mode-palettes-rare-1)
+  - [L1. CLEAN WHITE + AMBER](#l1-clean-white-amber)
+  - [L2. WARM EDITORIAL](#l2-warm-editorial)
+  - [L3. BLUE PROFESSIONAL](#l3-blue-professional)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # 13 named palette recipes
 
@@ -125,9 +150,9 @@ Use: DeFi reports, investment summaries, fintech.
 
 ## Cross-references
 
-- `TECH-signature-palette.md` — the default when no recipe is picked.
-- `TECH-glow-system.md` — the glow layer on top of these palettes.
-- `TECH-per-type-signature-palettes.md` — when the content type
+- [TECH-signature-palette](TECH-signature-palette.md) — the default when no recipe is picked.
+- [TECH-glow-system](TECH-glow-system.md) — the glow layer on top of these palettes.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — when the content type
   dictates the palette.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

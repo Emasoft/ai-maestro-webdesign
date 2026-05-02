@@ -4,6 +4,20 @@ category: infographic-export
 source: image-generation/create-infographics/scripts/export.py
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Install](#install)
+- [Basic invocation](#basic-invocation)
+- [With local server (recommended)](#with-local-server-recommended)
+- [Width and scale](#width-and-scale)
+- [Per-platform widths](#per-platform-widths)
+- [Wait-for-render helper](#wait-for-render-helper)
+- [SVG export](#svg-export)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Export pipeline — HTML → PNG + PDF + SVG
 
@@ -110,8 +124,8 @@ notes that the PDF can be dragged directly into Figma as a fallback.
 
 ## Cross-references
 
-- `TECH-preview-server.md` — the companion preview server.
-- `TECH-platform-sizing.md` — the per-platform width table.
-- `TECH-anti-frontend-checklist.md` — run BEFORE export.
+- [TECH-preview-server](TECH-preview-server.md) — the companion preview server.
+- [TECH-platform-sizing](TECH-platform-sizing.md) — the per-platform width table.
+- [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — run BEFORE export.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

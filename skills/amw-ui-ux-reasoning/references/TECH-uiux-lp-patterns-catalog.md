@@ -4,6 +4,15 @@ category: uiux-lp-pattern
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Landing-page patterns catalog (24 conversion-optimized structures)
 
@@ -69,7 +78,7 @@ print(ds.pattern)
 
 ## Cross-references
 
-- `TECH-uiux-rules-catalog.md` — 161 rules that reference these patterns
-- `TECH-uiux-styles-catalog.md`, `TECH-uiux-palettes-catalog.md`, `TECH-uiux-font-pairings-catalog.md`
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — 161 rules that reference these patterns
+- [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md)
 - `../../amw-design-principles/starter-components/` — HTML starters that can be remixed into these patterns
 - `../SKILL.md`

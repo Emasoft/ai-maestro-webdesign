@@ -581,7 +581,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
 - `../skills/amw-diagram-formats/SKILL.md` — spec of specs for formats/IR/conversion/validation
 - `../skills/amw-diagram-editorial/SKILL.md` — 13 editorial diagram types (HTML)
 - `../skills/amw-diagram-architecture/SKILL.md` — layered architecture

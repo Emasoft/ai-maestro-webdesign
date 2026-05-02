@@ -4,6 +4,15 @@ category: uiux-palette
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Color-palette catalog (161 industry-matched palettes)
 
@@ -48,7 +57,7 @@ Representative palettes (sample from the 161):
 | Editorial mono | `#0D0D0D` | `#F5F5F5` | `#B8860B` | `#FFFFFF` | `#1A1A1A` | Luxury ecom, publication |
 | Calming sage | `#84A98C` | `#F1F6F1` | `#52796F` | `#FFFEFB` | `#354F52` | Wellness, mindfulness |
 
-Full set: 161 palettes spanning every industry covered in `TECH-uiux-rules-catalog.md`.
+Full set: 161 palettes spanning every industry covered in [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md).
 
 ## Minimal example
 
@@ -75,8 +84,8 @@ print(ds.css_variables)
 
 ## Cross-references
 
-- `TECH-uiux-rules-catalog.md` — rules that reference palette moods
-- `TECH-uiux-styles-catalog.md` — styles that pair with palettes
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — rules that reference palette moods
+- [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md) — styles that pair with palettes
 - `../../amw-design-principles/color-system.md` — oklch structure all palettes conform to
 - `../../amw-design-principles/ai-slop-avoid.md`
 - `../SKILL.md`

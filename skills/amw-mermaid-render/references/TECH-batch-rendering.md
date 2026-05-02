@@ -4,6 +4,15 @@ category: mermaid-batch
 source: diagrams-skills/Pretty-mermaid-skills-main/scripts/batch.mjs
 also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Batch rendering — worker-pool directory mode
 
@@ -74,8 +83,8 @@ Found 3 diagram(s) to render...
 
 ## Cross-references
 
-- `TECH-svg-render-api.md` — the per-file rendering function.
-- `TECH-ascii-render-api.md` — when `--format ascii`.
-- `TECH-built-in-themes.md` — valid `--theme` values.
+- [TECH-svg-render-api](TECH-svg-render-api.md) — the per-file rendering function.
+- [TECH-ascii-render-api](TECH-ascii-render-api.md) — when `--format ascii`.
+- [TECH-built-in-themes](TECH-built-in-themes.md) — valid `--theme` values.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

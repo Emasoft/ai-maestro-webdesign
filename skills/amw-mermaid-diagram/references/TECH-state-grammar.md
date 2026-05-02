@@ -110,7 +110,7 @@ stateDiagram-v2
 
 ## Cross-references
 
-- `TECH-flowchart-grammar.md` — for non-state flows.
-- `TECH-sequence-grammar.md` — for time-ordered interactions.
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-state flows.
+- [TECH-sequence-grammar](TECH-sequence-grammar.md) — for time-ordered interactions.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

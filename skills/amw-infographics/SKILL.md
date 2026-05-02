@@ -41,7 +41,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 - **HTML** — self-contained, CDN fonts (Bebas Neue, Montserrat, Teko, Orbitron via Google Fonts) + Phosphor Icons + optional Chart.js.
 - **PNG** — retina (2x) via `../../bin/amw-html-export.py` (Playwright + Chromium).
 - **PDF** — print-ready via the same script.
-- **Canvas sizes** (7): portrait-medium 1080×1440 (default), Twitter/X 1200×675, Instagram 1080×1080, Instagram portrait 1080×1350, LinkedIn 1200×627, Pinterest 1000×1500, website 1100×auto. Full table in `resources/platform-sizes.md`.
+- **Canvas sizes** (7): portrait-medium 1080×1440 (default), Twitter/X 1200×675, Instagram 1080×1080, Instagram portrait 1080×1350, LinkedIn 1200×627, Pinterest 1000×1500, website 1100×auto. Full table in [platform-sizes](resources/platform-sizes.md).
 
 ## Design DNA (the non-negotiable set)
 
@@ -58,7 +58,7 @@ Derived from 175 real designs. The #1 failure mode is producing something that l
 - **Tight spacing inside sections.** Card padding 12–16px (NOT 24–32px). Body font 11–13px for dense content (intentional poster/print-scale exception to design-principles' 16px desktop floor — infographics are shareable graphics, not webpages; see `../amw-design-principles/typography-system.md` for the floor rule this skill carves out from). Gap 8–12px between items. Whitespace separates *sections* from each other, not content within a section.
 - **Content format hierarchy.** Tables → bullet lists → flow diagrams → stat callouts → badges. Paragraphs are a last resort, reserved for 1–2 sentence hero intros.
 
-Full design DNA with code samples: `resources/style-details.md` (1062 lines) and `resources/layout-patterns.md` (842 lines).
+Full design DNA with code samples: [style-details](resources/style-details.md) (1062 lines) and [layout-patterns](resources/layout-patterns.md) (842 lines).
 
 ## Non-negotiable rules
 
@@ -149,7 +149,7 @@ Use when the user says "show me each", "piece by piece", "step by step", "let me
 4. **Approval gate** — only write approved components to the state file `{cwd}/.infographic/{project}.json`. Verbatim HTML, no re-generation.
 5. **Assemble** on user command (`assemble`, `finalize`, `done`) — stitch approved components, wrap with header/footer, run Reduction Pass, export via `html-export.py`.
 
-Full builder protocol (state file schema, approval vocabulary, assembly rules): `resources/layout-patterns.md` and the `create-infographics` upstream SKILL.md.
+Full builder protocol (state file schema, approval vocabulary, assembly rules): [layout-patterns](resources/layout-patterns.md) and the `create-infographics` upstream SKILL.md.
 
 ### B. One-Shot — generate the full infographic in one pass
 
@@ -184,7 +184,7 @@ Run both passes:
 - [ ] At least one table if data has comparisons/specs/rates.
 - [ ] Content block count meets density target.
 
-**Reduction Pass** — remove gridlines that aren't needed for reading values, axis tick marks where direct labels exist, decorative icons, borders/glows on elements already separated by whitespace, text that repeats what the visual shows. Strictness scales to aesthetic (see `resources/style-details.md` reduction table). Do NOT reduce information density.
+**Reduction Pass** — remove gridlines that aren't needed for reading values, axis tick marks where direct labels exist, decorative icons, borders/glows on elements already separated by whitespace, text that repeats what the visual shows. Strictness scales to aesthetic (see [style-details](resources/style-details.md) reduction table). Do NOT reduce information density.
 
 **Final quality check** — no fabricated data, display font is not banned, Phosphor CDN included, canvas width matches platform, background mode matches request, footer present (unless user said no), all labels directly on charts (annotation-first), logo present (95% of real pieces), type-specific playbook applied if one fits.
 
@@ -210,14 +210,14 @@ See `examples/` for 15 rendered PNG reference outputs covering each template fam
 - `../amw-design-principles/typography-system.md` — type-scale rules that compose with this skill's display-font hierarchy.
 - `../../bin/amw-html-export.py` — PNG / PDF / SVG export pipeline; shared with `hyperframes-bridge` and `ascii-to-html`.
 - `../../bin/amw-preview-server.py` — Mode A live preview server, port 7883.
-- `resources/design-brief.md` — 5-question intake framework + aesthetic decision table.
-- `resources/style-details.md` — full 1062-line design system with component CSS patterns, type playbooks, reduction-pass rules.
-- `resources/layout-patterns.md` — full 842-line layout and archetype scaffold library with CSS grid implementations per archetype.
-- `resources/charts.md` — chart rules (bar / line / pie / radar / stat callouts) with annotation-first placement.
-- `resources/color-palettes.md` — full palette library by type (token-economics amber, crypto-explainer purple, ecosystem teal, airdrop amber+blue, etc.).
-- `resources/font-pairings.md` — display-font prevalence table and body-font pairings per type.
-- `resources/platform-sizes.md` — 7 canvas sizes with per-platform layout/font adjustments and safe zones.
-- `resources/copy-guide.md` — headline, callout, and label writing rules.
+- [design-brief](resources/design-brief.md) — 5-question intake framework + aesthetic decision table.
+- [style-details](resources/style-details.md) — full 1062-line design system with component CSS patterns, type playbooks, reduction-pass rules.
+- [layout-patterns](resources/layout-patterns.md) — full 842-line layout and archetype scaffold library with CSS grid implementations per archetype.
+- [charts](resources/charts.md) — chart rules (bar / line / pie / radar / stat callouts) with annotation-first placement.
+- [color-palettes](resources/color-palettes.md) — full palette library by type (token-economics amber, crypto-explainer purple, ecosystem teal, airdrop amber+blue, etc.).
+- [font-pairings](resources/font-pairings.md) — display-font prevalence table and body-font pairings per type.
+- [platform-sizes](resources/platform-sizes.md) — 7 canvas sizes with per-platform layout/font adjustments and safe zones.
+- [copy-guide](resources/copy-guide.md) — headline, callout, and label writing rules.
 - `templates/` — 24 reference templates (see index above).
 - `examples/` — 15 rendered PNG reference outputs for each template family.
 - `evals/evals.json` — 5 scenario test prompts + expected outcomes.

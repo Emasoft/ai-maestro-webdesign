@@ -16,7 +16,7 @@ Documents the three validation tools the plugin runs on every authored or extrac
 
 ### 1. Official linter (`bin/amw-design-md-lint.sh`)
 
-Wrapper around `npx @google/design.md lint <file>`. Pure-Node, no API key, no remote calls. The official linter implements the rules from `canonical-spec-google-alpha.md`:
+Wrapper around `npx @google/design.md lint <file>`. Pure-Node, no API key, no remote calls. The official linter implements the rules from [canonical-spec-google-alpha](canonical-spec-google-alpha.md):
 
 - Frontmatter starts at line 1 with `---`.
 - YAML between delimiters is well-formed.
@@ -111,14 +111,14 @@ Common lint failures and their fixes:
 |---|---|---|
 | `Frontmatter must start at line 1` | UTF-8 BOM, blank line, prose before `---` | Strip BOM, remove blank line, move `---` to line 1 |
 | `Duplicate section heading: ## Colors` | Two `## Colors` blocks | Merge them into one section |
-| `Section out of order: ## Components before ## Layout` | Author re-ordered | Restore canonical order from `canonical-spec-google-alpha.md` |
+| `Section out of order: ## Components before ## Layout` | Author re-ordered | Restore canonical order from [canonical-spec-google-alpha](canonical-spec-google-alpha.md) |
 | `Invalid color value: red` | CSS named color | Replace with hex |
 | `fontWeight must be a number: bold` | String weight | Replace with integer 100-900 |
 | `Unresolved reference: {colors.foo}` | Reference target missing | Either declare `colors.foo` or fix the reference path |
 | `Cycle in references: a → b → a` | Self-reference or cycle | Eliminate the cycle |
 | `Dimension must have unit: 12` | Bare number | Add unit: `12px` |
 
-See `TECH-14-validation-failure-recovery.md` for more detailed flowcharts.
+See [TECH-14-validation-failure-recovery](TECH-14-validation-failure-recovery.md) for more detailed flowcharts.
 
 ## Diff between two DESIGN.md files
 
@@ -147,9 +147,9 @@ This catches drift introduced by hand-edits before merge.
 
 ## Cross-references
 
-- `./TECH-01-yaml-frontmatter.md` — frontmatter rules
-- `./TECH-05-token-references.md` — reference resolution
-- `./TECH-14-validation-failure-recovery.md` — what to do when validation fails
+- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — frontmatter rules
+- [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
+- [TECH-14-validation-failure-recovery](./TECH-14-validation-failure-recovery.md) — what to do when validation fails
 - `<plugin-root>/bin/amw-design-md-lint.sh`
 - `<plugin-root>/bin/amw-design-md-validate.py`
 - `<plugin-root>/bin/amw-design-md-contrast.py`

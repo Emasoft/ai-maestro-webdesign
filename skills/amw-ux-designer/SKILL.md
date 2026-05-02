@@ -16,7 +16,7 @@ UX-process methodology reference covering the full 5-phase research-to-handoff l
 
 1. Identify the UX-methodology deliverable requested: persona, user journey map, empathy map, research plan, usability-test protocol, IA sitemap, WCAG AA checklist, or microcopy review.
 2. Walk the `## Technique selection` tree and open the relevant TECH reference file from `references/` (e.g. `TECH-ux-persona-template.md`, `TECH-ux-process-discover.md`).
-3. Read the appropriate rule file from `rules/` for the deliverable type (e.g. `rules/research.md` for interviews/personas, `rules/accessibility.md` for WCAG).
+3. Read the appropriate rule file from `rules/` for the deliverable type (e.g. [research](rules/research.md) for interviews/personas, [accessibility](rules/accessibility.md) for WCAG).
 4. Produce the structured deliverable using the template in the TECH file (persona: goals/pain points/behaviors/quote; research plan: interview script + participant criteria + synthesis method; WCAG checklist: criteria + pass/fail per component).
 5. Route downstream when done: PRD + wireframes → `../amw-ux-flows/`; visual iterations → `../amw-ascii-sketch/`; evaluation of an existing design → `../amw-ux-evaluator/`.
 
@@ -24,7 +24,7 @@ See `## Usage` below.
 
 ## Examples
 
-See `references/TECH-ux-persona-template.md` for a complete persona example ("Sarah, The Busy Parent") and `references/TECH-ux-process-discover.md` for a user-research plan example.
+See [TECH-ux-persona-template](references/TECH-ux-persona-template.md) for a complete persona example ("Sarah, The Busy Parent") and [TECH-ux-process-discover](references/TECH-ux-process-discover.md) for a user-research plan example.
 
 ## Activation
 
@@ -66,11 +66,11 @@ Invoked by the orchestrator or directly when a UX-process trigger fires. Reads t
 - WCAG AA audit checklist
 
 **Rule files (read on demand):**
-- `rules/research.md` — user interviews, personas, synthesis
-- `rules/accessibility.md` — WCAG AA, inclusive design
-- `rules/information-architecture.md` — navigation, content organization
-- `rules/interaction-design.md` — user flows, microcopy
-- `rules/visual-design.md` — hierarchy, design system essentials
+- [research](rules/research.md) — user interviews, personas, synthesis
+- [accessibility](rules/accessibility.md) — WCAG AA, inclusive design
+- [information-architecture](rules/information-architecture.md) — navigation, content organization
+- [interaction-design](rules/interaction-design.md) — user flows, microcopy
+- [visual-design](rules/visual-design.md) — hierarchy, design system essentials
 
 **Handoff:**
 - When the user has a PRD and wants wireframes → route to `../amw-ux-flows/SKILL.md`

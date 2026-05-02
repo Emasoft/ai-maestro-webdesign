@@ -4,6 +4,16 @@ category: hyperframes-capture-step
 source: external/hyperframes/skills/website-to-hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Gate](#gate)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Step 1 — Capture & Understand
 
@@ -67,7 +77,7 @@ Print the summary to chat. The pipeline does not advance until the user confirms
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-step-2-design.md`
+- [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md)
 - `../../amw-design-extract/SKILL.md` — the designlang primitive used for capture
-- `TECH-hyperframes-capture-overview.md`
+- [TECH-hyperframes-capture-overview](TECH-hyperframes-capture-overview.md)
 - `../SKILL.md`

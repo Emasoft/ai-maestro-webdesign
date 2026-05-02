@@ -4,6 +4,19 @@ category: infographic-builder
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The 5 steps](#the-5-steps)
+- [Classification — identify the type](#classification-identify-the-type)
+- [Composition archetype — pick one](#composition-archetype-pick-one)
+- [Build rules](#build-rules)
+- [Head elements (required)](#head-elements-required)
+- [Step 5 — export command](#step-5-export-command)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # One-Shot mode (Mode B) — generate the full infographic in one pass
 
@@ -107,10 +120,10 @@ Produces `{name}.png`, `{name}.pdf`, `{name}.svg`.
 
 ## Cross-references
 
-- `TECH-interactive-builder-mode.md` — the iterative cousin.
-- `TECH-guided-creative-mode.md` — the 2-option middle path.
-- `TECH-dense-editorial-dna.md` — the quality check rules.
-- `TECH-anti-frontend-checklist.md` — Step 4 details.
-- `TECH-export-pipeline.md` — Step 5 details.
+- [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the iterative cousin.
+- [TECH-guided-creative-mode](TECH-guided-creative-mode.md) — the 2-option middle path.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the quality check rules.
+- [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — Step 4 details.
+- [TECH-export-pipeline](TECH-export-pipeline.md) — Step 5 details.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

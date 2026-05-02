@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-tree
 
@@ -94,8 +103,8 @@ tight, but stay on the 4px grid.
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-nested.md` — for containment hierarchy
-- `TECH-type-pyramid.md` — if the hierarchy is ranked rather than strictly
+- [TECH-type-nested](TECH-type-nested.md) — for containment hierarchy
+- [TECH-type-pyramid](TECH-type-pyramid.md) — if the hierarchy is ranked rather than strictly
   parent-child
 - `../../amw-ascii-diagrams-reference/SKILL.md` — ASCII tree cousin for
   terminal documentation

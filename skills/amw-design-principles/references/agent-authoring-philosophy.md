@@ -1,3 +1,15 @@
+## Table of Contents
+
+- [Skills and agents are not the same kind of thing](#skills-and-agents-are-not-the-same-kind-of-thing)
+- [What an agent actually needs](#what-an-agent-actually-needs)
+  - [Recipe layer (deterministic floor)](#recipe-layer-deterministic-floor)
+  - [Judgment layer (non-deterministic surface)](#judgment-layer-non-deterministic-surface)
+- [Why the judgment layer matters in this plugin specifically](#why-the-judgment-layer-matters-in-this-plugin-specifically)
+- [The 14-section canonical template](#the-14-section-canonical-template)
+- [What this document is NOT](#what-this-document-is-not)
+- [Cross-references](#cross-references)
+
+
 # Agent-authoring philosophy — judgment layer vs recipe layer
 
 This document is the governing principle for every agent under `agents/` in this plugin. It exists because the common mistake when authoring an agent is to write it like a skill — a recipe of "if A then B, if X then Y" — and then discover at runtime that reality doesn't match the recipe.
@@ -77,7 +89,7 @@ The order matters. Identity comes first because everything downstream depends on
 This is not a recipe for writing agents. It is the philosophy that makes the recipe worth writing. The actual step-by-step for authoring a new agent is:
 
 1. Read this document
-2. Read `sub-agent-return-contract.md`, `agent-interaction-patterns.md`, `skill-invocation-protocol.md`, `authority-hierarchy.md`
+2. Read [sub-agent-return-contract](sub-agent-return-contract.md), [agent-interaction-patterns](agent-interaction-patterns.md), [skill-invocation-protocol](skill-invocation-protocol.md), [authority-hierarchy](authority-hierarchy.md)
 3. Write the 14 sections against the canonical template, filling every section in order
 4. Have someone else (human or another Claude session) read the spec and try to predict what the agent would do on three novel inputs you didn't design for — if they can't predict, the judgment layer has holes
 5. Only then commit the agent to `agents/`
@@ -86,8 +98,8 @@ A spec that can only describe expected-case behavior is incomplete. A spec where
 
 ## Cross-references
 
-- `sub-agent-return-contract.md` — canonical YAML schema that every agent uses to report back to main-agent
-- `agent-interaction-patterns.md` — cross-agent data hand-offs, data-flow graphs for Phase A and Phase B
-- `skill-invocation-protocol.md` — how agents invoke skills without re-triggering the orchestrator
-- `authority-hierarchy.md` — conflict-resolution rules and veto power
-- `two-mode-workflow.md` — the command-mode vs main-agent-mode contract
+- [sub-agent-return-contract](sub-agent-return-contract.md) — canonical YAML schema that every agent uses to report back to main-agent
+- [agent-interaction-patterns](agent-interaction-patterns.md) — cross-agent data hand-offs, data-flow graphs for Phase A and Phase B
+- [skill-invocation-protocol](skill-invocation-protocol.md) — how agents invoke skills without re-triggering the orchestrator
+- [authority-hierarchy](authority-hierarchy.md) — conflict-resolution rules and veto power
+- [two-mode-workflow](two-mode-workflow.md) — the command-mode vs main-agent-mode contract

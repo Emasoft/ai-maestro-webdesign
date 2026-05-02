@@ -57,7 +57,7 @@ Database:        Queue:          External:
 
 ## Cross-references
 
-- `./TECH-unicode-rounded-corner-set.md`
+- [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
 - `../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md`
 - `../../amw-ascii-creator/SKILL.md` (style presets)
 - [`../SKILL.md`](../SKILL.md) — parent skill

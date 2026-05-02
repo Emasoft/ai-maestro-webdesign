@@ -4,6 +4,15 @@ category: uiux-font-pairing
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Font-pairings catalog (57 heading+body combos)
 
@@ -87,7 +96,7 @@ Resulting HTML:
 
 ## Cross-references
 
-- `TECH-uiux-rules-catalog.md`, `TECH-uiux-styles-catalog.md`, `TECH-uiux-palettes-catalog.md`
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md), [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md)
 - `../../amw-design-principles/typography-system.md` — full weight coverage rule
 - `../../amw-design-principles/ai-slop-avoid.md` — Inter/Roboto filter
 - `../SKILL.md`

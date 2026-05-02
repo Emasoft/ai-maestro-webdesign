@@ -4,6 +4,16 @@ category: uiux-style
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Representative styles (partial list — full 67 are in the upstream corpus)](#representative-styles-partial-list-full-67-are-in-the-upstream-corpus)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: UI-styles catalog (67 named visual languages)
 
@@ -89,7 +99,7 @@ print(gm.tailwind_config)
 
 ## Cross-references
 
-- `TECH-uiux-rules-catalog.md` — 161 industry rules that reference this catalog
-- `TECH-uiux-palettes-catalog.md`, `TECH-uiux-font-pairings-catalog.md`, `TECH-uiux-lp-patterns-catalog.md`
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — 161 industry rules that reference this catalog
+- [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md), [TECH-uiux-lp-patterns-catalog](TECH-uiux-lp-patterns-catalog.md)
 - `../SKILL.md`
 - `../../amw-design-principles/ai-slop-avoid.md`

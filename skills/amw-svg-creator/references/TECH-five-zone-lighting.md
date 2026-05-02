@@ -4,6 +4,15 @@ category: svg-lighting
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The five zones](#the-five-zones)
+- [Implementation — radial gradient + overlays](#implementation-radial-gradient-overlays)
+- [When to use](#when-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Five-zone lighting model
 
@@ -70,8 +79,8 @@ pulls an object out of flat-fill territory into perceived 3D.
 
 ## Cross-references
 
-- `TECH-colored-shadows.md` — the shadow-color rule in isolation.
-- `TECH-multi-stop-gradients.md` — the 5-stop radial maps to the five zones.
-- `TECH-character-incremental-construction.md` — apply lighting per body part.
+- [TECH-colored-shadows](TECH-colored-shadows.md) — the shadow-color rule in isolation.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the 5-stop radial maps to the five zones.
+- [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — apply lighting per body part.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

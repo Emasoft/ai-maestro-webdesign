@@ -4,6 +4,18 @@ category: svg-gradient
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [`paint-order="stroke fill"`](#paint-orderstroke-fill)
+- [`spreadMethod` on gradients](#spreadmethod-on-gradients)
+  - [Example — brushed metal with `reflect`](#example-brushed-metal-with-reflect)
+- [`vector-effect="non-scaling-stroke"`](#vector-effectnon-scaling-stroke)
+- [`pathLength="1"`](#pathlength1)
+- [`gradientTransform`](#gradienttransform)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `paint-order` and `spreadMethod` — power features
 
@@ -94,10 +106,10 @@ gradient.
 
 ## Cross-references
 
-- `TECH-multi-stop-gradients.md` — gradients that benefit from
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — gradients that benefit from
   `spreadMethod`.
-- `TECH-material-simulation.md` — `reflect` is essential for metals.
-- `TECH-css-smil-animation.md` — `pathLength="1"` is the keystone
+- [TECH-material-simulation](TECH-material-simulation.md) — `reflect` is essential for metals.
+- [TECH-css-smil-animation](TECH-css-smil-animation.md) — `pathLength="1"` is the keystone
   for line-draw animations.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

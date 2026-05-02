@@ -4,6 +4,17 @@ category: seo-technical
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Cross-validation examples](#cross-validation-examples)
+  - [KPIs worth tracking vs vanity metrics](#kpis-worth-tracking-vs-vanity-metrics)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Measurement — multi-signal SEO validation
 
@@ -68,6 +79,6 @@ Narrative: impressions up faster than clicks (CTR drop) suggests ranking for que
 
 ## Cross-references
 
-- `TECH-seo-relative-importance.md`
-- `TECH-seo-eeat.md`, `TECH-seo-cwv.md`, `TECH-seo-technical.md`
+- [TECH-seo-relative-importance](TECH-seo-relative-importance.md)
+- [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-cwv](TECH-seo-cwv.md), [TECH-seo-technical](TECH-seo-technical.md)
 - `../SKILL.md`

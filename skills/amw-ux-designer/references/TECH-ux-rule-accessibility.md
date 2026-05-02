@@ -89,6 +89,6 @@ Button inaccessible → compliant:
 
 ## Cross-references
 
-- `TECH-ux-rule-research.md`, `TECH-ux-rule-ia.md`, `TECH-ux-rule-interaction.md`, `TECH-ux-rule-visual.md`
+- [TECH-ux-rule-research](TECH-ux-rule-research.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md), [TECH-ux-rule-visual](TECH-ux-rule-visual.md)
 - `../../amw-ui-ux-reasoning/references/TECH-uiux-pre-delivery-checklist.md` — shared a11y checklist
 - `../SKILL.md`

@@ -161,9 +161,9 @@ Both should exit 0. Any error halts delivery per the skill's hard rules.
 
 ## Cross-references
 
-- `./canonical-spec-google-alpha.md` — full spec
-- `./TECH-02-color-tokens.md` — color authoring details
-- `./TECH-03-typography-tokens.md` — typography authoring
-- `./TECH-04-component-tokens.md` — component-property authoring
-- `./TECH-05-token-references.md` — reference resolution rules
-- `./TECH-11-validation-and-lint.md` — validator usage
+- [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — full spec
+- [TECH-02-color-tokens](./TECH-02-color-tokens.md) — color authoring details
+- [TECH-03-typography-tokens](./TECH-03-typography-tokens.md) — typography authoring
+- [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component-property authoring
+- [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution rules
+- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — validator usage

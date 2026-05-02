@@ -496,10 +496,10 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-multilanguage-copywriter-agent.md` — email copy, subject lines, preheader, localization
-- `./amw-legal-expert-agent.md` — compliance footer content, CAN-SPAM/CASL/GDPR requirements
-- `./amw-accessibility-auditor-agent.md` — downstream accessibility review (email alt text, link text, reading order)
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-multilanguage-copywriter-agent](./amw-multilanguage-copywriter-agent.md) — email copy, subject lines, preheader, localization
+- [amw-legal-expert-agent](./amw-legal-expert-agent.md) — compliance footer content, CAN-SPAM/CASL/GDPR requirements
+- [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream accessibility review (email alt text, link text, reading order)
 - `../skills/amw-design-principles/color-system.md` — contrast ratio validation
 - `../skills/amw-design-principles/typography-system.md` — font-size floor rules, RTL direction
 - `../skills/amw-design-principles/ai-slop-avoid.md` — stock-imagery and generic-gradient check

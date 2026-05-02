@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-venn
 
@@ -97,8 +106,8 @@ labels: inside the overlap region, italic `Instrument Serif` 11–12px
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-quadrant.md` — for two-axis positioning (often a better fit
+- [TECH-type-quadrant](TECH-type-quadrant.md) — for two-axis positioning (often a better fit
   when users first think "Venn")
-- `design-system.md` — italic serif for overlap labels
-- `primitive-annotation.md` — if you need an arrow pointing to a specific
+- [design-system](design-system.md) — italic serif for overlap labels
+- [primitive-annotation](primitive-annotation.md) — if you need an arrow pointing to a specific
   region from outside the circles

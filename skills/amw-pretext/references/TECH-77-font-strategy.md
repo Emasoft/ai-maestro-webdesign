@@ -4,6 +4,16 @@ category: typography
 source: pretext-skills/amw-pretext-frontend-motion-main/core/bundle/references/font-strategy.md
 also-in: SKILL-11.md, SKILL-23.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Suggested font pairings by mood (source: pretext-frontend-motion-main/references/font-strategy.md)](#suggested-font-pairings-by-mood-source-pretext-frontend-motion-mainreferencesfont-strategymd)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Font strategy for pretext (named families, load order, fallbacks)
 

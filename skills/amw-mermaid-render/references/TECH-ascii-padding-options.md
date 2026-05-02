@@ -72,8 +72,8 @@ const inline = renderMermaidAscii(diagram, {
 
 ## Cross-references
 
-- `TECH-ascii-render-api.md` — the parent function.
-- `TECH-ascii-markdown-integration.md` — wrapping output for markdown
+- [TECH-ascii-render-api](TECH-ascii-render-api.md) — the parent function.
+- [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — wrapping output for markdown
   rendering contexts.
 - `bin/amw-mermaid-render.sh` — the shell CLI that accepts `--padding-x`.
 - [`../SKILL.md`](../SKILL.md) — parent skill

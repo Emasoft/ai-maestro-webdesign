@@ -4,6 +4,16 @@ category: svg-shape
 source: SKILLS-TO-INTEGRATE/diagrams-skills/baybee-diagram/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Why this order](#why-this-order)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-svg-group-structure
 
@@ -137,7 +147,7 @@ Three connected nodes with labels:
 ## Cross-references
 
 - `../SKILL.md` — structure is mentioned in the Canvas section
-- `TECH-canvas-1000x1000.md` — the container for this structure
-- `TECH-arrow-marker-def.md` — markers that go in `<defs>`
-- `TECH-node-shape-vocabulary.md` — the shapes inside `#nodes`
-- `TECH-stroke-width-4-palette.md` — style defaults
+- [TECH-canvas-1000x1000](TECH-canvas-1000x1000.md) — the container for this structure
+- [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — markers that go in `<defs>`
+- [TECH-node-shape-vocabulary](TECH-node-shape-vocabulary.md) — the shapes inside `#nodes`
+- [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — style defaults

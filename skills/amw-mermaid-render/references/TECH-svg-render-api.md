@@ -4,6 +4,15 @@ category: mermaid-render-svg
 source: diagrams-skills/beautiful-mermaid-main/SKILL.md
 also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `renderMermaid()` — Mermaid → SVG
 
@@ -56,8 +65,8 @@ Full option set: `bg`, `fg`, `font`, `transparent`, `line`, `accent`,
 
 ## Cross-references
 
-- `TECH-ascii-render-api.md` — the sync ASCII cousin.
-- `TECH-mono-mode.md` — the 2-color theming foundation.
+- [TECH-ascii-render-api](TECH-ascii-render-api.md) — the sync ASCII cousin.
+- [TECH-mono-mode](TECH-mono-mode.md) — the 2-color theming foundation.
 - `bin/amw-mermaid-render.sh` — the shell entrypoint used by every other
   plugin skill that needs Mermaid SVG.
 - [`../SKILL.md`](../SKILL.md) — parent skill

@@ -62,7 +62,7 @@ Order in the label: guard → trigger → action → target state.
 
 ## Cross-references
 
-- `./TECH-state-machine-legend.md`
-- `./TECH-metrics-per-transition.md`
+- [TECH-state-machine-legend](./TECH-state-machine-legend.md)
+- [TECH-metrics-per-transition](./TECH-metrics-per-transition.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

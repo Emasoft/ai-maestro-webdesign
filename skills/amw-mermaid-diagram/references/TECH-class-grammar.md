@@ -4,6 +4,19 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Class definition](#class-definition)
+- [Visibility markers](#visibility-markers)
+- [Relationship arrows (UML)](#relationship-arrows-uml)
+- [Cardinality](#cardinality)
+- [Abstract / interface / generic](#abstract-interface-generic)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Class diagram grammar
 
@@ -108,7 +121,7 @@ classDiagram
 
 ## Cross-references
 
-- `TECH-er-grammar.md` — for database schemas (structurally similar).
-- `TECH-flowchart-grammar.md` — for non-class graph structures.
+- [TECH-er-grammar](TECH-er-grammar.md) — for database schemas (structurally similar).
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-class graph structures.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

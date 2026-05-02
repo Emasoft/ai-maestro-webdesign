@@ -4,6 +4,15 @@ category: uiux-rule
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Reasoning rule — Healthcare / Medical
 
@@ -56,7 +65,7 @@ print(ds.anti_patterns)
 
 ## Cross-references
 
-- `TECH-uiux-rules-catalog.md`
-- `TECH-uiux-pre-delivery-checklist.md`
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md)
+- [TECH-uiux-pre-delivery-checklist](TECH-uiux-pre-delivery-checklist.md)
 - `../SKILL.md`
 - `../../amw-design-principles/ai-slop-avoid.md`

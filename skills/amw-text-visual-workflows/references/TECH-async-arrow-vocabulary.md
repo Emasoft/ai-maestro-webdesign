@@ -60,7 +60,7 @@ for sync calls within one diagram.
 
 ## Cross-references
 
-- `./TECH-flowchart-paren-bracket-glyphs.md`
+- [TECH-flowchart-paren-bracket-glyphs](./TECH-flowchart-paren-bracket-glyphs.md)
 - `../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md`
 - `../../amw-box-diagram/references/TECH-arrow-head-variants.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill

@@ -4,6 +4,18 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Basic syntax](#basic-syntax)
+- [Cardinality crowsfeet](#cardinality-crowsfeet)
+- [Attributes (optional but almost always used)](#attributes-optional-but-almost-always-used)
+- [Attribute constraints](#attribute-constraints)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # ER diagram grammar (`erDiagram`)
 
@@ -94,8 +106,8 @@ erDiagram
 
 ## Cross-references
 
-- `TECH-class-grammar.md` — for OOP object models (similar cardinality shape).
-- `TECH-flowchart-grammar.md` — when the data model is better shown
+- [TECH-class-grammar](TECH-class-grammar.md) — for OOP object models (similar cardinality shape).
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — when the data model is better shown
   as a graph than a schema.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

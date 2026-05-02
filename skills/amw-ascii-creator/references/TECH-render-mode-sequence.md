@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-render-mode-sequence — lifelines + messages + notes
 
@@ -60,7 +69,7 @@ Top-level `sequence` key holds:
 
 ## Cross-references
 
-- `./TECH-json-render-four-modes.md`
-- `./TECH-sequence-notes.md`
+- [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
+- [TECH-sequence-notes](./TECH-sequence-notes.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

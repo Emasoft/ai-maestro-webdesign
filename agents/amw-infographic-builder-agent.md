@@ -589,7 +589,7 @@ I have **NO veto power**. Veto power is held by `amw-legal-expert-agent` and `am
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
 - `../skills/amw-infographics/SKILL.md` — core skill
 - `../skills/amw-infographics/templates/` — 24 templates
 - `../skills/amw-infographics/resources/style-details.md` — 1062-line DNA corpus

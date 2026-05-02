@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/network-topology.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-k8s-topology — Ingress → Service → Pods fan-out
 
@@ -59,8 +68,8 @@ K8s intro doc.
 
 ## Cross-references
 
-- `./TECH-classic-multi-service-architecture.md`
-- `./TECH-classic-namespace-nesting.md`
-- `./network-topology.md` (legacy pattern file)
+- [TECH-classic-multi-service-architecture](./TECH-classic-multi-service-architecture.md)
+- [TECH-classic-namespace-nesting](./TECH-classic-namespace-nesting.md)
+- [network-topology](./network-topology.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

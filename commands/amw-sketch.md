@@ -118,7 +118,7 @@ If the user has not yet run `/amw-extract-style <url>` and wants tokens from a r
 
 ## AI-slop checks on the sketches themselves
 
-Even at ASCII fidelity, check each emitted variant against `skills/amw-design-principles/ai-slop-avoid.md`:
+Even at ASCII fidelity, check each emitted variant against [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md):
 
 - No "hero → 3-col icons → testimonials → CTA → footer" stamped three times in a row (item 10).
 - No fake "Sarah J. CEO of TechCorp" testimonials (item 15).

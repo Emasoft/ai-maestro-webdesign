@@ -1,3 +1,26 @@
+## Table of Contents
+
+- [Schema](#schema)
+- [Field semantics](#field-semantics)
+  - [`agent` — required, string](#agent-required-string)
+  - [`phase` — required, enum `A | B`](#phase-required-enum-a-b)
+  - [`status` — required, enum `ok | partial | failed`](#status-required-enum-ok-partial-failed)
+  - [`confidence` — required, enum `high | medium | low`](#confidence-required-enum-high-medium-low)
+  - [`execution_time_ms` — optional, int](#execution_time_ms-optional-int)
+  - [`max_iterations` — required, int](#max_iterations-required-int)
+  - [`attempts_count` — required, int](#attempts_count-required-int)
+  - [`attempts_log` — required, list of objects](#attempts_log-required-list-of-objects)
+  - [`blocking_issues` — required (empty list ok), list of strings](#blocking_issues-required-empty-list-ok-list-of-strings)
+  - [`warnings` — required (empty list ok), list of strings](#warnings-required-empty-list-ok-list-of-strings)
+  - [`artifact_paths` — required (empty list ok), list of objects](#artifact_paths-required-empty-list-ok-list-of-objects)
+  - [`recommendations` — required (empty list ok), list of strings](#recommendations-required-empty-list-ok-list-of-strings)
+  - [`next_action` — required, string (free-form but see conventions)](#next_action-required-string-free-form-but-see-conventions)
+  - [`report_path` — required, string](#report_path-required-string)
+- [Markdown body structure](#markdown-body-structure)
+- [How main-agent consumes the contract](#how-main-agent-consumes-the-contract)
+- [Contract invariants (enforced by smoke tests)](#contract-invariants-enforced-by-smoke-tests)
+
+
 # Sub-agent return contract — canonical YAML schema
 
 Every sub-agent under `agents/amw-*.md` returns a report to main-agent in the shape below. The first block is a YAML frontmatter header the main-agent parses mechanically. The rest is free-form markdown for human readers and for main-agent's prose synthesis.
@@ -62,7 +85,7 @@ Wall-clock time the agent spent on the job. Useful for main-agent to detect runa
 
 ### `max_iterations` — required, int
 The hard cap on retry/fix/regenerate loop attempts for this agent, as declared in
-`iteration-budget.md`. One-shot agents that have no internal retry loop set this to `1`.
+[iteration-budget](iteration-budget.md). One-shot agents that have no internal retry loop set this to `1`.
 
 ### `attempts_count` — required, int
 The number of attempts actually made during this invocation (`1 … max_iterations`).
@@ -77,7 +100,7 @@ Telemetry for each attempt, in execution order. One entry per attempt:
 The last entry's `failure_reason` is `null` when `status=ok`, or a non-null string when
 `status=failed` (cap was hit). One-shot agents set `attempts_log: []`.
 
-See `iteration-budget.md` for the full contract, cap table, and fail-fast rules.
+See [iteration-budget](iteration-budget.md) for the full contract, cap table, and fail-fast rules.
 
 ### `blocking_issues` — required (empty list ok), list of strings
 Issues that prevent main-agent from proceeding without intervention. Examples:
@@ -99,7 +122,7 @@ Every file the agent produced. Each entry has:
 - `type` — one of `html | svg | png | mp4 | ascii | mermaid | json | report`. `report` means a markdown document (audit reports, analysis writeups).
 - `purpose` — one-line description for main-agent's job-completion summary.
 
-Artifacts always land at project-inferred paths per `project-output-routing.md`, or at the path main-agent explicitly requested. Reports always land under `$MAIN_ROOT/reports/webdesigner/`.
+Artifacts always land at project-inferred paths per [project-output-routing](project-output-routing.md), or at the path main-agent explicitly requested. Reports always land under `$MAIN_ROOT/reports/webdesigner/`.
 
 ### `recommendations` — required (empty list ok), list of strings
 Actionable suggestions for main-agent's next step. Differs from `warnings` in that these are forward-looking ("consider invoking X", "pair with Y next") rather than descriptive ("Z was observed").
@@ -114,7 +137,7 @@ Main-agent's recommended next step, phrased as one of:
 The colon-separated form for `retry_with` is the convention; main-agent parses the parameter string and adjusts its next sub-agent invocation accordingly.
 
 ### `report_path` — required, string
-Absolute path to the full markdown report. Lives under `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-<agent-name>-<slug>.md` per `agent-reports-location.md`. Main-agent never inlines the report body in its own reply; it always cites the path.
+Absolute path to the full markdown report. Lives under `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-<agent-name>-<slug>.md` per [agent-reports-location](agent-reports-location.md). Main-agent never inlines the report body in its own reply; it always cites the path.
 
 ## Markdown body structure
 

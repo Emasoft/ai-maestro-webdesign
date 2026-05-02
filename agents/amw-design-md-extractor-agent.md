@@ -519,10 +519,10 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-design-md-author-agent.md` — peer (creative authoring path)
-- `./amw-design-md-auditor-agent.md` — downstream consumer (audit the produced DESIGN.md)
-- `./amw-wireframe-builder-agent.md` — Phase B consumer of the produced DESIGN.md
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-design-md-author-agent](./amw-design-md-author-agent.md) — peer (creative authoring path)
+- [amw-design-md-auditor-agent](./amw-design-md-auditor-agent.md) — downstream consumer (audit the produced DESIGN.md)
+- [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — Phase B consumer of the produced DESIGN.md
 - `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format and token contracts
 - `../skills/amw-design-md/references/canonical-spec-google-alpha.md` — full Variant 1 spec
 - `../skills/amw-design-md/references/TECH-07-url-extraction.md` — URL extraction technique

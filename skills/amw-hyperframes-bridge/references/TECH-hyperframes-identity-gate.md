@@ -90,7 +90,7 @@ Dark, technical, restrained. Cool slate bg, single cyan accent. Sharp geometry. 
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`
-- `TECH-hyperframes-capture-step-2-design.md` — writing DESIGN.md in the capture pipeline
-- `TECH-hyperframes-visual-styles-library.md` — 8 named presets
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
+- [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md) — writing DESIGN.md in the capture pipeline
+- [TECH-hyperframes-visual-styles-library](TECH-hyperframes-visual-styles-library.md) — 8 named presets
 - `../SKILL.md`

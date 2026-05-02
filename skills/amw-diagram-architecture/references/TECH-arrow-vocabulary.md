@@ -4,6 +4,15 @@ category: arrow-vocab
 source: diagram-skill-main/ASCII-STYLES.md
 also-in: diagram-skill-main/REFERENCE.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-arrow-vocabulary — 6-type connection taxonomy
 
@@ -61,7 +70,7 @@ Order ──── Invoice (association)
 
 ## Cross-references
 
-- `./TECH-style-presets.md`
+- [TECH-style-presets](./TECH-style-presets.md)
 - `../../amw-box-diagram/references/TECH-arrow-head-variants.md`
 - `../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill

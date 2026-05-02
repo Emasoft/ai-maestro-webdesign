@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-swimlane
 
@@ -117,7 +126,7 @@ Typical width: 820–960px; lane height 88–96px (enough for the step +
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-flowchart.md` — if the process is single-actor
+- [TECH-type-flowchart](TECH-type-flowchart.md) — if the process is single-actor
 - `../../amw-ux-flows/references/mermaid-patterns.md` — Mermaid has no
   first-class swimlane; use subgraphs per actor if Mermaid is required
-- `design-system.md` — lane-band opacity and divider-line conventions
+- [design-system](design-system.md) — lane-band opacity and divider-line conventions

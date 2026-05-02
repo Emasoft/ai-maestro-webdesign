@@ -4,6 +4,18 @@ category: seo-technical
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Approximate weight hierarchy](#approximate-weight-hierarchy)
+  - [The operational rule](#the-operational-rule)
+  - [Remediation priority](#remediation-priority)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Relative importance of SEO factors
 
@@ -66,6 +78,6 @@ This sequence ensures each tier's work is visible to Google before the next tier
 
 ## Cross-references
 
-- `TECH-seo-eeat.md`, `TECH-seo-cwv.md`, `TECH-seo-technical.md`, `TECH-seo-content-quality.md`
-- `TECH-seo-measurement.md`
+- [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-cwv](TECH-seo-cwv.md), [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
+- [TECH-seo-measurement](TECH-seo-measurement.md)
 - `../SKILL.md`

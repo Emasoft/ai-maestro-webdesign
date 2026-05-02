@@ -4,6 +4,15 @@ category: art
 source: pretext-skills/amw-pretext-art/SKILL.md
 also-in: skills/amw-pretext-art/SKILL.md, SKILL-14.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Wavy / curved baseline
 

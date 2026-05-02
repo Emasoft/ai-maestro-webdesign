@@ -467,12 +467,12 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-wireframe-builder-agent.md` — primary consumer of animation specs
-- `./amw-asset-generator-agent.md` — handles SVG-internal animation (SMIL/CSS on SVG paths)
-- `./amw-video-producer-agent.md` — handles frame-based video animation
-- `./amw-browser-tester-agent.md` — downstream INP/CLS performance audit
-- `./amw-accessibility-auditor-agent.md` — downstream WCAG 2.3.3 verification
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of animation specs
+- [amw-asset-generator-agent](./amw-asset-generator-agent.md) — handles SVG-internal animation (SMIL/CSS on SVG paths)
+- [amw-video-producer-agent](./amw-video-producer-agent.md) — handles frame-based video animation
+- [amw-browser-tester-agent](./amw-browser-tester-agent.md) — downstream INP/CLS performance audit
+- [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream WCAG 2.3.3 verification
 - `../skills/amw-design-principles/starter-components/animations.html` — plugin's animation timeline core
 - `../skills/amw-pretext/` — motion technique TECH-NN reference files
 - `../skills/amw-design-principles/ai-slop-avoid.md` — decorative animation anti-patterns

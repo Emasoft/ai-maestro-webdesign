@@ -4,6 +4,18 @@ category: seo-technical
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Page-level elements](#page-level-elements)
+  - [Content quality signals](#content-quality-signals)
+  - [Intent classification](#intent-classification)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Content SEO — page elements + quality signals
 
@@ -75,5 +87,5 @@ Every heading maps to a question the user might have. The outline reflects real 
 
 ## Cross-references
 
-- `TECH-seo-eeat.md`, `TECH-seo-ai-content.md`, `TECH-seo-structured-data.md`
+- [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-ai-content](TECH-seo-ai-content.md), [TECH-seo-structured-data](TECH-seo-structured-data.md)
 - `../SKILL.md`

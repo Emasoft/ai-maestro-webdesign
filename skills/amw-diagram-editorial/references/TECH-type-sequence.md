@@ -109,6 +109,6 @@ OAuth 2.0 authorization code flow, attributed to
 - `../SKILL.md` — type table; sequence is for *time-ordered messages*
 - `../../amw-ux-flows/references/TECH-mermaid-sequence-authenticated.md` —
   Mermaid equivalent when docs are in Markdown
-- `TECH-type-architecture.md` — if the diagram is about static topology
+- [TECH-type-architecture](TECH-type-architecture.md) — if the diagram is about static topology
   rather than temporal flow
-- `design-system.md` — lifeline dash pattern, arrow marker sizing
+- [design-system](design-system.md) — lifeline dash pattern, arrow marker sizing

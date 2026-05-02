@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-multi-line-box-body — rich multi-row boxes via `body[]`
 
@@ -71,7 +80,7 @@ The renderer computes the frame width as `max(len(label), max(len(line) for line
 
 ## Cross-references
 
-- `./TECH-render-mode-diagram.md`
+- [TECH-render-mode-diagram](./TECH-render-mode-diagram.md)
 - `../../amw-box-diagram/examples/incident-response.txt`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,15 @@ category: layout
 source: pretext-skills/SKILL-11.md
 also-in: pretext-frontend-motion-main
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # carveTextLineSlots — fill both sides of a mid-line obstacle
 

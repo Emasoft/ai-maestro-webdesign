@@ -4,6 +4,18 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Notes](#notes)
+- [Loops](#loops)
+- [Alt/else](#altelse)
+- [`opt` — optional block (one-sided alt)](#opt-optional-block-one-sided-alt)
+- [`par` — parallel block](#par-parallel-block)
+- [Minimal example — realistic API flow](#minimal-example-realistic-api-flow)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Sequence diagram — notes, loops, alt/else blocks
 
@@ -113,8 +125,8 @@ sequenceDiagram
 
 ## Cross-references
 
-- `TECH-sequence-grammar.md` — the parent grammar.
-- `TECH-sequence-activations.md` — activation blocks nest inside
+- [TECH-sequence-grammar](TECH-sequence-grammar.md) — the parent grammar.
+- [TECH-sequence-activations](TECH-sequence-activations.md) — activation blocks nest inside
   loops / alts seamlessly.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

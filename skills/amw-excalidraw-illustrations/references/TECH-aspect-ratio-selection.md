@@ -4,6 +4,17 @@ category: excalidraw-gemini
 source: SKILLS-TO-INTEGRATE/diagrams-skills/amw-excalidraw-illustrations-skill-main.zip
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Asking the user](#asking-the-user)
+  - [API wiring](#api-wiring)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-aspect-ratio-selection
 
@@ -116,8 +127,8 @@ python3 scripts/generate.py \
 ## Cross-references
 
 - `../SKILL.md` — aspect ratio section
-- `TECH-gemini-pro-vs-flash-model-choice.md` — model choice interacts
+- [TECH-gemini-pro-vs-flash-model-choice](TECH-gemini-pro-vs-flash-model-choice.md) — model choice interacts
   with ratio (some ratios perform differently per model)
-- `TECH-prompt-template-structure.md` — FORMAT section declares ratio
-- `TECH-reference-image-priming.md` — references should match the
+- [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — FORMAT section declares ratio
+- [TECH-reference-image-priming](TECH-reference-image-priming.md) — references should match the
   chosen ratio for best style transfer

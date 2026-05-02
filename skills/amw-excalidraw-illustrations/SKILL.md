@@ -183,7 +183,7 @@ TEXT RULES — VERIFY LETTER BY LETTER:
 Imitate the visual style of the provided reference images faithfully.
 ```
 
-See `references/prompt-template-en.md` and `references/prompt-template-es.md` for filled-in examples.
+See [prompt-template-en](references/prompt-template-en.md) and [prompt-template-es](references/prompt-template-es.md) for filled-in examples.
 
 ## Principles (keep these, they are load-bearing)
 
@@ -229,7 +229,7 @@ Do not silently regenerate. Do not silently ship a broken image. Do not invent a
 - `../amw-svg-creator/SKILL.md` — route there for icons, logos, and purely technical SVG geometry (gated in its own way).
 - `/amw-doctor` — reports `GEMINI_API_KEY` presence alongside `ANTHROPIC_API_KEY`.
 - `/amw-init` Section 7 — optional Pillow install for the two-phase overlay fallback.
-- `references/prompt-template-en.md` / `references/prompt-template-es.md` — filled-in prompt examples.
+- [prompt-template-en](references/prompt-template-en.md) / [prompt-template-es](references/prompt-template-es.md) — filled-in prompt examples.
 - `scripts/generate.py` — the two-phase (visual-first, text-overlay-second) fallback generator with Pillow.
 - Source inspiration: [Ray Amjad](https://github.com/theramjad) — the AI-generated Excalidraw-style illustrations and the narrative-prompt approach that the original source skill was modelled on; the in-prompt "text in frames, many icons, narrative scenes" pattern comes from that work.
 
@@ -334,7 +334,7 @@ Every technique in this skill is documented as a single reference file under `./
 
 ## Examples
 
-See the worked examples in the per-mode sub-sections above and in `references/prompt-template-en.md` / `references/prompt-template-es.md`.
+See the worked examples in the per-mode sub-sections above and in [prompt-template-en](references/prompt-template-en.md) / [prompt-template-es](references/prompt-template-es.md).
 
 ## Completion checklist
 

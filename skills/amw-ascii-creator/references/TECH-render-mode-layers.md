@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-render-mode-layers — layered architecture with bus connectors
 
@@ -62,7 +71,7 @@ pair of rows.
 
 ## Cross-references
 
-- `./TECH-json-render-four-modes.md`
-- `./TECH-bus-connectors.md`
+- [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
+- [TECH-bus-connectors](./TECH-bus-connectors.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

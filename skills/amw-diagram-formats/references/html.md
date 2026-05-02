@@ -1,3 +1,31 @@
+## Table of Contents
+
+- [1. Format definition](#1-format-definition)
+  - [1.1 File structure (baseline)](#11-file-structure-baseline)
+  - [1.2 Semantic-HTML requirements](#12-semantic-html-requirements)
+- [2. Starter-components mapping](#2-starter-components-mapping)
+- [3. Tweaks protocol invariants (HARD RULES)](#3-tweaks-protocol-invariants-hard-rules)
+  - [3.1 Listener-before-announce](#31-listener-before-announce)
+  - [3.2 Partial-keys only](#32-partial-keys-only)
+  - [3.3 Valid JSON EDITMODE block](#33-valid-json-editmode-block)
+- [4. React / Babel pin rules](#4-react-babel-pin-rules)
+- [5. AI-slop-avoid gate (12-item checklist)](#5-ai-slop-avoid-gate-12-item-checklist)
+- [6. ARIA / keyboard / a11y patterns](#6-aria-keyboard-a11y-patterns)
+- [7. CSS custom properties (Tweaks-compatible)](#7-css-custom-properties-tweaks-compatible)
+- [8. Per-source breakdown of the technique catalog](#8-per-source-breakdown-of-the-technique-catalog)
+- [9. Technique catalog](#9-technique-catalog)
+  - [S1 — design-principles starter-components (canonical chrome)](#s1-design-principles-starter-components-canonical-chrome)
+  - [S2 — ai-slop-avoid (output-ban gate)](#s2-ai-slop-avoid-output-ban-gate)
+  - [S3 — ui-ux-pro-max-skill (industry patterns)](#s3-ui-ux-pro-max-skill-industry-patterns)
+  - [S4 — ux-designer + accessibility](#s4-ux-designer-accessibility)
+  - [S5 — create-infographics (editorial density)](#s5-create-infographics-editorial-density)
+  - [S6 — diagram-design-editorial (self-contained HTML+SVG)](#s6-diagram-design-editorial-self-contained-htmlsvg)
+  - [S7 — ascii-creator mirror (pattern recognition)](#s7-ascii-creator-mirror-pattern-recognition)
+  - [S8 — CHI'24 ASCII classics (mockup → HTML skeleton)](#s8-chi24-ascii-classics-mockup-html-skeleton)
+  - [S9 — ascii-parse.py (in-repo tokenizer hooks)](#s9-ascii-parsepy-in-repo-tokenizer-hooks)
+- [10. Migration note (2026-04-22)](#10-migration-note-2026-04-22)
+
+
 # HTML — canonical format reference
 
 This file is the single authoritative spec for HTML diagrams and HTML pages emitted by the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts HTML pulls from this file. Semantic HTML patterns, starter-components mapping, AI-slop-avoid gate, Tweaks invariants, React/Babel pins, ARIA/a11y rules, CSS custom properties, and the full technique catalog (100 techniques, migrated from `ascii-to-html/` into this canonical home) are all below.
@@ -14,10 +42,10 @@ This file is the single authoritative spec for HTML diagrams and HTML pages emit
 - `../../amw-tailwind-4/SKILL.md` — utility reference
 - `../../bin/amw-html-export.py` — HTML → PNG/PDF rasterizer (Playwright)
 - `../../bin/amw-ascii-parse.py` — ASCII → layout JSON consumed by HTML emitter
-- `./ir-schema.md` — when HTML is a source of the diagram IR
-- `./conversion-matrix.md` — HTML → {ASCII, SVG, Mermaid, PNG} cells
-- `./modify-flow.md` — edit flow for existing `.html` artifacts
-- `./validation-dispatcher.md` — unified validator output contract (HTML branch = `xmllint --html` or `tidy`)
+- [ir-schema](./ir-schema.md) — when HTML is a source of the diagram IR
+- [conversion-matrix](./conversion-matrix.md) — HTML → {ASCII, SVG, Mermaid, PNG} cells
+- [modify-flow](./modify-flow.md) — edit flow for existing `.html` artifacts
+- [validation-dispatcher](./validation-dispatcher.md) — unified validator output contract (HTML branch = `xmllint --html` or `tidy`)
 
 ---
 

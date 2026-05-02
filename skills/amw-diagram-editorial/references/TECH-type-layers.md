@@ -95,7 +95,7 @@ colour-coded per layer if the diagram doubles as a legend.
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-nested.md` — for containment-style hierarchy
+- [TECH-type-nested](TECH-type-nested.md) — for containment-style hierarchy
 - `../../amw-diagram-architecture/SKILL.md` — for multi-layer architecture with
   inter-layer edges and auto-layout
-- `design-system.md` — sublabel typography (mono, muted, right-aligned)
+- [design-system](design-system.md) — sublabel typography (mono, muted, right-aligned)

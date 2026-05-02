@@ -4,6 +4,16 @@ category: svg-gradient
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Sky gradient — 6 stops](#sky-gradient-6-stops)
+- [Sphere radial — 5 stops with offset focal](#sphere-radial-5-stops-with-offset-focal)
+- [The `color-interpolation="linearRGB"` rule](#the-color-interpolationlinearrgb-rule)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Multi-stop gradients (4+ stops with hue shifts)
 
@@ -71,10 +81,10 @@ gradients and filters.
 
 ## Cross-references
 
-- `TECH-five-zone-lighting.md` — the theory behind the 5-stop shape.
-- `TECH-paint-order-and-spread-method.md` — `spreadMethod="reflect"`
+- [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — the theory behind the 5-stop shape.
+- [TECH-paint-order-and-spread-method](TECH-paint-order-and-spread-method.md) — `spreadMethod="reflect"`
   for metallic gradients.
-- `TECH-colored-shadows.md` — shadow stops should be dark blue /
+- [TECH-colored-shadows](TECH-colored-shadows.md) — shadow stops should be dark blue /
   purple / teal, not pure black.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

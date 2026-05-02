@@ -5,7 +5,7 @@ description: "Shortcut for users who know they want a single ASCII diagram creat
 
 # /amw-create-or-modify-ascii-diagram
 
-Thin dispatcher over `skills/amw-ascii-creator/` (create path) and `skills/amw-diagram-formats/references/modify-flow.md` (modify path). Both paths share the same mandatory validation gate — `bin/amw-validate-ascii.py` — before any file is written to the user's working directory.
+Thin dispatcher over `skills/amw-ascii-creator/` (create path) and [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) (modify path). Both paths share the same mandatory validation gate — `bin/amw-validate-ascii.py` — before any file is written to the user's working directory.
 
 ## Dispatch
 
@@ -16,8 +16,8 @@ Thin dispatcher over `skills/amw-ascii-creator/` (create path) and `skills/amw-d
    - Empty `$ARGUMENTS` → ask the user for a brief OR an existing file path.
 
 2. **Route:**
-   - Create path → invoke `skills/amw-ascii-creator/SKILL.md` (Mode A or Mode B per the skill's classifier). See that SKILL.md for the full workflow.
-   - Modify path → run the 6-step pipeline at `skills/amw-diagram-formats/references/modify-flow.md` (detect → parse → IR-patch → emit → re-validate). Retry budget = 3. Atomic move on PASS.
+   - Create path → invoke [SKILL](skills/amw-ascii-creator/SKILL.md) (Mode A or Mode B per the skill's classifier). See that SKILL.md for the full workflow.
+   - Modify path → run the 6-step pipeline at [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) (detect → parse → IR-patch → emit → re-validate). Retry budget = 3. Atomic move on PASS.
 
 3. **Optional flags:**
    - `--mode diagram|table|layers|sequence|wireframe` — override `ascii-creator`'s auto-classifier (Mode A sub-mode or force Mode B `wireframe`).
@@ -27,9 +27,9 @@ Thin dispatcher over `skills/amw-ascii-creator/` (create path) and `skills/amw-d
 
 ## Cross-references
 
-- `skills/amw-ascii-creator/SKILL.md` — authoring flow (Mode A / Mode B).
-- `skills/amw-diagram-formats/references/modify-flow.md` — shared modify pipeline (authoritative).
-- `skills/amw-diagram-formats/references/ascii.md` — ASCII format spec + 95-technique catalog.
+- [SKILL](skills/amw-ascii-creator/SKILL.md) — authoring flow (Mode A / Mode B).
+- [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline (authoritative).
+- [ascii](skills/amw-diagram-formats/references/ascii.md) — ASCII format spec + 95-technique catalog.
 - `bin/amw-validate-ascii.py` — mandatory validation gate.
 - `bin/amw-diagram-ir.py` — IR parse / emit (modify flow steps 2 + 5).
 - `bin/amw-diagram-detect-format.sh` — format sniffer (modify dispatch).

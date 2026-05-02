@@ -4,6 +4,19 @@ category: hyperframes-composition
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Required pattern](#required-pattern)
+  - [Banned patterns](#banned-patterns)
+  - [Allowed GSAP properties](#allowed-gsap-properties)
+- [Minimal example](#minimal-example)
+  - [Use `tl.set()` for later-scene clips](#use-tlset-for-later-scene-clips)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Timeline contract — GSAP integration
 
@@ -108,6 +121,6 @@ tl.set('#clip-from-scene-3', { opacity: 0 }, 15);
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`, `TECH-hyperframes-layout-before-animation.md`, `TECH-hyperframes-data-attributes.md`
-- `TECH-hyperframes-non-negotiables.md`
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md)
+- [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
 - `../SKILL.md`

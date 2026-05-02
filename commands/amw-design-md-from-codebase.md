@@ -67,8 +67,8 @@ If extraction-notes flags multiple competing stacks, recommend re-running with `
 
 ## Cross-references
 
-- `agents/amw-design-md-extractor-agent.md`
-- `skills/amw-design-md/references/TECH-08-codebase-extraction.md`
+- [amw-design-md-extractor-agent](agents/amw-design-md-extractor-agent.md)
+- [TECH-08-codebase-extraction](skills/amw-design-md/references/TECH-08-codebase-extraction.md)
 - `bin/amw-design-md-from-codebase.py`
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-contrast.py`

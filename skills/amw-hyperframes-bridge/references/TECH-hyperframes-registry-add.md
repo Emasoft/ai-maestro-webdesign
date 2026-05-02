@@ -4,6 +4,17 @@ category: hyperframes-registry
 source: external/hyperframes/skills/hyperframes-registry/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Blocks vs components](#blocks-vs-components)
+  - [Paths (configurable in `hyperframes.json`)](#paths-configurable-in-hyperframesjson)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes add` — install registry blocks + components
 
@@ -85,7 +96,7 @@ Clipboard: wiring snippet copied
 
 ## Cross-references
 
-- `TECH-hyperframes-registry-blocks.md` — detailed block-wiring rules
-- `TECH-hyperframes-registry-components.md` — detailed component-wiring rules
-- `TECH-hyperframes-cli-init.md`
+- [TECH-hyperframes-registry-blocks](TECH-hyperframes-registry-blocks.md) — detailed block-wiring rules
+- [TECH-hyperframes-registry-components](TECH-hyperframes-registry-components.md) — detailed component-wiring rules
+- [TECH-hyperframes-cli-init](TECH-hyperframes-cli-init.md)
 - `../SKILL.md`

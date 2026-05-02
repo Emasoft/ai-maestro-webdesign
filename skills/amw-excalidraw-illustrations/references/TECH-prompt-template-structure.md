@@ -38,7 +38,7 @@ images — skipping any section produces drift.
 5. **Connections.** How the panels relate to each other (arrows,
    timelines, unifying elements).
 6. **Text rules — verify letter by letter.** The spell-out block
-   (see `TECH-letter-by-letter-spelling-block.md`).
+   (see [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md)).
 7. **Closing clause.** "Imitate the visual style of the provided
    reference images faithfully."
 
@@ -145,7 +145,7 @@ Imitate the visual style of the provided reference images faithfully.
   there's a third concept, consider a separate illustration.
 - **The spell-out block is non-skippable** — even for common English
   words Gemini sometimes mangles. See
-  `TECH-letter-by-letter-spelling-block.md`.
+  [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md).
 - **Close with the style-matching clause.** "Imitate the visual style
   of the provided reference images faithfully." Without it, Gemini
   sometimes ignores the references in favour of its own default style.
@@ -153,9 +153,9 @@ Imitate the visual style of the provided reference images faithfully.
 ## Cross-references
 
 - `../SKILL.md` — prompt structure overview
-- `prompt-template-en.md` / `prompt-template-es.md` — full worked
+- [prompt-template-en](prompt-template-en.md) / [prompt-template-es](prompt-template-es.md) — full worked
   examples
-- `TECH-reference-image-priming.md` — the references this prompt
+- [TECH-reference-image-priming](TECH-reference-image-priming.md) — the references this prompt
   references
-- `TECH-letter-by-letter-spelling-block.md` — the spell-out section
-- `TECH-framed-text-no-floating.md` — the text-in-frames rule
+- [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the spell-out section
+- [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md) — the text-in-frames rule

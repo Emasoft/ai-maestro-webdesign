@@ -71,8 +71,8 @@ If BLOCKER findings exist, recommend:
 
 ## Cross-references
 
-- `agents/amw-design-md-auditor-agent.md`
-- `skills/amw-design-md/references/audit-passes.md`
-- `skills/amw-design-md/references/review-rubric.md`
+- [amw-design-md-auditor-agent](agents/amw-design-md-auditor-agent.md)
+- [audit-passes](skills/amw-design-md/references/audit-passes.md)
+- [review-rubric](skills/amw-design-md/references/review-rubric.md)
 - `bin/amw-design-md-lint.sh` (Pass 1 backbone)
 - `bin/amw-design-md-contrast.py` (Pass 3 backbone)

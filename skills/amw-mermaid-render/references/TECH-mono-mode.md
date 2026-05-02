@@ -4,6 +4,15 @@ category: mermaid-theme
 source: diagrams-skills/beautiful-mermaid-main/references/themes.md
 also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Mono Mode — 2-color theme foundation
 
@@ -58,8 +67,8 @@ const svg = await renderMermaid(diagram, {
 
 ## Cross-references
 
-- `TECH-enriched-mode.md` — override specific derived tokens.
-- `TECH-built-in-themes.md` — the 15 pre-baked `bg/fg` pairs.
-- `TECH-shiki-theme-import.md` — map a VS Code theme to a Mono Mode pair.
+- [TECH-enriched-mode](TECH-enriched-mode.md) — override specific derived tokens.
+- [TECH-built-in-themes](TECH-built-in-themes.md) — the 15 pre-baked `bg/fg` pairs.
+- [TECH-shiki-theme-import](TECH-shiki-theme-import.md) — map a VS Code theme to a Mono Mode pair.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

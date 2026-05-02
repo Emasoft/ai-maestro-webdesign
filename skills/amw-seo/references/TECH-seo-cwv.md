@@ -4,6 +4,17 @@ category: seo-cwv
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Field data vs lab data](#field-data-vs-lab-data)
+  - [Important context](#important-context)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Core Web Vitals — page-experience signals
 
@@ -65,6 +76,6 @@ Interpretation:
 
 ## Cross-references
 
-- `TECH-seo-eeat.md`, `TECH-seo-technical.md`, `TECH-seo-content-quality.md`
+- [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
 - `../SKILL.md`
 - `../../amw-dev-browser/SKILL.md` — live capture for CWV diagnostics

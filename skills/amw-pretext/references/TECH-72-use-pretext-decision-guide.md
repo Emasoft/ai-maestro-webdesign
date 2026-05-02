@@ -4,6 +4,15 @@ category: consult
 source: pretext-skills/use-pretext/SKILL.md
 also-in: SKILL-11.md, SKILL-16.md, SKILL-21.md, pretext-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Decision guide — when to use pretext (and when NOT)
 

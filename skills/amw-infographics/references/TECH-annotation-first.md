@@ -4,6 +4,18 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/resources/style-details.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The per-chart-type rule](#the-per-chart-type-rule)
+- [Legend exception](#legend-exception)
+- [Callout line technique — highlight outliers](#callout-line-technique-highlight-outliers)
+- [Insight callout box (for major insights)](#insight-callout-box-for-major-insights)
+- [Threshold / benchmark line](#threshold-benchmark-line)
+- [The rule](#the-rule)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Annotation-first — labels on charts, not in legends
 
@@ -118,8 +130,8 @@ understand what they're seeing.
 
 ## Cross-references
 
-- `TECH-reduction-pass.md` — removes redundant labels.
-- `TECH-annotated-bar-chart.md` — a direct example of this pattern.
-- `TECH-bordered-section-component.md` — the callout-box pattern.
+- [TECH-reduction-pass](TECH-reduction-pass.md) — removes redundant labels.
+- [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — a direct example of this pattern.
+- [TECH-bordered-section-component](TECH-bordered-section-component.md) — the callout-box pattern.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

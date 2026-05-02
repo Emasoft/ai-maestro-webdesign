@@ -59,7 +59,7 @@ Search     [ ]   [ ]   [.]   [.]   [.]
 
 ## Cross-references
 
-- `./TECH-grid-side-by-side.md`
-- `./TECH-milestone-timeline.md`
+- [TECH-grid-side-by-side](./TECH-grid-side-by-side.md)
+- [TECH-milestone-timeline](./TECH-milestone-timeline.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

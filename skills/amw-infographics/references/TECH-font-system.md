@@ -4,6 +4,24 @@ category: infographic-archetype
 source: image-generation/create-infographics/resources/font-pairings.md
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The 5 display fonts (authoritative hierarchy)](#the-5-display-fonts-authoritative-hierarchy)
+- [Generic fallback-only fonts (never as display)](#generic-fallback-only-fonts-never-as-display)
+- [Premium alternative pairings (2025/2026)](#premium-alternative-pairings-20252026)
+- [The body font hierarchy](#the-body-font-hierarchy)
+- [Rules (non-negotiable)](#rules-non-negotiable)
+- [Tested font pairings (top 5)](#tested-font-pairings-top-5)
+  - [Bebas Neue + Montserrat (signature — 40%+)](#bebas-neue-montserrat-signature-40)
+  - [Teko + Inter (esports)](#teko-inter-esports)
+  - [Orbitron + Inter (sci-fi / DeFi)](#orbitron-inter-sci-fi-defi)
+  - [Press Start 2P + VT323 (pixel games)](#press-start-2p-vt323-pixel-games)
+  - [Bungee + Inter (arcade / meme)](#bungee-inter-arcade-meme)
+- [Typography constants](#typography-constants)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Font system — the 5-font display hierarchy
 
@@ -135,8 +153,8 @@ Use: meme tokens, community airdrop guides, arcade energy.
 
 ## Cross-references
 
-- `TECH-typography-scale.md` — type scale and sizing rules.
-- `TECH-copy-guide-numbers.md` — number formatting in headlines.
-- `TECH-per-type-signature-palettes.md` — type-specific font choices.
+- [TECH-typography-scale](TECH-typography-scale.md) — type scale and sizing rules.
+- [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — number formatting in headlines.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — type-specific font choices.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,17 @@ category: hyperframes-capture-step
 source: external/hyperframes/skills/website-to-hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Asset audit table](#asset-audit-table)
+- [Gate](#gate)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Step 4 — Write STORYBOARD.md
 
@@ -78,7 +89,7 @@ The storyboard ends with a table listing every asset referenced across all beats
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-step-3-script.md`, `TECH-hyperframes-capture-step-5-vo.md`, `TECH-hyperframes-capture-step-6-build.md`
-- `TECH-hyperframes-composition-core.md`
-- `TECH-hyperframes-scene-transitions.md`
+- [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md), [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md), [TECH-hyperframes-capture-step-6-build](TECH-hyperframes-capture-step-6-build.md)
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
+- [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md)
 - `../SKILL.md`

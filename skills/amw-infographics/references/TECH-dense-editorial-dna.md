@@ -4,6 +4,18 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/resources/style-details.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The success state](#the-success-state)
+- [The failure mode](#the-failure-mode)
+- [The Anti-Frontend Checklist (run before delivery)](#the-anti-frontend-checklist-run-before-delivery)
+- [Density targets by canvas](#density-targets-by-canvas)
+- [Spacing rules (THE signature)](#spacing-rules-the-signature)
+- [Content format hierarchy (top = prefer)](#content-format-hierarchy-top-prefer)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Dense editorial DNA — the defining aesthetic
 
@@ -86,9 +98,9 @@ Table cell padding:        6px 10px  (NOT 12px 16px)
 
 ## Cross-references
 
-- `TECH-section-variety-rule.md` — the mandatory 3+ component types rule.
-- `TECH-signature-palette.md` — colors and near-black backgrounds.
-- `TECH-arrows-and-connectors.md` — the flow diagram rule.
-- `TECH-stacked-reference-archetype.md` — the default canvas architecture.
+- [TECH-section-variety-rule](TECH-section-variety-rule.md) — the mandatory 3+ component types rule.
+- [TECH-signature-palette](TECH-signature-palette.md) — colors and near-black backgrounds.
+- [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — the flow diagram rule.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default canvas architecture.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

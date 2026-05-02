@@ -4,6 +4,18 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/tts.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Flags](#flags)
+  - [Voice naming scheme](#voice-naming-scheme)
+  - [Speed tuning](#speed-tuning)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes tts` — text-to-speech via Kokoro-82M
 
@@ -92,6 +104,6 @@ npx hyperframes tts scripts/narration.txt --voice am_michael --output narration-
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-transcribe.md` — transcribe the TTS output for timing
-- `TECH-hyperframes-capture-step-5-vo.md` — full VO + timing step
+- [TECH-hyperframes-cli-transcribe](TECH-hyperframes-cli-transcribe.md) — transcribe the TTS output for timing
+- [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md) — full VO + timing step
 - `../SKILL.md`

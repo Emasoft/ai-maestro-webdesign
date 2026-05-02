@@ -114,8 +114,8 @@ Agent: [reads references/figma-integration.md, runs the export workflow]
 ## Cross-references
 
 - `../SKILL.md` — Figma export section at the end of the workflow
-- `figma-integration.md` — the detailed steps (loaded only after user
+- [figma-integration](figma-integration.md) — the detailed steps (loaded only after user
   confirmation)
-- `install-commands.md` — MCP install commands
-- `TECH-wireframe-html-mobile-first.md` — the wireframes being exported
-- `TECH-wireframe-index-inventory.md` — source of frame names
+- [install-commands](install-commands.md) — MCP install commands
+- [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the wireframes being exported
+- [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — source of frame names

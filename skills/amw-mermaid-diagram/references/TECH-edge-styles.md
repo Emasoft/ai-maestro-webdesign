@@ -4,6 +4,16 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Line-and-arrow combinations](#line-and-arrow-combinations)
+- [Inline label — two syntaxes](#inline-label-two-syntaxes)
+- [Minimal example](#minimal-example)
+- [Styling edges with `linkStyle`](#styling-edges-with-linkstyle)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Edge styles — arrows, lines, labels
 
@@ -73,10 +83,10 @@ flowchart LR
 
 ## Cross-references
 
-- `TECH-flowchart-grammar.md` — the arrows live inside flowcharts.
-- `TECH-sequence-grammar.md` — sequence arrows use a different
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the arrows live inside flowcharts.
+- [TECH-sequence-grammar](TECH-sequence-grammar.md) — sequence arrows use a different
   syntax (`->>`, `-->>`).
-- `TECH-edge-best-practices.md` — when to use dotted vs solid, thick
+- [TECH-edge-best-practices](TECH-edge-best-practices.md) — when to use dotted vs solid, thick
   vs thin.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

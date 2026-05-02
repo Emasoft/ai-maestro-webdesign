@@ -214,8 +214,8 @@ The conversion is **lossy** in one direction (V2 → V1 drops some content into 
 
 ## Cross-references
 
-- `./community-9-section-spec.md` — V2 source format
-- `./canonical-spec-google-alpha.md` — V1 target format
-- `./TECH-04-component-tokens.md` — component tokens in V1
-- `./TECH-12-companion-files.md` — emit companions from the converted V1
+- [community-9-section-spec](./community-9-section-spec.md) — V2 source format
+- [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — V1 target format
+- [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component tokens in V1
+- [TECH-12-companion-files](./TECH-12-companion-files.md) — emit companions from the converted V1
 - `<plugin-root>/bin/amw-design-md-convert-v2-to-v1.py`

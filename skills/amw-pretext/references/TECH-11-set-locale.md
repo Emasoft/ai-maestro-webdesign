@@ -4,6 +4,15 @@ category: api
 source: pretext-skills/amw-pretext-docs/SKILL.md
 also-in: SKILL-11.md, use-pretext/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # setLocale() — global Intl.Segmenter locale override
 

@@ -96,9 +96,9 @@ at least 3 different component types across 4+ sections.
 
 ## Cross-references
 
-- `TECH-flow-poster-archetype.md` — alternative when flows dominate.
-- `TECH-hub-spoke-archetype.md` — alternative for ecosystems.
-- `TECH-cheat-sheet-archetype.md` — the densest, mixed-layout cousin.
-- `TECH-section-variety-rule.md` — mandatory variety.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — alternative when flows dominate.
+- [TECH-hub-spoke-archetype](TECH-hub-spoke-archetype.md) — alternative for ecosystems.
+- [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — the densest, mixed-layout cousin.
+- [TECH-section-variety-rule](TECH-section-variety-rule.md) — mandatory variety.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,16 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The rules](#the-rules)
+- [Cardinality clarity](#cardinality-clarity)
+- [Minimal example — good style](#minimal-example-good-style)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # ER diagram best practices
 
@@ -78,8 +88,8 @@ erDiagram
 
 ## Cross-references
 
-- `TECH-er-grammar.md` — syntax reference.
-- `TECH-class-grammar.md` — when you'd rather show classes than
+- [TECH-er-grammar](TECH-er-grammar.md) — syntax reference.
+- [TECH-class-grammar](TECH-class-grammar.md) — when you'd rather show classes than
   tables.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

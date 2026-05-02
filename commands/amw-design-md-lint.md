@@ -64,8 +64,8 @@ Combine both outputs into a single report:
 
 ## Cross-references
 
-- `skills/amw-design-md/references/TECH-11-validation-and-lint.md`
-- `skills/amw-design-md/references/TECH-14-validation-failure-recovery.md`
+- [TECH-11-validation-and-lint](skills/amw-design-md/references/TECH-11-validation-and-lint.md)
+- [TECH-14-validation-failure-recovery](skills/amw-design-md/references/TECH-14-validation-failure-recovery.md)
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-validate.py`
 - `bin/amw-design-md-contrast.py` (separate command — see `/amw-design-md-audit`)

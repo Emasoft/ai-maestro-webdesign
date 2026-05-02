@@ -4,6 +4,15 @@ category: editorial-brand
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-wcag-contrast-validation
 
@@ -18,7 +27,7 @@ enforce the stricter 4.5:1 across the board for simplicity.
 
 ## When to use
 
-- **Every time** `style-guide.md` is written or changed — during brand
+- **Every time** [style-guide](style-guide.md) is written or changed — during brand
   onboarding, manual edits, or template updates.
 - **Before returning any generated HTML** when the diagram has overridden
   any token.
@@ -94,8 +103,8 @@ contrast('#B0B0B0', '#FFFFFF') === 2.41    // fails even AA-Large 3:1
 ## Cross-references
 
 - `../SKILL.md` — orchestrator; contrast validation is non-skippable
-- `TECH-brand-url-onboarding.md` — onboarding runs this immediately after
+- [TECH-brand-url-onboarding](TECH-brand-url-onboarding.md) — onboarding runs this immediately after
   palette extraction
 - `../../amw-design-principles/color-system.md` — oklch / WCAG AA reference
-- `style-guide.md` — the file whose tokens get validated
-- `TECH-four-px-grid-snap.md` — the other non-negotiable rule
+- [style-guide](style-guide.md) — the file whose tokens get validated
+- [TECH-four-px-grid-snap](TECH-four-px-grid-snap.md) — the other non-negotiable rule

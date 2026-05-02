@@ -4,6 +4,15 @@ category: mermaid-theme
 source: diagrams-skills/beautiful-mermaid-main/SKILL.md
 also-in: diagrams-skills/beautiful-mermaid-main/references/themes.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Live theme switching — CSS custom properties
 
@@ -67,8 +76,8 @@ svgElement.style.setProperty('--fg', '#27272a')
 
 ## Cross-references
 
-- `TECH-mono-mode.md` — the derivation rules the CSS custom properties implement.
-- `TECH-enriched-mode.md` — which tokens exist to override.
-- `TECH-svg-render-api.md` — the function that emits these properties.
+- [TECH-mono-mode](TECH-mono-mode.md) — the derivation rules the CSS custom properties implement.
+- [TECH-enriched-mode](TECH-enriched-mode.md) — which tokens exist to override.
+- [TECH-svg-render-api](TECH-svg-render-api.md) — the function that emits these properties.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,15 @@ category: svg-shape
 source: SKILLS-TO-INTEGRATE/diagrams-skills/baybee-diagram/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Example snippets](#example-snippets)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-node-shape-vocabulary
 
@@ -103,8 +112,8 @@ Canonical mapping:
 ## Cross-references
 
 - `../SKILL.md` — node-type table lives in the Usage section
-- `TECH-canvas-1000x1000.md` — container for these shapes
-- `TECH-stroke-width-4-palette.md` — the fixed 4px stroke
-- `TECH-arrow-marker-def.md` — the arrowhead convention
+- [TECH-canvas-1000x1000](TECH-canvas-1000x1000.md) — container for these shapes
+- [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — the fixed 4px stroke
+- [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — the arrowhead convention
 - `../../amw-diagram-editorial/references/TECH-type-flowchart.md` — editorial
   cousin with different shape conventions (diamond, yes/no labels)

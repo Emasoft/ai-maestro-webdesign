@@ -82,7 +82,7 @@ dependencies.
 | `.wf-spacer` | 16px vertical spacing |
 | `.wf-label` / `.wf-title` / `.wf-subtitle` | Typography |
 | `.wf-link` | Navigation wrapper (see
-  `TECH-clickable-prototype-navigation.md`) |
+  [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md)) |
 | `.wf-back` | Back button text style |
 | `.wf-footer` | Bottom meta footer (screen name + use-case ID) |
 
@@ -140,7 +140,7 @@ Login screen wireframe:
   emailed as an attachment.
 - **No JavaScript.** Navigation is pure HTML `<a href>`. No onclick, no
   form submits, no JS state. See
-  `TECH-clickable-prototype-navigation.md`.
+  [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md).
 - **Mobile-first, not desktop.** 375px is the target; if the user asks
   for desktop, that is a signal to escalate to `ui-ux-pro-max` or
   `diagram-editorial` for a real layout.
@@ -156,7 +156,7 @@ Login screen wireframe:
 
 - `../SKILL.md` — Phase 3 of the workflow
 - `../assets/wireframe-template.html` — the shipped template
-- `TECH-clickable-prototype-navigation.md` — inter-screen linking rules
-- `TECH-no-dead-end-screens.md` — the "every screen has an outgoing
+- [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — inter-screen linking rules
+- [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — the "every screen has an outgoing
   link" rule
-- `TECH-wireframe-index-inventory.md` — the `INDEX.md` inventory shape
+- [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the `INDEX.md` inventory shape

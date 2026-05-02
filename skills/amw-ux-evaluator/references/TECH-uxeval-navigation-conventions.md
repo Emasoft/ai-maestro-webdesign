@@ -4,6 +4,21 @@ category: uxeval-dim
 source: SKILLS-TO-INTEGRATE/web-design/ux-evaluator/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Position (top bar, LTR)](#position-top-bar-ltr)
+  - [Theme toggle placement (industry cross-check)](#theme-toggle-placement-industry-cross-check)
+  - [Visual weight](#visual-weight)
+  - [Utility control visual weight](#utility-control-visual-weight)
+  - [Spacing](#spacing)
+  - [Mobile patterns](#mobile-patterns)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Navigation conventions (logo / primary / utilities)
 
@@ -94,6 +109,6 @@ Desktop navbar done right:
 
 ## Cross-references
 
-- `TECH-uxeval-button-conventions.md`, `TECH-uxeval-form-conventions.md`
+- [TECH-uxeval-button-conventions](TECH-uxeval-button-conventions.md), [TECH-uxeval-form-conventions](TECH-uxeval-form-conventions.md)
 - `../../amw-ux-designer/references/TECH-ux-rule-ia.md`
 - `../SKILL.md`

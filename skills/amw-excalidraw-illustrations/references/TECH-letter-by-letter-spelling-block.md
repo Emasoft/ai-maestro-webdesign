@@ -18,7 +18,7 @@ against text errors.
 ## When to use
 
 - **Every time the illustration contains text** — which is every
-  invocation of this skill because `TECH-framed-text-no-floating.md`
+  invocation of this skill because [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md)
   requires framed labels.
 - **Every non-trivial word.** Common 3-4 letter words (IF, AND, OR,
   BUT) can be skipped; anything longer or containing accents MUST be
@@ -54,7 +54,7 @@ TEXT RULES — VERIFY LETTER BY LETTER:
 ## Minimal example
 
 Spell-out block for an art-history concept (attributed to
-`prompt-template-en.md`):
+[prompt-template-en](prompt-template-en.md)):
 
 ```
 TEXT RULES — VERIFY LETTER BY LETTER:
@@ -90,7 +90,7 @@ TEXT RULES — VERIFY LETTER BY LETTER:
 - **Even with the spell-out, expect ~1 in 10 calls to still mis-render
   one word.** The hybrid workflow (Phase 1 visual-only via flash +
   Phase 2 Pillow text overlay) is the fallback when the spell-out
-  alone doesn't suffice — see `TECH-two-phase-visual-then-overlay.md`.
+  alone doesn't suffice — see [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md).
 - **Capitalise words that should render all-caps.** Gemini respects
   case; `REALISM` in the spell-out makes the output render REALISM,
   not Realism.
@@ -98,10 +98,10 @@ TEXT RULES — VERIFY LETTER BY LETTER:
 ## Cross-references
 
 - `../SKILL.md` — rules section
-- `prompt-template-en.md` / `prompt-template-es.md` — complete prompts
+- [prompt-template-en](prompt-template-en.md) / [prompt-template-es](prompt-template-es.md) — complete prompts
   containing the spell-out block
-- `TECH-prompt-template-structure.md` — the 7-section prompt this fits
+- [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — the 7-section prompt this fits
   into
-- `TECH-framed-text-no-floating.md` — the related rule on framing
-- `TECH-two-phase-visual-then-overlay.md` — the fallback when spell-out
+- [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md) — the related rule on framing
+- [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md) — the fallback when spell-out
   alone isn't enough

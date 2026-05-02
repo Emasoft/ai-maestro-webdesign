@@ -4,6 +4,17 @@ category: uxeval-dim
 source: SKILLS-TO-INTEGRATE/web-design/ux-evaluator/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Verdict rubric per dimension](#verdict-rubric-per-dimension)
+  - [Evaluation workflow](#evaluation-workflow)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: 3-dimension evaluation framework (Position, Visual Weight, Spacing)
 
@@ -83,7 +94,7 @@ Navbar CTA evaluation:
 
 ## Cross-references
 
-- `TECH-uxeval-priority-rubric.md` — P1 / P2 / P3 prioritization
-- `TECH-uxeval-button-conventions.md`, `TECH-uxeval-navigation-conventions.md`, `TECH-uxeval-form-conventions.md`
-- `balsamiq-button-principles.md` — full reference
+- [TECH-uxeval-priority-rubric](TECH-uxeval-priority-rubric.md) — P1 / P2 / P3 prioritization
+- [TECH-uxeval-button-conventions](TECH-uxeval-button-conventions.md), [TECH-uxeval-navigation-conventions](TECH-uxeval-navigation-conventions.md), [TECH-uxeval-form-conventions](TECH-uxeval-form-conventions.md)
+- [balsamiq-button-principles](balsamiq-button-principles.md) — full reference
 - `../SKILL.md`

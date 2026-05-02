@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/templates/
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The shared V4 standards](#the-shared-v4-standards)
+- [Crypto / Web3 templates (13)](#crypto-web3-templates-13)
+- [Generic templates (11)](#generic-templates-11)
+- [Template selection by user intent](#template-selection-by-user-intent)
+- [Usage](#usage)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Template registry — 24 reference templates
 
@@ -104,8 +115,8 @@ Every template uses:
 
 ## Cross-references
 
-- `TECH-per-type-signature-palettes.md` — palette defaults per type.
-- `TECH-token-economics-playbook.md` — the playbook each template implements.
-- `TECH-one-shot-mode.md` — the mode that uses templates.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — palette defaults per type.
+- [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — the playbook each template implements.
+- [TECH-one-shot-mode](TECH-one-shot-mode.md) — the mode that uses templates.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

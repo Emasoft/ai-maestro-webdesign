@@ -116,11 +116,11 @@ nodes.
 
 ## Cross-references
 
-- `TECH-flow-with-arrows-component.md` — the flow-node pattern
+- [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the flow-node pattern
   inside the lane.
-- `TECH-template-registry.md` — DeFi Protocol template where this
+- [TECH-template-registry](TECH-template-registry.md) — DeFi Protocol template where this
   pattern fits.
-- `TECH-hub-spoke-archetype.md` — alternative for hub-centric
+- [TECH-hub-spoke-archetype](TECH-hub-spoke-archetype.md) — alternative for hub-centric
   architectures.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

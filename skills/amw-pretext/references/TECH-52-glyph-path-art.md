@@ -4,6 +4,15 @@ category: art
 source: pretext-skills/SKILL-11.md
 also-in: pretext-skill-main (3D / splat-editor)
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Glyph path art (SVG letterforms with stroke-draw animation)
 

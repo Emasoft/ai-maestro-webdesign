@@ -157,8 +157,8 @@ python3 <plugin-root>/bin/amw-design-md-validate.py DESIGN.md --check-references
 
 ## Cross-references
 
-- `./TECH-01-yaml-frontmatter.md`
-- `./TECH-04-component-tokens.md` — composite references inside `components`
-- `./TECH-11-validation-and-lint.md` — running the resolver
-- `./TECH-12-companion-files.md` — what the resolver outputs in `tokens.json`
+- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md)
+- [TECH-04-component-tokens](./TECH-04-component-tokens.md) — composite references inside `components`
+- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the resolver
+- [TECH-12-companion-files](./TECH-12-companion-files.md) — what the resolver outputs in `tokens.json`
 - `../canonical-spec-google-alpha.md`

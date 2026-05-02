@@ -4,6 +4,15 @@ category: editorial-brand
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-brand-url-onboarding
 
@@ -18,7 +27,7 @@ six semantic token roles (`paper`, `ink`, `muted`, `paper-2`, `accent`,
 
 ## When to use
 
-- **First use** of the skill in a new project. If `style-guide.md` still
+- **First use** of the skill in a new project. If [style-guide](style-guide.md) still
   holds the default stone + rust tokens, pause and ask the user: "Run
   onboarding, paste tokens manually, or proceed with default?"
 - **Brand refresh** — the user has updated their site and wants diagrams
@@ -100,7 +109,7 @@ Code:  ui-monospace, "SF Mono", Menlo, monospace
   (`Instrument Serif` / `Geist Sans` / `Geist Mono`) is preserved for
   the type-role mapping even after brand onboarding — the brand fonts
   override only if the user explicitly opts in.
-- **Preserve the default fallback.** If onboarding fails, `style-guide.md`
+- **Preserve the default fallback.** If onboarding fails, [style-guide](style-guide.md)
   must fall back to stone + rust, not to empty tokens. Every diagram
   downstream depends on the tokens being resolvable.
 
@@ -110,5 +119,5 @@ Code:  ui-monospace, "SF Mono", Menlo, monospace
 - `../../amw-dev-browser/SKILL.md` — the only authorised browser-automation
   primitive
 - `../../amw-design-principles/color-system.md` — oklch / WCAG AA reference
-- `style-guide.md` — the file onboarding writes
-- `TECH-wcag-contrast-validation.md` — the contrast-check step in detail
+- [style-guide](style-guide.md) — the file onboarding writes
+- [TECH-wcag-contrast-validation](TECH-wcag-contrast-validation.md) — the contrast-check step in detail

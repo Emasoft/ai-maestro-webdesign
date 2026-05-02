@@ -1,3 +1,40 @@
+## Table of Contents
+
+- [1. Format definition](#1-format-definition)
+  - [1.1 Non-negotiables](#11-non-negotiables)
+  - [1.2 Allowed primitives](#12-allowed-primitives)
+  - [1.3 Forbidden primitives](#13-forbidden-primitives)
+- [2. Structural primitives (diagram-grade usage)](#2-structural-primitives-diagram-grade-usage)
+  - [2.1 Node shapes by type](#21-node-shapes-by-type)
+  - [2.2 Edges](#22-edges)
+- [3. Viewport rules](#3-viewport-rules)
+  - [3.1 Canonical viewBoxes](#31-canonical-viewboxes)
+  - [3.2 `preserveAspectRatio`](#32-preserveaspectratio)
+  - [3.3 Responsive sizing](#33-responsive-sizing)
+  - [3.4 Margin reserves](#34-margin-reserves)
+- [4. Text rendering rules](#4-text-rendering-rules)
+  - [4.1 Font stack](#41-font-stack)
+  - [4.2 Centering](#42-centering)
+  - [4.3 Long labels](#43-long-labels)
+- [5. Rasterization path](#5-rasterization-path)
+  - [5.1 SVG → PNG via cairosvg](#51-svg-png-via-cairosvg)
+  - [5.2 Filter compatibility with cairosvg](#52-filter-compatibility-with-cairosvg)
+  - [5.3 SMIL in rasterized output](#53-smil-in-rasterized-output)
+- [6. Validation](#6-validation)
+  - [6.1 Check list](#61-check-list)
+  - [6.2 Output contract](#62-output-contract)
+  - [6.3 Render-verify as final gate](#63-render-verify-as-final-gate)
+- [7. Per-source breakdown of the technique catalog](#7-per-source-breakdown-of-the-technique-catalog)
+- [8. Technique catalog](#8-technique-catalog)
+  - [S1 — svg-creator filter cookbook](#s1-svg-creator-filter-cookbook)
+  - [S2 — diagram-svg + baybee-diagram](#s2-diagram-svg-baybee-diagram)
+  - [S3 — animations (SMIL + CSS)](#s3-animations-smil-css)
+  - [S4 — diagram-design-editorial](#s4-diagram-design-editorial)
+  - [S5 — architecture-canvas (layered arch patterns)](#s5-architecture-canvas-layered-arch-patterns)
+  - [S6 — advanced cookbook (materials / icons / logos / data-vis / patterns / power)](#s6-advanced-cookbook-materials-icons-logos-data-vis-patterns-power)
+- [9. Failure modes](#9-failure-modes)
+
+
 # SVG — canonical format reference
 
 This file is the single authoritative spec for SVG within the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts SVG pulls from this file. Format definition, structural primitives, viewport rules, text rendering, rasterization path, validation, and the technique catalog are all below.
@@ -10,10 +47,10 @@ This file is the single authoritative spec for SVG within the `ai-maestro-webdes
 - `../../amw-ascii-to-svg/SKILL.md` — ASCII → SVG parse/classify/route
 - `../../amw-svg-creator/references/advanced-techniques.md` — filter / gradient / animation cookbook
 - `../../bin/amw-svg-render.py` — render-verify-finish loop (`render` / `finish` / `status` / `reset`)
-- `./ir-schema.md` — when SVG is a source of the diagram IR
-- `./conversion-matrix.md` — SVG → {ASCII, HTML, Mermaid, PNG} cells
-- `./png.md` — SVG → PNG via cairosvg
-- `./validation-dispatcher.md` — SVG validator branch (`xmllint --noout --nonet` + SVG-namespace check)
+- [ir-schema](./ir-schema.md) — when SVG is a source of the diagram IR
+- [conversion-matrix](./conversion-matrix.md) — SVG → {ASCII, HTML, Mermaid, PNG} cells
+- [png](./png.md) — SVG → PNG via cairosvg
+- [validation-dispatcher](./validation-dispatcher.md) — SVG validator branch (`xmllint --noout --nonet` + SVG-namespace check)
 
 ---
 
@@ -201,7 +238,7 @@ cairosvg rasterizes the first frame. SMIL animations (`<animate>` / `<animateMot
 
 ### 6.2 Output contract
 
-Per `./validation-dispatcher.md`: `PASS|FAIL: line: message [FIX: hint]`. Example:
+Per [validation-dispatcher](./validation-dispatcher.md): `PASS|FAIL: line: message [FIX: hint]`. Example:
 
 ```
 FAIL: 42: <script> forbidden in SVG. FIX: remove <script> and move interactivity to host page

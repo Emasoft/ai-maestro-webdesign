@@ -4,6 +4,16 @@ category: uxeval-dim
 source: SKILLS-TO-INTEGRATE/web-design/ux-evaluator/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Fields](#fields)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Output format — structured evaluation report
 
@@ -91,6 +101,6 @@ Full evaluation of a pricing-page CTA:
 
 ## Cross-references
 
-- `TECH-uxeval-3-dimension-framework.md`
-- `TECH-uxeval-priority-rubric.md`
+- [TECH-uxeval-3-dimension-framework](TECH-uxeval-3-dimension-framework.md)
+- [TECH-uxeval-priority-rubric](TECH-uxeval-priority-rubric.md)
 - `../SKILL.md`

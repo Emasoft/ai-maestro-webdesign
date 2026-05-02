@@ -117,10 +117,10 @@ SaaS analytics platform, 4 layers × 9 nodes × 8 edges:
 
 ## Cross-references
 
-- `formats.md` — the four transforms that consume this schema
-- `validation.md` — Stage 1 validation rules
-- `TECH-layer-palette-5-colors.md` — the fixed palette for layer colors
-- `TECH-edge-budget-rule.md` — `floor(n × 0.8)` cap
-- `TECH-stage1-graph-validation.md` — validation catalogue
+- [formats](formats.md) — the four transforms that consume this schema
+- [validation](validation.md) — Stage 1 validation rules
+- [TECH-layer-palette-5-colors](TECH-layer-palette-5-colors.md) — the fixed palette for layer colors
+- [TECH-edge-budget-rule](TECH-edge-budget-rule.md) — `floor(n × 0.8)` cap
+- [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — validation catalogue
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

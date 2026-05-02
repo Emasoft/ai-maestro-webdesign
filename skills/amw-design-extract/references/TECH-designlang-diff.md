@@ -4,6 +4,15 @@ category: designlang-diff
 source: SKILLS-TO-INTEGRATE/web-design/designlang-design-extract/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `designlang diff` — pairwise brand comparison
 
@@ -51,6 +60,6 @@ npx designlang diff https://vercel.com ./baselines/vercel-2025-01.design-tokens.
 
 ## Cross-references
 
-- `TECH-designlang-score.md` — score both sides before diffing
-- `TECH-designlang-brands.md` — N-way version
+- [TECH-designlang-score](TECH-designlang-score.md) — score both sides before diffing
+- [TECH-designlang-brands](TECH-designlang-brands.md) — N-way version
 - `../SKILL.md`

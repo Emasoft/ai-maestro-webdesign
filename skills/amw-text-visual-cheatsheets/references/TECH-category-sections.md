@@ -71,7 +71,7 @@ small panel:
 
 ## Cross-references
 
-- `./TECH-side-by-side-platforms.md`
-- `./TECH-destructive-command-marker.md`
+- [TECH-side-by-side-platforms](./TECH-side-by-side-platforms.md)
+- [TECH-destructive-command-marker](./TECH-destructive-command-marker.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

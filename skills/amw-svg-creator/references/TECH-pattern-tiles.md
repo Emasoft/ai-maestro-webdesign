@@ -4,6 +4,17 @@ category: svg-gradient
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Dots](#dots)
+- [Diagonal lines](#diagonal-lines)
+- [Waves](#waves)
+- [`patternUnits` — the critical attribute](#patternunits-the-critical-attribute)
+- [`patternTransform` — rotate / scale / translate the whole pattern](#patterntransform-rotate-scale-translate-the-whole-pattern)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `<pattern>` tiles — dots, diagonal lines, waves
 
@@ -79,9 +90,9 @@ patternTransform="translate(5 0)"  Offset horizontally
 
 ## Cross-references
 
-- `TECH-mesh-gradient-workaround.md` — overlapping radials as an
+- [TECH-mesh-gradient-workaround](TECH-mesh-gradient-workaround.md) — overlapping radials as an
   alternative "organic" background.
-- `TECH-fe-turbulence-noise.md` — stochastic noise instead of
+- [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — stochastic noise instead of
   regular tiling.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

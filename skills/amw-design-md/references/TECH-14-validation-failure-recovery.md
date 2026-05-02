@@ -155,7 +155,7 @@ These don't block delivery but reduce the rubric score:
 | Failure | Fix |
 |---|---|
 | `C1`: Placeholders remaining | Search-replace `{{...}}`, `TBD`, `FIXME` |
-| `C3`: Vague Do/Don't rules | Rewrite per `TECH-06-do-donts.md` recipe |
+| `C3`: Vague Do/Don't rules | Rewrite per [TECH-06-do-donts](TECH-06-do-donts.md) recipe |
 | `C6`: File length out of range (200-1500 lines) | Either expand undeveloped sections or trim verbose ones |
 | `C7`: Section header with no prose underneath | Add a 1-paragraph philosophy note |
 
@@ -194,11 +194,11 @@ When a user is editing a DESIGN.md by hand and a validator fails:
 
 ## Cross-references
 
-- `./TECH-11-validation-and-lint.md` — running the validators
-- `./TECH-01-yaml-frontmatter.md` — YAML rules
-- `./TECH-04-component-tokens.md` — component property whitelist
-- `./TECH-05-token-references.md` — reference resolution rules
-- `./review-rubric.md` — the rubric checks (S*, T*, R*, A*, C*)
+- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the validators
+- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+- [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component property whitelist
+- [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution rules
+- [review-rubric](./review-rubric.md) — the rubric checks (S*, T*, R*, A*, C*)
 - `<plugin-root>/bin/amw-design-md-lint.sh`
 - `<plugin-root>/bin/amw-design-md-validate.py`
 - `<plugin-root>/bin/amw-design-md-contrast.py`

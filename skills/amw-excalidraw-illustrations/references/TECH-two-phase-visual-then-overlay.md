@@ -135,8 +135,8 @@ Internally:
 
 - `../SKILL.md` — iteration / fallback section
 - `../scripts/generate.py` — the implementation
-- `TECH-reference-image-priming.md` — Phase 1 still uses the references
-- `TECH-letter-by-letter-spelling-block.md` — the primary anti-error
+- [TECH-reference-image-priming](TECH-reference-image-priming.md) — Phase 1 still uses the references
+- [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the primary anti-error
   technique that this technique falls back from
-- `TECH-framed-text-no-floating.md` — even overlaid text should sit
+- [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md) — even overlaid text should sit
   inside frames drawn in Phase 1

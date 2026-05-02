@@ -1,3 +1,13 @@
+## Table of Contents
+
+- [Input](#input)
+- [Design Decisions](#design-decisions)
+- [Output 1: `graph`](#output-1-graph)
+- [Output 2: `mermaid`](#output-2-mermaid)
+- [Output 3: `svg`](#output-3-svg)
+- [Output 4: `png`](#output-4-png)
+
+
 # Architecture Canvas — Multi-Format Examples
 
 One system description, four output formats.

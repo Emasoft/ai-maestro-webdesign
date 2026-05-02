@@ -96,8 +96,8 @@ Decision fork pattern, editorial styling:
 ## Cross-references
 
 - `../SKILL.md` — type table; flowchart is for *decision logic* specifically
-- `TECH-type-state-machine.md` — if you find yourself modelling lifecycle,
+- [TECH-type-state-machine](TECH-type-state-machine.md) — if you find yourself modelling lifecycle,
   that's a state machine, not a flowchart
 - `../../amw-ux-flows/references/TECH-mermaid-flowchart-screen-map.md` —
   Mermaid-syntax cousin for screen-navigation flowcharts
-- `design-system.md` — 4px grid for diamond corners
+- [design-system](design-system.md) — 4px grid for diamond corners

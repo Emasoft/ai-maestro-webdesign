@@ -4,6 +4,16 @@ category: svg-lighting
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The palette](#the-palette)
+- [Where the color goes](#where-the-color-goes)
+- [Drop-shadow filter with colored shadow](#drop-shadow-filter-with-colored-shadow)
+- [Opacity rules](#opacity-rules)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Colored shadows (never pure black)
 
@@ -69,8 +79,8 @@ drop-shadow filters use `#000` here, which is the amateur mistake.
 
 ## Cross-references
 
-- `TECH-five-zone-lighting.md` — where shadows live in the bigger model.
-- `TECH-drop-shadow-filter.md` — the full filter chain.
-- `TECH-vignette-overlay.md` — scene-level darkening at edges.
+- [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — where shadows live in the bigger model.
+- [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the full filter chain.
+- [TECH-vignette-overlay](TECH-vignette-overlay.md) — scene-level darkening at edges.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

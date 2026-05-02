@@ -141,7 +141,7 @@ The auto-generated prose is intentionally generic; the **user is expected to ref
 | Page is JS-heavy SPA, content takes time | dev-browser eval runs before render complete | Add `--wait-for-selector main` or `--wait-ms 2000`. |
 | Too many distinct colors (10K+) | Page uses a CSS framework with full palette declared | Filter to colors actually used in computed styles, not just declared. |
 | All-image landing page | Few text elements | Extract from images via OCR is OUT OF SCOPE. Return `partial` with `warnings=["Site is image-heavy; extracted only typography from <h1> and body samples"]`. |
-| Login wall | The user's path to that content is auth-gated | Out of scope for this bin script. See `TECH-09-multipage-extraction.md` for the multi-page session flow. |
+| Login wall | The user's path to that content is auth-gated | Out of scope for this bin script. See [TECH-09-multipage-extraction](TECH-09-multipage-extraction.md) for the multi-page session flow. |
 
 ## Validation gate
 
@@ -157,9 +157,9 @@ A draft that fails contrast (extracted colors fail WCAG-AA) is marked `partial` 
 
 ## Cross-references
 
-- `./TECH-08-codebase-extraction.md` — extracting from a local codebase instead of URL
-- `./TECH-09-multipage-extraction.md` — multi-page sessions including login
-- `./TECH-10-tailwind-conversion.md` — extracting from tailwind config (different path)
+- [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — extracting from a local codebase instead of URL
+- [TECH-09-multipage-extraction](./TECH-09-multipage-extraction.md) — multi-page sessions including login
+- [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — extracting from tailwind config (different path)
 - `<plugin-root>/bin/amw-design-md-from-url.sh` — the bin script
 - `<plugin-root>/bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
 - `../../amw-dev-browser/SKILL.md` — dev-browser skill spec

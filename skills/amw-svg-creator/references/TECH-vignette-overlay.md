@@ -4,6 +4,18 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in: image-generation/svg-creator/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The gradient](#the-gradient)
+- [The parameters](#the-parameters)
+- [Layer order](#layer-order)
+- [Off-center vignettes](#off-center-vignettes)
+- [When to use](#when-to-use)
+- [When NOT to use](#when-not-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Vignette overlay — edge darkening
 
@@ -74,9 +86,9 @@ Move `cx` / `cy` to emphasize a specific area:
 
 ## Cross-references
 
-- `TECH-landscape-composition.md` — vignette is layer 8 in the stack.
-- `TECH-atmospheric-effects.md` — often combined with fog/mist.
-- `TECH-mesh-gradient-workaround.md` — radial gradients from a
+- [TECH-landscape-composition](TECH-landscape-composition.md) — vignette is layer 8 in the stack.
+- [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — often combined with fog/mist.
+- [TECH-mesh-gradient-workaround](TECH-mesh-gradient-workaround.md) — radial gradients from a
   different angle.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

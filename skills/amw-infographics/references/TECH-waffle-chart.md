@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [HTML](#html)
+- [CSS](#css)
+- [JS — add `.filled` + stagger](#js-add-filled-stagger)
+- [Legend styling](#legend-styling)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Waffle chart — 10×10 grid for % of total
 
@@ -117,8 +128,8 @@ document.querySelectorAll('.waffle-grid').forEach(grid => {
 
 ## Cross-references
 
-- `TECH-svg-pie-chart.md` — alternative for the same data shape.
-- `TECH-chart-selection-guide.md` — when to pick which.
-- `TECH-annotation-first.md` — the accompanying stat/label pattern.
+- [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative for the same data shape.
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to pick which.
+- [TECH-annotation-first](TECH-annotation-first.md) — the accompanying stat/label pattern.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -39,7 +39,7 @@ Exit 2. Both inputs must be source-format diagrams.
 6. Render markdown (or JSON) report from the patch ops.
 7. Write report to `--out` path.
 
-Full algorithm: `skills/amw-diagram-formats/references/diff-algorithm.md`.
+Full algorithm: [diff-algorithm](skills/amw-diagram-formats/references/diff-algorithm.md).
 
 ## Report contents
 

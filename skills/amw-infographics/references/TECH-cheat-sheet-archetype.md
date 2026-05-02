@@ -133,9 +133,9 @@ distinct sections to show flow.
 
 ## Cross-references
 
-- `TECH-stacked-reference-archetype.md` — less dense alternative.
-- `TECH-flow-poster-archetype.md` — when flow is the main story.
-- `TECH-section-variety-rule.md` — mandatory here.
-- `TECH-airdrop-guide-playbook.md` — airdrop guides often use this.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — less dense alternative.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — when flow is the main story.
+- [TECH-section-variety-rule](TECH-section-variety-rule.md) — mandatory here.
+- [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — airdrop guides often use this.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

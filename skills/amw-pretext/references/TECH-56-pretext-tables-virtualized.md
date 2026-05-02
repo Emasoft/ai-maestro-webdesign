@@ -4,6 +4,16 @@ category: tables
 source: pretext-skills/amw-pretext-tables-main/README.md
 also-in: 
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Available hooks (source: pretext-tables SKILL.md)](#available-hooks-source-pretext-tables-skillmd)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Virtualized table with pretext-measured row heights
 

@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-quadrant
 
@@ -123,8 +132,8 @@ Impact vs effort, one accent item. Attributed to
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-pyramid.md` — if one-axis ranking is what you really want
-- `design-system.md` — axis-label format, dashed divider pattern,
+- [TECH-type-pyramid](TECH-type-pyramid.md) — if one-axis ranking is what you really want
+- [design-system](design-system.md) — axis-label format, dashed divider pattern,
   letter-spacing for quadrant labels
-- `primitive-annotation.md` — optional italic callout explaining a
+- [primitive-annotation](primitive-annotation.md) — optional italic callout explaining a
   surprising placement ("why is Auth redesign in Quick Wins?")

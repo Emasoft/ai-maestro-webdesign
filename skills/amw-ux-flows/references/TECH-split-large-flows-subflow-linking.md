@@ -4,6 +4,18 @@ category: ux-flow-prd
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/mermaid-patterns.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Step 1 — Identify logical boundaries](#step-1-identify-logical-boundaries)
+  - [Step 2 — Create a high-level overview flow](#step-2-create-a-high-level-overview-flow)
+  - [Step 3 — Create each sub-flow as a separate diagram](#step-3-create-each-sub-flow-as-a-separate-diagram)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-split-large-flows-subflow-linking
 
@@ -151,6 +163,6 @@ markers.
 ## Cross-references
 
 - `../SKILL.md` — Phase 2 of the workflow
-- `mermaid-patterns.md` — the full reference bundled in the skill
-- `TECH-mermaid-flowchart-screen-map.md` — the overview flow pattern
-- `TECH-4-phase-mandatory-workflow.md` — when to invoke the split
+- [mermaid-patterns](mermaid-patterns.md) — the full reference bundled in the skill
+- [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — the overview flow pattern
+- [TECH-4-phase-mandatory-workflow](TECH-4-phase-mandatory-workflow.md) — when to invoke the split

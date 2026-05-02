@@ -1,3 +1,38 @@
+## Table of Contents
+
+- [1. Format definition](#1-format-definition)
+  - [1.1 File conventions](#11-file-conventions)
+  - [1.2 Minimal example](#12-minimal-example)
+- [2. Supported grammars](#2-supported-grammars)
+  - [2.1 Node shapes (flowchart)](#21-node-shapes-flowchart)
+  - [2.2 Edges (flowchart)](#22-edges-flowchart)
+- [3. Themes](#3-themes)
+  - [3.1 Built-in themes (15)](#31-built-in-themes-15)
+  - [3.2 Theme-selection guide](#32-theme-selection-guide)
+  - [3.3 Mono Mode (2-color derivation)](#33-mono-mode-2-color-derivation)
+  - [3.4 7-color enriched palette](#34-7-color-enriched-palette)
+  - [3.5 Live theme-switching (browser)](#35-live-theme-switching-browser)
+- [4. mmdc CLI flags (17 total)](#4-mmdc-cli-flags-17-total)
+- [5. Output paths](#5-output-paths)
+  - [5.1 Mermaid → SVG (default, high fidelity)](#51-mermaid-svg-default-high-fidelity)
+  - [5.2 Mermaid → PNG (via `mmdc -t png`)](#52-mermaid-png-via-mmdc-t-png)
+  - [5.3 Mermaid → ASCII (Unicode default)](#53-mermaid-ascii-unicode-default)
+  - [5.4 Mermaid → pure ASCII (README-safe)](#54-mermaid-pure-ascii-readme-safe)
+  - [5.5 Batch rendering (parallel)](#55-batch-rendering-parallel)
+- [6. Validation](#6-validation)
+  - [6.1 Dry-run linting](#61-dry-run-linting)
+  - [6.2 Common validation failures](#62-common-validation-failures)
+- [7. Per-source breakdown of the technique catalog](#7-per-source-breakdown-of-the-technique-catalog)
+- [8. Technique catalog](#8-technique-catalog)
+  - [S1 — beautiful-mermaid (backend)](#s1-beautiful-mermaid-backend)
+  - [S2 — Pretty-mermaid + mermaid-render/SKILL.md (CLI)](#s2-pretty-mermaid-mermaid-renderskillmd-cli)
+  - [S3 — Mermaid grammar](#s3-mermaid-grammar)
+  - [S4 — agent-skill-diagramming-flows](#s4-agent-skill-diagramming-flows)
+  - [S5 — bin/amw-mermaid-render.sh wrapper](#s5-binamw-mermaid-rendersh-wrapper)
+- [9. Failure modes](#9-failure-modes)
+- [10. Anti-patterns](#10-anti-patterns)
+
+
 # Mermaid — canonical format reference
 
 This file is the single authoritative spec for Mermaid within the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts Mermaid pulls from this file. Supported grammars, themes, `mmdc` CLI flags, output paths (SVG / PNG / ASCII), validation, and the technique catalog are all below.
@@ -10,9 +45,9 @@ This file is the single authoritative spec for Mermaid within the `ai-maestro-we
 - `../../bin/amw-mermaid-render.sh` — shell wrapper (SVG / PNG / ASCII)
 - `../../bin/amw-mermaid-lint.sh` (planned; Task 0c) — validator wrapper (`mmdc` dry-run)
 - `../../bin/amw-validate-ascii.py` — warn-only gate on ASCII rendering
-- `./ir-schema.md` — when Mermaid is a source of the diagram IR
-- `./conversion-matrix.md` — Mermaid → {ASCII, HTML, SVG, PNG} cells
-- `./validation-dispatcher.md` — Mermaid validator branch
+- [ir-schema](./ir-schema.md) — when Mermaid is a source of the diagram IR
+- [conversion-matrix](./conversion-matrix.md) — Mermaid → {ASCII, HTML, SVG, PNG} cells
+- [validation-dispatcher](./validation-dispatcher.md) — Mermaid validator branch
 
 ---
 
@@ -194,7 +229,7 @@ bin/amw-mermaid-render.sh --input diagram.mmd --format svg --theme tokyo-night -
 python3 -c "import cairosvg; cairosvg.svg2png(url='/tmp/x.svg', write_to='diagram.png')"
 ```
 
-See `./png.md` for the SVG → PNG chain.
+See [png](./png.md) for the SVG → PNG chain.
 
 ### 5.3 Mermaid → ASCII (Unicode default)
 
@@ -237,7 +272,7 @@ mmdc -i diagram.mmd -o /tmp/_mermaid_lint.svg 2>&1
 # Exit 0 = valid; exit !=0 + stderr = parse error
 ```
 
-Output contract per `./validation-dispatcher.md`: `PASS|FAIL: line: message [FIX: hint]`.
+Output contract per [validation-dispatcher](./validation-dispatcher.md): `PASS|FAIL: line: message [FIX: hint]`.
 
 ### 6.2 Common validation failures
 

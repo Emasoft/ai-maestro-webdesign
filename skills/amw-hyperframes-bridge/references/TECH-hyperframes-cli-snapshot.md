@@ -4,6 +4,17 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/snapshot.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Flags](#flags)
+  - [Output](#output)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes snapshot` — capture key frames as PNG screenshots
 
@@ -71,7 +82,7 @@ open snapshots/
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-inspect.md` — programmatic layout audit; use both for pre-render QA
-- `TECH-hyperframes-cli-render.md` — the full render step that follows successful QA
-- `TECH-hyperframes-cli-browser.md` — Chrome provisioning
+- [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md) — programmatic layout audit; use both for pre-render QA
+- [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — the full render step that follows successful QA
+- [TECH-hyperframes-cli-browser](TECH-hyperframes-cli-browser.md) — Chrome provisioning
 - `../SKILL.md`

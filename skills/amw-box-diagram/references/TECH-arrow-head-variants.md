@@ -4,6 +4,15 @@ category: ascii-unicode
 source: box-diagram-master/skills/amw-box-diagram/SKILL.md
 also-in: diagram-skill-main/ASCII-STYLES.md, box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-arrow-head-variants — `▸ ▾ ▴ ◂` vs banned `▶ ▼ ▲ ◀`
 
@@ -57,6 +66,6 @@ Vertical:     │               ▴
 
 - `../../amw-ascii-validator/references/TECH-forbidden-chars-banlist.md`
 - `../../amw-ascii-validator/references/TECH-safe-char-palette.md`
-- `./TECH-unicode-rounded-corner-set.md`
+- [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/graphs-annotations.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-ui-sketch-layout — `+---+` UI wireframe mockup
 
@@ -61,6 +70,6 @@ mockups in PRs, issues, and design docs where Figma/Sketch is overhead.
 
 - `../../amw-ascii-sketch/SKILL.md`
 - `../../amw-ascii-creator/SKILL.md` (Mode B freeform wireframes)
-- `./graphs-annotations.md` (legacy pattern file)
+- [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

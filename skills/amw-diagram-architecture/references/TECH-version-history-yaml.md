@@ -4,6 +4,15 @@ category: yaml-versioning
 source: diagram-skill-main/REFERENCE.md
 also-in: diagram-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-version-history-yaml — v1 / v2 / ... + history.yaml + rollback
 
@@ -82,7 +91,7 @@ Claude: Versiones de auth-flow:
 
 ## Cross-references
 
-- `./TECH-yaml-canonical-schema.md`
-- `./TECH-export-mermaid-plantuml-d2.md`
+- [TECH-yaml-canonical-schema](./TECH-yaml-canonical-schema.md)
+- [TECH-export-mermaid-plantuml-d2](./TECH-export-mermaid-plantuml-d2.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

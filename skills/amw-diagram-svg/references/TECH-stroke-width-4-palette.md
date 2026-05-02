@@ -4,6 +4,16 @@ category: svg-shape
 source: SKILLS-TO-INTEGRATE/diagrams-skills/baybee-diagram/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Usage pattern](#usage-pattern)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-stroke-width-4-palette
 
@@ -98,13 +108,13 @@ One-diagram-three-fills:
   look dated and degrade when rasterised.
 - **Stroke-width uniform across the diagram.** Exception: arrowhead
   markers use their own internal sizing; see
-  `TECH-arrow-marker-def.md`.
+  [TECH-arrow-marker-def](TECH-arrow-marker-def.md).
 
 ## Cross-references
 
 - `../SKILL.md` — palette in the Style section
-- `TECH-node-shape-vocabulary.md` — shapes all share this stroke
-- `TECH-arrow-marker-def.md` — arrow sizing relative to 4px strokes
+- [TECH-node-shape-vocabulary](TECH-node-shape-vocabulary.md) — shapes all share this stroke
+- [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — arrow sizing relative to 4px strokes
 - `../../amw-diagram-editorial/references/TECH-three-family-typography.md` —
   editorial cousin uses 1px hairlines instead of 4px bolds
 - `../../amw-design-principles/color-system.md` — brand override path

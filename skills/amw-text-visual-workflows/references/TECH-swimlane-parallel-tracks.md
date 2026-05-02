@@ -52,7 +52,7 @@ Launch                                 |==go=|
 
 ## Cross-references
 
-- `./TECH-timeline-with-anchors.md`
+- [TECH-timeline-with-anchors](./TECH-timeline-with-anchors.md)
 - `../../amw-ascii-creator/references/TECH-lane-labeled-diagrams.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

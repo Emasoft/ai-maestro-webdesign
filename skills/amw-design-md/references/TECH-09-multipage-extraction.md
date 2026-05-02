@@ -10,7 +10,7 @@ status: stable
 
 ## What it does
 
-Documents how to extract a single DESIGN.md from a website that spans multiple pages — typically requiring authenticated browsing (login + N internal pages). Extends `TECH-07-url-extraction.md` to handle session cookies, page-by-page traversal, and per-page token aggregation.
+Documents how to extract a single DESIGN.md from a website that spans multiple pages — typically requiring authenticated browsing (login + N internal pages). Extends [TECH-07-url-extraction](TECH-07-url-extraction.md) to handle session cookies, page-by-page traversal, and per-page token aggregation.
 
 The flow uses `amw-dev-browser` for the session-aware browsing. There is no dedicated bin script; the orchestration runs through `amw-design-md-extractor-agent` directly via `Bash` calls to `bin/amw-dev-browser-wrapper.sh` followed by `bin/amw-design-md-from-url.sh` per page.
 
@@ -22,8 +22,8 @@ The flow uses `amw-dev-browser` for the session-aware browsing. There is no dedi
 
 ## When NOT to use
 
-- Public-only single-page extraction → use `TECH-07-url-extraction.md`
-- Local codebase available → use `TECH-08-codebase-extraction.md` (faster, no auth issues)
+- Public-only single-page extraction → use [TECH-07-url-extraction](TECH-07-url-extraction.md)
+- Local codebase available → use [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) (faster, no auth issues)
 - Pages behind a paywall the user does not own → out of scope; refuse
 
 ## Architecture
@@ -151,8 +151,8 @@ This transparency lets the user accept or reject suspect tokens before the file 
 
 ## Cross-references
 
-- `./TECH-07-url-extraction.md` — single-URL extraction (subset of this flow)
-- `./TECH-08-codebase-extraction.md` — when local source is available (preferred)
+- [TECH-07-url-extraction](./TECH-07-url-extraction.md) — single-URL extraction (subset of this flow)
+- [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — when local source is available (preferred)
 - `<plugin-root>/bin/amw-dev-browser-wrapper.sh` — browser primitive
 - `../../amw-dev-browser/SKILL.md` — dev-browser skill spec
 - `../../../agents/amw-design-md-extractor-agent.md` — the agent that owns this flow

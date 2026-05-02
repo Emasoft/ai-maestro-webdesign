@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/trees.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-tree-file-hierarchy — `+--` / `|` file-tree rendering
 
@@ -64,6 +73,6 @@ high-value cue the reader's eye uses for depth tracking.
 
 ## Cross-references
 
-- `./trees.md` (legacy pattern file)
+- [trees](./trees.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

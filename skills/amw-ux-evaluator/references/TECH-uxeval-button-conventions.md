@@ -4,6 +4,19 @@ category: uxeval-dim
 source: SKILLS-TO-INTEGRATE/web-design/ux-evaluator/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Position](#position)
+  - [Visual weight](#visual-weight)
+  - [Spacing](#spacing)
+  - [Labels](#labels)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Button conventions (position + visual weight + spacing + labels)
 
@@ -81,8 +94,8 @@ Modal action row done right:
 
 ## Cross-references
 
-- `TECH-uxeval-3-dimension-framework.md`
-- `TECH-uxeval-navigation-conventions.md`, `TECH-uxeval-form-conventions.md`
-- `balsamiq-button-principles.md`
+- [TECH-uxeval-3-dimension-framework](TECH-uxeval-3-dimension-framework.md)
+- [TECH-uxeval-navigation-conventions](TECH-uxeval-navigation-conventions.md), [TECH-uxeval-form-conventions](TECH-uxeval-form-conventions.md)
+- [balsamiq-button-principles](balsamiq-button-principles.md)
 - `../SKILL.md`
 - `../../amw-ux-designer/references/TECH-ux-rule-interaction.md` — microcopy rule

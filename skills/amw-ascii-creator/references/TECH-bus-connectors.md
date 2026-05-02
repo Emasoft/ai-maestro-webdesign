@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-bus-connectors — auto fan-out / fan-in between tiers
 
@@ -61,7 +70,7 @@ the entry to each lower-row box.
 
 ## Cross-references
 
-- `./TECH-render-mode-layers.md`
+- [TECH-render-mode-layers](./TECH-render-mode-layers.md)
 - `../../amw-box-diagram/SKILL.md` (manual fan-out/fan-in with `┌┬┐`/`└┴┘`)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

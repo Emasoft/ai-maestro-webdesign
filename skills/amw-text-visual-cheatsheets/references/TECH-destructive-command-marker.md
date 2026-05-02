@@ -61,7 +61,7 @@ explaining the risk and the safety guardrail.
 
 ## Cross-references
 
-- `./TECH-side-by-side-platforms.md`
-- `./TECH-category-sections.md`
+- [TECH-side-by-side-platforms](./TECH-side-by-side-platforms.md)
+- [TECH-category-sections](./TECH-category-sections.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

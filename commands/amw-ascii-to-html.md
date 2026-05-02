@@ -77,8 +77,8 @@ Any other text inside a box becomes literal content for the rendered element.
 
 - **Grid:** use CSS Grid with the detected column count at desktop and `1fr` at mobile (< 768px).
 - **Tokens:** inline the design-principles / extracted oklch palette as `:root { --space-*, --text-*, --surface-*, --primary, ... }`.
-- **Typography:** apply the Perfect Fourth scale from `skills/amw-design-principles/typography-system.md` unless extracted tokens override.
-- **Spacing:** 8pt grid from `skills/amw-design-principles/spacing-rhythm.md`. Snap any in-between value to the nearest grid unit.
+- **Typography:** apply the Perfect Fourth scale from [typography-system](skills/amw-design-principles/typography-system.md) unless extracted tokens override.
+- **Spacing:** 8pt grid from [spacing-rhythm](skills/amw-design-principles/spacing-rhythm.md). Snap any in-between value to the nearest grid unit.
 - **Buttons / CTAs:** minimum 44×44px hit target (design-principles §Dimensional hard limits). Primary = accent; secondary = outlined.
 - **Inputs:** unstyled defaults from starter-components are fine; add 12px padding and focus outline.
 - **Typography fallback stack:** follow `typography-system.md §VII` fallback rules (paid → free → system).
@@ -110,7 +110,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 </script>
 ```
 
-**Protocol rules that must not be broken** (from `skills/amw-design-principles/SKILL.md`):
+**Protocol rules that must not be broken** (from [SKILL](skills/amw-design-principles/SKILL.md)):
 
 1. The message listener is registered BEFORE `__edit_mode_available` is posted.
 2. `__edit_mode_set_keys` carries partial updates, not the full object.
@@ -118,7 +118,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 ### 5. AI-slop self-check
 
-Before saving the file, scan the draft HTML against `skills/amw-design-principles/ai-slop-avoid.md`:
+Before saving the file, scan the draft HTML against [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md):
 
 - Body font family not in {Inter, Roboto, Arial, system-ui, Fraunces, Poppins}.
 - No `linear-gradient(135deg, #...` purple-blue hero.

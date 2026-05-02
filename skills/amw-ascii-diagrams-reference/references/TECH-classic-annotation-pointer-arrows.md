@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/graphs-annotations.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-annotation-pointer-arrows — label-to-element connectors
 
@@ -67,7 +76,7 @@ File-format annotation variant (from Chromium):
 
 ## Cross-references
 
-- `./TECH-classic-bit-field-annotation.md`
-- `./graphs-annotations.md` (legacy pattern file)
+- [TECH-classic-bit-field-annotation](./TECH-classic-bit-field-annotation.md)
+- [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

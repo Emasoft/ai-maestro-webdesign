@@ -4,6 +4,15 @@ category: svg-dataviz
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Bar chart with gradient + drop shadow](#bar-chart-with-gradient-drop-shadow)
+- [Donut chart — arc math](#donut-chart-arc-math)
+- [Axis lines](#axis-lines)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Data visualization in SVG — bars, donuts, grids
 
@@ -70,7 +79,7 @@ Key moves:
 
 - `../../amw-infographics/references/TECH-svg-pie-chart.md` — full-pie
   alternative for infographics.
-- `TECH-multi-stop-gradients.md` — gradient patterns for chart fills.
-- `TECH-drop-shadow-filter.md` — the shadow filter used above.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — gradient patterns for chart fills.
+- [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the shadow filter used above.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

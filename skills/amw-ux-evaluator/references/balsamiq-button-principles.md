@@ -1,3 +1,20 @@
+## Table of Contents
+
+- [Core Principles](#core-principles)
+  - [1. Use Conventional Labels](#1-use-conventional-labels)
+  - [2. Say Exactly What Happens](#2-say-exactly-what-happens)
+  - [3. Primary and Secondary Should Look Different](#3-primary-and-secondary-should-look-different)
+  - [4. Primary Action on the Right](#4-primary-action-on-the-right)
+  - [5. Use Adequate Spacing](#5-use-adequate-spacing)
+  - [6. Make Buttons Look Clickable](#6-make-buttons-look-clickable)
+  - [7. Size Appropriately](#7-size-appropriately)
+  - [8. Use Icons Wisely](#8-use-icons-wisely)
+  - [9. Consider Loading States](#9-consider-loading-states)
+  - [10. Error Prevention](#10-error-prevention)
+- [Button Hierarchy Summary](#button-hierarchy-summary)
+- [Common Mistakes](#common-mistakes)
+
+
 # Balsamiq Button Design Best Practices
 
 Source: https://balsamiq.com/blog/button-design-best-practices/

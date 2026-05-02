@@ -1,3 +1,18 @@
+## Table of Contents
+
+- [Symptom-to-fix table](#symptom-to-fix-table)
+  - [Diagrams look generic / AI-generated](#diagrams-look-generic-ai-generated)
+  - [Colours don't match the user's site](#colours-dont-match-the-users-site)
+  - [Fonts fall back to Times / Arial](#fonts-fall-back-to-times-arial)
+  - [WCAG contrast fails on brand colour](#wcag-contrast-fails-on-brand-colour)
+  - [Diagram is too dense / cluttered](#diagram-is-too-dense-cluttered)
+  - [Wrong type chosen](#wrong-type-chosen)
+  - [`bin/amw-svg-render.py` render check fails](#binamw-svg-renderpy-render-check-fails)
+  - [Brand onboarding fetched the wrong palette](#brand-onboarding-fetched-the-wrong-palette)
+  - [Diagram output opens blank](#diagram-output-opens-blank)
+- [When NOT to use this skill](#when-not-to-use-this-skill)
+
+
 # Troubleshooting — editorial diagrams
 
 Symptom-to-fix table for the most common failure modes, plus the "when NOT to use this skill" routing table.
@@ -25,12 +40,12 @@ Fix:
 
 ### Colours don't match the user's site
 
-Brand onboarding never ran, or the user's palette has drifted from what's in `style-guide.md`.
+Brand onboarding never ran, or the user's palette has drifted from what's in [style-guide](style-guide.md).
 
 Fix:
 
-1. Re-run brand onboarding via `/amw-extract-style <url>` — it routes through `../amw-dev-browser/` (never raw WebFetch) and writes new tokens to `style-guide.md` alongside this folder.
-2. Or have the user paste hex values directly into `style-guide.md`:
+1. Re-run brand onboarding via `/amw-extract-style <url>` — it routes through `../amw-dev-browser/` (never raw WebFetch) and writes new tokens to [style-guide](style-guide.md) alongside this folder.
+2. Or have the user paste hex values directly into [style-guide](style-guide.md):
 
 ```markdown
 | Token      | Value     | Role                          |
@@ -103,7 +118,7 @@ Common when the user's site uses utility CSS (Tailwind) with hundreds of accent-
 Fix:
 
 - Ask the user to point at an interior page with text-heavy content (a blog post, docs page) — the palette there is usually what they actually use day-to-day.
-- Or have the user paste the 6 tokens directly into `style-guide.md` and skip onboarding.
+- Or have the user paste the 6 tokens directly into [style-guide](style-guide.md) and skip onboarding.
 
 ### Diagram output opens blank
 

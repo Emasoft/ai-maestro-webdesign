@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-er
 
@@ -118,12 +127,12 @@ Two-entity ER (User 1—∞ Order), accent on the focal entity:
 - **`(PK)` and `(FK)` in mono, muted**, not in the entity header. Don't
   bold them; they're decoration, not content.
 - **Do not inline field comments.** If a field needs explanation, move it
-  to a `primitive-annotation.md` side callout.
+  to a [primitive-annotation](primitive-annotation.md) side callout.
 
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `primitive-annotation.md` — for in-margin field explanations
-- `design-system.md` — row-height / font-size rules
-- `TECH-type-architecture.md` — if the intent is component-level topology
+- [primitive-annotation](primitive-annotation.md) — for in-margin field explanations
+- [design-system](design-system.md) — row-height / font-size rules
+- [TECH-type-architecture](TECH-type-architecture.md) — if the intent is component-level topology
   rather than data schema

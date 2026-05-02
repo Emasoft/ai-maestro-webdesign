@@ -4,6 +4,15 @@ category: uiux-rule
 source: SKILLS-TO-INTEGRATE/web-design/ui-ux-pro-max-skill/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Design System Generator (end-to-end composition)
 
@@ -71,6 +80,6 @@ ds.tailwind_config # Ready-to-merge theme extension
 
 ## Cross-references
 
-- `TECH-uiux-rules-catalog.md`, `TECH-uiux-styles-catalog.md`, `TECH-uiux-palettes-catalog.md`, `TECH-uiux-font-pairings-catalog.md`, `TECH-uiux-lp-patterns-catalog.md`
-- `TECH-uiux-pre-delivery-checklist.md`
+- [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md), [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md), [TECH-uiux-lp-patterns-catalog](TECH-uiux-lp-patterns-catalog.md)
+- [TECH-uiux-pre-delivery-checklist](TECH-uiux-pre-delivery-checklist.md)
 - `../SKILL.md`

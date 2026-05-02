@@ -4,6 +4,15 @@ category: workflow
 source: pretext-skills/SKILL-21.md
 also-in: SKILL-23.md (AutoHeightTextarea)
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Auto-height textarea (pre-wrap, no scroll bar)
 

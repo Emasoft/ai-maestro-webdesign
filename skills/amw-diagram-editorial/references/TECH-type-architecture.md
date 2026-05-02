@@ -84,7 +84,7 @@ Attributed to `diagram-design-editorial/SKILL.md` lines 180-259:
 ## Cross-references
 
 - `../SKILL.md` — type selection table + full 13-type chooser rule
-- `design-system.md` — 4px grid, typography, color tokens
-- `primitive-annotation.md` — add italic side callouts for editorial asides
+- [design-system](design-system.md) — 4px grid, typography, color tokens
+- [primitive-annotation](primitive-annotation.md) — add italic side callouts for editorial asides
 - `../../amw-diagram-architecture/SKILL.md` — auto-layout from free text
-- `TECH-focal-accent-discipline.md` — the 1–2-accent rule in detail
+- [TECH-focal-accent-discipline](TECH-focal-accent-discipline.md) — the 1–2-accent rule in detail

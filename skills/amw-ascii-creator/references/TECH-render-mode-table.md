@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-render-mode-table — data grids with cell-span and wrap
 
@@ -61,7 +70,7 @@ repeating the first column for continuation.
 
 ## Cross-references
 
-- `./TECH-cell-spanning.md`
-- `./TECH-json-render-four-modes.md`
+- [TECH-cell-spanning](./TECH-cell-spanning.md)
+- [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,17 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Syntax](#syntax)
+- [Nested activations — double-stacking](#nested-activations-double-stacking)
+- [Manual activate/deactivate (alt syntax)](#manual-activatedeactivate-alt-syntax)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Sequence diagram activations
 
@@ -83,8 +94,8 @@ sequenceDiagram
 
 ## Cross-references
 
-- `TECH-sequence-grammar.md` — the parent grammar.
-- `TECH-sequence-notes-and-loops.md` — annotations and loops around
+- [TECH-sequence-grammar](TECH-sequence-grammar.md) — the parent grammar.
+- [TECH-sequence-notes-and-loops](TECH-sequence-notes-and-loops.md) — annotations and loops around
   activated regions.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

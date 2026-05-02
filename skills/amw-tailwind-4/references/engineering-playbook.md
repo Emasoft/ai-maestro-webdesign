@@ -1,3 +1,25 @@
+## Table of Contents
+
+- [Default workflow](#default-workflow)
+- [Core mindset](#core-mindset)
+- [The abstraction ladder](#the-abstraction-ladder)
+- [What good reuse looks like](#what-good-reuse-looks-like)
+- [Tokens first](#tokens-first)
+- [Arbitrary values](#arbitrary-values)
+- [Custom utilities](#custom-utilities)
+- [Component classes](#component-classes)
+- [Variant strategy for component classes](#variant-strategy-for-component-classes)
+- [`@apply`](#apply)
+- [Custom variants](#custom-variants)
+- [Rich text and uncontrolled markup](#rich-text-and-uncontrolled-markup)
+- [Generated DOM and JS-replaced markup](#generated-dom-and-js-replaced-markup)
+- [Responsive strategy](#responsive-strategy)
+- [File organization](#file-organization)
+- [Refactor heuristics](#refactor-heuristics)
+- [Review checklist](#review-checklist)
+- [Practical defaults](#practical-defaults)
+
+
 # Tailwind Engineering Playbook
 
 Use this reference for implementation, refactor, and review tasks where you need practical engineering judgment in addition to the official Tailwind docs. Its purpose is to help you make good architectural decisions quickly when you are writing, reviewing or refactoring Tailwind code.

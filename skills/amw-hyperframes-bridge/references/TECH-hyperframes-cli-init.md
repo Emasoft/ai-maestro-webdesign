@@ -4,6 +4,17 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/init.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Registry templates (`--example`)](#registry-templates-example)
+  - [Side effects](#side-effects)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes init` — scaffold a project
 
@@ -84,6 +95,6 @@ npx hyperframes init acme-launch --audio narration.mp3 --example blank
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-preview.md`, `TECH-hyperframes-cli-lint.md`, `TECH-hyperframes-cli-render.md`
-- `TECH-hyperframes-registry-add.md` — adding blocks/components post-init
+- [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md)
+- [TECH-hyperframes-registry-add](TECH-hyperframes-registry-add.md) — adding blocks/components post-init
 - `../SKILL.md`

@@ -4,6 +4,16 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/lint.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+  - [CI integration](#ci-integration)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes lint` — static validation
 
@@ -66,6 +76,6 @@ $ npx hyperframes lint
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-preview.md`, `TECH-hyperframes-cli-render.md`, `TECH-hyperframes-cli-validate.md`
-- `TECH-hyperframes-non-negotiables.md` — rules the linter enforces
+- [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md), [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md)
+- [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md) — rules the linter enforces
 - `../SKILL.md`

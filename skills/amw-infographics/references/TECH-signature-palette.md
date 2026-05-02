@@ -4,6 +4,21 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/resources/color-palettes.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Background rules](#background-rules)
+- [The default accent hierarchy](#the-default-accent-hierarchy)
+- [Palette temperature](#palette-temperature)
+- [Other most-used accents (in order)](#other-most-used-accents-in-order)
+- [Named palette recipes (top 3)](#named-palette-recipes-top-3)
+  - [AMBER DARK (signature, most used)](#amber-dark-signature-most-used)
+  - [CYBER TEAL](#cyber-teal)
+  - [HOT PINK WEB3](#hot-pink-web3)
+- [Rule — brand first, signature second](#rule-brand-first-signature-second)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Signature palette — near-black + amber + teal/blue complement
 
@@ -117,9 +132,9 @@ it. Signature palette is the fallback, not the first choice.
 
 ## Cross-references
 
-- `TECH-dense-editorial-dna.md` — the parent design philosophy.
-- `TECH-color-palette-recipes.md` — all 13 named palette recipes.
-- `TECH-per-type-signature-palettes.md` — content-type-specific palettes.
-- `TECH-chain-color-coding.md` — the multi-chain blockchain palette.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the parent design philosophy.
+- [TECH-color-palette-recipes](TECH-color-palette-recipes.md) — all 13 named palette recipes.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — content-type-specific palettes.
+- [TECH-chain-color-coding](TECH-chain-color-coding.md) — the multi-chain blockchain palette.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

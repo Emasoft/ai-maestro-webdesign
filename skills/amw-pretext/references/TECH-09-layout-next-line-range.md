@@ -4,6 +4,16 @@ category: api
 source: pretext-skills/amw-pretext-text-measurement/SKILL.md
 also-in: SKILL-13.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Return type (source: pretext-skill-master/SKILL.md)](#return-type-source-pretext-skill-masterskillmd)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # layoutNextLineRange() + materializeLineRange() — variable-width iterator without strings
 

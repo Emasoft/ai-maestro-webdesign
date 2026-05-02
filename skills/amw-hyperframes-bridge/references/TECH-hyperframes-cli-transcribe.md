@@ -4,6 +4,17 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/transcribe.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Models](#models)
+  - [Output schema](#output-schema)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes transcribe` — audio → word-level timestamps
 
@@ -94,5 +105,5 @@ npx hyperframes transcribe narration.wav --model medium.en --language en
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-tts.md`, `TECH-hyperframes-capture-step-5-vo.md`
+- [TECH-hyperframes-cli-tts](TECH-hyperframes-cli-tts.md), [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md)
 - `../SKILL.md`

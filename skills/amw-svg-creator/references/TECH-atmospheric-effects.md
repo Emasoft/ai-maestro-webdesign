@@ -4,6 +4,18 @@ category: svg-effects
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [Scope note](#scope-note)
+- [What it does](#what-it-does)
+- [Light rays (god rays)](#light-rays-god-rays)
+- [Fog / mist (masked gradient)](#fog-mist-masked-gradient)
+- [Stars with twinkling](#stars-with-twinkling)
+- [Rain](#rain)
+- [Clouds](#clouds)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Atmospheric effects — light rays, fog, stars, rain, clouds
 
@@ -106,14 +118,14 @@ Overlapping ellipses with soft blur filter.
 
 - Light rays at opacity > 0.2 dominate the scene — keep subtle.
 - Twinkle animations need `prefers-reduced-motion` override (see
-  `TECH-reduced-motion.md`).
+  [TECH-reduced-motion](TECH-reduced-motion.md)).
 - Rain angles should match wind direction if the scene implies wind.
 
 ## Cross-references
 
-- `TECH-landscape-composition.md` — the scene these effects live in.
-- `TECH-css-smil-animation.md` — CSS + SMIL animation for twinkling /
+- [TECH-landscape-composition](TECH-landscape-composition.md) — the scene these effects live in.
+- [TECH-css-smil-animation](TECH-css-smil-animation.md) — CSS + SMIL animation for twinkling /
   moving effects.
-- `TECH-reduced-motion.md` — accessibility override.
+- [TECH-reduced-motion](TECH-reduced-motion.md) — accessibility override.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

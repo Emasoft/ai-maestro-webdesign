@@ -4,6 +4,17 @@ category: hyperframes-composition
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Approach (narrative order)](#approach-narrative-order)
+  - [Single-file skeleton](#single-file-skeleton)
+  - [Visual Identity Gate (MUST — before writing HTML)](#visual-identity-gate-must-before-writing-html)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Composition authoring — core model
 
@@ -24,7 +35,7 @@ Before writing HTML, think at a high level:
 1. **What** — what should the viewer experience? Identify narrative arc, key moments, emotional beats.
 2. **Structure** — how many compositions, which are sub-compositions vs inline, what tracks carry video / audio / overlays / captions.
 3. **Timing** — which clips drive the duration, where do transitions land, what's the pacing.
-4. **Layout** — build the end-state first (see `TECH-hyperframes-layout-before-animation.md`).
+4. **Layout** — build the end-state first (see [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md)).
 5. **Animate** — then add motion using the rules.
 
 For small edits (fix a color, adjust timing), skip straight to the rules.
@@ -86,10 +97,10 @@ No composition uses `#333`, `#3b82f6`, or `Roboto` — those indicate the gate w
 
 ## Cross-references
 
-- `TECH-hyperframes-identity-gate.md` — the hard-gate rule applied here
-- `TECH-hyperframes-layout-before-animation.md` — positioning strategy
-- `TECH-hyperframes-data-attributes.md` — full attribute reference
-- `TECH-hyperframes-timeline-contract.md` — GSAP timeline rules
-- `TECH-hyperframes-scene-transitions.md` — inter-scene rules
-- `TECH-hyperframes-non-negotiables.md` — banned patterns
+- [TECH-hyperframes-identity-gate](TECH-hyperframes-identity-gate.md) — the hard-gate rule applied here
+- [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md) — positioning strategy
+- [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md) — full attribute reference
+- [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md) — GSAP timeline rules
+- [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md) — inter-scene rules
+- [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md) — banned patterns
 - `../SKILL.md`

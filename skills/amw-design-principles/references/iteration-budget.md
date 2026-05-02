@@ -1,8 +1,19 @@
+## Table of Contents
+
+- [Canonical caps by loop type](#canonical-caps-by-loop-type)
+- [What "attempt" means](#what-attempt-means)
+- [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract)
+- [What happens when the cap is reached](#what-happens-when-the-cap-is-reached)
+- [What this is NOT](#what-this-is-not)
+- [How agents apply this](#how-agents-apply-this)
+- [Cross-references](#cross-references)
+
+
 # Iteration budget — hard caps for all agent retry loops
 
 This document is the single source of truth for maximum attempt counts in
 every retry, fix, or regenerate loop across all `agents/amw-*.md` files.
-When an agent cites "per `iteration-budget.md`", it means the cap it states
+When an agent cites "per [iteration-budget](iteration-budget.md)", it means the cap it states
 is governed by this file.
 
 ## Canonical caps by loop type
@@ -78,7 +89,7 @@ lower the quality bar, do not silently succeed with a broken artifact.
   explicitly labelled as time-based).
 - **Not a file-size or token-count limit.** Those are per-skill concerns.
 - **Not a cap on how many agents main-agent may spawn.** Orchestration
-  parallelism is governed by `agent-interaction-patterns.md`.
+  parallelism is governed by [agent-interaction-patterns](agent-interaction-patterns.md).
 
 ## How agents apply this
 
@@ -97,7 +108,7 @@ One-shot agents MUST acknowledge their one-shot status in §8 under a
 
 ## Cross-references
 
-- `sub-agent-return-contract.md` — canonical YAML schema that includes
+- [sub-agent-return-contract](sub-agent-return-contract.md) — canonical YAML schema that includes
   `max_iterations`, `attempts_count`, and `attempts_log[]`
-- `agent-authoring-philosophy.md` — §8 and §13 template sections
-- `authority-hierarchy.md` — veto logic that can abort a loop before cap
+- [agent-authoring-philosophy](agent-authoring-philosophy.md) — §8 and §13 template sections
+- [authority-hierarchy](authority-hierarchy.md) — veto logic that can abort a loop before cap

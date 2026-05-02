@@ -1,3 +1,22 @@
+## Table of Contents
+
+- [1. Unified output contract](#1-unified-output-contract)
+- [2. Dispatch algorithm](#2-dispatch-algorithm)
+- [3. PNG refusal message (fixed)](#3-png-refusal-message-fixed)
+- [4. Per-format validator specs](#4-per-format-validator-specs)
+  - [4.1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback)](#41-ascii-binamw-validate-asciipy-primary-and-binamw-validate-asciipy-fallback)
+  - [4.2 SVG — `bin/amw-validate-svg-diagram.sh`](#42-svg-binamw-validate-svg-diagramsh)
+  - [4.3 HTML — `bin/amw-validate-html-diagram.sh`](#43-html-binamw-validate-html-diagramsh)
+  - [4.4 Mermaid — `bin/amw-mermaid-lint.sh`](#44-mermaid-binamw-mermaid-lintsh)
+- [5. Caller integration patterns](#5-caller-integration-patterns)
+  - [5.1 Post-create gate](#51-post-create-gate)
+  - [5.2 Post-convert gate](#52-post-convert-gate)
+  - [5.3 Modify-flow loop](#53-modify-flow-loop)
+  - [5.4 Multi-format mode (ascii-validator)](#54-multi-format-mode-ascii-validator)
+- [6. Known limitations (Phase 0)](#6-known-limitations-phase-0)
+- [7. Related references](#7-related-references)
+
+
 # Validation dispatcher — `bin/amw-validate-diagram.sh`
 
 **Authoritative spec for how the plugin validates ANY diagram**, regardless of format. Consumers: `/amw-validate-any-diagram-format`, every `wd-create-or-modify-*-diagram` command (post-emit gate), every conversion (post-conversion gate), and `ascii-validator/SKILL.md` (multi-format mode).
@@ -129,7 +148,7 @@ esac
 
 ### 5.3 Modify-flow loop
 
-`./modify-flow.md` specifies a validate step after the re-render. The dispatcher's output is the sole signal used to decide loop termination — if exit 0, done; if exit 1, re-patch and re-emit.
+[modify-flow](./modify-flow.md) specifies a validate step after the re-render. The dispatcher's output is the sole signal used to decide loop termination — if exit 0, done; if exit 1, re-patch and re-emit.
 
 ### 5.4 Multi-format mode (ascii-validator)
 
@@ -144,7 +163,7 @@ esac
 
 ## 7. Related references
 
-- `./detect-format.md` — the sniffer whose output this dispatcher routes on.
-- `./ascii.md` / `./html.md` / `./svg.md` / `./mermaid.md` — per-format specs (authored by the sibling `format-refs` agent).
-- `./modify-flow.md` — pipeline that closes the loop with this dispatcher.
-- `./ir-schema.md` — note that IR validation is separate (use `bin/amw-diagram-ir.py validate`) — this document is about validating **rendered artifacts**, not IR JSON.
+- [detect-format](./detect-format.md) — the sniffer whose output this dispatcher routes on.
+- [ascii](./ascii.md) / [html](./html.md) / [svg](./svg.md) / [mermaid](./mermaid.md) — per-format specs (authored by the sibling `format-refs` agent).
+- [modify-flow](./modify-flow.md) — pipeline that closes the loop with this dispatcher.
+- [ir-schema](./ir-schema.md) — note that IR validation is separate (use `bin/amw-diagram-ir.py validate`) — this document is about validating **rendered artifacts**, not IR JSON.

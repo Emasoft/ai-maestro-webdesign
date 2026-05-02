@@ -103,8 +103,8 @@ Two directional edges with arrows:
 ## Cross-references
 
 - `../SKILL.md` — defs and marker section
-- `TECH-svg-group-structure.md` — where markers live (always in `<defs>`)
-- `TECH-stroke-width-4-palette.md` — arrow colour and stroke coupling
+- [TECH-svg-group-structure](TECH-svg-group-structure.md) — where markers live (always in `<defs>`)
+- [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — arrow colour and stroke coupling
 - `../../amw-diagram-architecture/references/TECH-svg-layered-layout.md` —
   sibling arrow convention with `markerUnits="userSpaceOnUse"`
-- `TECH-svg-animate-motion.md` — animating dots along an arrow path
+- [TECH-svg-animate-motion](TECH-svg-animate-motion.md) — animating dots along an arrow path

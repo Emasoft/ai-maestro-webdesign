@@ -4,6 +4,16 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The filter](#the-filter)
+- [How it works](#how-it-works)
+- [When to use](#when-to-use)
+- [When NOT to use](#when-not-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Glassmorphism filter — frosted glass effect
 
@@ -73,8 +83,8 @@ the light catching the surface.
 
 ## Cross-references
 
-- `TECH-fe-turbulence-noise.md` — the noise primitive.
-- `TECH-specular-diffuse-lighting.md` — the shine primitive.
-- `TECH-paper-texture-filter.md` — contrasting "paper" feel.
+- [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the noise primitive.
+- [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — the shine primitive.
+- [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — contrasting "paper" feel.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

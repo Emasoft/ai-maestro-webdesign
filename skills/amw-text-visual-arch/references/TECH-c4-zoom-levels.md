@@ -4,6 +4,15 @@ category: text-visual-arch
 source: cc-plugin-text-visualizations-main/skills/tools-visual-ascii-arch/SKILL.md
 also-in: cc-plugin-text-visualizations-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-c4-zoom-levels — context / container / component framing
 
@@ -65,8 +74,8 @@ Container (inside "System"):
 
 ## Cross-references
 
-- `./TECH-protocol-label-arrows.md`
+- [TECH-protocol-label-arrows](./TECH-protocol-label-arrows.md)
 - `../../amw-diagram-architecture/SKILL.md`
-- `./TECH-footnote-tags-deployment.md`
+- [TECH-footnote-tags-deployment](./TECH-footnote-tags-deployment.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

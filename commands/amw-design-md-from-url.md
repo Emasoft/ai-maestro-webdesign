@@ -67,10 +67,10 @@ If `status=partial` because of an SPA-loading-skeleton extraction, present the s
 
 ## Cross-references
 
-- `agents/amw-design-md-extractor-agent.md`
-- `skills/amw-design-md/references/TECH-07-url-extraction.md`
-- `skills/amw-design-md/references/TECH-09-multipage-extraction.md`
-- `skills/amw-dev-browser/SKILL.md`
+- [amw-design-md-extractor-agent](agents/amw-design-md-extractor-agent.md)
+- [TECH-07-url-extraction](skills/amw-design-md/references/TECH-07-url-extraction.md)
+- [TECH-09-multipage-extraction](skills/amw-design-md/references/TECH-09-multipage-extraction.md)
+- [SKILL](skills/amw-dev-browser/SKILL.md)
 - `bin/amw-design-md-from-url.sh`
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-contrast.py`

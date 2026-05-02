@@ -66,7 +66,7 @@ npx hyperframes browser path && echo "Chrome ready"
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-render.md` — render uses Chrome managed by this command
-- `TECH-hyperframes-cli-inspect.md` — inspect also requires Chrome
-- `TECH-hyperframes-cli-snapshot.md` — snapshot also requires Chrome
+- [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — render uses Chrome managed by this command
+- [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md) — inspect also requires Chrome
+- [TECH-hyperframes-cli-snapshot](TECH-hyperframes-cli-snapshot.md) — snapshot also requires Chrome
 - `../SKILL.md` — bridge invocation pattern (see Failure modes section)

@@ -1,3 +1,17 @@
+## Table of Contents
+
+- [Required locations](#required-locations)
+- [Why this matters](#why-this-matters)
+- [Main-repo root resolution (works from worktrees and main checkout)](#main-repo-root-resolution-works-from-worktrees-and-main-checkout)
+- [Timestamp format (mandatory)](#timestamp-format-mandatory)
+- [Compliance table (how each surface complies)](#compliance-table-how-each-surface-complies)
+- [Template: drop this block into every new agent / skill definition](#template-drop-this-block-into-every-new-agent-skill-definition)
+- [Orchestrator override](#orchestrator-override)
+- [Gitignore bootstrap](#gitignore-bootstrap)
+- [Anti-patterns (DO NOT DO)](#anti-patterns-do-not-do)
+- [Verification checklist](#verification-checklist)
+
+
 # Agent Report Location
 
 **Rule:** Every agent, skill, or tool that writes a report MUST save it under

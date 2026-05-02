@@ -4,6 +4,17 @@ category: infographic-archetype
 source: image-generation/create-infographics/resources/style-details.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The glow system](#the-glow-system)
+- [Double-layer glow pattern](#double-layer-glow-pattern)
+- [Top confirmed glow colors](#top-confirmed-glow-colors)
+- [When to use each](#when-to-use-each)
+- [Light-mode override](#light-mode-override)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Glow system — neon box-shadow + text-shadow
 
@@ -102,8 +113,8 @@ On light backgrounds, glows look wrong. Disable them:
 
 ## Cross-references
 
-- `TECH-signature-palette.md` — where glow colors come from.
-- `TECH-color-palette-recipes.md` — palettes with explicit glow tokens.
-- `TECH-section-header-pill.md` — a primary glow consumer.
+- [TECH-signature-palette](TECH-signature-palette.md) — where glow colors come from.
+- [TECH-color-palette-recipes](TECH-color-palette-recipes.md) — palettes with explicit glow tokens.
+- [TECH-section-header-pill](TECH-section-header-pill.md) — a primary glow consumer.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

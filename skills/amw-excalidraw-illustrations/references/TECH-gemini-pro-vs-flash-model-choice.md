@@ -4,6 +4,15 @@ category: excalidraw-gemini
 source: SKILLS-TO-INTEGRATE/diagrams-skills/amw-excalidraw-illustrations-skill-main.zip
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-gemini-pro-vs-flash-model-choice
 
@@ -97,9 +106,9 @@ overlay_text(image_bytes, labels, output_path)
 ## Cross-references
 
 - `../SKILL.md` — model selection section
-- `TECH-two-phase-visual-then-overlay.md` — the fallback workflow that
+- [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md) — the fallback workflow that
   uses flash
-- `TECH-letter-by-letter-spelling-block.md` — the technique that pushes
+- [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the technique that pushes
   pro's text accuracy to acceptable
-- `TECH-aspect-ratio-selection.md` — ratio choice interacts with model
-- `TECH-reference-image-priming.md` — references work with both models
+- [TECH-aspect-ratio-selection](TECH-aspect-ratio-selection.md) — ratio choice interacts with model
+- [TECH-reference-image-priming](TECH-reference-image-priming.md) — references work with both models

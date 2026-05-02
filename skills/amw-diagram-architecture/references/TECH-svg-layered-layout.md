@@ -4,6 +4,20 @@ category: architecture-graph
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/formats.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Canvas constants](#canvas-constants)
+  - [Algorithm](#algorithm)
+  - [Height calculation](#height-calculation)
+  - [Node card structure](#node-card-structure)
+  - [Layer band structure](#layer-band-structure)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-svg-layered-layout
 
@@ -150,10 +164,10 @@ total_svg_h = PAD + total_content_h + PAD + 32   // +32 for title row
 
 ## Cross-references
 
-- `formats.md` — full format transform
-- `validation.md` — Stage 2 SVG checks (well-formedness, layout sanity)
-- `TECH-graph-json-schema.md` — source schema
-- `TECH-layer-palette-5-colors.md` — palette for band + accent bar + dot
-- `TECH-mermaid-subgraph-transform.md` — sibling transform for Mermaid
+- [formats](formats.md) — full format transform
+- [validation](validation.md) — Stage 2 SVG checks (well-formedness, layout sanity)
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — source schema
+- [TECH-layer-palette-5-colors](TECH-layer-palette-5-colors.md) — palette for band + accent bar + dot
+- [TECH-mermaid-subgraph-transform](TECH-mermaid-subgraph-transform.md) — sibling transform for Mermaid
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

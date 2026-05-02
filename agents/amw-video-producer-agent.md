@@ -574,7 +574,7 @@ I have **no veto power**. Production agents do not hold veto per `../skills/amw-
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent; receives the MP4 path in my YAML header.
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent; receives the MP4 path in my YAML header.
 - `../skills/amw-hyperframes-bridge/SKILL.md` — the only skill this agent uses. Authoritative source for the shell-out command + attribute schema.
 - `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — the 14-section template.
 - `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML header schema.

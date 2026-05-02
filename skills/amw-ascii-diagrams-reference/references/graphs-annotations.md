@@ -1,3 +1,11 @@
+## Table of Contents
+
+- [Directed Graphs](#directed-graphs)
+- [Code Annotations](#code-annotations)
+- [Before/After Comparisons](#beforeafter-comparisons)
+- [UI Sketches](#ui-sketches)
+
+
 > Reference library for the ASCII Diagrams Reference skill. Source: CHI'24 paper analysis. Every example validates against ../../bin/amw-validate-ascii.py.
 
 # Directed Graphs, Code Annotations, and UI Sketches

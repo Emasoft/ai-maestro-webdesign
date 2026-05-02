@@ -101,12 +101,12 @@ Each emerged from analyzing 175 pieces:
 
 ## Cross-references
 
-- `TECH-signature-palette.md` — the universal default.
-- `TECH-color-palette-recipes.md` — named alternative palettes.
-- `TECH-token-economics-playbook.md` — the token-economics type rules.
-- `TECH-crypto-explainer-playbook.md` — crypto-explainer type rules.
-- `TECH-game-overview-playbook.md` — game-overview type rules.
-- `TECH-ecosystem-playbook.md` — ecosystem type rules.
-- `TECH-airdrop-guide-playbook.md` — airdrop-guide type rules.
+- [TECH-signature-palette](TECH-signature-palette.md) — the universal default.
+- [TECH-color-palette-recipes](TECH-color-palette-recipes.md) — named alternative palettes.
+- [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — the token-economics type rules.
+- [TECH-crypto-explainer-playbook](TECH-crypto-explainer-playbook.md) — crypto-explainer type rules.
+- [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — game-overview type rules.
+- [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — ecosystem type rules.
+- [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — airdrop-guide type rules.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

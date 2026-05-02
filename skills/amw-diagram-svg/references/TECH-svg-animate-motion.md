@@ -4,6 +4,19 @@ category: svg-arrow-marker
 source: SKILLS-TO-INTEGRATE/diagrams-skills/baybee-diagram/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Animate a dot along a path (data-in-transit pattern)](#animate-a-dot-along-a-path-data-in-transit-pattern)
+  - [Blink a node (alert pattern)](#blink-a-node-alert-pattern)
+  - [Pulse a ring (activation pattern)](#pulse-a-ring-activation-pattern)
+- [Mandatory attributes](#mandatory-attributes)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-svg-animate-motion
 
@@ -142,8 +155,8 @@ Data pipeline with a packet animation:
 ## Cross-references
 
 - `../SKILL.md` — Optional Animation section
-- `TECH-arrow-marker-def.md` — arrow markers that pair with animations
-- `TECH-svg-group-structure.md` — animations live inside the
+- [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — arrow markers that pair with animations
+- [TECH-svg-group-structure](TECH-svg-group-structure.md) — animations live inside the
   `#connections` group usually
 - `../../amw-design-principles/ai-slop-avoid.md` — don't overanimate; one
   moving dot is plenty

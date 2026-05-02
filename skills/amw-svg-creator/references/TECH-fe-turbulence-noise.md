@@ -4,6 +4,20 @@ category: svg-noise
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The basic filter](#the-basic-filter)
+- [`baseFrequency` — texture scale](#basefrequency-texture-scale)
+- [Directional stretch — two-value baseFrequency](#directional-stretch-two-value-basefrequency)
+- [`numOctaves` — complexity](#numoctaves-complexity)
+- [`type="fractalNoise"` vs `type="turbulence"`](#typefractalnoise-vs-typeturbulence)
+- [`stitchTiles="stitch"`](#stitchtilesstitch)
+- [`seed` — reproducibility](#seed-reproducibility)
+- [Salt & Pepper texture (advanced)](#salt-pepper-texture-advanced)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `feTurbulence` — noise texture that breaks digital perfection
 
@@ -78,7 +92,7 @@ across multiple instances; keep stable for reproducibility.
 
 Professional technique — two-layer grain: "pepper" darkens via
 multiply blend, "salt" brightens via overlay blend. See
-`TECH-salt-pepper-texture.md`.
+[TECH-salt-pepper-texture](TECH-salt-pepper-texture.md).
 
 ## Gotchas
 
@@ -92,8 +106,8 @@ multiply blend, "salt" brightens via overlay blend. See
 
 ## Cross-references
 
-- `TECH-salt-pepper-texture.md` — the advanced two-layer grain filter.
-- `TECH-paper-texture-filter.md` — subtle paper for editorial looks.
-- `TECH-glassmorphism-filter.md` — noise + displacement combined.
+- [TECH-salt-pepper-texture](TECH-salt-pepper-texture.md) — the advanced two-layer grain filter.
+- [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — subtle paper for editorial looks.
+- [TECH-glassmorphism-filter](TECH-glassmorphism-filter.md) — noise + displacement combined.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

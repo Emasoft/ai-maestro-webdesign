@@ -64,8 +64,8 @@ Multiple tags allowed: `[iOS] [prod]` for a prod-only iOS component.
 
 ## Cross-references
 
-- `./TECH-c4-zoom-levels.md`
-- `./TECH-footnote-tags-deployment.md`
+- [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
+- [TECH-footnote-tags-deployment](./TECH-footnote-tags-deployment.md)
 - `../../amw-text-visual-cheatsheets/references/TECH-side-by-side-platforms.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

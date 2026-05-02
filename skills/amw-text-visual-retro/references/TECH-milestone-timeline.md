@@ -4,6 +4,15 @@ category: text-visual-retro
 source: cc-plugin-text-visualizations-main/skills/tools-visual-retro/SKILL.md
 also-in: cc-plugin-text-visualizations-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-milestone-timeline — weekly timeline + highlights + actions
 
@@ -62,8 +71,8 @@ Actions:
 
 ## Cross-references
 
-- `./TECH-grid-side-by-side.md`
-- `./TECH-owner-action-items.md`
+- [TECH-grid-side-by-side](./TECH-grid-side-by-side.md)
+- [TECH-owner-action-items](./TECH-owner-action-items.md)
 - `../../amw-text-visual-workflows/references/TECH-timeline-with-anchors.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

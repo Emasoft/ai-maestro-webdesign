@@ -137,8 +137,8 @@ Without this, digits jitter when animating counters.
 
 ## Cross-references
 
-- `TECH-stat-strip-component.md` — the supporting stat row.
-- `TECH-typography-scale.md` — size rules for the hero number.
-- `TECH-stacked-reference-archetype.md` — when you have multiple equal stats.
+- [TECH-stat-strip-component](TECH-stat-strip-component.md) — the supporting stat row.
+- [TECH-typography-scale](TECH-typography-scale.md) — size rules for the hero number.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — when you have multiple equal stats.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

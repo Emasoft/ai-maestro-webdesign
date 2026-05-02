@@ -4,6 +4,15 @@ category: ux-flow-prd
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/mermaid-patterns.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-mermaid-flowchart-screen-map
 
@@ -118,7 +127,7 @@ graph TD
 
 - **Max 15–20 nodes per diagram.** Larger diagrams split into sub-flows
   linked with `[[Sub-flow]]` nodes, each pointing to a dedicated
-  diagram file (see `TECH-split-large-flows-subflow-linking.md`).
+  diagram file (see [TECH-split-large-flows-subflow-linking](TECH-split-large-flows-subflow-linking.md)).
 - **Max 3–4 subgraphs per diagram.** More subgraphs visually compete and
   the screen map stops serving its "at-a-glance" purpose.
 - **PascalCase screen names, camelCase action names.** `HomeScreen` and
@@ -133,9 +142,9 @@ graph TD
 ## Cross-references
 
 - `../SKILL.md` — Phase 2 of the workflow
-- `mermaid-patterns.md` — the full reference bundled in the skill
-- `TECH-mermaid-state-diagram-screen.md` — per-UC state diagrams
-- `TECH-mermaid-sequence-authenticated.md` — per-UC sequence diagrams
-- `TECH-split-large-flows-subflow-linking.md` — splitting strategy
+- [mermaid-patterns](mermaid-patterns.md) — the full reference bundled in the skill
+- [TECH-mermaid-state-diagram-screen](TECH-mermaid-state-diagram-screen.md) — per-UC state diagrams
+- [TECH-mermaid-sequence-authenticated](TECH-mermaid-sequence-authenticated.md) — per-UC sequence diagrams
+- [TECH-split-large-flows-subflow-linking](TECH-split-large-flows-subflow-linking.md) — splitting strategy
 - `../../amw-diagram-editorial/references/TECH-type-flowchart.md` — editorial
   HTML+SVG cousin when the flowchart graduates to a blog asset

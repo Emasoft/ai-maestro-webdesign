@@ -4,6 +4,17 @@ category: svg-noise
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The filter](#the-filter)
+- [Parameter walkthrough](#parameter-walkthrough)
+- [When to use](#when-to-use)
+- [When NOT to use](#when-not-to-use)
+- [Usage](#usage)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Paper texture filter
 
@@ -68,9 +79,9 @@ into the mid-gray range before blending.
 
 ## Cross-references
 
-- `TECH-fe-turbulence-noise.md` — the base noise primitive.
-- `TECH-salt-pepper-texture.md` — stronger cousin for illustrations.
-- `TECH-fe-component-transfer-color-grading.md` — the color-grading
+- [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the base noise primitive.
+- [TECH-salt-pepper-texture](TECH-salt-pepper-texture.md) — stronger cousin for illustrations.
+- [TECH-fe-component-transfer-color-grading](TECH-fe-component-transfer-color-grading.md) — the color-grading
   primitive this filter uses.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

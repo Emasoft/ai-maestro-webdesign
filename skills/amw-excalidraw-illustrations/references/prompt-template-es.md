@@ -1,3 +1,9 @@
+## Table of Contents
+
+- [Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura"](#ejemplo-de-concepto-modernismo-generación-del-98-y-vanguardias-clase-de-literatura)
+- [Notas sobre esta estructura](#notas-sobre-esta-estructura)
+
+
 # Prompt template (Spanish) — ejemplo ya completo
 
 Ejemplo completo con la forma del prompt que el skill envía a Gemini. Úsalo

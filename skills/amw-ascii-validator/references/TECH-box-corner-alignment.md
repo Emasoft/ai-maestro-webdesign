@@ -56,7 +56,7 @@ Example bug this catches:
 
 ## Cross-references
 
-- `./TECH-width-mismatch-rule.md`
-- `./TECH-vertical-line-continuity.md`
+- [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
+- [TECH-vertical-line-continuity](./TECH-vertical-line-continuity.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

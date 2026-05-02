@@ -4,6 +4,25 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The checklist](#the-checklist)
+- [Per-aesthetic strictness](#per-aesthetic-strictness)
+- [The rule](#the-rule)
+- [Before / after — gridline removal](#before-after-gridline-removal)
+  - [Before](#before)
+  - [After](#after)
+- [Before / after — legend to direct labels](#before-after-legend-to-direct-labels)
+  - [Before](#before-1)
+  - [After](#after-1)
+- [Before / after — decoration removal](#before-after-decoration-removal)
+  - [Before (everything shouting)](#before-everything-shouting)
+  - [After (structure creates hierarchy, not decoration)](#after-structure-creates-hierarchy-not-decoration)
+- [Decision rule](#decision-rule)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Reduction Pass — strip everything that doesn't encode data
 
@@ -126,9 +145,9 @@ Usually border alone is enough.
 
 ## Cross-references
 
-- `TECH-annotation-first.md` — related: labels over legends.
-- `TECH-anti-frontend-checklist.md` — the pre-delivery check that
+- [TECH-annotation-first](TECH-annotation-first.md) — related: labels over legends.
+- [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — the pre-delivery check that
   includes this.
-- `TECH-dense-editorial-dna.md` — the "don't reduce density" rule.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the "don't reduce density" rule.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

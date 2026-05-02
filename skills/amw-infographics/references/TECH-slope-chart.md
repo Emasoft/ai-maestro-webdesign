@@ -4,6 +4,16 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Coordinate system](#coordinate-system)
+- [HTML](#html)
+- [CSS](#css)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Slope chart — before/after comparison
 
@@ -113,9 +123,9 @@ Y positions spread evenly between 40 and 260.
 
 ## Cross-references
 
-- `TECH-chart-selection-guide.md` — when to pick slope over line
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to pick slope over line
   chart.
-- `TECH-annotated-bar-chart.md` — alternative for single-period
+- [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — alternative for single-period
   comparisons.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

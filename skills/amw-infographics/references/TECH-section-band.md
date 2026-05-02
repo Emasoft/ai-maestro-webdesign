@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/resources/style-details.md
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The CSS](#the-css)
+- [HTML](#html)
+- [Numbered section headers with icon prefix](#numbered-section-headers-with-icon-prefix)
+- [When to use](#when-to-use)
+- [The color choice](#the-color-choice)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Full-width section separator bands
 
@@ -101,9 +112,9 @@ and mechanic breakdowns.
 
 ## Cross-references
 
-- `TECH-stacked-reference-archetype.md` — where this pattern lives.
-- `TECH-section-header-pill.md` — the pill alternative.
-- `TECH-dense-editorial-dna.md` — why structural separators
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — where this pattern lives.
+- [TECH-section-header-pill](TECH-section-header-pill.md) — the pill alternative.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — why structural separators
   matter.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

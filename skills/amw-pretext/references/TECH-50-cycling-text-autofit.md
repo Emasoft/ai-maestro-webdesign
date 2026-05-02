@@ -4,6 +4,15 @@ category: motion
 source: pretext-skills/amw-pretext-skill-main/patterns.md
 also-in: 
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Cycling text with auto-fit (rotating headline reveals)
 

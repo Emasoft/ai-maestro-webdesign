@@ -4,6 +4,16 @@ category: seo-technical
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Validation](#validation)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Structured data (Schema.org / JSON-LD)
 
@@ -82,5 +92,5 @@ When eligible, Google renders an expandable FAQ accordion below the page's searc
 
 ## Cross-references
 
-- `TECH-seo-technical.md`, `TECH-seo-content-quality.md`
+- [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
 - `../SKILL.md`

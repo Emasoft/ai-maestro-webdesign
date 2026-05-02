@@ -4,6 +4,17 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/capture.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Flags](#flags)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Out of scope for the bridge](#out-of-scope-for-the-bridge)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes capture` — capture a website as editable Hyperframes components
 
@@ -71,7 +82,7 @@ After capture, the output directory contains a partial Hyperframes project. The 
 - `--skip-assets` makes the initial capture faster but the final composition will reference remote URLs, which may cause issues if assets are unavailable or rate-limited during render.
 - The output is a starting point, not a ready-to-render composition. Manual curation (adding `data-start`, `data-duration`, timeline scripts) is typically needed.
 - `@hyperframes/cli` is NOT published to npm. Invoke via `(cd external/hyperframes && npx hyperframes capture <url>)` from outside the monorepo.
-- This CLI command automates Step 1 of the 7-step manual pipeline (`TECH-hyperframes-capture-step-1-capture.md`). For full context on what each step produces and how to proceed, read the step-by-step TECH files.
+- This CLI command automates Step 1 of the 7-step manual pipeline ([TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md)). For full context on what each step produces and how to proceed, read the step-by-step TECH files.
 
 ## Out of scope for the bridge
 
@@ -79,8 +90,8 @@ The following CLI commands exist in the upstream monorepo but are out of scope f
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-overview.md` — full 7-step pipeline overview
-- `TECH-hyperframes-capture-step-1-capture.md` — manual capture step (what this command automates)
-- `TECH-hyperframes-cli-render.md` — the final render step
-- `TECH-hyperframes-cli-browser.md` — Chrome provisioning (required for capture)
+- [TECH-hyperframes-capture-overview](TECH-hyperframes-capture-overview.md) — full 7-step pipeline overview
+- [TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md) — manual capture step (what this command automates)
+- [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — the final render step
+- [TECH-hyperframes-cli-browser](TECH-hyperframes-cli-browser.md) — Chrome provisioning (required for capture)
 - `../SKILL.md`

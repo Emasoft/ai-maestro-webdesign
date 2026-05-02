@@ -72,8 +72,8 @@ Include the result in the doctor table as a `Hyperframes version` row under the 
 Check that these paths exist (use `test -e`):
 
 - `.claude-plugin/plugin.json`
-- `skills/amw-design-principles/SKILL.md`
-- `skills/amw-diagram-formats/SKILL.md` (Phase 0 — shared references meta-skill)
+- [SKILL](skills/amw-design-principles/SKILL.md)
+- [SKILL](skills/amw-diagram-formats/SKILL.md) (Phase 0 — shared references meta-skill)
 - `skills/amw-diagram-formats/schema.json` (IR JSON schema)
 - `bin/amw-svg-render.py`
 - `bin/amw-html-export.py`

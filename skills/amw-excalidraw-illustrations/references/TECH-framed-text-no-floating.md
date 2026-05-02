@@ -4,6 +4,18 @@ category: excalidraw-prompt
 source: SKILLS-TO-INTEGRATE/diagrams-skills/amw-excalidraw-illustrations-skill-main.zip
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [1. Rounded title frame (section headers)](#1-rounded-title-frame-section-headers)
+  - [2. Speech bubble (tag-line commentary)](#2-speech-bubble-tag-line-commentary)
+  - [3. Labelled callout with filled background (icon labels, attributions)](#3-labelled-callout-with-filled-background-icon-labels-attributions)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-framed-text-no-floating
 
@@ -107,11 +119,11 @@ No text floats without a container.
 ## Cross-references
 
 - `../SKILL.md` — key principles #1 and #6
-- `TECH-prompt-template-structure.md` — this rule is wired into every
+- [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — this rule is wired into every
   panel description
-- `TECH-reference-image-priming.md` — the reference images demonstrate
+- [TECH-reference-image-priming](TECH-reference-image-priming.md) — the reference images demonstrate
   framed-text convention
-- `TECH-letter-by-letter-spelling-block.md` — spell-out rules keep the
+- [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — spell-out rules keep the
   framed text readable
-- `TECH-two-phase-visual-then-overlay.md` — even Pillow-overlaid text
+- [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md) — even Pillow-overlaid text
   sits inside frames drawn by Gemini in Phase 1

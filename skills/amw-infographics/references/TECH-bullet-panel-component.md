@@ -4,6 +4,18 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [CSS](#css)
+- [HTML](#html)
+- [The ▸ bullet convention](#the-bullet-convention)
+- [2-col grid pattern](#2-col-grid-pattern)
+- [One fact per bullet (mandatory)](#one-fact-per-bullet-mandatory)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `bullet_panel` component — DEFAULT for text content
 
@@ -121,8 +133,8 @@ bullet or use a table.
 
 ## Cross-references
 
-- `TECH-dense-table-component.md` — when the data is tabular.
-- `TECH-section-variety-rule.md` — the rule this component satisfies.
-- `TECH-copy-guide-bullets.md` — writing the bullet text.
+- [TECH-dense-table-component](TECH-dense-table-component.md) — when the data is tabular.
+- [TECH-section-variety-rule](TECH-section-variety-rule.md) — the rule this component satisfies.
+- [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — writing the bullet text.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

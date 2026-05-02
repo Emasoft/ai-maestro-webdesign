@@ -4,6 +4,15 @@ category: mermaid-theme
 source: diagrams-skills/beautiful-mermaid-main/references/themes.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Shiki → diagram token mapping](#shiki-diagram-token-mapping)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `fromShikiTheme()` — import any VS Code theme
 
@@ -57,8 +66,8 @@ const svg = await renderMermaid(diagram, colors)
 
 ## Cross-references
 
-- `TECH-built-in-themes.md` — pre-baked alternatives when Shiki is overkill.
-- `TECH-enriched-mode.md` — the option shape Shiki's output conforms to.
-- `TECH-live-theme-switch.md` — runtime theme changes without re-rendering.
+- [TECH-built-in-themes](TECH-built-in-themes.md) — pre-baked alternatives when Shiki is overkill.
+- [TECH-enriched-mode](TECH-enriched-mode.md) — the option shape Shiki's output conforms to.
+- [TECH-live-theme-switch](TECH-live-theme-switch.md) — runtime theme changes without re-rendering.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,17 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Acceptable section variety](#acceptable-section-variety)
+- [Anti-patterns (reject and redesign)](#anti-patterns-reject-and-redesign)
+- [The enforcement routine](#the-enforcement-routine)
+- [The available component types (pick 3+)](#the-available-component-types-pick-3)
+- [Rule of thumb](#rule-of-thumb)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Section Variety Rule — MANDATORY across 4+ sections
 
@@ -82,9 +93,9 @@ Supporting (don't let dominate):
 
 ## Cross-references
 
-- `TECH-dense-editorial-dna.md` — the parent design philosophy.
-- `TECH-bullet-panel-component.md` — the default text-content primary.
-- `TECH-arrows-and-connectors.md` — often the missing variety.
-- `TECH-stacked-reference-archetype.md` — where variety lives.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the parent design philosophy.
+- [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — the default text-content primary.
+- [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — often the missing variety.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — where variety lives.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

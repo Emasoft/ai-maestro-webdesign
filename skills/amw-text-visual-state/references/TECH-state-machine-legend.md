@@ -55,8 +55,8 @@ notation.
 
 ## Cross-references
 
-- `./TECH-state-guards-and-actions.md`
-- `./TECH-metrics-per-transition.md`
+- [TECH-state-guards-and-actions](./TECH-state-guards-and-actions.md)
+- [TECH-metrics-per-transition](./TECH-metrics-per-transition.md)
 - `../../amw-ascii-diagrams-reference/references/TECH-classic-state-machine-arrows.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

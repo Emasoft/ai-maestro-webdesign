@@ -50,7 +50,7 @@ Good: A ──→ B       ← U+2192 is single-width in standard monospace
 
 ## Cross-references
 
-- `./TECH-wide-character-detection.md`
+- [TECH-wide-character-detection](./TECH-wide-character-detection.md)
 - `../../amw-ascii-creator/SKILL.md` (banned-characters table)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

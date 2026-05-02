@@ -43,6 +43,6 @@ Prototype for Sarah's "basics rail":
 
 ## Cross-references
 
-- `TECH-ux-process-ideate.md` — upstream (Phase 3)
-- `TECH-ux-process-handoff.md` — downstream (Phase 5)
+- [TECH-ux-process-ideate](TECH-ux-process-ideate.md) — upstream (Phase 3)
+- [TECH-ux-process-handoff](TECH-ux-process-handoff.md) — downstream (Phase 5)
 - `../SKILL.md`

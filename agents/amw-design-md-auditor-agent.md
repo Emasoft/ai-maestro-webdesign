@@ -348,9 +348,9 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-design-md-author-agent.md` — repair agent (for fixing findings)
-- `./amw-accessibility-auditor-agent.md` — holistic WCAG audit (distinct from my contrast pass)
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-design-md-author-agent](./amw-design-md-author-agent.md) — repair agent (for fixing findings)
+- [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — holistic WCAG audit (distinct from my contrast pass)
 - `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format
 - `../skills/amw-design-md/references/audit-passes.md` — per-pass check definitions
 - `../skills/amw-design-md/references/review-rubric.md` — severity classification rubric

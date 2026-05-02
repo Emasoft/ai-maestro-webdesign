@@ -7,7 +7,7 @@ also-in: external/hyperframes/packages/cli/src/commands/inspect.ts
 
 # TECH: `hyperframes inspect` — visual layout audit
 
-> For WCAG contrast checks, see `TECH-hyperframes-cli-validate.md`. `inspect` is a separate command focused on visual layout overflow, not color contrast.
+> For WCAG contrast checks, see [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md). `inspect` is a separate command focused on visual layout overflow, not color contrast.
 
 ## What it does
 
@@ -136,8 +136,8 @@ Example:
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-validate.md` — WCAG contrast audit (runs before `inspect` in the gate sequence)
-- `TECH-hyperframes-cli-lint.md` — static schema validation (runs first in the gate sequence)
-- `TECH-hyperframes-cli-render.md` — final step; only reached after `inspect` passes
+- [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md) — WCAG contrast audit (runs before `inspect` in the gate sequence)
+- [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md) — static schema validation (runs first in the gate sequence)
+- [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — final step; only reached after `inspect` passes
 - `../SKILL.md` — bridge invocation pattern and full gate sequence
 - `agents/amw-video-producer-agent.md` §6.7 — inspect as the mandatory pre-render gate in the video producer agent

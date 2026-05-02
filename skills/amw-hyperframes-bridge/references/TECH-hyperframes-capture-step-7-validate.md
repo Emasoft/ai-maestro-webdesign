@@ -4,10 +4,21 @@ category: hyperframes-capture-step
 source: external/hyperframes/skills/website-to-hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Validate sequence](#validate-sequence)
+  - [Gate](#gate)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Step 7 — Validate & Deliver
 
-> **Bridge note (v0.4.30+).** The bridge's pre-render gate sequence is `lint → validate → inspect → render` (see `../SKILL.md` and `TECH-hyperframes-cli-inspect.md`). This step file describes the upstream `website-to-hyperframes` pipeline, which predates the `inspect` command. For automated Phase B pipelines, insert `npx hyperframes inspect --json > inspect.json` between steps 2 (validate) and 3 (preview / render). `inspect` is the dedicated visual-layout-overflow audit; `validate` checks WCAG contrast + console errors during composition load only.
+> **Bridge note (v0.4.30+).** The bridge's pre-render gate sequence is `lint → validate → inspect → render` (see `../SKILL.md` and [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md)). This step file describes the upstream `website-to-hyperframes` pipeline, which predates the `inspect` command. For automated Phase B pipelines, insert `npx hyperframes inspect --json > inspect.json` between steps 2 (validate) and 3 (preview / render). `inspect` is the dedicated visual-layout-overflow audit; `validate` checks WCAG contrast + console errors during composition load only.
 
 ## What it does
 
@@ -90,6 +101,6 @@ Launch teaser · 1080 × 1920 · 25 s
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-step-6-build.md`
-- `TECH-hyperframes-cli-lint.md`, `TECH-hyperframes-cli-render.md`
+- [TECH-hyperframes-capture-step-6-build](TECH-hyperframes-capture-step-6-build.md)
+- [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md)
 - `../SKILL.md`

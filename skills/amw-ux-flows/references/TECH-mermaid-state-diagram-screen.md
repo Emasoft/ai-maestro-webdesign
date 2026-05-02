@@ -4,6 +4,18 @@ category: ux-flow-prd
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/mermaid-patterns.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Basic transitions](#basic-transitions)
+  - [Nested states](#nested-states)
+  - [Parallel states](#parallel-states)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-mermaid-state-diagram-screen
 
@@ -139,8 +151,8 @@ stateDiagram-v2
 ## Cross-references
 
 - `../SKILL.md` — Phase 2 of the workflow
-- `mermaid-patterns.md` — the full reference bundled in the skill
-- `TECH-mermaid-flowchart-screen-map.md` — sibling flowchart diagram
-- `TECH-mermaid-sequence-authenticated.md` — sibling sequence diagram
+- [mermaid-patterns](mermaid-patterns.md) — the full reference bundled in the skill
+- [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — sibling flowchart diagram
+- [TECH-mermaid-sequence-authenticated](TECH-mermaid-sequence-authenticated.md) — sibling sequence diagram
 - `../../amw-diagram-editorial/references/TECH-type-state-machine.md` —
   editorial HTML+SVG cousin for blog-ready state diagrams

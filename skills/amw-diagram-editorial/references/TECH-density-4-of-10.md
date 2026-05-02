@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-density-4-of-10
 
@@ -95,8 +104,8 @@ Still over 8. If the article is about *storage tiering*:
 ## Cross-references
 
 - `../SKILL.md` — non-negotiables list
-- `TECH-focal-accent-discipline.md` — the companion rule on focal
+- [TECH-focal-accent-discipline](TECH-focal-accent-discipline.md) — the companion rule on focal
   emphasis (they work together — focal + low density = clear diagram)
-- `TECH-type-nested.md` / `TECH-type-layers.md` — the two escape hatches
+- [TECH-type-nested](TECH-type-nested.md) / [TECH-type-layers](TECH-type-layers.md) — the two escape hatches
   for when content genuinely needs hierarchy
-- `troubleshooting.md` — diagnose "too cluttered"
+- [troubleshooting](troubleshooting.md) — diagnose "too cluttered"

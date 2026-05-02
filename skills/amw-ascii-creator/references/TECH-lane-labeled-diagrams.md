@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-lane-labeled-diagrams — swimlanes via `lanes[]` in diagram mode
 
@@ -63,7 +72,7 @@ render as L-elbows crossing rows.
 
 ## Cross-references
 
-- `./TECH-render-mode-diagram.md`
-- `./TECH-render-mode-layers.md`
+- [TECH-render-mode-diagram](./TECH-render-mode-diagram.md)
+- [TECH-render-mode-layers](./TECH-render-mode-layers.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

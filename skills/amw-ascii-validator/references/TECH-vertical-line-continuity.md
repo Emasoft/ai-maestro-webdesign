@@ -60,7 +60,7 @@ Example bad output it would catch:
 
 ## Cross-references
 
-- `./TECH-width-mismatch-rule.md`
-- `./TECH-box-corner-alignment.md`
+- [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
+- [TECH-box-corner-alignment](./TECH-box-corner-alignment.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

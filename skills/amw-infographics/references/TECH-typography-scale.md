@@ -112,8 +112,8 @@ Never 14-16px body — that's frontend spacing, not editorial.
 
 ## Cross-references
 
-- `TECH-font-system.md` — which fonts to use.
-- `TECH-dense-editorial-dna.md` — spacing and density signature.
-- `TECH-copy-guide-numbers.md` — formatting numbers for the scale.
+- [TECH-font-system](TECH-font-system.md) — which fonts to use.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — spacing and density signature.
+- [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — formatting numbers for the scale.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

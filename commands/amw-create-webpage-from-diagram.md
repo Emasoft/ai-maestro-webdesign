@@ -34,7 +34,7 @@ Thin wrapper — no new backing skill. Chains `bin/amw-diagram-detect-format.sh`
 
 ## Known lossiness (diagram → IR → ASCII → HTML chain)
 
-Per `skills/amw-diagram-formats/references/ir-schema.md` §5 lossy-conversion table, the round-trip through IR loses styling information that the ASCII renderer can't represent:
+Per [ir-schema](skills/amw-diagram-formats/references/ir-schema.md) §5 lossy-conversion table, the round-trip through IR loses styling information that the ASCII renderer can't represent:
 
 | Source format | Lost on the diagram-path-to-webpage trip |
 |---|---|
@@ -61,9 +61,9 @@ When running non-interactively (batch mode), pass `--ascii-approved` to `/amw-as
 
 ## Cross-references
 
-- `skills/amw-ascii-to-html/SKILL.md` — final HTML emission step.
-- `skills/amw-diagram-formats/references/ir-schema.md` — lossy-conversion table.
-- `skills/amw-diagram-formats/references/conversion-matrix.md` — canonical N×N routing rules.
+- [SKILL](skills/amw-ascii-to-html/SKILL.md) — final HTML emission step.
+- [ir-schema](skills/amw-diagram-formats/references/ir-schema.md) — lossy-conversion table.
+- [conversion-matrix](skills/amw-diagram-formats/references/conversion-matrix.md) — canonical N×N routing rules.
 - `bin/amw-diagram-detect-format.sh`, `bin/amw-diagram-ir.py`, `bin/amw-validate-ascii.py` — backing tools.
 - `/amw-ascii-to-html` — terminal step.
 - `/amw-convert-any-diagram-format` — alternative when SVG→HTML direct-wrap is desired (no re-ASCII round-trip).

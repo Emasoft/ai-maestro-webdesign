@@ -105,19 +105,19 @@ Every file under `references/` is a short catalogue of proven patterns. Pick the
 
 | Category | Reference file | Use for |
 |----------|----------------|---------|
-| Flowcharts | [`references/flowcharts.md`](references/flowcharts.md) | Decision flows, request pipelines, control flow |
-| State machines | [`references/state-machines.md`](references/state-machines.md) | Protocol states, lifecycles, transitions |
-| Trees | [`references/trees.md`](references/trees.md) | File trees, class hierarchies, org charts |
-| Data structures | [`references/data-structures.md`](references/data-structures.md) | Memory layouts, packet formats, bit fields, linked lists |
-| Network / Architecture | [`references/network-topology.md`](references/network-topology.md) | K8s topology, service meshes, observability stacks |
-| Sequences / Tables | [`references/sequences-tables.md`](references/sequences-tables.md) | Request flows, timelines, comparison tables |
-| Graphs / Annotations | [`references/graphs-annotations.md`](references/graphs-annotations.md) | DAGs, code annotations, before/after, UI sketches |
+| Flowcharts | [[flowcharts](references/flowcharts.md)](references/flowcharts.md) | Decision flows, request pipelines, control flow |
+| State machines | [[state-machines](references/state-machines.md)](references/state-machines.md) | Protocol states, lifecycles, transitions |
+| Trees | [[trees](references/trees.md)](references/trees.md) | File trees, class hierarchies, org charts |
+| Data structures | [[data-structures](references/data-structures.md)](references/data-structures.md) | Memory layouts, packet formats, bit fields, linked lists |
+| Network / Architecture | [[network-topology](references/network-topology.md)](references/network-topology.md) | K8s topology, service meshes, observability stacks |
+| Sequences / Tables | [[sequences-tables](references/sequences-tables.md)](references/sequences-tables.md) | Request flows, timelines, comparison tables |
+| Graphs / Annotations | [[graphs-annotations](references/graphs-annotations.md)](references/graphs-annotations.md) | DAGs, code annotations, before/after, UI sketches |
 
 When responding:
 
 - Pick the closest reference file first.
 - Reuse or adapt a pattern from `references/`. Do not re-invent.
-- Keep this `SKILL.md` as the guidance index, not as the full example catalog.
+- Keep this [SKILL](SKILL.md) as the guidance index, not as the full example catalog.
 
 ## Writing diagrams inside code comments
 
@@ -405,13 +405,13 @@ See the worked examples in the per-mode sub-sections above and in references/.
 - `../amw-ascii-to-svg/SKILL.md` — downstream: convert an approved ASCII diagram to SVG
 - `../amw-diagram-svg/SKILL.md` — skip ASCII entirely, go direct to SVG
 - `../amw-design-principles/ai-slop-avoid.md` — misaligned ASCII is a form of AI-slop
-- [`references/flowcharts.md`](references/flowcharts.md) — control-flow / decision trees / pipelines
-- [`references/state-machines.md`](references/state-machines.md) — protocol states, lifecycles
-- [`references/trees.md`](references/trees.md) — hierarchies, file trees, class trees
-- [`references/data-structures.md`](references/data-structures.md) — packet / struct / bit-field layouts
-- [`references/network-topology.md`](references/network-topology.md) — service architectures, K8s, observability
-- [`references/sequences-tables.md`](references/sequences-tables.md) — request flows, timelines, tables
-- [`references/graphs-annotations.md`](references/graphs-annotations.md) — DAGs, code annotations, before/after
+- [[flowcharts](references/flowcharts.md)](references/flowcharts.md) — control-flow / decision trees / pipelines
+- [[state-machines](references/state-machines.md)](references/state-machines.md) — protocol states, lifecycles
+- [[trees](references/trees.md)](references/trees.md) — hierarchies, file trees, class trees
+- [[data-structures](references/data-structures.md)](references/data-structures.md) — packet / struct / bit-field layouts
+- [[network-topology](references/network-topology.md)](references/network-topology.md) — service architectures, K8s, observability
+- [[sequences-tables](references/sequences-tables.md)](references/sequences-tables.md) — request flows, timelines, tables
+- [[graphs-annotations](references/graphs-annotations.md)](references/graphs-annotations.md) — DAGs, code annotations, before/after
 
 ## Error Handling
 

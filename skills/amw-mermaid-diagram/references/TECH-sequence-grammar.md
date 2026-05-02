@@ -101,9 +101,9 @@ sequenceDiagram
 
 ## Cross-references
 
-- `TECH-flowchart-grammar.md` — for non-temporal flows.
-- `TECH-state-grammar.md` — for FSMs where time isn't the axis.
-- `TECH-edge-styles.md` — not directly — sequence arrows differ from
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-temporal flows.
+- [TECH-state-grammar](TECH-state-grammar.md) — for FSMs where time isn't the axis.
+- [TECH-edge-styles](TECH-edge-styles.md) — not directly — sequence arrows differ from
   flowchart arrows.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

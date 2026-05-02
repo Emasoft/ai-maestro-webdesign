@@ -4,6 +4,19 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When arrows are MANDATORY](#when-arrows-are-mandatory)
+- [Rule](#rule)
+- [Horizontal arrow connector](#horizontal-arrow-connector)
+- [Vertical connector line between sections](#vertical-connector-line-between-sections)
+- [Flow diagram row](#flow-diagram-row)
+- [Phosphor Icons CDN](#phosphor-icons-cdn)
+- [Labels on arrows (for flow diagrams)](#labels-on-arrows-for-flow-diagrams)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Arrows & connectors — 71% of pieces
 
@@ -121,9 +134,9 @@ names, token names:
 
 ## Cross-references
 
-- `TECH-flow-with-arrows-component.md` — the full flow component.
-- `TECH-flow-poster-archetype.md` — the archetype where arrows
+- [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the full flow component.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — the archetype where arrows
   dominate.
-- `TECH-flywheel-loop-component.md` — circular arrow pattern.
+- [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular arrow pattern.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

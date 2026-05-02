@@ -4,6 +4,27 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The checklist](#the-checklist)
+  - [Structure](#structure)
+  - [Spacing](#spacing)
+  - [Visual](#visual)
+  - [Density](#density)
+  - [Playbook compliance (if applicable)](#playbook-compliance-if-applicable)
+  - [Data integrity](#data-integrity)
+  - [Export readiness](#export-readiness)
+- [Common failure modes](#common-failure-modes)
+  - [1. The SaaS Landing Page](#1-the-saas-landing-page)
+  - [2. The Dashboard](#2-the-dashboard)
+  - [3. The Slide Deck](#3-the-slide-deck)
+  - [4. The Component Demo](#4-the-component-demo)
+  - [5. The Floating Islands](#5-the-floating-islands)
+- [After checklist → run Reduction Pass](#after-checklist-run-reduction-pass)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Anti-Frontend Checklist — pre-delivery gate
 
@@ -93,7 +114,7 @@ Sections isolated, no visual connection to each other.
 
 ## After checklist → run Reduction Pass
 
-See `TECH-reduction-pass.md`. Remove gridlines, redundant labels,
+See [TECH-reduction-pass](TECH-reduction-pass.md). Remove gridlines, redundant labels,
 unjustified decoration — scaled to the aesthetic.
 
 ## Gotchas
@@ -106,8 +127,8 @@ unjustified decoration — scaled to the aesthetic.
 
 ## Cross-references
 
-- `TECH-dense-editorial-dna.md` — the parent philosophy.
-- `TECH-section-variety-rule.md` — the variety rule this enforces.
-- `TECH-reduction-pass.md` — the complementary strip-it-down pass.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the parent philosophy.
+- [TECH-section-variety-rule](TECH-section-variety-rule.md) — the variety rule this enforces.
+- [TECH-reduction-pass](TECH-reduction-pass.md) — the complementary strip-it-down pass.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

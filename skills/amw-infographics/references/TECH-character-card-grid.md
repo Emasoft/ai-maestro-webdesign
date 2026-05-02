@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/resources/style-details.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [CSS](#css)
+- [HTML](#html)
+- [The tight-grid signature](#the-tight-grid-signature)
+- [Stat bar sizing](#stat-bar-sizing)
+- [When to use](#when-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Character / NFT card grid — tight 5-column
 
@@ -143,8 +154,8 @@ that looks like a product grid, not a game roster.
 
 ## Cross-references
 
-- `TECH-game-overview-playbook.md` — where this pattern is central.
-- `TECH-tier-comparison-component.md` — for non-visual tier data.
-- `TECH-dense-editorial-dna.md` — why gaps are 2px, not 12px.
+- [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — where this pattern is central.
+- [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — for non-visual tier data.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — why gaps are 2px, not 12px.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

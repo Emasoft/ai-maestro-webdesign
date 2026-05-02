@@ -27,7 +27,7 @@ Convert any supported diagram to a different format using the canonical N×N con
 | **mermaid** | direct | via SVG | direct | — | direct |
 | **PNG** | **REFUSED** | **REFUSED** | **REFUSED** | **REFUSED** | — |
 
-Full routing rules: `skills/amw-diagram-formats/references/conversion-matrix.md`.
+Full routing rules: [conversion-matrix](skills/amw-diagram-formats/references/conversion-matrix.md).
 
 ## PNG hard rule
 

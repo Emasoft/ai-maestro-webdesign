@@ -41,6 +41,6 @@ Produces `components/button-0.png`, `components/button-1.png`, `components/card-
 
 ## Cross-references
 
-- `TECH-designlang-full-mode.md`
-- `TECH-designlang-brands.md` — pairs well when comparing brand component galleries
+- [TECH-designlang-full-mode](TECH-designlang-full-mode.md)
+- [TECH-designlang-brands](TECH-designlang-brands.md) — pairs well when comparing brand component galleries
 - `../SKILL.md`

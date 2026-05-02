@@ -4,6 +4,15 @@ category: ux-process
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: UX process — Handoff & Iterate (Phase 5)
 
@@ -58,5 +67,5 @@ Spec for Sarah's "basics rail" button:
 
 ## Cross-references
 
-- `TECH-ux-process-prototype.md` — upstream (Phase 4)
+- [TECH-ux-process-prototype](TECH-ux-process-prototype.md) — upstream (Phase 4)
 - `../SKILL.md`

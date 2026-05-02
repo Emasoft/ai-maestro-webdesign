@@ -164,7 +164,7 @@ A high-contrast neutral palette anchored by a single earthy red accent.
 
 ## Cross-references
 
-- `./TECH-01-yaml-frontmatter.md` — YAML rules
-- `./TECH-05-token-references.md` — using `{colors.X}` in components
-- `./TECH-11-validation-and-lint.md` — running the contrast checker
+- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+- [TECH-05-token-references](./TECH-05-token-references.md) — using `{colors.X}` in components
+- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the contrast checker
 - `../ai-slop-avoid.md` — color-token anti-patterns

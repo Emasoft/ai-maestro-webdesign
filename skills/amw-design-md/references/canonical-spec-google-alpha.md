@@ -1,10 +1,26 @@
+## Table of Contents
+
+- [File structure (spec.md L6-L8)](#file-structure-specmd-l6-l8)
+- [YAML frontmatter schema (spec.md L17-L40, L43-L58)](#yaml-frontmatter-schema-specmd-l17-l40-l43-l58)
+  - [Top-level fields](#top-level-fields)
+  - [Type definitions](#type-definitions)
+  - [Component property tokens (spec.md L312-L319)](#component-property-tokens-specmd-l312-l319)
+- [Markdown body — the 8 fixed sections (spec.md L82-L92)](#markdown-body-the-8-fixed-sections-specmd-l82-l92)
+  - [Section content guidance](#section-content-guidance)
+- [Recommended token names (non-normative) (spec.md L334-L342)](#recommended-token-names-non-normative-specmd-l334-l342)
+- [Consumer behavior for unknown content (spec.md L344-L356)](#consumer-behavior-for-unknown-content-specmd-l344-l356)
+- [Validation rules (per the official linter)](#validation-rules-per-the-official-linter)
+- [Worked example (full file)](#worked-example-full-file)
+- [Cross-references](#cross-references)
+
+
 # Canonical DESIGN.md spec — Variant 1 (official `@google/design.md` alpha)
 
 **Source:** `docs_dev/extracted/google-labs/design.md-main/design.md-main/docs/spec.md` (Google Labs `design.md` repository, v0.1.1, version literal `alpha`).
 
 This document distills that spec for plugin use. All quoted material is verbatim from the source; line numbers refer to the source file. The official linter is `npx @google/design.md lint <file>`.
 
-This is the **PRIMARY** format for the plugin. New DESIGN.md files authored by `amw-design-md-author-agent` use this format. Variant 2 (community 9-section) is accepted as input via `bin/amw-design-md-convert-v2-to-v1.py` and documented in `community-9-section-spec.md`.
+This is the **PRIMARY** format for the plugin. New DESIGN.md files authored by `amw-design-md-author-agent` use this format. Variant 2 (community 9-section) is accepted as input via `bin/amw-design-md-convert-v2-to-v1.py` and documented in [community-9-section-spec](community-9-section-spec.md).
 
 ---
 
@@ -301,10 +317,10 @@ the rounded-md scale and the primary/secondary/tertiary color hierarchy.
 
 ## Cross-references
 
-- `./community-9-section-spec.md` — Variant 2 (parallel community format)
-- `./extension-sections-10-14.md` — optional extensions (Naming / Page Specs / Composite Components / Token Mapping / i18n)
-- `./canonical-template.md` — fillable Variant 1 skeleton
-- `./TECH-01-yaml-frontmatter.md` — authoring the YAML frontmatter
-- `./TECH-11-validation-and-lint.md` — running the linter and pure-Python validator
+- [community-9-section-spec](./community-9-section-spec.md) — Variant 2 (parallel community format)
+- [extension-sections-10-14](./extension-sections-10-14.md) — optional extensions (Naming / Page Specs / Composite Components / Token Mapping / i18n)
+- [canonical-template](./canonical-template.md) — fillable Variant 1 skeleton
+- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — authoring the YAML frontmatter
+- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the linter and pure-Python validator
 - `<plugin-root>/bin/amw-design-md-lint.sh` — wrapper around `npx @google/design.md`
 - `<plugin-root>/bin/amw-design-md-validate.py` — pure-Python offline validator

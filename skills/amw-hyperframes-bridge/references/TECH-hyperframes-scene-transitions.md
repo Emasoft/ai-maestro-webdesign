@@ -4,6 +4,21 @@ category: hyperframes-composition
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Rule 1 — ALWAYS use transitions between scenes](#rule-1-always-use-transitions-between-scenes)
+  - [Rule 2 — ALWAYS use entrance animations on every scene](#rule-2-always-use-entrance-animations-on-every-scene)
+  - [Rule 3 — NEVER use exit animations except on the final scene](#rule-3-never-use-exit-animations-except-on-the-final-scene)
+  - [Rule 4 — Final scene only may fade elements out](#rule-4-final-scene-only-may-fade-elements-out)
+  - [Wrong pattern](#wrong-pattern)
+  - [Right pattern](#right-pattern)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Scene transitions (non-negotiable rules)
 
@@ -95,6 +110,6 @@ Two-scene composition skeleton:
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`, `TECH-hyperframes-timeline-contract.md`
-- `TECH-hyperframes-non-negotiables.md`
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md)
+- [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
 - `../SKILL.md`

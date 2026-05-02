@@ -4,6 +4,15 @@ category: ascii-validate
 source: ascii-diagram-validator-main/README.md
 also-in: box-diagram-master/skills/amw-box-diagram/validate.py
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-safe-char-palette — the characters that always render 1-col
 
@@ -18,7 +27,7 @@ both the validator and copy-paste between editors / terminals / chat.
 
 Before authoring any ASCII diagram. This is the palette to copy into scratch
 instead of improvising. Any char outside this list should be double-checked
-against `TECH-forbidden-chars-banlist.md` and `TECH-wide-character-detection.md`.
+against [TECH-forbidden-chars-banlist](TECH-forbidden-chars-banlist.md) and [TECH-wide-character-detection](TECH-wide-character-detection.md).
 
 ## How it works
 
@@ -54,8 +63,8 @@ Arrows:       → ← ↑ ↓ ↔ ↕
 
 ## Cross-references
 
-- `./TECH-forbidden-chars-banlist.md`
-- `./TECH-wide-character-detection.md`
+- [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
+- [TECH-wide-character-detection](./TECH-wide-character-detection.md)
 - `../../amw-box-diagram/SKILL.md` (character set table)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

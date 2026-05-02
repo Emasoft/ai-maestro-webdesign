@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/sequences-tables.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-compact-table — pipe-separated table with dash underline
 
@@ -62,6 +71,6 @@ and status-code tables where visual ceremony is overhead.
 
 - `../../amw-ascii-creator/references/TECH-render-mode-table.md` (JSON-driven,
   supports cell-spans, multi-row headers)
-- `./sequences-tables.md` (legacy pattern file)
+- [sequences-tables](./sequences-tables.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

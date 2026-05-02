@@ -4,6 +4,16 @@ category: editorial-brand
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Minimal `<head>` snippet](#minimal-head-snippet)
+- [Cross-references](#cross-references)
+
 
 # TECH-three-family-typography
 
@@ -74,7 +84,7 @@ Incorrect (mono creep — everything reads as code):
 
 - **Italic Instrument Serif is reserved for editorial asides.** Using it
   for normal titles flattens the signature look. Regular 400 for titles,
-  italic 400 for in-margin callouts (see `primitive-annotation.md`).
+  italic 400 for in-margin callouts (see [primitive-annotation](primitive-annotation.md)).
 - **System fallbacks matter.** The editorial feel degrades gracefully
   without the exact Google/Bunny fonts; the `ui-sans-serif` / `ui-serif`
   / `ui-monospace` CSS generic families are the editorial plan-B. Never
@@ -98,8 +108,8 @@ Incorrect (mono creep — everything reads as code):
 ## Cross-references
 
 - `../SKILL.md` — typography overview in Design System section
-- `design-system.md` — full type scale with sizes per role
-- `style-guide.md` — the font-stack record (user-editable)
-- `TECH-brand-url-onboarding.md` — onboarding substitutes families but
+- [design-system](design-system.md) — full type scale with sizes per role
+- [style-guide](style-guide.md) — the font-stack record (user-editable)
+- [TECH-brand-url-onboarding](TECH-brand-url-onboarding.md) — onboarding substitutes families but
   keeps the three-role map
-- `primitive-annotation.md` — italic Instrument Serif for in-margin asides
+- [primitive-annotation](primitive-annotation.md) — italic Instrument Serif for in-margin asides

@@ -4,6 +4,21 @@ category: svg-animation
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The `transform-box` rule](#the-transform-box-rule)
+- [Spinner (CSS)](#spinner-css)
+- [Line drawing reveal (pathLength + stroke-dasharray)](#line-drawing-reveal-pathlength-stroke-dasharray)
+- [Staggered entrance](#staggered-entrance)
+- [SMIL animation (works in `<img>` tags)](#smil-animation-works-in-img-tags)
+  - [Attribute animation](#attribute-animation)
+  - [Transform animation](#transform-animation)
+  - [Motion along a path](#motion-along-a-path)
+  - [Sequential timing via `begin`](#sequential-timing-via-begin)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # CSS + SMIL animation in SVG
 
@@ -129,13 +144,13 @@ the SVG is embedded as `<img src>` or CSS `background-image`.
 - Use `fill="freeze"` on one-shot SMIL animations so they hold their
   end state.
 - Animations must respect `prefers-reduced-motion` — see
-  `TECH-reduced-motion.md`.
+  [TECH-reduced-motion](TECH-reduced-motion.md).
 
 ## Cross-references
 
-- `TECH-reduced-motion.md` — mandatory accessibility override.
-- `TECH-paint-order-and-spread-method.md` — `pathLength="1"` is key
+- [TECH-reduced-motion](TECH-reduced-motion.md) — mandatory accessibility override.
+- [TECH-paint-order-and-spread-method](TECH-paint-order-and-spread-method.md) — `pathLength="1"` is key
   for line-draw.
-- `TECH-atmospheric-effects.md` — stars, rain use these patterns.
+- [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — stars, rain use these patterns.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

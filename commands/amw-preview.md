@@ -34,7 +34,7 @@ Also capture console logs and any network failures → `/tmp/amw-preview-<slug>-
 
 ### 4. Self-check against design-principles
 
-Load `skills/amw-design-principles/ai-slop-avoid.md` in lightweight mode (scan for matches, don't reload the whole file into main context). Check the rendered page for the most common slop signals:
+Load [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md) in lightweight mode (scan for matches, don't reload the whole file into main context). Check the rendered page for the most common slop signals:
 
 - Body font detected — is it Inter / Roboto / Arial / system-ui (item 7)?
 - Primary CTA present and ≥ 44×44px hit target (Fitts's Law / design-principles §Dimensional hard limits)?

@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/state-machines.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-state-machine-arrows — TCP-style state diagram
 
@@ -65,7 +74,7 @@ the canonical TCP connection state diagram (`CLOSED → OPENING → CONNECTED
 
 ## Cross-references
 
-- `./state-machines.md` (legacy pattern file)
+- [state-machines](./state-machines.md) (legacy pattern file)
 - `../../amw-text-visual-state/references/TECH-state-guards-and-actions.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

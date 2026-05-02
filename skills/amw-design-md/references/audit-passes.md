@@ -1,8 +1,21 @@
+## Table of Contents
+
+- [Pass 1 — Structural](#pass-1-structural)
+- [Pass 2 — Drift](#pass-2-drift)
+- [Pass 3 — Accessibility](#pass-3-accessibility)
+- [Pass 4 — Completeness](#pass-4-completeness)
+- [Pass 5 — Consistency](#pass-5-consistency)
+- [Output file format](#output-file-format)
+- [What the auditor does NOT do](#what-the-auditor-does-not-do)
+- [Pre-flight checks](#pre-flight-checks)
+- [Cross-references](#cross-references)
+
+
 # 5-pass DESIGN.md audit
 
 **Adapted from:** `docs_dev/extracted/google-labs/MDDesign-main/MDDesign-main/commands/critique.md` (Apache-2.0). The MDDesign skill defines a 5-pass audit; this file ports the audit dimensions to the plugin's `amw-design-md-auditor-agent` and the `bin/amw-design-md-validate.py` offline validator.
 
-The 5-pass audit is broader than `review-rubric.md`. The rubric is a structured pass/fail checklist for a single file; the audit examines a DESIGN.md against the **actual code** of the project that uses it, looking for drift, orphan tokens, contrast failures, and consistency gaps.
+The 5-pass audit is broader than [review-rubric](review-rubric.md). The rubric is a structured pass/fail checklist for a single file; the audit examines a DESIGN.md against the **actual code** of the project that uses it, looking for drift, orphan tokens, contrast failures, and consistency gaps.
 
 The auditor produces `<DESIGN.md>.critique.md` adjacent to the input, listing findings with stable IDs (`F1`, `F2`, ...) and proposed fixes. The auditor never edits DESIGN.md itself.
 
@@ -208,9 +221,9 @@ Before starting Pass 1:
 
 ## Cross-references
 
-- `./review-rubric.md` — single-file pass/fail checklist
-- `./canonical-spec-google-alpha.md` — Variant 1 spec
-- `./community-9-section-spec.md` — Variant 2 spec
+- [review-rubric](./review-rubric.md) — single-file pass/fail checklist
+- [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
+- [community-9-section-spec](./community-9-section-spec.md) — Variant 2 spec
 - `<plugin-root>/bin/amw-design-md-lint.sh` — official linter
 - `<plugin-root>/bin/amw-design-md-validate.py` — pure-Python validator
 - `<plugin-root>/bin/amw-design-md-contrast.py` — contrast checker

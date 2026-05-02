@@ -4,6 +4,16 @@ category: ux-flow-wireframe
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Validation pass](#validation-pass)
+- [Cross-references](#cross-references)
+
 
 # TECH-wireframe-index-inventory
 
@@ -35,7 +45,7 @@ Fixed table schema:
 | `Outgoing links` | Every screen this one links to (comma-separated) |
 
 The `Outgoing links` column is the audit trail for
-`TECH-no-dead-end-screens.md` — any row with an empty value is a bug.
+[TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — any row with an empty value is a bug.
 
 ## Minimal example
 
@@ -67,7 +77,7 @@ Four-screen inventory:
   tag. If the Login screen has 3 buttons that all go to `home.html`,
   `home.html` appears ONCE.
 - **Empty `Outgoing links` = dead-end = bug.** The inventory is a
-  mechanical audit of `TECH-no-dead-end-screens.md`; empty values must
+  mechanical audit of [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md); empty values must
   be fixed before shipping.
 - **Sort by natural flow order**, not alphabetical. Splash → Login →
   Home → everything-else — matches the reader's mental traversal.
@@ -86,7 +96,7 @@ After emitting `INDEX.md`, run a quick sanity check:
 ## Cross-references
 
 - `../SKILL.md` — Phase 3 step 3 (index generation)
-- `TECH-wireframe-html-mobile-first.md` — the HTML files being indexed
-- `TECH-no-dead-end-screens.md` — the rule this index audits
-- `TECH-clickable-prototype-navigation.md` — source of the link data
-- `TECH-4-phase-mandatory-workflow.md` — Phase 4 consumes this index
+- [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the HTML files being indexed
+- [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — the rule this index audits
+- [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — source of the link data
+- [TECH-4-phase-mandatory-workflow](TECH-4-phase-mandatory-workflow.md) — Phase 4 consumes this index

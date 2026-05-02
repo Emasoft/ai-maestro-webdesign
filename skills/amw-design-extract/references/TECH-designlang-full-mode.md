@@ -4,6 +4,15 @@ category: designlang-url-extract
 source: SKILLS-TO-INTEGRATE/web-design/designlang-design-extract/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `--full` — everything-at-once extraction
 
@@ -47,6 +56,6 @@ npx designlang https://stripe.com --full
 
 ## Cross-references
 
-- `TECH-designlang-basic-extraction.md` — non-`--full` default
-- `TECH-designlang-dark-mode.md`, `TECH-designlang-responsive.md`, `TECH-designlang-interactions.md`, `TECH-designlang-screenshots.md` — the four modes `--full` enables
+- [TECH-designlang-basic-extraction](TECH-designlang-basic-extraction.md) — non-`--full` default
+- [TECH-designlang-dark-mode](TECH-designlang-dark-mode.md), [TECH-designlang-responsive](TECH-designlang-responsive.md), [TECH-designlang-interactions](TECH-designlang-interactions.md), [TECH-designlang-screenshots](TECH-designlang-screenshots.md) — the four modes `--full` enables
 - `../SKILL.md`

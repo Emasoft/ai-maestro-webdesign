@@ -117,8 +117,8 @@ overlay an SVG:
 
 ## Cross-references
 
-- `TECH-ecosystem-playbook.md` — when to reach for this archetype.
-- `TECH-flow-poster-archetype.md` — if flows dominate more than hub.
-- `TECH-flywheel-loop-component.md` — circular variant.
+- [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — when to reach for this archetype.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — if flows dominate more than hub.
+- [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

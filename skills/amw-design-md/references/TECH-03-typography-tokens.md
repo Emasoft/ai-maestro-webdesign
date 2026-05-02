@@ -142,7 +142,7 @@ Companion `tokens.css` (emitted by `bin/amw-design-md-emit-companions.py`) bakes
 
 ## CJK considerations
 
-For Japanese / Chinese / Korean locale variants, the font stack and metrics are entirely different. See `TECH-cjk-localization.md`. Key points:
+For Japanese / Chinese / Korean locale variants, the font stack and metrics are entirely different. See [TECH-cjk-localization](TECH-cjk-localization.md). Key points:
 
 - Add a JP/KO/ZH primary font BEFORE the Latin fallback: `"Noto Sans JP", "Hiragino Sans", "Public Sans"`.
 - Reduce body font-size by 1-2 px (CJK ideographs read smaller comfortably).
@@ -189,7 +189,7 @@ typography:
 
 ## Cross-references
 
-- `./TECH-01-yaml-frontmatter.md` — YAML rules
-- `./TECH-05-token-references.md` — using `{typography.X}` in components
-- `./TECH-cjk-localization.md` — CJK font / size / line-height adjustments
+- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+- [TECH-05-token-references](./TECH-05-token-references.md) — using `{typography.X}` in components
+- [TECH-cjk-localization](./TECH-cjk-localization.md) — CJK font / size / line-height adjustments
 - `../canonical-spec-google-alpha.md` — full Typography spec

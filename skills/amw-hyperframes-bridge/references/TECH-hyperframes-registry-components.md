@@ -4,6 +4,18 @@ category: hyperframes-registry
 source: external/hyperframes/skills/hyperframes-registry/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Wiring process](#wiring-process)
+  - [Example component file](#example-component-file)
+  - [Merging into host](#merging-into-host)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Wiring registry components into host compositions
 
@@ -98,6 +110,6 @@ hyperframes add grain-overlay
 
 ## Cross-references
 
-- `TECH-hyperframes-registry-add.md`, `TECH-hyperframes-registry-blocks.md`
-- `TECH-hyperframes-composition-core.md`
+- [TECH-hyperframes-registry-add](TECH-hyperframes-registry-add.md), [TECH-hyperframes-registry-blocks](TECH-hyperframes-registry-blocks.md)
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
 - `../SKILL.md`

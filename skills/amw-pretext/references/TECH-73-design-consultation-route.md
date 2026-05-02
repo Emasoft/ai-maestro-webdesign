@@ -4,6 +4,15 @@ category: consult
 source: pretext-skills/SKILL-20.md (gstack design-consultation)
 also-in: SKILL-18.md, SKILL-22.md, SKILL-24.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Full-pipeline design consultation (gstack design-html)
 

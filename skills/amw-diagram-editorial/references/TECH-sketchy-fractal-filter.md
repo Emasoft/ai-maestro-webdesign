@@ -4,6 +4,16 @@ category: editorial-noise
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Browser-support caveat](#browser-support-caveat)
+- [Cross-references](#cross-references)
+
 
 # TECH-sketchy-fractal-filter
 
@@ -37,7 +47,7 @@ Two SVG filter nodes always used together:
 2. `<feDisplacementMap>` — maps that noise onto the source graphic's
    x/y coordinates, producing the jittered hand-drawn look.
 
-Parameters (from `primitive-sketchy.md`):
+Parameters (from [primitive-sketchy](primitive-sketchy.md)):
 
 | Attribute | Value | Rationale |
 |---|---|---|
@@ -96,9 +106,9 @@ graceful degradation, not a failure.
 ## Cross-references
 
 - `../SKILL.md` — Primitives section
-- `primitive-sketchy.md` — full primitive spec with browser-support notes
-- `TECH-four-px-grid-snap.md` — grid rule that still applies
-- `design-system.md` — standard 1px stroke convention (this primitive
+- [primitive-sketchy](primitive-sketchy.md) — full primitive spec with browser-support notes
+- [TECH-four-px-grid-snap](TECH-four-px-grid-snap.md) — grid rule that still applies
+- [design-system](design-system.md) — standard 1px stroke convention (this primitive
   overrides to 1.5px locally)
 - `../../amw-ascii-diagrams-reference/SKILL.md` — ASCII alternative for
   contexts that need to look even more casual

@@ -72,13 +72,13 @@ The output is the diagram. No prose wrapper, no explanation, unless the caller e
 
 ## Core pipeline
 
-1. **Graph generation** — call the LLM with the verbatim system prompt in `references/prompts.md` (assistant prefill `{` to force JSON-first output). The prompt encodes the 3–5-layer, 6–12-node, ≤ floor(n × 0.8) edge rules and the five-layer color palette. The JSON response is parsed (and repaired if needed via the recipe in `prompts.md`) to produce the internal graph — the single source of truth for all formats.
-2. **Stage 1 validation** — run every check in `references/validation.md` § Stage 1 on the raw graph: layer count (2–6 hard, 3–5 preferred), node count (4–14 hard, 8–10 preferred), balanced layout (≤ 5 nodes per layer), label/description quality, edge integrity (no danglers, no self-loops, no reverse duplicates, edge budget enforced), ID integrity, layer-order sequence. Apply every listed fix inline. If re-generation is required (too few layers or nodes), discard and repeat step 1.
-3. **Format transformation** — run the transform matching `output_format`, per `references/formats.md`:
+1. **Graph generation** — call the LLM with the verbatim system prompt in [prompts](references/prompts.md) (assistant prefill `{` to force JSON-first output). The prompt encodes the 3–5-layer, 6–12-node, ≤ floor(n × 0.8) edge rules and the five-layer color palette. The JSON response is parsed (and repaired if needed via the recipe in `prompts.md`) to produce the internal graph — the single source of truth for all formats.
+2. **Stage 1 validation** — run every check in [validation](references/validation.md) § Stage 1 on the raw graph: layer count (2–6 hard, 3–5 preferred), node count (4–14 hard, 8–10 preferred), balanced layout (≤ 5 nodes per layer), label/description quality, edge integrity (no danglers, no self-loops, no reverse duplicates, edge budget enforced), ID integrity, layer-order sequence. Apply every listed fix inline. If re-generation is required (too few layers or nodes), discard and repeat step 1.
+3. **Format transformation** — run the transform matching `output_format`, per [formats](references/formats.md):
    - `graph` → return the validated JSON as-is
    - `svg` → run the layout algorithm (820px canvas, 160×64 node cards, centred per-layer rows, cubic-bezier downward edges, defs/grid/arrow marker, accent bars, title block)
    - `png` → same SVG + the standard five-line PNG-export instructions block appended after `</svg>`
-4. **Stage 2 validation** — run the format-specific checks in `references/validation.md` § Stage 2: SVG well-formedness (`<svg>` root + `<defs>` + arrow marker + no unescaped `&` / `<` in text), SVG layout sanity (node count, layer band count, no overflow, no overlap, edges drawn before nodes), PNG (SVG checks + instructions appended after SVG, never before). Apply every listed fix. If any SVG layout-sanity check fails, discard and re-run step 3 from the validated graph.
+4. **Stage 2 validation** — run the format-specific checks in [validation](references/validation.md) § Stage 2: SVG well-formedness (`<svg>` root + `<defs>` + arrow marker + no unescaped `&` / `<` in text), SVG layout sanity (node count, layer band count, no overflow, no overlap, edges drawn before nodes), PNG (SVG checks + instructions appended after SVG, never before). Apply every listed fix. If any SVG layout-sanity check fails, discard and re-run step 3 from the validated graph.
 5. **Return** — return the output. No prose wrapper.
 
 ## Versioning (optional, opt-in)
@@ -211,9 +211,9 @@ Spanish — "Agrega un servicio de cache", etc.). Translated to English below.
 
 ## Instructions
 
-1. Call the LLM with the system prompt from `references/prompts.md` (assistant prefill `{` to force JSON output) to generate the graph; enforce 3–5 layers, 6–12 nodes, and the edge budget rule.
-2. Run Stage 1 validation per `references/validation.md`: check layer count, node count, balanced layout, label quality, edge integrity, and ID integrity; apply all listed fixes inline.
-3. Select the output format (`graph`, `svg`, or `png`) and run the matching format transformation from `references/formats.md`.
+1. Call the LLM with the system prompt from [prompts](references/prompts.md) (assistant prefill `{` to force JSON output) to generate the graph; enforce 3–5 layers, 6–12 nodes, and the edge budget rule.
+2. Run Stage 1 validation per [validation](references/validation.md): check layer count, node count, balanced layout, label quality, edge integrity, and ID integrity; apply all listed fixes inline.
+3. Select the output format (`graph`, `svg`, or `png`) and run the matching format transformation from [formats](references/formats.md).
 4. Run Stage 2 validation (format-specific checks); fix any SVG well-formedness or layout-sanity issues; if re-generation is required, discard and repeat from step 1.
 5. If versioning is enabled, write the output and update `history.yaml` with the new version entry.
 6. Return the output without a prose wrapper; report artifact paths.
@@ -252,7 +252,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 
 ## Examples
 
-See the worked examples in the per-mode sub-sections above and in `references/examples.md`.
+See the worked examples in the per-mode sub-sections above and in [examples](references/examples.md).
 
 ## References
 
@@ -424,17 +424,17 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - `../amw-ascii-to-svg/SKILL.md` — receives routing when the user pastes an ASCII architecture sketch; that skill may defer here when the subject is a layered architecture rather than a freeform figure
 - `../amw-ux-flows/SKILL.md` — the sibling for user-journey / task-flow / onboarding-funnel charts (not architecture)
 - `/amw-ascii-to-svg` — the user-facing slash command that routes here when the pasted ASCII is architectural in nature
-- `references/prompts.md` — verbatim LLM system prompt, API call pattern, and JSON-repair recipe
-- `references/validation.md` — Stage 1 (graph) and Stage 2 (format) validation checks and fixes
-- `references/formats.md` — transform specifications for all four output formats, plus SVG layout constants and height formula
-- `references/examples.md` — a fully worked SaaS-analytics-platform example rendered across all four formats
+- [prompts](references/prompts.md) — verbatim LLM system prompt, API call pattern, and JSON-repair recipe
+- [validation](references/validation.md) — Stage 1 (graph) and Stage 2 (format) validation checks and fixes
+- [formats](references/formats.md) — transform specifications for all four output formats, plus SVG layout constants and height formula
+- [examples](references/examples.md) — a fully worked SaaS-analytics-platform example rendered across all four formats
 
 ## Non-negotiables
 
 - **Never exceed the layer/node budgets.** 3–5 layers, 6–12 nodes. Visual quality over completeness — merge, drop, or simplify minor components rather than overflow a layer or crowd the canvas.
 - **Layers are the spine.** Every diagram is top-down, strictly layered; nodes connect within their layer's slot first, then across layers.
 - **Edges signal flow, not exhaustion.** Maximum edges = `floor(nodeCount × 0.8)`. Draw only primary data or control flow; drop the rest.
-- **Model freshness.** Use a capable modern Claude Sonnet or Opus (e.g. `claude-sonnet-4-6` or newer). NEVER pin the legacy dated Sonnet-4 snapshot from the 2025-05 series — that snapshot is outdated and scheduled for retirement. Update the model string in `references/prompts.md` whenever Anthropic ships a newer production model.
+- **Model freshness.** Use a capable modern Claude Sonnet or Opus (e.g. `claude-sonnet-4-6` or newer). NEVER pin the legacy dated Sonnet-4 snapshot from the 2025-05 series — that snapshot is outdated and scheduled for retirement. Update the model string in [prompts](references/prompts.md) whenever Anthropic ships a newer production model.
 - **No prose wrapper by default.** The output IS the diagram. Add narration only when the caller explicitly asks for it.
 - **Palette coherence.** Five non-adjacent-hue anchors form the canonical identity of this diagram family — each layer gets a distinct hue band so layers remain distinguishable at a glance. Use the oklch values as the primary spec; hex fallbacks are provided for legacy tooling only:
   - Layer 1 — frontend: `oklch(30% 0.04 260)` / hex `#3B4252` (slate-ink)
@@ -450,6 +450,6 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **Overloaded layer (> 5 nodes after generation)** — Stage 1.3 fix: move the least-essential node to an adjacent layer; if every adjacent layer is also full, re-run generation with an explicit merge instruction.
 - **Too-few or too-many layers/nodes** — re-run generation. The skill does not silently stretch (too few) or truncate (too many) — it regenerates. Patching these conditions produces visually incoherent diagrams.
 - **SVG text overflow** — a label longer than `NODE_W = 160px` at 13pt wraps visually ugly. Stage 1.4 fix: truncate to 3 title-case words. If that still overflows, re-run generation and ask the model for a shorter label.
-- **Model timeout / parse failure** — the LLM returned prose instead of JSON, or the JSON is malformed. Apply the `repairAndParse` recipe from `references/prompts.md` in order (strip fences → extract outermost braces → strip trailing commas → normalise newlines in string values). If both attempts fail, re-run generation once; on a second failure, surface the raw parse error to the caller rather than fabricate a graph.
+- **Model timeout / parse failure** — the LLM returned prose instead of JSON, or the JSON is malformed. Apply the `repairAndParse` recipe from [prompts](references/prompts.md) in order (strip fences → extract outermost braces → strip trailing commas → normalise newlines in string values). If both attempts fail, re-run generation once; on a second failure, surface the raw parse error to the caller rather than fabricate a graph.
 - **Auth missing** (embedded / standalone callers only) — `ANTHROPIC_API_KEY` is not set; surface the error immediately, do not retry. Inside Claude.ai / Claude Code, the platform handles auth — this failure mode does not apply.
 - **Empty / too-abstract description** — the caller gave one sentence or a single noun. The prompt explicitly says "infer a clean canonical architecture — do not ask"; the model produces a best-effort default. If the result feels wrong, the caller should re-invoke with more specifics rather than iterate inside this skill.

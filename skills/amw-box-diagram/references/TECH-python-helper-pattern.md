@@ -4,6 +4,15 @@ category: ascii-unicode
 source: box-diagram-master/skills/amw-box-diagram/SKILL.md
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-python-helper-pattern — `border_top` / `border_bot` / `box_line`
 
@@ -68,8 +77,8 @@ print(border_bot(10))
 
 ## Cross-references
 
-- `./TECH-unicode-rounded-corner-set.md`
-- `./TECH-fan-out-fan-in-junctions.md`
+- [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
+- [TECH-fan-out-fan-in-junctions](./TECH-fan-out-fan-in-junctions.md)
 - `../../amw-ascii-validator/references/TECH-wide-character-detection.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -1,3 +1,17 @@
+## Table of Contents
+
+- [The problem](#the-problem)
+- [The protocol](#the-protocol)
+  - [DO](#do)
+  - [DON'T](#dont)
+- [Examples](#examples)
+  - [Correct: agent produces an HTML mockup from approved ASCII](#correct-agent-produces-an-html-mockup-from-approved-ascii)
+  - [Incorrect: agent tries to delegate back through commands](#incorrect-agent-tries-to-delegate-back-through-commands)
+  - [Correct: agent needs to produce a diagram in Mermaid format](#correct-agent-needs-to-produce-a-diagram-in-mermaid-format)
+  - [Incorrect: agent uses Skill tool with a vague English prompt](#incorrect-agent-uses-skill-tool-with-a-vague-english-prompt)
+- [Enforcement](#enforcement)
+
+
 # Skill invocation protocol — how agents invoke skills without creating orchestration loops
 
 Every agent under `agents/` must invoke skills by skill path, not by command syntax, and must avoid any tool-call text that would re-trigger the design-principles orchestrator. This document specifies the protocol.

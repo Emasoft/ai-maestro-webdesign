@@ -1,3 +1,23 @@
+## Table of Contents
+
+- [1. Architecture](#1-architecture)
+- [2. Flowchart](#2-flowchart)
+- [3. Sequence](#3-sequence)
+- [4. State machine](#4-state-machine)
+- [5. ER / data model](#5-er-data-model)
+- [6. Timeline](#6-timeline)
+- [7. Swimlane](#7-swimlane)
+- [8. Quadrant](#8-quadrant)
+- [9. Nested](#9-nested)
+- [10. Tree](#10-tree)
+- [11. Layer stack](#11-layer-stack)
+- [12. Venn](#12-venn)
+- [13. Pyramid / funnel](#13-pyramid-funnel)
+- [Primitives (cross-type)](#primitives-cross-type)
+  - [Annotation callout — italic Instrument Serif + dashed Bézier leader](#annotation-callout-italic-instrument-serif-dashed-bézier-leader)
+  - [Sketchy filter — hand-drawn variant](#sketchy-filter-hand-drawn-variant)
+
+
 # Type Rules — all 13 canonical editorial diagram types
 
 Load this file only when the chosen type needs its specific scaffold. The compact SKILL.md carries the selection table; this file carries the per-type canonical layout, anchor coordinates, and working HTML+SVG scaffolds.
@@ -15,7 +35,7 @@ Every scaffold below assumes the six semantic tokens from SKILL.md are defined o
 }
 ```
 
-Override via brand onboarding (writes to `style-guide.md` alongside this file).
+Override via brand onboarding (writes to [style-guide](style-guide.md) alongside this file).
 
 All coordinates snap to the 4px grid. All borders are 1px hairline. No shadows. Max `rx="10"`. Accent limited to 1–2 focal nodes per diagram.
 

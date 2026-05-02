@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/bench/eval-guide.md
 also-in: perfect-ascii-main/bench/scenarios.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-eval-rubric-six-axes — score an ASCII diagram on six 1-5 axes
 
@@ -59,6 +68,6 @@ score=82/90
 ## Cross-references
 
 - `../../amw-ascii-validator/SKILL.md`
-- `./TECH-78-column-cap.md`
+- [TECH-78-column-cap](./TECH-78-column-cap.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

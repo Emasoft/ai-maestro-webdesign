@@ -4,6 +4,22 @@ category: architecture-graph
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/validation.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [1.1 Layer count](#11-layer-count)
+  - [1.2 Node count](#12-node-count)
+  - [1.3 Layer balance](#13-layer-balance)
+  - [1.4 Node label quality](#14-node-label-quality)
+  - [1.5 Edge integrity](#15-edge-integrity)
+  - [1.6 ID integrity](#16-id-integrity)
+  - [1.7 Layer order sequence](#17-layer-order-sequence)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-stage1-graph-validation
 
@@ -128,10 +144,10 @@ Apply fixes:
 
 ## Cross-references
 
-- `validation.md` — full spec with both stages
-- `formats.md` — stage 2 runs after the transform
-- `TECH-edge-budget-rule.md` — the `floor(n × 0.8)` cap
-- `TECH-graph-json-schema.md` — the schema being validated
-- `TECH-json-repair-recipe.md` — upstream repair before validation runs
+- [validation](validation.md) — full spec with both stages
+- [formats](formats.md) — stage 2 runs after the transform
+- [TECH-edge-budget-rule](TECH-edge-budget-rule.md) — the `floor(n × 0.8)` cap
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — the schema being validated
+- [TECH-json-repair-recipe](TECH-json-repair-recipe.md) — upstream repair before validation runs
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

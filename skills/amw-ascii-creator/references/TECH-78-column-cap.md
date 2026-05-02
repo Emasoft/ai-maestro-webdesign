@@ -4,6 +4,15 @@ category: ascii-render
 source: perfect-ascii-main/server.py
 also-in: perfect-ascii-main/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-78-column-cap — hard 78-col rule and its consequences
 
@@ -48,7 +57,7 @@ echo '{"layers":{"levels":[{"label":"L","boxes":["A very long label that will no
 
 ## Cross-references
 
-- `./TECH-json-render-four-modes.md`
+- [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
 - `../../amw-ascii-validator/references/TECH-width-mismatch-rule.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

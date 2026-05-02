@@ -66,7 +66,7 @@ Save the SVG to `/tmp/amw-ascii-<slug>-out.svg`. If the user asked for PNG or PD
 
 ### 5. Visual verify loop
 
-Per the mandatory loop in `skills/amw-svg-creator/SKILL.md` (which the shared `bin/amw-svg-render.py` borrows), render PNG, visually inspect, fix the SVG if anything is mis-aligned or text overflows. Max 3 iterations; if still broken after 3, report what failed.
+Per the mandatory loop in [SKILL](skills/amw-svg-creator/SKILL.md) (which the shared `bin/amw-svg-render.py` borrows), render PNG, visually inspect, fix the SVG if anything is mis-aligned or text overflows. Max 3 iterations; if still broken after 3, report what failed.
 
 ### 6. Deliver
 

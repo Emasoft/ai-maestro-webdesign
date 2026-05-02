@@ -27,7 +27,7 @@ Validate any supported diagram file. Auto-sniffs format and routes to the approp
    - **unknown** → exit 2 with `UNKNOWN:` message
 3. Reports the unified output: PASS count and/or FAIL lines with line numbers and `FIX:` hints.
 
-Full routing spec: `skills/amw-diagram-formats/references/validation-dispatcher.md`.
+Full routing spec: [validation-dispatcher](skills/amw-diagram-formats/references/validation-dispatcher.md).
 
 ## PNG hard rule
 

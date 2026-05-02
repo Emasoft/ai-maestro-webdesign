@@ -4,6 +4,20 @@ category: infographic-template
 source: image-generation/create-infographics/resources/copy-guide.md
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The two patterns](#the-two-patterns)
+  - [Pattern 1: Color-only](#pattern-1-color-only)
+  - [Pattern 2: Color + background tint](#pattern-2-color-background-tint)
+- [HTML](#html)
+- [What gets colored](#what-gets-colored)
+- [The 2-per-bullet cap](#the-2-per-bullet-cap)
+- [The `highlight` class vs `.accent`](#the-highlight-class-vs-accent)
+- [The token-pill variant (standalone)](#the-token-pill-variant-standalone)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Inline token coloring — `$TOKEN` names always colored
 
@@ -113,8 +127,8 @@ with body text.
 
 ## Cross-references
 
-- `TECH-copy-guide-bullets.md` — Rule 4 mandates this pattern.
-- `TECH-signature-palette.md` — where `var(--primary)` comes from.
-- `TECH-dense-table-component.md` — the `.accent` table-cell variant.
+- [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — Rule 4 mandates this pattern.
+- [TECH-signature-palette](TECH-signature-palette.md) — where `var(--primary)` comes from.
+- [TECH-dense-table-component](TECH-dense-table-component.md) — the `.accent` table-cell variant.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

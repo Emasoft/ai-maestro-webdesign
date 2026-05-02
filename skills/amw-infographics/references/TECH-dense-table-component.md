@@ -118,8 +118,8 @@ should have one.
 
 ## Cross-references
 
-- `TECH-tier-comparison-component.md` — the badge-specific variant.
-- `TECH-chain-color-coding.md` — for multi-chain row accents.
-- `TECH-copy-guide-numbers.md` — how to format numbers inside cells.
+- [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — the badge-specific variant.
+- [TECH-chain-color-coding](TECH-chain-color-coding.md) — for multi-chain row accents.
+- [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — how to format numbers inside cells.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

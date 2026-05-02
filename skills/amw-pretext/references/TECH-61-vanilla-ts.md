@@ -4,6 +4,15 @@ category: integrate
 source: pretext-skills/amw-pretext-frontend-motion-main/references/capabilities.md
 also-in: SKILL-15.md, SKILL-17.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Vanilla TypeScript integration (no framework)
 

@@ -179,7 +179,7 @@ These are gold. They tell the agent things it could not infer from tokens alone.
 
 ## Cross-references
 
-- `./review-rubric.md` — rubric `T6` (minimum 3 of each)
+- [review-rubric](./review-rubric.md) — rubric `T6` (minimum 3 of each)
 - `../ai-slop-avoid.md` — anti-patterns S13, S14
-- `./canonical-template.md` — Variant 1 placeholder
-- `./community-9-section-template.md` — Variant 2 placeholder
+- [canonical-template](./canonical-template.md) — Variant 1 placeholder
+- [community-9-section-template](./community-9-section-template.md) — Variant 2 placeholder

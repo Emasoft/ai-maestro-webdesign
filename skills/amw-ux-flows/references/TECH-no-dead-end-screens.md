@@ -4,6 +4,16 @@ category: ux-flow-wireframe
 source: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Validation check](#validation-check)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-no-dead-end-screens
 
@@ -88,7 +98,7 @@ Fixed version (✅ satisfies the rule):
 
 ## Validation check
 
-When building the wireframe index (see `TECH-wireframe-index-inventory.md`),
+When building the wireframe index (see [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md)),
 the "Outgoing links" column must be non-empty for every row. A row with
 an empty or zero outgoing-links list is a bug.
 
@@ -106,7 +116,7 @@ an empty or zero outgoing-links list is a bug.
   to screens that live under the tab bar.
 - **`onclick` handlers do NOT satisfy the rule.** No JavaScript. The
   link must be a real `<a href="...">`. See
-  `TECH-clickable-prototype-navigation.md`.
+  [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md).
 - **Modal wireframes are still screens.** A modal is a separate `.html`
   file in this skill's convention (clickable prototypes don't overlap
   screens). The modal must have an "X close" link to its parent screen
@@ -121,6 +131,6 @@ an empty or zero outgoing-links list is a bug.
 ## Cross-references
 
 - `../SKILL.md` — Phase 3 of the workflow
-- `TECH-wireframe-html-mobile-first.md` — the HTML scaffold
-- `TECH-clickable-prototype-navigation.md` — the link pattern
-- `TECH-wireframe-index-inventory.md` — the index that audits this rule
+- [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the HTML scaffold
+- [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — the link pattern
+- [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the index that audits this rule

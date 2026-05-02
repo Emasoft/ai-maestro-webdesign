@@ -18,7 +18,7 @@ PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + se
 
 1. Read or request the PRD (or feature list) — if `<docs/product/prd.md>` exists, read it; otherwise ask the user; do not synthesize use cases from nothing.
 2. **Phase 1 — Use Case Extraction**: document each use case with ID, actors, preconditions, main flow, alternative flows, postconditions; save to `<docs/ux-flows/use-cases.md>`; present to user and wait for explicit confirmation before Phase 2.
-3. **Phase 2 — Mermaid Diagrams**: read `references/mermaid-patterns.md` first; generate a master screen-map flowchart plus per-use-case flow/state/sequence diagrams under `docs/ux-flows/diagrams/`; max 15-20 nodes per diagram.
+3. **Phase 2 — Mermaid Diagrams**: read [mermaid-patterns](references/mermaid-patterns.md) first; generate a master screen-map flowchart plus per-use-case flow/state/sequence diagrams under `docs/ux-flows/diagrams/`; max 15-20 nodes per diagram.
 4. **Phase 3 — HTML Wireframes**: for each screen, copy `assets/wireframe-template.html` and fill it in (self-contained, mobile-first 375px, dashed-border greyscale, inline CSS only); add inter-screen navigation links.
 5. **Phase 4 — Handoff**: compile `UX-FLOWS.md` linking all artifacts; route to `../amw-ascii-sketch/` for ASCII iteration, `../amw-ascii-to-html/` for production HTML lift, or `../amw-diagram-editorial/` if Mermaid diagrams need editorial upgrade.
 
@@ -26,7 +26,7 @@ See the four-phase workflow in `## Usage` below.
 
 ## Examples
 
-See `references/TECH-4-phase-mandatory-workflow.md` for a complete run through all four phases with minimal PRD input.
+See [TECH-4-phase-mandatory-workflow](references/TECH-4-phase-mandatory-workflow.md) for a complete run through all four phases with minimal PRD input.
 
 ## Activation
 
@@ -67,7 +67,7 @@ Do NOT fire on: "design a landing page", "make a nice dashboard", "build the UI"
 - **runtime_binaries (system):** none — Mermaid is text-only and Claude renders the blocks; HTML wireframes are self-contained.
 - **runtime_binaries (bundled):** `../../bin/amw-dev-browser-wrapper.sh` — the plugin-standard browser wrapper; used for optional wireframe preview in Phase 3.
 - **runtime_binaries (via /amw-init):** `dev-browser` CLI — required only when the user wants an in-browser preview of the clickable prototype.
-- **mcp_servers (optional, on explicit request):** Figma Dev Mode MCP Server — for the Code-to-Canvas export path documented in `references/figma-integration.md`. Never activated silently.
+- **mcp_servers (optional, on explicit request):** Figma Dev Mode MCP Server — for the Code-to-Canvas export path documented in [figma-integration](references/figma-integration.md). Never activated silently.
 
 ## Usage
 
@@ -93,7 +93,7 @@ Save to `<docs/ux-flows/use-cases.md>`. Present the list to the user for approva
 
 ### Phase 2 — Mermaid Diagrams
 
-Read `references/mermaid-patterns.md` for syntax patterns before generating any diagram.
+Read [mermaid-patterns](references/mermaid-patterns.md) for syntax patterns before generating any diagram.
 
 1. **Master screen map** — one `graph TD` flowchart at `<docs/ux-flows/diagrams/screen-map.md>` showing every screen + general navigation paths of the entire app.
 2. **Per-use-case diagrams** — for each approved use case, generate three diagrams under `docs/ux-flows/diagrams/{use-case-id}/`:
@@ -104,7 +104,7 @@ Read `references/mermaid-patterns.md` for syntax patterns before generating any 
 
 Constraints:
 - Max 15-20 nodes per diagram. Split complex flows into sub-diagrams linked via `[[Sub-flow]]` nodes.
-- Use `classDef` for consistent node styling across diagrams (patterns in `references/mermaid-patterns.md`).
+- Use `classDef` for consistent node styling across diagrams (patterns in [mermaid-patterns](references/mermaid-patterns.md)).
 
 ### Phase 3 — HTML Wireframes (Clickable Prototype)
 
@@ -139,7 +139,7 @@ Generate `<docs/ux-flows/UX-FLOWS.md>` with:
 
 After the handoff document is written, inform the user:
 - The wireframes can be exported to Figma via the official Code-to-Canvas integration.
-- Only requires Figma desktop app with Dev Mode MCP Server enabled (2-step setup in `references/figma-integration.md`).
+- Only requires Figma desktop app with Dev Mode MCP Server enabled (2-step setup in [figma-integration](references/figma-integration.md)).
 - If interested, the user says "export to figma" and the setup steps are presented.
 
 ## Resources
@@ -151,9 +151,9 @@ After the handoff document is written, inform the user:
 - `../amw-ascii-to-html/SKILL.md` — downstream lift from wireframe prototype to responsive HTML
 - `../amw-ux-designer/SKILL.md` — broader UX methodology the wireframes slot into
 - `../amw-ux-evaluator/SKILL.md` — consumes the clickable prototype for heuristic scoring
-- `references/mermaid-patterns.md` — Mermaid syntax cookbook (node shapes, subgraphs, sequence patterns, styling)
-- `references/figma-integration.md` — Figma Dev Mode MCP workflow (on explicit request only)
-- `references/install-commands.md` — auxiliary skill + dev-browser install references
+- [mermaid-patterns](references/mermaid-patterns.md) — Mermaid syntax cookbook (node shapes, subgraphs, sequence patterns, styling)
+- [figma-integration](references/figma-integration.md) — Figma Dev Mode MCP workflow (on explicit request only)
+- [install-commands](references/install-commands.md) — auxiliary skill + dev-browser install references
 - `assets/wireframe-template.html` — mobile-first 375px wireframe base template
 
 ## Technique selection
@@ -359,10 +359,10 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Error Handling
 
-- **No PRD, no feature list.** The skill cannot proceed. Ask the user; optionally route them to `product-manager-toolkit` via `references/install-commands.md`.
+- **No PRD, no feature list.** The skill cannot proceed. Ask the user; optionally route them to `product-manager-toolkit` via [install-commands](references/install-commands.md).
 - **Phase 2 stops before Phase 3.** The user gets Mermaid diagrams without a clickable prototype — a violation of this skill's contract. The orchestrator should abort and re-enter Phase 3.
 - **Mermaid block rendering conflict.** When the output context already has a Mermaid renderer (e.g. this skill's output is embedded in another skill's HTML), use fenced `mermaid` blocks with unique IDs or delegate the render to `../amw-diagram-architecture/` instead.
-- **Figma MCP requested but not installed.** Stop. Present the two-step install (preferences toggle + `claude mcp add ...`) from `references/install-commands.md`. Do not try alternate paths.
+- **Figma MCP requested but not installed.** Stop. Present the two-step install (preferences toggle + `claude mcp add ...`) from [install-commands](references/install-commands.md). Do not try alternate paths.
 - **`dev-browser` CLI missing for preview.** Surface `/amw-doctor` and `/amw-init` to the user; the wireframes still open in any browser without the wrapper (Phase 3 always emits standalone HTML), but the plugin-standard mobile-viewport preview needs the CLI.
 - **Wireframe aesthetic drift.** Filling the template with real colors, real images, or real typography pulls the output out of prototype territory. Keep the dashed-border greyscale look; anything else belongs to a downstream skill.
 - **Inter-screen dead ends.** A screen with no outgoing link breaks the clickable prototype and fails Phase 3 review. Fix before emitting the INDEX.

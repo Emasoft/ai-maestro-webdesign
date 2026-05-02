@@ -4,6 +4,17 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The heuristic table](#the-heuristic-table)
+- [Label conventions](#label-conventions)
+- [Arrow density rule](#arrow-density-rule)
+- [Minimal example — mixed arrows with purpose](#minimal-example-mixed-arrows-with-purpose)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Edge best practices — when to use which arrow
 
@@ -69,7 +80,7 @@ flowchart TD
 
 ## Cross-references
 
-- `TECH-edge-styles.md` — the full arrow syntax catalog.
-- `TECH-flowchart-grammar.md` — the parent grammar.
+- [TECH-edge-styles](TECH-edge-styles.md) — the full arrow syntax catalog.
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the parent grammar.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

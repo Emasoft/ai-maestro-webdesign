@@ -36,7 +36,7 @@ Wait for the user reply. Accept only `yes` or `proceed` (case-insensitive). Any 
 ## Dispatch
 
 1. Read `$ARGUMENTS` as the concept description (natural-language prompt for the hand-drawn illustration).
-2. Invoke `skills/amw-excalidraw-illustrations/SKILL.md` with that prompt. The skill handles model selection, reference-image conditioning, Gemini REST call, optional Pillow text-overlay fallback, PNG save, and descriptive-filename conventions.
+2. Invoke [SKILL](skills/amw-excalidraw-illustrations/SKILL.md) with that prompt. The skill handles model selection, reference-image conditioning, Gemini REST call, optional Pillow text-overlay fallback, PNG save, and descriptive-filename conventions.
 3. On return, report the saved PNG's absolute path + the Gemini call's approximate cost.
 4. If the user asks to regenerate (because text is wrong or style is off), re-enter the cost-consent gate first — every retry is a new paid call.
 
@@ -51,7 +51,7 @@ Exactly one `.png` file at the user's working directory with a descriptive Title
 
 ## Cross-references
 
-- `skills/amw-excalidraw-illustrations/SKILL.md` — the backing skill (does the actual work, documents cost, Gemini model choice, references, Pillow fallback).
-- `skills/amw-design-principles/ai-slop-avoid.md` — the generic "no AI-drawn illustrations" rule; this skill is the documented exception because of the hand-drawn-Excalidraw constraint. See the excalidraw-illustrations SKILL.md header note.
-- `skills/amw-diagram-formats/references/png.md` — PNG-as-output-only rule (user directive 2026-04-22): no re-entry, no OCR, no round-trip.
+- [SKILL](skills/amw-excalidraw-illustrations/SKILL.md) — the backing skill (does the actual work, documents cost, Gemini model choice, references, Pillow fallback).
+- [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md) — the generic "no AI-drawn illustrations" rule; this skill is the documented exception because of the hand-drawn-Excalidraw constraint. See the excalidraw-illustrations SKILL.md header note.
+- [png](skills/amw-diagram-formats/references/png.md) — PNG-as-output-only rule (user directive 2026-04-22): no re-entry, no OCR, no round-trip.
 - `/amw-create-or-modify-{ascii,html,svg,mermaid}-diagram` — editable-format alternatives if the user needs iteration.

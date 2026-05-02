@@ -4,6 +4,15 @@ category: integrate
 source: pretext-skills/amw-pretext-integrate/SKILL.md
 also-in: pretext-docs/SKILL.md, pretext-main-2 docs/cross-platform.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # SSR / Node.js integration (node-canvas shim)
 

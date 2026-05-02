@@ -4,6 +4,18 @@ category: svg-render-loop
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/references/advanced-techniques.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The incremental build order](#the-incremental-build-order)
+- [The thick-line trick for static characters](#the-thick-line-trick-for-static-characters)
+- [8-head proportions (standing adult)](#8-head-proportions-standing-adult)
+- [For animated characters — React + forward kinematics](#for-animated-characters-react-forward-kinematics)
+- [Animation timing](#animation-timing)
+- [When to recommend external tools](#when-to-recommend-external-tools)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Character construction — incremental with aggressive feedback
 
@@ -122,9 +134,9 @@ Offer to generate the static SVG as a starting point for import.
 
 ## Cross-references
 
-- `TECH-render-verify-loop.md` — the master iteration loop.
-- `TECH-five-zone-lighting.md` — apply per body part once positions
+- [TECH-render-verify-loop](TECH-render-verify-loop.md) — the master iteration loop.
+- [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — apply per body part once positions
   are right.
-- `TECH-reduced-motion.md` — accessibility for animated characters.
+- [TECH-reduced-motion](TECH-reduced-motion.md) — accessibility for animated characters.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

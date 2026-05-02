@@ -1,3 +1,20 @@
+## Table of Contents
+
+- [Domains and authority](#domains-and-authority)
+- [Veto power — what it means](#veto-power-what-it-means)
+- [Resolution rules by conflict pattern](#resolution-rules-by-conflict-pattern)
+  - [Pattern 1: Visual vs. functional tension](#pattern-1-visual-vs-functional-tension)
+  - [Pattern 2: SEO vs. UX content hierarchy](#pattern-2-seo-vs-ux-content-hierarchy)
+  - [Pattern 3: Copywriter locale vs. legal disclaimer](#pattern-3-copywriter-locale-vs-legal-disclaimer)
+  - [Pattern 4: Production agent vs. discovery agent](#pattern-4-production-agent-vs-discovery-agent)
+  - [Pattern 5: Two discovery agents with opposite readings of the same data](#pattern-5-two-discovery-agents-with-opposite-readings-of-the-same-data)
+  - [Pattern 6: Missing data from a domain](#pattern-6-missing-data-from-a-domain)
+  - [Pattern 7: Upstream contradiction between user and an agent](#pattern-7-upstream-contradiction-between-user-and-an-agent)
+- [How main-agent applies the hierarchy](#how-main-agent-applies-the-hierarchy)
+- [What the hierarchy does NOT do](#what-the-hierarchy-does-not-do)
+- [Enforcement](#enforcement)
+
+
 # Authority hierarchy — conflict resolution and veto power
 
 This document specifies who wins when two amw-* sub-agents return recommendations that cannot both be satisfied. Without explicit hierarchy, main-agent silently picks one, which is worse than picking the wrong one — it hides the conflict from the user.

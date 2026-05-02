@@ -10,7 +10,7 @@ status: stable
 
 ## What it does
 
-Documents the high-fidelity mechanical conversion path from a Tailwind project (`tailwind.config.{ts,js,mjs,cjs}` + `globals.css` with `:root` CSS variables) to a Variant 1 DESIGN.md. Unlike `TECH-08-codebase-extraction.md` which is regex-based, this path uses `jiti` to actually evaluate the Tailwind config — so it handles dynamic values, computed configs, and shadcn-style HSL+CSS-variable patterns correctly.
+Documents the high-fidelity mechanical conversion path from a Tailwind project (`tailwind.config.{ts,js,mjs,cjs}` + `globals.css` with `:root` CSS variables) to a Variant 1 DESIGN.md. Unlike [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) which is regex-based, this path uses `jiti` to actually evaluate the Tailwind config — so it handles dynamic values, computed configs, and shadcn-style HSL+CSS-variable patterns correctly.
 
 The bin script is `bin/amw-design-md-from-tailwind.mjs`. Pure-local Node.js, runtime deps `jiti` (TypeScript-config evaluator) and `picocolors` (CLI output). Both are zero-API-key, npm-installable.
 
@@ -24,8 +24,8 @@ The agent owner is `amw-design-md-extractor-agent`.
 
 ## When NOT to use
 
-- Project has no Tailwind → use `TECH-08-codebase-extraction.md`.
-- Project has Tailwind but the actual deployed UI uses different values (drift) → use `TECH-07-url-extraction.md` to capture deployed reality.
+- Project has no Tailwind → use [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md).
+- Project has Tailwind but the actual deployed UI uses different values (drift) → use [TECH-07-url-extraction](TECH-07-url-extraction.md) to capture deployed reality.
 - The Tailwind config has runtime function calls or imports an unsafe module — `jiti` evaluates the config; if the config has side-effects, those run.
 
 ## Inputs
@@ -201,6 +201,6 @@ If the project has shadcn's standard pairs (`primary` + `primary-foreground`, et
 
 ## Cross-references
 
-- `./TECH-08-codebase-extraction.md` — heuristic regex-based codebase extraction (fallback when jiti not available)
-- `./TECH-12-companion-files.md` — emit `tokens.css` from the resulting DESIGN.md
+- [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — heuristic regex-based codebase extraction (fallback when jiti not available)
+- [TECH-12-companion-files](./TECH-12-companion-files.md) — emit `tokens.css` from the resulting DESIGN.md
 - `<plugin-root>/bin/amw-design-md-from-tailwind.mjs` — the bin script

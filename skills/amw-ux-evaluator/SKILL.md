@@ -24,7 +24,7 @@ See `## Usage` below.
 
 ## Examples
 
-See `references/TECH-uxeval-output-format.md` for a complete evaluation report example ("Pricing Page CTA Evaluation").
+See [TECH-uxeval-output-format](references/TECH-uxeval-output-format.md) for a complete evaluation report example ("Pricing Page CTA Evaluation").
 
 ## Activation
 
@@ -215,7 +215,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Quick-lookup conventions
 
-Full reference in `references/balsamiq-button-principles.md`. Summary:
+Full reference in [balsamiq-button-principles](references/balsamiq-button-principles.md). Summary:
 
 - **Buttons:** primary right + filled + brand color; secondary left + ghost/outline; utility far right, icon-only. ≥ 24 px between groups, 8–12 px intra-group, ≥ 44 × 44 px mobile touch. Labels: "Sign Up" not "Get Started"; "Delete Account" not "Proceed"; verb-first.
 - **Navigation:** logo left, primary nav centre or after logo, utilities (search / auth / theme) right. Active state clearly distinguished; nav does not compete with content.
@@ -231,7 +231,7 @@ Full reference in `references/balsamiq-button-principles.md`. Summary:
 - `../amw-design-principles/ai-slop-avoid.md` — final scan for AI-slop patterns before a Pass verdict.
 - `../amw-ascii-to-html/SKILL.md` — upstream producer of the HTML this skill evaluates.
 - `../amw-ui-ux-reasoning/SKILL.md` — industry-specific anti-pattern taxonomy.
-- `references/balsamiq-button-principles.md` — full button-design reference corpus.
+- [balsamiq-button-principles](references/balsamiq-button-principles.md) — full button-design reference corpus.
 - `/amw-eval` — user-facing slash command that runs this skill.
 
 ## Non-negotiables

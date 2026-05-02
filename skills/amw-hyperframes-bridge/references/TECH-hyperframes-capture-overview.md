@@ -4,6 +4,17 @@ category: hyperframes-capture-step
 source: external/hyperframes/skills/website-to-hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Video type reference](#video-type-reference)
+  - [Format presets](#format-presets)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Website-to-Hyperframes capture — pipeline overview
 
@@ -72,12 +83,12 @@ Output: `output.mp4`, 1080×1920, 25 sec.
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-step-1-capture.md`
-- `TECH-hyperframes-capture-step-2-design.md`
-- `TECH-hyperframes-capture-step-3-script.md`
-- `TECH-hyperframes-capture-step-4-storyboard.md`
-- `TECH-hyperframes-capture-step-5-vo.md`
-- `TECH-hyperframes-capture-step-6-build.md`
-- `TECH-hyperframes-capture-step-7-validate.md`
-- `TECH-hyperframes-composition-core.md`
+- [TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md)
+- [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md)
+- [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md)
+- [TECH-hyperframes-capture-step-4-storyboard](TECH-hyperframes-capture-step-4-storyboard.md)
+- [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md)
+- [TECH-hyperframes-capture-step-6-build](TECH-hyperframes-capture-step-6-build.md)
+- [TECH-hyperframes-capture-step-7-validate](TECH-hyperframes-capture-step-7-validate.md)
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
 - `../SKILL.md`

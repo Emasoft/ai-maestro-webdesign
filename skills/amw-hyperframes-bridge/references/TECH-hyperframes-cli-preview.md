@@ -4,6 +4,16 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/preview.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Studio features](#studio-features)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes preview` — live studio preview
 
@@ -59,5 +69,5 @@ Typical workflow:
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-init.md`, `TECH-hyperframes-cli-lint.md`, `TECH-hyperframes-cli-render.md`, `TECH-hyperframes-cli-validate.md`
+- [TECH-hyperframes-cli-init](TECH-hyperframes-cli-init.md), [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md), [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md)
 - `../SKILL.md`

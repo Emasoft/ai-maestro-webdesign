@@ -411,8 +411,9 @@ Templates for all 5 types live under `../../external/mermaid-render/examples/`. 
    for Inter.** The backend inlines everything else — styles, arrowheads,
    theme CSS variables. Do NOT post-process the SVG to add additional
    external stylesheets, scripts, or images. If the caller needs a fully
-   CSP-locked SVG, strip the `@import url('<https://fonts.googleapis.com/css2?...>')`
-   line from the `<style>` block; the system font stack takes over.
+   CSP-locked SVG, strip the Google Fonts `@import url(...)` line (the one
+   that points at `fonts.googleapis.com`) from the `<style>` block; the
+   system font stack takes over.
 2. **ASCII output must pass `../../bin/amw-validate-ascii.py` or warn loudly.**
    The wrapper enforces this automatically — if the validator flags
    alignment issues, the stderr message is visible to the caller. Do not

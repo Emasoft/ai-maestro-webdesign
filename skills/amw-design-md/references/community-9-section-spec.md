@@ -1,3 +1,24 @@
+## Table of Contents
+
+- [Document head (DESIGN_MD_SPEC L13-L17)](#document-head-design_md_spec-l13-l17)
+- [Section count and order (DESIGN_MD_SPEC L25-L36)](#section-count-and-order-design_md_spec-l25-l36)
+- [No YAML frontmatter](#no-yaml-frontmatter)
+- [Section specifications](#section-specifications)
+  - [Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67)](#section-1-visual-theme-atmosphere-design_md_spec-l43-l67)
+  - [Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106)](#section-2-color-palette-roles-design_md_spec-l72-l106)
+  - [Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166)](#section-3-typography-rules-design_md_spec-l108-l166)
+  - [Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216)](#section-4-component-stylings-design_md_spec-l169-l216)
+  - [Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246)](#section-5-layout-principles-design_md_spec-l219-l246)
+  - [Section 6 — Depth & Elevation](#section-6-depth-elevation)
+  - [Section 7 — Do's and Don'ts](#section-7-dos-and-donts)
+  - [Section 8 — Responsive Behavior](#section-8-responsive-behavior)
+  - [Section 9 — Agent Prompt Guide](#section-9-agent-prompt-guide)
+- [XML boundary tags (Variant 2 enhancement)](#xml-boundary-tags-variant-2-enhancement)
+- [Mermaid component-state diagram](#mermaid-component-state-diagram)
+- [Comparison vs Variant 1](#comparison-vs-variant-1)
+- [Cross-references](#cross-references)
+
+
 # Community 9-section DESIGN.md spec — Variant 2 (VoltAgent / getdesign.md style)
 
 **Source:** `docs_dev/extracted/google-labs/design-md-creator-skill-main/design-md-creator-skill-main/.claude/skills/design-md-creator/DESIGN_MD_SPEC.md`. The author of that skill reverse-engineered the format from analysis of 58 brand DESIGN.md files in the public corpus (`docs_dev/extracted/google-labs/awesome-design-md-pre-paywall-main/`).
@@ -256,7 +277,7 @@ The 9-section template includes a `mermaid` block under Section 4 (Component Sty
 | YAML frontmatter | Yes, machine-readable tokens | No, all in prose/tables |
 | Section count | 8 | 9 (+ optional 10–14 from extensions) |
 | Token reference syntax | `{path.to.token}` curly braces | None — by-name in prose |
-| Linter | `npx @google/design.md lint` | Custom rubric (`review-rubric.md`) |
+| Linter | `npx @google/design.md lint` | Custom rubric ([review-rubric](review-rubric.md)) |
 | Section ordering | Fixed; reorder = error | Fixed; numbered |
 | Best for | Machine consumption, AI agent input | Human-first reference, brand handoff |
 
@@ -266,9 +287,9 @@ The plugin's default canonical output is Variant 1. Variant 2 is accepted as inp
 
 ## Cross-references
 
-- `./canonical-spec-google-alpha.md` — Variant 1 spec
-- `./extension-sections-10-14.md` — optional Variant 2 extensions
-- `./community-9-section-template.md` — fillable Variant 2 skeleton
-- `./review-rubric.md` — Variant 2 quality scoring
-- `./TECH-13-converting-variant2-to-1.md` — V2 → V1 conversion details
+- [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
+- [extension-sections-10-14](./extension-sections-10-14.md) — optional Variant 2 extensions
+- [community-9-section-template](./community-9-section-template.md) — fillable Variant 2 skeleton
+- [review-rubric](./review-rubric.md) — Variant 2 quality scoring
+- [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
 - `<plugin-root>/bin/amw-design-md-convert-v2-to-v1.py` — conversion bin script

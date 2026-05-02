@@ -4,6 +4,19 @@ category: svg-gradient
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Metal (steel / chrome)](#metal-steel-chrome)
+- [Gold](#gold)
+- [Glass / transparent](#glass-transparent)
+- [Wood](#wood)
+- [Water](#water)
+- [Stone / rock](#stone-rock)
+- [Fabric / cloth](#fabric-cloth)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Material simulation — metal, gold, glass, wood, water, stone, fabric
 
@@ -33,7 +46,7 @@ High-contrast multi-stop gradient with sharp transitions. Add
 
 Combine with:
 - Thin near-white specular lines along edges
-- Specular filter (see `TECH-specular-diffuse-lighting.md`)
+- Specular filter (see [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md))
 - Reflected environment colors at 15-30% opacity
 
 ## Gold
@@ -110,8 +123,8 @@ directional.
 
 ## Cross-references
 
-- `TECH-multi-stop-gradients.md` — the gradient primitive.
-- `TECH-fe-turbulence-noise.md` — the noise primitive.
-- `TECH-specular-diffuse-lighting.md` — physics-based light for metals.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the gradient primitive.
+- [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the noise primitive.
+- [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based light for metals.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

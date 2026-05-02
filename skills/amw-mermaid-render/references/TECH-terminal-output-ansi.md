@@ -4,6 +4,16 @@ category: mermaid-render-ascii
 source: diagrams-skills/beautiful-mermaid-main/references/ascii-rendering.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Pattern 1: Highlight node names](#pattern-1-highlight-node-names)
+- [Pattern 2: Whole-diagram color wrap](#pattern-2-whole-diagram-color-wrap)
+- [Pattern 3: Per-node status colors](#pattern-3-per-node-status-colors)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Adding ANSI colors to ASCII output
 
@@ -61,8 +71,8 @@ const coloredByStatus = ascii
 
 ## Cross-references
 
-- `TECH-ascii-render-api.md` — produces the input text.
-- `TECH-ascii-markdown-integration.md` — the NO-color cousin for
+- [TECH-ascii-render-api](TECH-ascii-render-api.md) — produces the input text.
+- [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — the NO-color cousin for
   persistent Markdown output.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

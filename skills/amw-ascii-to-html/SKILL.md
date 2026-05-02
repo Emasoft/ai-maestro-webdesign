@@ -13,7 +13,7 @@ version: 0.2.0
 
 Converts a validated ASCII wireframe into a single-file responsive, accessible, Tweaks-compatible HTML page. Terminal step of the plan phase — runs only after the user has explicitly approved an ASCII sketch.
 
-This skill is a SYNTHESIS — it composes techniques from 9 sources (starter-components, AI-slop rules, ui-ux-pro-max, ux-designer+a11y, create-infographics, diagram-design-editorial, ascii-creator catalog, CHI'24 ASCII classics, and the in-repo `ascii-parse.py`). Every design decision below cites a `TECH-NN` from `references/techniques.md`.
+This skill is a SYNTHESIS — it composes techniques from 9 sources (starter-components, AI-slop rules, ui-ux-pro-max, ux-designer+a11y, create-infographics, diagram-design-editorial, ascii-creator catalog, CHI'24 ASCII classics, and the in-repo `ascii-parse.py`). Every design decision below cites a `TECH-NN` from [techniques](references/techniques.md).
 
 ## Activation
 
@@ -200,7 +200,7 @@ external_services:
 
 ### Technique catalog
 
-Full catalog with source citations: `references/techniques.md` (100 techniques, 9 sources).
+Full catalog with source citations: [techniques](references/techniques.md) (100 techniques, 9 sources).
 
 Representative techniques per conversion step:
 

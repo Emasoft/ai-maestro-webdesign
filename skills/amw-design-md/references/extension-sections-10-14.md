@@ -1,3 +1,14 @@
+## Table of Contents
+
+- [Section 10 — Naming Convention (Page > Section > Block > Element)](#section-10-naming-convention-page-section-block-element)
+- [Section 11 — Page Specifications](#section-11-page-specifications)
+- [Section 12 — Composite Components](#section-12-composite-components)
+- [Section 13 — Token Mapping](#section-13-token-mapping)
+- [Section 14 — i18n References](#section-14-i18n-references)
+- [When to use these extensions](#when-to-use-these-extensions)
+- [Cross-references](#cross-references)
+
+
 # Extension sections 10-14 — optional Variant 2 enhancements
 
 **Source:** `docs_dev/extracted/google-labs/gen-design-spec-1-001-design-md-schema/`. Original docs are Korean-only; this file synthesizes the structural intent in English. The plugin treats these as **optional** extensions to Variant 2 (community 9-section) format. They are NOT part of Variant 1 (canonical Google `@google/design.md`); when converting to Variant 1 they are dropped or moved to prose.
@@ -258,7 +269,7 @@ Default behavior: 1-9 only (Variant 2 base) or Variant 1 (8 sections + frontmatt
 
 ## Cross-references
 
-- `./canonical-spec-google-alpha.md` — Variant 1 (no extension support)
-- `./community-9-section-spec.md` — Variant 2 base
-- `./community-9-section-template.md` — Variant 2 skeleton with optional 10-14 placeholders
-- `./TECH-13-converting-variant2-to-1.md` — what gets dropped when extensions are present and we convert to V1
+- [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 (no extension support)
+- [community-9-section-spec](./community-9-section-spec.md) — Variant 2 base
+- [community-9-section-template](./community-9-section-template.md) — Variant 2 skeleton with optional 10-14 placeholders
+- [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — what gets dropped when extensions are present and we convert to V1

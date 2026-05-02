@@ -4,6 +4,18 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in: image-generation/create-infographics/resources/style-details.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Implementation 1 — body outline](#implementation-1-body-outline)
+- [Implementation 2 — wrapping container border](#implementation-2-wrapping-container-border)
+- [Implementation 3 — pseudo-element overlay](#implementation-3-pseudo-element-overlay)
+- [When to use](#when-to-use)
+- [When NOT to use](#when-not-to-use)
+- [Color choice](#color-choice)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Outer canvas border — thin accent-colored frame
 
@@ -84,10 +96,10 @@ Useful when you want the border to persist above all content
 
 ## Cross-references
 
-- `TECH-game-overview-playbook.md` — where this pattern is common.
-- `TECH-cheat-sheet-archetype.md` — common archetype for game-event
+- [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — where this pattern is common.
+- [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — common archetype for game-event
   posters that use this frame.
-- `TECH-bordered-section-component.md` — complementary interior
+- [TECH-bordered-section-component](TECH-bordered-section-component.md) — complementary interior
   borders.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

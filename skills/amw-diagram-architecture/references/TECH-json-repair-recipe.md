@@ -4,6 +4,15 @@ category: architecture-graph
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/prompts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-json-repair-recipe
 
@@ -120,10 +129,10 @@ The sequence handled:
 
 ## Cross-references
 
-- `prompts.md` — the full API pattern this wraps
-- `TECH-assistant-prefill-json.md` — upstream; reduces how often repair
+- [prompts](prompts.md) — the full API pattern this wraps
+- [TECH-assistant-prefill-json](TECH-assistant-prefill-json.md) — upstream; reduces how often repair
   is needed
-- `TECH-stage1-graph-validation.md` — downstream; consumes parsed object
-- `TECH-graph-json-schema.md` — the target schema
+- [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — downstream; consumes parsed object
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — the target schema
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

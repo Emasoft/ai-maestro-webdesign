@@ -55,8 +55,8 @@ scrolling / flipping between docs.
 
 ## Cross-references
 
-- `./TECH-destructive-command-marker.md`
-- `./TECH-category-sections.md`
+- [TECH-destructive-command-marker](./TECH-destructive-command-marker.md)
+- [TECH-category-sections](./TECH-category-sections.md)
 - `../../amw-text-visual-arch/references/TECH-platform-component-tags.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

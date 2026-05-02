@@ -77,8 +77,8 @@ flowchart LR
 
 ## Cross-references
 
-- `TECH-flowchart-grammar.md` — the parent grammar.
-- `TECH-edge-styles.md` — arrows between subgraphs can use different
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the parent grammar.
+- [TECH-edge-styles](TECH-edge-styles.md) — arrows between subgraphs can use different
   styles than arrows within.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

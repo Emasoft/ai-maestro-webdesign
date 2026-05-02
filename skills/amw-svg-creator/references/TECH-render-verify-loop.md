@@ -4,6 +4,17 @@ category: svg-render-loop
 source: image-generation/svg-creator/SKILL.md
 also-in: image-generation/svg-creator/scripts/svg_loop.py
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The six steps](#the-six-steps)
+- [Why the loop script](#why-the-loop-script)
+- [Iteration guidelines](#iteration-guidelines)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # The render-verify-deliver loop (mandatory)
 
@@ -88,10 +99,10 @@ python3 /path/to/skill/scripts/svg_loop.py finish /home/claude/draft.svg output-
 
 ## Cross-references
 
-- `TECH-five-zone-lighting.md` — applied during the assess/fix steps.
-- `TECH-multi-stop-gradients.md` — the visual quality techniques
+- [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — applied during the assess/fix steps.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the visual quality techniques
   applied while building.
-- `TECH-character-incremental-construction.md` — category-specific
+- [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — category-specific
   iteration pattern.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

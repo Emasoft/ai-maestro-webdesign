@@ -4,6 +4,17 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [HTML](#html)
+- [CSS](#css)
+- [The 3-column grid layout](#the-3-column-grid-layout)
+- [Animation — CSS transition](#animation-css-transition)
+- [Progress bars — single metric variant](#progress-bars-single-metric-variant)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # CSS horizontal bar chart — vesting / allocation strips
 
@@ -150,9 +161,9 @@ requestAnimationFrame(() => {
 
 ## Cross-references
 
-- `TECH-progress-bar-vesting.md` — the vesting-specific progress
+- [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting-specific progress
   variant.
-- `TECH-svg-pie-chart.md` — alternative for proportions.
-- `TECH-annotated-bar-chart.md` — SVG bar with annotations.
+- [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative for proportions.
+- [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — SVG bar with annotations.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

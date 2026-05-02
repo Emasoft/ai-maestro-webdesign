@@ -4,6 +4,15 @@ category: seo-eeat
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: E-E-A-T — Quality Evaluation Framework
 
@@ -52,6 +61,6 @@ Recommendations: add author bio with qualifications, medical-review byline, link
 
 ## Cross-references
 
-- `TECH-seo-cwv.md` — page experience signals (CWV)
-- `TECH-seo-content-quality.md`, `TECH-seo-technical.md`, `TECH-seo-structured-data.md`
+- [TECH-seo-cwv](TECH-seo-cwv.md) — page experience signals (CWV)
+- [TECH-seo-content-quality](TECH-seo-content-quality.md), [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-structured-data](TECH-seo-structured-data.md)
 - `../SKILL.md`

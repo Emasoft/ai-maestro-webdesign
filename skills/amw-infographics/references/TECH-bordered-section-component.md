@@ -4,6 +4,18 @@ category: infographic-template
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Left-accent variant (most common)](#left-accent-variant-most-common)
+- [Full-border variant](#full-border-variant)
+- [Header styles](#header-styles)
+- [HTML](#html)
+- [Minimum border opacity](#minimum-border-opacity)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `bordered_section` — visible-border content panel
 
@@ -89,9 +101,9 @@ richer. The visible border is the signature — ghost borders
 
 ## Cross-references
 
-- `TECH-bullet-panel-component.md` — simpler alternative for pure
+- [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — simpler alternative for pure
   bullet content.
-- `TECH-annotation-first.md` — styled insight callout box covered there.
-- `TECH-dense-editorial-dna.md` — the visible-borders rule.
+- [TECH-annotation-first](TECH-annotation-first.md) — styled insight callout box covered there.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the visible-borders rule.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,16 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [HTML](#html)
+- [The signature options](#the-signature-options)
+- [Multi-character comparison — overlay datasets](#multi-character-comparison-overlay-datasets)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Radar chart — Chart.js for game stats + multi-axis comparison
 
@@ -110,8 +120,8 @@ readable.
 
 ## Cross-references
 
-- `TECH-chart-selection-guide.md` — when radar is the right choice.
-- `TECH-game-overview-playbook.md` — where radar charts shine.
-- `TECH-line-chart.md` — the other Chart.js type in the library.
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when radar is the right choice.
+- [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — where radar charts shine.
+- [TECH-line-chart](TECH-line-chart.md) — the other Chart.js type in the library.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

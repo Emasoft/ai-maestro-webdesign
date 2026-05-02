@@ -1,3 +1,19 @@
+## Table of Contents
+
+- [Output schema](#output-schema)
+- [Structural checks (must-pass)](#structural-checks-must-pass)
+  - [Variant 1 (canonical)](#variant-1-canonical)
+  - [Variant 2 (community)](#variant-2-community)
+- [Token-quality checks (must-pass — both variants)](#token-quality-checks-must-pass-both-variants)
+- [Sync checks (must-pass — when companion files exist)](#sync-checks-must-pass-when-companion-files-exist)
+- [Content-integrity checks (soft — affects score)](#content-integrity-checks-soft-affects-score)
+- [A11y checks (must-pass — both variants)](#a11y-checks-must-pass-both-variants)
+- [Scoring](#scoring)
+- [What the rubric does NOT do](#what-the-rubric-does-not-do)
+- [How `amw-design-md-author-agent` uses the rubric on its own output](#how-amw-design-md-author-agent-uses-the-rubric-on-its-own-output)
+- [Cross-references](#cross-references)
+
+
 # DESIGN.md review rubric
 
 **Adapted from:** `docs_dev/extracted/google-labs/design-md-builder-main/design-md-builder-main/references/review-rubric.md` (Apache-2.0 / MIT, attributed to design-md-builder).
@@ -162,9 +178,9 @@ After authoring a draft DESIGN.md, the author agent:
 
 ## Cross-references
 
-- `./audit-passes.md` — 5-pass audit (broader than the rubric)
-- `./canonical-spec-google-alpha.md` — Variant 1 spec
-- `./community-9-section-spec.md` — Variant 2 spec
+- [audit-passes](./audit-passes.md) — 5-pass audit (broader than the rubric)
+- [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
+- [community-9-section-spec](./community-9-section-spec.md) — Variant 2 spec
 - `<plugin-root>/bin/amw-design-md-validate.py` — runs `S*` / `T*` checks
 - `<plugin-root>/bin/amw-design-md-contrast.py` — runs `A1` / `A2`
 - `<plugin-root>/bin/amw-design-md-lint.sh` — runs the official linter

@@ -4,6 +4,15 @@ category: ascii-unicode
 source: box-diagram-master/README.md
 also-in: box-diagram-master/skills/amw-box-diagram/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-multi-line-rich-content-box — title + separator + body lines
 
@@ -54,7 +63,7 @@ Last line: `╰──────────╯`
 
 ## Cross-references
 
-- `./TECH-unicode-rounded-corner-set.md`
+- [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
 - `../../amw-ascii-creator/references/TECH-multi-line-box-body.md`
 - `../../amw-box-diagram/examples/incident-response.txt`
 - [`../SKILL.md`](../SKILL.md) — parent skill

@@ -364,7 +364,7 @@ Example: ASCII declares a "danger alert" panel; `brand_tokens.colors.danger` is 
 Example: ASCII hero headline slot is 40 chars wide; French copy is 68 chars. Action: let CSS line-wrap handle it at render time — ASCII character width is a structural hint, not a pixel budget. Do not truncate. Do not resize the section. Document in `warnings` only if the locale breaks the visual hierarchy at 1440px (e.g., headline occupies 3 lines and overflows into the sub-headline area). Offer a recommendation: "consider shorter French variant; current copy may require hero resize."
 
 ### Pattern 3: `target_stack=shadcn+next` but brand tokens declare `fonts.display="Bebas Neue"` which is not a standard shadcn font
-Example: shadcn's default is system-ui / Inter-family. Action: inject `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">` in `<head>` and override the shadcn `--font-sans` / `--font-display` custom property. The brand tokens win. Document the font injection in `warnings`.
+Example: shadcn's default is system-ui / Inter-family. Action: inject a Google Fonts `<link>` for the brand-token font (e.g., the Bebas Neue family with `display=swap`) into `<head>` and override the shadcn `--font-sans` / `--font-display` custom property. The brand tokens win. Document the font injection in `warnings`.
 
 ### Pattern 4: `legal_mandatory_elements` is empty but the project's locale includes GDPR-covered countries
 Example: French copy locale but no cookie banner in legal elements. Action: I do NOT inject a banner on my own — that is legal-expert's domain. Document in `warnings` with `"Locale includes EU country; no cookie banner in legal_mandatory_elements. Re-verify with amw-legal-expert-agent before production."`. `status=ok` technically (my job is HTML rendering), but main-agent's aggregation step will catch the warning per `authority-hierarchy.md` Pattern 7.
@@ -575,7 +575,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
 - `../skills/amw-ascii-to-html/SKILL.md` — core translation skill
 - `../skills/amw-shadcn-ui/SKILL.md` — component surface for shadcn stacks
 - `../skills/amw-tailwind-4/SKILL.md` — Tailwind v4 syntax reference

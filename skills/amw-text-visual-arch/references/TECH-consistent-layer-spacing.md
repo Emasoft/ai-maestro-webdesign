@@ -57,7 +57,7 @@ makes a diagram read as if it has bugs the reader must decode.
 ## Cross-references
 
 - `../../amw-ascii-creator/references/TECH-render-mode-layers.md`
-- `./TECH-c4-zoom-levels.md`
+- [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
 - `../../amw-box-diagram/references/TECH-fan-out-fan-in-junctions.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

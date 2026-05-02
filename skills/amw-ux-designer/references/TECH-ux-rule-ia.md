@@ -4,6 +4,21 @@ category: ux-rule-ia
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/rules/information-architecture.md
 also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Navigation structure](#navigation-structure)
+  - [Navigation patterns](#navigation-patterns)
+  - [Mobile specifics](#mobile-specifics)
+  - [Content organization](#content-organization)
+  - [Information scent](#information-scent)
+  - [Search as navigation](#search-as-navigation)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Rule — Information Architecture
 
@@ -87,5 +102,5 @@ Nav redesign for a B2B SaaS:
 
 ## Cross-references
 
-- `TECH-ux-rule-research.md`, `TECH-ux-rule-accessibility.md`, `TECH-ux-rule-interaction.md`, `TECH-ux-rule-visual.md`
+- [TECH-ux-rule-research](TECH-ux-rule-research.md), [TECH-ux-rule-accessibility](TECH-ux-rule-accessibility.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md), [TECH-ux-rule-visual](TECH-ux-rule-visual.md)
 - `../SKILL.md`

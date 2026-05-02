@@ -4,6 +4,17 @@ category: hyperframes-cli
 source: external/hyperframes/packages/cli/src/commands/doctor.ts
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [What `doctor` checks](#what-doctor-checks)
+- [Minimal example](#minimal-example)
+  - [Common failure modes surfaced by `doctor`](#common-failure-modes-surfaced-by-doctor)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `hyperframes doctor` + environment utilities
 
@@ -91,6 +102,6 @@ FFmpeg: 6.1.1 /opt/homebrew/bin/ffmpeg
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-render.md` — the command this diagnoses
-- `TECH-hyperframes-cli-lint.md`, `TECH-hyperframes-cli-preview.md`
+- [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — the command this diagnoses
+- [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md)
 - `../SKILL.md`

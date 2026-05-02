@@ -1,10 +1,17 @@
+## Table of Contents
+
+- [Optional extension sections](#optional-extension-sections)
+- [Validation](#validation)
+- [Cross-references](#cross-references)
+
+
 # Community 9-section DESIGN.md template (Variant 2)
 
-Copy the block below to a new `DESIGN.md`. Fill every `{{placeholder}}` with a real value. Do not leave `TBD`, `???`, or `<TODO>` — the review rubric (`review-rubric.md`) fails any file containing those.
+Copy the block below to a new `DESIGN.md`. Fill every `{{placeholder}}` with a real value. Do not leave `TBD`, `???`, or `<TODO>` — the review rubric ([review-rubric](review-rubric.md)) fails any file containing those.
 
 This format dominates the public DESIGN.md corpus (58-brand pre-paywall, 98-brand design-swatches). Use it when matching an existing collection style; otherwise prefer the canonical template.
 
-The XML boundary tags `<context>`, `<design_tokens>`, `<constraints>` are an enhancement that improves quality-rubric scores (`review-rubric.md` S2-S4). Keep them in delivered files.
+The XML boundary tags `<context>`, `<design_tokens>`, `<constraints>` are an enhancement that improves quality-rubric scores ([review-rubric](review-rubric.md) S2-S4). Keep them in delivered files.
 
 ---
 

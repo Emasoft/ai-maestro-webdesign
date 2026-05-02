@@ -467,10 +467,10 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-wireframe-builder-agent.md` — primary consumer of the flat `brand_tokens` output
-- `./amw-brand-researcher-agent.md` — source of `brand_tokens_seed` (competitor extraction or user upload)
-- `./amw-accessibility-auditor-agent.md` — downstream WCAG audit of rendered output using these tokens
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of the flat `brand_tokens` output
+- [amw-brand-researcher-agent](./amw-brand-researcher-agent.md) — source of `brand_tokens_seed` (competitor extraction or user upload)
+- [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream WCAG audit of rendered output using these tokens
 - `../skills/amw-design-principles/color-system.md` — plugin's canonical color token structure
 - `../skills/amw-design-principles/typography-system.md` — type scale and locale-specific rules
 - `../skills/amw-design-principles/spacing-rhythm.md` — spacing-unit contract

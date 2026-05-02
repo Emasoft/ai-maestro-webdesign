@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/sequences-tables.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-timeline-events — scaled time axis with event labels
 
@@ -52,6 +61,6 @@ steady-state visualizations.
 
 - `../../amw-text-visual-workflows/references/TECH-timeline-with-anchors.md`
 - `../../amw-text-visual-retro/references/TECH-milestone-timeline.md`
-- `./sequences-tables.md` (legacy pattern file)
+- [sequences-tables](./sequences-tables.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -1,3 +1,31 @@
+## Table of Contents
+
+- [1. Format definition](#1-format-definition)
+  - [1.1 Character repertoire](#11-character-repertoire)
+  - [1.2 Forbidden characters (validator rejects)](#12-forbidden-characters-validator-rejects)
+  - [1.3 State / status markers](#13-state-status-markers)
+- [2. Dimensional constraints](#2-dimensional-constraints)
+- [3. Parse rules](#3-parse-rules)
+- [4. Emission rules](#4-emission-rules)
+  - [4.1 Four JSON modes](#41-four-json-modes)
+  - [4.2 Key renderer invariants](#42-key-renderer-invariants)
+- [5. Validation rules](#5-validation-rules)
+  - [5.1 Checks](#51-checks)
+  - [5.2 Validation is MANDATORY before delivery](#52-validation-is-mandatory-before-delivery)
+- [6. Per-source breakdown of the technique catalog](#6-per-source-breakdown-of-the-technique-catalog)
+- [7. Technique catalog](#7-technique-catalog)
+  - [S1 — box-diagram-master (gold examples)](#s1-box-diagram-master-gold-examples)
+  - [S2 — ascii-diagrams-skill (CHI'24 refs, 7 files)](#s2-ascii-diagrams-skill-chi24-refs-7-files)
+  - [S3 — cc-plugin-text-visualizations (5 skills)](#s3-cc-plugin-text-visualizations-5-skills)
+  - [S4 — perfect-ascii (renderer)](#s4-perfect-ascii-renderer)
+  - [S5 — diagram-skill styles (ASCII-STYLES.md)](#s5-diagram-skill-styles-ascii-stylesmd)
+  - [S6 — baybee-diagram (SVG patterns with ASCII equivalents)](#s6-baybee-diagram-svg-patterns-with-ascii-equivalents)
+  - [S7 — diagram-design-editorial (editorial)](#s7-diagram-design-editorial-editorial)
+  - [S8 — Structural pairing rules (enforced by validator)](#s8-structural-pairing-rules-enforced-by-validator)
+  - [S9 — Cross-cutting style rules](#s9-cross-cutting-style-rules)
+- [8. Migration note (2026-04-22)](#8-migration-note-2026-04-22)
+
+
 # ASCII — canonical format reference
 
 This file is the single authoritative spec for ASCII diagrams in the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts ASCII pulls from this file. Format semantics, parsing rules, emission rules, validation rules, and the full technique catalog (95 techniques, migrated from `ascii-creator/` and `ascii-to-html/` into this canonical home) are all below.
@@ -14,10 +42,10 @@ This file is the single authoritative spec for ASCII diagrams in the `ai-maestro
 - `../../bin/amw-ascii-render.py` — renderer (4 JSON modes)
 - `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate)
 - `../../bin/amw-validate-ascii.py` — validator (Python mirror)
-- `./ir-schema.md` — when ASCII is a source of the diagram IR
-- `./conversion-matrix.md` — ASCII → {HTML, SVG, Mermaid, PNG} cells
-- `./modify-flow.md` — edit flow applied to existing `.txt` / `.md` artifacts
-- `./validation-dispatcher.md` — unified validator output contract
+- [ir-schema](./ir-schema.md) — when ASCII is a source of the diagram IR
+- [conversion-matrix](./conversion-matrix.md) — ASCII → {HTML, SVG, Mermaid, PNG} cells
+- [modify-flow](./modify-flow.md) — edit flow applied to existing `.txt` / `.md` artifacts
+- [validation-dispatcher](./validation-dispatcher.md) — unified validator output contract
 
 ---
 
@@ -83,7 +111,7 @@ Inline bracketed tokens carry semantic meaning (picked up by parsers and the HTM
 
 ## 3. Parse rules
 
-Parser: `../../bin/amw-ascii-parse.py`. Exposes these functions that produce IR (`./ir-schema.md`) for downstream emitters:
+Parser: `../../bin/amw-ascii-parse.py`. Exposes these functions that produce IR ([ir-schema](./ir-schema.md)) for downstream emitters:
 
 | Function | Returns | Drives |
 |---|---|---|
@@ -126,7 +154,7 @@ All modes output ≤78 columns. All modes go through the same Grid primitive (TE
 
 ## 5. Validation rules
 
-Validator: `../../bin/amw-validate-ascii.py` (canonical) + `../../bin/amw-validate-ascii.py` (Python mirror). Output contract per `./validation-dispatcher.md`.
+Validator: `../../bin/amw-validate-ascii.py` (canonical) + `../../bin/amw-validate-ascii.py` (Python mirror). Output contract per [validation-dispatcher](./validation-dispatcher.md).
 
 ### 5.1 Checks
 
@@ -293,6 +321,6 @@ TECH-95 dot-separator-pair: `  ·  ` (space-dot-space, 3 chars) as semantic paus
 
 This file is the **canonical home** for the ASCII technique catalog. It supersedes (in migration order):
 - `skills/amw-ascii-creator/references/techniques.md` (95 techniques, moved here in full)
-- `skills/amw-ascii-to-html/references/techniques.md` (100 techniques → S7/S9 of `./html.md`; ASCII-parse hooks S9 mirrored here in §3)
+- `skills/amw-ascii-to-html/references/techniques.md` (100 techniques → S7/S9 of [html](./html.md); ASCII-parse hooks S9 mirrored here in §3)
 
 Both original files are preserved at `docs_dev/backups/<timestamp>-phase0-refs/` and now carry a 3-line pointer referencing this file. Future edits to technique catalogs go here, not in per-skill references.

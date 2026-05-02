@@ -40,5 +40,5 @@ The generated shadcn theme CSS gains a sibling `.dark { --background: ...; --for
 
 ## Cross-references
 
-- `TECH-designlang-full-mode.md` — `--full` enables this plus three more modes
+- [TECH-designlang-full-mode](TECH-designlang-full-mode.md) — `--full` enables this plus three more modes
 - `../SKILL.md`

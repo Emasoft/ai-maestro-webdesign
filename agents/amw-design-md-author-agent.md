@@ -368,10 +368,10 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-design-md-auditor-agent.md` — audit mode for produced DESIGN.md
-- `./amw-design-md-extractor-agent.md` — URL / Tailwind / codebase extraction peer (routes through main-agent)
-- `./amw-wireframe-builder-agent.md` — primary consumer of produced DESIGN.md
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-design-md-auditor-agent](./amw-design-md-auditor-agent.md) — audit mode for produced DESIGN.md
+- [amw-design-md-extractor-agent](./amw-design-md-extractor-agent.md) — URL / Tailwind / codebase extraction peer (routes through main-agent)
+- [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of produced DESIGN.md
 - `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format and token contracts
 - `../skills/amw-design-md/references/canonical-spec-google-alpha.md` — full Variant 1 spec
 - `bin/amw-design-md-from-codebase.py` — codebase extraction driver

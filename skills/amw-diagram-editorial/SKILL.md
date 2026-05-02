@@ -80,16 +80,16 @@ Do NOT activate on generic intent ("draw a picture", "design a page", "make an i
 | **Venn** | Set overlap (2–3 circles). |
 | **pyramid / funnel** | Ranked hierarchy or conversion drop-off. |
 
-**Selection rule:** ask *"would a reader learn more from this than from a well-written paragraph?"* If no, do not draw. Default to deletion over addition. Full per-type rules (canonical layout, anchor coordinates, concrete HTML+SVG scaffolds) live in `references/type-rules.md` — load that file only when the chosen type needs its specific scaffold.
+**Selection rule:** ask *"would a reader learn more from this than from a well-written paragraph?"* If no, do not draw. Default to deletion over addition. Full per-type rules (canonical layout, anchor coordinates, concrete HTML+SVG scaffolds) live in [type-rules](references/type-rules.md) — load that file only when the chosen type needs its specific scaffold.
 
 ## Design system (compact)
 
-Every diagram this skill emits respects these non-negotiables. Full spec with code samples in `references/design-system.md`.
+Every diagram this skill emits respects these non-negotiables. Full spec with code samples in [design-system](references/design-system.md).
 
 - **Grid.** Every coordinate, width, and gap divisible by **4px**. No shadows anywhere. Max `border-radius: 10px`. Borders are **1px hairline** only.
 - **Typography (three families, three roles).** `Instrument Serif` → titles, italic editorial callouts. `Geist Sans` → node names, labels. `Geist Mono` → technical sublabels (ports, URLs, field types, IDs). Mono is for technical content specifically, not a blanket "dev aesthetic." These three families are load-bearing — keep them as-is.
 - **Color discipline.** One accent color per diagram. Accent reserved for **1–2 focal nodes** — the things the reader looks at first. Everything else uses `ink`, `muted`, `paper-2`. Target visual density: **4/10** — ruthlessly sparse.
-- **Tokens.** Semantic color roles: `paper` (background), `ink` (primary text, borders), `muted` (secondary labels, grid lines), `paper-2` (card fills, lane backgrounds), `accent` (focal nodes — 1–2 per diagram), `accent-fg` (text on accent-colored nodes). Defaults are stone + rust — warm off-white paper, charcoal ink, rust-orange accent. Override via brand onboarding. Concrete default values: `paper: oklch(96% 0.01 80)`, `ink: oklch(25% 0.02 80)`, `accent: oklch(62% 0.19 45)` — full table in `references/design-system.md`.
+- **Tokens.** Semantic color roles: `paper` (background), `ink` (primary text, borders), `muted` (secondary labels, grid lines), `paper-2` (card fills, lane backgrounds), `accent` (focal nodes — 1–2 per diagram), `accent-fg` (text on accent-colored nodes). Defaults are stone + rust — warm off-white paper, charcoal ink, rust-orange accent. Override via brand onboarding. Concrete default values: `paper: oklch(96% 0.01 80)`, `ink: oklch(25% 0.02 80)`, `accent: oklch(62% 0.19 45)` — full table in [design-system](references/design-system.md).
 
 ## Brand onboarding (60 seconds)
 
@@ -99,7 +99,7 @@ To match the user's existing site:
 2. This skill routes through `../amw-dev-browser/` (**never** raw WebFetch) to fetch the homepage and serialize the DOM.
 3. Extract dominant palette + font stack. Map values to semantic roles — `paper`, `ink`, `muted`, `paper-2`, `accent`, `accent-fg`.
 4. Run WCAG AA contrast checks against `../amw-design-principles/color-system.md`. Auto-propose adjustments for failures; never silently ship a failing pair.
-5. Show a proposed diff to the user; on confirmation, write tokens to `references/style-guide.md` (user-editable) inside this skill folder.
+5. Show a proposed diff to the user; on confirmation, write tokens to [style-guide](references/style-guide.md) (user-editable) inside this skill folder.
 
 **First-run gate.** If the default tokens are still in place on first use in a new project, pause and ask the user: *"Run onboarding, paste tokens manually, or proceed with default (stone + rust)?"* Do not guess.
 
@@ -112,11 +112,11 @@ To match the user's existing site:
 - `../amw-design-principles/ai-slop-avoid.md` — every emitted diagram runs a final check against this file before delivery.
 - `../amw-dev-browser/SKILL.md` — the *only* authorized browser-automation primitive; use for brand onboarding instead of WebFetch.
 - `../../bin/amw-svg-render.py` — optional render-verify-finish loop when pixel-level inspection of the emitted SVG is needed before handoff.
-- `references/type-rules.md` — full per-type scaffolds and anchor coordinates for all 13 types.
-- `references/design-system.md` — full 4px-grid / typography / color / primitive spec with worked HTML+SVG code.
-- `references/troubleshooting.md` — symptom-to-fix table (misaligned grid, brand-color mismatch, font loading, contrast failure, too dense, wrong type chosen).
-- `references/primitive-sketchy.md` — cross-type `<feTurbulence>` + `<feDisplacementMap>` filter for hand-drawn essay-style variants, full parameter reference.
-- `references/primitive-annotation.md` — cross-type italic Instrument Serif callout with dashed Bézier leader line for in-margin asides, full geometry spec.
+- [type-rules](references/type-rules.md) — full per-type scaffolds and anchor coordinates for all 13 types.
+- [design-system](references/design-system.md) — full 4px-grid / typography / color / primitive spec with worked HTML+SVG code.
+- [troubleshooting](references/troubleshooting.md) — symptom-to-fix table (misaligned grid, brand-color mismatch, font loading, contrast failure, too dense, wrong type chosen).
+- [primitive-sketchy](references/primitive-sketchy.md) — cross-type `<feTurbulence>` + `<feDisplacementMap>` filter for hand-drawn essay-style variants, full parameter reference.
+- [primitive-annotation](references/primitive-annotation.md) — cross-type italic Instrument Serif callout with dashed Bézier leader line for in-margin asides, full geometry spec.
 
 ## Instructions
 
@@ -425,13 +425,13 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| Diagram looks "AI-generated" / generic | Coordinates not on 4px grid, or too many accent nodes | Re-snap every x/y/width/gap to a multiple of 4; drop accent on all but 1–2 focal nodes; see `references/troubleshooting.md`. |
-| Colours don't match the user's site | Brand onboarding never ran, or tokens are still defaults | Re-run onboarding through `../amw-dev-browser/`, or have the user paste hex values into `references/style-guide.md`. |
-| Fonts fall back to Times/Arial | Google Fonts / Bunny Fonts `<link>` missing from `<head>` | Add the Bunny Fonts `<link>` shown in `references/troubleshooting.md`; fallbacks to system fonts are expected but degrade the editorial look. |
+| Diagram looks "AI-generated" / generic | Coordinates not on 4px grid, or too many accent nodes | Re-snap every x/y/width/gap to a multiple of 4; drop accent on all but 1–2 focal nodes; see [troubleshooting](references/troubleshooting.md). |
+| Colours don't match the user's site | Brand onboarding never ran, or tokens are still defaults | Re-run onboarding through `../amw-dev-browser/`, or have the user paste hex values into [style-guide](references/style-guide.md). |
+| Fonts fall back to Times/Arial | Google Fonts / Bunny Fonts `<link>` missing from `<head>` | Add the Bunny Fonts `<link>` shown in [troubleshooting](references/troubleshooting.md); fallbacks to system fonts are expected but degrade the editorial look. |
 | WCAG contrast fails on brand color | Onboarding couldn't find a 4.5:1 pair at 12px | Darken `ink` or lighten `paper` until ratio ≥ 4.5:1; onboarding auto-proposes; never ship a failing pair. |
 | Diagram is cluttered / too dense | Node count above ~8, density above 6/10 | Delete non-essential nodes; split into overview + detail; switch to `nested` or `layer stack` if the intent is hierarchy. |
 | Wrong type was chosen | User's intent maps better to a different type | Ask the user to override explicitly (*"Make this a swimlane, not a flowchart — rows for Design, Eng, PM"*); do not silently switch. |
 | User wants ASCII/unicode terminal diagram | Intent belongs elsewhere | Route to `../amw-ascii-sketch/` or a wiretext tool; this skill only emits HTML+SVG. |
 | User wants before/after comparison | Intent is tabular, not diagrammatic | Route back to `design-principles`; a table beats a diagram for comparisons. |
 
-See `references/troubleshooting.md` for the full symptom-to-fix list and the "when NOT to use this skill" section.
+See [troubleshooting](references/troubleshooting.md) for the full symptom-to-fix list and the "when NOT to use this skill" section.

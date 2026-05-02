@@ -4,6 +4,15 @@ category: arrow-vocab
 source: diagram-skill-main/ASCII-STYLES.md
 also-in: diagram-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-style-presets — `detallado` / `unicode` / `clasico` / `compacto`
 
@@ -76,7 +85,7 @@ Client → Gateway ─┬─→ Service A → DB-A
 
 ## Cross-references
 
-- `./TECH-arrow-vocabulary.md`
+- [TECH-arrow-vocabulary](./TECH-arrow-vocabulary.md)
 - `../../amw-ascii-creator/SKILL.md` (style presets section)
 - `../../amw-ascii-validator/references/TECH-forbidden-chars-banlist.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill

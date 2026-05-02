@@ -4,6 +4,15 @@ category: architecture-graph
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/formats.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-mermaid-subgraph-transform
 
@@ -107,16 +116,16 @@ flowchart TD
   to `layer0, layer1, layer2` in the Mermaid output; keep the
   palette hexes mapped to the semantic positions.
 - **Trigger a full re-generation** if more than two of the Stage 2 checks
-  fail simultaneously (see `validation.md` §mermaid). Patching multiple
+  fail simultaneously (see [validation](validation.md) §mermaid). Patching multiple
   issues is error-prone; re-generating from the validated graph is
   cheap.
 
 ## Cross-references
 
-- `formats.md` — full transform spec
-- `validation.md` — Stage 2 Mermaid checks
-- `TECH-graph-json-schema.md` — source schema
-- `TECH-layer-palette-5-colors.md` — palette used in classDefs
-- `TECH-svg-layered-layout.md` — sibling transform for the SVG format
+- [formats](formats.md) — full transform spec
+- [validation](validation.md) — Stage 2 Mermaid checks
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — source schema
+- [TECH-layer-palette-5-colors](TECH-layer-palette-5-colors.md) — palette used in classDefs
+- [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — sibling transform for the SVG format
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -1,3 +1,20 @@
+## Table of Contents
+
+- [Format 1: `graph` (default)](#format-1-graph-default)
+  - [Schema](#schema)
+  - [Constraints](#constraints)
+- [Format 2: `mermaid`](#format-2-mermaid)
+  - [Transform Rules](#transform-rules)
+  - [Layer Color Mapping](#layer-color-mapping)
+  - [Mermaid Output Template](#mermaid-output-template)
+  - [Mermaid ID Safety](#mermaid-id-safety)
+- [Format 3: `svg`](#format-3-svg)
+  - [Layout Algorithm](#layout-algorithm)
+  - [SVG Structure](#svg-structure)
+  - [SVG Height Calculation](#svg-height-calculation)
+- [Format 4: `png`](#format-4-png)
+
+
 # Architecture Canvas — Output Format Transforms
 
 All four formats start from the same graph JSON produced by the LLM call.

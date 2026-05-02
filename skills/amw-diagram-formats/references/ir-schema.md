@@ -1,3 +1,20 @@
+## Table of Contents
+
+- [1. Top-level shape](#1-top-level-shape)
+- [2. `nodes`](#2-nodes)
+- [3. Well-known annotations](#3-well-known-annotations)
+- [4. Raw-source fast path (MVP)](#4-raw-source-fast-path-mvp)
+- [5. Lossy-conversion matrix](#5-lossy-conversion-matrix)
+- [6. Versioning policy](#6-versioning-policy)
+- [7. Example IRs](#7-example-irs)
+  - [Minimal flowchart (3 nodes, 2 edges)](#minimal-flowchart-3-nodes-2-edges)
+  - [Sequence (two actors, one message + note)](#sequence-two-actors-one-message-note)
+  - [Architecture (3 layers)](#architecture-3-layers)
+  - [Raw-source stub (MVP HTML → IR)](#raw-source-stub-mvp-html-ir)
+- [8. Validation](#8-validation)
+- [9. Consumers](#9-consumers)
+
+
 # IR Schema — `diagram-ir/1.0`
 
 **Authoritative spec for the plugin's Intermediate Representation.** Pair this prose with the machine-readable `../schema.json`; they describe the same shape. Changes to either MUST change both together, and MUST be gated by an ADR + explicit version bump (§6 below).
@@ -187,9 +204,9 @@ Both checks are present in `bin/amw-diagram-ir.py::validate`.
 ## 9. Consumers
 
 - `bin/amw-diagram-ir.py` (library + CLI).
-- `bin/amw-diagram-ir-diff.py` (Task 3c — future; consumes the `diff` op list specified in `./diff-algorithm.md`).
-- Every `wd-create-or-modify-*-diagram` command's modify-flow (see `./modify-flow.md`).
-- `/amw-convert-any-diagram-format` (see `./conversion-matrix.md`).
-- `/amw-compare-diagrams` (see `./diff-algorithm.md`).
+- `bin/amw-diagram-ir-diff.py` (Task 3c — future; consumes the `diff` op list specified in [diff-algorithm](./diff-algorithm.md)).
+- Every `wd-create-or-modify-*-diagram` command's modify-flow (see [modify-flow](./modify-flow.md)).
+- `/amw-convert-any-diagram-format` (see [conversion-matrix](./conversion-matrix.md)).
+- `/amw-compare-diagrams` (see [diff-algorithm](./diff-algorithm.md)).
 
 Any change to the IR shape ripples through all of these; bump the version in lockstep.

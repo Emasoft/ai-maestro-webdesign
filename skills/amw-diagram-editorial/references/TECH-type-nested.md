@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-type-nested
 
@@ -107,6 +116,6 @@ Three-level cloud scope, accent on the innermost:
 ## Cross-references
 
 - `../SKILL.md` — 13-type table
-- `TECH-type-tree.md` — if parent-child relationships have explicit edges
-- `TECH-type-layers.md` — for stacked abstraction without containment
-- `design-system.md` — opacity ramp, corner-label pattern
+- [TECH-type-tree](TECH-type-tree.md) — if parent-child relationships have explicit edges
+- [TECH-type-layers](TECH-type-layers.md) — for stacked abstraction without containment
+- [design-system](design-system.md) — opacity ramp, corner-label pattern

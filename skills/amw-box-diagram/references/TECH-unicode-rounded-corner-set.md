@@ -4,6 +4,15 @@ category: ascii-unicode
 source: box-diagram-master/skills/amw-box-diagram/SKILL.md
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-unicode-rounded-corner-set — `╭ ╮ ╰ ╯ │ ─` box character set
 
@@ -59,7 +68,7 @@ and its siblings.
 
 ## Cross-references
 
-- `./TECH-python-helper-pattern.md`
+- [TECH-python-helper-pattern](./TECH-python-helper-pattern.md)
 - `../../amw-ascii-validator/references/TECH-safe-char-palette.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

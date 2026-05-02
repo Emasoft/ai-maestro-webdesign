@@ -1,3 +1,17 @@
+## Table of Contents
+
+- [1. Grid](#1-grid)
+- [2. Typography](#2-typography)
+  - [Loading the fonts](#loading-the-fonts)
+  - [Type scale](#type-scale)
+- [3. Colour discipline](#3-colour-discipline)
+  - [Rules](#rules)
+  - [Focal node vs standard node](#focal-node-vs-standard-node)
+  - [Connection styling](#connection-styling)
+- [4. Density calibration](#4-density-calibration)
+- [5. Coordinate-level checklist](#5-coordinate-level-checklist)
+
+
 # Design System — full spec for editorial diagrams
 
 Load this file when a diagram needs the complete grid / typography / colour contract and the primitive scaffolds. The compact SKILL.md carries the summary; this file carries the full rules and worked examples.

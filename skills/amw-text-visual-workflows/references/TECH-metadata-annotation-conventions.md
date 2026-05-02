@@ -59,7 +59,7 @@ Combine them: `[ Run migrations ] (@db-team, <15min, prod-only)`.
 
 ## Cross-references
 
-- `./TECH-flowchart-paren-bracket-glyphs.md`
+- [TECH-flowchart-paren-bracket-glyphs](./TECH-flowchart-paren-bracket-glyphs.md)
 - `../../amw-text-visual-retro/references/TECH-owner-action-items.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

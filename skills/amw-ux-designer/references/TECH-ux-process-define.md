@@ -4,6 +4,15 @@ category: ux-process
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: UX process — Define (Phase 2)
 
@@ -62,7 +71,7 @@ How-Might-We:
 
 ## Cross-references
 
-- `TECH-ux-process-discover.md` — upstream (Phase 1)
-- `TECH-ux-process-ideate.md` — downstream (Phase 3)
-- `TECH-ux-persona-template.md` — detail on persona creation
+- [TECH-ux-process-discover](TECH-ux-process-discover.md) — upstream (Phase 1)
+- [TECH-ux-process-ideate](TECH-ux-process-ideate.md) — downstream (Phase 3)
+- [TECH-ux-persona-template](TECH-ux-persona-template.md) — detail on persona creation
 - `../SKILL.md`

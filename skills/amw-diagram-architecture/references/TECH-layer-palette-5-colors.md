@@ -85,11 +85,11 @@ are re-ordered. The hex values track the semantic layer, not the
 
 ## Cross-references
 
-- `prompts.md` — the palette is baked into the LLM system prompt
-- `formats.md` — Mermaid `classDef` + SVG layer band use this palette
-- `TECH-graph-json-schema.md` — layers carry the `color` field from here
-- `TECH-mermaid-subgraph-transform.md` — Mermaid applies the palette via
+- [prompts](prompts.md) — the palette is baked into the LLM system prompt
+- [formats](formats.md) — Mermaid `classDef` + SVG layer band use this palette
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — layers carry the `color` field from here
+- [TECH-mermaid-subgraph-transform](TECH-mermaid-subgraph-transform.md) — Mermaid applies the palette via
   `classDef`
-- `TECH-svg-layered-layout.md` — SVG uses it for band + accent bar + dot
+- [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — SVG uses it for band + accent bar + dot
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

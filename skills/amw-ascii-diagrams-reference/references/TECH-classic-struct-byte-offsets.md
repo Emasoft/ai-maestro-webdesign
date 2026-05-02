@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/data-structures.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-struct-byte-offsets — packet/struct layout with byte scale
 
@@ -48,12 +57,12 @@ The classic "Offset 0 / 4 / 8 / 12" header strip anchors every diagram.
 - Variable-length fields need an explicit `(variable)` label — otherwise
   the reader may assume it's fixed at the box's apparent width.
 - Bit-field layouts (sub-byte fields inside a register) need a different
-  pattern — see `./TECH-classic-bit-field-annotation.md`.
+  pattern — see [TECH-classic-bit-field-annotation](./TECH-classic-bit-field-annotation.md).
 
 ## Cross-references
 
-- `./TECH-classic-bit-field-annotation.md`
-- `./TECH-classic-linked-list.md`
-- `./data-structures.md` (legacy pattern file)
+- [TECH-classic-bit-field-annotation](./TECH-classic-bit-field-annotation.md)
+- [TECH-classic-linked-list](./TECH-classic-linked-list.md)
+- [data-structures](./data-structures.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

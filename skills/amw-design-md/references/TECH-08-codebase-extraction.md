@@ -5,6 +5,23 @@ source: design-md-builder/scripts/scan_codebase.py
 also-in: TECH-07-url-extraction.md, TECH-10-tailwind-conversion.md
 status: stable
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [What it scans](#what-it-scans)
+- [Inputs](#inputs)
+- [Extraction heuristics](#extraction-heuristics)
+  - [Color extraction](#color-extraction)
+  - [Typography extraction](#typography-extraction)
+  - [Spacing extraction](#spacing-extraction)
+  - [Rounded extraction](#rounded-extraction)
+  - [Component extraction](#component-extraction)
+- [Output](#output)
+- [Failure modes](#failure-modes)
+- [When this is the wrong tool](#when-this-is-the-wrong-tool)
+- [Cross-references](#cross-references)
+
 
 # TECH: Codebase scan → DESIGN.md extraction
 
@@ -115,13 +132,13 @@ Plus an `extraction-notes.md` adjacent file with:
 
 ## When this is the wrong tool
 
-- The user has a Tailwind config and globals.css and wants pure mechanical conversion → use `bin/amw-design-md-from-tailwind.mjs` instead (jiti-based; can eval the config). See `TECH-10-tailwind-conversion.md`.
-- The user wants extraction from a deployed URL → use `bin/amw-design-md-from-url.sh`. See `TECH-07-url-extraction.md`.
+- The user has a Tailwind config and globals.css and wants pure mechanical conversion → use `bin/amw-design-md-from-tailwind.mjs` instead (jiti-based; can eval the config). See [TECH-10-tailwind-conversion](TECH-10-tailwind-conversion.md).
+- The user wants extraction from a deployed URL → use `bin/amw-design-md-from-url.sh`. See [TECH-07-url-extraction](TECH-07-url-extraction.md).
 - The user has a finished DESIGN.md and wants to audit drift → use `amw-design-md-auditor-agent` Pass 2 (which calls this script under the hood).
 
 ## Cross-references
 
-- `./TECH-07-url-extraction.md` — URL extraction
-- `./TECH-10-tailwind-conversion.md` — Tailwind-specific extraction (more accurate for TW projects)
-- `./audit-passes.md` — Pass 2 (drift) uses this internally
+- [TECH-07-url-extraction](./TECH-07-url-extraction.md) — URL extraction
+- [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — Tailwind-specific extraction (more accurate for TW projects)
+- [audit-passes](./audit-passes.md) — Pass 2 (drift) uses this internally
 - `<plugin-root>/bin/amw-design-md-from-codebase.py` — the bin script

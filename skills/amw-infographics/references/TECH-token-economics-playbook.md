@@ -109,10 +109,10 @@ between sections: 24-32px; within sections: 8-12px.
 
 ## Cross-references
 
-- `TECH-per-type-signature-palettes.md` — the color system.
-- `TECH-signature-palette.md` — the AMBER DARK recipe.
-- `TECH-stacked-reference-archetype.md` — the default archetype.
-- `TECH-progress-bar-vesting.md` — the vesting component.
-- `TECH-svg-pie-chart.md` — the allocation chart.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+- [TECH-signature-palette](TECH-signature-palette.md) — the AMBER DARK recipe.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default archetype.
+- [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting component.
+- [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — the allocation chart.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

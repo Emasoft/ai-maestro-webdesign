@@ -58,6 +58,6 @@ Good: │ Hello [!] World │      ← bracket marker = 1 col, frame stays align
 ## Cross-references
 
 - `../../amw-ascii-creator/references/TECH-78-column-cap.md`
-- `./TECH-forbidden-chars-banlist.md`
+- [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

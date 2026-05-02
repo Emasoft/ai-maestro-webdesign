@@ -4,6 +4,15 @@ category: art
 source: skills/amw-pretext-art/SKILL.md
 also-in: SKILL-11.md (Pretext + opentype.js)
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Text on a path (glyph-level placement along a curve)
 

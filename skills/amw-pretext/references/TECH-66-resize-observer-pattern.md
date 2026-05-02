@@ -4,6 +4,15 @@ category: integrate
 source: pretext-skills/amw-pretext-text-measurement/SKILL.md
 also-in: SKILL-21.md, use-pretext/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # ResizeObserver pattern (re-layout, not re-prepare)
 

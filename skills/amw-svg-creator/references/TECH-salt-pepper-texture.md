@@ -4,6 +4,16 @@ category: svg-noise
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The filter](#the-filter)
+- [When to use](#when-to-use)
+- [Subtler salt — use `soft-light` instead of `overlay`](#subtler-salt-use-soft-light-instead-of-overlay)
+- [Usage pattern](#usage-pattern)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Salt & pepper texture — two-layer professional grain
 
@@ -79,8 +89,8 @@ grain over the clipped bounds without covering the underlying fill.
 
 ## Cross-references
 
-- `TECH-fe-turbulence-noise.md` — the simpler single-layer cousin.
-- `TECH-paper-texture-filter.md` — warmer grain for editorial looks.
-- `TECH-colored-shadows.md` — salt+pepper pairs well with blue shadows.
+- [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the simpler single-layer cousin.
+- [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — warmer grain for editorial looks.
+- [TECH-colored-shadows](TECH-colored-shadows.md) — salt+pepper pairs well with blue shadows.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

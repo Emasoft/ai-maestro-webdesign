@@ -4,6 +4,18 @@ category: seo-technical
 source: SKILLS-TO-INTEGRATE/web-design/seo-fundamentals/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Crawl & index control](#crawl-index-control)
+  - [Performance & accessibility (technical prerequisites for CWV)](#performance-accessibility-technical-prerequisites-for-cwv)
+  - [Common technical failures](#common-technical-failures)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Technical SEO principles
 
@@ -37,7 +49,7 @@ On every SEO audit. Technical issues are usually binary (present/absent, correct
 | Mobile-friendly design | Mobile-first indexing — Google crawls mobile version as primary |
 | Clean URLs | Crawl clarity, user comprehension |
 | Semantic HTML | Accessibility + content understanding |
-| Schema.org / JSON-LD | Rich-result eligibility (see `TECH-seo-structured-data.md`) |
+| Schema.org / JSON-LD | Rich-result eligibility (see [TECH-seo-structured-data](TECH-seo-structured-data.md)) |
 | Internal linking | Link equity flow, discoverability |
 
 ### Common technical failures
@@ -72,5 +84,5 @@ curl -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html
 
 ## Cross-references
 
-- `TECH-seo-cwv.md`, `TECH-seo-structured-data.md`, `TECH-seo-content-quality.md`
+- [TECH-seo-cwv](TECH-seo-cwv.md), [TECH-seo-structured-data](TECH-seo-structured-data.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
 - `../SKILL.md`

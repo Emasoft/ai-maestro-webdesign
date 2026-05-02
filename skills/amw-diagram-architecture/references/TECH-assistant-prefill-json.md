@@ -4,6 +4,15 @@ category: architecture-graph
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/prompts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-assistant-prefill-json
 
@@ -87,7 +96,7 @@ JSON.parse(raw);   // works
 - **Still run `repairAndParse`.** Even with the prefill, models
   occasionally close a JSON string with a literal newline, forget a
   comma, or include a stray markdown fence. See
-  `TECH-json-repair-recipe.md` for the recovery logic.
+  [TECH-json-repair-recipe](TECH-json-repair-recipe.md) for the recovery logic.
 - **Set `max_tokens` high enough.** A 10-node graph serialises to ~800
   tokens; cap at 2000 to allow for Stage 1 expansion (descriptions,
   labels). Running out of tokens mid-object produces unparseable
@@ -99,10 +108,10 @@ JSON.parse(raw);   // works
 
 ## Cross-references
 
-- `prompts.md` — the full API call pattern
-- `TECH-json-repair-recipe.md` — downstream repair if parsing still
+- [prompts](prompts.md) — the full API call pattern
+- [TECH-json-repair-recipe](TECH-json-repair-recipe.md) — downstream repair if parsing still
   fails
-- `TECH-stage1-graph-validation.md` — structural validation after parse
-- `TECH-graph-json-schema.md` — the target schema
+- [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — structural validation after parse
+- [TECH-graph-json-schema](TECH-graph-json-schema.md) — the target schema
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

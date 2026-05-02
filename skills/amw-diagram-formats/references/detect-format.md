@@ -1,3 +1,21 @@
+## Table of Contents
+
+- [1. Contract](#1-contract)
+- [2. Decision tree (precedence top-down)](#2-decision-tree-precedence-top-down)
+- [3. Content sniff window](#3-content-sniff-window)
+- [4. Corner cases (by example)](#4-corner-cases-by-example)
+  - [4.1 Mermaid-in-markdown](#41-mermaid-in-markdown)
+  - [4.2 HTML with inline `<svg>`](#42-html-with-inline-svg)
+  - [4.3 SVG served as XHTML](#43-svg-served-as-xhtml)
+  - [4.4 ASCII with a Mermaid-looking first line](#44-ascii-with-a-mermaid-looking-first-line)
+  - [4.5 `.txt` wireframe without box-drawing](#45-txt-wireframe-without-box-drawing)
+  - [4.6 PNG with a non-`.png` extension](#46-png-with-a-non-png-extension)
+  - [4.7 Empty file](#47-empty-file)
+- [5. Known limitations](#5-known-limitations)
+- [6. Callers](#6-callers)
+- [7. When to extend this](#7-when-to-extend-this)
+
+
 # Format detection — `bin/amw-diagram-detect-format.sh`
 
 **Authoritative spec for how the plugin sniffs diagram format.** The sniffer is the **first step** of every cross-format pipeline — conversion, validation, modify-flow, compare. Get it wrong and every downstream step misfires.
@@ -141,7 +159,7 @@ No box chars, no keyword → **unknown**. The user needs to add at least one `+-
 foo.bin   # contents: \x89PNG\r\n\x1a\n...
 ```
 
-Rule 2a matches the magic bytes → **png**. Triggers the PNG refusal (see `./conversion-matrix.md` §3). Even files misnamed on disk are refused — the magic bytes are the truth.
+Rule 2a matches the magic bytes → **png**. Triggers the PNG refusal (see [conversion-matrix](./conversion-matrix.md) §3). Even files misnamed on disk are refused — the magic bytes are the truth.
 
 ### 4.7 Empty file
 
@@ -156,7 +174,7 @@ No extension match, no content to sniff → **unknown**. Exit 1.
 1. **Mermaid-in-markdown** (§4.1) — users must save as `.mmd` for the sniffer to catch Mermaid.
 2. **Multi-format files** (e.g. `.html` with embedded `data:image/svg+xml`) classify as the outer format only. The dispatcher relies on this — inner content is handled by the per-format parsers.
 3. **Compressed / binary SVG** (`svgz`) is NOT supported. Users must decompress first.
-4. **Mixed-ASCII** (ASCII + Unicode + emoji) classifies as ASCII, but `bin/amw-validate-ascii.py` will flag the emoji / Unicode as "forbidden" at validation time (see `./validation-dispatcher.md`).
+4. **Mixed-ASCII** (ASCII + Unicode + emoji) classifies as ASCII, but `bin/amw-validate-ascii.py` will flag the emoji / Unicode as "forbidden" at validation time (see [validation-dispatcher](./validation-dispatcher.md)).
 
 ## 6. Callers
 
@@ -176,8 +194,8 @@ Add a new format (e.g. Graphviz DOT, PlantUML) by:
 2. Extend the decision tree above and in `bin/amw-diagram-detect-format.sh` with:
    - An extension dispatch rule (`.dot`, `.puml`).
    - A content-sniff rule (first-line keyword: `graph G`, `@startuml`).
-3. Add the new format to the enum in `../schema.json::source_format` and bump the IR version per `./ir-schema.md` §6.
-4. Update `./conversion-matrix.md` with a new row and column.
+3. Add the new format to the enum in `../schema.json::source_format` and bump the IR version per [ir-schema](./ir-schema.md) §6.
+4. Update [conversion-matrix](./conversion-matrix.md) with a new row and column.
 5. Add the per-format parser / emitter / validator in `bin/`.
 6. Update `../SKILL.md` reference index.
 

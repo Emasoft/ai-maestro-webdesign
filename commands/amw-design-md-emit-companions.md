@@ -65,6 +65,6 @@ The script emits the requested files:
 
 ## Cross-references
 
-- `skills/amw-design-md/references/TECH-12-companion-files.md`
+- [TECH-12-companion-files](skills/amw-design-md/references/TECH-12-companion-files.md)
 - `bin/amw-design-md-emit-companions.py`
 - `bin/amw-design-md-lint.sh`

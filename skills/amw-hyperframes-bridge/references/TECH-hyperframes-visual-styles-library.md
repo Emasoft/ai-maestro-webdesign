@@ -4,6 +4,16 @@ category: hyperframes-identity-gate
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Preset shape (each entry contains)](#preset-shape-each-entry-contains)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: `visual-styles.md` — 8 named visual-style presets
 
@@ -75,6 +85,6 @@ Step 4: Generate DESIGN.md from preset, continue to compositions.
 
 ## Cross-references
 
-- `TECH-hyperframes-identity-gate.md` — the gate that reads this library
-- `TECH-hyperframes-capture-step-2-design.md` — DESIGN.md creation
+- [TECH-hyperframes-identity-gate](TECH-hyperframes-identity-gate.md) — the gate that reads this library
+- [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md) — DESIGN.md creation
 - `../SKILL.md`

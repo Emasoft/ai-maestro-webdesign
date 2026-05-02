@@ -4,6 +4,19 @@ category: infographic-builder
 source: image-generation/create-infographics/scripts/preview_server.py
 also-in: image-generation/create-infographics/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Start the server](#start-the-server)
+- [User instruction](#user-instruction)
+- [How auto-refresh works](#how-auto-refresh-works)
+- [Workflow during iteration](#workflow-during-iteration)
+- [Preview file structure](#preview-file-structure)
+- [Full design fidelity in preview](#full-design-fidelity-in-preview)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Preview server — live reload during builder sessions
 
@@ -111,8 +124,8 @@ sandbox. Nothing is restricted.
 
 ## Cross-references
 
-- `TECH-interactive-builder-mode.md` — the mode this enables.
-- `TECH-preview-animations.md` — browser-only entrance animations.
-- `TECH-export-pipeline.md` — where finalized HTML goes.
+- [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the mode this enables.
+- [TECH-preview-animations](TECH-preview-animations.md) — browser-only entrance animations.
+- [TECH-export-pipeline](TECH-export-pipeline.md) — where finalized HTML goes.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

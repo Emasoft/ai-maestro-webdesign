@@ -10,17 +10,17 @@ version: 0.1.0
 
 ## Overview
 
-Lazy-loaded reference corpus for Tailwind CSS v4. Covers utilities, variants, `@theme`/`@utility`/`@custom-variant`/`@source`/`@reference`/`@apply` directives, PostCSS/CLI/Vite tooling changes, browser compatibility, source-scanning behavior, and the complete v3 → v4 migration path. Two always-available reference files (`references/gotchas.md` + `references/engineering-playbook.md`) cover the most common migration breakage points and component-abstraction ladder without needing a docs sync. Full authoritative answers require the synced MDX snapshot (`references/docs/`).
+Lazy-loaded reference corpus for Tailwind CSS v4. Covers utilities, variants, `@theme`/`@utility`/`@custom-variant`/`@source`/`@reference`/`@apply` directives, PostCSS/CLI/Vite tooling changes, browser compatibility, source-scanning behavior, and the complete v3 → v4 migration path. Two always-available reference files ([gotchas](references/gotchas.md) + [engineering-playbook](references/engineering-playbook.md)) cover the most common migration breakage points and component-abstraction ladder without needing a docs sync. Full authoritative answers require the synced MDX snapshot (`references/docs/`).
 
 ## Instructions
 
 1. Classify the user's question: migration, utility lookup, config/directive (`@theme`/`@utility`/`@custom-variant`/`@source`/`@reference`/`@apply`), variant, browser compatibility, or refactor/review.
 2. Check whether `references/docs/` exists; if not, stop and ask the user to run the sync script (`scripts/sync_tailwind_docs.py --accept-docs-license`) before answering v4-specific questions from the synced snapshot.
-3. For migration questions: read `references/gotchas.md` first, then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>`.
-4. For implementation or review: read `references/engineering-playbook.md` first, then pull the specific utility/directive MDX only if needed.
+3. For migration questions: read [gotchas](references/gotchas.md) first, then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>`.
+4. For implementation or review: read [engineering-playbook](references/engineering-playbook.md) first, then pull the specific utility/directive MDX only if needed.
 5. For a specific utility or variant: open the matching MDX file in `references/docs/` directly (e.g. `<references/docs/hover-focus-and-other-states.mdx>`).
 6. Extract only the specific answer; do not reload the full snapshot.
-7. If the snapshot is absent or stale and the user cannot sync, answer from `references/gotchas.md` + `references/engineering-playbook.md` for common questions; for anything requiring authoritative doc text, stop and ask the user to sync rather than guessing.
+7. If the snapshot is absent or stale and the user cannot sync, answer from [gotchas](references/gotchas.md) + [engineering-playbook](references/engineering-playbook.md) for common questions; for anything requiring authoritative doc text, stop and ask the user to sync rather than guessing.
 
 See `## Reading strategy` below.
 
@@ -30,7 +30,7 @@ This skill produces no standalone artifacts — it provides Tailwind v4 lookup a
 
 ## Examples
 
-See `references/gotchas.md` for v3→v4 migration examples and `references/engineering-playbook.md` for `@theme` token design and `@apply` discipline patterns.
+See [gotchas](references/gotchas.md) for v3→v4 migration examples and [engineering-playbook](references/engineering-playbook.md) for `@theme` token design and `@apply` discipline patterns.
 
 ## Activation
 
@@ -83,8 +83,8 @@ Optional flags:
 
 ## Structure
 
-- `references/gotchas.md` — v3 to v4 migration pitfalls, quick-scan list. Small and always available (does not need the sync).
-- `references/engineering-playbook.md` — implementation / refactor / review guide covering the abstraction ladder, tokens, custom utilities, component classes, `@apply` discipline, responsive strategy, and review checklist. Always available (does not need the sync).
+- [gotchas](references/gotchas.md) — v3 to v4 migration pitfalls, quick-scan list. Small and always available (does not need the sync).
+- [engineering-playbook](references/engineering-playbook.md) — implementation / refactor / review guide covering the abstraction ladder, tokens, custom utilities, component classes, `@apply` discipline, responsive strategy, and review checklist. Always available (does not need the sync).
 - `references/docs-source.txt` — sync metadata (upstream repo, commit SHA, commit date, snapshot date). Ships with a pre-populated sentinel commit; gets overwritten by the sync script on each run.
 - `references/docs/` — synced Tailwind v4 MDX snapshot. **Not present until the user runs the sync script.**
 - `<references/docs-index.tsx>` — synced sidebar index mapping categories to doc slugs. **Not present until the user runs the sync script.**
@@ -96,8 +96,8 @@ When invoked:
 
 1. Parse the user's question to classify it: migration, utility lookup, config/directive, variant, compatibility, review, or refactor.
 2. Check whether `references/docs/` exists. If it does not, stop and ask the user to run the sync command from the Setup section — do not attempt to answer v4-specific docs questions from memory.
-3. For migration questions: read `references/gotchas.md` first (fast), then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>` from the synced snapshot.
-4. For implementation, refactor, or review: read `references/engineering-playbook.md` first, then pull the specific utility/directive doc only if needed.
+3. For migration questions: read [gotchas](references/gotchas.md) first (fast), then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>` from the synced snapshot.
+4. For implementation, refactor, or review: read [engineering-playbook](references/engineering-playbook.md) first, then pull the specific utility/directive doc only if needed.
 5. For a specific utility or variant: open the matching MDX file in `references/docs/` (for example `<references/docs/hover-focus-and-other-states.mdx>`, `<references/docs/theme.mdx>`, `<references/docs/functions-and-directives.mdx>`).
 6. Treat MDX exports (`export const title`, `export const description`) as metadata. Treat JSX callouts (`<TipInfo>`, `<TipBad>`) as guidance text.
 7. Extract the specific answer; do not reload the whole snapshot.
@@ -106,8 +106,8 @@ When invoked:
 
 If the user is offline or cannot run the sync:
 
-- `references/gotchas.md` alone covers the most common v3 to v4 breakage points (directive move, PostCSS plugin rename, prefix syntax, important modifier placement, arbitrary CSS variable syntax, stacked variant order, transform reset utility names, `space-*`/`divide-*` selector change, `@theme` placement rules).
-- `references/engineering-playbook.md` alone covers the abstraction ladder, when to create tokens vs utilities vs component classes, `@apply` discipline, and the review checklist.
+- [gotchas](references/gotchas.md) alone covers the most common v3 to v4 breakage points (directive move, PostCSS plugin rename, prefix syntax, important modifier placement, arbitrary CSS variable syntax, stacked variant order, transform reset utility names, `space-*`/`divide-*` selector change, `@theme` placement rules).
+- [engineering-playbook](references/engineering-playbook.md) alone covers the abstraction ladder, when to create tokens vs utilities vs component classes, `@apply` discipline, and the review checklist.
 - For anything that requires authoritative doc text (exact utility flag names, exact variant syntax, full upgrade-guide steps), stop and ask the user to sync the docs rather than guessing.
 
 ## Resources
@@ -127,8 +127,8 @@ If the user is offline or cannot run the sync:
 
 ## Error Handling
 
-- **Sync fails (network/git error):** report the exact command and error to the user; fall back to `references/gotchas.md` + `references/engineering-playbook.md` for non-doc-lookup questions.
+- **Sync fails (network/git error):** report the exact command and error to the user; fall back to [gotchas](references/gotchas.md) + [engineering-playbook](references/engineering-playbook.md) for non-doc-lookup questions.
 - **Upstream repo structure changes (docs moved out of `src/docs/`):** the sync script raises a clear error; update `scripts/sync_tailwind_docs.py` and re-test. Do not silently adapt to stale paths.
-- **User asks a v3-specific question:** answer from `references/gotchas.md` (v3→v4 deltas) and note that v3 docs are outside this skill's scope.
+- **User asks a v3-specific question:** answer from [gotchas](references/gotchas.md) (v3→v4 deltas) and note that v3 docs are outside this skill's scope.
 - **Offline environment, docs not synced:** acknowledge the constraint, answer what `gotchas.md` + `engineering-playbook.md` cover, and defer authoritative utility lookups until the user can sync.
 - **User asks about a post-snapshot Tailwind release:** re-run the sync and retry. If the release is so recent that upstream docs lag, say so instead of guessing.

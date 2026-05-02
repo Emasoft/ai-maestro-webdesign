@@ -4,6 +4,16 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [HTML](#html)
+- [The signature options](#the-signature-options)
+- [The container-height trick](#the-container-height-trick)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Line chart — Chart.js with designer theming
 
@@ -108,8 +118,8 @@ renders at 0×0 and you get an invisible chart.
 
 ## Cross-references
 
-- `TECH-chart-selection-guide.md` — when to choose line vs other.
-- `TECH-radar-chart.md` — other Chart.js type.
-- `TECH-annotation-first.md` — why legend is disabled.
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to choose line vs other.
+- [TECH-radar-chart](TECH-radar-chart.md) — other Chart.js type.
+- [TECH-annotation-first](TECH-annotation-first.md) — why legend is disabled.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

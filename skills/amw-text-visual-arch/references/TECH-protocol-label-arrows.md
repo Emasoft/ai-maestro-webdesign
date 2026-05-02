@@ -73,7 +73,7 @@ Conventions:
 
 ## Cross-references
 
-- `./TECH-c4-zoom-levels.md`
+- [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
 - `../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md`
 - `../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill

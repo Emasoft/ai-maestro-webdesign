@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/graphs-annotations.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-directed-dag — build-dependency graph with backward edges
 
@@ -54,6 +63,6 @@ leftward arrows for "depends on" relationships.
 ## Cross-references
 
 - `../../amw-diagram-architecture/SKILL.md` (JSON → Mermaid / SVG path)
-- `./graphs-annotations.md` (legacy pattern file)
+- [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

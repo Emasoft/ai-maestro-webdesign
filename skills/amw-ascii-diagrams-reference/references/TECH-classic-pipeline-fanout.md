@@ -4,6 +4,15 @@ category: ascii-classic
 source: ascii-diagrams-skill-main/references/flowcharts.md
 also-in: ascii-diagrams-skill-main/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-classic-pipeline-fanout — request → parse → split → rejoin
 
@@ -61,8 +70,8 @@ format-specific parsers that converge on a common downstream step.
 
 ## Cross-references
 
-- `./TECH-classic-flowchart-diamond.md`
+- [TECH-classic-flowchart-diamond](./TECH-classic-flowchart-diamond.md)
 - `../../amw-ascii-creator/references/TECH-render-mode-layers.md`
-- `./flowcharts.md` (legacy pattern file)
+- [flowcharts](./flowcharts.md) (legacy pattern file)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

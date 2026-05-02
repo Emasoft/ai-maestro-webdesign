@@ -4,6 +4,21 @@ category: hyperframes-composition
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Clip attributes (all clips)](#clip-attributes-all-clips)
+  - [Composition-level attributes (on the root `data-composition-id`)](#composition-level-attributes-on-the-root-data-composition-id)
+  - [Relative timing](#relative-timing)
+  - [Banned / deprecated attributes](#banned-deprecated-attributes)
+- [Minimal example](#minimal-example)
+  - [Sub-composition wrapping](#sub-composition-wrapping)
+  - [Per-instance variable injection via `data-variable-values`](#per-instance-variable-injection-via-data-variable-values)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Data attributes — clip + composition schema
 
@@ -190,6 +205,6 @@ Key rules:
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`, `TECH-hyperframes-timeline-contract.md`
-- `TECH-hyperframes-non-negotiables.md`
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md)
+- [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
 - `../SKILL.md`

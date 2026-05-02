@@ -4,6 +4,15 @@ category: editorial-layout
 source: SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-focal-accent-discipline
 
@@ -96,7 +105,7 @@ Reader sees 5 equally-important components; the diagram has no story.
 ## Cross-references
 
 - `../SKILL.md` — non-negotiables list (this is item 4)
-- `design-system.md` — semantic tokens (`accent`, `accent-fg`, `paper-2`)
-- `TECH-density-4-of-10.md` — the companion rule on diagram density
-- `TECH-four-px-grid-snap.md` — the other structural hard rule
-- `troubleshooting.md` — diagnose "looks AI-generated" / too-busy diagrams
+- [design-system](design-system.md) — semantic tokens (`accent`, `accent-fg`, `paper-2`)
+- [TECH-density-4-of-10](TECH-density-4-of-10.md) — the companion rule on diagram density
+- [TECH-four-px-grid-snap](TECH-four-px-grid-snap.md) — the other structural hard rule
+- [troubleshooting](troubleshooting.md) — diagnose "looks AI-generated" / too-busy diagrams

@@ -4,6 +4,18 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Increase contrast](#increase-contrast)
+- [Warm color shift (sunset)](#warm-color-shift-sunset)
+- [Cool color shift (moonlit)](#cool-color-shift-moonlit)
+- [Posterize (reduce color steps)](#posterize-reduce-color-steps)
+- [Duotone (two-color map)](#duotone-two-color-map)
+- [Gamma curve (lighten midtones)](#gamma-curve-lighten-midtones)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # `feComponentTransfer` — per-channel color grading
 
@@ -104,9 +116,9 @@ black to `(0.9, 0.6, 0.95)` at white.
 
 ## Cross-references
 
-- `TECH-paper-texture-filter.md` — uses slope+intercept to compress
+- [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — uses slope+intercept to compress
   noise.
-- `TECH-material-simulation.md` — gradient-based material recipes
+- [TECH-material-simulation](TECH-material-simulation.md) — gradient-based material recipes
   (alternative to channel-level grading).
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

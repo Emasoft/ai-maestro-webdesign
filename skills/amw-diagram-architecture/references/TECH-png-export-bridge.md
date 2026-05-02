@@ -4,6 +4,15 @@ category: architecture-graph
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/formats.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-png-export-bridge
 
@@ -88,10 +97,10 @@ To save as PNG:
 
 ## Cross-references
 
-- `formats.md` — the full transform spec for all 4 formats
-- `TECH-svg-layered-layout.md` — the transform that produces the SVG
+- [formats](formats.md) — the full transform spec for all 4 formats
+- [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — the transform that produces the SVG
 - `../../bin/amw-svg-render.py` — optional local rasteriser (Python +
   cairosvg)
-- `validation.md` — Stage 2 PNG checks (instructions after SVG, etc.)
+- [validation](validation.md) — Stage 2 PNG checks (instructions after SVG, etc.)
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

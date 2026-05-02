@@ -1,3 +1,15 @@
+## Table of Contents
+
+- [1. Full N×N table](#1-full-nn-table)
+- [2. Cell semantics](#2-cell-semantics)
+- [3. PNG-as-source refusal (mandatory)](#3-png-as-source-refusal-mandatory)
+- [4. PNG-as-target pipelines (all supported)](#4-png-as-target-pipelines-all-supported)
+- [5. Dispatch algorithm](#5-dispatch-algorithm)
+- [6. Per-cell implementation notes](#6-per-cell-implementation-notes)
+- [7. Tools index (required backends)](#7-tools-index-required-backends)
+- [8. Related references](#8-related-references)
+
+
 # Conversion Matrix — 5 formats, N×N cells
 
 **Authoritative dispatch table** consumed by `/amw-convert-any-diagram-format` and every `wd-create-or-modify-*-diagram` command that needs to normalize an incoming diagram to a specific format.
@@ -6,11 +18,11 @@ The 5 formats: `ASCII`, `HTML`, `SVG`, `Mermaid`, `PNG`. Per user directive 2026
 
 Format specs referenced below:
 
-- `./ascii.md` — ASCII format spec
-- `./html.md` — HTML+inline-SVG format spec
-- `./svg.md` — Standalone SVG format spec
-- `./mermaid.md` — Mermaid grammar subset spec
-- `./png.md` — PNG output-only pipelines
+- [ascii](./ascii.md) — ASCII format spec
+- [html](./html.md) — HTML+inline-SVG format spec
+- [svg](./svg.md) — Standalone SVG format spec
+- [mermaid](./mermaid.md) — Mermaid grammar subset spec
+- [png](./png.md) — PNG output-only pipelines
 
 ## 1. Full N×N table
 
@@ -27,7 +39,7 @@ Format specs referenced below:
 Three label types appear in the cells above. Their semantics are:
 
 - **direct** — a one-step pipeline, already plumbed or a trivial wrapper. No IR needed. Fastest path, best fidelity.
-- **via IR** — parse source → IR → emit target. Lossy on styling details (colors, fonts, filters). Structure is preserved. See `./ir-schema.md` §5 for the lossy-conversion table.
+- **via IR** — parse source → IR → emit target. Lossy on styling details (colors, fonts, filters). Structure is preserved. See [ir-schema](./ir-schema.md) §5 for the lossy-conversion table.
 - **via SVG** / **via HTML** — a two-step chain through an existing `direct` cell. Combines two direct pipelines.
 - **wrap** — a trivial transform (e.g. SVG embedded in `<html><body>`). No semantic transformation.
 - **impossible** — not supported. PNG-as-source cells all take this path by user directive.
@@ -58,7 +70,7 @@ Every non-PNG source has a `direct` cell for PNG emission. The canonical pipelin
 
 Every pipeline respects the target file extension (`.png`) and is idempotent. Re-running on the same input overwrites the output byte-for-byte.
 
-See `./png.md` for the full rasterization pipeline spec, including DPI / background / padding options per backend.
+See [png](./png.md) for the full rasterization pipeline spec, including DPI / background / padding options per backend.
 
 ## 5. Dispatch algorithm
 
@@ -88,9 +100,9 @@ Round-tripping through `via IR` chains is ALLOWED but lossy. The dispatcher logs
 
 ## 6. Per-cell implementation notes
 
-**ASCII → HTML (direct)** — uses `../../amw-ascii-to-html/SKILL.md` machinery + design-principles starter-components. Output is a full responsive `.html`, not a `<pre>` embed. See `./html.md`.
+**ASCII → HTML (direct)** — uses `../../amw-ascii-to-html/SKILL.md` machinery + design-principles starter-components. Output is a full responsive `.html`, not a `<pre>` embed. See [html](./html.md).
 
-**ASCII → SVG (direct)** — uses `../../amw-ascii-to-svg/SKILL.md` + `bin/amw-ascii-parse.py` to tokenize, then `bin/amw-svg-render.py` to emit SVG primitives. See `./svg.md`.
+**ASCII → SVG (direct)** — uses `../../amw-ascii-to-svg/SKILL.md` + `bin/amw-ascii-parse.py` to tokenize, then `bin/amw-svg-render.py` to emit SVG primitives. See [svg](./svg.md).
 
 **ASCII → Mermaid (via IR)** — lossy. ASCII positional information (exact cell coordinates) is dropped; the IR carries the node+edge graph, and the Mermaid emitter lays out via `flowchart TD` auto-layout. Users with position-critical ASCII should route ASCII → SVG (which preserves positions).
 
@@ -98,7 +110,7 @@ Round-tripping through `via IR` chains is ALLOWED but lossy. The dispatcher logs
 
 **SVG → ASCII (via IR)** — geometric interpretation: `<rect>` → nodes, `<line>` / `<path>` + `<marker>` → edges. Heuristic. Best-effort. Users with dense SVGs should treat this as a starting draft.
 
-**SVG → HTML (wrap)** — one-step: wrap the SVG in a minimal HTML document with `<!DOCTYPE html><html><body>{svg}</body></html>`. No styling transformation. Use `./html.md` starter-components for production HTML.
+**SVG → HTML (wrap)** — one-step: wrap the SVG in a minimal HTML document with `<!DOCTYPE html><html><body>{svg}</body></html>`. No styling transformation. Use [html](./html.md) starter-components for production HTML.
 
 **Mermaid → ASCII / SVG (direct)** — `bin/amw-mermaid-render.sh` already supports both. The `--ascii` flag uses the vendored `beautiful-mermaid` backend's ASCII renderer.
 
@@ -124,7 +136,7 @@ Round-tripping through `via IR` chains is ALLOWED but lossy. The dispatcher logs
 
 ## 8. Related references
 
-- `./ir-schema.md` — IR shape, versioning, lossy-conversion table.
-- `./modify-flow.md` — shared detect → parse → patch → emit → validate pipeline. Conversion is a degenerate modify-flow.
-- `./detect-format.md` — format sniffer rules.
-- `./validation-dispatcher.md` — unified validator contract (every conversion ends with validation).
+- [ir-schema](./ir-schema.md) — IR shape, versioning, lossy-conversion table.
+- [modify-flow](./modify-flow.md) — shared detect → parse → patch → emit → validate pipeline. Conversion is a degenerate modify-flow.
+- [detect-format](./detect-format.md) — format sniffer rules.
+- [validation-dispatcher](./validation-dispatcher.md) — unified validator contract (every conversion ends with validation).

@@ -4,6 +4,18 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [HTML](#html)
+- [CSS](#css)
+- [The milestone marker trick](#the-milestone-marker-trick)
+- [Labels row — above and below](#labels-row-above-and-below)
+- [Gradient fill](#gradient-fill)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Progress bar — vesting timeline with milestones
 
@@ -123,8 +135,8 @@ visually "fills toward" the goal.
 
 ## Cross-references
 
-- `TECH-bar-chart-css.md` — simpler horizontal bars.
-- `TECH-airdrop-guide-playbook.md` — 24% of airdrop guides use this.
-- `TECH-token-economics-playbook.md` — 50% of token-economics use this.
+- [TECH-bar-chart-css](TECH-bar-chart-css.md) — simpler horizontal bars.
+- [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — 24% of airdrop guides use this.
+- [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — 50% of token-economics use this.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

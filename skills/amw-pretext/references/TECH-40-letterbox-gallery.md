@@ -4,6 +4,15 @@ category: art
 source: pretext-skills/SKILL-11.md
 also-in: 
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Letterbox gallery (each character its own filled canvas)
 

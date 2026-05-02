@@ -57,8 +57,8 @@ Options: `useAscii` (default `false` — Unicode), `paddingX` (5),
 
 ## Cross-references
 
-- `TECH-ascii-padding-options.md` — tuning horizontal/vertical spacing.
-- `TECH-svg-render-api.md` — the async SVG cousin.
-- `TECH-ascii-markdown-integration.md` — wrapping output in fenced code blocks.
+- [TECH-ascii-padding-options](TECH-ascii-padding-options.md) — tuning horizontal/vertical spacing.
+- [TECH-svg-render-api](TECH-svg-render-api.md) — the async SVG cousin.
+- [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — wrapping output in fenced code blocks.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -1,3 +1,14 @@
+## Table of Contents
+
+- [When to use](#when-to-use)
+- [Required SVG primitives](#required-svg-primitives)
+- [Canonical snippet](#canonical-snippet)
+- [Parameter reference](#parameter-reference)
+- [4px grid still applies](#4px-grid-still-applies)
+- [Accessibility caveat](#accessibility-caveat)
+- [Source citation](#source-citation)
+
+
 # Primitive — Sketchy filter (hand-drawn variant)
 
 > **Cross-type primitive.** Applies to any of the 13 editorial diagram types

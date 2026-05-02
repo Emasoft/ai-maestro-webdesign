@@ -88,7 +88,7 @@ feature. Makes each stat feel like a tab or marker.
 ✅ 15%           ❌ 15.00%
 ```
 
-Always format for scannability. See `TECH-copy-guide-numbers.md`.
+Always format for scannability. See [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md).
 
 ## Common stat fields
 
@@ -109,8 +109,8 @@ Always format for scannability. See `TECH-copy-guide-numbers.md`.
 
 ## Cross-references
 
-- `TECH-stat-poster-archetype.md` — when one stat dominates the whole canvas.
-- `TECH-typography-scale.md` — sizing rules for stat numbers.
-- `TECH-copy-guide-numbers.md` — number formatting rules.
+- [TECH-stat-poster-archetype](TECH-stat-poster-archetype.md) — when one stat dominates the whole canvas.
+- [TECH-typography-scale](TECH-typography-scale.md) — sizing rules for stat numbers.
+- [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — number formatting rules.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

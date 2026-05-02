@@ -4,6 +4,20 @@ category: infographic-builder
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The flow](#the-flow)
+- [State file — `.infographic/{project}.json`](#state-file-infographicprojectjson)
+- [Preview server](#preview-server)
+- [The approval gate (A4)](#the-approval-gate-a4)
+- [State schema per component](#state-schema-per-component)
+- [Why verbatim HTML](#why-verbatim-html)
+- [Session resume](#session-resume)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Interactive Builder (Mode A) — component-by-component iteration
 
@@ -119,10 +133,10 @@ When returning to an existing project:
 
 ## Cross-references
 
-- `TECH-one-shot-mode.md` — the alternative pipeline (generate in
+- [TECH-one-shot-mode](TECH-one-shot-mode.md) — the alternative pipeline (generate in
   one pass).
-- `TECH-guided-creative-mode.md` — a middle ground (two-option UX).
-- `TECH-template-registry.md` — the assembled HTML starting points.
-- `TECH-preview-server.md` — the server implementation.
+- [TECH-guided-creative-mode](TECH-guided-creative-mode.md) — a middle ground (two-option UX).
+- [TECH-template-registry](TECH-template-registry.md) — the assembled HTML starting points.
+- [TECH-preview-server](TECH-preview-server.md) — the server implementation.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

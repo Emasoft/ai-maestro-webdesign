@@ -1,3 +1,17 @@
+## Table of Contents
+
+- [1. Inputs](#1-inputs)
+- [2. Output: ordered list of patch ops](#2-output-ordered-list-of-patch-ops)
+- [3. Node / edge matching](#3-node-edge-matching)
+- [4. Deep object equality for `change-*`](#4-deep-object-equality-for-change)
+- [5. Markdown report format](#5-markdown-report-format)
+- [6. Id normalization (caller preprocessing)](#6-id-normalization-caller-preprocessing)
+- [7. Exit codes (CLI)](#7-exit-codes-cli)
+- [8. Known limitations](#8-known-limitations)
+- [9. Visual mode (optional, future)](#9-visual-mode-optional-future)
+- [10. Related references](#10-related-references)
+
+
 # IR Diff Algorithm — `bin/amw-diagram-ir.py diff` and `bin/diagram-ir-diff.py`
 
 **Authoritative spec for structural diagram comparison.** Consumed by `/amw-compare-diagrams` (via the `diagram-compare/` skill) and by any workflow that needs to answer *"what semantic changes happened between these two versions?"*.
@@ -149,7 +163,7 @@ This is OUT OF SCOPE for the core algorithm — the core is deterministic and id
 1. **Id renames are recorded as add+remove**, not rename. The algorithm has no heuristic to detect that `{id:"foo", label:"Login"}` in A and `{id:"bar", label:"Login"}` in B are "the same node renamed". Callers can preprocess (§6) or post-process.
 2. **Edge waypoints diff at JSON-deep-equality granularity**. A 1-pixel waypoint nudge triggers a `change-edge`. Filter `waypoints` out before diff if you only care about graph structure.
 3. **Metadata is not diffed**. The algorithm ignores the `metadata` object entirely — title/author/description changes are invisible. Callers that care should diff metadata separately.
-4. **No 3-way diff**. The algorithm is 2-way (A vs B). 3-way merge (e.g. for `diagram-webpage-sync`) composes two 2-way diffs; see `./modify-flow.md` §7.1.
+4. **No 3-way diff**. The algorithm is 2-way (A vs B). 3-way merge (e.g. for `diagram-webpage-sync`) composes two 2-way diffs; see [modify-flow](./modify-flow.md) §7.1.
 5. **No move-op**. If a node moves between two layers in A vs B, the diff reports `change-node` on its `rank` field; it does not emit a dedicated "move" op.
 
 ## 9. Visual mode (optional, future)
@@ -158,7 +172,7 @@ This is OUT OF SCOPE for the core algorithm — the core is deterministic and id
 
 ## 10. Related references
 
-- `./ir-schema.md` — shape of the inputs.
-- `./modify-flow.md` — the modify pipeline; diff is a "read-only" sibling that shares steps 1+2.
-- `./conversion-matrix.md` — when comparing cross-format, both inputs go through this matrix to IR first.
+- [ir-schema](./ir-schema.md) — shape of the inputs.
+- [modify-flow](./modify-flow.md) — the modify pipeline; diff is a "read-only" sibling that shares steps 1+2.
+- [conversion-matrix](./conversion-matrix.md) — when comparing cross-format, both inputs go through this matrix to IR first.
 - `../../amw-diagram-compare/SKILL.md` — the thin consumer skill that wraps this algorithm.

@@ -62,8 +62,8 @@ p99 latency -180ms               ← absolute improvement
 
 ## Cross-references
 
-- `./TECH-owner-action-items.md`
-- `./TECH-milestone-timeline.md`
+- [TECH-owner-action-items](./TECH-owner-action-items.md)
+- [TECH-milestone-timeline](./TECH-milestone-timeline.md)
 - `../../amw-text-visual-state/references/TECH-metrics-per-transition.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

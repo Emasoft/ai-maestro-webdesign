@@ -78,8 +78,8 @@ flowchart LR
 
 ## Cross-references
 
-- `TECH-subgraph-grouping.md` — composite / nested flowcharts.
-- `TECH-edge-styles.md` — arrows, labels, line styles in depth.
-- `TECH-sequence-grammar.md` — the Mermaid cousin for API/message flows.
+- [TECH-subgraph-grouping](TECH-subgraph-grouping.md) — composite / nested flowcharts.
+- [TECH-edge-styles](TECH-edge-styles.md) — arrows, labels, line styles in depth.
+- [TECH-sequence-grammar](TECH-sequence-grammar.md) — the Mermaid cousin for API/message flows.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

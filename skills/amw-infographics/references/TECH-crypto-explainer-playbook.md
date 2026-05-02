@@ -4,6 +4,23 @@ category: infographic-archetype
 source: image-generation/create-infographics/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Color system](#color-system)
+- [Typography](#typography)
+- [Standard component prevalence (across 29 pieces)](#standard-component-prevalence-across-29-pieces)
+- [Visual properties](#visual-properties)
+- [Signature layout pattern](#signature-layout-pattern)
+- [CSS variables (purple variant)](#css-variables-purple-variant)
+- [CSS variables (pink variant)](#css-variables-pink-variant)
+- [Font pair](#font-pair)
+- [Reference template](#reference-template)
+- [Archetype preference](#archetype-preference)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Crypto-Explainer playbook — 17% (29/175)
 
@@ -113,9 +130,9 @@ feature-heavy explainers.
 
 ## Cross-references
 
-- `TECH-per-type-signature-palettes.md` — the color system.
-- `TECH-flow-poster-archetype.md` — the default archetype.
-- `TECH-flow-with-arrows-component.md` — the flow component.
-- `TECH-glow-system.md` — the neon glow patterns.
+- [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+- [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — the default archetype.
+- [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the flow component.
+- [TECH-glow-system](TECH-glow-system.md) — the neon glow patterns.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

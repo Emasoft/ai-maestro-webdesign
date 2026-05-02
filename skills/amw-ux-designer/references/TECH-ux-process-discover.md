@@ -4,6 +4,15 @@ category: ux-process
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: UX process — Discover & Research (Phase 1)
 
@@ -45,6 +54,6 @@ Research plan for a SaaS onboarding flow:
 
 ## Cross-references
 
-- `TECH-ux-rule-research.md` — detailed rule for interview planning, synthesis, and persona creation
-- `TECH-ux-process-define.md` — next phase (Define)
+- [TECH-ux-rule-research](TECH-ux-rule-research.md) — detailed rule for interview planning, synthesis, and persona creation
+- [TECH-ux-process-define](TECH-ux-process-define.md) — next phase (Define)
 - `../SKILL.md`

@@ -80,7 +80,7 @@ control panel", not "startup landing page".
 
 ## Cross-references
 
-- `TECH-hyperframes-capture-step-1-capture.md`, `TECH-hyperframes-capture-step-3-script.md`
-- `TECH-hyperframes-identity-gate.md` — hard-gate rule this step satisfies
-- `TECH-hyperframes-visual-styles-library.md` — 8 named presets you can inherit from
+- [TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md), [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md)
+- [TECH-hyperframes-identity-gate](TECH-hyperframes-identity-gate.md) — hard-gate rule this step satisfies
+- [TECH-hyperframes-visual-styles-library](TECH-hyperframes-visual-styles-library.md) — 8 named presets you can inherit from
 - `../SKILL.md`

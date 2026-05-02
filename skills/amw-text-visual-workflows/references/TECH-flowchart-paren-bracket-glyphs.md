@@ -58,8 +58,8 @@ yes   no
 
 ## Cross-references
 
-- `./TECH-timeline-with-anchors.md`
-- `./TECH-swimlane-parallel-tracks.md`
+- [TECH-timeline-with-anchors](./TECH-timeline-with-anchors.md)
+- [TECH-swimlane-parallel-tracks](./TECH-swimlane-parallel-tracks.md)
 - `../../amw-ascii-creator/references/TECH-render-mode-diagram.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

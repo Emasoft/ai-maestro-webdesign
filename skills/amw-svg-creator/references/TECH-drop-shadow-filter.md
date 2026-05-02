@@ -4,6 +4,17 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in: image-generation/svg-creator/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Drop shadow (standard)](#drop-shadow-standard)
+- [Contact shadow (tight, right under object)](#contact-shadow-tight-right-under-object)
+- [Cast shadow (large, soft, far)](#cast-shadow-large-soft-far)
+- [Inner shadow (not a drop shadow — opposite direction)](#inner-shadow-not-a-drop-shadow-opposite-direction)
+- [The obligatory `color-interpolation-filters="linearRGB"`](#the-obligatory-color-interpolation-filterslinearrgb)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Drop shadow, contact shadow, cast shadow (three filter chains)
 
@@ -99,9 +110,9 @@ expected.
 
 ## Cross-references
 
-- `TECH-colored-shadows.md` — the color palette rule these filters implement.
-- `TECH-soft-glow-filter.md` — the positive cousin (glow instead of shadow).
-- `TECH-specular-diffuse-lighting.md` — physics-based alternative for
+- [TECH-colored-shadows](TECH-colored-shadows.md) — the color palette rule these filters implement.
+- [TECH-soft-glow-filter](TECH-soft-glow-filter.md) — the positive cousin (glow instead of shadow).
+- [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based alternative for
   surface-realistic shading.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

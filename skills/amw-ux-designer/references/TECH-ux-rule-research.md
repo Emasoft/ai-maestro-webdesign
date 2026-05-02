@@ -4,6 +4,19 @@ category: ux-rule-research
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/rules/research.md
 also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Interview planning](#interview-planning)
+  - [During interviews](#during-interviews)
+  - [Synthesis](#synthesis)
+  - [Good vs bad questions](#good-vs-bad-questions)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Rule — User Research (interviews + personas + synthesis)
 
@@ -72,7 +85,7 @@ Research plan for a new fintech signup flow:
 
 ## Cross-references
 
-- `TECH-ux-persona-template.md` — concrete persona output format
-- `TECH-ux-process-discover.md` — Phase 1 in the process
-- `TECH-ux-rule-accessibility.md`, `TECH-ux-rule-ia.md`, `TECH-ux-rule-interaction.md`, `TECH-ux-rule-visual.md`
+- [TECH-ux-persona-template](TECH-ux-persona-template.md) — concrete persona output format
+- [TECH-ux-process-discover](TECH-ux-process-discover.md) — Phase 1 in the process
+- [TECH-ux-rule-accessibility](TECH-ux-rule-accessibility.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md), [TECH-ux-rule-visual](TECH-ux-rule-visual.md)
 - `../SKILL.md`

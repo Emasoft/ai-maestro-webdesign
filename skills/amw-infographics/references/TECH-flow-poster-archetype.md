@@ -129,9 +129,9 @@ percentage, token name. Never unlabeled arrows in a flow diagram.
 
 ## Cross-references
 
-- `TECH-arrows-and-connectors.md` — detailed arrow patterns.
-- `TECH-flow-with-arrows-component.md` — the flow_with_arrows CSS.
-- `TECH-flywheel-loop-component.md` — circular variant.
-- `TECH-stacked-reference-archetype.md` — default alternative.
+- [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — detailed arrow patterns.
+- [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the flow_with_arrows CSS.
+- [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
+- [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — default alternative.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

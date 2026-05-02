@@ -4,6 +4,17 @@ category: ux-process
 source: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/rules/research.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+  - [Good persona](#good-persona)
+  - [Bad persona](#bad-persona)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Persona template + good vs bad examples
 
@@ -73,6 +84,6 @@ Goals: Wants a good experience. Likes easy-to-use apps.
 
 ## Cross-references
 
-- `TECH-ux-rule-research.md`
-- `TECH-ux-process-define.md`
+- [TECH-ux-rule-research](TECH-ux-rule-research.md)
+- [TECH-ux-process-define](TECH-ux-process-define.md)
 - `../SKILL.md`

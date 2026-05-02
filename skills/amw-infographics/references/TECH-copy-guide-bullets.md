@@ -4,6 +4,20 @@ category: infographic-archetype
 source: image-generation/create-infographics/resources/copy-guide.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Why](#why)
+- [Rule 1 — Bullets, not paragraphs](#rule-1-bullets-not-paragraphs)
+- [Rule 2 — One fact per bullet](#rule-2-one-fact-per-bullet)
+- [Rule 3 — Sentence fragments, not full sentences](#rule-3-sentence-fragments-not-full-sentences)
+- [Rule 4 — Inline token coloring](#rule-4-inline-token-coloring)
+- [Rule 5 — Color-coded keyword highlighting (beyond tokens)](#rule-5-color-coded-keyword-highlighting-beyond-tokens)
+- [Badge / tag rules](#badge-tag-rules)
+- [Disclaimer (always include in footer)](#disclaimer-always-include-in-footer)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Bullet points rule — over paragraphs, always
 
@@ -143,8 +157,8 @@ Short: "Not financial advice. DYOR."
 
 ## Cross-references
 
-- `TECH-inline-token-coloring.md` — the token-coloring implementation.
-- `TECH-dense-editorial-dna.md` — the "no paragraphs" rule.
-- `TECH-bullet-panel-component.md` — the container pattern.
+- [TECH-inline-token-coloring](TECH-inline-token-coloring.md) — the token-coloring implementation.
+- [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the "no paragraphs" rule.
+- [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — the container pattern.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

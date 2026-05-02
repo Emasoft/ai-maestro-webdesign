@@ -4,6 +4,18 @@ category: hyperframes-composition
 source: external/hyperframes/skills/hyperframes/SKILL.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Why this matters](#why-this-matters)
+- [Minimal example](#minimal-example)
+  - [Wrong pattern (hardcoded dimensions + absolute positioning)](#wrong-pattern-hardcoded-dimensions-absolute-positioning)
+  - [Layered + temporal intent](#layered-temporal-intent)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH: Layout Before Animation
 
@@ -88,7 +100,7 @@ tl.to(".subtitle", { y: -30, opacity: 0, duration: 0.3, ease: "power2.in" }, 3.1
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`
-- `TECH-hyperframes-timeline-contract.md`
-- `TECH-hyperframes-scene-transitions.md`
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
+- [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md)
+- [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md)
 - `../SKILL.md`

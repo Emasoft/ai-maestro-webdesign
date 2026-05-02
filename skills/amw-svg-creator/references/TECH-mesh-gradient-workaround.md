@@ -4,6 +4,16 @@ category: svg-gradient
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The technique](#the-technique)
+- [Best practices](#best-practices)
+- [Gradient parameters that matter](#gradient-parameters-that-matter)
+- [When to use](#when-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Mesh gradient workaround — layered radial gradients
 
@@ -78,8 +88,8 @@ lighting — the hotspot offset toward a virtual light source.
 
 ## Cross-references
 
-- `TECH-multi-stop-gradients.md` — individual gradient tuning.
-- `TECH-pattern-tiles.md` — regular-tile alternative for backgrounds.
-- `TECH-vignette-overlay.md` — often combined to darken edges.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — individual gradient tuning.
+- [TECH-pattern-tiles](TECH-pattern-tiles.md) — regular-tile alternative for backgrounds.
+- [TECH-vignette-overlay](TECH-vignette-overlay.md) — often combined to darken edges.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

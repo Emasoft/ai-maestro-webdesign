@@ -7,7 +7,7 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes-cli/SKILL
 
 # TECH: `hyperframes validate` — WCAG contrast audit
 
-> For visual layout overflow checks (text overflow, container clipping), see `TECH-hyperframes-cli-inspect.md`. `validate` is strictly a WCAG color-contrast pass.
+> For visual layout overflow checks (text overflow, container clipping), see [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md). `validate` is strictly a WCAG color-contrast pass.
 
 ## What it does
 
@@ -15,7 +15,7 @@ Runs a WCAG-contrast audit on the composition by default. Seeks to 5 timestamps 
 
 ## When to use
 
-Before every render. After every edit that touches color, background, or type. `validate` is the second gate in the bridge's pre-render sequence (`lint → validate → inspect → render`); `inspect` runs after `validate` for layout-overflow checks (see `TECH-hyperframes-cli-inspect.md`), then `render` produces the MP4.
+Before every render. After every edit that touches color, background, or type. `validate` is the second gate in the bridge's pre-render sequence (`lint → validate → inspect → render`); `inspect` runs after `validate` for layout-overflow checks (see [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md)), then `render` produces the MP4.
 
 ## How it works
 
@@ -71,7 +71,7 @@ $ npx hyperframes validate
 
 ## Cross-references
 
-- `TECH-hyperframes-cli-lint.md`, `TECH-hyperframes-cli-preview.md`, `TECH-hyperframes-cli-render.md`
-- `TECH-hyperframes-cli-inspect.md` — next gate after `validate` in the pre-render sequence; catches layout overflow
-- `TECH-hyperframes-capture-step-7-validate.md` — use in the capture pipeline
+- [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md)
+- [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md) — next gate after `validate` in the pre-render sequence; catches layout overflow
+- [TECH-hyperframes-capture-step-7-validate](TECH-hyperframes-capture-step-7-validate.md) — use in the capture pipeline
 - `../SKILL.md`

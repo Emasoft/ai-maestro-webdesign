@@ -455,11 +455,11 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 
 ## Cross-references
 
-- `./ai-maestro-webdesign-main-agent.md` — spawning agent
-- `./amw-wireframe-builder-agent.md` — primary consumer of form spec
-- `./amw-accessibility-auditor-agent.md` — downstream WCAG audit of rendered form HTML
-- `./amw-multilanguage-copywriter-agent.md` — error message copy for non-English locales
-- `./amw-legal-expert-agent.md` — mandatory consent fields (GDPR checkboxes, CAN-SPAM opt-in)
+- [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
+- [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of form spec
+- [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream WCAG audit of rendered form HTML
+- [amw-multilanguage-copywriter-agent](./amw-multilanguage-copywriter-agent.md) — error message copy for non-English locales
+- [amw-legal-expert-agent](./amw-legal-expert-agent.md) — mandatory consent fields (GDPR checkboxes, CAN-SPAM opt-in)
 - `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` — shadcn form component API
 - `../skills/amw-design-principles/color-system.md` — danger/success token semantics
 - `../skills/amw-design-principles/spacing-rhythm.md` — field gap and label-offset rules

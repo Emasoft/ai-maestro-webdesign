@@ -59,8 +59,8 @@ const svg = await renderMermaid(diagram, THEMES['tokyo-night'])
 
 ## Cross-references
 
-- `TECH-theme-selection-guide.md` — human-readable decision tree.
-- `TECH-mono-mode.md` — what makes a theme work with two colors.
-- `TECH-shiki-theme-import.md` — import any VS Code theme on demand.
+- [TECH-theme-selection-guide](TECH-theme-selection-guide.md) — human-readable decision tree.
+- [TECH-mono-mode](TECH-mono-mode.md) — what makes a theme work with two colors.
+- [TECH-shiki-theme-import](TECH-shiki-theme-import.md) — import any VS Code theme on demand.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,15 @@ category: svg-lighting
 source: image-generation/svg-creator/references/advanced-techniques.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The layer stack (back to front)](#the-layer-stack-back-to-front)
+- [The template](#the-template)
+- [The atmospheric perspective rule](#the-atmospheric-perspective-rule)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Landscape scene composition — 7+ layers
 
@@ -100,8 +109,8 @@ Foreground is full color.
 
 ## Cross-references
 
-- `TECH-multi-stop-gradients.md` — the sky gradient pattern.
-- `TECH-vignette-overlay.md` — the edge-darkening pattern.
-- `TECH-atmospheric-effects.md` — fog, rays, rain.
+- [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the sky gradient pattern.
+- [TECH-vignette-overlay](TECH-vignette-overlay.md) — the edge-darkening pattern.
+- [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — fog, rays, rain.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

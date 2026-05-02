@@ -4,6 +4,16 @@ category: mermaid-grammar
 source: diagrams-skills/Pretty-mermaid-skills-main/references/DIAGRAM_TYPES.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The rules](#the-rules)
+- [Anti-patterns to reject](#anti-patterns-to-reject)
+- [Minimal example — good vs bad](#minimal-example-good-vs-bad)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # Flowchart authoring best practices
 
@@ -78,8 +88,8 @@ flowchart TD
 
 ## Cross-references
 
-- `TECH-flowchart-grammar.md` — the syntax catalog.
-- `TECH-subgraph-grouping.md` — when to reach for grouped clusters.
-- `TECH-edge-best-practices.md` — arrow conventions.
+- [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the syntax catalog.
+- [TECH-subgraph-grouping](TECH-subgraph-grouping.md) — when to reach for grouped clusters.
+- [TECH-edge-best-practices](TECH-edge-best-practices.md) — arrow conventions.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

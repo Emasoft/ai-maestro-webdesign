@@ -1,3 +1,21 @@
+## Table of Contents
+
+- [Stage 1 — Graph Validation (all formats)](#stage-1-graph-validation-all-formats)
+  - [1.1 Layer count](#11-layer-count)
+  - [1.2 Node count](#12-node-count)
+  - [1.3 Layer balance](#13-layer-balance)
+  - [1.4 Node label quality](#14-node-label-quality)
+  - [1.5 Edge integrity](#15-edge-integrity)
+  - [1.6 ID integrity](#16-id-integrity)
+  - [1.7 Layer order sequence](#17-layer-order-sequence)
+- [Stage 2 — Format Validation](#stage-2-format-validation)
+  - [Format: `graph`](#format-graph)
+  - [Format: `mermaid`](#format-mermaid)
+  - [Format: `svg`](#format-svg)
+  - [Format: `png`](#format-png)
+- [Validation Summary (quick reference)](#validation-summary-quick-reference)
+
+
 # Architecture Canvas — Output Validation
 
 Validation runs in two stages. Both must pass before returning output.
@@ -93,7 +111,7 @@ Run after the transform. Each format has its own checks.
 No additional checks beyond Stage 1. The validated graph JSON IS the output.
 
 Confirm the final JSON is well-formed before returning:
-- Parse it with `JSON.parse` — if this fails, re-run the repair recipe in `prompts.md`
+- Parse it with `JSON.parse` — if this fails, re-run the repair recipe in [prompts](prompts.md)
 - Confirm the top-level keys `title`, `subtitle`, `layers`, `nodes`, `edges` are all present
 
 ---
@@ -108,7 +126,7 @@ After generating the Mermaid string, check:
 | Subgraph count mismatch | Number of `subgraph` blocks ≠ number of layers | Regenerate from the validated graph |
 | Node count mismatch | Number of node definitions ≠ `nodes.length` | Regenerate from the validated graph |
 | Edge count mismatch | Number of `-->` lines ≠ `edges.length` | Regenerate from the validated graph |
-| Missing `classDef` block | `classDef layer0` not present | Append the full classDef block from `formats.md` |
+| Missing `classDef` block | `classDef layer0` not present | Append the full classDef block from [formats](formats.md) |
 | Missing `class` assignments | Any layer has nodes but no `class ... layerN` line | Append missing class assignment lines |
 | Special chars in node ID | Node ID contains `-`, space, or `.` | Replace with `_` in the Mermaid output only (do not change the graph JSON) |
 | Label contains `"` | Unescaped double-quote inside `["…"]` | Escape as `&quot;` or replace with `'` |
@@ -130,7 +148,7 @@ After generating the SVG string, check:
 |-------|-----------|-----|
 | Missing XML declaration root | Does not start with `<svg` | Prepend `<svg xmlns="http://www.w3.org/2000/svg" ...>` |
 | Unclosed root element | Does not end with `</svg>` | Append `</svg>` |
-| Missing `<defs>` block | No `<defs>` present | Prepend the standard defs block from `formats.md` |
+| Missing `<defs>` block | No `<defs>` present | Prepend the standard defs block from [formats](formats.md) |
 | Missing arrow marker | `id="arrow"` not in defs | Insert the marker element into the existing `<defs>` |
 | Unescaped `&` in text | Raw `&` in a `<text>` element | Replace with `&amp;` |
 | Unescaped `<` in text | Raw `<` in a `<text>` element | Replace with `&lt;` |
@@ -139,7 +157,7 @@ After generating the SVG string, check:
 
 | Check | Condition | Fix |
 |-------|-----------|-----|
-| Zero or negative height | `height` attribute ≤ 0 | Recalculate using the formula in `formats.md` |
+| Zero or negative height | `height` attribute ≤ 0 | Recalculate using the formula in [formats](formats.md) |
 | Node count in SVG | Number of card `<rect>` elements with `fill="white"` ≠ `nodes.length` | Regenerate SVG from the validated graph |
 | Layer band count | Number of layer band `<rect rx="12">` elements ≠ `layers.length` | Regenerate SVG from the validated graph |
 | Node overflows layer band | Computed `node.y + NODE_H > layer_band_bottom` | Increase the layer band height and shift all lower layers down |
@@ -170,7 +188,7 @@ After SVG validation passes, additionally check:
 
 | Check | Condition | Fix |
 |-------|-----------|-----|
-| Export instructions missing | The five-line instructions block is not present | Append the standard instructions block from `formats.md` |
+| Export instructions missing | The five-line instructions block is not present | Append the standard instructions block from [formats](formats.md) |
 | Instructions appear before SVG | Instructions block precedes the `<svg` tag | Move instructions to after `</svg>` |
 
 ---

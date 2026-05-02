@@ -98,6 +98,6 @@ Composition skeleton for Beat 1 (hook):
 
 ## Cross-references
 
-- `TECH-hyperframes-composition-core.md`, `TECH-hyperframes-layout-before-animation.md`, `TECH-hyperframes-data-attributes.md`, `TECH-hyperframes-timeline-contract.md`, `TECH-hyperframes-scene-transitions.md`, `TECH-hyperframes-non-negotiables.md`
-- `TECH-hyperframes-capture-step-7-validate.md`
+- [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md), [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md), [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
+- [TECH-hyperframes-capture-step-7-validate](TECH-hyperframes-capture-step-7-validate.md)
 - `../SKILL.md`

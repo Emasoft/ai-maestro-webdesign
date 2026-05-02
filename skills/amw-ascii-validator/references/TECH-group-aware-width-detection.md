@@ -4,6 +4,15 @@ category: ascii-validate
 source: box-diagram-master/skills/amw-box-diagram/validate.py
 also-in: box-diagram-master/README.md
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # TECH-group-aware-width-detection — per-structure width, not global mode
 
@@ -83,7 +92,7 @@ Passes group-aware detection, FAILS global-mode detection:
 
 ## Cross-references
 
-- `./TECH-width-mismatch-rule.md`
+- [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
 - `../../amw-box-diagram/SKILL.md`
 - [`../SKILL.md`](../SKILL.md) — parent skill
 

@@ -4,6 +4,19 @@ category: infographic-template
 source: image-generation/create-infographics/resources/charts.md
 also-in:
 ---
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The color rule](#the-color-rule)
+  - [1. Primary shades (preferred)](#1-primary-shades-preferred)
+  - [2. Brand complementary (max 2-3 hues)](#2-brand-complementary-max-2-3-hues)
+- [SVG arc math](#svg-arc-math)
+- [Segment calculator](#segment-calculator)
+- [Template — 4 segments](#template-4-segments)
+- [Legend — side-by-side](#legend-side-by-side)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
 
 # SVG pie chart — token allocation (the #1 chart)
 
@@ -112,9 +125,9 @@ large-arc-flag = segment_degrees > 180 ? 1 : 0
 
 ## Cross-references
 
-- `TECH-chart-selection-guide.md` — when to use pie vs other charts.
-- `TECH-waffle-chart.md` — alternative for single-percentage stories.
-- `TECH-annotation-first.md` — labels go on the chart, not in a
+- [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to use pie vs other charts.
+- [TECH-waffle-chart](TECH-waffle-chart.md) — alternative for single-percentage stories.
+- [TECH-annotation-first](TECH-annotation-first.md) — labels go on the chart, not in a
   separate legend when <5 series.
 - [`../SKILL.md`](../SKILL.md) — parent skill
 
