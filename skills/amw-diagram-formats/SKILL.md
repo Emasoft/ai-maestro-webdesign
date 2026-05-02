@@ -16,6 +16,21 @@ No dedicated slash command — this skill has no matching `/amw-*` shortcut. It 
 
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
+## Older direct-emitter cluster vs newer thin-dispatcher cluster
+
+The plugin ships diagram authoring on two parallel surfaces:
+
+| Layer | Skills | LOC (~combined) | When to read |
+|---|---|---|---|
+| Newer thin dispatchers (entry points) | `amw-html-diagram`, `amw-svg-diagram` | ~204 | When routing via `/amw-create-or-modify-html-diagram` / `/amw-create-or-modify-svg-diagram` slash commands; when authoring through the IR-pivot path |
+| Older direct emitters (implementation) | `amw-diagram-editorial`, `amw-diagram-svg`, `amw-diagram-architecture` | ~1207 | When authoring deeply (custom HTML or SVG layout); the dispatchers internally delegate here |
+
+The thin dispatchers are the **public entry surface**. They handle command-mode dispatch, format-detection routing, and IR-pivot conversion. They internally delegate the actual emission to the older direct-emitter skills.
+
+**When in doubt, route via the dispatcher.** When authoring deeply (e.g., needing a non-default HTML layout, custom Mermaid grammar, freeform SVG arrangement), read the underlying older skill directly.
+
+A future consolidation may fold the older 3 skills' SKILL.md bodies into the dispatcher's `references/` and reduce the surface from 6 skills to 3, but the current bilayered architecture is intentional: the dispatchers are stable contract surfaces and the emitters are heavier implementation that benefits from being callable as standalone skills via slash commands (`/amw-create-or-modify-architecture-diagram` etc.).
+
 ## Position in flow
 
 REFERENCE ONLY. This skill owns the canonical prose + machine-readable schema for every diagram-format concern in the plugin:

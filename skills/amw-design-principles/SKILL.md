@@ -177,7 +177,7 @@ Skip the loop only when the user has already committed to a layout (e.g. they pa
 
 ## 🕐 Workflow rhythm
 
-- **Show files early, not at the end.** In step 3 (planning) already emit HTML that writes out the assumptions + context + reasoning (like a junior designer explaining their thinking to a manager), with placeholder visuals. Show early, show often.
+- **Show your reasoning and assumptions early — in chat, not on disk.** State the assumptions you're working from in your dialog with the user during Phase A. Write them out in plain text inside the chat so the user can correct them before any artifact is committed. Once approved in Phase B, write the HTML to disk with assumption notes alongside (in code comments or a sibling .notes.md file).
 - **Accumulate, don't restart.** After writing React components into the HTML, show once more, followed by a "next steps" list.
 - **One main file + Tweaks > multiple files.** When the user wants a new version, append as a Tweak to the existing main file. Do not stack v2 / v3 / v4 files.
 - **Only duplicate when the user asks for side-by-side comparison** (`My Design.html` → `My Design v2.html`).

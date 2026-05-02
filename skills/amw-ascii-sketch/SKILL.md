@@ -19,6 +19,71 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 **PLAN (Phase A).** This skill owns the Phase A portion of any webpage design in Main-agent mode. It runs a bounded iteration loop in ASCII until the user explicitly approves a direction, then hands off the approved sketch to `../amw-ascii-to-html/` for HTML conversion in Phase B. It does not emit HTML itself; it does not write files on intermediate loop turns; it lives entirely in chat output.
 
+## Mode A vs Mode B — how variants are generated (read this first)
+
+**Mode A — JSON-IR-driven via `bin/amw-ascii-render.py` — is the DEFAULT for any structured diagram.** Mode B (LLM hand-authored + validator loop) is the fallback for genuinely freeform wireframes.
+
+Using Mode A eliminates 30–50% of validator-FAIL retries. The renderer generates ASCII from a structured JSON spec and guarantees alignment by construction — column widths, box corners, lane separators, and row heights are computed from the spec, not guessed character-by-character by an LLM. By skipping the hand-author → write → validate → on-FAIL-apply-hints → re-validate loop, the skill preserves context tokens and returns a correct diagram on the first attempt.
+
+### Route by input shape
+
+| User intent | Mode | Renderer flag |
+|---|---|---|
+| "flowchart" / "decision tree" / flow with steps and decisions | Mode A | `--mode diagram` |
+| "sequence diagram" / "message flow" / interaction timeline | Mode A | `--mode sequence` |
+| "table" / "data table" / "comparison grid" / "matrix" | Mode A | `--mode table` |
+| "layered architecture" / "stack" / "tier diagram" / "lane-labeled layout" | Mode A | `--mode layers` |
+| "freeform wireframe" / "page sketch" / "browser mockup" / "organic layout" | Mode B | validator loop |
+
+When the user's brief names elements that fit any of the four structured modes, use Mode A. When the intent is a full-page web wireframe (hero, nav, footer, free-form regions) that does not map to diagram/table/layers/sequence, use Mode B.
+
+### Mode A worked example
+
+Given user intent: *"flowchart of a user login sequence with 3 decision points"*
+
+**Step 1 — Author the JSON spec:**
+```json
+{
+  "mode": "diagram",
+  "title": "User Login Flow",
+  "nodes": [
+    { "id": "start",    "label": "Start" },
+    { "id": "input",    "label": "Enter credentials" },
+    { "id": "valid",    "label": "Credentials valid?" },
+    { "id": "mfa",      "label": "MFA required?" },
+    { "id": "mfaok",    "label": "MFA code valid?" },
+    { "id": "home",     "label": "Go to Home" },
+    { "id": "fail",     "label": "Show error" }
+  ],
+  "edges": [
+    { "from": "start",  "to": "input" },
+    { "from": "input",  "to": "valid" },
+    { "from": "valid",  "to": "mfa",   "label": "yes" },
+    { "from": "valid",  "to": "fail",  "label": "no" },
+    { "from": "mfa",    "to": "mfaok", "label": "yes" },
+    { "from": "mfa",    "to": "home",  "label": "no" },
+    { "from": "mfaok",  "to": "home",  "label": "ok" },
+    { "from": "mfaok",  "to": "fail",  "label": "fail" }
+  ]
+}
+```
+
+**Step 2 — Render:**
+```bash
+python3 ../../bin/amw-ascii-render.py --mode diagram --in /tmp/login-flow.json --out /tmp/login-flow.txt
+```
+
+**Step 3 — Validate (should be PASS on first run):**
+```bash
+python3 ../../bin/amw-validate-ascii.py /tmp/login-flow.txt
+```
+
+The rendered `/tmp/login-flow.txt` is the variant. No LLM hand-authoring, no alignment guessing, no retry loop needed for a clean structured input.
+
+### Mode B fallback — hand-author + validator loop
+
+For freeform wireframes (full-page web layouts, hero+nav+footer, dashboard page sketches), the structured modes do not apply. Use the hand-author loop: generate → write to `/tmp/` → validate → if FAIL apply FIX hints → re-validate. This is the correct path for this class of input; it is not a worse path — it is the right tool for an unstructured shape.
+
 ## Why ASCII, not HTML
 
 - **Token cost.** ASCII costs roughly one percent of the tokens that iterating on real HTML does. A user can push ten or more revisions without hitting context decay or summarization.
@@ -116,16 +181,24 @@ If the user has not supplied enough context to answer any of the four questions,
 
 Every variant this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user. LLMs cannot count characters reliably — this validator is how the plugin compensates.
 
-The flow:
+**Mode A flow (structured diagrams — preferred):**
 
-1. Generate a variant.
+1. Author the JSON spec for the diagram.
+2. Run `python3 ../../bin/amw-ascii-render.py --mode <m> --in /tmp/spec.json --out /tmp/amw-sketch-<slug>-<variant>.txt`.
+3. Run `python3 ../../bin/amw-validate-ascii.py /tmp/amw-sketch-<slug>-<variant>.txt`.
+4. Mode A output passes on the first attempt in the vast majority of cases — alignment is guaranteed by the renderer. If FAIL (rare edge case), fix the JSON spec and re-render; do NOT hand-edit the rendered output.
+5. Include in the presented set.
+
+**Mode B flow (freeform wireframes — fallback):**
+
+1. Hand-author a variant in the LLM's output.
 2. Write it to `/tmp/amw-sketch-<slug>-<variant>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-sketch-<slug>-<variant>.txt`.
+3. Run `python3 ../../bin/amw-validate-ascii.py /tmp/amw-sketch-<slug>-<variant>.txt`.
 4. If PASS → include in the presented set.
 5. If FAIL → apply every `FIX:` hint in the validator output, re-run. Loop until PASS.
 6. Never present an un-validated variant.
 
-For strongly-structured diagrams (flowcharts, tables, sequences, layered architecture) use `../../bin/amw-ascii-render.py` to GENERATE the ASCII from structured JSON — it guarantees alignment by construction. See `../amw-ascii-validator/SKILL.md` for the JSON schema and the validation contract.
+See `../amw-ascii-validator/SKILL.md` for the JSON schema (Mode A) and the validation output contract (both modes).
 
 Before generation, substitute every BANNED character (`▼ ▲ ▶ ◀ ⟶ ⇒`) with a safe equivalent (`v ^ > <` or `->` / `=>` / `→`), and replace emoji state-markers with ASCII (`[!]`, `(*)`, `[x]`, `[ ]`) — the validator flags these as forbidden because they render at variable width in common monospaced fonts.
 
@@ -226,7 +299,8 @@ If a variant slides toward any of these, rework it before showing the user. Do n
 - **python_packages:** none.
 - **npm_packages:** none.
 - **mcp_servers:** none.
-- **scripts:** none (this skill is pure chat output).
+- **scripts (Mode A):** `../../bin/amw-ascii-render.py` (JSON spec → ASCII, 4 modes: diagram/table/layers/sequence), `../../bin/amw-validate-ascii.py` (PASS/FAIL gate).
+- **scripts (Mode B):** `../../bin/amw-validate-ascii.py` (PASS/FAIL gate + FIX hints).
 
 `../../bin/amw-ascii-parse.py` is referenced only by the downstream `ascii-to-html` skill for parsing the handed-off file; it is not invoked from within this loop.
 

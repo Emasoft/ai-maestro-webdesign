@@ -165,21 +165,23 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
    - `competitor_reference` → pass to `bin/amw-design-md-from-url.sh` if it is a URL; otherwise note in `## Overview`.
 2. Assemble DESIGN.md. Run lint gate.
 
-### Companion generation (all paths, when `companion_targets` provided)
-
-After producing the DESIGN.md:
-```
-python3 bin/amw-design-md-emit-companions.py <output_path> \
-  --targets <comma-separated list from companion_targets>
-```
-
-### Lint gate (step 7 of all paths)
+### Lint gate (mandatory precondition for all paths)
 
 ```bash
 bash bin/amw-design-md-lint.sh <output_path>
 ```
 
 If exit code ≠ 0, read stdout. Fix all P0 (blocker) and P1 (major) lint errors. Re-run. If P0 errors persist after two fix attempts, return `status=partial` with the remaining errors in `blocking_issues`. P2 warnings are passed through to `warnings` only.
+
+**Lint must PASS before companion files are written.** On P0/P1 lint FAIL, emit `status=partial` with blocking errors in `blocking_issues` and skip companion generation entirely. Companions derived from a broken DESIGN.md propagate errors downstream.
+
+### Companion generation (all paths, when `companion_targets` provided)
+
+After the lint gate passes:
+```
+python3 bin/amw-design-md-emit-companions.py <output_path> \
+  --targets <comma-separated list from companion_targets>
+```
 
 ---
 

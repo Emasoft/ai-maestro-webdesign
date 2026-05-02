@@ -170,16 +170,24 @@ Priority-ordered.
 1. **Parse `diagram_brief`** — identify content type (architecture, flowchart, state, sequence, ER, timeline, pipeline, workflow, cheatsheet, retro-grid).
 2. **Apply Skill-Decision Matrix** (§9) — pick target format based on content type × target_medium × complexity_hint × audience.
 3. **If `preferred_format` is set**, override matrix pick and record the user's format choice in the report.
-4. **Read the target skill's SKILL.md** — load the recipe.
-5. **Author the diagram** in the target format:
+4. **Complexity check + low-fi pre-validation (gated).** Before committing to a full SVG/HTML render, evaluate complexity:
+   - Count nodes in the brief (or estimate from text). Count layers / hierarchical levels.
+   - IF `complexity_hint: "complex"` OR estimated nodes > 8 OR estimated layers > 3:
+     - Read `../skills/amw-text-visual-arch/SKILL.md` and call the skill to produce a 78-col-wide ASCII preview of the proposed topology from the parsed brief.
+     - Emit the ASCII preview path to main-agent (NOT user — main-agent decides whether to surface) via `recommendations[]`: `"Complex brief detected (~N nodes, M layers). ASCII preview at <path>. Surface to user before committing to full render?"`
+     - Pause execution of the full-format render; main-agent can: (a) approve as-is and proceed to step 5, (b) loop a sketch round with topology feedback, (c) re-invoke with a revised brief that groups or splits services differently.
+   - IF complexity is at or below threshold (≤ 8 nodes, ≤ 3 layers): skip pre-validation, proceed directly to step 5.
+   - The §9 matrix already classifies complexity — this gate adds zero new judgment burden and saves approximately 50K tokens per wasted SVG render on off-target complex briefs.
+5. **Read the target skill's SKILL.md** — load the recipe.
+6. **Author the diagram** in the target format:
    - **ASCII** — emit structured JSON to `bin/amw-ascii-render.py` OR hand-author validated Unicode-box ASCII, then validate with `bin/amw-validate-ascii.py`.
    - **HTML** — emit editorial HTML per `diagram-editorial` 13-type library, apply brand tokens as CSS custom properties.
    - **SVG** — emit SVG per `diagram-svg` or `svg-diagram` primitives, apply brand tokens.
    - **Mermaid** — emit Mermaid source per the grammar, validate with `bin/amw-mermaid-lint.sh`.
-6. **Validate** via `bin/amw-validate-diagram.sh <artifact>`.
-7. **If `parallel_emit_formats` is set**, convert the canonical artifact to the additional formats via the CONVERT operation.
-8. **If PNG is requested**, render via SVG-or-HTML-to-PNG pipeline (`bin/amw-html-export.py` for HTML; `cairosvg` via SVG-render for SVG; `bin/amw-mermaid-render.sh --format png` for Mermaid).
-9. **Write artifacts**, populate return contract, write report, return.
+7. **Validate** via `bin/amw-validate-diagram.sh <artifact>`.
+8. **If `parallel_emit_formats` is set**, convert the canonical artifact to the additional formats via the CONVERT operation.
+9. **If PNG is requested**, render via SVG-or-HTML-to-PNG pipeline (`bin/amw-html-export.py` for HTML; `cairosvg` via SVG-render for SVG; `bin/amw-mermaid-render.sh --format png` for Mermaid).
+10. **Write artifacts**, populate return contract, write report, return.
 
 ### CONVERT mode
 
@@ -476,6 +484,45 @@ Branches: 2→Y→3, 2→N→[End empty-cart], 4→Stripe→5, 4→PayPal→6, 4
 - No cross-browser render test — `amw-browser-tester-agent` if the SVG is embedded in a live page.
 
 See artifact_paths for outputs.
+```
+
+### Worked example — AUTHOR mode, pre-validation fired (complex brief)
+
+This example shows step 4 firing: a 15-service microservices architecture (>8 nodes, >3 layers) triggers the complexity gate before any SVG work begins.
+
+```yaml
+---
+agent: amw-diagram-producer-agent
+phase: B
+status: partial
+confidence: medium
+execution_time_ms: 1240
+max_iterations: 3
+attempts_count: 0
+attempts_log: []
+blocking_issues: []
+warnings: []
+artifact_paths:
+  - path: "/tmp/amw-diagram-pre-validation-backend-arch.txt"
+    type: ascii
+    purpose: "Low-fi ASCII topology preview (78-col, text-visual-arch); pre-validation gate output for main-agent to surface"
+recommendations:
+  - "Complex brief detected (~15 nodes, 4 layers). ASCII preview at /tmp/amw-diagram-pre-validation-backend-arch.txt. Surface to user before committing to full SVG render (~50K tokens)."
+  - "After user confirms topology, re-invoke with approved brief; pre-validation gate will be skipped on second pass."
+next_action: await_main_agent_approval
+report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_150850+0200-amw-diagram-producer-backend-arch-prevalidation.md"
+---
+
+# AMW Diagram Producer — Phase B summary (pre-validation gate)
+
+Complexity check fired at step 4: brief described 15 microservices across 4 layers (ingress, API gateway, service mesh, data stores). Threshold is >8 nodes OR >3 layers. Called `text-visual-arch` to produce a 78-col ASCII preview of the proposed topology. Full SVG render deferred. Main-agent should surface the ASCII preview to the user for topology approval before committing to full render.
+
+## Pre-validation rationale
+
+- **Estimated nodes:** 15 (ingress × 1, API gateway × 1, service mesh × 5, data stores × 4, message brokers × 2, external APIs × 2)
+- **Estimated layers:** 4
+- **Threshold exceeded:** yes (nodes > 8, layers > 3)
+- **Action taken:** ASCII topology preview via `text-visual-arch`, full-format render NOT started.
 ```
 
 ### Worked example — CONVERT mode, PNG refusal

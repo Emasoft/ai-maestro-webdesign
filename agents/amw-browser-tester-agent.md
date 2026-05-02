@@ -182,10 +182,32 @@ In priority order:
 
 3. **Open persistent session.** `Bash: bash bin/amw-dev-browser-wrapper.sh open "$artifact_url"` — gives me a long-lived session across turn boundaries.
 
-4. **For each scenario:**
+4. **Classify scenarios and fan out.**
+
+   Default battery scenarios are classified as:
+
+   - **Parallel-safe** (each runs in its own independent dev-browser session; no shared state across scenarios): `no-console-errors`, `renders-above-fold`, `mobile-viewport-layout`, `accessibility-keyboard-nav`, `core-web-vitals`, `links-resolve`.
+   - **Serial-required** (depends on page state established in prior steps, often after the parallel batch completes): `interactive-spot-checks` and any custom scenario whose `steps` include `fill` + `key:Enter` on an already-loaded persistent session.
+
+   **Fan-out decision:**
+
+   - IF `nproc >= 4` AND free memory > 4 GB:
+     - Spawn one `Task(subagent_type="general-purpose", ...)` per **parallel-safe** scenario, each with its own dev-browser session opened via `bash bin/amw-dev-browser-wrapper.sh open <url>`. Tasks run concurrently.
+     - Resource-pressure detection: `nproc 2>/dev/null || sysctl -n hw.ncpu` for CPU count; `vm_stat | grep "Pages free"` (macOS) or `free -m | awk 'NR==2{print $4}'` (Linux) for free memory.
+     - Each Task executes sub-steps a–f below for its assigned scenario and returns raw evidence (screenshot paths, console-log path, per-assertion results). **Verdict synthesis stays with me** — I collate all Task results and assign the final PASS / FAIL / INCONCLUSIVE.
+   - ELSE (resource pressure or `nproc < 4`): fall back to the serial loop (run sub-steps a–f for each scenario in the existing persistent session, one at a time).
+   - **Serial-required** scenarios always run after the parallel batch completes, sequentially in the existing persistent session.
+
+   Expected speedup: serial 6 × 30 s = ~3 min battery → parallel 1 × 30 s ≈ 30 s (~6× on a healthy artifact with adequate host resources).
+
+   **Sub-steps for each scenario (parallel or serial):**
+
    - **a. Set viewport.** If scenario specifies `viewport_sizes`, iterate; otherwise desktop + mobile.
    - **b. Navigate + wait.** Navigate to `artifact_url`, wait for network idle or specified selector, with timeout budget (default 10s; configurable).
-   - **c. Execute steps** in order: navigate, wait, click, fill, key, scroll. For each step, capture a "before" and "after" screenshot (or just "after" if performance is a concern).
+   - **c. Execute steps** in order: navigate, wait, click, fill, key, scroll. Screenshot policy:
+     - **Default (after-only):** capture one screenshot at the end of the scenario's step sequence, used as evidence for `visible`, `text-contains`, and `dom-state` assertions.
+     - **Exception — click/fill/key:Enter steps:** capture both `before` and `after` screenshots so the diff is verifiable (one before the action, one immediately after).
+     - **Exception — `screenshot-matches` assertion:** capture the after-state as the comparison shot (single shot; no before needed).
    - **d. Capture console.** After all steps, pull the accumulated console logs via `dev-browser`'s DOM-dump + console access. Save to `console-logs/<ts>-<scenario>.log`.
    - **e. Run assertions.** For each assertion:
      - `no-console-errors` → grep console-log for ERROR-level entries; PASS if none, FAIL with excerpt if found.
@@ -193,7 +215,7 @@ In priority order:
      - `text-contains` → query selector, get `textContent`, check substring; FAIL with actual text if no match.
      - `screenshot-matches` → compare against a reference using pixel-diff; PASS if diff < threshold (5%), else FAIL with diff image saved.
      - `dom-state` → query selector, check attribute/class/property; FAIL with actual value on mismatch.
-   - **f. Record verdict.** PASS / FAIL / INCONCLUSIVE with per-assertion breakdown.
+   - **f. Record verdict.** PASS / FAIL / INCONCLUSIVE with per-assertion breakdown (returned to me for synthesis when running as a fan-out Task).
 
 5. **Optional UX eval.** If `include_ux_eval=true`, `Read skills/amw-ux-evaluator/SKILL.md` + `Read skills/amw-ux-evaluator/references/TECH-uxeval-3-dimension-framework.md`. Apply the 3-dimension scoring (Position / Visual Weight / Spacing) to the primary interactive elements (CTA, nav, hero). Emit qualitative findings alongside binary test results.
 
@@ -312,7 +334,7 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my per-sce
 
 **What I may delegate:**
 
-- **Parallel scenario execution** via `Task(subagent_type="general-purpose", ...)` when a single artifact has many independent scenarios AND dev-browser can run multiple persistent sessions. I fan out one Task per scenario, each with its own session. I do NOT fan out when scenarios share state (e.g. login → navigate → logout must stay in one session).
+- **Parallel scenario execution** via `Task(subagent_type="general-purpose", ...)` is the **default fan-out path** for parallel-safe scenarios (see §7 step 4) when host resources are adequate (`nproc >= 4`, free memory > 4 GB). I fan out one Task per parallel-safe scenario, each opening its own dev-browser session. Serial-required scenarios (e.g. `interactive-spot-checks` after page state is established) run sequentially in my own session after the parallel batch completes. I do NOT fan out when scenarios share state (e.g. login → navigate → logout must stay in one session).
 
 **What I must NEVER delegate:**
 
@@ -384,6 +406,10 @@ Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
 
 Input: test `file:///Users/demo/project/design/mockups/Landing Page.html` against the default battery at desktop + mobile, with `include_ux_eval=true`.
 
+Screenshot count with the default policy (after-only, except click/fill steps): ~6 shots for a standard battery (1 desktop after-state per non-click scenario + 1 mobile after-state per mobile scenario + 1 before + 1 after for the CTA click step) — down from ~14 when every step captured before+after.
+
+Execution mode: host has 8 cores and 12 GB free → fan-out path taken. 5 parallel-safe scenarios (`no-console-errors`, `renders-above-fold`, `mobile-viewport-layout`, `accessibility-keyboard-nav`, `links-resolve`) run as concurrent Tasks (one dev-browser session each). `interactive-spot-checks` (serial-required) runs after the parallel batch in my persistent session. Wall-clock time drops from ~3 min (serial) to ~30 s (parallel batch) + ~30 s (serial tail) ≈ 60 s total.
+
 ```yaml
 ---
 agent: amw-browser-tester-agent
@@ -428,13 +454,16 @@ Tested the Landing Page against the default 5-scenario battery at desktop and mo
 
 ## Scenario summary
 
-| Scenario | Desktop | Mobile | Evidence |
-|---|---|---|---|
-| no-console-errors | PASS | PASS | console-logs/*.log |
-| renders-above-fold | PASS | PASS-with-warning | screenshots/*-loaded.png |
-| mobile-viewport-layout | N/A | PASS | screenshots/*-mobile-loaded.png |
-| interactive-spot-checks | PASS | PASS | screenshots/*-cta-click-after.png |
-| accessibility-keyboard-nav | PASS | PASS | screenshots/*-keyboard-nav-tab-*.png |
+Parallel-safe scenarios ran concurrently (5 Tasks); `interactive-spot-checks` ran serially after.
+
+| Scenario | Mode | Desktop | Mobile | Evidence |
+|---|---|---|---|---|
+| no-console-errors | parallel | PASS | PASS | console-logs/*.log |
+| renders-above-fold | parallel | PASS | PASS-with-warning | screenshots/*-loaded.png |
+| mobile-viewport-layout | parallel | N/A | PASS | screenshots/*-mobile-loaded.png |
+| accessibility-keyboard-nav | parallel | PASS | PASS | screenshots/*-keyboard-nav-tab-after.png |
+| links-resolve | parallel | PASS | N/A | report (no broken internal links) |
+| interactive-spot-checks | serial | PASS | PASS | screenshots/*-cta-click-before/after.png |
 
 ## Per-scenario detail
 
