@@ -1,6 +1,6 @@
 ---
 name: amw-text-visual-state
-description: Produces ASCII state machines and storyboards that model user journeys, retention loops, issue-triage lifecycles, and other stateful processes — for PRs, ADRs, growth docs, and product specs. Triggers on narrow intents — "ASCII state machine", "text state diagram", "user journey states in ASCII", "retention loop as text", "issue lifecycle diagram in monospace", "state transitions for a PR". Does NOT trigger on generic "state", "journey", "lifecycle", "transitions" alone — those belong to design-principles / ux-flows / diagram-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery. Use when producing an ASCII state machine or user-journey storyboard for a PR, ADR, or product spec. Trigger with "ASCII state machine" or "text state diagram" phrasing.
+description: ASCII state machines and storyboards for user journeys, retention loops, lifecycles, stateful processes — for PRs, ADRs, growth docs. Triggers on "ASCII state machine", "text state diagram", "user journey in ASCII", "retention loop as text", "issue lifecycle in monospace". Does NOT trigger on "state", "journey", "lifecycle" alone — routes to design-principles / ux-flows / diagram-svg. ASCII only; passes amw-validate-ascii.py. Use when producing an ASCII state machine or storyboard. Trigger with "ASCII state machine".
 version: 0.1.0
 ---
 

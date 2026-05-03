@@ -1,6 +1,6 @@
 ---
 name: amw-ux-evaluator
-description: Systematic UX evaluation of a rendered UI via a 3-dimension framework (Position, Visual Weight, Spacing) cross-checked against Balsamiq, Nielsen, and Material conventions. Narrow triggers — "evaluate UX", "review this component", "review UX", "check button design", "evaluate layout", "score this layout", "UX feedback on", "evaluate this page against heuristics", "run UX audit". Does NOT trigger on generic design-intent vocabulary ("design a page", "build a landing page", "mockup", "prototype", "style my page") — those belong to the `design-principles` orchestrator. Use when systematically evaluating a rendered UI component or layout against heuristics. Trigger with /amw-eval or explicit "evaluate UX" / "run UX audit" phrasing.
+description: Systematic UX evaluation of a rendered UI via 3-dimension framework (Position, Weight, Spacing) cross-checked against Balsamiq, Nielsen, Material. Triggers on "evaluate UX", "review this component", "check button design", "evaluate layout", "UX feedback on", "run UX audit". Does NOT trigger on "design a page", "mockup", "style my page" — routes to `design-principles`. Use when evaluating a UI against heuristics. Trigger with /amw-eval.
 version: 0.1.0
 author: ai-maestro-webdesign
 ---

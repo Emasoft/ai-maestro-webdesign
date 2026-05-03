@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-formats
-description: Look up the authoritative spec for ASCII / HTML / SVG / Mermaid diagram formats, the plugin's IR schema, the cross-format conversion matrix, the validation dispatcher, or the modify / diff pipelines. Triggers on narrow technical intents only — "what does the IR schema look like", "how does format detection work", "conversion matrix for ASCII to SVG", "IR-level diff algorithm", "validation dispatcher contract", "Mermaid format spec". Does NOT trigger on generic design / diagram creation intent — those belong to ascii-creator / svg-diagram / html-diagram / mermaid-diagram. This is a references-only meta-skill; it NEVER emits diagrams itself. Use when looking up the IR schema, format specs, conversion matrix, or validation contracts for diagrams. Trigger with explicit phrasing like "diagram IR schema", "diagram format spec", or "cross-format conversion matrix". (No slash-command — consumed by other skills via file-read only.)
+description: Authoritative spec for ASCII / HTML / SVG / Mermaid formats, IR schema, conversion matrix, validation dispatcher, modify/diff pipelines. Triggers on "diagram IR schema", "format detection", "conversion matrix", "IR-level diff", "Mermaid format spec". Does NOT trigger on diagram creation — routes to ascii-creator / svg-diagram / html-diagram. References-only — NEVER emits diagrams. Use when looking up IR schema or format specs. Trigger with "diagram IR schema".
 version: 0.1.0
 ---
 

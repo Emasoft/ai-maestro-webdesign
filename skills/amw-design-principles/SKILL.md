@@ -1,6 +1,6 @@
 ---
 name: amw-design-principles
-description: Orchestrator for any web, UI, slide, prototype, poster, or design task. Enforces three hard rules — (1) gather design context before designing, (2) always produce at least three variants, (3) reject catalogued AI-slop patterns — and routes to the appropriate executor skill in ai-maestro-webdesign. Triggers on any design intent ("design a page", "build a landing page", "mockup", "UI for", "prototype", "wireframe", "slide deck", "poster", "dashboard", "website", "brand", "style"). The plan phase runs in ASCII via /amw-sketch until the user is explicitly satisfied; HTML is generated only after approval. Use when the user requests any web design, UI, prototype, landing page, or other visual design artifact. Trigger with /amw-sketch or /amw-eval.
+description: Orchestrator for any web, UI, slide, prototype, or design task. Enforces three hard rules — (1) gather context, (2) produce ≥3 variants, (3) reject AI-slop — and routes to executors. Triggers on "design a page", "landing page", "mockup", "UI for", "prototype", "wireframe", "slide deck", "dashboard", "website". Plan phase runs in ASCII via /amw-sketch; HTML follows approval. Use when the user requests any visual design artifact. Trigger with /amw-sketch.
 version: 2.0.0
 author: ai-maestro-webdesign
 ---

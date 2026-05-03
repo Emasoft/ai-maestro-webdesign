@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-svg
-description: Natural-language request to SVG diagram primitives — flowcharts, architecture diagrams, system illustrations with nodes, edges, and arrowheads. Triggers on narrow technical intents only — "draw a flowchart of X", "SVG diagram of X", "render the data flow as SVG", "draw the architecture as SVG", "sketch the system as SVG", "make a node-and-arrow diagram". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "prototype") — those belong to the `design-principles` orchestrator, which routes here when a workflow needs an SVG diagram. Use when authoring or editing a standalone SVG flowchart or architecture diagram with nodes and edges. Trigger with /amw-create-or-modify-svg-diagram.
+description: Natural-language request to SVG diagram primitives — flowcharts, architecture diagrams, system illustrations with nodes, edges, arrowheads. Triggers on "draw a flowchart of X", "SVG diagram of X", "render data flow as SVG", "draw the architecture as SVG", "node-and-arrow diagram". Does NOT trigger on broad design vocabulary — those route to `design-principles`. Use when authoring an SVG flowchart or architecture diagram. Trigger with /amw-create-or-modify-svg-diagram.
 version: 0.1.0
 ---
 

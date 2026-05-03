@@ -1,6 +1,6 @@
 ---
 name: amw-text-visual-cheatsheets
-description: Produces portable ASCII CLI command panels — tabular cheat sheets summarizing workflows for tools like gh, git, kubectl, deploy scripts — with macOS/Linux and Windows variants side by side. Triggers on narrow intents — "ASCII cheat sheet", "CLI reference panel in monospace", "command grid for pasting in a README", "gh cheat sheet", "terminal command panel". Does NOT trigger on generic "cheat sheet", "guide", "docs" — those are documentation tasks for general skills. Output is ASCII only; every panel passes bin/amw-validate-ascii.py before delivery. Use when creating a portable ASCII CLI cheat-sheet panel for a README or PR description. Trigger with "ASCII cheat sheet" or "CLI reference panel in monospace" phrasing.
+description: Portable ASCII CLI command panels — tabular cheat sheets for gh, git, kubectl, deploy scripts — with macOS/Linux + Windows variants side by side. Triggers on "ASCII cheat sheet", "CLI reference panel in monospace", "command grid for a README", "gh cheat sheet". Does NOT trigger on "cheat sheet", "guide", "docs" alone — those are docs tasks. ASCII only; passes amw-validate-ascii.py. Use when creating an ASCII CLI cheat sheet. Trigger with "ASCII cheat sheet".
 version: 0.1.0
 ---
 

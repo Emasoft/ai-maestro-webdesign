@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-convert
-description: Cross-format diagram conversion — convert a diagram from one format to another across the full 5-format matrix (ASCII, HTML, SVG, Mermaid, PNG). Triggers on narrow technical intents only — "convert this diagram to X", "turn my ASCII into SVG", "cross-format diagram conversion", "convert this flowchart to mermaid", "amw-convert-any-diagram-format", "turn my SVG into ASCII", "export this diagram as PNG", "transform my mermaid to HTML". PNG-as-source is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles. Use when converting a diagram from one format to another across the five-format matrix. Trigger with /amw-convert-any-diagram-format.
+description: Cross-format diagram conversion — convert a diagram from one format to another across the 5-format matrix (ASCII, HTML, SVG, Mermaid, PNG). Triggers on "convert this diagram to X", "turn my ASCII into SVG", "convert flowchart to mermaid", "export diagram as PNG". PNG-as-source is refused. Does NOT claim generic design vocabulary — those route to design-principles. Use when converting a diagram across the 5-format matrix. Trigger with /amw-convert-any-diagram-format.
 version: 0.1.0
 ---
 

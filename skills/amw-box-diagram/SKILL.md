@@ -1,6 +1,6 @@
 ---
 name: amw-box-diagram
-description: Author clean Unicode rounded-corner box diagrams (╭╮╰╯│─) for pipeline diagrams, workflow charts, microservices topologies, and incident-response flows. Triggers on narrow technical intents only — "box diagram of", "Unicode pipeline diagram", "fan-out diagram", "fan-in diagram", "pipeline box diagram", "rounded-corner box diagram", "microservices box topology", "incident-response flow diagram", "workflow box chart". Does NOT trigger on broad design vocabulary ("design", "UI", "landing page", "mockup", "wireframe") — those belong to the `design-principles` orchestrator, which routes here when the user needs a rectangular-box flow with clean rounded corners. All output MUST pass `../../bin/amw-validate-ascii.py` before emission. Use when creating a Unicode rounded-corner box diagram for pipelines or topology charts. Trigger with /amw-create-or-modify-ascii-diagram.
+description: Author clean Unicode rounded-corner box diagrams (╭╮╰╯│─) for pipelines, workflow charts, microservices topologies. Triggers on "box diagram of", "Unicode pipeline diagram", "fan-out/fan-in", "rounded-corner box diagram", "microservices topology". Does NOT trigger on broad design vocabulary — routes to `design-principles`. All output MUST pass `../../bin/amw-validate-ascii.py`. Use when creating a Unicode box diagram. Trigger with /amw-create-or-modify-ascii-diagram.
 version: 0.1.0
 ---
 

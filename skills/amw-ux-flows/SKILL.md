@@ -1,6 +1,6 @@
 ---
 name: amw-ux-flows
-description: PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + sequence) → mobile-first clickable HTML wireframes with inter-screen navigation → consolidated handoff document. Narrow triggers — "user flows from the PRD", "wireframe this feature", "generate a screen map", "document use cases", "clickable prototype for a feature", "flow diagram for a screen", "state diagram for a screen", "sequence diagram for an API". Do NOT trigger on generic "design a page", "style the UI", "make it look nice" — those stay with design-principles. Use when converting a PRD or feature list into user flows, Mermaid diagrams, and HTML wireframes. Trigger with "user flows from the PRD", "wireframe this feature", or "generate a screen map" phrasing.
+description: PRD → use cases → Mermaid diagrams (flowchart + state + sequence) → mobile-first clickable HTML wireframes with inter-screen navigation → consolidated handoff. Triggers on "user flows from the PRD", "wireframe this feature", "generate a screen map", "clickable prototype", "flow/sequence diagram for a screen". Does NOT trigger on "design a page", "style the UI" — routes to design-principles. Use when converting a PRD into flows and wireframes. Trigger with "user flows from the PRD".
 version: 0.1.0
 author: ai-maestro-webdesign
 ---

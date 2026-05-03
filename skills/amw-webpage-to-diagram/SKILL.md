@@ -1,6 +1,6 @@
 ---
 name: amw-webpage-to-diagram
-description: Extract the structural diagram of a webpage (URL or local `.html`) and emit it in a chosen format (ASCII / SVG / Mermaid — default ASCII). Triggers on narrow technical intents only — "extract diagram from webpage", "diagram this URL", "what's the structure of https://...", "sitemap from this HTML", "landmark diagram of this page", "/amw-create-diagram-from-webpage". Does NOT claim generic "design a page" / "build a landing page" vocabulary — those go to design-principles. Refuses every PNG input (file or URL returning image/*) per plugin directive. Use when extracting a structural diagram from a live URL or local HTML file. Trigger with /amw-create-diagram-from-webpage.
+description: Extract the structural diagram of a webpage (URL or local `.html`) and emit it as ASCII / SVG / Mermaid (default ASCII). Triggers on "extract diagram from webpage", "diagram this URL", "what's the structure of https://...", "sitemap from this HTML", "landmark diagram of this page". Does NOT claim generic "design a page" — those route to design-principles. Refuses PNG input. Use when extracting a structural diagram from a URL or HTML file. Trigger with /amw-create-diagram-from-webpage.
 version: 0.1.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: amw-ui-ux-reasoning
-description: LAST-RESORT fallback library — 161 reasoning rules, 67 UI styles, 161 color palettes, 57 font pairings, 24 landing-page patterns — consulted ONLY when design-principles confirms no design system, no brand tokens, no reference exists. Narrow triggers — "pick a style for me", "I have no design system", "choose a palette for me", "suggest a font pairing", "what UI style should I use", "make it look professional (no preference)". Do NOT trigger on generic design intent. Use when no design system or brand tokens are available and a fallback style, palette, or font pairing must be selected. Trigger with "pick a style for me", "choose a palette for me", or "suggest a font pairing" phrasing.
+description: LAST-RESORT fallback library — 161 reasoning rules, 67 UI styles, 161 color palettes, 57 font pairings, 24 landing-page patterns — consulted ONLY when no design system, brand tokens, or reference exists. Triggers on "pick a style for me", "I have no design system", "choose a palette", "suggest a font pairing", "what UI style should I use". Does NOT trigger on generic design intent. Use when no design system is available. Trigger with "pick a style for me".
 version: 0.1.0
 author: ai-maestro-webdesign
 ---

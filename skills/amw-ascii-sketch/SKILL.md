@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-sketch
-description: Runs the ASCII plan-phase iteration loop. Triggers when design-principles has decided that a webpage design's plan phase is best explored in ASCII before committing to HTML. Specific triggers — "sketch this in ASCII", "give me layout variants", "propose 3 wireframes in ASCII", "iterate on the layout in ASCII", "ASCII mockup", "box-drawing wireframe". Does NOT self-trigger on broad "design", "make a page", "UI", "landing page", "mockup", "prototype" — those belong to design-principles, which then routes here as its default plan-phase executor. Use when iterating on a webpage layout in ASCII before committing to HTML. Trigger with /amw-sketch.
+description: Runs the ASCII plan-phase iteration loop. Triggers on "sketch this in ASCII", "give me layout variants", "propose 3 wireframes in ASCII", "iterate on the layout in ASCII", "ASCII mockup", "box-drawing wireframe". Does NOT self-trigger on broad "design", "UI", "landing page" — those route to design-principles, which dispatches here as default plan-phase executor. Use when iterating on a layout in ASCII before HTML. Trigger with /amw-sketch.
 version: 0.1.0
 ---
 

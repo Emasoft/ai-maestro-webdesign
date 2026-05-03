@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-validator
-description: Render pixel-perfect ASCII diagrams from structured JSON and/or validate hand-authored ASCII wireframes for alignment bugs before they ship. Triggers on narrow technical intents only — "validate this ASCII", "check my ASCII alignment", "render this as perfect ASCII", "ASCII diagram from JSON", "fix ASCII box alignment", "why is my ASCII misaligned". Does NOT trigger on generic design intent ("design a page", "wireframe a dashboard") — those belong to ascii-sketch / design-principles. This is the MANDATORY validation gate for any ASCII emitted by ascii-sketch or /amw-sketch. Use when validating or rendering pixel-perfect ASCII diagrams for alignment correctness. Trigger with /amw-sketch (auto-runs on every loop turn) or /amw-validate-any-diagram-format (explicit ASCII-or-other-format validation entry).
+description: Render pixel-perfect ASCII diagrams from JSON and/or validate hand-authored ASCII wireframes for alignment bugs. Triggers on "validate this ASCII", "check ASCII alignment", "render as perfect ASCII", "ASCII from JSON", "fix ASCII box alignment". Does NOT trigger on generic design intent — routes to ascii-sketch / design-principles. MANDATORY gate for any ASCII from ascii-sketch. Use when validating or rendering pixel-perfect ASCII. Trigger with /amw-sketch or /amw-validate-any-diagram-format.
 version: 0.1.0
 ---
 

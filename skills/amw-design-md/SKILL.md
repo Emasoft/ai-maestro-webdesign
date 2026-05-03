@@ -1,6 +1,6 @@
 ---
 name: amw-design-md
-description: Author, lint, extract, audit, and convert DESIGN.md design-system specifications. Triggers on narrow DESIGN.md-specific phrasing only - "create DESIGN.md", "author DESIGN.md", "lint DESIGN.md", "extract DESIGN.md from this URL", "extract DESIGN.md from this Tailwind config", "extract DESIGN.md from this codebase", "audit DESIGN.md", "convert DESIGN.md", "design-token spec", "design-system markdown", "DESIGN.md companions", "design.md frontmatter validation". Do NOT trigger on generic vocabulary like "design", "design system", "make a UI", "extract design tokens", "build a token spec" - those route to amw-design-principles or amw-design-extract via the orchestrator. Use when authoring, linting, auditing, or converting a DESIGN.md design-system specification file. Trigger with /amw-design-md-create or /amw-design-md-lint.
+description: Author, lint, extract, audit, and convert DESIGN.md design-system specifications. Triggers on "create DESIGN.md", "lint DESIGN.md", "extract DESIGN.md from URL/Tailwind/codebase", "audit DESIGN.md", "DESIGN.md companions". Does NOT trigger on generic "design system", "extract design tokens" — those route to amw-design-principles or amw-design-extract. Use when authoring, linting, or converting a DESIGN.md spec. Trigger with /amw-design-md-create.
 version: 0.1.0
 ---
 

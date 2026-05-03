@@ -1,6 +1,6 @@
 ---
 name: amw-mermaid-render
-description: Render Mermaid diagram text to themed SVG or terminal/markdown ASCII via the vendored beautiful-mermaid backend. Triggers on "render mermaid as SVG", "mermaid to SVG", "mermaid ASCII", "mermaid ASCII for terminal", "themed mermaid diagram", "flowchart to SVG", "sequence diagram to SVG", "mermaid flowchart/state/class/ER diagram render", "batch render .mmd files", "apply dracula/tokyo-night theme to mermaid". This is the ONLY Mermaid renderer in the plugin — all skills that produce Mermaid source text must delegate rendering here. See body for what does NOT trigger this skill. Use when rendering Mermaid source text to themed SVG or terminal ASCII output. Trigger with /amw-create-or-modify-mermaid-diagram.
+description: Render Mermaid diagram text to themed SVG or terminal/markdown ASCII via the vendored beautiful-mermaid backend. Triggers on "render mermaid as SVG", "mermaid to SVG", "mermaid ASCII", "themed mermaid diagram", "batch render .mmd files", "apply dracula/tokyo-night theme to mermaid". ONLY Mermaid renderer in the plugin — all skills producing Mermaid source delegate rendering here. Use when rendering Mermaid source to themed SVG or ASCII. Trigger with /amw-create-or-modify-mermaid-diagram.
 version: 1.0.0
 author: ai-maestro-webdesign
 ---

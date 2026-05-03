@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-compare
-description: Structural comparison of two diagrams — diff two flowcharts, compare v1 and v2 of a diagram, find what changed between two diagram versions, cross-format diagram diff. Triggers on narrow technical intents only — "compare these diagrams", "diff two flowcharts", "what changed between v1 and v2 of this diagram", "structural diff of two diagrams", "amw-compare-diagrams". Source formats may differ (ASCII vs Mermaid is valid). PNG-as-input is refused per plugin directive. Does NOT claim generic design vocabulary — those belong to design-principles. Use when comparing two diagrams structurally across any supported formats. Trigger with /amw-compare-diagrams.
+description: Structural comparison of two diagrams — diff two flowcharts, compare v1/v2, find what changed, cross-format diagram diff. Triggers on "compare these diagrams", "diff two flowcharts", "what changed between v1 and v2", "structural diff of two diagrams". Source formats may differ (ASCII vs Mermaid is valid). PNG-as-input is refused. Does NOT claim generic design vocabulary — those route to design-principles. Use when comparing two diagrams structurally. Trigger with /amw-compare-diagrams.
 version: 0.1.0
 ---
 

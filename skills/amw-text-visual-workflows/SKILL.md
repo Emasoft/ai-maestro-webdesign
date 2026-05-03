@@ -1,6 +1,6 @@
 ---
 name: amw-text-visual-workflows
-description: Produces ASCII flowcharts and timelines for multi-step workflows — PR lifecycle, launch plan, triage ops, incident response — that paste cleanly into GitHub PRs, issues, Slack, Notion, and terminal output. Triggers on narrow intents — "ascii flowchart", "text timeline", "workflow diagram in monospace", "PR-safe flowchart", "paste-into-GitHub flow diagram", "timeline for a comment". Does NOT trigger on generic "design", "diagram", "chart", "draw a flow" — those belong to design-principles / diagram-* / ascii-to-svg. Output is ASCII only; every diagram passes bin/amw-validate-ascii.py before delivery. Use when producing an ASCII flowchart or timeline for a PR, launch plan, or incident-response workflow. Trigger with "ascii flowchart", "text timeline", or "PR-safe flowchart" phrasing.
+description: ASCII flowcharts and timelines for multi-step workflows (PR lifecycle, launch plan, triage, incident response) — pastes into GitHub PRs, Slack, Notion, terminals. Triggers on "ascii flowchart", "text timeline", "workflow diagram in monospace", "PR-safe flowchart". Does NOT trigger on "design", "diagram", "chart" alone — routes to design-principles / diagram-*. ASCII only; passes amw-validate-ascii.py. Use when producing an ASCII flowchart for a PR. Trigger with "ascii flowchart".
 version: 0.1.0
 ---
 

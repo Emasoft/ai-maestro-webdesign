@@ -1,6 +1,6 @@
 ---
 name: amw-diagram-editorial
-description: Editorial-quality HTML+SVG diagrams with brand-matched styling — 13 fixed types (architecture, flowchart, sequence, state machine, ER, timeline, swimlane, quadrant, nested, tree, layer stack, Venn, pyramid/funnel). Triggers on narrow editorial-diagram intents like "sequence diagram", "ER diagram", "blog-ready architecture diagram". NOT for generic design intent, freeform SVG, or pure architecture-graph JSON — those belong to design-principles, svg-creator, and diagram-architecture respectively. Full trigger list in Trigger conditions section. Use when creating a polished editorial HTML+SVG diagram of one of the 13 supported diagram types. Trigger with /amw-create-or-modify-html-diagram.
+description: Editorial-quality HTML+SVG diagrams with brand-matched styling — 13 types (architecture, flowchart, sequence, state, ER, timeline, swimlane, quadrant, nested, tree, layer, Venn, pyramid/funnel). Triggers on "sequence diagram", "ER diagram", "blog-ready architecture diagram". NOT for generic design, freeform SVG, or graph JSON — routes to design-principles / svg-creator / diagram-architecture. Use when creating an editorial diagram. Trigger with /amw-create-or-modify-html-diagram.
 version: 0.1.0
 author: ai-maestro-webdesign
 ---

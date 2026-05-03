@@ -1,6 +1,6 @@
 ---
 name: amw-tailwind-4
-description: Tailwind CSS v4 reference — utilities, variants, @theme blocks, @utility/@custom-variant directives, PostCSS/CLI/Vite tooling changes, and v3 to v4 migration. Triggers on "tailwind v4", "tailwind 4", "tailwind config", "tailwind migration", "upgrade tailwind", "@theme", "@utility", "@apply", "@source", "@reference", "tailwind variants", "tailwind prefix", "arbitrary value", "tailwind breakpoint". Does NOT trigger on generic "style my page", "CSS help", or framework-agnostic layout questions — the orchestrator routes those elsewhere. Use when looking up Tailwind CSS v4 utility classes, directives, or migration guidance. Trigger with explicit "tailwind v4", "@theme", or "@utility" phrasing.
+description: Tailwind CSS v4 reference — utilities, variants, @theme, @utility/@custom-variant directives, PostCSS/CLI/Vite tooling, v3-to-v4 migration. Triggers on "tailwind v4", "tailwind config", "tailwind migration", "@theme", "@utility", "@apply", "@source", "@reference", "tailwind variants", "tailwind prefix". Does NOT trigger on generic "style my page", "CSS help", or framework-agnostic layout. Use when looking up Tailwind v4 classes, directives, or migration. Trigger with "tailwind v4" or "@theme".
 version: 0.1.0
 ---
 

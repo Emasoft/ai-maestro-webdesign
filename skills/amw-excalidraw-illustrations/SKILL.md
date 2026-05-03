@@ -1,6 +1,6 @@
 ---
 name: amw-excalidraw-illustrations
-description: Generate hand-drawn Excalidraw-style conceptual illustrations via the Gemini API — white background, rough-sketch aesthetic, integrated in-panel text (speech bubbles, labelled frames) for educational material, slides, and concept diagrams. GATED — requires a user-provided `GEMINI_API_KEY` and explicit per-call consent because each call incurs a cost on Google's Gemini quota. Triggers on narrow phrasings only — "Excalidraw-style illustration of X", "hand-drawn concept diagram", "sketchy educational illustration", "whiteboard sketch of this concept for my slide". Does NOT trigger on broad design intent ("design a page", "UI", "landing page", "mockup") or on other diagram intents (flowchart, architecture, SVG diagram) — those route to design-principles, diagram-architecture, or diagram-svg. Use when generating a hand-drawn Excalidraw-style concept illustration via the Gemini API. Trigger with /amw-create-excalidraw-like-diagram-png.
+description: Generate hand-drawn Excalidraw-style conceptual illustrations via the Gemini API — white background, rough sketch, in-panel labels. GATED — requires `GEMINI_API_KEY` + per-call consent. Triggers on "Excalidraw-style illustration", "hand-drawn concept diagram", "whiteboard sketch". Does NOT trigger on broad design intent or other diagram formats — routes to design-principles. Use when generating a hand-drawn illustration. Trigger with /amw-create-excalidraw-like-diagram-png.
 version: 0.1.0
 ---
 
