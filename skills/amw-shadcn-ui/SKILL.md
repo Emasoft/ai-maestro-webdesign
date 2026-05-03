@@ -37,10 +37,12 @@ No dedicated slash command — this skill has no matching `/amw-*` shortcut. Inv
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
-REFERENCE. Lazy-loaded documentation corpus of 201 MDX files covering 50+ components, theming, forms, charts, accessibility, registry, and framework installation guides. Does not produce designs — answers shadcn-specific implementation questions once design-principles has set intent.
+
+REFERENCE. Lazy-loaded docs corpus (201 MDX); answers shadcn-specific implementation questions once design-principles has set intent.
 
 ## Trigger conditions
-Specific shadcn/ui questions. The orchestrator routes general "how do I build a UI" to the design-principles / ascii-sketch pipeline; this skill only activates when the user explicitly names shadcn/ui, or when extracted tokens (from /amw-extract-style) indicate a shadcn-based target, or when the user asks about a component by its shadcn identifier (e.g. "data-table", "dropdown-menu", "sheet", "toast").
+
+Activates when the user explicitly names shadcn/ui, when extracted tokens (from /amw-extract-style) indicate a shadcn-based target, or when the user asks about a component by its shadcn identifier (data-table, dropdown-menu, sheet, toast, etc.). General "how do I build a UI" goes to design-principles / ascii-sketch.
 
 ## Prerequisites
 - runtime_binaries: none (the docs are static MDX)
@@ -49,7 +51,7 @@ Specific shadcn/ui questions. The orchestrator routes general "how do I build a 
 
 ## Docs structure (docs/)
 - `docs/installation/` — per-framework install guides (Next.js, Vite, Remix, Astro, Laravel, Gatsby, TanStack Start, manual)
-- `docs/components/` — 50+ component guides documented across the 201 MDX files in this corpus, split into two variant roots: `docs/components/radix/` (Radix-primitive-based) and `docs/components/base/` (Base UI variant). Enumerated component slugs (snapshot — see `docs/components/` for the authoritative list as the snapshot may include newer components): accordion, alert, alert-dialog, avatar, badge, breadcrumb, button, calendar, card, carousel, checkbox, collapsible, combobox, command, context-menu, data-table, date-picker, dialog, drawer, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toggle, toggle-group, tooltip, typography, etc.
+- `docs/components/` — 50+ component guides documented across the 201 MDX files in this corpus, split into two variant roots: `docs/components/radix/` (Radix-primitive-based) and `docs/components/base/` (Base UI variant). For the authoritative component-slug list, list `docs/components/radix/` and `docs/components/base/` at runtime; the slug = the MDX filename without extension (e.g. `data-table.mdx` → component "data-table").
 - `docs/forms/` — Form + Zod schemas, validation, accessibility patterns
 - `docs/dark-mode/` — dark-mode recipes per framework (Next.js, Vite, Remix, Astro)
 - `docs/registry/` — registry schema, namespacing, custom component publishing
@@ -58,11 +60,13 @@ Specific shadcn/ui questions. The orchestrator routes general "how do I build a 
 - `docs/(root)/` — top-level pages (theming, CLI, monorepo, MCP, JavaScript usage, v4 migration, etc.)
 
 ## Reading strategy
-Do NOT load the entire docs/ corpus. When invoked:
-1. Identify the specific component / feature from the user's question.
-2. Read ONLY the relevant MDX file. Component pages live under the two variant roots — `docs/components/radix/<name>.mdx` (Radix-primitive-based variant) or `docs/components/base/<name>.mdx` (Base UI variant). Example: `docs/components/radix/data-table.mdx`, `docs/installation/next.mdx`, `docs/dark-mode/next.mdx`.
-3. Extract the install command, component source, and usage pattern.
-4. If the question is cross-cutting (theming + a specific component), read the theming page plus the single component page — never the whole directory.
+
+Input: a user question naming a specific shadcn component / feature / framework. Output: install command + component source + usage pattern, extracted from a single MDX file.
+
+1. Identify the component / feature from the question.
+2. Read ONLY the relevant MDX (e.g. `docs/components/radix/data-table.mdx`, `docs/installation/next.mdx`, `docs/dark-mode/next.mdx`).
+3. Extract install command, component source, usage pattern.
+4. Cross-cutting (theming + component): read theming page + single component page only.
 
 ## Resources
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator
