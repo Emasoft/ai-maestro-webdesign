@@ -1,6 +1,6 @@
 ---
 name: amw-ux-designer
-description: UX-process methodology — user research plans, persona creation, journey/empathy maps, usability-test protocols, WCAG AA audits, IA (card sort / tree test). Triggers on "user research plan", "persona template", "heuristic review", "WCAG audit", "IA review", "journey map". Does NOT trigger on "design a page" (design-principles), "PRD to flows" (ux-flows), "evaluate this page" (ux-evaluator). Methodology deliverables only. Use when producing a UX plan, persona, or journey map. Trigger with "user research plan".
+description: UX-process methodology — user research plans, persona creation, journey/empathy maps, usability-test protocols, WCAG AA audits, IA (card sort / tree test). Triggers on "user research plan", "persona template", "heuristic review", "WCAG audit", "IA review", "journey map". Does NOT trigger on "design a page" (design-principles), "PRD to flows" (ux-flows), "evaluate this page" (ux-evaluator). Use when producing a UX plan, persona, or journey map. Trigger with "user research plan".
 version: 0.1.0
 ---
 
