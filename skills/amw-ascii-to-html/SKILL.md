@@ -1,7 +1,7 @@
 ---
 name: amw-ascii-to-html
 description: >-
-  Convert a validated ASCII wireframe into responsive, accessible, Tweaks-compatible HTML. Use when the user has an approved ASCII wireframe and needs it rendered as a real webpage. Triggers on narrow technical intents only — "convert this ASCII to HTML", "render this wireframe as HTML", "ascii-to-html", "turn my ASCII mockup into a webpage", "/amw-ascii-to-html". Does NOT trigger on generic "design a landing page" — that belongs to design-principles. Upstream consumer is the user's /amw-sketch approved variant. Orchestrated by design-principles.
+  Convert a validated ASCII wireframe into responsive, accessible, Tweaks-compatible HTML. Use when the user has an approved ASCII wireframe and needs it rendered as a real webpage. Triggers on narrow technical intents only — "convert this ASCII to HTML", "render this wireframe as HTML", "ascii-to-html", "turn my ASCII mockup into a webpage", "/amw-ascii-to-html". Does NOT trigger on generic "design a landing page" — that belongs to design-principles. Upstream consumer is the user's /amw-sketch approved variant. Orchestrated by design-principles. Trigger with /amw-ascii-to-html.
 version: 0.2.0
 ---
 

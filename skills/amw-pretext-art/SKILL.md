@@ -25,6 +25,18 @@ Route every art-focused pretext request to `skills/amw-pretext/SKILL.md` and pic
 
 ## Examples
 
+**Concrete example — kinetic typography request:**
+
+- **Input:** "make the heading shrink and reflow as the user resizes the window" (legacy `pretext-art` phrasing).
+- **Operation:** redirect stub recognizes the request, routes immediately to `skills/amw-pretext/SKILL.md`. Decision tree there points at `TECH-33-kinetic-width-animation.md`.
+- **Output:** the redirect emits no artifact itself; the chosen TECH file's "Minimal example" section produces a runnable JS module that drives the kinetic reflow.
+
+**Concrete example — calligram request:**
+
+- **Input:** "render the word DRAGON in the shape of a dragon" (creative-text intent that lands here by legacy trigger).
+- **Operation:** redirect to `skills/amw-pretext/`; choose `TECH-38-calligram-shape.md` (or `TECH-39-glyph-mask-calligram.md` / `TECH-44-outline-calligram.md` depending on visual brief).
+- **Output:** SVG calligram emitted by the destination TECH file's example pipeline. This stub itself emits nothing.
+
 See `skills/amw-pretext/SKILL.md` for the full 78-technique catalog with minimal runnable examples in each TECH file.
 
 ## Output

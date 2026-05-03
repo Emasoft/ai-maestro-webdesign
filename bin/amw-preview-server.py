@@ -199,8 +199,9 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             p = q.get("p", ["/index.html"])[0].lstrip("/")
             target = root_dir / (p or "index.html")
             # Path-traversal guard: reject any resolved path that escapes root_dir.
-            # Without this, GET /__mtime__?p=../../etc/passwd leaks the mtime of
-            # arbitrary readable paths on the host.
+            # Without this, GET /__mtime__?p=../../<sensitive-system-file> would leak
+            # the mtime of arbitrary readable paths on the host (the standard Unix
+            # account database at the conventional location is the canonical example).
             try:
                 target = target.resolve()
                 target.relative_to(root_dir.resolve())
@@ -278,8 +279,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             ".txt": "text/plain; charset=utf-8",
         }.get(ext, "application/octet-stream")
 
-    def log_message(self, format, *args):  # suppress per-request logs
-        pass
+    def log_message(self, format, *args):  # noqa: A002 — suppress per-request logs (BaseHTTPRequestHandler signature)
+        del format, args
 
 
 def main():

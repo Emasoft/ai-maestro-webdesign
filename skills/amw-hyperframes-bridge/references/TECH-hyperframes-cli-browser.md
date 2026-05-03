@@ -12,7 +12,6 @@ also-in: external/hyperframes/packages/cli/src/browser/manager.ts
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Sub-commands](#sub-commands)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -45,7 +44,7 @@ npx hyperframes browser path
 npx hyperframes browser clear
 ```
 
-### Sub-commands
+**Sub-commands**
 
 | Sub-command | Description |
 |---|---|

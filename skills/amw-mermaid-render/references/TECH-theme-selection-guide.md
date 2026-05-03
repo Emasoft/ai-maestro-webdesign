@@ -12,7 +12,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [Decision tree](#decision-tree)
-- [Context-to-theme cheat table](#context-to-theme-cheat-table)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -56,7 +55,7 @@ Dark or light mode?
     └── Atom One Dark         → one-dark
 ```
 
-## Context-to-theme cheat table
+**Context-to-theme cheat table**
 
 | Context | Recommended |
 |---------|-------------|

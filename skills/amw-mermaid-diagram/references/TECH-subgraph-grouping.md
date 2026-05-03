@@ -12,7 +12,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [Syntax](#syntax)
-- [With direction override per subgraph](#with-direction-override-per-subgraph)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -49,7 +48,7 @@ flowchart LR
     A --> B --> C --> D --> E
 ```
 
-## With direction override per subgraph
+**With direction override per subgraph**
 
 ```
 flowchart TB

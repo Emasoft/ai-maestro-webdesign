@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Studio features](#studio-features)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -32,7 +31,7 @@ npx hyperframes preview                  # serve current directory, port 3002
 npx hyperframes preview --port 4567      # custom port
 ```
 
-### Studio features
+**Studio features**
 
 - Timeline with per-clip blocks (click to jump)
 - Playback controls (play / pause / scrub)

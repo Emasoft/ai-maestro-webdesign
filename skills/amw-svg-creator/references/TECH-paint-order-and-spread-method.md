@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [`paint-order="stroke fill"`](#paint-orderstroke-fill)
 - [`spreadMethod` on gradients](#spreadmethod-on-gradients)
-  - [Example — brushed metal with `reflect`](#example-brushed-metal-with-reflect)
 - [`vector-effect="non-scaling-stroke"`](#vector-effectnon-scaling-stroke)
 - [`pathLength="1"`](#pathlength1)
 - [`gradientTransform`](#gradienttransform)
@@ -54,7 +53,7 @@ spreadMethod="reflect" Mirrors the gradient — great for metallic surfaces
 spreadMethod="repeat"  Tiles the gradient — stripe patterns
 ```
 
-### Example — brushed metal with `reflect`
+**Example — brushed metal with `reflect`**
 
 ```xml
 <linearGradient id="brush" x1="0" y1="0" x2="0" y2="0.1"

@@ -6,7 +6,6 @@ also-in:
 ---
 ## Table of Contents
 
-- [Scope note](#scope-note)
 - [What it does](#what-it-does)
 - [Light rays (god rays)](#light-rays-god-rays)
 - [Fog / mist (masked gradient)](#fog-mist-masked-gradient)
@@ -19,15 +18,7 @@ also-in:
 
 # Atmospheric effects — light rays, fog, stars, rain, clouds
 
-## Scope note
-
-These effects are **in-scope** for svg-creator when applied as
-decorative background elements inside a technical SVG (e.g. a star
-field behind a space-themed logo, a fog overlay on a dark diagram
-background, a rain-stripe texture). They are **out of scope** if the
-goal is building a full landscape scene or character environment —
-that territory is forbidden by [SKILL](../SKILL.md) (Scope — what this skill
-CANNOT produce).
+**Scope note.** These effects are **in-scope** for svg-creator when applied as decorative background elements inside a technical SVG (e.g. a star field behind a space-themed logo, a fog overlay on a dark diagram background, a rain-stripe texture). They are **out of scope** if the goal is building a full landscape scene or character environment — that territory is forbidden by [SKILL](../SKILL.md) (Scope — what this skill CANNOT produce).
 
 ## What it does
 

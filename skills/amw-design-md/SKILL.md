@@ -139,6 +139,18 @@ On failure, the skill emits a non-zero exit code or returns a structured error i
 
 ## Examples
 
+**Concrete example — author DESIGN.md from a brief (Variant 1):**
+
+- **Input:** "We're building a fintech dashboard. Brand color is `#0F4C81` (deep blue). Secondary `#FFD23F` (sunflower amber). Body type Inter, headings Manrope. WCAG AA-compliant."
+- **Operation:** lint gate runs `amw-design-md-lint.sh` (wraps `npx @google/design.md lint`). Contrast pre-flight runs `amw-design-md-contrast.py` on every color pair.
+- **Output:** `DESIGN.md` (Variant 1, YAML frontmatter + 8 fixed sections), `tokens.css` (CSS custom properties), `tokens.json` (W3C Design Tokens), `component-inventory.md`, `usage-prompt.md` (companion files emitted by `amw-design-md-emit-companions.py`).
+
+**Concrete example — extract DESIGN.md from a live URL:**
+
+- **Input:** `https://stripe.com` and target Variant 1 schema.
+- **Operation:** `amw-design-md-from-url.sh` delegates to `amw-dev-browser/` for DOM + computed styles, then transcribes faithfully into the canonical Variant 1 schema.
+- **Output:** `stripe.DESIGN.md` capturing detected tokens (color, type, spacing, radii) with one-to-one source attribution.
+
 See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources

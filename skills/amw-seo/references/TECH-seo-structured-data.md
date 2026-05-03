@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Validation](#validation)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -42,7 +41,7 @@ Key types:
 | Event | Conferences, launches | Event date + venue in result |
 | Recipe | Cooking content | Recipe card with calories, time, rating |
 
-### Validation
+**Validation**
 
 - Google Rich Results Test → [search.google.com/test/rich-results](https://search.google.com/test/rich-results)
 - Schema.org validator → [validator.schema.org](https://validator.schema.org)

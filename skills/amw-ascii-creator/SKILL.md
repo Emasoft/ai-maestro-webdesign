@@ -1,7 +1,7 @@
 ---
 name: amw-ascii-creator
 description: >-
-  Produce ONE validated perfect-ASCII artifact from a brief — structured diagrams via bin/amw-ascii-render.py (perfect-ascii JSON → ASCII), freeform wireframes via hand-author-validate-iterate loop using bin/amw-validate-ascii.py. Use when converting a finalized brief into a single validated ASCII file ready for ascii-to-html. Triggers on narrow authoring intents only — "ASCII diagram of", "ASCII wireframe of", "create an ASCII flowchart", "perfect ASCII of", "build an ASCII mockup", "finalize ASCII for a subject". Does NOT trigger on generic design intent — those go to design-principles → ascii-sketch (plan-phase, 3 variants). This is the FINISHING skill — one invocation, one validated .txt file delivered. ascii-to-html consumes its output.
+  Produce ONE validated perfect-ASCII artifact from a brief — structured diagrams via bin/amw-ascii-render.py (perfect-ascii JSON → ASCII), freeform wireframes via hand-author-validate-iterate loop using bin/amw-validate-ascii.py. Use when converting a finalized brief into a single validated ASCII file ready for ascii-to-html. Triggers on narrow authoring intents only — "ASCII diagram of", "ASCII wireframe of", "create an ASCII flowchart", "perfect ASCII of", "build an ASCII mockup", "finalize ASCII for a subject". Does NOT trigger on generic design intent — those go to design-principles → ascii-sketch (plan-phase, 3 variants). This is the FINISHING skill — one invocation, one validated .txt file delivered. ascii-to-html consumes its output. Trigger with /amw-create-or-modify-ascii-diagram.
 version: 0.1.0
 ---
 

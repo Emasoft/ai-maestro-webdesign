@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Usage pattern](#usage-pattern)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -50,7 +49,7 @@ Fixed values:
 | `fill` (mid) | `#334155` (slate-700) | Contrasting node (database, secondary) |
 | `fill` (accent) | `#38bdf8` (sky-400) | Focal node — use sparingly |
 
-### Usage pattern
+**Usage pattern**
 
 ```xml
 <!-- Light fill (default) -->

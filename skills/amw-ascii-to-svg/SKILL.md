@@ -60,6 +60,27 @@ Produces a single artifact at the path specified in §Instructions — an SVG fi
 
 ## Examples
 
+**Concrete example — system architecture diagram (layered route):**
+
+- **Input:** an ASCII layered-architecture sketch in a `.txt` file:
+  ```
+  ┌──────────────┐
+  │   Browser    │
+  └──────┬───────┘
+         │ HTTPS
+  ┌──────▼───────┐
+  │   API server │
+  └──────┬───────┘
+  ```
+- **Routing:** detected as a layered architecture diagram; delegates to `amw-diagram-architecture/`.
+- **Output:** `architecture.svg` rendered by `bin/amw-svg-render.py` with measured node boxes, connectors, and oklch palette tokens applied. Saved to the project's design folder per the routing rules.
+
+**Concrete example — freeform diagram:**
+
+- **Input:** a freeform ASCII drawing with arrows but no clean layers (e.g. a flowchart describing a checkout funnel).
+- **Routing:** delegates to `amw-diagram-svg/` (freeform SVG primitives from natural-language intent + ASCII anchor).
+- **Output:** standalone `.svg` file with hand-tuned positioning per the source ASCII, no auto-layout.
+
 See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Prerequisites

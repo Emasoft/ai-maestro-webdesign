@@ -93,6 +93,18 @@ One standalone `.svg` file per invocation (well-formed XML, `xmlns="http://www.w
 
 ## Examples
 
+**Concrete example — author a freeform SVG diagram:**
+
+- **Input:** "Show the request flow between a browser, an API gateway, and three microservices, with arrows labeled by transport (HTTPS, gRPC)."
+- **Operation:** parse the brief to IR (nodes + edges + transport annotations) via `bin/amw-diagram-ir.py`. Emit standalone SVG with measured node boxes, oklch color tokens from `amw-design-principles/color-system.md`, and aria-labels on every shape. Validate via `bin/amw-validate-svg-diagram.sh` (checks viewBox, font stack, no forbidden primitives). Render via `bin/amw-svg-render.py`.
+- **Output:** `request-flow.svg` (self-contained, no external deps, raster-friendly via cairosvg).
+
+**Concrete example — modify an existing layered architecture diagram:**
+
+- **Input:** `existing-architecture.svg` plus the patch instruction "rename the cache layer from 'Memcached' to 'Redis' and add a fourth layer 'Object storage' below the database".
+- **Operation:** detect → parse to IR → patch nodes → emit → re-validate (the 6-step modify-flow). Keep the existing visual language (oklch palette, font sizes, viewBox).
+- **Output:** updated `existing-architecture.svg` with the renamed layer and the new bottom layer added; passes validation and renders identically except for the changes.
+
 See [SKILL](../amw-diagram-svg/SKILL.md) for freeform node-and-edge examples and [SKILL](../amw-diagram-architecture/SKILL.md) for layered architecture examples.
 
 ## Resources

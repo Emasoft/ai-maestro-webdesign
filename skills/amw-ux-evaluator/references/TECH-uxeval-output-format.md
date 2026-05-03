@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Fields](#fields)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -54,7 +53,7 @@ The template:
 | P2       | [Specific change]  | [selector / value] | [e.g. Nielsen #4 — consistency]         |
 ```
 
-### Fields
+**Fields**
 
 - **Current State** — describes what is, not what should be. Evidence-first.
 - **Analysis table** — three rows (always). One per dimension. Verdict + evidence + rationale.

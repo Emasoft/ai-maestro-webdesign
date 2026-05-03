@@ -9,13 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [1.1 Layer count](#11-layer-count)
-  - [1.2 Node count](#12-node-count)
-  - [1.3 Layer balance](#13-layer-balance)
-  - [1.4 Node label quality](#14-node-label-quality)
-  - [1.5 Edge integrity](#15-edge-integrity)
-  - [1.6 ID integrity](#16-id-integrity)
-  - [1.7 Layer order sequence](#17-layer-order-sequence)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -45,7 +38,7 @@ trigger full re-generation instead of in-place patching.
 
 Seven check categories, each with a fix strategy:
 
-### 1.1 Layer count
+**1.1 Layer count**
 
 | Check | Condition | Fix |
 |---|---|---|
@@ -53,7 +46,7 @@ Seven check categories, each with a fix strategy:
 | Too many | `layers.length > 6` | Merge the two most similar adjacent layers |
 | Prefer | `< 3 or > 5` | Warn internally; acceptable |
 
-### 1.2 Node count
+**1.2 Node count**
 
 | Check | Condition | Fix |
 |---|---|---|
@@ -61,19 +54,16 @@ Seven check categories, each with a fix strategy:
 | Too many | `> 14` | Drop nodes with overlapping descriptions; remove their edges |
 | Prefer | `< 6 or > 12` | Warn internally |
 
-### 1.3 Layer balance
+**1.3 Layer balance** — Empty layer → remove it. Overloaded layer (>5 nodes) → move least-essential node to an adjacent layer.
 
-Empty layer → remove it. Overloaded layer (>5 nodes) → move least-
-essential node to an adjacent layer.
-
-### 1.4 Node label quality
+**1.4 Node label quality**
 
 - Label too long (>4 words): truncate to 3 meaningful words, title-case
 - Not title-case: convert using acronym list (API, UI, DB, URL, …)
 - Description too long (>8 words): truncate to 7, preserve verb + object
 - Description empty: infer 4–6 words from the label
 
-### 1.5 Edge integrity
+**1.5 Edge integrity**
 
 | Check | Fix |
 |---|---|
@@ -83,16 +73,9 @@ essential node to an adjacent layer.
 | Reverse duplicate (A→B and B→A) | Remove the upward one |
 | Edge count > `floor(n × 0.8)` | Apply pruning order: cross-layer-skip → same-layer → longest label |
 
-### 1.6 ID integrity
+**1.6 ID integrity** — Duplicate layer ID → append `_2` to second, update references. Duplicate node ID → append `_b` to second, update edges. Node `layerId` not in layers → assign by label similarity.
 
-Duplicate layer ID → append `_2` to second, update references.
-Duplicate node ID → append `_b` to second, update edges.
-Node `layerId` not in layers → assign by label similarity.
-
-### 1.7 Layer order sequence
-
-`order` must be `0, 1, 2, …` with no gaps or duplicates. Sort by current
-order, re-assign to index.
+**1.7 Layer order sequence** — `order` must be `0, 1, 2, …` with no gaps or duplicates. Sort by current order, re-assign to index.
 
 ## Minimal example
 

@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [API call shape](#api-call-shape)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -48,7 +47,7 @@ consistent visual language (loose lines, limited palette, framed text,
 cross-hatched shading). Gemini is instructed to "imitate the visual
 style of the provided reference images faithfully".
 
-### API call shape
+**API call shape**
 
 ```python
 parts = [

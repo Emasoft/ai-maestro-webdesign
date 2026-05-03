@@ -12,7 +12,6 @@ also-in: skills/amw-excalidraw-illustrations/references/prompt-template-en.md
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Spell-out format](#spell-out-format)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -53,7 +52,7 @@ TEXT RULES — VERIFY LETTER BY LETTER:
 - Every piece of text is always inside a frame or bubble, never floating
 ```
 
-### Spell-out format
+**Spell-out format**
 
 | Input word | Spell-out |
 |---|---|

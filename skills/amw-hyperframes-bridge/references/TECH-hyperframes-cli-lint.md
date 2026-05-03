@@ -10,7 +10,6 @@ also-in:
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
 - [Minimal example](#minimal-example)
-  - [CI integration](#ci-integration)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
@@ -57,7 +56,7 @@ $ npx hyperframes lint
   WARN   compositions/hero.html:33  repeat: -1 detected on '.sweep' — use finite repeat count
 ```
 
-### CI integration
+**CI integration**
 
 ```yaml
 # .github/workflows/lint.yml

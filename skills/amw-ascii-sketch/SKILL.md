@@ -338,7 +338,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 - [SKILL](../amw-ascii-to-svg/SKILL.md) — the adjacent skill for the subset of ASCII sketches that are actually diagrams (boxes and arrows describing a system), not wireframes. If the user's intent was a diagram, route there instead.
 - [SKILL](../amw-ux-flows/SKILL.md) — when the user already has a PRD, the flow is `ux-flows` first (PRD → flow diagrams → wireframe intent), then `ascii-sketch` for variant exploration on the chosen wireframe. Both routes are valid.
 - `../../bin/amw-preview-server.py` — optional multi-variant HTML comparison server, used **after** handoff if the user wants to see the rendered HTML side by side. Not used inside this loop.
-- `/amw-sketch` — the user-facing slash command (at [amw-sketch](../../commands/amw-sketch.md)) that invokes this skill.
+- `/amw-sketch` — the user-facing slash command that invokes this skill (defined in the plugin's `commands/amw-sketch.md`).
 
 ## Non-negotiables
 

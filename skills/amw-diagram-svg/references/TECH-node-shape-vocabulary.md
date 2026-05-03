@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Example snippets](#example-snippets)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
@@ -46,7 +45,7 @@ Canonical mapping:
 | Decision | diamond | `<polygon>` with 4 points | Rhombus — wider than tall |
 | External system | rect with dashed stroke | `<rect stroke-dasharray="10 5">` | Indicates "outside our system" |
 
-### Example snippets
+**Example snippets**
 
 **Process / Service (rounded rect):**
 

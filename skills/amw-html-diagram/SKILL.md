@@ -96,7 +96,19 @@ Produces one self-contained `.html` file (inline CSS + inline SVG, no external b
 
 ## Examples
 
-See the worked examples in [SKILL](../amw-diagram-editorial/SKILL.md) (editorial path) and [SKILL](../amw-infographics/SKILL.md) (infographic path), and the technique catalog at [html](../amw-diagram-formats/references/html.md).
+**Concrete example — author an editorial-quality HTML diagram:**
+
+- **Input:** "Build a flow diagram showing a 4-step user-onboarding funnel with stage names and conversion rates between stages."
+- **Operation:** parse the brief into IR via `bin/amw-diagram-ir.py`, emit HTML through the editorial template (semantic markup + Tweaks-compatible CSS custom properties + Phosphor Icons). Lint via `bin/amw-validate-html-diagram.sh`. Optional PNG export via `bin/amw-html-export.py`.
+- **Output:** `onboarding-funnel.html` (self-contained, Tweaks-protocol-compliant, AI-slop-avoid gate passed).
+
+**Concrete example — modify an existing HTML diagram:**
+
+- **Input:** `existing-diagram.html` plus the patch instruction "rename stage 3 from 'Verify' to 'Confirm', and update the conversion rate to 84%".
+- **Operation:** detect format, parse to IR, apply patch, emit, re-validate (per the 6-step modify-flow). Re-run `validate-html-diagram.sh`.
+- **Output:** an updated `existing-diagram.html` with the requested string + numeric edits and no structural drift; passes the same AI-slop gate.
+
+See more worked examples in [SKILL](../amw-diagram-editorial/SKILL.md) (editorial path) and [SKILL](../amw-infographics/SKILL.md) (infographic path), and the technique catalog at [html](../amw-diagram-formats/references/html.md).
 
 ## Resources
 

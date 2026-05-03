@@ -11,7 +11,6 @@ also-in:
 - [How it works](#how-it-works)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
-- [Validation pass](#validation-pass)
 - [Cross-references](#cross-references)
 
 
@@ -82,9 +81,7 @@ Four-screen inventory:
 - **Sort by natural flow order**, not alphabetical. Splash → Login →
   Home → everything-else — matches the reader's mental traversal.
 
-## Validation pass
-
-After emitting `INDEX.md`, run a quick sanity check:
+**Validation pass.** After emitting `INDEX.md`, run a quick sanity check:
 
 1. Every `.html` file in the directory has a row in the index.
 2. Every row has a non-empty `Outgoing links` column.

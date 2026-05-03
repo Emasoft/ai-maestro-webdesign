@@ -9,7 +9,6 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Preset shape (each entry contains)](#preset-shape-each-entry-contains)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
@@ -42,7 +41,7 @@ The 8 presets:
 | **Folk Frequency** | organic, hand-made, tactile | Hand-drawn elements, earthy palette, organic easings (`power1.inOut`) |
 | **Shadow Cut** | dark, sharp, confident | Deep-black surfaces, single bright accent, sharp ease-ins, clean hard cuts |
 
-### Preset shape (each entry contains)
+**Preset shape (each entry contains)**
 
 - **Style Prompt** — one paragraph describing the visual + motion language
 - **Colors** — hex values with roles (primary, accent, surface, text, muted)
