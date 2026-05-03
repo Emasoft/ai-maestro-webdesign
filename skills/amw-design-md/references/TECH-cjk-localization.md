@@ -1,10 +1,7 @@
 ---
 name: TECH-cjk-localization
 category: localization
-source: docs_dev/extracted/google-labs/awesome-design-md-{jp,zh-master,k}-main
-also-in: skills/amw-design-md/references/TECH-03-typography-tokens.md, skills/amw-design-md/references/TECH-09-multipage-extraction.md, agents/amw-multilanguage-copywriter-agent.md, skills/amw-design-principles/typography-system.md
 status: stable
-extracted-from: 25 JP DESIGN.md files (awesome-design-md-jp), 6 KO DESIGN.md files (awesome-k-design-md), 58 ZH DESIGN.md files (awesome-design-md-zh) + 1 official JP template + 1 KO contributing guide
 ---
 
 # TECH: CJK (Chinese / Japanese / Korean) localization for web design
