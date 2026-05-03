@@ -118,10 +118,13 @@ parts = [
 
 ## Cross-references
 
-- `../SKILL.md` — model + reference-images requirement
+- [SKILL](../SKILL.md) — model + reference-images requirement
 - `../scripts/generate.py` — the reference-loading helper
 - [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — the accompanying text prompt
+  > What it does · When to use · How it works · Section order and purpose · Template skeleton · Minimal example · Gotchas · Cross-references
 - [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the spell-out technique
+  > What it does · When to use · How it works · Spell-out format · Minimal example · Gotchas · Cross-references
   that makes text render correctly
 - [TECH-gemini-pro-vs-flash-model-choice](TECH-gemini-pro-vs-flash-model-choice.md) — which model to call with
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   the references

@@ -77,5 +77,8 @@ Interpretation:
 ## Cross-references
 
 - [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
-- `../SKILL.md`
-- `../../amw-dev-browser/SKILL.md` — live capture for CWV diagnostics
+  > [TECH-seo-technical.md] What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
+  > [TECH-seo-content-quality.md] What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)
+- [SKILL](../../amw-dev-browser/SKILL.md) — live capture for CWV diagnostics

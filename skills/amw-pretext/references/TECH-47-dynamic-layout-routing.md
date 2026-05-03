@@ -7,6 +7,16 @@ also-in: SKILL-15.md (dynamic-layout.ts demo), pretext-main-2 demos
 
 # Dynamic layout — fixed-height editorial spread with routed text
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** motion
 **Status:** stable
 
@@ -50,4 +60,5 @@ See SKILL-15 `demos/dynamic-layout.ts` and `wrap-geometry.ts` for working code.
 
 - Related: TECH-20-polygon-obstacle-mask, TECH-21-multi-column-handoff, TECH-24-carve-text-line-slots, TECH-48-editorial-engine
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

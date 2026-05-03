@@ -75,7 +75,8 @@ To rewrite this file from an existing brand URL:
 1. User invokes: `"onboard editorial diagrams to https://<site>"`.
 2. Skill routes through `../amw-dev-browser/` (never raw WebFetch).
 3. Dominant palette + font stack extracted, mapped to the 6 semantic roles above.
-4. WCAG AA contrast checks run against `../../amw-design-principles/color-system.md`.
+4. WCAG AA contrast checks run against [color-system](../../amw-design-principles/color-system.md).
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 5. Proposed diff shown to the user; on confirmation, this file is overwritten.
 
 Never hand-edit the semantic-role names. The skill looks them up by name.

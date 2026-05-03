@@ -8,6 +8,23 @@ status: stable
 
 # TECH: How DESIGN.md is consumed downstream (Phase B)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When this TECH applies](#when-this-tech-applies)
+- [The wireframe-builder's flow when DESIGN.md is the input](#the-wireframe-builders-flow-when-designmd-is-the-input)
+- [Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape](#token-mapping-designmd-to-wireframe-builders-brand_tokens-shape)
+- [Component tokens — direct passthrough](#component-tokens-direct-passthrough)
+- [Failure paths](#failure-paths)
+  - [DESIGN.md fails lint](#designmd-fails-lint)
+  - [DESIGN.md is Variant 2](#designmd-is-variant-2)
+  - [DESIGN.md missing required fields](#designmd-missing-required-fields)
+- [CLAUDE.md-coupled projects](#claudemd-coupled-projects)
+- [Companion-file consumption](#companion-file-consumption)
+- [Symmetry with non-DESIGN.md inputs](#symmetry-with-non-designmd-inputs)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents how the plugin's downstream Phase B agents — chiefly `amw-wireframe-builder-agent` — consume a DESIGN.md as their canonical token source. This is the LAST step in the DESIGN.md lifecycle: after authoring / extraction / validation, the DESIGN.md drives actual UI generation.
@@ -210,8 +227,12 @@ In all 6 cases, the wireframe-builder's `brand_tokens` input contract is the sam
 
 ## Cross-references
 
-- `../../../agents/amw-wireframe-builder-agent.md` — the agent that consumes
+- [amw-wireframe-builder-agent](../../../agents/amw-wireframe-builder-agent.md) — the agent that consumes
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — alternative consumption via tokens.css
+  > What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — the lint gate
+  > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
 - [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 input handling
+  > What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references
 - [claude-md-snippet](./claude-md-snippet.md) — coupled CLAUDE.md
+  > Snippet — paste into the project's `CLAUDE.md` · Where this goes in CLAUDE.md · What `{{placeholders}}` get filled with · Cross-references

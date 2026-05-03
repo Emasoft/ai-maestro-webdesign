@@ -139,8 +139,12 @@ If no clear thesis: present two candidates and ask which direction.
 ## Cross-references
 
 - [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — brief runs before A1.
+  > What it does · When to use · The flow · State file — `.infographic/{project}.json` · Preview server · The approval gate (A4) · State schema per component · Why verbatim HTML · Session resume · Gotchas · Cross-references
 - [TECH-one-shot-mode](TECH-one-shot-mode.md) — brief runs before Step 1.
+  > What it does · When to use · The 5 steps · Classification — identify the type · Composition archetype — pick one · Build rules · Head elements (required) · Step 5 — export command · Gotchas · Cross-references
 - [TECH-signature-palette](TECH-signature-palette.md) — the Bold/Cyber default palette.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-platform-sizing](TECH-platform-sizing.md) — Question 3 mapping.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The size table · Safe zones per platform · CSS — fixed-aspect platforms · Font size scaling by platform · Density by format · Watermark / attribution per platform · Export commands · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

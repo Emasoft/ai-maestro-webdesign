@@ -37,8 +37,8 @@ If this stub is invoked instead of `amw-pretext`: re-route the request to `skill
 
 ## Resources
 
-- `../amw-pretext/SKILL.md` — the unified pretext skill (all techniques)
-- `../amw-design-principles/SKILL.md` — orchestrator
+- [SKILL](../amw-pretext/SKILL.md) — the unified pretext skill (all techniques)
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator
 
 The full pretext capability — Canvas / SVG creative text effects AND all API / measurement / layout / integration / tables / 3D / workflow / consult techniques — now lives at:
 
@@ -47,13 +47,21 @@ The full pretext capability — Canvas / SVG creative text effects AND all API /
 The original 8 pretext-art effects (kinetic / shaped / wavy / tapering / poster-grid / custom / text-on-path / per-line-metrics) are catalogued as TECH files in `skills/amw-pretext/references/`, alongside ~70 other techniques:
 
 - Kinetic typography: [TECH-33-kinetic-width-animation](../amw-pretext/references/TECH-33-kinetic-width-animation.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Shaped containers: [TECH-19-shaped-container](../amw-pretext/references/TECH-19-shaped-container.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Wavy baseline: [TECH-34-wavy-baseline](../amw-pretext/references/TECH-34-wavy-baseline.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Tapering font size: [TECH-28-tapering-font-size](../amw-pretext/references/TECH-28-tapering-font-size.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Generative poster grid: [TECH-36-generative-poster-grid](../amw-pretext/references/TECH-36-generative-poster-grid.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Text on a path: [TECH-35-text-on-path](../amw-pretext/references/TECH-35-text-on-path.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Calligrams (SDF / pixel-mask / outline): [TECH-38](../amw-pretext/references/TECH-38-calligram-shape.md), [TECH-39](../amw-pretext/references/TECH-39-glyph-mask-calligram.md), [TECH-44](../amw-pretext/references/TECH-44-outline-calligram.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Typographic ASCII: [TECH-37-typographic-ascii](../amw-pretext/references/TECH-37-typographic-ascii.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 ## Activation
 

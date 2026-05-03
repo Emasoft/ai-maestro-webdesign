@@ -162,8 +162,11 @@ requestAnimationFrame(() => {
 ## Cross-references
 
 - [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting-specific progress
+  > What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
   variant.
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative for proportions.
+  > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
 - [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — SVG bar with annotations.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

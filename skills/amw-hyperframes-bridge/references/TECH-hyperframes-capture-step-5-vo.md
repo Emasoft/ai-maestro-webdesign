@@ -30,6 +30,7 @@ After SCRIPT.md (Step 3) and STORYBOARD.md (Step 4) exist, before building compo
 Three sub-steps:
 
 - **Generate TTS** — `npx hyperframes tts <script.txt> --voice af_heart --output narration.wav`. 12 bundled voices in the CLI (Kokoro-82M ships 54 total; the CLI exposes 12 via `BUNDLED_VOICES` in `tts/manager.ts`). Default voice is `af_heart`. Read [TECH-hyperframes-cli-tts](TECH-hyperframes-cli-tts.md) for voice selection rules.
+  > What it does · When to use · How it works · Flags · Voice naming scheme · Speed tuning · Minimal example · Gotchas · Cross-references
 - **Transcribe for word-level timestamps** — `npx hyperframes transcribe narration.wav --model medium.en`. Produces `transcript.json` with per-word start/end times.
 - **Map timestamps to beats** — walk STORYBOARD.md beats in order, match each beat's narration text to the transcript, record the actual start/end seconds. Update STORYBOARD.md so every beat has a real duration (not a placeholder).
 
@@ -70,5 +71,8 @@ Updated STORYBOARD.md beat header:
 ## Cross-references
 
 - [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md), [TECH-hyperframes-capture-step-4-storyboard](TECH-hyperframes-capture-step-4-storyboard.md), [TECH-hyperframes-capture-step-6-build](TECH-hyperframes-capture-step-6-build.md)
+  > What it does · When to use · How it works · Narration style rules · Format · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-cli-tts](TECH-hyperframes-cli-tts.md), [TECH-hyperframes-cli-transcribe](TECH-hyperframes-cli-transcribe.md)
-- `../SKILL.md`
+  > [TECH-hyperframes-cli-transcribe.md] What it does · When to use · How it works · Models · Output schema · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Flags · Voice naming scheme · Speed tuning · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

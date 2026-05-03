@@ -7,6 +7,17 @@ also-in: pretext-frontend-motion-main demo-family-map
 
 # Justification comparison (width probing workflow)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Delivery shape (source: justification-comparison.md blueprint)](#delivery-shape-source-justification-comparisonmd-blueprint)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** motion
 **Status:** stable
 
@@ -49,4 +60,5 @@ See `pretext-frontend-motion-main/blueprints/justification-comparison.md` — co
 
 - Related: TECH-06-walk-line-ranges, TECH-26-balanced-headline
 - API reference: [TECH-06-walk-line-ranges](TECH-06-walk-line-ranges.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

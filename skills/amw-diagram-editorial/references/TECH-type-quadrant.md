@@ -131,9 +131,12 @@ Impact vs effort, one accent item. Attributed to
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-pyramid](TECH-type-pyramid.md) — if one-axis ranking is what you really want
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [design-system](design-system.md) — axis-label format, dashed divider pattern,
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
   letter-spacing for quadrant labels
 - [primitive-annotation](primitive-annotation.md) — optional italic callout explaining a
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
   surprising placement ("why is Auth redesign in Quick Wins?")

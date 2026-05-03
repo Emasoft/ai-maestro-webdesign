@@ -2,8 +2,6 @@
 
 - [Skills and agents are not the same kind of thing](#skills-and-agents-are-not-the-same-kind-of-thing)
 - [What an agent actually needs](#what-an-agent-actually-needs)
-  - [Recipe layer (deterministic floor)](#recipe-layer-deterministic-floor)
-  - [Judgment layer (non-deterministic surface)](#judgment-layer-non-deterministic-surface)
 - [Why the judgment layer matters in this plugin specifically](#why-the-judgment-layer-matters-in-this-plugin-specifically)
 - [The 14-section canonical template](#the-14-section-canonical-template)
 - [What this document is NOT](#what-this-document-is-not)
@@ -90,6 +88,7 @@ This is not a recipe for writing agents. It is the philosophy that makes the rec
 
 1. Read this document
 2. Read [sub-agent-return-contract](sub-agent-return-contract.md), [agent-interaction-patterns](agent-interaction-patterns.md), [skill-invocation-protocol](skill-invocation-protocol.md), [authority-hierarchy](authority-hierarchy.md)
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 3. Write the 14 sections against the canonical template, filling every section in order
 4. Have someone else (human or another Claude session) read the spec and try to predict what the agent would do on three novel inputs you didn't design for — if they can't predict, the judgment layer has holes
 5. Only then commit the agent to `agents/`
@@ -99,7 +98,12 @@ A spec that can only describe expected-case behavior is incomplete. A spec where
 ## Cross-references
 
 - [sub-agent-return-contract](sub-agent-return-contract.md) — canonical YAML schema that every agent uses to report back to main-agent
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 - [agent-interaction-patterns](agent-interaction-patterns.md) — cross-agent data hand-offs, data-flow graphs for Phase A and Phase B
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 - [skill-invocation-protocol](skill-invocation-protocol.md) — how agents invoke skills without re-triggering the orchestrator
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
 - [authority-hierarchy](authority-hierarchy.md) — conflict-resolution rules and veto power
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 - [two-mode-workflow](two-mode-workflow.md) — the command-mode vs main-agent-mode contract
+  > Sub-agent delegation (Main-agent mode only) · Naming convention · One-way delegation rule · Delegation timing · Full sub-agent roster (19 amw-* agents across four tiers) · Cross-references · Mode Detection · Command mode signals (fast path — dispatch immediately) · Main-agent mode signals (requirements path — enter Phase A first) · Tie-breaking rule · Phase A — Iterative Low-Fi Loop · Inputs · Low-fi artifact types (pick the cheapest that fits) · Iteration rules · RDD (Requirements Design Document) — auto-pass Phase A · Satisfaction gate (hard stop — non-skippable) · What Phase A does NOT include · Phase B — Implementation and Spawning · Transition protocol · Sub-agent spawning rules · Non-conversation rule · Job-completion report · Scenario Testing via dev-browser (mandatory in Phase B) · What a scenario test covers · dev-browser is the ONLY input-automation primitive · Scenario test output format · Anti-Patterns · Skipping Phase A when requirements are vague · Starting Phase B before explicit approval · Spawning sub-agents during Phase A · …(+3)

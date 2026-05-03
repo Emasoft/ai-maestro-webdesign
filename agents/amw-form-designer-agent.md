@@ -76,7 +76,7 @@ I activate on **narrow, form-specific** phrases from main-agent only.
 
 ### Triggers I do NOT respond to
 
-- "design a landing page" → routes to `../skills/amw-design-principles/SKILL.md` (orchestrator)
+- "design a landing page" → routes to [SKILL](../skills/amw-design-principles/SKILL.md) (orchestrator)
 - "create a checkout page" → routes to orchestrator (page scope); I handle the form component within such a page
 - "write copy for the form" → `amw-multilanguage-copywriter-agent`
 - "audit the form for accessibility" → `amw-accessibility-auditor-agent`
@@ -148,7 +148,8 @@ A missing required field (`form_purpose`, `fields`, `locales`, `target_stack`, `
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -178,9 +179,11 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 2. **Load form reference specs.**
    - Read `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` (or the relevant form/input components) when `target_stack` includes shadcn.
-   - Read `../skills/amw-tailwind-4/SKILL.md` if `target_stack=tailwind-v4`.
-   - Read `../skills/amw-design-principles/color-system.md` to resolve `danger`, `success`, and `muted` token semantics if `brand_tokens` are provided.
-   - Read `../skills/amw-design-principles/spacing-rhythm.md` for field gap and label-offset calculation.
+   - Read [SKILL](../skills/amw-tailwind-4/SKILL.md) if `target_stack=tailwind-v4`.
+   - Read [color-system](../skills/amw-design-principles/color-system.md) to resolve `danger`, `success`, and `muted` token semantics if `brand_tokens` are provided.
+     > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+   - Read [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) for field gap and label-offset calculation.
+     > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
 
 3. **Model the state machine.** For each field, document the full state set: idle → focused → dirty → valid | invalid → (on submit) → server-error | success. For multi-step forms, document the step-level state machine (active → completed → locked | revisable).
 
@@ -221,7 +224,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 12. **Write ASCII representation.** Produce a compact ASCII sketch of the form layout (suitable for passing to wireframe-builder as a structural hint) at `output_dir/<slug>-form.txt`. Use `bin/amw-ascii-render.py` if needed for multi-column field layouts.
 
-13. **Assemble return contract.** Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-form-designer-<slug>.md`.
+13. **Assemble return contract.** Populate YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-form-designer-<slug>.md`.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -249,7 +253,8 @@ Action: use `#d7263d` (design-principles default danger). Document in `warnings`
 Action: produce a localStorage-only save-and-resume spec. Document in `warnings` that server-side persistence is unspecified. `status=ok`, `confidence=medium`.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. I produce form specs and HTML in a single pass; validation-UX decisions are authoring choices, not a retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. I produce form specs and HTML in a single pass; validation-UX decisions are authoring choices, not a retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -258,11 +263,15 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
 | Always — shadcn stack | `../skills/amw-shadcn-ui/docs/components/radix/field.mdx`, `input.mdx`, `select.mdx`, `checkbox.mdx` | shadcn form component API |
-| Always — token resolution | `../skills/amw-design-principles/color-system.md`, `../skills/amw-design-principles/spacing-rhythm.md` | danger/success/muted token semantics, spacing |
-| `target_stack=tailwind-v4` | `../skills/amw-tailwind-4/SKILL.md` | v4 syntax for form utility classes |
+| Always — token resolution | [color-system](../skills/amw-design-principles/color-system.md), [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) | danger/success/muted token semantics, spacing |
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+> [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
+| `target_stack=tailwind-v4` | [SKILL](../skills/amw-tailwind-4/SKILL.md) | v4 syntax for form utility classes |
 | Multi-step with complex ASCII layout | `bin/amw-ascii-render.py` (Mode: diagram, 78-col) | structured ASCII form-step sketch |
-| RTL locale present | `../skills/amw-design-principles/typography-system.md` (reading-direction section) | RTL layout flip rules |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | check form output for pattern anti-patterns |
+| RTL locale present | [typography-system](../skills/amw-design-principles/typography-system.md) (reading-direction section) | RTL layout flip rules |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+| AI-slop final gate | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | check form output for pattern anti-patterns |
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 | Locale-specific error copy | Internalized knowledge of i18n / l10n error-message conventions per locale. Consult global Claude Code skill `localization-l10n` if user wants locale-specific deep dive (this is NOT a plugin skill — it lives in the user's global skill set; for plugin-internal copy authoring, route to `amw-multilanguage-copywriter-agent` via main-agent). | locale-appropriate error message framing |
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (peer agent — data flows through main-agent).
@@ -285,7 +294,8 @@ I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-s
 
 ### What I never delegate to a peer amw-* agent
 
-Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents do not call each other. If I need copy, I document the gap in `warnings` and let main-agent invoke `amw-multilanguage-copywriter-agent`.
+Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents do not call each other. If I need copy, I document the gap in `warnings` and let main-agent invoke `amw-multilanguage-copywriter-agent`.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -310,7 +320,8 @@ Action: explain the UX cost (screaming form) in `warnings`. Implement blur-based
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. Reproduced here so the protocol is local to this spec.
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md). Reproduced here so the protocol is local to this spec.
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -347,7 +358,8 @@ Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad desi
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-form-designer-<slug>.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-form-designer-<slug>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example — `status=ok`
 
@@ -433,7 +445,7 @@ Could not complete payment step spec — field 'card_holder' referenced in multi
 
 ## 14. Hard Rules / Veto Power
 
-I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` (regulatory mandatory elements) and `amw-accessibility-auditor-agent` (WCAG AA hard blockers) per `../skills/amw-design-principles/references/authority-hierarchy.md`.
+I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` (regulatory mandatory elements) and `amw-accessibility-auditor-agent` (WCAG AA hard blockers) per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md).
 
 ### Absolute rules (never violate)
 
@@ -461,11 +473,20 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-multilanguage-copywriter-agent](./amw-multilanguage-copywriter-agent.md) — error message copy for non-English locales
 - [amw-legal-expert-agent](./amw-legal-expert-agent.md) — mandatory consent fields (GDPR checkboxes, CAN-SPAM opt-in)
 - `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` — shadcn form component API
-- `../skills/amw-design-principles/color-system.md` — danger/success token semantics
-- `../skills/amw-design-principles/spacing-rhythm.md` — field gap and label-offset rules
-- `../skills/amw-design-principles/ai-slop-avoid.md` — form anti-pattern checklist
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md`
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md`
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md`
-- `../skills/amw-design-principles/references/authority-hierarchy.md`
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md`
+- [color-system](../skills/amw-design-principles/color-system.md) — danger/success token semantics
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) — field gap and label-offset rules
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) — form anti-pattern checklist
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md)
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md)
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md)
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md)
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement

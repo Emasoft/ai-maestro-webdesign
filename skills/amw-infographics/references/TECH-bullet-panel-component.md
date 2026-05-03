@@ -134,7 +134,10 @@ bullet or use a table.
 ## Cross-references
 
 - [TECH-dense-table-component](TECH-dense-table-component.md) — when the data is tabular.
+  > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
 - [TECH-section-variety-rule](TECH-section-variety-rule.md) — the rule this component satisfies.
+  > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
 - [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — writing the bullet text.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Why · Rule 1 — Bullets, not paragraphs · Rule 2 — One fact per bullet · Rule 3 — Sentence fragments, not full sentences · Rule 4 — Inline token coloring · Rule 5 — Color-coded keyword highlighting (beyond tokens) · Badge / tag rules · Disclaimer (always include in footer) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

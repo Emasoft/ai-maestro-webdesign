@@ -1,5 +1,16 @@
 # Color System — hard rules
 
+## Table of Contents
+
+- [I. Always prefer oklch over rgb / hex / hsl](#i-always-prefer-oklch-over-rgb-hex-hsl)
+- [II. WCAG contrast — hard requirement](#ii-wcag-contrast-hard-requirement)
+- [III. Palette structure (cap at 5–7 colors)](#iii-palette-structure-cap-at-57-colors)
+- [IV. Dark mode is not a simple inversion](#iv-dark-mode-is-not-a-simple-inversion)
+- [V. Color temperature](#v-color-temperature)
+- [VI. Palette inspiration libraries (use these instead of inventing)](#vi-palette-inspiration-libraries-use-these-instead-of-inventing)
+- [VII. Self-check list](#vii-self-check-list)
+
+
 > Color is not picked by eye. It is picked by **color space + contrast numbers + a structured palette**.
 
 ---

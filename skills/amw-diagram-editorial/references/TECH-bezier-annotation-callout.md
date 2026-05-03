@@ -103,9 +103,12 @@ Attributed to `diagram-design-editorial/SKILL.md` lines 416-436:
 
 ## Cross-references
 
-- `../SKILL.md` — Primitives section
+- [SKILL](../SKILL.md) — Primitives section
 - [primitive-annotation](primitive-annotation.md) — the full primitive spec this technique
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
   generalises
 - [TECH-three-family-typography](TECH-three-family-typography.md) — the rule that keeps italic serif
+  > What it does · When to use · How it works · Minimal example · Gotchas · Minimal `<head>` snippet · Cross-references
   reserved for this role
 - [design-system](design-system.md) — `muted` token, dash pattern convention
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

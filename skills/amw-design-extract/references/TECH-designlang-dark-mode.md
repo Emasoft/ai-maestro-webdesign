@@ -7,6 +7,16 @@ also-in:
 
 # TECH: `--dark` — dark-mode extraction
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Re-renders the target URL with `prefers-color-scheme: dark` emulated so designlang captures dark-theme colors, backgrounds, and component surfaces alongside (or instead of) the default light mode.
@@ -41,4 +51,5 @@ The generated shadcn theme CSS gains a sibling `.dark { --background: ...; --for
 ## Cross-references
 
 - [TECH-designlang-full-mode](TECH-designlang-full-mode.md) — `--full` enables this plus three more modes
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

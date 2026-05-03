@@ -2,11 +2,7 @@
 
 - [File structure (spec.md L6-L8)](#file-structure-specmd-l6-l8)
 - [YAML frontmatter schema (spec.md L17-L40, L43-L58)](#yaml-frontmatter-schema-specmd-l17-l40-l43-l58)
-  - [Top-level fields](#top-level-fields)
-  - [Type definitions](#type-definitions)
-  - [Component property tokens (spec.md L312-L319)](#component-property-tokens-specmd-l312-l319)
 - [Markdown body — the 8 fixed sections (spec.md L82-L92)](#markdown-body-the-8-fixed-sections-specmd-l82-l92)
-  - [Section content guidance](#section-content-guidance)
 - [Recommended token names (non-normative) (spec.md L334-L342)](#recommended-token-names-non-normative-specmd-l334-l342)
 - [Consumer behavior for unknown content (spec.md L344-L356)](#consumer-behavior-for-unknown-content-specmd-l344-l356)
 - [Validation rules (per the official linter)](#validation-rules-per-the-official-linter)
@@ -21,6 +17,7 @@
 This document distills that spec for plugin use. All quoted material is verbatim from the source; line numbers refer to the source file. The official linter is `npx @google/design.md lint <file>`.
 
 This is the **PRIMARY** format for the plugin. New DESIGN.md files authored by `amw-design-md-author-agent` use this format. Variant 2 (community 9-section) is accepted as input via `bin/amw-design-md-convert-v2-to-v1.py` and documented in [community-9-section-spec](community-9-section-spec.md).
+> [community-9-section-spec.md] Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
 
 ---
 
@@ -318,9 +315,14 @@ the rounded-md scale and the primary/secondary/tertiary color hierarchy.
 ## Cross-references
 
 - [community-9-section-spec](./community-9-section-spec.md) — Variant 2 (parallel community format)
+  > Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
 - [extension-sections-10-14](./extension-sections-10-14.md) — optional extensions (Naming / Page Specs / Composite Components / Token Mapping / i18n)
+  > Section 10 — Naming Convention (Page > Section > Block > Element) · Section 11 — Page Specifications · Section 12 — Composite Components · Section 13 — Token Mapping · Section 14 — i18n References · When to use these extensions · Cross-references · "What to build" (page-level specs, requirements) · Component composition (LoginPage as a unit, not just Button + Input) · Token-to-Tailwind / token-to-CSS-var mapping table · i18n string-resource mapping
 - [canonical-template](./canonical-template.md) — fillable Variant 1 skeleton
+  > Filling guide · Cross-references
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — authoring the YAML frontmatter
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the linter and pure-Python validator
+  > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
 - `../../../bin/amw-design-md-lint.sh` — wrapper around the official @google design.md npm linter (invoked via npx)
 - `../../../bin/amw-design-md-validate.py` — pure-Python offline validator

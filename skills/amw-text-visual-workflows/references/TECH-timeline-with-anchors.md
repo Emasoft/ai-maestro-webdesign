@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-timeline-with-anchors — Day/Week markers + labels below
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Renders a linear timeline as a row of anchor markers (`|`) along a
@@ -60,7 +70,10 @@ Plan      Build     QA        Launch
 ## Cross-references
 
 - [TECH-swimlane-parallel-tracks](./TECH-swimlane-parallel-tracks.md)
-- `../../amw-text-visual-retro/references/TECH-milestone-timeline.md`
-- `../../amw-ascii-diagrams-reference/references/TECH-classic-timeline-events.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-milestone-timeline](../../amw-text-visual-retro/references/TECH-milestone-timeline.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-classic-timeline-events](../../amw-ascii-diagrams-reference/references/TECH-classic-timeline-events.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -68,4 +68,5 @@ Spec for Sarah's "basics rail" button:
 ## Cross-references
 
 - [TECH-ux-process-prototype](TECH-ux-process-prototype.md) — upstream (Phase 4)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

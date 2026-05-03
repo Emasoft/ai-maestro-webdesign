@@ -112,9 +112,13 @@ One-diagram-three-fills:
 
 ## Cross-references
 
-- `../SKILL.md` — palette in the Style section
+- [SKILL](../SKILL.md) — palette in the Style section
 - [TECH-node-shape-vocabulary](TECH-node-shape-vocabulary.md) — shapes all share this stroke
+  > What it does · When to use · How it works · Example snippets · Gotchas · Cross-references
 - [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — arrow sizing relative to 4px strokes
-- `../../amw-diagram-editorial/references/TECH-three-family-typography.md` —
+  > What it does · When to use · How it works · Attribute breakdown · Minimal example · Gotchas · Cross-references
+- [TECH-three-family-typography](../../amw-diagram-editorial/references/TECH-three-family-typography.md) —
+  > What it does · When to use · How it works · Minimal example · Gotchas · Minimal `<head>` snippet · Cross-references
   editorial cousin uses 1px hairlines instead of 4px bolds
-- `../../amw-design-principles/color-system.md` — brand override path
+- [color-system](../../amw-design-principles/color-system.md) — brand override path
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list

@@ -73,7 +73,7 @@ I activate on **narrow, DESIGN.md-authoring** phrases from main-agent only.
 
 ### Triggers I do NOT respond to
 
-- "design a landing page" → routes to `../skills/amw-design-principles/SKILL.md` (orchestrator)
+- "design a landing page" → routes to [SKILL](../skills/amw-design-principles/SKILL.md) (orchestrator)
 - "audit this DESIGN.md" → `amw-design-md-auditor-agent`
 - "extract DESIGN.md from URL" → `amw-design-md-extractor-agent`
 - "build the HTML for this design" → `amw-wireframe-builder-agent`
@@ -111,7 +111,8 @@ A missing required field for the chosen `input_type` is `status=failed` / `next_
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -206,7 +207,8 @@ Action: do not overwrite silently. Return `status=partial`, `blocking_issues=["O
 Action: do not run companion generation. The companions would derive from a broken DESIGN.md. Fix lint errors first; if they cannot be fixed, return `status=partial` and note that companion generation was skipped.
 
 ### Iteration cap
-Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -219,10 +221,13 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint me
 | Tailwind config present in codebase | `bin/amw-design-md-from-tailwind.mjs` | Precise Tailwind v3/v4 config evaluation (run instead of or in addition to from-codebase) |
 | Companion output requested | `bin/amw-design-md-emit-companions.py` | Generate tokens.css, tokens.json, component-inventory.md, usage-prompt.md |
 | Lint gate (all paths) | `bin/amw-design-md-lint.sh` | Structural + semantic validation before delivery |
-| Always — DESIGN.md format spec | `../skills/amw-design-md/SKILL.md` | Canonical Variant 1 structure, section semantics, token contracts |
-| DESIGN.md spec details | `../skills/amw-design-md/references/canonical-spec-google-alpha.md` | Full field-level spec for every YAML key |
-| Interview-to-token mapping ambiguity | `../skills/amw-design-md/references/TECH-15-design-md-as-input.md` | How agents parse and use DESIGN.md tokens |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Ensure no slop patterns in prose sections |
+| Always — DESIGN.md format spec | [SKILL](../skills/amw-design-md/SKILL.md) | Canonical Variant 1 structure, section semantics, token contracts |
+| DESIGN.md spec details | [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) | Full field-level spec for every YAML key |
+> [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+| Interview-to-token mapping ambiguity | [TECH-15-design-md-as-input](../skills/amw-design-md/references/TECH-15-design-md-as-input.md) | How agents parse and use DESIGN.md tokens |
+> [TECH-15-design-md-as-input.md] What it does · When this TECH applies · The wireframe-builder's flow when DESIGN.md is the input · Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape · Component tokens — direct passthrough · Failure paths · DESIGN.md fails lint · DESIGN.md is Variant 2 · DESIGN.md missing required fields · CLAUDE.md-coupled projects · Companion-file consumption · Symmetry with non-DESIGN.md inputs · Cross-references
+| AI-slop final gate | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Ensure no slop patterns in prose sections |
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 | Contrast verification needed | `bin/amw-design-md-contrast.py` | WCAG contrast check on every color pair before delivery |
 | Auditing an HTML mockup against the produced DESIGN.md | `bin/amw-html-section-count.py` | Counts top-level sections, derives word-count + reading-time, flags heading-hierarchy violations (`h2` without `h1`, `h3` without `h2`, etc.); used when main-agent attaches a reference HTML and asks me to verify the section-and-heading structure aligns with the DESIGN.md `## Layout` and component specs |
 
@@ -246,7 +251,8 @@ I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-s
 
 ### What I never delegate to a peer amw-* agent
 
-Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents do not call each other. If I need brand tokens from a URL during Path D (interview + competitor reference), I call `bin/amw-design-md-from-url.sh` directly rather than spawning `amw-brand-researcher-agent`.
+Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents do not call each other. If I need brand tokens from a URL during Path D (interview + competitor reference), I call `bin/amw-design-md-from-url.sh` directly rather than spawning `amw-brand-researcher-agent`.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -271,7 +277,8 @@ Action: run `bin/amw-design-md-from-url.sh <competitor_url>` to extract tokens, 
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md).
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -302,7 +309,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-design-md-author-<slug>.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-design-md-author-<slug>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example — `status=ok`
 
@@ -372,8 +380,9 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-design-md-auditor-agent](./amw-design-md-auditor-agent.md) — audit mode for produced DESIGN.md
 - [amw-design-md-extractor-agent](./amw-design-md-extractor-agent.md) — URL / Tailwind / codebase extraction peer (routes through main-agent)
 - [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of produced DESIGN.md
-- `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format and token contracts
-- `../skills/amw-design-md/references/canonical-spec-google-alpha.md` — full Variant 1 spec
+- [SKILL](../skills/amw-design-md/SKILL.md) — canonical DESIGN.md format and token contracts
+- [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) — full Variant 1 spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - `../bin/amw-design-md-from-codebase.py` — codebase extraction driver
 - `../bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver
 - `../bin/amw-design-md-from-url.sh` — URL extraction driver

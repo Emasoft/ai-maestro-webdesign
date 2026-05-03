@@ -84,7 +84,10 @@ Found 3 diagram(s) to render...
 ## Cross-references
 
 - [TECH-svg-render-api](TECH-svg-render-api.md) — the per-file rendering function.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ascii-render-api](TECH-ascii-render-api.md) — when `--format ascii`.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-built-in-themes](TECH-built-in-themes.md) — valid `--theme` values.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

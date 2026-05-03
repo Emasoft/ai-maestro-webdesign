@@ -84,9 +84,12 @@ flowchart LR
 ## Cross-references
 
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the arrows live inside flowcharts.
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — sequence arrows use a different
+  > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
   syntax (`->>`, `-->>`).
 - [TECH-edge-best-practices](TECH-edge-best-practices.md) — when to use dotted vs solid, thick
+  > What it does · When to use · The heuristic table · Label conventions · Arrow density rule · Minimal example — mixed arrows with purpose · Gotchas · Cross-references
   vs thin.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

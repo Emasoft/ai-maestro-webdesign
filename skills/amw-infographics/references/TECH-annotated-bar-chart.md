@@ -124,8 +124,11 @@ crossing the chart. No Chart.js dependency.
 ## Cross-references
 
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative chart for proportions.
+  > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
 - [TECH-annotation-first](TECH-annotation-first.md) — the "labels on chart" principle this
+  > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
   implements.
 - [TECH-slope-chart](TECH-slope-chart.md) — for before/after stories.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Coordinate system · HTML · CSS · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -120,10 +120,15 @@ Apply changes when the user pastes updates.
 ## Cross-references
 
 - [TECH-one-shot-mode](TECH-one-shot-mode.md) — the build step after selection.
+  > What it does · When to use · The 5 steps · Classification — identify the type · Composition archetype — pick one · Build rules · Head elements (required) · Step 5 — export command · Gotchas · Cross-references
 - [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the component-by-component
+  > What it does · When to use · The flow · State file — `.infographic/{project}.json` · Preview server · The approval gate (A4) · State schema per component · Why verbatim HTML · Session resume · Gotchas · Cross-references
   alternative.
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default archetype.
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — for flow-dominant picks.
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
 - [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — for the densest mode.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The shape · CSS implementation · The mixed-layout rule · Flow connector between sections · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -121,7 +121,10 @@ readable.
 ## Cross-references
 
 - [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when radar is the right choice.
+  > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
 - [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — where radar charts shine.
+  > What it does · When to use · Color system · Typography — two sub-variants · Standard game · Pixel / retro game · Standard component prevalence (across 25 pieces) · Visual properties · Signature layout pattern · Character card grid (signature pattern) · Light-mode sub-variant · CSS variables (standard) · CSS variables (pixel) · Reference template · Gotchas · Cross-references
 - [TECH-line-chart](TECH-line-chart.md) — the other Chart.js type in the library.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · HTML · The signature options · The container-height trick · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

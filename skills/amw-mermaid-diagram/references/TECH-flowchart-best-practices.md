@@ -89,7 +89,10 @@ flowchart TD
 ## Cross-references
 
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the syntax catalog.
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [TECH-subgraph-grouping](TECH-subgraph-grouping.md) — when to reach for grouped clusters.
+  > What it does · When to use · Syntax · With direction override per subgraph · Minimal example · Gotchas · Cross-references
 - [TECH-edge-best-practices](TECH-edge-best-practices.md) — arrow conventions.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The heuristic table · Label conventions · Arrow density rule · Minimal example — mixed arrows with purpose · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

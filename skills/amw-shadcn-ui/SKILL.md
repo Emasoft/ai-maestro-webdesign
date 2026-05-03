@@ -6,7 +6,7 @@ version: 0.1.0
 
 # shadcn/ui Reference
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 
 ## Overview
 
@@ -44,7 +44,7 @@ Specific shadcn/ui questions. The orchestrator routes general "how do I build a 
 
 ## Prerequisites
 - runtime_binaries: none (the docs are static MDX)
-- Optional companion skill: `../amw-tailwind-4/SKILL.md` — shadcn/ui is Tailwind-native
+- Optional companion skill: [SKILL](../amw-tailwind-4/SKILL.md) — shadcn/ui is Tailwind-native
 - Runtime peers (in the user's target project, not the plugin): Radix UI primitives, Tailwind CSS, React Hook Form + Zod (for forms), Recharts (for charts)
 
 ## Docs structure (docs/)
@@ -65,10 +65,11 @@ Do NOT load the entire docs/ corpus. When invoked:
 4. If the question is cross-cutting (theming + a specific component), read the theming page plus the single component page — never the whole directory.
 
 ## Resources
-- `../amw-design-principles/SKILL.md` — orchestrator
-- `../amw-tailwind-4/SKILL.md` — Tailwind v4 reference pairs naturally with shadcn
-- `../amw-design-principles/color-system.md` — shadcn uses CSS custom properties; align with design-principles' oklch structure where possible
-- `../amw-design-extract/SKILL.md` — extracted tokens from a shadcn-based site feed here
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator
+- [SKILL](../amw-tailwind-4/SKILL.md) — Tailwind v4 reference pairs naturally with shadcn
+- [color-system](../amw-design-principles/color-system.md) — shadcn uses CSS custom properties; align with design-principles' oklch structure where possible
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [SKILL](../amw-design-extract/SKILL.md) — extracted tokens from a shadcn-based site feed here
 - `docs/` — the full shadcn/ui documentation corpus (201 MDX)
 
 ## Non-negotiables

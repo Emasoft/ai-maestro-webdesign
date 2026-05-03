@@ -7,6 +7,17 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-14.md, SKILL-15.md, SKILL-16.md, SKILL-
 
 # layout() — fast height + line count
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Return value](#return-value)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** api
 **Status:** stable
 

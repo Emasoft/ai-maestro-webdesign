@@ -76,9 +76,13 @@ Output (2-box vertical flowchart):
 ## Cross-references
 
 - [TECH-render-mode-diagram](./TECH-render-mode-diagram.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-render-mode-table](./TECH-render-mode-table.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-render-mode-layers](./TECH-render-mode-layers.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-render-mode-sequence](./TECH-render-mode-sequence.md)
-- `../../amw-ascii-validator/SKILL.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-ascii-validator/SKILL.md)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,6 +7,16 @@ also-in: SKILL-15.md (masonry/index.ts), use-pretext/SKILL.md Recipe 1, pretext-
 
 # Masonry grid (Pinterest-style variable card heights)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** workflow
 **Status:** stable
 
@@ -60,4 +70,5 @@ function computeLayout(width) {
 
 - Related: TECH-14-dom-free-height, TECH-36-generative-poster-grid
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

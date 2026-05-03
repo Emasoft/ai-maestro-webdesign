@@ -7,7 +7,7 @@ author: ai-maestro-webdesign
 
 # UX Flows
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Triggers are PRD-to-wireframe-specific only — generic design vocabulary stays with the orchestrator.
 
 ## Overview
@@ -19,6 +19,7 @@ PRD (or feature list) → use cases → Mermaid diagrams (flowchart + state + se
 1. Read or request the PRD (or feature list) — if `<docs/product/prd.md>` exists, read it; otherwise ask the user; do not synthesize use cases from nothing.
 2. **Phase 1 — Use Case Extraction**: document each use case with ID, actors, preconditions, main flow, alternative flows, postconditions; save to `<docs/ux-flows/use-cases.md>`; present to user and wait for explicit confirmation before Phase 2.
 3. **Phase 2 — Mermaid Diagrams**: read [mermaid-patterns](references/mermaid-patterns.md) first; generate a master screen-map flowchart plus per-use-case flow/state/sequence diagrams under `docs/ux-flows/diagrams/`; max 15-20 nodes per diagram.
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
 4. **Phase 3 — HTML Wireframes**: for each screen, copy `assets/wireframe-template.html` and fill it in (self-contained, mobile-first 375px, dashed-border greyscale, inline CSS only); add inter-screen navigation links.
 5. **Phase 4 — Handoff**: compile `UX-FLOWS.md` linking all artifacts; route to `../amw-ascii-sketch/` for ASCII iteration, `../amw-ascii-to-html/` for production HTML lift, or `../amw-diagram-editorial/` if Mermaid diagrams need editorial upgrade.
 
@@ -27,6 +28,7 @@ See the four-phase workflow in `## Usage` below.
 ## Examples
 
 See [TECH-4-phase-mandatory-workflow](references/TECH-4-phase-mandatory-workflow.md) for a complete run through all four phases with minimal PRD input.
+> [TECH-4-phase-mandatory-workflow.md] What it does · When to use · How it works · Phase 1 — Use case extraction (Phase-1 gate) · Phase 2 — Mermaid diagrams · Phase 3 — HTML wireframes (MANDATORY) · Phase 4 — Consolidation handoff · Minimal example · Gotchas · Cross-references
 
 ## Activation
 
@@ -68,6 +70,7 @@ Do NOT fire on: "design a landing page", "make a nice dashboard", "build the UI"
 - **runtime_binaries (bundled):** `../../bin/amw-dev-browser-wrapper.sh` — the plugin-standard browser wrapper; used for optional wireframe preview in Phase 3.
 - **runtime_binaries (via /amw-init):** `dev-browser` CLI — required only when the user wants an in-browser preview of the clickable prototype.
 - **mcp_servers (optional, on explicit request):** Figma Dev Mode MCP Server — for the Code-to-Canvas export path documented in [figma-integration](references/figma-integration.md). Never activated silently.
+  > Code to Canvas · Export Workflow
 
 ## Usage
 
@@ -105,6 +108,7 @@ Read [mermaid-patterns](references/mermaid-patterns.md) for syntax patterns befo
 Constraints:
 - Max 15-20 nodes per diagram. Split complex flows into sub-diagrams linked via `[[Sub-flow]]` nodes.
 - Use `classDef` for consistent node styling across diagrams (patterns in [mermaid-patterns](references/mermaid-patterns.md)).
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
 
 ### Phase 3 — HTML Wireframes (Clickable Prototype)
 
@@ -140,20 +144,24 @@ Generate `<docs/ux-flows/UX-FLOWS.md>` with:
 After the handoff document is written, inform the user:
 - The wireframes can be exported to Figma via the official Code-to-Canvas integration.
 - Only requires Figma desktop app with Dev Mode MCP Server enabled (2-step setup in [figma-integration](references/figma-integration.md)).
+  > Code to Canvas · Export Workflow
 - If interested, the user says "export to figma" and the setup steps are presented.
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator
-- `../amw-dev-browser/SKILL.md` — wireframe preview primitive (replaces the upstream skill's Chrome-DevTools-MCP dependency)
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator
+- [SKILL](../amw-dev-browser/SKILL.md) — wireframe preview primitive (replaces the upstream skill's Chrome-DevTools-MCP dependency)
 - `../../bin/amw-dev-browser-wrapper.sh` — plugin-standard browser wrapper
-- `../amw-ascii-sketch/SKILL.md` — downstream option when the user wants to iterate on the generated wireframes in plan-phase ASCII
-- `../amw-ascii-to-html/SKILL.md` — downstream lift from wireframe prototype to responsive HTML
-- `../amw-ux-designer/SKILL.md` — broader UX methodology the wireframes slot into
-- `../amw-ux-evaluator/SKILL.md` — consumes the clickable prototype for heuristic scoring
+- [SKILL](../amw-ascii-sketch/SKILL.md) — downstream option when the user wants to iterate on the generated wireframes in plan-phase ASCII
+- [SKILL](../amw-ascii-to-html/SKILL.md) — downstream lift from wireframe prototype to responsive HTML
+- [SKILL](../amw-ux-designer/SKILL.md) — broader UX methodology the wireframes slot into
+- [SKILL](../amw-ux-evaluator/SKILL.md) — consumes the clickable prototype for heuristic scoring
 - [mermaid-patterns](references/mermaid-patterns.md) — Mermaid syntax cookbook (node shapes, subgraphs, sequence patterns, styling)
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
 - [figma-integration](references/figma-integration.md) — Figma Dev Mode MCP workflow (on explicit request only)
+  > Code to Canvas · Export Workflow
 - [install-commands](references/install-commands.md) — auxiliary skill + dev-browser install references
+  > Auxiliary Skills · Figma MCP (only if user requests Figma) · Browser Preview (plugin-standard)
 - `assets/wireframe-template.html` — mobile-first 375px wireframe base template
 
 ## Technique selection
@@ -164,22 +172,29 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
   - **mermaid** (3 techniques)
     - [TECH-mermaid-flowchart-screen-map](./references/TECH-mermaid-flowchart-screen-map.md) — TECH-mermaid-flowchart-screen-map
     - [TECH-mermaid-sequence-authenticated](./references/TECH-mermaid-sequence-authenticated.md) — TECH-mermaid-sequence-authenticated
+      > What it does · When to use · How it works · Actor reference · Message syntax · Error-handling pattern · Minimal example · Gotchas · Cross-references
     - [TECH-mermaid-state-diagram-screen](./references/TECH-mermaid-state-diagram-screen.md) — TECH-mermaid-state-diagram-screen
+      > What it does · When to use · How it works · Basic transitions · Nested states · Parallel states · Minimal example · Gotchas · Cross-references
   - **wireframe** (2 techniques)
     - [TECH-wireframe-html-mobile-first](./references/TECH-wireframe-html-mobile-first.md) — TECH-wireframe-html-mobile-first
+      > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
     - [TECH-wireframe-index-inventory](./references/TECH-wireframe-index-inventory.md) — TECH-wireframe-index-inventory
   - **4** (1 techniques)
     - [TECH-4-phase-mandatory-workflow](./references/TECH-4-phase-mandatory-workflow.md) — TECH-4-phase-mandatory-workflow
+      > What it does · When to use · How it works · Phase 1 — Use case extraction (Phase-1 gate) · Phase 2 — Mermaid diagrams · Phase 3 — HTML wireframes (MANDATORY) · Phase 4 — Consolidation handoff · Minimal example · Gotchas · Cross-references
   - **clickable** (1 techniques)
     - [TECH-clickable-prototype-navigation](./references/TECH-clickable-prototype-navigation.md) — TECH-clickable-prototype-navigation
+      > What it does · When to use · How it works · Navigation wrapper class · Patterns · Minimal example · Gotchas · Cross-references
   - **figma** (1 techniques)
     - [TECH-figma-code-to-canvas-export](./references/TECH-figma-code-to-canvas-export.md) — TECH-figma-code-to-canvas-export
+      > What it does · When to use · How it works · Prerequisites (MUST be mentioned before any Figma operation) · Protocol · Export workflow (once prerequisites are confirmed) · Minimal example · Gotchas · Cross-references
   - **no** (1 techniques)
     - [TECH-no-dead-end-screens](./references/TECH-no-dead-end-screens.md) — TECH-no-dead-end-screens
   - **prd** (1 techniques)
     - [TECH-prd-to-usecases](./references/TECH-prd-to-usecases.md) — TECH-prd-to-usecases
   - **split** (1 techniques)
     - [TECH-split-large-flows-subflow-linking](./references/TECH-split-large-flows-subflow-linking.md) — TECH-split-large-flows-subflow-linking
+      > What it does · When to use · How it works · Step 1 — Identify logical boundaries · Step 2 — Create a high-level overview flow · Step 3 — Create each sub-flow as a separate diagram · Minimal example · Gotchas · Cross-references
   - **use** (1 techniques)
     - [TECH-use-case-document-schema](./references/TECH-use-case-document-schema.md) — TECH-use-case-document-schema
 
@@ -188,6 +203,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
 
 - **[./references/TECH-4-phase-mandatory-workflow.md](./references/TECH-4-phase-mandatory-workflow.md)**
+  > What it does · When to use · How it works · Phase 1 — Use case extraction (Phase-1 gate) · Phase 2 — Mermaid diagrams · Phase 3 — HTML wireframes (MANDATORY) · Phase 4 — Consolidation handoff · Minimal example · Gotchas · Cross-references
   - Description: TECH-4-phase-mandatory-workflow
   - TOC:
     - What it does
@@ -197,6 +213,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-clickable-prototype-navigation.md](./references/TECH-clickable-prototype-navigation.md)**
+  > What it does · When to use · How it works · Navigation wrapper class · Patterns · Minimal example · Gotchas · Cross-references
   - Description: TECH-clickable-prototype-navigation
   - TOC:
     - What it does
@@ -206,6 +223,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-figma-code-to-canvas-export.md](./references/TECH-figma-code-to-canvas-export.md)**
+  > What it does · When to use · How it works · Prerequisites (MUST be mentioned before any Figma operation) · Protocol · Export workflow (once prerequisites are confirmed) · Minimal example · Gotchas · Cross-references
   - Description: TECH-figma-code-to-canvas-export
   - TOC:
     - What it does
@@ -224,6 +242,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-mermaid-sequence-authenticated.md](./references/TECH-mermaid-sequence-authenticated.md)**
+  > What it does · When to use · How it works · Actor reference · Message syntax · Error-handling pattern · Minimal example · Gotchas · Cross-references
   - Description: TECH-mermaid-sequence-authenticated
   - TOC:
     - What it does
@@ -233,6 +252,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-mermaid-state-diagram-screen.md](./references/TECH-mermaid-state-diagram-screen.md)**
+  > What it does · When to use · How it works · Basic transitions · Nested states · Parallel states · Minimal example · Gotchas · Cross-references
   - Description: TECH-mermaid-state-diagram-screen
   - TOC:
     - What it does
@@ -261,6 +281,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-split-large-flows-subflow-linking.md](./references/TECH-split-large-flows-subflow-linking.md)**
+  > What it does · When to use · How it works · Step 1 — Identify logical boundaries · Step 2 — Create a high-level overview flow · Step 3 — Create each sub-flow as a separate diagram · Minimal example · Gotchas · Cross-references
   - Description: TECH-split-large-flows-subflow-linking
   - TOC:
     - What it does
@@ -283,6 +304,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-wireframe-html-mobile-first.md](./references/TECH-wireframe-html-mobile-first.md)**
+  > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
   - Description: TECH-wireframe-html-mobile-first
   - TOC:
     - What it does
@@ -311,7 +333,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ux-flows/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -320,7 +344,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. PRD-derived Mermaid flows + HTML wireframes + use-case `.md` files). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. PRD-derived Mermaid flows + HTML wireframes + use-case `.md` files). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -360,9 +385,11 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 ## Error Handling
 
 - **No PRD, no feature list.** The skill cannot proceed. Ask the user; optionally route them to `product-manager-toolkit` via [install-commands](references/install-commands.md).
+  > Auxiliary Skills · Figma MCP (only if user requests Figma) · Browser Preview (plugin-standard)
 - **Phase 2 stops before Phase 3.** The user gets Mermaid diagrams without a clickable prototype — a violation of this skill's contract. The orchestrator should abort and re-enter Phase 3.
 - **Mermaid block rendering conflict.** When the output context already has a Mermaid renderer (e.g. this skill's output is embedded in another skill's HTML), use fenced `mermaid` blocks with unique IDs or delegate the render to `../amw-diagram-architecture/` instead.
 - **Figma MCP requested but not installed.** Stop. Present the two-step install (preferences toggle + `claude mcp add ...`) from [install-commands](references/install-commands.md). Do not try alternate paths.
+  > Auxiliary Skills · Figma MCP (only if user requests Figma) · Browser Preview (plugin-standard)
 - **`dev-browser` CLI missing for preview.** Surface `/amw-doctor` and `/amw-init` to the user; the wireframes still open in any browser without the wrapper (Phase 3 always emits standalone HTML), but the plugin-standard mobile-viewport preview needs the CLI.
 - **Wireframe aesthetic drift.** Filling the template with real colors, real images, or real typography pulls the output out of prototype territory. Keep the dashed-border greyscale look; anything else belongs to a downstream skill.
 - **Inter-screen dead ends.** A screen with no outgoing link breaks the clickable prototype and fails Phase 3 review. Fix before emitting the INDEX.

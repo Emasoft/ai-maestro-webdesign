@@ -103,9 +103,12 @@ Still over 8. If the article is about *storage tiering*:
 
 ## Cross-references
 
-- `../SKILL.md` — non-negotiables list
+- [SKILL](../SKILL.md) — non-negotiables list
 - [TECH-focal-accent-discipline](TECH-focal-accent-discipline.md) — the companion rule on focal
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   emphasis (they work together — focal + low density = clear diagram)
 - [TECH-type-nested](TECH-type-nested.md) / [TECH-type-layers](TECH-type-layers.md) — the two escape hatches
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   for when content genuinely needs hierarchy
 - [troubleshooting](troubleshooting.md) — diagnose "too cluttered"
+  > Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill

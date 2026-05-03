@@ -72,7 +72,9 @@ const coloredByStatus = ascii
 ## Cross-references
 
 - [TECH-ascii-render-api](TECH-ascii-render-api.md) — produces the input text.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — the NO-color cousin for
+  > What it does · When to use · Pattern 1: plain fenced block · Pattern 2: inline compact diagram · Pattern 3: ASCII mode for email / plain text · Gotchas · Cross-references
   persistent Markdown output.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -79,6 +79,8 @@ print(ds.pattern)
 ## Cross-references
 
 - [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — 161 rules that reference these patterns
+  > What it does · When to use · How it works · Minimal example · Gotchas · Top 10 distinctive rules — broken out as individual TECH files · Cross-references
 - [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md)
+  > What it does · When to use · How it works · Representative styles (partial list — full 67 are in the upstream corpus) · Minimal example · Gotchas · Cross-references
 - `../../amw-design-principles/starter-components/` — HTML starters that can be remixed into these patterns
-- `../SKILL.md`
+- [SKILL](../SKILL.md)

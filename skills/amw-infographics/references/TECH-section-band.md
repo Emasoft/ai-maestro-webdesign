@@ -113,8 +113,11 @@ and mechanic breakdowns.
 ## Cross-references
 
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — where this pattern lives.
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [TECH-section-header-pill](TECH-section-header-pill.md) — the pill alternative.
+  > What it does · CSS · HTML · The four visual layers · When to use · Variants · Without glow (cleaner) · Wider (title-sized) · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — why structural separators
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
   matter.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

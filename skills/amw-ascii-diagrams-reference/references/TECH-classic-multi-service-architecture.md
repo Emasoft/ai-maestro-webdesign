@@ -71,7 +71,10 @@ pattern.
 ## Cross-references
 
 - [TECH-classic-observability-stack](./TECH-classic-observability-stack.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-classic-k8s-topology](./TECH-classic-k8s-topology.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [network-topology](./network-topology.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

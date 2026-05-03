@@ -128,7 +128,10 @@ with body text.
 ## Cross-references
 
 - [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — Rule 4 mandates this pattern.
+  > What it does · Why · Rule 1 — Bullets, not paragraphs · Rule 2 — One fact per bullet · Rule 3 — Sentence fragments, not full sentences · Rule 4 — Inline token coloring · Rule 5 — Color-coded keyword highlighting (beyond tokens) · Badge / tag rules · Disclaimer (always include in footer) · Gotchas · Cross-references
 - [TECH-signature-palette](TECH-signature-palette.md) — where `var(--primary)` comes from.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-dense-table-component](TECH-dense-table-component.md) — the `.accent` table-cell variant.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

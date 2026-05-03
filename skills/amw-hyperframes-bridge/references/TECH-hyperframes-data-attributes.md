@@ -206,5 +206,8 @@ Key rules:
 ## Cross-references
 
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md)
+  > [TECH-hyperframes-timeline-contract.md] What it does · When to use · How it works · Required pattern · Banned patterns · Allowed GSAP properties · Minimal example · Use `tl.set()` for later-scene clips · Gotchas · Cross-references
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 - [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · The twelve rules · Determinism clause · Animation scope clause · Animation conflict clause · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

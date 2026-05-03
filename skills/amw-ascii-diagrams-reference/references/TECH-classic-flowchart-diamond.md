@@ -69,7 +69,10 @@ from each branch.
 ## Cross-references
 
 - [TECH-classic-pipeline-fanout](./TECH-classic-pipeline-fanout.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-classic-state-machine-arrows](./TECH-classic-state-machine-arrows.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [flowcharts](./flowcharts.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

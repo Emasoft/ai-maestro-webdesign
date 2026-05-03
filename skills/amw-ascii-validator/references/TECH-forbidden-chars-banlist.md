@@ -7,6 +7,16 @@ also-in: ascii-diagram-validator-main/README.md, box-diagram-master/README.md
 
 # TECH-forbidden-chars-banlist — ban long/double arrows + filled triangles
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The validator maintains a curated ban list of arrow glyphs and filled
@@ -51,6 +61,7 @@ Good: A ──→ B       ← U+2192 is single-width in standard monospace
 ## Cross-references
 
 - [TECH-wide-character-detection](./TECH-wide-character-detection.md)
-- `../../amw-ascii-creator/SKILL.md` (banned-characters table)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-ascii-creator/SKILL.md) (banned-characters table)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

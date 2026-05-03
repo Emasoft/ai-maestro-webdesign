@@ -1,5 +1,13 @@
 # React + Babel version-lock spec
 
+## Table of Contents
+
+- [Required CDN URLs](#required-cdn-urls)
+- [Styles-object naming rule](#styles-object-naming-rule)
+- [Sharing components across Babel files](#sharing-components-across-babel-files)
+- [Common error map](#common-error-map)
+
+
 > When writing React components inside an HTML file, you MUST use this exact CDN set — **never casually upgrade**.
 
 ## Required CDN URLs

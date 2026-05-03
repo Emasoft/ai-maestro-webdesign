@@ -82,14 +82,20 @@ for item in ds.checklist:
 
 ## Gotchas
 
-- The checklist is necessary but not sufficient — a design can pass every item and still be ai-slop. Run `../../amw-design-principles/ai-slop-avoid.md` alongside.
+- The checklist is necessary but not sufficient — a design can pass every item and still be ai-slop. Run [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) alongside.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - The contrast rule is AA, not AAA. AAA is 7:1 for normal text and is the correct target for legal, medical, and government content.
 - "Animations use transform/opacity only" rules out layout-triggering properties (width, height, top, left, padding, margin). Scale + translate achieve the same visual result without layout recalc.
 
 ## Cross-references
 
-- `../SKILL.md`
+- [SKILL](../SKILL.md)
 - [TECH-uiux-design-system-generator](TECH-uiux-design-system-generator.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — industry-specific anti-patterns stack on top of this baseline
-- `../../amw-design-principles/ai-slop-avoid.md` — non-skippable final filter
-- `../../amw-ux-evaluator/SKILL.md` — pairs with this checklist at delivery time
+  > What it does · When to use · How it works · Minimal example · Gotchas · Top 10 distinctive rules — broken out as individual TECH files · Cross-references
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — non-skippable final filter
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [SKILL](../../amw-ux-evaluator/SKILL.md) — pairs with this checklist at delivery time

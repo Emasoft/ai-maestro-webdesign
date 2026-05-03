@@ -270,6 +270,10 @@ Default behavior: 1-9 only (Variant 2 base) or Variant 1 (8 sections + frontmatt
 ## Cross-references
 
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 (no extension support)
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - [community-9-section-spec](./community-9-section-spec.md) — Variant 2 base
+  > Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
 - [community-9-section-template](./community-9-section-template.md) — Variant 2 skeleton with optional 10-14 placeholders
+  > Optional extension sections · Validation · Cross-references
 - [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — what gets dropped when extensions are present and we convert to V1
+  > What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references

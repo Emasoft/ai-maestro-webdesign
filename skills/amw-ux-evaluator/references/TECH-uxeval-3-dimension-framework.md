@@ -95,6 +95,10 @@ Navbar CTA evaluation:
 ## Cross-references
 
 - [TECH-uxeval-priority-rubric](TECH-uxeval-priority-rubric.md) — P1 / P2 / P3 prioritization
+  > What it does · When to use · How it works · Assignment rule · Output structure · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-button-conventions](TECH-uxeval-button-conventions.md), [TECH-uxeval-navigation-conventions](TECH-uxeval-navigation-conventions.md), [TECH-uxeval-form-conventions](TECH-uxeval-form-conventions.md)
+  > [TECH-uxeval-navigation-conventions.md] What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Position · Visual weight · Spacing · Labels · Minimal example · Gotchas · Cross-references
 - [balsamiq-button-principles](balsamiq-button-principles.md) — full reference
-- `../SKILL.md`
+  > Core Principles · Use Conventional Labels · Say Exactly What Happens · Primary and Secondary Should Look Different · Primary Action on the Right · Use Adequate Spacing · Make Buttons Look Clickable · Size Appropriately · Use Icons Wisely · Consider Loading States · Error Prevention · Button Hierarchy Summary · Common Mistakes
+- [SKILL](../SKILL.md)

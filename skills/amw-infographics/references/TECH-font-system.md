@@ -154,7 +154,10 @@ Use: meme tokens, community airdrop guides, arcade energy.
 ## Cross-references
 
 - [TECH-typography-scale](TECH-typography-scale.md) — type scale and sizing rules.
+  > What it does · The scale · Weight-based hierarchy · Letter-spacing rules · Tabular numerics (mandatory for numbers) · Summary rules · Body font size rules (the density signature) · Gotchas · Cross-references
 - [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — number formatting in headlines.
+  > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — type-specific font choices.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

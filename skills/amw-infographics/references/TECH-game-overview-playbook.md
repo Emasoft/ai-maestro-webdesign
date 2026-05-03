@@ -153,8 +153,12 @@ right default for THAT sub-type.
 ## Cross-references
 
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [TECH-character-card-grid](TECH-character-card-grid.md) — the signature component.
+  > What it does · CSS · HTML · The tight-grid signature · Stat bar sizing · When to use · Gotchas · Cross-references
 - [TECH-radar-chart](TECH-radar-chart.md) — for character stat comparisons.
+  > What it does · When to use · HTML · The signature options · Multi-character comparison — overlay datasets · Gotchas · Cross-references
 - [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — rarity tables.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · CSS — the base table · CSS — the tier badges · HTML · Custom tier names and colors · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -1,4 +1,26 @@
 # Chart & Data Visualization System — Aizfographics
+
+## Table of Contents
+
+- [When to Use What](#when-to-use-what)
+- [1. SVG Pie Chart (Token Allocation — Your Most-Used)](#1-svg-pie-chart-token-allocation-your-most-used)
+  - [Color Rule](#color-rule)
+  - [How SVG Pie Wedges Work](#how-svg-pie-wedges-work)
+  - [Segment Calculator](#segment-calculator)
+  - [Template (4-segment example — amber primary shades)](#template-4-segment-example-amber-primary-shades)
+  - [CSS](#css)
+- [2. CSS Horizontal Bar Chart (Vesting / Allocation Strips)](#2-css-horizontal-bar-chart-vesting-allocation-strips)
+- [3. Chart.js — Complex Charts via CDN](#3-chartjs-complex-charts-via-cdn)
+  - [Line Chart Template](#line-chart-template)
+  - [Radar Chart Template (Game Stats)](#radar-chart-template-game-stats)
+- [4. Pure CSS Progress Bar (Vesting Timeline)](#4-pure-css-progress-bar-vesting-timeline)
+- [5. Waffle Chart (% of Total — Pure HTML/CSS)](#5-waffle-chart-of-total-pure-htmlcss)
+- [6. Slope Chart (Before/After — Inline SVG)](#6-slope-chart-beforeafter-inline-svg)
+- [7. Annotated Bar Chart (SVG — Hero Bar + Benchmark)](#7-annotated-bar-chart-svg-hero-bar-benchmark)
+- [8. Proportional Circles (SVG — Area = Value)](#8-proportional-circles-svg-area-value)
+- [9. Dot Plot (SVG — Distribution / Individual Points)](#9-dot-plot-svg-distribution-individual-points)
+
+
 # Last updated: March 2026
 
 ## When to Use What

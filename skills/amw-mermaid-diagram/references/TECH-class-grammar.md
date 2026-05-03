@@ -122,6 +122,8 @@ classDiagram
 ## Cross-references
 
 - [TECH-er-grammar](TECH-er-grammar.md) — for database schemas (structurally similar).
+  > What it does · When to use · Basic syntax · Cardinality crowsfeet · Attributes (optional but almost always used) · Attribute constraints · Minimal example · Gotchas · Cross-references
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-class graph structures.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,6 +7,18 @@ also-in: skills/amw-excalidraw-illustrations/references/prompt-template-en.md
 
 # TECH-prompt-template-structure
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Section order and purpose](#section-order-and-purpose)
+  - [Template skeleton](#template-skeleton)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Structures every Gemini prompt into **seven mandatory sections** in a
@@ -39,6 +51,7 @@ images — skipping any section produces drift.
    timelines, unifying elements).
 6. **Text rules — verify letter by letter.** The spell-out block
    (see [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md)).
+   > [TECH-letter-by-letter-spelling-block.md] What it does · When to use · How it works · Spell-out format · Minimal example · Gotchas · Cross-references
 7. **Closing clause.** "Imitate the visual style of the provided
    reference images faithfully."
 
@@ -152,10 +165,15 @@ Imitate the visual style of the provided reference images faithfully.
 
 ## Cross-references
 
-- `../SKILL.md` — prompt structure overview
+- [SKILL](../SKILL.md) — prompt structure overview
 - [prompt-template-en](prompt-template-en.md) / [prompt-template-es](prompt-template-es.md) — full worked
+  > [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
+  > Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
   examples
 - [TECH-reference-image-priming](TECH-reference-image-priming.md) — the references this prompt
+  > What it does · When to use · How it works · API call shape · Minimal example · Gotchas · Cross-references
   references
 - [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the spell-out section
+  > What it does · When to use · How it works · Spell-out format · Minimal example · Gotchas · Cross-references
 - [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md) — the text-in-frames rule
+  > What it does · When to use · How it works · Rounded title frame (section headers) · Speech bubble (tag-line commentary) · Labelled callout with filled background (icon labels, attributions) · Minimal example · Gotchas · Cross-references

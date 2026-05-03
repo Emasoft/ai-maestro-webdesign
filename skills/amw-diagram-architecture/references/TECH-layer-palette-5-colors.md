@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/form
 
 # TECH-layer-palette-5-colors
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Assigns one of **five fixed layer colours** to each layer of a layered
@@ -86,10 +96,15 @@ are re-ordered. The hex values track the semantic layer, not the
 ## Cross-references
 
 - [prompts](prompts.md) — the palette is baked into the LLM system prompt
+  > System Prompt · API Call Pattern · JSON Repair
 - [formats](formats.md) — Mermaid `classDef` + SVG layer band use this palette
+  > Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — layers carry the `color` field from here
+  > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
 - [TECH-mermaid-subgraph-transform](TECH-mermaid-subgraph-transform.md) — Mermaid applies the palette via
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   `classDef`
 - [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — SVG uses it for band + accent bar + dot
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

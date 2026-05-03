@@ -60,4 +60,5 @@ Output includes:
 ## Cross-references
 
 - [TECH-designlang-full-mode](TECH-designlang-full-mode.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

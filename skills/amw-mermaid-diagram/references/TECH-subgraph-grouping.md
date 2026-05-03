@@ -7,6 +7,17 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 
 # Subgraphs — grouped nodes in flowcharts
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Syntax](#syntax)
+- [With direction override per subgraph](#with-direction-override-per-subgraph)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Wraps a cluster of flowchart nodes in a labeled border. The
@@ -78,7 +89,9 @@ flowchart LR
 ## Cross-references
 
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the parent grammar.
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [TECH-edge-styles](TECH-edge-styles.md) — arrows between subgraphs can use different
+  > What it does · Line-and-arrow combinations · Inline label — two syntaxes · Minimal example · Styling edges with `linkStyle` · Gotchas · Cross-references
   styles than arrows within.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

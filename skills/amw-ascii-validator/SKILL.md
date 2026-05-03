@@ -6,7 +6,7 @@ version: 0.1.0
 
 # ASCII Validator + Renderer
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Mandatory validation gate.** Every ASCII variant emitted by `ascii-sketch` / `/amw-sketch` MUST pass the validator before being shown to the user. LLMs cannot count characters — this skill is how the plugin compensates.
 
 ## Overview
@@ -295,7 +295,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ascii-validator/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -304,7 +306,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. validated ASCII `.txt` output + a `validate-ascii.py` PASS log). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. validated ASCII `.txt` output + a `validate-ascii.py` PASS log). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -342,12 +345,14 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources
 
-- `../amw-ascii-sketch/SKILL.md` — upstream consumer: calls this validator before emitting variants
-- `../amw-ascii-to-html/SKILL.md` — upstream consumer: validates the approved ASCII one last time before HTML conversion
-- `../amw-ascii-to-svg/SKILL.md` — upstream consumer: validates the ASCII input before parse
+- [SKILL](../amw-ascii-sketch/SKILL.md) — upstream consumer: calls this validator before emitting variants
+- [SKILL](../amw-ascii-to-html/SKILL.md) — upstream consumer: validates the approved ASCII one last time before HTML conversion
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — upstream consumer: validates the ASCII input before parse
 - `../../bin/amw-ascii-render.py` — perfect-ascii renderer (pure Python, 78-col max, 4 modes)
 - `../../bin/amw-validate-ascii.py` — alignment validator (Python; group-aware width detection, FIX hints)
-- `../amw-design-principles/ai-slop-avoid.md` — misaligned ASCII is a form of AI-slop visible in tokens
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned ASCII is a form of AI-slop visible in tokens
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 
 ## Non-negotiables
 
@@ -377,7 +382,8 @@ REFUSE: PNG is output-only by plugin directive; validate the source artifact ins
 
 All per-format validators conform to the same unified output contract — `PASS: <path>` on success or `FAIL: <line>: <message> [FIX: <hint>]` per finding — making `bin/amw-validate-diagram.sh` the single surface callers invoke regardless of format.
 
-Full routing rules and per-format validator specs: `../amw-diagram-formats/references/validation-dispatcher.md`.
+Full routing rules and per-format validator specs: [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md).
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 ## Error Handling
 
@@ -387,5 +393,6 @@ Full routing rules and per-format validator specs: `../amw-diagram-formats/refer
 | Validator reports WIDE_CHAR on a working emoji | Terminal shows emoji as 2-col, author assumed 1 | Replace emoji with ASCII state marker (`[!]`, `(*)`, etc.) |
 | `perfect-ascii` errors "width exceeds 78" | Labels too long for horizontal stacking | Shorten labels, split into multiple sub-diagrams, or switch to `layers` mode |
 | `ascii-sketch` variants fail validation every iteration | Variant produced by raw LLM without the validator loop | The skill MUST NOT skip Step 3 of the loop — validation is non-skippable |
-| `bin/amw-validate-diagram.sh` returns exit 2 for a non-PNG file | Format sniffer returned `unknown` | Ensure the file has a recognized extension or content signature (see `../amw-diagram-formats/references/detect-format.md`) |
+| `bin/amw-validate-diagram.sh` returns exit 2 for a non-PNG file | Format sniffer returned `unknown` | Ensure the file has a recognized extension or content signature (see [detect-format](../amw-diagram-formats/references/detect-format.md)) |
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 | `bin/amw-validate-diagram.sh` returns exit 3 | `xmllint`, `tidy`, or `mmdc` not installed | Run `/amw-init` or `/amw-doctor` to install missing tools |

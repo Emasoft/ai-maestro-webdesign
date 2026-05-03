@@ -86,6 +86,12 @@ Research plan for a new fintech signup flow:
 ## Cross-references
 
 - [TECH-ux-persona-template](TECH-ux-persona-template.md) — concrete persona output format
+  > What it does · When to use · How it works · Minimal example · Good persona · Bad persona · Gotchas · Cross-references
 - [TECH-ux-process-discover](TECH-ux-process-discover.md) — Phase 1 in the process
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-rule-accessibility](TECH-ux-rule-accessibility.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md), [TECH-ux-rule-visual](TECH-ux-rule-visual.md)
-- `../SKILL.md`
+  > [TECH-ux-rule-ia.md] What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-interaction.md] What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-visual.md] What it does · When to use · How it works · Establishing hierarchy · Typography scale · Color usage · Layout · Design-system essentials · Component documentation · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · WCAG AA (minimum floor) — four POUR pillars · Inclusive design patterns (beyond compliance) · Testing checklist · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

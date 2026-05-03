@@ -87,8 +87,11 @@ Move `cx` / `cy` to emphasize a specific area:
 ## Cross-references
 
 - [TECH-landscape-composition](TECH-landscape-composition.md) — vignette is layer 8 in the stack.
+  > What it does · The layer stack (back to front) · The template · The atmospheric perspective rule · Gotchas · Cross-references
 - [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — often combined with fog/mist.
+  > Scope note · What it does · Light rays (god rays) · Fog / mist (masked gradient) · Stars with twinkling · Rain · Clouds · Gotchas · Cross-references
 - [TECH-mesh-gradient-workaround](TECH-mesh-gradient-workaround.md) — radial gradients from a
+  > What it does · The technique · Best practices · Gradient parameters that matter · When to use · Gotchas · Cross-references
   different angle.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

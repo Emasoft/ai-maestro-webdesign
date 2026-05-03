@@ -8,6 +8,25 @@ status: stable
 
 # TECH: URL → DESIGN.md extraction (delegating to dev-browser)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Architecture](#architecture)
+- [Inputs](#inputs)
+- [What `dev-browser eval` returns](#what-dev-browser-eval-returns)
+- [Heuristics for token extraction](#heuristics-for-token-extraction)
+  - [Colors](#colors)
+  - [Typography](#typography)
+  - [Spacing](#spacing)
+  - [Radius](#radius)
+  - [Components](#components)
+- [Output structure](#output-structure)
+- [Failure modes and recovery](#failure-modes-and-recovery)
+- [Validation gate](#validation-gate)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents how to extract a Variant 1 DESIGN.md from a live URL. The plugin's URL-extraction path goes through `amw-dev-browser` (the only browser-automation primitive in this plugin). The bin script is `bin/amw-design-md-from-url.sh`. The agent that owns this flow is `amw-design-md-extractor-agent`.
@@ -158,9 +177,12 @@ A draft that fails contrast (extracted colors fail WCAG-AA) is marked `partial` 
 ## Cross-references
 
 - [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — extracting from a local codebase instead of URL
+  > What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
 - [TECH-09-multipage-extraction](./TECH-09-multipage-extraction.md) — multi-page sessions including login
+  > What it does · When to use · When NOT to use · Architecture · Session handling · Page-list strategy · A. User provides explicit URL list · B. Crawl mode (limited) · Per-page token aggregation · Colors · Typography · Components · Layout · Provenance annotations · Failure modes · Privacy and credential handling · Cross-references
 - [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — extracting from tailwind config (different path)
+  > What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
 - `../../../bin/amw-design-md-from-url.sh` — the bin script
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
-- `../../amw-dev-browser/SKILL.md` — dev-browser skill spec
-- `../../../agents/amw-design-md-extractor-agent.md` — the agent
+- [SKILL](../../amw-dev-browser/SKILL.md) — dev-browser skill spec
+- [amw-design-md-extractor-agent](../../../agents/amw-design-md-extractor-agent.md) — the agent

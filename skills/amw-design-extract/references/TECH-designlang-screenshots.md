@@ -7,6 +7,16 @@ also-in:
 
 # TECH: `--screenshots` — component screenshot capture
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Captures PNG screenshots of individual components — buttons, cards, navigation bars, hero sections — by locating them in the DOM and cropping the viewport to their bounding box. Output goes to a `components/` subfolder alongside the usual token files.
@@ -42,5 +52,7 @@ Produces `components/button-0.png`, `components/button-1.png`, `components/card-
 ## Cross-references
 
 - [TECH-designlang-full-mode](TECH-designlang-full-mode.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-brands](TECH-designlang-brands.md) — pairs well when comparing brand component galleries
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

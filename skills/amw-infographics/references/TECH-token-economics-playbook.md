@@ -7,6 +7,23 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 
 # Token-Economics playbook — 35% of body of work (62/175)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Color system](#color-system)
+- [Typography](#typography)
+- [Standard component prevalence (across 62 pieces)](#standard-component-prevalence-across-62-pieces)
+- [Visual properties](#visual-properties)
+- [Signature layout pattern (portrait-tall, 10+ content blocks)](#signature-layout-pattern-portrait-tall-10-content-blocks)
+- [CSS variables](#css-variables)
+- [Font pair](#font-pair)
+- [Reference template](#reference-template)
+- [Density rule](#density-rule)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The playbook for token-economics infographics — the single most
@@ -110,9 +127,14 @@ between sections: 24-32px; within sections: 8-12px.
 ## Cross-references
 
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [TECH-signature-palette](TECH-signature-palette.md) — the AMBER DARK recipe.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default archetype.
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting component.
+  > What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — the allocation chart.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

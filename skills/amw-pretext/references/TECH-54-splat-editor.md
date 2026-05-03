@@ -7,6 +7,16 @@ also-in:
 
 # Splat editor — text wrapping around Gaussian splats in real time
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** 3d
 **Status:** demo-only
 
@@ -37,4 +47,5 @@ Not in the source material. See SKILL-11 `references/opentype-integration.md` an
 
 - Related: TECH-53-threejs-text-wrapping
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

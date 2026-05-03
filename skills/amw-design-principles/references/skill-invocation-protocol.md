@@ -2,13 +2,7 @@
 
 - [The problem](#the-problem)
 - [The protocol](#the-protocol)
-  - [DO](#do)
-  - [DON'T](#dont)
 - [Examples](#examples)
-  - [Correct: agent produces an HTML mockup from approved ASCII](#correct-agent-produces-an-html-mockup-from-approved-ascii)
-  - [Incorrect: agent tries to delegate back through commands](#incorrect-agent-tries-to-delegate-back-through-commands)
-  - [Correct: agent needs to produce a diagram in Mermaid format](#correct-agent-needs-to-produce-a-diagram-in-mermaid-format)
-  - [Incorrect: agent uses Skill tool with a vague English prompt](#incorrect-agent-uses-skill-tool-with-a-vague-english-prompt)
 - [Enforcement](#enforcement)
 
 

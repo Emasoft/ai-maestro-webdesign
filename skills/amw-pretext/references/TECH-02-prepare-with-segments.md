@@ -7,6 +7,17 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-14.md, SKILL-16.md, pretext-text-measur
 
 # prepareWithSegments() — richer handle for line-level access
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [TypeScript types (source: pretext-skill-master/SKILL.md)](#typescript-types-source-pretext-skill-masterskillmd)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** api
 **Status:** stable
 

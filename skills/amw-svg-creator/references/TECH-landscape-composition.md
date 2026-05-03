@@ -20,7 +20,7 @@ also-in:
 > This skill is GATED to icons / logos / technical SVG / patterns / animations only.
 > Scene illustrations — landscapes, interiors, skies, environments — are
 > **explicitly forbidden** by `../amw-design-principles/ai-slop-avoid.md` item 3
-> and by `../SKILL.md` (Scope — what this skill CANNOT produce).
+> and by [SKILL](../SKILL.md) (Scope — what this skill CANNOT produce).
 >
 > This reference file is retained **for technique reuse only** — the layer-stack
 > pattern (back-to-front z-ordering, atmospheric perspective desaturation) applies
@@ -110,7 +110,10 @@ Foreground is full color.
 ## Cross-references
 
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the sky gradient pattern.
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
 - [TECH-vignette-overlay](TECH-vignette-overlay.md) — the edge-darkening pattern.
+  > What it does · The gradient · The parameters · Layer order · Off-center vignettes · When to use · When NOT to use · Gotchas · Cross-references
 - [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — fog, rays, rain.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Scope note · What it does · Light rays (god rays) · Fog / mist (masked gradient) · Stars with twinkling · Rain · Clouds · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

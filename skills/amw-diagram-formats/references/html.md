@@ -1,28 +1,14 @@
 ## Table of Contents
 
 - [1. Format definition](#1-format-definition)
-  - [1.1 File structure (baseline)](#11-file-structure-baseline)
-  - [1.2 Semantic-HTML requirements](#12-semantic-html-requirements)
 - [2. Starter-components mapping](#2-starter-components-mapping)
 - [3. Tweaks protocol invariants (HARD RULES)](#3-tweaks-protocol-invariants-hard-rules)
-  - [3.1 Listener-before-announce](#31-listener-before-announce)
-  - [3.2 Partial-keys only](#32-partial-keys-only)
-  - [3.3 Valid JSON EDITMODE block](#33-valid-json-editmode-block)
 - [4. React / Babel pin rules](#4-react-babel-pin-rules)
 - [5. AI-slop-avoid gate (12-item checklist)](#5-ai-slop-avoid-gate-12-item-checklist)
 - [6. ARIA / keyboard / a11y patterns](#6-aria-keyboard-a11y-patterns)
 - [7. CSS custom properties (Tweaks-compatible)](#7-css-custom-properties-tweaks-compatible)
 - [8. Per-source breakdown of the technique catalog](#8-per-source-breakdown-of-the-technique-catalog)
 - [9. Technique catalog](#9-technique-catalog)
-  - [S1 — design-principles starter-components (canonical chrome)](#s1-design-principles-starter-components-canonical-chrome)
-  - [S2 — ai-slop-avoid (output-ban gate)](#s2-ai-slop-avoid-output-ban-gate)
-  - [S3 — ui-ux-pro-max-skill (industry patterns)](#s3-ui-ux-pro-max-skill-industry-patterns)
-  - [S4 — ux-designer + accessibility](#s4-ux-designer-accessibility)
-  - [S5 — create-infographics (editorial density)](#s5-create-infographics-editorial-density)
-  - [S6 — diagram-design-editorial (self-contained HTML+SVG)](#s6-diagram-design-editorial-self-contained-htmlsvg)
-  - [S7 — ascii-creator mirror (pattern recognition)](#s7-ascii-creator-mirror-pattern-recognition)
-  - [S8 — CHI'24 ASCII classics (mockup → HTML skeleton)](#s8-chi24-ascii-classics-mockup-html-skeleton)
-  - [S9 — ascii-parse.py (in-repo tokenizer hooks)](#s9-ascii-parsepy-in-repo-tokenizer-hooks)
 - [10. Migration note (2026-04-22)](#10-migration-note-2026-04-22)
 
 
@@ -31,21 +17,29 @@
 This file is the single authoritative spec for HTML diagrams and HTML pages emitted by the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts HTML pulls from this file. Semantic HTML patterns, starter-components mapping, AI-slop-avoid gate, Tweaks invariants, React/Babel pins, ARIA/a11y rules, CSS custom properties, and the full technique catalog (100 techniques, migrated from `ascii-to-html/` into this canonical home) are all below.
 
 **Consumers (cross-references):**
-- `../../amw-design-principles/ai-slop-avoid.md` — the output-ban gate run as final check
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — the output-ban gate run as final check
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components
-- `../../amw-design-principles/color-system.md` — oklch palette
-- `../../amw-design-principles/typography-system.md` — type scale
-- `../../amw-ascii-to-html/SKILL.md` — ASCII → HTML parse/map/emit pipeline
-- `../../amw-diagram-editorial/SKILL.md` — 13-archetype editorial HTML+SVG producer
-- `../../amw-infographics/SKILL.md` — dense HTML/PNG/PDF producer
-- `../../amw-shadcn-ui/SKILL.md` — component reference
-- `../../amw-tailwind-4/SKILL.md` — utility reference
+- [color-system](../../amw-design-principles/color-system.md) — oklch palette
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../../amw-design-principles/typography-system.md) — type scale
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [SKILL](../../amw-ascii-to-html/SKILL.md) — ASCII → HTML parse/map/emit pipeline
+- [SKILL](../../amw-diagram-editorial/SKILL.md) — 13-archetype editorial HTML+SVG producer
+- [SKILL](../../amw-infographics/SKILL.md) — dense HTML/PNG/PDF producer
+- [SKILL](../../amw-shadcn-ui/SKILL.md) — component reference
+- [SKILL](../../amw-tailwind-4/SKILL.md) — utility reference
 - `../../bin/amw-html-export.py` — HTML → PNG/PDF rasterizer (Playwright)
 - `../../bin/amw-ascii-parse.py` — ASCII → layout JSON consumed by HTML emitter
 - [ir-schema](./ir-schema.md) — when HTML is a source of the diagram IR
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 - [conversion-matrix](./conversion-matrix.md) — HTML → {ASCII, SVG, Mermaid, PNG} cells
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 - [modify-flow](./modify-flow.md) — edit flow for existing `.html` artifacts
+  > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
 - [validation-dispatcher](./validation-dispatcher.md) — unified validator output contract (HTML branch = `xmllint --html` or `tidy`)
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 
 ---
 
@@ -185,7 +179,8 @@ Exact versions, exact integrity hashes, NEVER `react@18` shorthand, NEVER `type=
 
 ## 5. AI-slop-avoid gate (12-item checklist)
 
-Every HTML emission passes this gate BEFORE save. Full list in `../../amw-design-principles/ai-slop-avoid.md` — this is the short version run as a grep:
+Every HTML emission passes this gate BEFORE save. Full list in [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — this is the short version run as a grep:
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 
 1. **No purple-blue gradient** on hero bg (TECH-19)
 2. **No `border-left: 4px solid`** card accents (TECH-20)

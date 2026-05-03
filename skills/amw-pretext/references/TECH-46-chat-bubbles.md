@@ -7,6 +7,16 @@ also-in: use-pretext/SKILL.md Recipe 2, SKILL-13, SKILL-15, pretext-skill-main/p
 
 # Tight multiline chat bubbles (Bubbles demo family)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** motion
 **Status:** stable
 
@@ -58,4 +68,5 @@ function getBubbleWidth(text, font, maxWidth) {
 
 - Related: TECH-25-shrinkwrap-width, TECH-70-streaming-ai-chat
 - API reference: [TECH-06-walk-line-ranges](TECH-06-walk-line-ranges.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

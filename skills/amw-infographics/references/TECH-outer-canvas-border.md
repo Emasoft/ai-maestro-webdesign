@@ -97,9 +97,12 @@ Useful when you want the border to persist above all content
 ## Cross-references
 
 - [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — where this pattern is common.
+  > What it does · When to use · Color system · Typography — two sub-variants · Standard game · Pixel / retro game · Standard component prevalence (across 25 pieces) · Visual properties · Signature layout pattern · Character card grid (signature pattern) · Light-mode sub-variant · CSS variables (standard) · CSS variables (pixel) · Reference template · Gotchas · Cross-references
 - [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — common archetype for game-event
+  > What it does · When to use · The shape · CSS implementation · The mixed-layout rule · Flow connector between sections · Gotchas · Cross-references
   posters that use this frame.
 - [TECH-bordered-section-component](TECH-bordered-section-component.md) — complementary interior
+  > What it does · When to use · Left-accent variant (most common) · Full-border variant · Header styles · HTML · Minimum border opacity · Gotchas · Cross-references
   borders.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

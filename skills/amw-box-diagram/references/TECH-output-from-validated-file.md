@@ -73,7 +73,9 @@ cat /tmp/diagram.txt                       # ← read back
 
 ## Cross-references
 
-- `../../amw-ascii-validator/references/TECH-validate-before-emit.md`
-- `../../amw-ascii-validator/references/TECH-fix-hint-actionable-format.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [TECH-validate-before-emit](../../amw-ascii-validator/references/TECH-validate-before-emit.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-fix-hint-actionable-format](../../amw-ascii-validator/references/TECH-fix-hint-actionable-format.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

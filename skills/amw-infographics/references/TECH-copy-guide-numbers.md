@@ -141,7 +141,10 @@ article. Cut it.
 ## Cross-references
 
 - [TECH-typography-scale](TECH-typography-scale.md) — size rules for hero numbers.
+  > What it does · The scale · Weight-based hierarchy · Letter-spacing rules · Tabular numerics (mandatory for numbers) · Summary rules · Body font size rules (the density signature) · Gotchas · Cross-references
 - [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — bullet list rules.
+  > What it does · Why · Rule 1 — Bullets, not paragraphs · Rule 2 — One fact per bullet · Rule 3 — Sentence fragments, not full sentences · Rule 4 — Inline token coloring · Rule 5 — Color-coded keyword highlighting (beyond tokens) · Badge / tag rules · Disclaimer (always include in footer) · Gotchas · Cross-references
 - [TECH-inline-token-coloring](TECH-inline-token-coloring.md) — `$TOKEN` span styling.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The two patterns · Pattern 1: Color-only · Pattern 2: Color + background tint · HTML · What gets colored · The 2-per-bullet cap · The `highlight` class vs `.accent` · The token-pill variant (standalone) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

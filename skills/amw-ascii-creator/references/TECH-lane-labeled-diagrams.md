@@ -73,6 +73,8 @@ render as L-elbows crossing rows.
 ## Cross-references
 
 - [TECH-render-mode-diagram](./TECH-render-mode-diagram.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-render-mode-layers](./TECH-render-mode-layers.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

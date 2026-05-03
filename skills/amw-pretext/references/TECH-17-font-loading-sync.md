@@ -7,6 +7,16 @@ also-in: SKILL-11.md, SKILL-14.md, SKILL-16.md, SKILL-21.md, SKILL-23.md, use-pr
 
 # Font-loading sync point before prepare()
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** measure
 **Status:** stable
 
@@ -53,4 +63,5 @@ onMount(() => {
 
 - Related: TECH-10-clear-cache, TECH-58-ssr-node-canvas
 - API reference: [TECH-01-prepare-basics](TECH-01-prepare-basics.md)
+  > What it does · When to use · How it works · Minimal example · Configuration options (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

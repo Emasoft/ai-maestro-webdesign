@@ -1,5 +1,18 @@
 # Spacing and rhythm — hard rules
 
+## Table of Contents
+
+- [I. 8pt grid system](#i-8pt-grid-system)
+- [II. Fibonacci spacing rhythm (large-scale)](#ii-fibonacci-spacing-rhythm-large-scale)
+- [III. Vertical rhythm (baseline grid)](#iii-vertical-rhythm-baseline-grid)
+- [IV. Hit targets (tappable areas)](#iv-hit-targets-tappable-areas)
+- [V. Alignment](#v-alignment)
+- [VI. Three principles of whitespace](#vi-three-principles-of-whitespace)
+- [VII. Border radius](#vii-border-radius)
+- [VIII. Shadow system](#viii-shadow-system)
+- [IX. Self-check](#ix-self-check)
+
+
 > Spacing is not "whatever feels comfortable." You **pick from a fixed set of numbers**. Any spacing value not in the table is forbidden.
 
 ---

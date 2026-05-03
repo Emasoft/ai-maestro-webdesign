@@ -1,5 +1,16 @@
 # Typography system — hard rules
 
+## Table of Contents
+
+- [I. Modular type scale](#i-modular-type-scale)
+- [II. Font-weight hierarchy (only 2–3 levels)](#ii-font-weight-hierarchy-only-23-levels)
+- [III. Line-height](#iii-line-height)
+- [IV. Letter-spacing](#iv-letter-spacing)
+- [V. Font-pairing rules](#v-font-pairing-rules)
+- [VI. Recommended font stacks (avoiding AI slop)](#vi-recommended-font-stacks-avoiding-ai-slop)
+- [VII. Fallback-stack syntax](#vii-fallback-stack-syntax)
+
+
 > Font size, weight, line-height, and letter-spacing are all numbers — there is no "aesthetic debate," only **scale selection**.
 
 ---

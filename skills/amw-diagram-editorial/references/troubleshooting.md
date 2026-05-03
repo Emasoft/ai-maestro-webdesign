@@ -45,7 +45,9 @@ Brand onboarding never ran, or the user's palette has drifted from what's in [st
 Fix:
 
 1. Re-run brand onboarding via `/amw-extract-style <url>` — it routes through `../amw-dev-browser/` (never raw WebFetch) and writes new tokens to [style-guide](style-guide.md) alongside this folder.
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 2. Or have the user paste hex values directly into [style-guide](style-guide.md):
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 
 ```markdown
 | Token      | Value     | Role                          |
@@ -119,6 +121,7 @@ Fix:
 
 - Ask the user to point at an interior page with text-heavy content (a blog post, docs page) — the palette there is usually what they actually use day-to-day.
 - Or have the user paste the 6 tokens directly into [style-guide](style-guide.md) and skip onboarding.
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 
 ### Diagram output opens blank
 

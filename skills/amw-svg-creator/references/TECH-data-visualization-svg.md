@@ -77,9 +77,12 @@ Key moves:
 
 ## Cross-references
 
-- `../../amw-infographics/references/TECH-svg-pie-chart.md` — full-pie
+- [TECH-svg-pie-chart](../../amw-infographics/references/TECH-svg-pie-chart.md) — full-pie
+  > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
   alternative for infographics.
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — gradient patterns for chart fills.
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
 - [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the shadow filter used above.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

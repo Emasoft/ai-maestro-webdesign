@@ -121,9 +121,14 @@ Produces `{name}.png`, `{name}.pdf`, `{name}.svg`.
 ## Cross-references
 
 - [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the iterative cousin.
+  > What it does · When to use · The flow · State file — `.infographic/{project}.json` · Preview server · The approval gate (A4) · State schema per component · Why verbatim HTML · Session resume · Gotchas · Cross-references
 - [TECH-guided-creative-mode](TECH-guided-creative-mode.md) — the 2-option middle path.
+  > What it does · When to use · The flow · The two-option presentation · Example presentation · User selection handling · Step 5 — one-shot build · Step 6 — Live Editor Block · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the quality check rules.
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — Step 4 details.
+  > What it does · The checklist · Structure · Spacing · Visual · Density · Playbook compliance (if applicable) · Data integrity · Export readiness · Common failure modes · The SaaS Landing Page · The Dashboard · The Slide Deck · The Component Demo · The Floating Islands · After checklist → run Reduction Pass · Gotchas · Cross-references
 - [TECH-export-pipeline](TECH-export-pipeline.md) — Step 5 details.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -135,8 +135,11 @@ names, token names:
 ## Cross-references
 
 - [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the full flow component.
+  > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — the archetype where arrows
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
   dominate.
 - [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular arrow pattern.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

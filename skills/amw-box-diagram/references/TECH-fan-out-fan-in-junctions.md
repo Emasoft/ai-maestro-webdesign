@@ -89,7 +89,9 @@ Full fan-out + fan-in (source: box-diagram-master/README.md lines 16-26):
 ## Cross-references
 
 - [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-python-helper-pattern](./TECH-python-helper-pattern.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../amw-box-diagram/examples/ci-cd-pipeline.txt`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -57,4 +57,5 @@ See How-it-works above — runnable as written for any async iterable of tokens.
 
 - Related: TECH-14-dom-free-height, TECH-30-layout-shift-prevention, TECH-46-chat-bubbles
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

@@ -58,6 +58,8 @@ echo '{"layers":{"levels":[{"label":"L","boxes":["A very long label that will no
 ## Cross-references
 
 - [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
-- `../../amw-ascii-validator/references/TECH-width-mismatch-rule.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-width-mismatch-rule](../../amw-ascii-validator/references/TECH-width-mismatch-rule.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

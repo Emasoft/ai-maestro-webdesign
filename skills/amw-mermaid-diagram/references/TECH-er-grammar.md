@@ -107,7 +107,9 @@ erDiagram
 ## Cross-references
 
 - [TECH-class-grammar](TECH-class-grammar.md) — for OOP object models (similar cardinality shape).
+  > What it does · When to use · Class definition · Visibility markers · Relationship arrows (UML) · Cardinality · Abstract / interface / generic · Minimal example · Gotchas · Cross-references
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — when the data model is better shown
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
   as a graph than a schema.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

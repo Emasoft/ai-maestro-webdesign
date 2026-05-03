@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-platform-component-tags — `[iOS]` `[Windows]` `[prod]` prefixes
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Tags platform-specific or environment-specific components with bracketed
@@ -65,7 +75,10 @@ Multiple tags allowed: `[iOS] [prod]` for a prod-only iOS component.
 ## Cross-references
 
 - [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-footnote-tags-deployment](./TECH-footnote-tags-deployment.md)
-- `../../amw-text-visual-cheatsheets/references/TECH-side-by-side-platforms.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-side-by-side-platforms](../../amw-text-visual-cheatsheets/references/TECH-side-by-side-platforms.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

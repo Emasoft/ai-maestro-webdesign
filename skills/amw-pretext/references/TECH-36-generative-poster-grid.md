@@ -64,4 +64,5 @@ CELLS.forEach((cell, i) => {
 
 - Related: TECH-04-layout-with-lines, TECH-66-masonry-grid
 - API reference: [TECH-04-layout-with-lines](TECH-04-layout-with-lines.md)
+  > What it does · When to use · How it works · Minimal example · Return types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

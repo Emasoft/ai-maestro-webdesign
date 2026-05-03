@@ -71,6 +71,8 @@ repeating the first column for continuation.
 ## Cross-references
 
 - [TECH-cell-spanning](./TECH-cell-spanning.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

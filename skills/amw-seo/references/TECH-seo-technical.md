@@ -85,4 +85,6 @@ curl -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html
 ## Cross-references
 
 - [TECH-seo-cwv](TECH-seo-cwv.md), [TECH-seo-structured-data](TECH-seo-structured-data.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
-- `../SKILL.md`
+  > [TECH-seo-content-quality.md] What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Field data vs lab data · Important context · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

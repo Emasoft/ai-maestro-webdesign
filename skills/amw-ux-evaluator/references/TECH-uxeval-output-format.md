@@ -102,5 +102,7 @@ Full evaluation of a pricing-page CTA:
 ## Cross-references
 
 - [TECH-uxeval-3-dimension-framework](TECH-uxeval-3-dimension-framework.md)
+  > What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-priority-rubric](TECH-uxeval-priority-rubric.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Assignment rule · Output structure · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

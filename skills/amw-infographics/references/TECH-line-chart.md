@@ -119,7 +119,10 @@ renders at 0×0 and you get an invisible chart.
 ## Cross-references
 
 - [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to choose line vs other.
+  > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
 - [TECH-radar-chart](TECH-radar-chart.md) — other Chart.js type.
+  > What it does · When to use · HTML · The signature options · Multi-character comparison — overlay datasets · Gotchas · Cross-references
 - [TECH-annotation-first](TECH-annotation-first.md) — why legend is disabled.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

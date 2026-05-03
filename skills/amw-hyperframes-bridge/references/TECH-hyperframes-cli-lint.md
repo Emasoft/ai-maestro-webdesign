@@ -23,7 +23,7 @@ Lints `index.html` and every file in `compositions/` against the hyperframes sch
 
 ## When to use
 
-After every edit. First gate in the bridge's pre-render sequence (`lint → validate → inspect → render`). The linter is the cheapest, fastest gate — running it every few edits catches errors while they're still small. Upstream skills also reference `preview` as a developer-loop step; the bridge intentionally drops `preview` for unattended Phase B pipelines (see `../SKILL.md` gate-sequence note).
+After every edit. First gate in the bridge's pre-render sequence (`lint → validate → inspect → render`). The linter is the cheapest, fastest gate — running it every few edits catches errors while they're still small. Upstream skills also reference `preview` as a developer-loop step; the bridge intentionally drops `preview` for unattended Phase B pipelines (see [SKILL](../SKILL.md) gate-sequence note).
 
 ## How it works
 
@@ -77,5 +77,9 @@ $ npx hyperframes lint
 ## Cross-references
 
 - [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md), [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md)
+  > [TECH-hyperframes-cli-render.md] What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
+  > [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Studio features · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md) — rules the linter enforces
-- `../SKILL.md`
+  > What it does · When to use · How it works · The twelve rules · Determinism clause · Animation scope clause · Animation conflict clause · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

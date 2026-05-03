@@ -55,4 +55,5 @@ const prepared = prepare('新功能上线！使用请联系客服。', '16px "No
 
 - Related: TECH-11-set-locale, TECH-32-multilingual-bidi
 - API reference: [TECH-01-prepare-basics](TECH-01-prepare-basics.md)
+  > What it does · When to use · How it works · Minimal example · Configuration options (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

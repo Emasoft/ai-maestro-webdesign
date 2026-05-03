@@ -125,7 +125,10 @@ notes that the PDF can be dragged directly into Figma as a fallback.
 ## Cross-references
 
 - [TECH-preview-server](TECH-preview-server.md) — the companion preview server.
+  > What it does · When to use · Start the server · User instruction · How auto-refresh works · Workflow during iteration · Preview file structure · Full design fidelity in preview · Gotchas · Cross-references
 - [TECH-platform-sizing](TECH-platform-sizing.md) — the per-platform width table.
+  > What it does · The size table · Safe zones per platform · CSS — fixed-aspect platforms · Font size scaling by platform · Density by format · Watermark / attribution per platform · Export commands · Gotchas · Cross-references
 - [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — run BEFORE export.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The checklist · Structure · Spacing · Visual · Density · Playbook compliance (if applicable) · Data integrity · Export readiness · Common failure modes · The SaaS Landing Page · The Dashboard · The Slide Deck · The Component Demo · The Floating Islands · After checklist → run Reduction Pass · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -78,6 +78,8 @@ Print the summary to chat. The pipeline does not advance until the user confirms
 ## Cross-references
 
 - [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md)
-- `../../amw-design-extract/SKILL.md` — the designlang primitive used for capture
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-design-extract/SKILL.md) — the designlang primitive used for capture
 - [TECH-hyperframes-capture-overview](TECH-hyperframes-capture-overview.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Video type reference · Format presets · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

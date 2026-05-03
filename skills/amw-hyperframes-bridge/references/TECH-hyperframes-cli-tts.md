@@ -105,5 +105,7 @@ npx hyperframes tts scripts/narration.txt --voice am_michael --output narration-
 ## Cross-references
 
 - [TECH-hyperframes-cli-transcribe](TECH-hyperframes-cli-transcribe.md) — transcribe the TTS output for timing
+  > What it does · When to use · How it works · Models · Output schema · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md) — full VO + timing step
-- `../SKILL.md`
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

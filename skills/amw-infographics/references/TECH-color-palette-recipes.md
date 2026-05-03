@@ -151,8 +151,11 @@ Use: DeFi reports, investment summaries, fintech.
 ## Cross-references
 
 - [TECH-signature-palette](TECH-signature-palette.md) — the default when no recipe is picked.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-glow-system](TECH-glow-system.md) — the glow layer on top of these palettes.
+  > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — when the content type
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
   dictates the palette.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

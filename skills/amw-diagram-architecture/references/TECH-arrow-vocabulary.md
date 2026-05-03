@@ -71,7 +71,10 @@ Order ──── Invoice (association)
 ## Cross-references
 
 - [TECH-style-presets](./TECH-style-presets.md)
-- `../../amw-box-diagram/references/TECH-arrow-head-variants.md`
-- `../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-arrow-head-variants](../../amw-box-diagram/references/TECH-arrow-head-variants.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-async-arrow-vocabulary](../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

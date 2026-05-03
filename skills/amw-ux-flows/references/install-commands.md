@@ -1,5 +1,12 @@
 # Install Commands
 
+## Table of Contents
+
+- [Auxiliary Skills](#auxiliary-skills)
+- [Figma MCP (only if user requests Figma)](#figma-mcp-only-if-user-requests-figma)
+- [Browser Preview (plugin-standard)](#browser-preview-plugin-standard)
+
+
 Tools, skills, and MCPs that ux-flows can propose to the user.
 
 ## Auxiliary Skills

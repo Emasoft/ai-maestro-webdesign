@@ -124,8 +124,10 @@ Y positions spread evenly between 40 and 260.
 ## Cross-references
 
 - [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to pick slope over line
+  > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
   chart.
 - [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — alternative for single-period
+  > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
   comparisons.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

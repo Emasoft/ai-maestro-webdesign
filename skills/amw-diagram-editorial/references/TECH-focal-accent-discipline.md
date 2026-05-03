@@ -104,8 +104,12 @@ Reader sees 5 equally-important components; the diagram has no story.
 
 ## Cross-references
 
-- `../SKILL.md` — non-negotiables list (this is item 4)
+- [SKILL](../SKILL.md) — non-negotiables list (this is item 4)
 - [design-system](design-system.md) — semantic tokens (`accent`, `accent-fg`, `paper-2`)
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [TECH-density-4-of-10](TECH-density-4-of-10.md) — the companion rule on diagram density
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-four-px-grid-snap](TECH-four-px-grid-snap.md) — the other structural hard rule
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [troubleshooting](troubleshooting.md) — diagnose "looks AI-generated" / too-busy diagrams
+  > Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill

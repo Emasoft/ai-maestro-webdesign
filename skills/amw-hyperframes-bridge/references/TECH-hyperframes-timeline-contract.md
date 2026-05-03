@@ -122,5 +122,9 @@ tl.set('#clip-from-scene-3', { opacity: 0 }, 15);
 ## Cross-references
 
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md)
+  > [TECH-hyperframes-layout-before-animation.md] What it does · When to use · How it works · Why this matters · Minimal example · Wrong pattern (hardcoded dimensions + absolute positioning) · Layered + temporal intent · Gotchas · Cross-references
+  > [TECH-hyperframes-data-attributes.md] What it does · When to use · How it works · Clip attributes (all clips) · Composition-level attributes (on the root `data-composition-id`) · Relative timing · Banned / deprecated attributes · Minimal example · Sub-composition wrapping · Per-instance variable injection via `data-variable-values` · Gotchas · Cross-references
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 - [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · The twelve rules · Determinism clause · Animation scope clause · Animation conflict clause · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

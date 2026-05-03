@@ -111,5 +111,8 @@ hyperframes add grain-overlay
 ## Cross-references
 
 - [TECH-hyperframes-registry-add](TECH-hyperframes-registry-add.md), [TECH-hyperframes-registry-blocks](TECH-hyperframes-registry-blocks.md)
+  > [TECH-hyperframes-registry-blocks.md] What it does · When to use · How it works · Include pattern · Required attributes on the include · Verification · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Blocks vs components · Paths (configurable in `hyperframes.json`) · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

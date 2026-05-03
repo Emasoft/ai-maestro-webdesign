@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-flowchart-paren-bracket-glyphs — `(start)` `[action]` `{decision?}`
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Uses lightweight ASCII punctuation as node-shape markers so a workflow
@@ -59,7 +69,10 @@ yes   no
 ## Cross-references
 
 - [TECH-timeline-with-anchors](./TECH-timeline-with-anchors.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-swimlane-parallel-tracks](./TECH-swimlane-parallel-tracks.md)
-- `../../amw-ascii-creator/references/TECH-render-mode-diagram.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-render-mode-diagram](../../amw-ascii-creator/references/TECH-render-mode-diagram.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

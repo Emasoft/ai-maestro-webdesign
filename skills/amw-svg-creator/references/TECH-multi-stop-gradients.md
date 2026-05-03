@@ -82,9 +82,12 @@ gradients and filters.
 ## Cross-references
 
 - [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — the theory behind the 5-stop shape.
+  > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
 - [TECH-paint-order-and-spread-method](TECH-paint-order-and-spread-method.md) — `spreadMethod="reflect"`
+  > What it does · `paint-order="stroke fill"` · `spreadMethod` on gradients · Example — brushed metal with `reflect` · `vector-effect="non-scaling-stroke"` · `pathLength="1"` · `gradientTransform` · Gotchas · Cross-references
   for metallic gradients.
 - [TECH-colored-shadows](TECH-colored-shadows.md) — shadow stops should be dark blue /
+  > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
   purple / teal, not pure black.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

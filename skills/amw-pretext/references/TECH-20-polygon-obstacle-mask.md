@@ -69,4 +69,5 @@ for (const article of articles) {
 
 - Related: TECH-19-shaped-container, TECH-38-text-around-floated-image, TECH-44-editorial-engine
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

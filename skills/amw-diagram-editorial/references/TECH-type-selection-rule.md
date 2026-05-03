@@ -116,11 +116,14 @@ Agent: A single-shape diagram is a sentence. Instead:
 
 ## Cross-references
 
-- `../SKILL.md` — the orchestrator; this rule runs at the top of every
+- [SKILL](../SKILL.md) — the orchestrator; this rule runs at the top of every
   request
 - Each of the 13 `<TECH-type-*.md>` files in this same directory carries its own "when to use"
   stricture that narrows further
 - [TECH-density-4-of-10](TECH-density-4-of-10.md) — density rule; a subject that needs 15+
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   nodes should split, not pick a denser type
-- `../../amw-design-principles/ai-slop-avoid.md` — Default-to-deletion is
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — Default-to-deletion is
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
   codified there

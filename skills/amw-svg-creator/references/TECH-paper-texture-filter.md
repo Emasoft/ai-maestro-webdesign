@@ -80,8 +80,11 @@ into the mid-gray range before blending.
 ## Cross-references
 
 - [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the base noise primitive.
+  > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
 - [TECH-salt-pepper-texture](TECH-salt-pepper-texture.md) — stronger cousin for illustrations.
+  > What it does · The filter · When to use · Subtler salt — use `soft-light` instead of `overlay` · Usage pattern · Gotchas · Cross-references
 - [TECH-fe-component-transfer-color-grading](TECH-fe-component-transfer-color-grading.md) — the color-grading
+  > What it does · Increase contrast · Warm color shift (sunset) · Cool color shift (moonlit) · Posterize (reduce color steps) · Duotone (two-color map) · Gamma curve (lighten midtones) · Gotchas · Cross-references
   primitive this filter uses.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

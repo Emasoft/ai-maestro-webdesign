@@ -158,7 +158,10 @@ Short: "Not financial advice. DYOR."
 ## Cross-references
 
 - [TECH-inline-token-coloring](TECH-inline-token-coloring.md) — the token-coloring implementation.
+  > What it does · The two patterns · Pattern 1: Color-only · Pattern 2: Color + background tint · HTML · What gets colored · The 2-per-bullet cap · The `highlight` class vs `.accent` · The token-pill variant (standalone) · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the "no paragraphs" rule.
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — the container pattern.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · CSS · HTML · The ▸ bullet convention · 2-col grid pattern · One fact per bullet (mandatory) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -97,6 +97,10 @@ Resulting HTML:
 ## Cross-references
 
 - [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md), [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md)
-- `../../amw-design-principles/typography-system.md` — full weight coverage rule
-- `../../amw-design-principles/ai-slop-avoid.md` — Inter/Roboto filter
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Top 10 distinctive rules — broken out as individual TECH files · Cross-references
+- [typography-system](../../amw-design-principles/typography-system.md) — full weight coverage rule
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — Inter/Roboto filter
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [SKILL](../SKILL.md)

@@ -26,7 +26,7 @@ decorative background elements inside a technical SVG (e.g. a star
 field behind a space-themed logo, a fog overlay on a dark diagram
 background, a rain-stripe texture). They are **out of scope** if the
 goal is building a full landscape scene or character environment —
-that territory is forbidden by `../SKILL.md` (Scope — what this skill
+that territory is forbidden by [SKILL](../SKILL.md) (Scope — what this skill
 CANNOT produce).
 
 ## What it does
@@ -124,8 +124,11 @@ Overlapping ellipses with soft blur filter.
 ## Cross-references
 
 - [TECH-landscape-composition](TECH-landscape-composition.md) — the scene these effects live in.
+  > What it does · The layer stack (back to front) · The template · The atmospheric perspective rule · Gotchas · Cross-references
 - [TECH-css-smil-animation](TECH-css-smil-animation.md) — CSS + SMIL animation for twinkling /
+  > What it does · The `transform-box` rule · Spinner (CSS) · Line drawing reveal (pathLength + stroke-dasharray) · Staggered entrance · SMIL animation (works in `<img>` tags) · Attribute animation · Transform animation · Motion along a path · Sequential timing via `begin` · Gotchas · Cross-references
   moving effects.
 - [TECH-reduced-motion](TECH-reduced-motion.md) — accessibility override.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The minimum implementation · Why `0.01ms` instead of `0s` · SMIL equivalent · When it's OK to ignore · When it's partially OK · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

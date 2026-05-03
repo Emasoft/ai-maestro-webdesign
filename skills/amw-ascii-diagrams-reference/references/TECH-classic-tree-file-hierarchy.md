@@ -74,5 +74,6 @@ high-value cue the reader's eye uses for depth tracking.
 ## Cross-references
 
 - [trees](./trees.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

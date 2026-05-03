@@ -58,4 +58,5 @@ Render each letter as an SVG `<path>` extracted via opentype.js `glyph.getPath()
 
 - Related: TECH-35-text-on-path, TECH-43-glyph-morphing
 - API reference: [TECH-02-prepare-with-segments](TECH-02-prepare-with-segments.md)
+  > What it does · When to use · How it works · Minimal example · TypeScript types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

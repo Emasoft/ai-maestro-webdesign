@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-metric-delta-inline — `+12% DAU` / `-180ms p99` signed deltas
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Embeds quantitative deltas inline in retro bullets using signed percent
@@ -63,7 +73,10 @@ p99 latency -180ms               ← absolute improvement
 ## Cross-references
 
 - [TECH-owner-action-items](./TECH-owner-action-items.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-milestone-timeline](./TECH-milestone-timeline.md)
-- `../../amw-text-visual-state/references/TECH-metrics-per-transition.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-metrics-per-transition](../../amw-text-visual-state/references/TECH-metrics-per-transition.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

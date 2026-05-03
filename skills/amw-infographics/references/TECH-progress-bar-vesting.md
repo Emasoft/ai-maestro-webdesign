@@ -136,7 +136,10 @@ visually "fills toward" the goal.
 ## Cross-references
 
 - [TECH-bar-chart-css](TECH-bar-chart-css.md) — simpler horizontal bars.
+  > What it does · HTML · CSS · The 3-column grid layout · Animation — CSS transition · Progress bars — single metric variant · Gotchas · Cross-references
 - [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — 24% of airdrop guides use this.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 17 pieces) · Visual properties · Signature layout pattern · The amber+blue value split (signature) · The claim-steps horizontal flow · CSS variables · Reference template · Archetype preference · Gotchas · Cross-references
 - [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — 50% of token-economics use this.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

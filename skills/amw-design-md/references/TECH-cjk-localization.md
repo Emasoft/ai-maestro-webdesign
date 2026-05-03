@@ -9,6 +9,25 @@ extracted-from: 25 JP DESIGN.md files (awesome-design-md-jp), 6 KO DESIGN.md fil
 
 # TECH: CJK (Chinese / Japanese / Korean) localization for web design
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [1. Typography (per language)](#1-typography-per-language)
+  - [2. Layout](#2-layout)
+  - [3. Punctuation + line breaking](#3-punctuation-line-breaking)
+  - [4. Cultural symbolism](#4-cultural-symbolism)
+  - [5. Microcopy patterns](#5-microcopy-patterns)
+  - [6. Locale machinery](#6-locale-machinery)
+  - [7. SEO impacts](#7-seo-impacts)
+  - [8. Performance](#8-performance)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+- [Source attribution](#source-attribution)
+
+
 ## What it does
 
 Provides a single reference for localizing webpages into Japanese, Chinese
@@ -1263,17 +1282,18 @@ developers:
 
 ## Cross-references
 
-- `../SKILL.md` — design-md skill orchestrator
-- `../../../agents/amw-multilanguage-copywriter-agent.md` — handles JP keigo levels,
+- [SKILL](../SKILL.md) — design-md skill orchestrator
+- [amw-multilanguage-copywriter-agent](../../../agents/amw-multilanguage-copywriter-agent.md) — handles JP keigo levels,
   KO speech levels, CN politeness register; copy translation
-- `../../amw-design-principles/typography-system.md` —
+- [typography-system](../../amw-design-principles/typography-system.md) —
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
   generic typography rules; this TECH file extends with CJK-specific values
-- `../../amw-seo/SKILL.md` — for `hreflang`,
+- [SKILL](../../amw-seo/SKILL.md) — for `hreflang`,
   schema.org `inLanguage`, title-length impacts (referenced via the SEO
   skill's references/ folder)
-- `../../../agents/amw-form-designer-agent.md` — for CJK address forms with
+- [amw-form-designer-agent](../../../agents/amw-form-designer-agent.md) — for CJK address forms with
   big-endian order, postal-code autoload
-- `../../../agents/amw-accessibility-auditor-agent.md` — for CJK screen-reader
+- [amw-accessibility-auditor-agent](../../../agents/amw-accessibility-auditor-agent.md) — for CJK screen-reader
   pronunciation requirements (`lang` attribute is mandatory accessibility
   primitive)
 

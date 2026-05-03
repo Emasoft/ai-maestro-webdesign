@@ -59,8 +59,11 @@ Output directory contains: `stripe-com-design-language.md`, `stripe-com-preview.
 
 ## Cross-references
 
-- `../SKILL.md` — design-extract entry point
+- [SKILL](../SKILL.md) — design-extract entry point
 - `../../../bin/amw-designlang-wrapper.sh` — wrapper that normalises the output path
 - [TECH-designlang-full-mode](TECH-designlang-full-mode.md) — everything-at-once (`--full`) variant
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-dark-mode](TECH-designlang-dark-mode.md), [TECH-designlang-responsive](TECH-designlang-responsive.md), [TECH-designlang-interactions](TECH-designlang-interactions.md), [TECH-designlang-screenshots](TECH-designlang-screenshots.md) — individual capture flags
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-score](TECH-designlang-score.md), [TECH-designlang-diff](TECH-designlang-diff.md), [TECH-designlang-brands](TECH-designlang-brands.md) — evaluation subcommands
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references

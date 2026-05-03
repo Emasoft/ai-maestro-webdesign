@@ -68,4 +68,5 @@ function polyChord(yOffset, polygon) { /* compute horizontal span of polygon at 
 
 - Related: TECH-05-layout-next-line, TECH-20-polygon-obstacle-mask, TECH-43-calligram-shapes
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

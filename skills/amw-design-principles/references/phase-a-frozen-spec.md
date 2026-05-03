@@ -1,7 +1,6 @@
 ## Table of Contents
 
 - [Schema](#schema)
-  - [Field reference](#field-reference)
 - [Producers](#producers)
 - [Consumers](#consumers)
 - [Mutability](#mutability)
@@ -199,7 +198,10 @@ bash bin/amw-freeze-phase-a.sh \
 ## Cross-references
 
 - [agent-interaction-patterns](./agent-interaction-patterns.md) — data hand-off table; every row maps to a key in the frozen spec.
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 - [sub-agent-return-contract](./sub-agent-return-contract.md) — the YAML headers Phase A sub-agents return; main-agent harvests `report_path` / `artifact_path` values from those headers when assembling the spec.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 - [two-mode-workflow](./two-mode-workflow.md) — the Phase A satisfaction gate and the Phase A → Phase B transition.
+  > Sub-agent delegation (Main-agent mode only) · Naming convention · One-way delegation rule · Delegation timing · Full sub-agent roster (19 amw-* agents across four tiers) · Cross-references · Mode Detection · Command mode signals (fast path — dispatch immediately) · Main-agent mode signals (requirements path — enter Phase A first) · Tie-breaking rule · Phase A — Iterative Low-Fi Loop · Inputs · Low-fi artifact types (pick the cheapest that fits) · Iteration rules · RDD (Requirements Design Document) — auto-pass Phase A · Satisfaction gate (hard stop — non-skippable) · What Phase A does NOT include · Phase B — Implementation and Spawning · Transition protocol · Sub-agent spawning rules · Non-conversation rule · Job-completion report · Scenario Testing via dev-browser (mandatory in Phase B) · What a scenario test covers · dev-browser is the ONLY input-automation primitive · Scenario test output format · Anti-Patterns · Skipping Phase A when requirements are vague · Starting Phase B before explicit approval · Spawning sub-agents during Phase A · …(+3)
 - `../../../bin/amw-freeze-phase-a.sh` — the producer script (only main-agent invokes it).
-- `../../../agents/ai-maestro-webdesign-main-agent.md` §15 — the orchestration doctrine that mandates Phase A.5 between satisfaction gate and Phase B fan-out.
+- [ai-maestro-webdesign-main-agent](../../../agents/ai-maestro-webdesign-main-agent.md) §15 — the orchestration doctrine that mandates Phase A.5 between satisfaction gate and Phase B fan-out.

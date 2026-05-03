@@ -7,6 +7,18 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes/SKILL.md
 
 # TECH: Step 6 — Build Compositions
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Per-composition workflow](#per-composition-workflow)
+  - [Gate](#gate)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Builds the actual HTML compositions, one per beat (or per scene grouping). Each composition reads DESIGN.md for identity, STORYBOARD.md for direction, transcript.json for timing. After each composition is written, run self-review for layout + asset placement + animation quality.
@@ -99,5 +111,12 @@ Composition skeleton for Beat 1 (hook):
 ## Cross-references
 
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md), [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md), [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md)
+  > [TECH-hyperframes-layout-before-animation.md] What it does · When to use · How it works · Why this matters · Minimal example · Wrong pattern (hardcoded dimensions + absolute positioning) · Layered + temporal intent · Gotchas · Cross-references
+  > [TECH-hyperframes-data-attributes.md] What it does · When to use · How it works · Clip attributes (all clips) · Composition-level attributes (on the root `data-composition-id`) · Relative timing · Banned / deprecated attributes · Minimal example · Sub-composition wrapping · Per-instance variable injection via `data-variable-values` · Gotchas · Cross-references
+  > [TECH-hyperframes-timeline-contract.md] What it does · When to use · How it works · Required pattern · Banned patterns · Allowed GSAP properties · Minimal example · Use `tl.set()` for later-scene clips · Gotchas · Cross-references
+  > [TECH-hyperframes-scene-transitions.md] What it does · When to use · How it works · Rule 1 — ALWAYS use transitions between scenes · Rule 2 — ALWAYS use entrance animations on every scene · Rule 3 — NEVER use exit animations except on the final scene · Rule 4 — Final scene only may fade elements out · Wrong pattern · Right pattern · Minimal example · Gotchas · Cross-references
+  > [TECH-hyperframes-non-negotiables.md] What it does · When to use · How it works · The twelve rules · Determinism clause · Animation scope clause · Animation conflict clause · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-7-validate](TECH-hyperframes-capture-step-7-validate.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Validate sequence · Gate · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

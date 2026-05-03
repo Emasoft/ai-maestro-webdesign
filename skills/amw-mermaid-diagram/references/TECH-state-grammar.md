@@ -7,6 +7,20 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/SKILL.md
 
 # State diagram grammar (`stateDiagram-v2`)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Basic syntax](#basic-syntax)
+- [Composite states — nested state machines](#composite-states-nested-state-machines)
+- [Choice pseudo-state — conditional branching](#choice-pseudo-state-conditional-branching)
+- [Concurrency — parallel regions](#concurrency-parallel-regions)
+- [Notes](#notes)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Authors finite-state machines and state-transition graphs. Supports
@@ -111,6 +125,8 @@ stateDiagram-v2
 ## Cross-references
 
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-state flows.
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — for time-ordered interactions.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

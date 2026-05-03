@@ -7,6 +7,19 @@ also-in: globalCC skill `pwa-development` for library-specific deep dive
 
 # Progressive Web Apps — installable web artifacts
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Web App Manifest (`manifest.json`)](#web-app-manifest-manifestjson)
+- [Service worker (`sw.js`)](#service-worker-swjs)
+- [Install-banner UX](#install-banner-ux)
+- [Apple-touch-icon and platform metadata](#apple-touch-icon-and-platform-metadata)
+- [Required icon set](#required-icon-set)
+- [Lighthouse PWA audit thresholds](#lighthouse-pwa-audit-thresholds)
+- [What the agent MUST do](#what-the-agent-must-do)
+- [What the agent MUST NOT do](#what-the-agent-must-not-do)
+
+
 ## What it does
 
 Augments the produced HTML wireframe with the four PWA primitives every

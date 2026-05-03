@@ -80,5 +80,9 @@ Narrative: impressions up faster than clicks (CTR drop) suggests ranking for que
 ## Cross-references
 
 - [TECH-seo-relative-importance](TECH-seo-relative-importance.md)
+  > What it does · When to use · How it works · Approximate weight hierarchy · The operational rule · Remediation priority · Minimal example · Gotchas · Cross-references
 - [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-cwv](TECH-seo-cwv.md), [TECH-seo-technical](TECH-seo-technical.md)
-- `../SKILL.md`
+  > [TECH-seo-cwv.md] What it does · When to use · How it works · Field data vs lab data · Important context · Minimal example · Gotchas · Cross-references
+  > [TECH-seo-technical.md] What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

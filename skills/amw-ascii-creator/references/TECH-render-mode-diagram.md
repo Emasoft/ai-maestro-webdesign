@@ -81,7 +81,10 @@ vertical; same-row as horizontal.
 ## Cross-references
 
 - [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-lane-labeled-diagrams](./TECH-lane-labeled-diagrams.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-multi-line-box-body](./TECH-multi-line-box-body.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

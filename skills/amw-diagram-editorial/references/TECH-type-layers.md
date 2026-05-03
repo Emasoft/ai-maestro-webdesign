@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/form
 
 # TECH-type-layers
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Emits a **layer-stack diagram** — horizontal full-width bands stacked
@@ -94,8 +104,10 @@ colour-coded per layer if the diagram doubles as a legend.
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-nested](TECH-type-nested.md) — for containment-style hierarchy
-- `../../amw-diagram-architecture/SKILL.md` — for multi-layer architecture with
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-diagram-architecture/SKILL.md) — for multi-layer architecture with
   inter-layer edges and auto-layout
 - [design-system](design-system.md) — sublabel typography (mono, muted, right-aligned)
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

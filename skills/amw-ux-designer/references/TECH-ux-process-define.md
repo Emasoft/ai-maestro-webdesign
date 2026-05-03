@@ -72,6 +72,9 @@ How-Might-We:
 ## Cross-references
 
 - [TECH-ux-process-discover](TECH-ux-process-discover.md) — upstream (Phase 1)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-ideate](TECH-ux-process-ideate.md) — downstream (Phase 3)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-persona-template](TECH-ux-persona-template.md) — detail on persona creation
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Good persona · Bad persona · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

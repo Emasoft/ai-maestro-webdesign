@@ -61,5 +61,7 @@ npx designlang diff https://vercel.com ./baselines/vercel-2025-01.design-tokens.
 ## Cross-references
 
 - [TECH-designlang-score](TECH-designlang-score.md) — score both sides before diffing
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-brands](TECH-designlang-brands.md) — N-way version
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

@@ -57,4 +57,5 @@ Animate the CONTOUR of one letter morphing into another (A → Z) using opentype
 
 - Related: TECH-35-text-on-path, TECH-52-glyph-path-art
 - API reference: [TECH-02-prepare-with-segments](TECH-02-prepare-with-segments.md)
+  > What it does · When to use · How it works · Minimal example · TypeScript types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

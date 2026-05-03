@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Hyperframes Bridge
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **External dependency wrapper.** The actual Hyperframes monorepo lives at `../../external/hyperframes/` (cloned by `/amw-init` step 6 if the user opts in, OR by this skill on first render as a fallback). This skill documents the shell-out pattern; it does NOT vendor the monorepo.
 
 ## Overview
@@ -101,6 +101,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    npx hyperframes inspect --json  # abort if any errors (non-zero exit with --strict)
    ```
    See [TECH-hyperframes-cli-lint](./references/TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-validate](./references/TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](./references/TECH-hyperframes-cli-inspect.md).
+   > [TECH-hyperframes-cli-inspect.md] What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
 
    > **Gate-sequence note:** The bridge's sequence (`lint → validate → inspect → render`) intentionally extends upstream's (`lint → inspect → preview → render`, see `external/hyperframes/skills/hyperframes-cli/SKILL.md:14-17`) by adding `validate` for unattended Phase B pipelines and dropping `preview` (a developer-loop primitive).
 
@@ -110,6 +111,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    npx hyperframes render --output <abs-mp4-path>
    ```
    Additional flags as needed (`--fps`, `--quality`, `--format`, `--hdr`, etc.) — see [TECH-hyperframes-cli-render](./references/TECH-hyperframes-cli-render.md).
+   > [TECH-hyperframes-cli-render.md] What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
 
 5. **Return the MP4 path** to the caller. If the project dir was a temp scaffold (`html_scene_path` path), remove it after the report is written.
 
@@ -133,9 +135,11 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `hyperframes-bridge` is the user asking about?
   - **hyperframes** (27 techniques)
     - [TECH-hyperframes-capture-overview](./references/TECH-hyperframes-capture-overview.md) — Website-to-Hyperframes capture — pipeline overview
+      > What it does · When to use · How it works · Video type reference · Format presets · Minimal example · Gotchas · Cross-references
     - [TECH-hyperframes-capture-step-1-capture](./references/TECH-hyperframes-capture-step-1-capture.md) — Step 1 — Capture & Understand
     - [TECH-hyperframes-capture-step-2-design](./references/TECH-hyperframes-capture-step-2-design.md) — Step 2 — Write DESIGN.md
     - [TECH-hyperframes-capture-step-3-script](./references/TECH-hyperframes-capture-step-3-script.md) — Step 3 — Write SCRIPT.md
+      > What it does · When to use · How it works · Narration style rules · Format · Gate · Minimal example · Gotchas · Cross-references
     - [TECH-hyperframes-capture-step-4-storyboard](./references/TECH-hyperframes-capture-step-4-storyboard.md) — Step 4 — Write STORYBOARD.md
     - [TECH-hyperframes-capture-step-5-vo](./references/TECH-hyperframes-capture-step-5-vo.md) — Step 5 — Generate VO + map timing to beats
     - (see `## References` for the remaining 21 in this group)
@@ -145,6 +149,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
 
 - **[./references/TECH-hyperframes-capture-overview.md](./references/TECH-hyperframes-capture-overview.md)**
+  > What it does · When to use · How it works · Video type reference · Format presets · Minimal example · Gotchas · Cross-references
   - Description: Website-to-Hyperframes capture — pipeline overview
   - TOC:
     - What it does
@@ -221,6 +226,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-capture-step-6-build.md](./references/TECH-hyperframes-capture-step-6-build.md)**
+  > What it does · When to use · How it works · Per-composition workflow · Gate · Minimal example · Gotchas · Cross-references
   - Description: Step 6 — Build Compositions
   - TOC:
     - What it does
@@ -230,6 +236,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-capture-step-7-validate.md](./references/TECH-hyperframes-capture-step-7-validate.md)**
+  > What it does · When to use · How it works · Validate sequence · Gate · Minimal example · Gotchas · Cross-references
   - Description: Step 7 — Validate & Deliver
   - TOC:
     - What it does
@@ -244,6 +251,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-doctor.md](./references/TECH-hyperframes-cli-doctor.md)**
+  > What it does · When to use · How it works · What `doctor` checks · Minimal example · Common failure modes surfaced by `doctor` · Gotchas · Cross-references
   - Description: `hyperframes doctor` + environment utilities
   - TOC:
     - What it does
@@ -253,6 +261,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-init.md](./references/TECH-hyperframes-cli-init.md)**
+  > What it does · When to use · How it works · Registry templates (`--example`) · Side effects · Minimal example · Gotchas · Cross-references
   - Description: `hyperframes init` — scaffold a project
   - TOC:
     - What it does
@@ -280,6 +289,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-render.md](./references/TECH-hyperframes-cli-render.md)**
+  > What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
   - Description: `hyperframes render` — capture composition to MP4 / WebM
   - TOC:
     - What it does
@@ -289,6 +299,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-transcribe.md](./references/TECH-hyperframes-cli-transcribe.md)**
+  > What it does · When to use · How it works · Models · Output schema · Minimal example · Gotchas · Cross-references
   - Description: `hyperframes transcribe` — audio → word-level timestamps
   - TOC:
     - What it does
@@ -298,6 +309,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-tts.md](./references/TECH-hyperframes-cli-tts.md)**
+  > What it does · When to use · How it works · Flags · Voice naming scheme · Speed tuning · Minimal example · Gotchas · Cross-references
   - Description: `hyperframes tts` — text-to-speech via Kokoro-82M
   - TOC:
     - What it does
@@ -307,6 +319,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-validate.md](./references/TECH-hyperframes-cli-validate.md)**
+  > What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
   - Description: `hyperframes validate` — WCAG contrast audit
   - TOC:
     - What it does
@@ -316,6 +329,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-inspect.md](./references/TECH-hyperframes-cli-inspect.md)**
+  > What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
   - Description: `hyperframes inspect` — visual layout audit
   - TOC:
     - What it does
@@ -335,6 +349,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-snapshot.md](./references/TECH-hyperframes-cli-snapshot.md)**
+  > What it does · When to use · How it works · Flags · Output · Minimal example · Gotchas · Cross-references
   - Description: `hyperframes snapshot` — capture key frames as PNG for visual verification
   - TOC:
     - What it does
@@ -344,6 +359,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-cli-capture.md](./references/TECH-hyperframes-cli-capture.md)**
+  > What it does · When to use · How it works · Flags · Minimal example · Gotchas · Out of scope for the bridge · Cross-references
   - Description: `hyperframes capture` — capture a website as editable Hyperframes components
   - TOC:
     - What it does
@@ -353,6 +369,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-composition-core.md](./references/TECH-hyperframes-composition-core.md)**
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
   - Description: Composition authoring — core model
   - TOC:
     - What it does
@@ -361,6 +378,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-data-attributes.md](./references/TECH-hyperframes-data-attributes.md)**
+  > What it does · When to use · How it works · Clip attributes (all clips) · Composition-level attributes (on the root `data-composition-id`) · Relative timing · Banned / deprecated attributes · Minimal example · Sub-composition wrapping · Per-instance variable injection via `data-variable-values` · Gotchas · Cross-references
   - Description: Data attributes — clip + composition schema
   - TOC:
     - What it does
@@ -370,6 +388,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-identity-gate.md](./references/TECH-hyperframes-identity-gate.md)**
+  > What it does · When to use · How it works · DESIGN.md exists in the project? · visual-style.md exists? · User named a style (e.g. "Swiss Pulse", "dark and techy", "luxury brand")? · None of the above? · Minimal example · Gotchas · Cross-references
   - Description: Visual Identity Gate (HARD-GATE)
   - TOC:
     - What it does
@@ -383,6 +402,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-layout-before-animation.md](./references/TECH-hyperframes-layout-before-animation.md)**
+  > What it does · When to use · How it works · Why this matters · Minimal example · Wrong pattern (hardcoded dimensions + absolute positioning) · Layered + temporal intent · Gotchas · Cross-references
   - Description: Layout Before Animation
   - TOC:
     - What it does
@@ -392,6 +412,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-non-negotiables.md](./references/TECH-hyperframes-non-negotiables.md)**
+  > What it does · When to use · How it works · The twelve rules · Determinism clause · Animation scope clause · Animation conflict clause · Minimal example · Gotchas · Cross-references
   - Description: Non-negotiable composition rules
   - TOC:
     - What it does
@@ -401,6 +422,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-registry-add.md](./references/TECH-hyperframes-registry-add.md)**
+  > What it does · When to use · How it works · Blocks vs components · Paths (configurable in `hyperframes.json`) · Minimal example · Gotchas · Cross-references
   - Description: `hyperframes add` — install registry blocks + components
   - TOC:
     - What it does
@@ -410,6 +432,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-registry-blocks.md](./references/TECH-hyperframes-registry-blocks.md)**
+  > What it does · When to use · How it works · Include pattern · Required attributes on the include · Verification · Minimal example · Gotchas · Cross-references
   - Description: Wiring registry blocks into host compositions
   - TOC:
     - What it does
@@ -419,6 +442,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-registry-components.md](./references/TECH-hyperframes-registry-components.md)**
+  > What it does · When to use · How it works · Wiring process · Example component file · Merging into host · Minimal example · Gotchas · Cross-references
   - Description: Wiring registry components into host compositions
   - TOC:
     - What it does
@@ -428,6 +452,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-scene-transitions.md](./references/TECH-hyperframes-scene-transitions.md)**
+  > What it does · When to use · How it works · Rule 1 — ALWAYS use transitions between scenes · Rule 2 — ALWAYS use entrance animations on every scene · Rule 3 — NEVER use exit animations except on the final scene · Rule 4 — Final scene only may fade elements out · Wrong pattern · Right pattern · Minimal example · Gotchas · Cross-references
   - Description: Scene transitions (non-negotiable rules)
   - TOC:
     - What it does
@@ -437,6 +462,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-timeline-contract.md](./references/TECH-hyperframes-timeline-contract.md)**
+  > What it does · When to use · How it works · Required pattern · Banned patterns · Allowed GSAP properties · Minimal example · Use `tl.set()` for later-scene clips · Gotchas · Cross-references
   - Description: Timeline contract — GSAP integration
   - TOC:
     - What it does
@@ -460,6 +486,7 @@ Every technique in this skill is documented as a single reference file under `./
 ## Examples
 
 See the worked examples in the per-step reference files under `./references/TECH-hyperframes-capture-step-*.md` (7-step website-to-video pipeline) and the composition authoring guide at [TECH-hyperframes-composition-core](./references/TECH-hyperframes-composition-core.md).
+> [TECH-hyperframes-composition-core.md] What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 
 ## Completion checklist
 
@@ -468,7 +495,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-hyperframes-bridge/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -477,7 +506,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. hyperframes project folders + rendered MP4 videos). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. hyperframes project folders + rendered MP4 videos). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present

@@ -104,7 +104,14 @@ Typography scale at 1.25× ratio:
 ## Cross-references
 
 - [TECH-ux-rule-research](TECH-ux-rule-research.md), [TECH-ux-rule-accessibility](TECH-ux-rule-accessibility.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md)
-- `../../amw-design-principles/typography-system.md`
-- `../../amw-design-principles/color-system.md`
-- `../../amw-design-principles/spacing-rhythm.md`
-- `../SKILL.md`
+  > [TECH-ux-rule-accessibility.md] What it does · When to use · How it works · WCAG AA (minimum floor) — four POUR pillars · Inclusive design patterns (beyond compliance) · Testing checklist · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-ia.md] What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-interaction.md] What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
+- [typography-system](../../amw-design-principles/typography-system.md)
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [color-system](../../amw-design-principles/color-system.md)
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [spacing-rhythm](../../amw-design-principles/spacing-rhythm.md)
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [SKILL](../SKILL.md)

@@ -1,4 +1,24 @@
 # Style Details — Aizfographics Design DNA
+
+## Table of Contents
+
+- [The Big Picture](#the-big-picture)
+- [Border Radius](#border-radius)
+- [Card Border Style](#card-border-style)
+- [Shadows & Glow Effects](#shadows-glow-effects)
+- [Spacing System (8px Grid)](#spacing-system-8px-grid)
+- [Decorative Elements & Backgrounds](#decorative-elements-backgrounds)
+- [Logo Treatment (95% of your infographics have logos)](#logo-treatment-95-of-your-infographics-have-logos)
+- [Progress Bars (45/175 designs — 26%)](#progress-bars-45175-designs-26)
+- [Dense Table (Primary Data Component)](#dense-table-primary-data-component)
+- [Composition Rules (from 175 designs)](#composition-rules-from-175-designs)
+- [Atmospheric Depth Techniques (inline, no external files)](#atmospheric-depth-techniques-inline-no-external-files)
+- [Annotation System](#annotation-system)
+- [Premium Typography](#premium-typography)
+- [Reduction Pass Examples](#reduction-pass-examples)
+- [Reference Image Patterns (Vision Analysis — 12 real pieces)](#reference-image-patterns-vision-analysis-12-real-pieces)
+
+
 # Extracted from 175 real infographics via Claude Vision analysis
 # Last updated: March 2026
 

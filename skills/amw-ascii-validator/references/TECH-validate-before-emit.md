@@ -72,7 +72,8 @@ fi
 ## Cross-references
 
 - [TECH-fix-hint-actionable-format](./TECH-fix-hint-actionable-format.md)
-- `../../amw-ascii-creator/SKILL.md` (Mode B workflow step 4-7)
-- `../../amw-box-diagram/SKILL.md` (Workflow section)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-ascii-creator/SKILL.md) (Mode B workflow step 4-7)
+- [SKILL](../../amw-box-diagram/SKILL.md) (Workflow section)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

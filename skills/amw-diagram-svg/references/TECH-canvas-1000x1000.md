@@ -104,9 +104,13 @@ Embedded inside responsive HTML:
 
 ## Cross-references
 
-- `../SKILL.md` — canvas is defined in the Usage section
+- [SKILL](../SKILL.md) — canvas is defined in the Usage section
 - [TECH-svg-group-structure](TECH-svg-group-structure.md) — recommended layering inside the canvas
+  > What it does · When to use · How it works · Why this order · Minimal example · Gotchas · Cross-references
 - [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — default strokes at this canvas size
+  > What it does · When to use · How it works · Usage pattern · Minimal example · Gotchas · Cross-references
 - [TECH-node-shape-vocabulary](TECH-node-shape-vocabulary.md) — the shapes fit this canvas grid
-- `../../amw-diagram-architecture/references/TECH-svg-layered-layout.md` —
+  > What it does · When to use · How it works · Example snippets · Gotchas · Cross-references
+- [TECH-svg-layered-layout](../../amw-diagram-architecture/references/TECH-svg-layered-layout.md) —
+  > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
   alternative fixed-width 820 canvas for layered architecture diagrams

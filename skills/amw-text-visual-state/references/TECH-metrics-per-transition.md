@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-metrics-per-transition — link every edge to a dashboard
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Annotates each transition in a product-lifecycle state machine with the
@@ -65,7 +75,10 @@ Format:
 ## Cross-references
 
 - [TECH-state-guards-and-actions](./TECH-state-guards-and-actions.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-state-machine-legend](./TECH-state-machine-legend.md)
-- `../../amw-text-visual-workflows/references/TECH-metadata-annotation-conventions.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-metadata-annotation-conventions](../../amw-text-visual-workflows/references/TECH-metadata-annotation-conventions.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

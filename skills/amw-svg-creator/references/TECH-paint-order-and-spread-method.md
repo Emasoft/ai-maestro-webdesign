@@ -107,9 +107,12 @@ gradient.
 ## Cross-references
 
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — gradients that benefit from
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
   `spreadMethod`.
 - [TECH-material-simulation](TECH-material-simulation.md) — `reflect` is essential for metals.
+  > What it does · Metal (steel / chrome) · Gold · Glass / transparent · Wood · Water · Stone / rock · Fabric / cloth · Gotchas · Cross-references
 - [TECH-css-smil-animation](TECH-css-smil-animation.md) — `pathLength="1"` is the keystone
+  > What it does · The `transform-box` rule · Spinner (CSS) · Line drawing reveal (pathLength + stroke-dasharray) · Staggered entrance · SMIL animation (works in `<img>` tags) · Attribute animation · Transform animation · Motion along a path · Sequential timing via `begin` · Gotchas · Cross-references
   for line-draw animations.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

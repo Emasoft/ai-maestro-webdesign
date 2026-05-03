@@ -102,8 +102,11 @@ richer. The visible border is the signature — ghost borders
 ## Cross-references
 
 - [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — simpler alternative for pure
+  > What it does · When to use · CSS · HTML · The ▸ bullet convention · 2-col grid pattern · One fact per bullet (mandatory) · Gotchas · Cross-references
   bullet content.
 - [TECH-annotation-first](TECH-annotation-first.md) — styled insight callout box covered there.
+  > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the visible-borders rule.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

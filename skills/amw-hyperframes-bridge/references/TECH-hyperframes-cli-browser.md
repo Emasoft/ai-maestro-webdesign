@@ -7,6 +7,17 @@ also-in: external/hyperframes/packages/cli/src/browser/manager.ts
 
 # TECH: `hyperframes browser` — manage Chrome for rendering
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Sub-commands](#sub-commands)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 > This is the **canonical Chrome-provisioning command** for Hyperframes. Hyperframes uses Puppeteer + `@puppeteer/browsers` (NOT Playwright) to manage its own Chrome Headless Shell. Running `npx playwright install chromium` is NOT a fix for browser-missing errors in Hyperframes — use `hyperframes browser ensure` instead.
 
 ## What it does
@@ -67,6 +78,9 @@ npx hyperframes browser path && echo "Chrome ready"
 ## Cross-references
 
 - [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — render uses Chrome managed by this command
+  > What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
 - [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md) — inspect also requires Chrome
+  > What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
 - [TECH-hyperframes-cli-snapshot](TECH-hyperframes-cli-snapshot.md) — snapshot also requires Chrome
-- `../SKILL.md` — bridge invocation pattern (see Failure modes section)
+  > What it does · When to use · How it works · Flags · Output · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md) — bridge invocation pattern (see Failure modes section)

@@ -7,6 +7,16 @@ also-in: SKILL-13, SKILL-16, SKILL-21, use-pretext/SKILL.md Recipe 4, pretext-ta
 
 # Virtualized list with variable-height text rows
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** workflow
 **Status:** stable
 
@@ -56,4 +66,5 @@ See use-pretext/SKILL.md Recipe 4 for full Svelte implementation.
 
 - Related: TECH-14-dom-free-height, TECH-56-pretext-tables-virtualized
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

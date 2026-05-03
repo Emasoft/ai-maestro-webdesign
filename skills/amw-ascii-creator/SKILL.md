@@ -7,7 +7,7 @@ version: 0.1.0
 
 # ASCII Creator
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Single-artifact authoring skill.** The plugin's plan-phase is `../amw-ascii-sketch/` (iterates three variants). This skill is for the opposite case — the user already knows what diagram they want, and wants ONE perfect ASCII file delivered. It is the ASCII twin of `../amw-svg-creator/`.
 
 ## Overview
@@ -114,7 +114,8 @@ Never present or save a FAILing artifact. The whole value of "perfect ASCII" is 
 
 ### Technique catalog
 
-The full technique catalog (95 validated patterns + the 12 JSON-render techniques migrated from `perfect-ascii`) is shared across skills under `../amw-diagram-formats/references/ascii.md`. For the JSON-rendering side specifically, this skill's own `references/` directory holds one `.md` per technique extracted from the `perfect-ascii` source:
+The full technique catalog (95 validated patterns + the 12 JSON-render techniques migrated from `perfect-ascii`) is shared across skills under [ascii](../amw-diagram-formats/references/ascii.md). For the JSON-rendering side specifically, this skill's own `references/` directory holds one `.md` per technique extracted from the `perfect-ascii` source:
+> [ascii.md] Format definition · Dimensional constraints · Parse rules · Emission rules · Validation rules · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · SKILL · SKILL · SKILL · SKILL · SKILL · SKILL · `../../text-visual-{workflows,arch,state,cheatsheets,retro}/SKILL.md` — specialized ASCII archetypes · `../../bin/amw-ascii-parse.py` — tokenizer (IR input) · `../../bin/amw-ascii-render.py` — renderer (4 JSON modes) · `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate) · `../../bin/amw-validate-ascii.py` — validator (Python mirror) · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
 
 | TECH-ID | Category | One-line description |
 |---|---|---|
@@ -131,7 +132,8 @@ The full technique catalog (95 validated patterns + the 12 JSON-render technique
 | [TECH-78-column-cap](./references/TECH-78-column-cap.md) | ascii-render | Hard 78-col rule and its consequences |
 | [TECH-eval-rubric-six-axes](./references/TECH-eval-rubric-six-axes.md) | ascii-render | Score an ASCII diagram on six 1-5 axes |
 
-Before authoring Mode B (freeform wireframe), still consult the 95-technique catalog at `../amw-diagram-formats/references/ascii.md` for patterns like `[!]` markers, `├──┤` band rules, three-column `├┬┬┤` editorial layouts. Pick at least 10 distinct TECH-IDs per variant so each diagram demonstrates deliberate construction rather than a single-source port.
+Before authoring Mode B (freeform wireframe), still consult the 95-technique catalog at [ascii](../amw-diagram-formats/references/ascii.md) for patterns like `[!]` markers, `├──┤` band rules, three-column `├┬┬┤` editorial layouts. Pick at least 10 distinct TECH-IDs per variant so each diagram demonstrates deliberate construction rather than a single-source port.
+> [ascii.md] Format definition · Dimensional constraints · Parse rules · Emission rules · Validation rules · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · SKILL · SKILL · SKILL · SKILL · SKILL · SKILL · `../../text-visual-{workflows,arch,state,cheatsheets,retro}/SKILL.md` — specialized ASCII archetypes · `../../bin/amw-ascii-parse.py` — tokenizer (IR input) · `../../bin/amw-ascii-render.py` — renderer (4 JSON modes) · `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate) · `../../bin/amw-validate-ascii.py` — validator (Python mirror) · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
 
 Representative IDs the rebuilt demo variants apply:
 - Baseline dashboard — TECH-02 (3-line buttons), TECH-03 (multi-line titled cards), TECH-23 (pipe-column table), TECH-38 (`[!]` markers), TECH-90 (`├──┤` band rules)
@@ -313,7 +315,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ascii-creator/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -322,7 +326,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. ASCII `.txt` files (flowcharts, tables, sequence diagrams, framed wireframes)). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. ASCII `.txt` files (flowcharts, tables, sequence diagrams, framed wireframes)). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -485,11 +490,11 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources
 
-- `../amw-ascii-sketch/SKILL.md` — upstream when the user wants to ITERATE. Sketch produces 3 variants for plan-phase iteration; once a direction is chosen, the result can either (a) pass through this skill to finalize the ASCII artifact file, or (b) pass directly to `ascii-to-html` for conversion.
-- `../amw-ascii-validator/SKILL.md` — documents the underlying validator tool-chain (`bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`) and the validation contract.
-- `../amw-ascii-to-html/SKILL.md` — downstream when the freeform wireframe should become HTML. Consumes Mode B output directly.
-- `../amw-ascii-to-svg/SKILL.md` — downstream when the structured diagram should become SVG. Consumes Mode A output.
-- `../amw-design-principles/SKILL.md` — orchestrator that routes here when the brief implies a single ASCII artifact rather than a variant set.
+- [SKILL](../amw-ascii-sketch/SKILL.md) — upstream when the user wants to ITERATE. Sketch produces 3 variants for plan-phase iteration; once a direction is chosen, the result can either (a) pass through this skill to finalize the ASCII artifact file, or (b) pass directly to `ascii-to-html` for conversion.
+- [SKILL](../amw-ascii-validator/SKILL.md) — documents the underlying validator tool-chain (`bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`) and the validation contract.
+- [SKILL](../amw-ascii-to-html/SKILL.md) — downstream when the freeform wireframe should become HTML. Consumes Mode B output directly.
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — downstream when the structured diagram should become SVG. Consumes Mode A output.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator that routes here when the brief implies a single ASCII artifact rather than a variant set.
 - `../amw-box-diagram/examples/` — **gold-standard Mode B reference diagrams** (`incident-response.txt`, `ci-cd-pipeline.txt`, `microservices.txt`). Read before authoring non-trivial wireframes.
 - `../../bin/amw-ascii-render.py` — renderer (JSON → ASCII)
 - `../../bin/amw-validate-ascii.py` — validator (ASCII → PASS/FAIL + FIX hints)
@@ -518,7 +523,8 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Modify flow (shared)
 
-When the user points at an existing `.txt` / `.ascii` / `.md` file and asks to edit it (rather than author from scratch), this skill runs the **shared modify pipeline** instead of Mode A or Mode B. The pipeline is: **detect format → parse to IR (`bin/amw-diagram-ir.py parse`) → diff-aware IR patch → re-render (`bin/amw-diagram-ir.py emit --format ascii`) → re-validate (`bin/amw-validate-ascii.py`)**. The full, authoritative 6-step spec — including retry budget, atomic-move semantics, and per-format emitter fast paths — lives at `../amw-diagram-formats/references/modify-flow.md`. Do NOT re-implement the pipeline locally; reference that file.
+When the user points at an existing `.txt` / `.ascii` / `.md` file and asks to edit it (rather than author from scratch), this skill runs the **shared modify pipeline** instead of Mode A or Mode B. The pipeline is: **detect format → parse to IR (`bin/amw-diagram-ir.py parse`) → diff-aware IR patch → re-render (`bin/amw-diagram-ir.py emit --format ascii`) → re-validate (`bin/amw-validate-ascii.py`)**. The full, authoritative 6-step spec — including retry budget, atomic-move semantics, and per-format emitter fast paths — lives at [modify-flow](../amw-diagram-formats/references/modify-flow.md). Do NOT re-implement the pipeline locally; reference that file.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
 
 User intents that trigger the modify path (vs. create):
 
@@ -526,4 +532,5 @@ User intents that trigger the modify path (vs. create):
 - "change the label of box X" / "rename the `Login` node to `Auth`" / "replace `DB` with `Primary DB`"
 - "add a connector from A to B" / "remove the edge between Gateway and Worker" / "insert a box between X and Y"
 
-All three intents resolve to the same pipeline; the only thing that varies is step 3 (patch). MVP patching is text substitution on the parsed IR's `nodes[*].label` and `edges[*]` fields (see `../amw-diagram-formats/references/modify-flow.md` §5.1 for ASCII-specific guidance). Every modified artifact re-passes `bin/amw-validate-ascii.py` before save — a modify that would FAIL validation is rejected and the original file is left untouched.
+All three intents resolve to the same pipeline; the only thing that varies is step 3 (patch). MVP patching is text substitution on the parsed IR's `nodes[*].label` and `edges[*]` fields (see [modify-flow](../amw-diagram-formats/references/modify-flow.md) §5.1 for ASCII-specific guidance). Every modified artifact re-passes `bin/amw-validate-ascii.py` before save — a modify that would FAIL validation is rejected and the original file is left untouched.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`

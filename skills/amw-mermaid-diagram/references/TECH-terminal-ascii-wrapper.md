@@ -7,6 +7,17 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/render.ts
 
 # Terminal ASCII authoring — Bun-style one-liner
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The minimal wrapper](#the-minimal-wrapper)
+- [Usage patterns](#usage-patterns)
+- [The key convention — newlines not semicolons](#the-key-convention-newlines-not-semicolons)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 A minimal Bun/TypeScript CLI that accepts a Mermaid source string and
@@ -90,11 +101,13 @@ bun run render.ts --padding-x 3 "graph TD; A --> B"
 
 ## Cross-references
 
-- `../../amw-mermaid-render/references/TECH-ascii-render-api.md` — the
+- [TECH-ascii-render-api](../../amw-mermaid-render/references/TECH-ascii-render-api.md) — the
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   library function this wraps.
-- `../../amw-mermaid-render/references/TECH-ascii-padding-options.md` —
+- [TECH-ascii-padding-options](../../amw-mermaid-render/references/TECH-ascii-padding-options.md) —
+  > What it does · When to use · Defaults · What each one does · Minimal example · Gotchas · Cross-references
   why the defaults (5, 5) were chosen.
 - `../../amw-mermaid-render/` — the full-featured plugin skill with batch
   support and more flags.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

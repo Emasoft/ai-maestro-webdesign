@@ -7,6 +7,19 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 
 # TECH: Rule — Accessibility & Inclusive Design (WCAG AA)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [WCAG AA (minimum floor) — four POUR pillars](#wcag-aa-minimum-floor-four-pour-pillars)
+  - [Inclusive design patterns (beyond compliance)](#inclusive-design-patterns-beyond-compliance)
+  - [Testing checklist](#testing-checklist)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The CRITICAL-priority rule covering WCAG 2.1 AA compliance plus inclusive-design patterns (motor / visual / cognitive / situational accommodations). Accessibility is legally required in many jurisdictions (ADA in the US, EN 301 549 in the EU, AODA in Ontario) and is a moral imperative everywhere else.
@@ -90,5 +103,10 @@ Button inaccessible → compliant:
 ## Cross-references
 
 - [TECH-ux-rule-research](TECH-ux-rule-research.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-interaction](TECH-ux-rule-interaction.md), [TECH-ux-rule-visual](TECH-ux-rule-visual.md)
-- `../../amw-ui-ux-reasoning/references/TECH-uiux-pre-delivery-checklist.md` — shared a11y checklist
-- `../SKILL.md`
+  > [TECH-ux-rule-ia.md] What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-interaction.md] What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-visual.md] What it does · When to use · How it works · Establishing hierarchy · Typography scale · Color usage · Layout · Design-system essentials · Component documentation · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
+- [TECH-uiux-pre-delivery-checklist](../../amw-ui-ux-reasoning/references/TECH-uiux-pre-delivery-checklist.md) — shared a11y checklist
+  > What it does · When to use · How it works · Accessibility · Responsive · Performance · Interaction · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

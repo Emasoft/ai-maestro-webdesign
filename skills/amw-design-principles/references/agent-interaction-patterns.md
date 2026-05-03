@@ -2,10 +2,7 @@
 
 - [Topology invariants](#topology-invariants)
 - [Phase A data flow](#phase-a-data-flow)
-  - [Phase A data hand-offs (carried by main-agent between sub-agent invocations)](#phase-a-data-hand-offs-carried-by-main-agent-between-sub-agent-invocations)
 - [Phase B data flow](#phase-b-data-flow)
-  - [Phase B data hand-offs](#phase-b-data-hand-offs)
-  - [Phase B sequencing rules](#phase-b-sequencing-rules)
 - [What main-agent does between sub-agent calls](#what-main-agent-does-between-sub-agent-calls)
 - [Error propagation](#error-propagation)
 - [Why this topology (instead of peer-to-peer)](#why-this-topology-instead-of-peer-to-peer)
@@ -47,6 +44,7 @@ researcher research    expert    strategist  language
 Each discovery sub-agent returns a YAML-headed report. Main-agent aggregates the outputs and synthesizes three ASCII variants via the `ascii-sketch` skill (or equivalent low-fi artifact per the Phase A palette). User iterates; main-agent re-synthesizes. Satisfaction gate terminates Phase A.
 
 **Important: as of P1-1, Phase B data hand-offs are mediated through `phase-a-frozen-spec.json` (canonical schema at [phase-a-frozen-spec](./phase-a-frozen-spec.md)).** The tables below document which Phase A agent's output ends up in which spec field; main-agent runs `bin/amw-freeze-phase-a.sh` at Phase A.5 to aggregate them, and every Phase B sub-agent receives only the spec's path (not the individual paths). The individual-path columns below are kept for reference / future plan changes, but in production every Phase B sub-agent reads the JSON and resolves only the keys it needs.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 The "Frozen-spec key" column applies to Phase A → Phase B carries (the rows whose downstream consumer is a Phase B agent). Phase A → Phase A carries (rows where one discovery agent feeds another within Phase A) bypass the frozen spec — main-agent passes those directly because the frozen spec is not yet emitted.
 
@@ -158,6 +156,7 @@ Main-agent's orchestration doctrine (§15 of main-agent spec) captures the exact
 For every sub-agent invocation, main-agent's steps are:
 
 1. **Prepare the input** — for Phase A invocations, take relevant fields from prior sub-agents' YAML headers + report bodies. For Phase B invocations, the input contract is a single `frozen_spec_path` (per Phase A.5; see [phase-a-frozen-spec](./phase-a-frozen-spec.md)) plus any artifact paths produced by upstream Phase B sub-agents
+  > Schema · Field reference · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 2. **Spawn the sub-agent** via Task(subagent_type=<agent-name>, prompt=<input>)
 3. **Parse the YAML header** — check `status`, `blocking_issues`, `next_action`
 4. **Decide** — proceed / retry / escalate / stop (per the return-contract consumption pseudo-code)
@@ -175,6 +174,7 @@ If a sub-agent returns `status=failed` or `next_action=escalate_to_user`:
 - **Failure in an auditor (Phase B)** → main-agent flags but does not stop. The auditor's domain is reported as "unaudited" in the final job-completion report with the reason.
 
 Veto-power failures (legal-expert, accessibility-auditor) are treated specially per [authority-hierarchy](authority-hierarchy.md) — they block forward progress on the affected work stream until user override or resolution.
+> [authority-hierarchy.md] Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 
 ## Why this topology (instead of peer-to-peer)
 
@@ -192,3 +192,4 @@ The cost is that main-agent carries the data-plumbing burden: reading output fro
 - Main-agent's §15 Orchestration Doctrine cites this document.
 - Smoke test: every hand-off in the table above is cross-checked against the sender's output schema and the receiver's input schema.
 - Phase B input contracts are defined as `frozen_spec_path` only (per [phase-a-frozen-spec](./phase-a-frozen-spec.md)); any agent's §5 that lists individual paths instead of `frozen_spec_path` is non-compliant with P1-1.
+  > Schema · Field reference · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references

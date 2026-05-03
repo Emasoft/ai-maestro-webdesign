@@ -125,7 +125,10 @@ sandbox. Nothing is restricted.
 ## Cross-references
 
 - [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the mode this enables.
+  > What it does · When to use · The flow · State file — `.infographic/{project}.json` · Preview server · The approval gate (A4) · State schema per component · Why verbatim HTML · Session resume · Gotchas · Cross-references
 - [TECH-preview-animations](TECH-preview-animations.md) — browser-only entrance animations.
+  > What it does · When to use · Per-component animation table · Stat counter — JS · Bar chart — CSS transition · Feature card stagger — CSS · SVG line draw · The export capture · Gotchas · Cross-references
 - [TECH-export-pipeline](TECH-export-pipeline.md) — where finalized HTML goes.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

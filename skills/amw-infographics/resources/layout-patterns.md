@@ -1,4 +1,26 @@
 # Layout Patterns — Aizfographics Design DNA
+
+## Table of Contents
+
+- [Layout Statistics](#layout-statistics)
+- [Your Dominant Infographic Types](#your-dominant-infographic-types)
+- [Layout Recipes by Type](#layout-recipes-by-type)
+  - [1. TOKEN-ECONOMICS (35% of your work — your specialty)](#1-token-economics-35-of-your-work-your-specialty)
+  - [2. GAME-OVERVIEW (19% — your #2 type)](#2-game-overview-19-your-2-type)
+  - [3. ECOSYSTEM (15% — partner/collaboration type)](#3-ecosystem-15-partnercollaboration-type)
+  - [4. CRYPTO-EXPLAINER (12% — educational type)](#4-crypto-explainer-12-educational-type)
+  - [5. AIRDROP-GUIDE (8% — action-focused type)](#5-airdrop-guide-8-action-focused-type)
+  - [6. NFT-SHOWCASE (5% — collectible type)](#6-nft-showcase-5-collectible-type)
+  - [7. DENSE SPACING REFERENCE (apply across ALL types)](#7-dense-spacing-reference-apply-across-all-types)
+- [Composition Archetype CSS Implementations](#composition-archetype-css-implementations)
+  - [ARCHETYPE 1: Stacked Reference (DEFAULT — 70%+ of pieces)](#archetype-1-stacked-reference-default-70-of-pieces)
+  - [ARCHETYPE 2: Flow Poster](#archetype-2-flow-poster)
+  - [ARCHETYPE 3: Hub & Spoke](#archetype-3-hub-spoke)
+  - [ARCHETYPE 4: Stat Poster](#archetype-4-stat-poster)
+  - [ARCHETYPE 5: Cheat Sheet](#archetype-5-cheat-sheet)
+- [Stats Bar / KPI Strip (74/175 = 42%)](#stats-bar-kpi-strip-74175-42)
+
+
 # Extracted from 175 real infographics via Claude Vision analysis
 # Last updated: March 2026
 

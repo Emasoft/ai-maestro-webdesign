@@ -105,7 +105,10 @@ shape without forcing them to read every dot.
 ## Cross-references
 
 - [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to reach for dot plot.
+  > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
 - [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — bar alternative.
+  > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
 - [TECH-slope-chart](TECH-slope-chart.md) — 2-point alternative.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Coordinate system · HTML · CSS · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

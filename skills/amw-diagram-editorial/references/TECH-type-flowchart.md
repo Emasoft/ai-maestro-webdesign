@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/me
 
 # TECH-type-flowchart
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Emits a **decision flowchart** — rectangles for process steps, diamonds for
@@ -95,9 +105,12 @@ Decision fork pattern, editorial styling:
 
 ## Cross-references
 
-- `../SKILL.md` — type table; flowchart is for *decision logic* specifically
+- [SKILL](../SKILL.md) — type table; flowchart is for *decision logic* specifically
 - [TECH-type-state-machine](TECH-type-state-machine.md) — if you find yourself modelling lifecycle,
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   that's a state machine, not a flowchart
-- `../../amw-ux-flows/references/TECH-mermaid-flowchart-screen-map.md` —
+- [TECH-mermaid-flowchart-screen-map](../../amw-ux-flows/references/TECH-mermaid-flowchart-screen-map.md) —
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   Mermaid-syntax cousin for screen-navigation flowcharts
 - [design-system](design-system.md) — 4px grid for diamond corners
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

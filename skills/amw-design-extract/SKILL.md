@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Design Extract
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Triggers are URL-extraction-specific only.
 
 ## Overview
@@ -100,12 +100,15 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Resources
 
 - `../../bin/amw-designlang-wrapper.sh` — plugin-standard wrapper (the only valid invocation path)
-- `../amw-dev-browser/SKILL.md` — pairs with dev-browser for screenshot + DOM + style capture
+- [SKILL](../amw-dev-browser/SKILL.md) — pairs with dev-browser for screenshot + DOM + style capture
 - `/amw-extract-style` — user-facing command that combines both
-- `../amw-design-principles/color-system.md` — extracted palette maps to this skill's oklch structure
-- `../amw-design-principles/typography-system.md` — extracted font stack maps to this skill's type rules
-- `../amw-design-principles/spacing-rhythm.md` — extracted spacing scale maps to this skill's rhythm rules
-- `../amw-ascii-to-html/SKILL.md` — consumes `css-vars.css` when an ASCII wireframe is rendered to HTML
+- [color-system](../amw-design-principles/color-system.md) — extracted palette maps to this skill's oklch structure
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — extracted font stack maps to this skill's type rules
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — extracted spacing scale maps to this skill's rhythm rules
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [SKILL](../amw-ascii-to-html/SKILL.md) — consumes `css-vars.css` when an ASCII wireframe is rendered to HTML
 
 ## Non-negotiables
 
@@ -226,7 +229,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-design-extract/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -235,7 +240,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. `designlang/` output folders (tokens.json, palette.json, screenshots, report.html)). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. `designlang/` output folders (tokens.json, palette.json, screenshots, report.html)). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present

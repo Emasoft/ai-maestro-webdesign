@@ -70,4 +70,5 @@ function render(w) {
 
 - Related: TECH-59-react-hooks-integration, TECH-60-svelte-islands-integration, TECH-63-progressive-enhancement
 - API reference: [TECH-01-prepare-basics](TECH-01-prepare-basics.md)
+  > What it does · When to use · How it works · Minimal example · Configuration options (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

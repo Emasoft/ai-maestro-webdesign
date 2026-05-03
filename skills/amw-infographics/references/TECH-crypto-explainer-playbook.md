@@ -131,8 +131,12 @@ feature-heavy explainers.
 ## Cross-references
 
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — the default archetype.
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
 - [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the flow component.
+  > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
 - [TECH-glow-system](TECH-glow-system.md) — the neon glow patterns.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

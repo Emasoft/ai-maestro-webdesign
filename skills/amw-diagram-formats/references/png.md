@@ -33,15 +33,17 @@
 > This file documents how each source format **rasterizes TO** PNG, and explicitly documents the refusal of PNG as input.
 
 **Consumers (cross-references):**
-- `../../amw-excalidraw-illustrations/SKILL.md` — hand-drawn-style PNG via Gemini API (GATED, cost-consent required)
-- `../../amw-infographics/SKILL.md` — HTML → PNG/PDF producer (Playwright screenshot)
-- `../../amw-hyperframes-bridge/SKILL.md` — HTML → MP4 (uses same Playwright stack)
+- [SKILL](../../amw-excalidraw-illustrations/SKILL.md) — hand-drawn-style PNG via Gemini API (GATED, cost-consent required)
+- [SKILL](../../amw-infographics/SKILL.md) — HTML → PNG/PDF producer (Playwright screenshot)
+- [SKILL](../../amw-hyperframes-bridge/SKILL.md) — HTML → MP4 (uses same Playwright stack)
 - `../../bin/amw-html-export.py` — HTML → PNG via Playwright screenshot
 - `../../bin/amw-svg-render.py` — SVG → PNG via cairosvg
 - `../../bin/amw-mermaid-render.sh` — Mermaid → SVG then → PNG
 - `../../bin/amw-validate-diagram.sh` (planned; Task 0c) — unified validator dispatcher, PNG branch = hardcoded refusal
 - [conversion-matrix](./conversion-matrix.md) — PNG-input row = all `impossible`
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 - [validation-dispatcher](./validation-dispatcher.md) — PNG branch = fixed-message refusal
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 
 ---
 
@@ -77,6 +79,7 @@ cairosvg.svg2png(url="diagram.svg", write_to="diagram.png",
 ```
 
 Wrapper: `../../bin/amw-svg-render.py render <file>` rasterizes to PNG in the plugin state dir. `finish <file>` finalizes and refuses if `render` was never called (see [svg](./svg.md) §5).
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · SKILL · SKILL · SKILL · SKILL · SKILL · advanced-techniques · `../../bin/amw-svg-render.py` — render-verify-finish loop (`render` / `finish` / `status` / `reset`) · ir-schema · conversion-matrix · png · validation-dispatcher
 
 **Dimension guidance**:
 - Icon PNG: `output_width=256` (from 24×24 viewBox, 10.7× upscale)
@@ -147,7 +150,7 @@ GATED behind a cost-consent prompt (Gemini API cost per call). Not a rasterizati
 # Requires $GEMINI_API_KEY; emits single .png
 ```
 
-See `../../amw-excalidraw-illustrations/SKILL.md` for the full protocol and cost-consent contract.
+See [SKILL](../../amw-excalidraw-illustrations/SKILL.md) for the full protocol and cost-consent contract.
 
 ---
 
@@ -171,6 +174,7 @@ fi
 ### 3.3 Conversion dispatcher
 
 In [conversion-matrix](./conversion-matrix.md), every PNG-row cell is `impossible`. The dispatcher:
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 
 ```bash
 if [[ "$from" == "png" ]]; then

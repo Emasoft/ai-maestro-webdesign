@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Pre-push gate: delegate to scripts/publish.py --gate
+exec uv run python scripts/publish.py --gate "$@"

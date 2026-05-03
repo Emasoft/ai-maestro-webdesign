@@ -1,34 +1,13 @@
 ## Table of Contents
 
 - [1. Format definition](#1-format-definition)
-  - [1.1 File conventions](#11-file-conventions)
-  - [1.2 Minimal example](#12-minimal-example)
 - [2. Supported grammars](#2-supported-grammars)
-  - [2.1 Node shapes (flowchart)](#21-node-shapes-flowchart)
-  - [2.2 Edges (flowchart)](#22-edges-flowchart)
 - [3. Themes](#3-themes)
-  - [3.1 Built-in themes (15)](#31-built-in-themes-15)
-  - [3.2 Theme-selection guide](#32-theme-selection-guide)
-  - [3.3 Mono Mode (2-color derivation)](#33-mono-mode-2-color-derivation)
-  - [3.4 7-color enriched palette](#34-7-color-enriched-palette)
-  - [3.5 Live theme-switching (browser)](#35-live-theme-switching-browser)
 - [4. mmdc CLI flags (17 total)](#4-mmdc-cli-flags-17-total)
 - [5. Output paths](#5-output-paths)
-  - [5.1 Mermaid → SVG (default, high fidelity)](#51-mermaid-svg-default-high-fidelity)
-  - [5.2 Mermaid → PNG (via `mmdc -t png`)](#52-mermaid-png-via-mmdc-t-png)
-  - [5.3 Mermaid → ASCII (Unicode default)](#53-mermaid-ascii-unicode-default)
-  - [5.4 Mermaid → pure ASCII (README-safe)](#54-mermaid-pure-ascii-readme-safe)
-  - [5.5 Batch rendering (parallel)](#55-batch-rendering-parallel)
 - [6. Validation](#6-validation)
-  - [6.1 Dry-run linting](#61-dry-run-linting)
-  - [6.2 Common validation failures](#62-common-validation-failures)
 - [7. Per-source breakdown of the technique catalog](#7-per-source-breakdown-of-the-technique-catalog)
 - [8. Technique catalog](#8-technique-catalog)
-  - [S1 — beautiful-mermaid (backend)](#s1-beautiful-mermaid-backend)
-  - [S2 — Pretty-mermaid + mermaid-render/SKILL.md (CLI)](#s2-pretty-mermaid-mermaid-renderskillmd-cli)
-  - [S3 — Mermaid grammar](#s3-mermaid-grammar)
-  - [S4 — agent-skill-diagramming-flows](#s4-agent-skill-diagramming-flows)
-  - [S5 — bin/amw-mermaid-render.sh wrapper](#s5-binamw-mermaid-rendersh-wrapper)
 - [9. Failure modes](#9-failure-modes)
 - [10. Anti-patterns](#10-anti-patterns)
 
@@ -38,16 +17,19 @@
 This file is the single authoritative spec for Mermaid within the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts Mermaid pulls from this file. Supported grammars, themes, `mmdc` CLI flags, output paths (SVG / PNG / ASCII), validation, and the technique catalog are all below.
 
 **Consumers (cross-references):**
-- `../../amw-mermaid-render/SKILL.md` — the ONLY Mermaid renderer in the plugin
-- `../../amw-diagram-architecture/SKILL.md` — emits Mermaid source text
-- `../../amw-ux-flows/SKILL.md` — PRD → Mermaid wireframes
+- [SKILL](../../amw-mermaid-render/SKILL.md) — the ONLY Mermaid renderer in the plugin
+- [SKILL](../../amw-diagram-architecture/SKILL.md) — emits Mermaid source text
+- [SKILL](../../amw-ux-flows/SKILL.md) — PRD → Mermaid wireframes
 - `../../external/mermaid-render/` — vendored beautiful-mermaid backend
 - `../../bin/amw-mermaid-render.sh` — shell wrapper (SVG / PNG / ASCII)
 - `../../bin/amw-mermaid-lint.sh` (planned; Task 0c) — validator wrapper (`mmdc` dry-run)
 - `../../bin/amw-validate-ascii.py` — warn-only gate on ASCII rendering
 - [ir-schema](./ir-schema.md) — when Mermaid is a source of the diagram IR
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 - [conversion-matrix](./conversion-matrix.md) — Mermaid → {ASCII, HTML, SVG, PNG} cells
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 - [validation-dispatcher](./validation-dispatcher.md) — Mermaid validator branch
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 
 ---
 
@@ -230,6 +212,7 @@ python3 -c "import cairosvg; cairosvg.svg2png(url='/tmp/x.svg', write_to='diagra
 ```
 
 See [png](./png.md) for the SVG → PNG chain.
+> [png.md] PNG is OUTPUT-ONLY — why · 1 Refusal messages (verbatim) · Rasterization pipelines (per source format → PNG) · 1 SVG → PNG (via cairosvg) · 2 HTML → PNG (via Playwright screenshot) · 3 ASCII → PNG (two-step: ASCII → SVG → PNG) · 4 Mermaid → PNG (direct via `mmdc -t png` OR via SVG) · 5 Hand-drawn-style PNG (via `excalidraw-illustrations`) · Refusal path implementation · 1 `bin/amw-diagram-detect-format.sh` · 2 `bin/amw-validate-diagram.sh` — PNG branch · 3 Conversion dispatcher · Per-source technique catalog · S1 — bin/amw-svg-render.py + cairosvg · S2 — bin/amw-html-export.py + Playwright · S3 — bin/amw-mermaid-render.sh + beautiful-mermaid + mmdc · S4 — Hand-drawn (excalidraw-illustrations) · PNG as INPUT is refused — the full story · 1 Format detection (`bin/amw-diagram-detect-format.sh`) · 2 Per-command refusal · 3 No OCR, no vision-model retry · Failure modes · SKILL · SKILL · SKILL · `../../bin/amw-html-export.py` — HTML → PNG via Playwright screenshot · `../../bin/amw-svg-render.py` — SVG → PNG via cairosvg · `../../bin/amw-mermaid-render.sh` — Mermaid → SVG then → PNG · `../../bin/amw-validate-diagram.sh` (planned; Task 0c) — unified validator dispatcher, PNG branch = hardcoded refusal · conversion-matrix · …(+1)
 
 ### 5.3 Mermaid → ASCII (Unicode default)
 
@@ -273,6 +256,7 @@ mmdc -i diagram.mmd -o /tmp/_mermaid_lint.svg 2>&1
 ```
 
 Output contract per [validation-dispatcher](./validation-dispatcher.md): `PASS|FAIL: line: message [FIX: hint]`.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 ### 6.2 Common validation failures
 

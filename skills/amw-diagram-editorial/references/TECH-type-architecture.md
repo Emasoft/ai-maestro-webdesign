@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/SKILL.md, SKILL
 
 # TECH-type-architecture
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Emits an **architecture diagram** — a set of component rectangles joined by
@@ -23,9 +33,9 @@ solid for primary flow).
 - ≤10 components total. If the input has more, merge the minor ones or
   split into overview + detail.
 
-If the user hasn't committed — route back to `../SKILL.md` type-selection
+If the user hasn't committed — route back to [SKILL](../SKILL.md) type-selection
 question. If the intent is a free-text architecture that needs auto-layout,
-route to `../../amw-diagram-architecture/SKILL.md` instead; that skill emits
+route to [SKILL](../../amw-diagram-architecture/SKILL.md) instead; that skill emits
 JSON / Mermaid / SVG / PNG from free text.
 
 ## How it works
@@ -83,8 +93,11 @@ Attributed to `diagram-design-editorial/SKILL.md` lines 180-259:
 
 ## Cross-references
 
-- `../SKILL.md` — type selection table + full 13-type chooser rule
+- [SKILL](../SKILL.md) — type selection table + full 13-type chooser rule
 - [design-system](design-system.md) — 4px grid, typography, color tokens
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [primitive-annotation](primitive-annotation.md) — add italic side callouts for editorial asides
-- `../../amw-diagram-architecture/SKILL.md` — auto-layout from free text
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
+- [SKILL](../../amw-diagram-architecture/SKILL.md) — auto-layout from free text
 - [TECH-focal-accent-discipline](TECH-focal-accent-discipline.md) — the 1–2-accent rule in detail
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references

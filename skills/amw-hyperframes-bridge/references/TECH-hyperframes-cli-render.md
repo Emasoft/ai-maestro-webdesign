@@ -128,5 +128,9 @@ Run `npx hyperframes benchmark` to find the optimal setting for your machine.
 ## Cross-references
 
 - [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md)
+  > [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
+  > [TECH-hyperframes-cli-inspect.md] What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
+  > What it does · When to use · How it works · Minimal example · CI integration · Gotchas · Cross-references
 - [TECH-hyperframes-cli-doctor](TECH-hyperframes-cli-doctor.md) — environment health check if render fails
-- `../SKILL.md`
+  > What it does · When to use · How it works · What `doctor` checks · Minimal example · Common failure modes surfaced by `doctor` · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

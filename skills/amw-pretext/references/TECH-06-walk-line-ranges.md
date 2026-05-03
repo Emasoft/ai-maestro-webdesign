@@ -7,6 +7,16 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-14.md, SKILL-16.md, pretext-text-measur
 
 # walkLineRanges() — geometry-only line iteration (no string allocation)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** api
 **Status:** stable
 

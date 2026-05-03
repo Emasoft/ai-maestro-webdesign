@@ -7,6 +7,18 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/SKILL.md
 
 # Flowchart grammar — nodes, shapes, direction
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Node shapes (authoritative list)](#node-shapes-authoritative-list)
+- [Direction tokens](#direction-tokens)
+- [Connections](#connections)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The Mermaid `flowchart` (also `graph`) grammar authors a directed
@@ -79,7 +91,10 @@ flowchart LR
 ## Cross-references
 
 - [TECH-subgraph-grouping](TECH-subgraph-grouping.md) — composite / nested flowcharts.
+  > What it does · When to use · Syntax · With direction override per subgraph · Minimal example · Gotchas · Cross-references
 - [TECH-edge-styles](TECH-edge-styles.md) — arrows, labels, line styles in depth.
+  > What it does · Line-and-arrow combinations · Inline label — two syntaxes · Minimal example · Styling edges with `linkStyle` · Gotchas · Cross-references
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — the Mermaid cousin for API/message flows.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -6,11 +6,11 @@ version: 0.2.0
 
 # ASCII to SVG (DEPRECATED — see amw-diagram-convert)
 
-> **DEPRECATED:** This skill is superseded by `../amw-diagram-convert/SKILL.md`, which uses the IR-pivot to handle the full N×N format-conversion matrix (ASCII / HTML / SVG / Mermaid / PNG) without N² special cases. New code should route through `amw-diagram-convert` whenever multiple format conversions are needed. This skill remains as a low-level primitive for the direct ASCII→SVG path and for the `/amw-ascii-to-svg` slash command (backward compatibility).
+> **DEPRECATED:** This skill is superseded by [SKILL](../amw-diagram-convert/SKILL.md), which uses the IR-pivot to handle the full N×N format-conversion matrix (ASCII / HTML / SVG / Mermaid / PNG) without N² special cases. New code should route through `amw-diagram-convert` whenever multiple format conversions are needed. This skill remains as a low-level primitive for the direct ASCII→SVG path and for the `/amw-ascii-to-svg` slash command (backward compatibility).
 >
 > The `amw-diagram-convert` skill internally calls this skill's `bin/amw-ascii-parse.py` for the ASCII parsing step, so the IR-pivot path subsumes everything documented below.
 >
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 
 ## Overview
 
@@ -44,10 +44,10 @@ Input can be passed as:
 1. Detect format (unicode / ASCII / mermaid). Ask user if ambiguous.
 2. Invoke `../../bin/amw-ascii-parse.py --in <source> --mode diagram --out /tmp/amw-ascii-<slug>-graph.json` to tokenize into a node/edge graph.
 3. Classify the content:
-   - Layered system with 3-6 buckets → route to `../amw-diagram-architecture/SKILL.md`
-   - Decision tree / flowchart → route to `../amw-diagram-svg/SKILL.md`
-   - Sequence (user → frontend → backend) → route to `../amw-diagram-editorial/SKILL.md` in sequence mode
-   - Freeform cluster → route to `../amw-diagram-svg/SKILL.md`
+   - Layered system with 3-6 buckets → route to [SKILL](../amw-diagram-architecture/SKILL.md)
+   - Decision tree / flowchart → route to [SKILL](../amw-diagram-svg/SKILL.md)
+   - Sequence (user → frontend → backend) → route to [SKILL](../amw-diagram-editorial/SKILL.md) in sequence mode
+   - Freeform cluster → route to [SKILL](../amw-diagram-svg/SKILL.md)
 4. Hand the chosen renderer a concise instruction: preserve every node and edge label verbatim; use oklch colors per `design-principles`; output SVG only, no wrapper prose.
 5. Save SVG to `/tmp/amw-ascii-<slug>-out.svg`.
 6. Run `../../bin/amw-svg-render.py render /tmp/amw-ascii-<slug>-out.svg` to generate PNG preview.
@@ -71,11 +71,13 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 - `../../bin/amw-ascii-parse.py` — tokenizer
 - `../../bin/amw-svg-render.py` — render-verify-finish loop
-- `../amw-diagram-architecture/SKILL.md` — layered-system route
-- `../amw-diagram-svg/SKILL.md` — freeform route
-- `../amw-diagram-editorial/SKILL.md` — sequence route
-- `../amw-design-principles/color-system.md` — oklch palette
-- `../amw-design-principles/typography-system.md` — node-label type sizes
+- [SKILL](../amw-diagram-architecture/SKILL.md) — layered-system route
+- [SKILL](../amw-diagram-svg/SKILL.md) — freeform route
+- [SKILL](../amw-diagram-editorial/SKILL.md) — sequence route
+- [color-system](../amw-design-principles/color-system.md) — oklch palette
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — node-label type sizes
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - `/amw-ascii-to-svg` — user-facing command that invokes this skill
 
 ## Routing table

@@ -75,11 +75,15 @@ ds.tailwind_config # Ready-to-merge theme extension
 ## Gotchas
 
 - The generator is a single-pick composition by default — for the plugin's fallback flow, wrap it with three invocations (three different product angles or three different style-priority biases) so the output satisfies design-principles Rule 2 (three variants).
-- Outputs from the upstream API include ai-slop candidates. The plugin wraps the generator with a post-filter against `../../amw-design-principles/ai-slop-avoid.md`.
+- Outputs from the upstream API include ai-slop candidates. The plugin wraps the generator with a post-filter against [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - The generator works best with specific descriptions. `"a website"` returns generic; `"a SaaS landing page for a B2B project management tool targeting remote engineering teams"` returns a targeted, useful design system.
 
 ## Cross-references
 
 - [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md), [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md), [TECH-uiux-lp-patterns-catalog](TECH-uiux-lp-patterns-catalog.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Top 10 distinctive rules — broken out as individual TECH files · Cross-references
 - [TECH-uiux-pre-delivery-checklist](TECH-uiux-pre-delivery-checklist.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Accessibility · Responsive · Performance · Interaction · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

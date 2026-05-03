@@ -140,8 +140,8 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 
 ## 7. Operations
 
-1. Read `../skills/amw-ux-designer/SKILL.md` — persona and journey-map templates.
-2. Read `../skills/amw-ux-flows/SKILL.md` if a journey map is requested (Mermaid preferred; ASCII alternative if user-preference or low-fi phase).
+1. Read [SKILL](../skills/amw-ux-designer/SKILL.md) — persona and journey-map templates.
+2. Read [SKILL](../skills/amw-ux-flows/SKILL.md) if a journey map is requested (Mermaid preferred; ASCII alternative if user-preference or low-fi phase).
 3. **Inventory artifacts.** Log each `research_artifacts` entry: type, coverage, user-declared quality. Compute a summary table (data-source coverage).
 4. **Thematic coding pass.**
    - Extract recurring themes from each artifact: goals, pain points, vocabulary, devices, decision triggers, drop-off moments.
@@ -197,7 +197,8 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 **User-provided artifact appears fabricated** (suspicious round numbers, verbatims that read like marketing copy) → I do not accuse — I flag `"Some artifact content reads as idealized rather than verbatim; confidence reduced accordingly"` and proceed with reduced confidence.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot synthesis agent — I have no internal fix/retry/regenerate loop. I synthesize personas and journey maps from the provided research artifacts in a single pass. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot synthesis agent — I have no internal fix/retry/regenerate loop. I synthesize personas and journey maps from the provided research artifacts in a single pass. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -205,15 +206,15 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Signal / need | Skill I read | What I do with it |
 |---|---|---|
-| Need persona and journey-map frameworks | `../skills/amw-ux-designer/SKILL.md` | Pull the UX methodology template; apply the persona structure. |
-| Need to render journey map as Mermaid (default) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-mermaid-diagram/SKILL.md` | Emit Mermaid flowchart; render via `bin/amw-mermaid-render.sh`. |
-| Need to render journey map as ASCII (preference or low-fi) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-ascii-creator/SKILL.md` | Emit ASCII flowchart; validate via `bin/amw-validate-ascii.py`. |
+| Need persona and journey-map frameworks | [SKILL](../skills/amw-ux-designer/SKILL.md) | Pull the UX methodology template; apply the persona structure. |
+| Need to render journey map as Mermaid (default) | [SKILL](../skills/amw-ux-flows/SKILL.md) + [SKILL](../skills/amw-mermaid-diagram/SKILL.md) | Emit Mermaid flowchart; render via `bin/amw-mermaid-render.sh`. |
+| Need to render journey map as ASCII (preference or low-fi) | [SKILL](../skills/amw-ux-flows/SKILL.md) + [SKILL](../skills/amw-ascii-creator/SKILL.md) | Emit ASCII flowchart; validate via `bin/amw-validate-ascii.py`. |
 | Need to diagram a data-source coverage table | (inline markdown table) | No skill needed — render directly as markdown. |
 | Need to note SEO-adjacent implications (search-intent clues from NPS verbatims) | (flag only) | Forward to `amw-seo-strategist-agent` via main-agent; do not do keyword research myself. |
 | Need to note brand-adjacent implications (tone of voice from interviews) | (flag only) | Forward to `amw-brand-researcher-agent` via main-agent. |
 | Need to note legal-adjacent implications (persona is a minor, or persona mentions health info) | (flag only) | Forward to `amw-legal-expert-agent` via main-agent. |
-| **Onboarding flow design** (signup → activation → retention sequencing for a primary persona) | `../skills/amw-ux-designer/SKILL.md` for journey-map template + `../skills/amw-ux-flows/SKILL.md` for flow grammar | Produce an onboarding flow as a labeled sequence with stages: discover → signup → first-value moment → habit loop → expansion. For each stage record: goal, trigger, friction, drop-off mitigation, success-metric. Render as Mermaid by default; ASCII fallback for low-fi. |
-| **Activation milestone identification** (the "aha moment" — first action that predicts retention) | `../skills/amw-ux-designer/SKILL.md` (journey-map / value-proposition section) | Identify the smallest user action that predicts day-7 / day-30 retention based on the personas' goals + friction points. Express as a measurable predicate ("user creates 1+ X within 24h of signup", not "user feels engaged"). |
+| **Onboarding flow design** (signup → activation → retention sequencing for a primary persona) | [SKILL](../skills/amw-ux-designer/SKILL.md) for journey-map template + [SKILL](../skills/amw-ux-flows/SKILL.md) for flow grammar | Produce an onboarding flow as a labeled sequence with stages: discover → signup → first-value moment → habit loop → expansion. For each stage record: goal, trigger, friction, drop-off mitigation, success-metric. Render as Mermaid by default; ASCII fallback for low-fi. |
+| **Activation milestone identification** (the "aha moment" — first action that predicts retention) | [SKILL](../skills/amw-ux-designer/SKILL.md) (journey-map / value-proposition section) | Identify the smallest user action that predicts day-7 / day-30 retention based on the personas' goals + friction points. Express as a measurable predicate ("user creates 1+ X within 24h of signup", not "user feels engaged"). |
 | **Empty-state and zero-data UX guidance** (what the user should see/do before they have any content) | (judgment) | For each primary persona, list the empty states they will encounter (empty inbox, no projects, no friends, no analytics). Specify: what content to show, what action to suggest, what NOT to show (no fake placeholder data, no condescending tone). Hand off to wireframe-builder via main-agent. |
 
 Anything outside this table is out of scope.
@@ -260,7 +261,8 @@ All five resolve through main-agent; I never talk to peer agents or to the user 
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md):
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 **DO:**
 
@@ -283,7 +285,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 - Do not issue `/amw-*` prompts from inside the agent — they re-trigger the orchestrator.
 - Do not use broad design vocabulary ("design a landing page", "build a mockup") in tool-call text.
-- Do not invoke `../skills/amw-design-principles/SKILL.md` — I am a sub-agent, not the orchestrator.
+- Do not invoke [SKILL](../skills/amw-design-principles/SKILL.md) — I am a sub-agent, not the orchestrator.
 - Do not emit free-form prompts into the Skill tool that look like user input.
 - Do not use `dev-browser` or any browser automation — I work from text artifacts, not live pages.
 
@@ -291,7 +293,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 ## 13. Return Contract
 
-I return to main-agent via the canonical YAML schema from `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
+I return to main-agent via the canonical YAML schema from [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md).
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 **Worked example:**
 
@@ -440,13 +443,18 @@ flowchart LR
 ## Cross-references
 
 - [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol
-- `../skills/amw-design-principles/references/authority-hierarchy.md` — IA authority, no-veto status
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase A data flow
-- `../skills/amw-ux-designer/SKILL.md` — UX methodology and persona framework
-- `../skills/amw-ux-flows/SKILL.md` — journey-map visualization (Mermaid default, ASCII alternative)
-- `../skills/amw-mermaid-diagram/SKILL.md` — Mermaid journey maps
-- `../skills/amw-ascii-creator/SKILL.md` — ASCII journey maps (alternative to Mermaid)
-- `../CLAUDE.md` — plugin architecture overview
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md) — agent philosophy
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md) — return-contract schema
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md) — DO/DON'T protocol
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) — IA authority, no-veto status
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) — Phase A data flow
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+- [SKILL](../skills/amw-ux-designer/SKILL.md) — UX methodology and persona framework
+- [SKILL](../skills/amw-ux-flows/SKILL.md) — journey-map visualization (Mermaid default, ASCII alternative)
+- [SKILL](../skills/amw-mermaid-diagram/SKILL.md) — Mermaid journey maps
+- [SKILL](../skills/amw-ascii-creator/SKILL.md) — ASCII journey maps (alternative to Mermaid)
+- [CLAUDE](../CLAUDE.md) — plugin architecture overview

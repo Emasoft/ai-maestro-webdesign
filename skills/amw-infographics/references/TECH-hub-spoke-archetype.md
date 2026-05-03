@@ -7,6 +7,17 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 
 # Archetype 3: Hub & Spoke
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The shape](#the-shape)
+- [CSS implementation](#css-implementation)
+- [Connection lines — SVG overlay](#connection-lines-svg-overlay)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Central entity (logo, token, platform) with radiating connections
@@ -118,7 +129,10 @@ overlay an SVG:
 ## Cross-references
 
 - [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — when to reach for this archetype.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 22 pieces) · Visual properties · Signature layout pattern · The partner grid pattern (signature) · Section header pill badge · CSS variables · Reference template · Target density · Gotchas · Cross-references
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — if flows dominate more than hub.
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
 - [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

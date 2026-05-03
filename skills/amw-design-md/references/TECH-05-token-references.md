@@ -8,6 +8,23 @@ status: stable
 
 # TECH: Token references — `{path.to.token}` syntax
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Hard rules](#hard-rules)
+  - [Syntax](#syntax)
+  - [Where references are valid](#where-references-are-valid)
+  - [Resolution model](#resolution-model)
+  - [Scalar groups must point to primitives](#scalar-groups-must-point-to-primitives)
+  - [Composite references allowed inside `components`](#composite-references-allowed-inside-components)
+  - [Self-references and cycles](#self-references-and-cycles)
+  - [What a resolved DESIGN.md looks like](#what-a-resolved-designmd-looks-like)
+- [When NOT to use references](#when-not-to-use-references)
+- [Common errors](#common-errors)
+- [Validation](#validation)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents the canonical reference syntax used in DESIGN.md frontmatter to point one token at another. Covers syntax rules, scope (where references are allowed), what they resolve to, and common errors.
@@ -158,7 +175,12 @@ python3 <plugin-root>/bin/amw-design-md-validate.py DESIGN.md --check-references
 ## Cross-references
 
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md)
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-04-component-tokens](./TECH-04-component-tokens.md) — composite references inside `components`
+  > What it does · Hard rules · Property whitelist (per spec.md L312-L319) · Variant naming convention · Composite token references allowed inside `components.*` · Common component patterns · Button (primary/secondary/ghost) · Input · Card · Chip / Badge · Hover-state derivation strategies · Anti-patterns · Cross-references
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the resolver
+  > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — what the resolver outputs in `<tokens.json>`
-- `canonical-spec-google-alpha.md`
+  > What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
+- [canonical-spec-google-alpha](canonical-spec-google-alpha.md)
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references

@@ -6,10 +6,13 @@ version: 0.1.0
 
 # Webpage to Diagram — DOM-to-IR extractor
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
-> **Format spec (authoritative):** `../amw-diagram-formats/references/html.md`.
-> **IR schema:** `../amw-diagram-formats/references/ir-schema.md`.
-> **Modify pipeline (for the re-emit leg):** `../amw-diagram-formats/references/modify-flow.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
+> **Format spec (authoritative):** [html](../amw-diagram-formats/references/html.md).
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · SKILL · SKILL · SKILL · `../../bin/amw-html-export.py` — HTML → PNG/PDF rasterizer (Playwright) · `../../bin/amw-ascii-parse.py` — ASCII → layout JSON consumed by HTML emitter · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
+> **IR schema:** [ir-schema](../amw-diagram-formats/references/ir-schema.md).
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
+> **Modify pipeline (for the re-emit leg):** [modify-flow](../amw-diagram-formats/references/modify-flow.md).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
 
 This skill owns one direction of the webpage round-trip: **URL/HTML → IR → target format**. It is a specialization of `parse-html-diagram.py` — where that tool focuses on inline-`<svg>` diagrams, this skill treats the whole page as a structural graph: every HTML5 landmark (`<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<aside>`, `<header>`) becomes an IR node, every internal anchor link becomes an IR edge, and every nested `<svg>` diagram is attached as children of its containing landmark.
 
@@ -75,7 +78,8 @@ Do NOT activate on:
 | Validation FAIL on emitted ASCII | Downstream renderer produced misaligned output | Save the IR to `/tmp/amw-page-<hash>.json` for inspection; ask the user to rerun with `--target-kind flowchart` (less strict alignment). |
 
 ## Output
-One diagram file per invocation in the user's chosen format (ASCII `.txt` by default, `.svg`, or `.mmd`). Output path follows project-inference rules from `../amw-design-principles/references/project-output-routing.md`. The original HTML is never modified.
+One diagram file per invocation in the user's chosen format (ASCII `.txt` by default, `.svg`, or `.mmd`). Output path follows project-inference rules from [project-output-routing](../amw-design-principles/references/project-output-routing.md). The original HTML is never modified.
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 ## Prerequisites
 
@@ -99,24 +103,27 @@ npm_packages:
 - **PNG refusal is absolute.** File extension, magic bytes, or URL `Content-Type: image/*` — any hit aborts with the standard message. No OCR, no guess-reconstruct.
 - **No direct scraping with a new browser stack.** Page fetch flows through `bin/amw-dev-browser-wrapper.sh` — never `puppeteer`, `playwright-mcp`, `selenium`, or any other automation surface.
 - **IR is the pivot.** Even when the target is HTML, the path is DOM → IR → HTML (the no-op case is just "don't re-emit"). Bypassing IR for direct HTML rewriting is OUT of scope — use `/amw-modify-webpage-from-diagram` or `/amw-ascii-to-html` for that.
-- Inherits the three hard rules from `../amw-design-principles/SKILL.md` (context, variants, AI-slop refusal) whenever the downstream target is a design artifact (e.g. emitting ASCII for a `/amw-ascii-to-html` round-trip).
+- Inherits the three hard rules from [SKILL](../amw-design-principles/SKILL.md) (context, variants, AI-slop refusal) whenever the downstream target is a design artifact (e.g. emitting ASCII for a `/amw-ascii-to-html` round-trip).
 
 ## Examples
-See `../amw-diagram-webpage-sync/SKILL.md` for a complete round-trip example (extract → edit → re-apply).
+See [SKILL](../amw-diagram-webpage-sync/SKILL.md) for a complete round-trip example (extract → edit → re-apply).
 
 ## Resources
 
-- `../amw-diagram-formats/references/html.md` — authoritative HTML format spec (consumed via `bin/amw-parse-html-diagram.py` for nested SVGs).
-- `../amw-diagram-formats/references/ir-schema.md` — IR schema produced by `bin/amw-dom-to-ir.py`.
-- `../amw-diagram-formats/references/modify-flow.md` — shared 6-step pipeline consumed by the round-trip skills.
-- `../amw-dev-browser/SKILL.md` — upstream page-capture primitive.
-- `../amw-design-extract/SKILL.md` — sibling tool for token extraction (not structure).
+- [html](../amw-diagram-formats/references/html.md) — authoritative HTML format spec (consumed via `bin/amw-parse-html-diagram.py` for nested SVGs).
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
+- [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR schema produced by `bin/amw-dom-to-ir.py`.
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
+- [modify-flow](../amw-diagram-formats/references/modify-flow.md) — shared 6-step pipeline consumed by the round-trip skills.
+  > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
+- [SKILL](../amw-dev-browser/SKILL.md) — upstream page-capture primitive.
+- [SKILL](../amw-design-extract/SKILL.md) — sibling tool for token extraction (not structure).
 - `../../bin/amw-dom-to-ir.py` — DOM-to-IR extractor (this skill's core backend).
 - `../../bin/amw-parse-html-diagram.py` — inline-SVG extractor (called as subprocess by `dom-to-ir.py` for nested SVGs).
 - `../../bin/amw-diagram-ir.py` — IR parse/emit/validate CLI.
 - `../../bin/amw-validate-diagram.sh` — unified validator dispatcher.
 - `../../bin/amw-dev-browser-wrapper.sh` — sanctioned browser automation wrapper.
-- `../amw-design-principles/SKILL.md` — orchestrator.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator.
 
 ## Related commands
 

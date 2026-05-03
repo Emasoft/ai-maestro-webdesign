@@ -115,12 +115,16 @@ Common mistakes an LLM makes without the snap pass:
 - **Even `rx` values.** 6 and 10 are the only allowed border radii (6 for
   nodes, 10 for layer bands). Never 5, 7, 8, 9 — those read as jitter.
 - **The filter region pad in [primitive-sketchy](primitive-sketchy.md) uses percentages
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · 4px grid still applies · Accessibility caveat · Source citation
   (-5%, 110%)** — that is allowed because it's a relative adjustment
   on the bounding box, not an absolute pixel on the canvas.
 
 ## Cross-references
 
-- `../SKILL.md` — non-negotiables list (this is item 1)
+- [SKILL](../SKILL.md) — non-negotiables list (this is item 1)
 - [design-system](design-system.md) — grid + typography + color rules
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [troubleshooting](troubleshooting.md) — first diagnosis for "looks AI-generated"
+  > Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill
 - [TECH-focal-accent-discipline](TECH-focal-accent-discipline.md) — the other structural hard rule
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references

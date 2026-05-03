@@ -7,6 +7,21 @@ also-in: ../../amw-seo/SKILL.md (Article JSON-LD schema)
 
 # Article / blog post template
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Semantic structure](#semantic-structure)
+- [Reading-time computation](#reading-time-computation)
+- [Open Graph + Twitter Card meta](#open-graph-twitter-card-meta)
+- [JSON-LD Article schema](#json-ld-article-schema)
+- [Body copy patterns](#body-copy-patterns)
+- [Accessibility](#accessibility)
+- [RSS / Atom feed](#rss-atom-feed)
+- [Multi-locale considerations](#multi-locale-considerations)
+- [What the agent MUST do](#what-the-agent-must-do)
+- [What the agent MUST NOT do](#what-the-agent-must-not-do)
+
+
 ## What it does
 
 Structural contract for long-form article and blog-post pages:

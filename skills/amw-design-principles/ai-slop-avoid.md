@@ -1,5 +1,17 @@
 # AI-Slop Anti-Pattern List
 
+## Table of Contents
+
+- [I. Visual style](#i-visual-style)
+- [II. Typography](#ii-typography)
+- [III. Layout](#iii-layout)
+- [IV. Content and copy](#iv-content-and-copy)
+- [V. Interaction and motion](#v-interaction-and-motion)
+- [VI. Color](#vi-color)
+- [Self-check workflow](#self-check-workflow)
+- [VII. Content density principle (positive stance)](#vii-content-density-principle-positive-stance)
+
+
 > **A thousand no's for one yes.** Each item below is an instant tell for AI-generated work.
 > Each entry names: ❌ the anti-pattern → ✅ a better alternative → 📝 the reason.
 

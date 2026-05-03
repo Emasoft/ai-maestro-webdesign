@@ -90,6 +90,9 @@ The storyboard ends with a table listing every asset referenced across all beats
 ## Cross-references
 
 - [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md), [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md), [TECH-hyperframes-capture-step-6-build](TECH-hyperframes-capture-step-6-build.md)
+  > What it does · When to use · How it works · Narration style rules · Format · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 - [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Rule 1 — ALWAYS use transitions between scenes · Rule 2 — ALWAYS use entrance animations on every scene · Rule 3 — NEVER use exit animations except on the final scene · Rule 4 — Final scene only may fade elements out · Wrong pattern · Right pattern · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

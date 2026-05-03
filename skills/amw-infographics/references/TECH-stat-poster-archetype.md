@@ -7,6 +7,18 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 
 # Archetype 4: Stat Poster
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The shape](#the-shape)
+- [CSS implementation](#css-implementation)
+- [The number-first rule](#the-number-first-rule)
+- [Tabular numerics mandatory](#tabular-numerics-mandatory)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Oversized numbers / stats dominate the canvas. Minimal supporting
@@ -138,7 +150,10 @@ Without this, digits jitter when animating counters.
 ## Cross-references
 
 - [TECH-stat-strip-component](TECH-stat-strip-component.md) — the supporting stat row.
+  > What it does · When to use · CSS · HTML · The signature — colored top border · Number formatting rules · Common stat fields · Gotchas · Cross-references
 - [TECH-typography-scale](TECH-typography-scale.md) — size rules for the hero number.
+  > What it does · The scale · Weight-based hierarchy · Letter-spacing rules · Tabular numerics (mandatory for numbers) · Summary rules · Body font size rules (the density signature) · Gotchas · Cross-references
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — when you have multiple equal stats.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

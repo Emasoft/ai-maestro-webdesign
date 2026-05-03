@@ -7,6 +7,20 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/website-to-hyperframe
 
 # TECH: Visual Identity Gate (HARD-GATE)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [1. DESIGN.md exists in the project?](#1-designmd-exists-in-the-project)
+  - [2. visual-style.md exists?](#2-visual-stylemd-exists)
+  - [3. User named a style (e.g. "Swiss Pulse", "dark and techy", "luxury brand")?](#3-user-named-a-style-eg-swiss-pulse-dark-and-techy-luxury-brand)
+  - [4. None of the above?](#4-none-of-the-above)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 A hard gate applied before **any** composition HTML is written. The gate ensures every composition traces its palette, typography, and motion back to an explicit source — DESIGN.md, visual-style.md, a named preset, or direct user input. Compositions with generic defaults (`#333`, `#3b82f6`, `Roboto`) are evidence the gate was skipped.
@@ -91,6 +105,9 @@ Dark, technical, restrained. Cool slate bg, single cyan accent. Sharp geometry. 
 ## Cross-references
 
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md) — writing DESIGN.md in the capture pipeline
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-visual-styles-library](TECH-hyperframes-visual-styles-library.md) — 8 named presets
-- `../SKILL.md`
+  > What it does · When to use · How it works · Preset shape (each entry contains) · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

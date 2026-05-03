@@ -7,6 +7,18 @@ also-in: skills/amw-excalidraw-illustrations/scripts/generate.py
 
 # TECH-two-phase-visual-then-overlay
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Phase 1 — visual-only generation](#phase-1-visual-only-generation)
+  - [Phase 2 — local text overlay via Pillow](#phase-2-local-text-overlay-via-pillow)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Fallback workflow for when Gemini stubbornly misspells a key word in the
@@ -133,10 +145,13 @@ Internally:
 
 ## Cross-references
 
-- `../SKILL.md` — iteration / fallback section
+- [SKILL](../SKILL.md) — iteration / fallback section
 - `../scripts/generate.py` — the implementation
 - [TECH-reference-image-priming](TECH-reference-image-priming.md) — Phase 1 still uses the references
+  > What it does · When to use · How it works · API call shape · Minimal example · Gotchas · Cross-references
 - [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the primary anti-error
+  > What it does · When to use · How it works · Spell-out format · Minimal example · Gotchas · Cross-references
   technique that this technique falls back from
 - [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md) — even overlaid text should sit
+  > What it does · When to use · How it works · Rounded title frame (section headers) · Speech bubble (tag-line commentary) · Labelled callout with filled background (icon labels, attributions) · Minimal example · Gotchas · Cross-references
   inside frames drawn in Phase 1

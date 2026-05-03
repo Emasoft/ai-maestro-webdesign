@@ -36,6 +36,7 @@ Every scaffold below assumes the six semantic tokens from SKILL.md are defined o
 ```
 
 Override via brand onboarding (writes to [style-guide](style-guide.md) alongside this file).
+> [style-guide.md] Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 
 All coordinates snap to the 4px grid. All borders are 1px hairline. No shadows. Max `rx="10"`. Accent limited to 1–2 focal nodes per diagram.
 

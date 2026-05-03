@@ -95,7 +95,11 @@ Modal action row done right:
 ## Cross-references
 
 - [TECH-uxeval-3-dimension-framework](TECH-uxeval-3-dimension-framework.md)
+  > What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-navigation-conventions](TECH-uxeval-navigation-conventions.md), [TECH-uxeval-form-conventions](TECH-uxeval-form-conventions.md)
+  > What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
 - [balsamiq-button-principles](balsamiq-button-principles.md)
-- `../SKILL.md`
-- `../../amw-ux-designer/references/TECH-ux-rule-interaction.md` — microcopy rule
+  > Core Principles · Use Conventional Labels · Say Exactly What Happens · Primary and Secondary Should Look Different · Primary Action on the Right · Use Adequate Spacing · Make Buttons Look Clickable · Size Appropriately · Use Icons Wisely · Consider Loading States · Error Prevention · Button Hierarchy Summary · Common Mistakes
+- [SKILL](../SKILL.md)
+- [TECH-ux-rule-interaction](../../amw-ux-designer/references/TECH-ux-rule-interaction.md) — microcopy rule
+  > What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references

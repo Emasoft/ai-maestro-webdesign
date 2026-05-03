@@ -7,6 +7,16 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-16.md, SKILL-23.md, use-pretext/SKILL.m
 
 # DOM-free paragraph height (the core pretext win)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** measure
 **Status:** stable
 
@@ -55,4 +65,5 @@ async function loadAndRender(width) {
 
 - Related: TECH-03-layout, TECH-66-masonry-grid, TECH-67-virtualized-list
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

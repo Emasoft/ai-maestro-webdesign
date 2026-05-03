@@ -149,8 +149,11 @@ the SVG is embedded as `<img src>` or CSS `background-image`.
 ## Cross-references
 
 - [TECH-reduced-motion](TECH-reduced-motion.md) — mandatory accessibility override.
+  > What it does · The minimum implementation · Why `0.01ms` instead of `0s` · SMIL equivalent · When it's OK to ignore · When it's partially OK · Gotchas · Cross-references
 - [TECH-paint-order-and-spread-method](TECH-paint-order-and-spread-method.md) — `pathLength="1"` is key
+  > What it does · `paint-order="stroke fill"` · `spreadMethod` on gradients · Example — brushed metal with `reflect` · `vector-effect="non-scaling-stroke"` · `pathLength="1"` · `gradientTransform` · Gotchas · Cross-references
   for line-draw.
 - [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — stars, rain use these patterns.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Scope note · What it does · Light rays (god rays) · Fog / mist (masked gradient) · Stars with twinkling · Rain · Clouds · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

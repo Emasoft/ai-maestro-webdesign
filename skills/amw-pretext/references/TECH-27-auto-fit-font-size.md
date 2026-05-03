@@ -65,4 +65,5 @@ h1.style.fontSize = bestSize + 'px'
 
 - Related: TECH-03-layout, TECH-71-smartpage-a4-autofit
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

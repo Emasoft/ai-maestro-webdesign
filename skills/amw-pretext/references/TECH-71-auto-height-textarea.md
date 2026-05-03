@@ -56,4 +56,5 @@ See How-it-works above.
 
 - Related: TECH-15-textarea-prewrap, TECH-60-svelte-islands-integration
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

@@ -97,6 +97,9 @@ Clipboard: wiring snippet copied
 ## Cross-references
 
 - [TECH-hyperframes-registry-blocks](TECH-hyperframes-registry-blocks.md) — detailed block-wiring rules
+  > What it does · When to use · How it works · Include pattern · Required attributes on the include · Verification · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-registry-components](TECH-hyperframes-registry-components.md) — detailed component-wiring rules
+  > What it does · When to use · How it works · Wiring process · Example component file · Merging into host · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-cli-init](TECH-hyperframes-cli-init.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Registry templates (`--example`) · Side effects · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

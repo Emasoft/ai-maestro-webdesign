@@ -7,10 +7,6 @@
 - [5. Lossy-conversion matrix](#5-lossy-conversion-matrix)
 - [6. Versioning policy](#6-versioning-policy)
 - [7. Example IRs](#7-example-irs)
-  - [Minimal flowchart (3 nodes, 2 edges)](#minimal-flowchart-3-nodes-2-edges)
-  - [Sequence (two actors, one message + note)](#sequence-two-actors-one-message-note)
-  - [Architecture (3 layers)](#architecture-3-layers)
-  - [Raw-source stub (MVP HTML → IR)](#raw-source-stub-mvp-html-ir)
 - [8. Validation](#8-validation)
 - [9. Consumers](#9-consumers)
 
@@ -205,8 +201,12 @@ Both checks are present in `bin/amw-diagram-ir.py::validate`.
 
 - `bin/amw-diagram-ir.py` (library + CLI).
 - `bin/amw-diagram-ir-diff.py` (Task 3c — future; consumes the `diff` op list specified in [diff-algorithm](./diff-algorithm.md)).
+  > Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references
 - Every `wd-create-or-modify-*-diagram` command's modify-flow (see [modify-flow](./modify-flow.md)).
+  > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
 - `/amw-convert-any-diagram-format` (see [conversion-matrix](./conversion-matrix.md)).
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 - `/amw-compare-diagrams` (see [diff-algorithm](./diff-algorithm.md)).
+  > Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references
 
 Any change to the IR shape ripples through all of these; bump the version in lockstep.

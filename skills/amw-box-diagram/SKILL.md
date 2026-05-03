@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Box Diagram
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > Executor. Narrow technical triggers only — the orchestrator routes here for clean rectangular Unicode box diagrams (pipelines, fan-out/fan-in, layered service topologies).
 
 ## Overview
@@ -49,7 +49,7 @@ If the target context cannot render UTF-8 (old terminals, ancient CI log viewers
 
 ## Non-negotiables
 
-Every diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.py` before presentation to the user. See `../amw-ascii-validator/SKILL.md` for the validator contract — same gate `../amw-ascii-sketch/` uses.
+Every diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.py` before presentation to the user. See [SKILL](../amw-ascii-validator/SKILL.md) for the validator contract — same gate `../amw-ascii-sketch/` uses.
 
 ```bash
 python3 bin/amw-validate-ascii.py /tmp/box-diagram-<slug>.txt
@@ -366,7 +366,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-box-diagram/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -375,7 +377,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. Unicode rounded-corner box-diagram `.txt` files). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. Unicode rounded-corner box-diagram `.txt` files). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -413,13 +416,15 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources
 
-- `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; defines the rule set
+- [SKILL](../amw-ascii-validator/SKILL.md) — MANDATORY validation gate; defines the rule set
 - `../../bin/amw-validate-ascii.py` — the validator (pure-Python, exits non-zero on failure, emits `FIX:` hints; Windows-compatible, group-aware width detection for multi-structure diagrams)
-- `../amw-ascii-sketch/SKILL.md` — upstream peer for wireframe layouts; this skill handles the flow-diagram side of the same output medium
-- `../amw-ascii-to-svg/SKILL.md` — downstream: convert an approved box diagram to SVG for editorial/print use
-- `../amw-ascii-diagrams-reference/SKILL.md` — classic-ASCII (`+--+`) counterpart for legacy contexts that cannot render UTF-8
-- `../amw-diagram-svg/SKILL.md` — when the caller wants an SVG output directly (skip the ASCII round trip)
-- `../amw-design-principles/ai-slop-avoid.md` — misaligned boxes are a form of AI-slop
+- [SKILL](../amw-ascii-sketch/SKILL.md) — upstream peer for wireframe layouts; this skill handles the flow-diagram side of the same output medium
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — downstream: convert an approved box diagram to SVG for editorial/print use
+- [SKILL](../amw-ascii-diagrams-reference/SKILL.md) — classic-ASCII (`+--+`) counterpart for legacy contexts that cannot render UTF-8
+- [SKILL](../amw-diagram-svg/SKILL.md) — when the caller wants an SVG output directly (skip the ASCII round trip)
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned boxes are a form of AI-slop
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 
 ## Error Handling
 

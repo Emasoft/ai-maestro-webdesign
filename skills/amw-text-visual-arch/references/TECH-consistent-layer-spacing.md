@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-consistent-layer-spacing — fixed grid + 2-space layer separator
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Enforces a consistent layout grid in an ASCII architecture diagram: each
@@ -56,8 +66,11 @@ makes a diagram read as if it has bugs the reader must decode.
 
 ## Cross-references
 
-- `../../amw-ascii-creator/references/TECH-render-mode-layers.md`
+- [TECH-render-mode-layers](../../amw-ascii-creator/references/TECH-render-mode-layers.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
-- `../../amw-box-diagram/references/TECH-fan-out-fan-in-junctions.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-fan-out-fan-in-junctions](../../amw-box-diagram/references/TECH-fan-out-fan-in-junctions.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

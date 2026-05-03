@@ -84,7 +84,10 @@ the light catching the surface.
 ## Cross-references
 
 - [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the noise primitive.
+  > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
 - [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — the shine primitive.
+  > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
 - [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — contrasting "paper" feel.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The filter · Parameter walkthrough · When to use · When NOT to use · Usage · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

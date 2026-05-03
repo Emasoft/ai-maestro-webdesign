@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Diagram SVG
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > Executor. Narrow technical triggers only — the orchestrator routes here for structured node-and-edge visuals.
 
 ## Overview
@@ -22,7 +22,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 ## Position in flow
 
-**OUTPUT (Phase B).** Mechanical SVG generator: turns a natural-language diagram brief into clean SVG composed of primitives (`<rect>`, `<circle>`, `<ellipse>`, `<polygon>`, `<line>`, `<path>`, `<text>`, `<marker>`). Downstream receiver of `../amw-ascii-to-svg/SKILL.md` when the upstream input is an ASCII freeform diagram. Output: one self-contained `.svg` file in the working directory.
+**OUTPUT (Phase B).** Mechanical SVG generator: turns a natural-language diagram brief into clean SVG composed of primitives (`<rect>`, `<circle>`, `<ellipse>`, `<polygon>`, `<line>`, `<path>`, `<text>`, `<marker>`). Downstream receiver of [SKILL](../amw-ascii-to-svg/SKILL.md) when the upstream input is an ASCII freeform diagram. Output: one self-contained `.svg` file in the working directory.
 
 ## Trigger conditions
 
@@ -32,7 +32,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 - "draw the architecture as SVG", "system illustration"
 - "make a node-and-arrow diagram", "render this graph as SVG"
 
-Do **not** activate on "design a page", "UI", "landing page", "mockup", "prototype" — `design-principles` owns those. For layered software-architecture diagrams (tiered boxes, labelled zones) route to `../amw-diagram-architecture/SKILL.md` instead.
+Do **not** activate on "design a page", "UI", "landing page", "mockup", "prototype" — `design-principles` owns those. For layered software-architecture diagrams (tiered boxes, labelled zones) route to [SKILL](../amw-diagram-architecture/SKILL.md) instead.
 
 ## Prerequisites
 
@@ -191,11 +191,13 @@ After writing the `.svg`, run `python3 ../../bin/amw-svg-render.py <path>` to ra
 
 ## Resources
 
-- `../amw-design-principles/color-system.md` — design-principles prefers `oklch`. Source slate palette (`#0f172a` / `#f1f5f9` / `#334155` / `#38bdf8`) is the mechanical default; substitute user tokens when supplied. Never emit raw `#000` / `#fff`.
-- `../amw-design-principles/typography-system.md` — keep in-node font sizes in the `18`–`28` band.
+- [color-system](../amw-design-principles/color-system.md) — design-principles prefers `oklch`. Source slate palette (`#0f172a` / `#f1f5f9` / `#334155` / `#38bdf8`) is the mechanical default; substitute user tokens when supplied. Never emit raw `#000` / `#fff`.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — keep in-node font sizes in the `18`–`28` band.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - `../../bin/amw-svg-render.py` — render → view → fix loop.
-- `../amw-ascii-to-svg/SKILL.md` — upstream, routes here when input is ASCII.
-- `../amw-diagram-architecture/SKILL.md` — route there for layered architecture instead.
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — upstream, routes here when input is ASCII.
+- [SKILL](../amw-diagram-architecture/SKILL.md) — route there for layered architecture instead.
 - Slash command: `/amw-ascii-to-svg`.
 
 ## Instructions
@@ -214,6 +216,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `diagram-svg` is the user asking about?
   - **svg** (3 techniques)
     - [TECH-svg-animate-motion](./references/TECH-svg-animate-motion.md) — TECH-svg-animate-motion
+      > What it does · When to use · How it works · Animate a dot along a path (data-in-transit pattern) · Blink a node (alert pattern) · Pulse a ring (activation pattern) · Mandatory attributes · Minimal example · Gotchas · Cross-references
     - [TECH-svg-group-structure](./references/TECH-svg-group-structure.md) — TECH-svg-group-structure
     - [TECH-svg-output-robustness](./references/TECH-svg-output-robustness.md) — TECH-svg-output-robustness
   - **arrow** (1 techniques)
@@ -265,6 +268,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-svg-animate-motion.md](./references/TECH-svg-animate-motion.md)**
+  > What it does · When to use · How it works · Animate a dot along a path (data-in-transit pattern) · Blink a node (alert pattern) · Pulse a ring (activation pattern) · Mandatory attributes · Minimal example · Gotchas · Cross-references
   - Description: TECH-svg-animate-motion
   - TOC:
     - What it does
@@ -307,7 +311,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-diagram-svg/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -316,7 +322,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. standalone `.svg` diagrams). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. standalone `.svg` diagrams). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -362,4 +369,4 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 | Decision branches unclear | Diamond outputs unlabelled | Label edges `yes` / `no` or domain-specific. |
 | Animation saturates diagram | Too many concurrent animations | Keep to one or two subtle pulses; prefer static when ambiguous. |
 | Render script shows blank | `cairosvg` missing, or content outside `0–1000` viewBox | Install via `/amw-init`; reposition inside canvas. |
-| User wanted a layered architecture | Wrong skill | Hand off to `../amw-diagram-architecture/SKILL.md`. |
+| User wanted a layered architecture | Wrong skill | Hand off to [SKILL](../amw-diagram-architecture/SKILL.md). |

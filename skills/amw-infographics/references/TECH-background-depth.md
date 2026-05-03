@@ -178,8 +178,11 @@ Playful/Loud:     Gradient mesh, saturation OK
 ## Cross-references
 
 - [TECH-glow-system](TECH-glow-system.md) — the complementary element-level glows.
+  > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
 - [TECH-signature-palette](TECH-signature-palette.md) — what `--primary-rgb` resolves to.
-- `../../amw-svg-creator/references/TECH-mesh-gradient-workaround.md` —
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
+- [TECH-mesh-gradient-workaround](../../amw-svg-creator/references/TECH-mesh-gradient-workaround.md) —
+  > What it does · The technique · Best practices · Gradient parameters that matter · When to use · Gotchas · Cross-references
   the gradient mesh technique in depth.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

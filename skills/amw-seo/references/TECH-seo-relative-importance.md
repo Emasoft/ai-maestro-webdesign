@@ -79,5 +79,10 @@ This sequence ensures each tier's work is visible to Google before the next tier
 ## Cross-references
 
 - [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-cwv](TECH-seo-cwv.md), [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
+  > [TECH-seo-cwv.md] What it does · When to use · How it works · Field data vs lab data · Important context · Minimal example · Gotchas · Cross-references
+  > [TECH-seo-technical.md] What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
+  > [TECH-seo-content-quality.md] What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-seo-measurement](TECH-seo-measurement.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Cross-validation examples · KPIs worth tracking vs vanity metrics · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

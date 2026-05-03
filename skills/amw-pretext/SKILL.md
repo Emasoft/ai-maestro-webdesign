@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Pretext
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`. Do not activate for generic "make the type nice" requests — those stay in the base typography system. Activate only on the narrow triggers above.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md). Do not activate for generic "make the type nice" requests — those stay in the base typography system. Activate only on the narrow triggers above.
 
 ## Overview
 
@@ -41,72 +41,106 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `pretext` is the user asking about?
   - **01** (1 techniques)
     - [TECH-01-prepare-basics](./references/TECH-01-prepare-basics.md) — prepare() — one-time text analysis
+      > What it does · When to use · How it works · Minimal example · Configuration options (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
   - **02** (1 techniques)
     - [TECH-02-prepare-with-segments](./references/TECH-02-prepare-with-segments.md) — prepareWithSegments() — richer handle for line-level access
+      > What it does · When to use · How it works · Minimal example · TypeScript types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
   - **03** (1 techniques)
     - [TECH-03-layout](./references/TECH-03-layout.md) — layout() — fast height + line count
+      > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
   - **04** (1 techniques)
     - [TECH-04-layout-with-lines](./references/TECH-04-layout-with-lines.md) — layoutWithLines() — materialize all lines at a fixed width
+      > What it does · When to use · How it works · Minimal example · Return types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
   - **05** (1 techniques)
     - [TECH-05-layout-next-line](./references/TECH-05-layout-next-line.md) — layoutNextLine() — iterator with variable width per line
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **06** (1 techniques)
     - [TECH-06-walk-line-ranges](./references/TECH-06-walk-line-ranges.md) — walkLineRanges() — geometry-only line iteration (no string allocation)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **07** (1 techniques)
     - [TECH-07-measure-line-stats](./references/TECH-07-measure-line-stats.md) — measureLineStats() — aggregate line stats without string alloc
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **08** (1 techniques)
     - [TECH-08-measure-natural-width](./references/TECH-08-measure-natural-width.md) — measureNaturalWidth() — unconstrained text width
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **09** (1 techniques)
     - [TECH-09-layout-next-line-range](./references/TECH-09-layout-next-line-range.md) — layoutNextLineRange() + materializeLineRange() — variable-width iterat
+      > What it does · When to use · How it works · Minimal example · Return type (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
   - **10** (1 techniques)
     - [TECH-10-clear-cache](./references/TECH-10-clear-cache.md) — clearCache() — release global measurement cache
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **11** (1 techniques)
     - [TECH-11-set-locale](./references/TECH-11-set-locale.md) — setLocale() — global Intl.Segmenter locale override
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **12** (1 techniques)
     - [TECH-12-profile-prepare](./references/TECH-12-profile-prepare.md) — profilePrepare() — diagnostic timing breakdown
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **13** (1 techniques)
     - [TECH-13-rich-inline](./references/TECH-13-rich-inline.md) — prepareRichInline() — mixed-font inline flow (chips, mentions, code sp
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **14** (1 techniques)
     - [TECH-14-dom-free-height](./references/TECH-14-dom-free-height.md) — DOM-free paragraph height (the core pretext win)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **15** (1 techniques)
     - [TECH-15-textarea-prewrap](./references/TECH-15-textarea-prewrap.md) — Textarea-compatible measurement (whiteSpace: pre-wrap)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **16** (1 techniques)
     - [TECH-16-cjk-keep-all](./references/TECH-16-cjk-keep-all.md) — CJK keep-all word-break
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **17** (1 techniques)
     - [TECH-17-font-loading-sync](./references/TECH-17-font-loading-sync.md) — Font-loading sync point before prepare()
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **18** (1 techniques)
     - [TECH-18-font-string-parity](./references/TECH-18-font-string-parity.md) — Font-string parity between pretext and renderer
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **19** (1 techniques)
     - [TECH-19-shaped-container](./references/TECH-19-shaped-container.md) — Shaped container (text inside a circle / polygon / outline)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **20** (1 techniques)
     - [TECH-20-polygon-obstacle-mask](./references/TECH-20-polygon-obstacle-mask.md) — Polygon / obstacle mask routing
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **21** (1 techniques)
     - [TECH-21-multi-column-handoff](./references/TECH-21-multi-column-handoff.md) — Multi-column text handoff
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **22** (1 techniques)
     - [TECH-22-text-around-floated-image](./references/TECH-22-text-around-floated-image.md) — Text flowing around a floated image
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **23** (1 techniques)
     - [TECH-23-animated-obstacle-reflow](./references/TECH-23-animated-obstacle-reflow.md) — 60 fps text reflow around animated obstacles
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **24** (1 techniques)
     - [TECH-24-carve-text-line-slots](./references/TECH-24-carve-text-line-slots.md) — carveTextLineSlots — fill both sides of a mid-line obstacle
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **25** (1 techniques)
     - [TECH-25-shrinkwrap-width](./references/TECH-25-shrinkwrap-width.md) — Shrink-wrap container width (tightest multiline width)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **26** (1 techniques)
     - [TECH-26-balanced-headline](./references/TECH-26-balanced-headline.md) — Balanced headline (widow-free multiline titles)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **27** (1 techniques)
     - [TECH-27-auto-fit-font-size](./references/TECH-27-auto-fit-font-size.md) — Auto-fit font size (largest font that stays within N lines)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **28** (1 techniques)
     - [TECH-28-tapering-font-size](./references/TECH-28-tapering-font-size.md) — Tapering / variable font size (big first line → small tail)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **29** (1 techniques)
     - [TECH-29-line-clamp-truncate-readmore](./references/TECH-29-line-clamp-truncate-readmore.md) — Exact-line truncate with "Read more"
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **30** (1 techniques)
     - [TECH-30-layout-shift-prevention](./references/TECH-30-layout-shift-prevention.md) — Prevent layout shift (CLS) on dynamic content
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **31** (1 techniques)
     - [TECH-31-overflow-prediction](./references/TECH-31-overflow-prediction.md) — Overflow prediction (will this button's label wrap?)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **32** (1 techniques)
     - [TECH-32-multilingual-bidi](./references/TECH-32-multilingual-bidi.md) — Multilingual / bidi / emoji measurement
+      > What it does · When to use · How it works · Minimal example · Gotchas · Recommended practices (source: pretext-typography-skill-main/references/multilingual-typography.md) · QA checklist · Cross-references
   - **33** (1 techniques)
     - [TECH-33-kinetic-width-animation](./references/TECH-33-kinetic-width-animation.md) — Kinetic typography (text reflows as width animates)
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **34** (1 techniques)
     - [TECH-34-wavy-baseline](./references/TECH-34-wavy-baseline.md) — Wavy / curved baseline
+      > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   - **35** (1 techniques)
     - [TECH-35-text-on-path](./references/TECH-35-text-on-path.md) — Text on a path (glyph-level placement along a curve)
   - **36** (1 techniques)
@@ -480,6 +514,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-32-multilingual-bidi.md](./references/TECH-32-multilingual-bidi.md)**
+  > What it does · When to use · How it works · Minimal example · Gotchas · Recommended practices (source: pretext-typography-skill-main/references/multilingual-typography.md) · QA checklist · Cross-references
   - Description: Multilingual / bidi / emoji measurement
   - TOC:
     - What it does
@@ -912,7 +947,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-pretext/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -921,7 +958,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. HTML pages (and/or JS modules) that use `@chenglou/pretext` for precise text layout). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. HTML pages (and/or JS modules) that use `@chenglou/pretext` for precise text layout). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -950,11 +988,15 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 ## How to use this skill
 
 1. **Decide first:** read [TECH-72-use-pretext-decision-guide](references/TECH-72-use-pretext-decision-guide.md) — if CSS solves it (`line-clamp`, `text-overflow`, `text-wrap: balance`) there's no reason to add pretext.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 2. **Pick the technique** from the catalog above — one TECH file, not a monolithic dump.
 3. **Follow the exact API path** documented in that TECH file. Do NOT improvise — pretext has sharp gotchas (lineHeight-in-px, font-string-parity, `system-ui` drift).
 4. **Build the wrapper module first** ([TECH-64](references/TECH-64-wrapper-module.md)) — this catches the #1 integration bug (lineHeight multiplier vs pixels).
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 5. **Handle resize** ([TECH-66](references/TECH-66-resize-observer-pattern.md)) — re-layout never re-prepare.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 6. **Validate against the font strategy** ([TECH-77](references/TECH-77-font-strategy.md)) — named fonts, `document.fonts.ready`, no `system-ui`.
+  > What it does · When to use · How it works · Minimal example · Suggested font pairings by mood (source: pretext-frontend-motion-main/references/font-strategy.md) · Gotchas · Cross-references
 
 ## Prerequisites
 
@@ -978,15 +1020,19 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 
 ## Resources
 
-- [`../amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md) — orchestrator; pretext must reuse the design-principles typography tokens, not introduce new fonts.
-- [`../amw-design-principles/typography-system.md`](../amw-design-principles/typography-system.md) — type scale + families pretext extends (never replaces).
-- [`../amw-design-principles/ai-slop-avoid.md`](../amw-design-principles/ai-slop-avoid.md) — review every kinetic / calligram output against item 9 (over-cute effects).
+- [[SKILL](../amw-design-principles/SKILL.md)](../amw-design-principles/SKILL.md) — orchestrator; pretext must reuse the design-principles typography tokens, not introduce new fonts.
+- [[typography-system](../amw-design-principles/typography-system.md)](../amw-design-principles/typography-system.md) — type scale + families pretext extends (never replaces).
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [[ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md)](../amw-design-principles/ai-slop-avoid.md) — review every kinetic / calligram output against item 9 (over-cute effects).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - [`../amw-design-principles/starter-components/animations.html`](../amw-design-principles/starter-components/animations.html) — Stage + Sprite timeline; pretext kinetic work composes with this, not with Framer Motion / GSAP (banned plugin-wide).
-- [`../amw-mermaid-render/SKILL.md`](../amw-mermaid-render/SKILL.md) — pretext is NOT a diagram skill. For diagrams, the plugin has dedicated ASCII / Mermaid / SVG paths.
+- [[SKILL](../amw-mermaid-render/SKILL.md)](../amw-mermaid-render/SKILL.md) — pretext is NOT a diagram skill. For diagrams, the plugin has dedicated ASCII / Mermaid / SVG paths.
 
 ## Non-negotiables
 
-- Never activate on "make the type nice" / "pick a font" — those belong to `../amw-design-principles/typography-system.md`.
+- Never activate on "make the type nice" / "pick a font" — those belong to [typography-system](../amw-design-principles/typography-system.md).
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - No Framer Motion, no GSAP — plugin-wide ban. Pretext's frame-by-frame Canvas / SVG approach IS the approved kinetic-text alternative.
 - The font string passed to `prepare()` MUST be loaded and byte-identical to what the renderer uses.
 - `prepare()` MUST live outside animation / render loops. `layout()` is the hot path.

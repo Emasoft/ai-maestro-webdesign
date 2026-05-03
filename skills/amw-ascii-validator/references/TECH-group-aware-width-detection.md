@@ -93,6 +93,7 @@ Passes group-aware detection, FAILS global-mode detection:
 ## Cross-references
 
 - [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
-- `../../amw-box-diagram/SKILL.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-box-diagram/SKILL.md)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

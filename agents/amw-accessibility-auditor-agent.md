@@ -130,7 +130,8 @@ include_aaa_warnings: true | false     # default false
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -151,8 +152,9 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 
 ### Phase A operations (pre-build heuristic review)
 
-1. Read `../skills/amw-ux-evaluator/SKILL.md` for the accessibility sub-rubric.
-2. Read `../skills/amw-design-principles/color-system.md` — contrast token tables.
+1. Read [SKILL](../skills/amw-ux-evaluator/SKILL.md) for the accessibility sub-rubric.
+2. Read [color-system](../skills/amw-design-principles/color-system.md) — contrast token tables.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 3. If `brand_tokens_path` was provided, compute contrast ratios for every foreground/background token pair implied by the ASCII layout. Flag any pair below 4.5:1 (normal text) or 3:1 (large text / UI components) as `FAIL risk=high`.
 4. If `ascii_path` was provided, read the ASCII and check:
    - Section ordering implies a logical heading hierarchy (H1 once, no H3 before H2).
@@ -165,8 +167,9 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 
 ### Phase B operations (post-render empirical audit)
 
-1. Read `../skills/amw-dev-browser/SKILL.md` — browser-automation primitive.
-2. Read `../skills/amw-ux-evaluator/SKILL.md`, `../skills/amw-design-principles/color-system.md`.
+1. Read [SKILL](../skills/amw-dev-browser/SKILL.md) — browser-automation primitive.
+2. Read [SKILL](../skills/amw-ux-evaluator/SKILL.md), [color-system](../skills/amw-design-principles/color-system.md).
+  > [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 3. Launch `dev-browser` via `bash bin/amw-dev-browser-wrapper.sh open <artifact_url>`.
 4. Capture full-page screenshot, DOM dump, computed styles, console log, network log.
 5. Per-criterion audit loop — for each WCAG 2.1 AA criterion:
@@ -214,7 +217,8 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 **Reduced-motion absent but animations are cosmetic** → still FAIL 2.3.3. WCAG does not have a "cosmetic" carve-out. The user can override via `known_constraints: ["2.3.3 waived — cosmetic animations only"]` if they accept the risk.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot audit agent — I have no internal fix/retry/regenerate loop. I audit the artifact once and return findings; I do not attempt to fix and re-audit in a loop. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot audit agent — I have no internal fix/retry/regenerate loop. I audit the artifact once and return findings; I do not attempt to fix and re-audit in a loop. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -222,9 +226,10 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Signal / need | Skill I read | What I do with it |
 |---|---|---|
-| Need the accessibility sub-rubric | `../skills/amw-ux-evaluator/SKILL.md` | Anchor my per-criterion checks; reuse the rubric's heuristic questions. |
-| Need to verify contrast on brand tokens | `../skills/amw-design-principles/color-system.md` | Pull the design-principles contrast tables; compute ratios using the same formula. |
-| Need to render the artifact and probe it | `../skills/amw-dev-browser/SKILL.md` | Use `dev-browser` for screenshot, DOM dump, keyboard simulation, console capture. |
+| Need the accessibility sub-rubric | [SKILL](../skills/amw-ux-evaluator/SKILL.md) | Anchor my per-criterion checks; reuse the rubric's heuristic questions. |
+| Need to verify contrast on brand tokens | [color-system](../skills/amw-design-principles/color-system.md) | Pull the design-principles contrast tables; compute ratios using the same formula. |
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+| Need to render the artifact and probe it | [SKILL](../skills/amw-dev-browser/SKILL.md) | Use `dev-browser` for screenshot, DOM dump, keyboard simulation, console capture. |
 | Need to run bin scripts | `bin/amw-dev-browser-wrapper.sh` | Direct CLI; no skill redirect. |
 | Need to note a potential SEO impact of an accessibility issue | (flag only) | Do not pursue; forward to `amw-seo-strategist-agent` via main-agent. |
 | Need to note a potential legal/contract impact | (flag only) | Do not pursue; forward to `amw-legal-expert-agent` via main-agent. |
@@ -273,7 +278,8 @@ All five resolve through main-agent; I never talk to peer agents or to the user 
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md):
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 **DO:**
 
@@ -295,7 +301,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 - Do not issue `/amw-*` prompts from inside the agent — they re-trigger the orchestrator.
 - Do not use broad design vocabulary ("design a dashboard", "build a landing page") in tool-call text — it activates the trigger-phrase dispatcher.
-- Do not invoke `../skills/amw-design-principles/SKILL.md` as if I am the orchestrator — I read only the specific reference files (`color-system.md`).
+- Do not invoke [SKILL](../skills/amw-design-principles/SKILL.md) as if I am the orchestrator — I read only the specific reference files (`color-system.md`).
 - Do not use Playwright, Puppeteer, or Chrome DevTools MCP directly. `dev-browser` is the only browser-automation primitive.
 - Do not emit free-form prompts that look like user input into the Skill tool.
 
@@ -303,7 +309,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 ## 13. Return Contract
 
-I return to main-agent via the canonical YAML schema from `../skills/amw-design-principles/references/sub-agent-return-contract.md`. The markdown body following the YAML header contains the per-criterion pass/fail table plus remediation detail.
+I return to main-agent via the canonical YAML schema from [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). The markdown body following the YAML header contains the per-criterion pass/fail table plus remediation detail.
 
 **Worked Phase B example:**
 
@@ -388,12 +394,18 @@ Main-agent should block Phase B completion on these three.
 ## Cross-references
 
 - [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol
-- `../skills/amw-design-principles/references/authority-hierarchy.md` — WCAG AA veto domain
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase B data flow
-- `../skills/amw-dev-browser/SKILL.md` — browser-automation primitive
-- `../skills/amw-ux-evaluator/SKILL.md` — UX evaluation rubric
-- `../skills/amw-design-principles/color-system.md` — contrast token audit
-- `../CLAUDE.md` — plugin architecture overview
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md) — agent philosophy
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md) — return-contract schema
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md) — DO/DON'T protocol
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) — WCAG AA veto domain
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) — Phase B data flow
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+- [SKILL](../skills/amw-dev-browser/SKILL.md) — browser-automation primitive
+- [SKILL](../skills/amw-ux-evaluator/SKILL.md) — UX evaluation rubric
+- [color-system](../skills/amw-design-principles/color-system.md) — contrast token audit
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [CLAUDE](../CLAUDE.md) — plugin architecture overview

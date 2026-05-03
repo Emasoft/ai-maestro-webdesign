@@ -114,6 +114,8 @@ interest rather than baseline-aligning everything.
 ## Cross-references
 
 - [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — decision tree for chart type.
+  > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative for normalized percentages.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

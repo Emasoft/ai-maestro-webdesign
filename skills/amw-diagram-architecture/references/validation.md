@@ -112,6 +112,7 @@ No additional checks beyond Stage 1. The validated graph JSON IS the output.
 
 Confirm the final JSON is well-formed before returning:
 - Parse it with `JSON.parse` — if this fails, re-run the repair recipe in [prompts](prompts.md)
+  > System Prompt · API Call Pattern · JSON Repair
 - Confirm the top-level keys `title`, `subtitle`, `layers`, `nodes`, `edges` are all present
 
 ---
@@ -127,6 +128,7 @@ After generating the Mermaid string, check:
 | Node count mismatch | Number of node definitions ≠ `nodes.length` | Regenerate from the validated graph |
 | Edge count mismatch | Number of `-->` lines ≠ `edges.length` | Regenerate from the validated graph |
 | Missing `classDef` block | `classDef layer0` not present | Append the full classDef block from [formats](formats.md) |
+> [formats.md] Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 | Missing `class` assignments | Any layer has nodes but no `class ... layerN` line | Append missing class assignment lines |
 | Special chars in node ID | Node ID contains `-`, space, or `.` | Replace with `_` in the Mermaid output only (do not change the graph JSON) |
 | Label contains `"` | Unescaped double-quote inside `["…"]` | Escape as `&quot;` or replace with `'` |
@@ -149,6 +151,7 @@ After generating the SVG string, check:
 | Missing XML declaration root | Does not start with `<svg` | Prepend `<svg xmlns="http://www.w3.org/2000/svg" ...>` |
 | Unclosed root element | Does not end with `</svg>` | Append `</svg>` |
 | Missing `<defs>` block | No `<defs>` present | Prepend the standard defs block from [formats](formats.md) |
+> [formats.md] Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 | Missing arrow marker | `id="arrow"` not in defs | Insert the marker element into the existing `<defs>` |
 | Unescaped `&` in text | Raw `&` in a `<text>` element | Replace with `&amp;` |
 | Unescaped `<` in text | Raw `<` in a `<text>` element | Replace with `&lt;` |
@@ -158,6 +161,7 @@ After generating the SVG string, check:
 | Check | Condition | Fix |
 |-------|-----------|-----|
 | Zero or negative height | `height` attribute ≤ 0 | Recalculate using the formula in [formats](formats.md) |
+> [formats.md] Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 | Node count in SVG | Number of card `<rect>` elements with `fill="white"` ≠ `nodes.length` | Regenerate SVG from the validated graph |
 | Layer band count | Number of layer band `<rect rx="12">` elements ≠ `layers.length` | Regenerate SVG from the validated graph |
 | Node overflows layer band | Computed `node.y + NODE_H > layer_band_bottom` | Increase the layer band height and shift all lower layers down |
@@ -189,6 +193,7 @@ After SVG validation passes, additionally check:
 | Check | Condition | Fix |
 |-------|-----------|-----|
 | Export instructions missing | The five-line instructions block is not present | Append the standard instructions block from [formats](formats.md) |
+> [formats.md] Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 | Instructions appear before SVG | Instructions block precedes the `<svg` tag | Move instructions to after `</svg>` |
 
 ---

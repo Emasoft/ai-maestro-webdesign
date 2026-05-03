@@ -111,9 +111,13 @@ Canonical mapping:
 
 ## Cross-references
 
-- `../SKILL.md` — node-type table lives in the Usage section
+- [SKILL](../SKILL.md) — node-type table lives in the Usage section
 - [TECH-canvas-1000x1000](TECH-canvas-1000x1000.md) — container for these shapes
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — the fixed 4px stroke
+  > What it does · When to use · How it works · Usage pattern · Minimal example · Gotchas · Cross-references
 - [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — the arrowhead convention
-- `../../amw-diagram-editorial/references/TECH-type-flowchart.md` — editorial
+  > What it does · When to use · How it works · Attribute breakdown · Minimal example · Gotchas · Cross-references
+- [TECH-type-flowchart](../../amw-diagram-editorial/references/TECH-type-flowchart.md) — editorial
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   cousin with different shape conventions (diamond, yes/no labels)

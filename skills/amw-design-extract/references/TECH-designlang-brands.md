@@ -56,5 +56,7 @@ npx designlang brands stripe.com vercel.com github.com linear.app
 ## Cross-references
 
 - [TECH-designlang-diff](TECH-designlang-diff.md) — pairwise version
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-score](TECH-designlang-score.md) — rank the N brands before comparing
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

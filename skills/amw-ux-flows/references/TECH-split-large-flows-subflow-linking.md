@@ -162,7 +162,10 @@ markers.
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 2 of the workflow
+- [SKILL](../SKILL.md) — Phase 2 of the workflow
 - [mermaid-patterns](mermaid-patterns.md) — the full reference bundled in the skill
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
 - [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — the overview flow pattern
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-4-phase-mandatory-workflow](TECH-4-phase-mandatory-workflow.md) — when to invoke the split
+  > What it does · When to use · How it works · Phase 1 — Use case extraction (Phase-1 gate) · Phase 2 — Mermaid diagrams · Phase 3 — HTML wireframes (MANDATORY) · Phase 4 — Consolidation handoff · Minimal example · Gotchas · Cross-references

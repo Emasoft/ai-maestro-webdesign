@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-state-guards-and-actions — `[guard]` prefix + `/{action}` suffix
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Annotates state transitions with guard conditions and side-effect
@@ -63,6 +73,8 @@ Order in the label: guard → trigger → action → target state.
 ## Cross-references
 
 - [TECH-state-machine-legend](./TECH-state-machine-legend.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-metrics-per-transition](./TECH-metrics-per-transition.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-legend-and-placeholders — `<branch>` convention + legend caption
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Uses angle-bracket placeholders (`<branch>`, `<repo>`, `<env>`) for
@@ -62,6 +72,8 @@ Legend:
 ## Cross-references
 
 - [TECH-side-by-side-platforms](./TECH-side-by-side-platforms.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-category-sections](./TECH-category-sections.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

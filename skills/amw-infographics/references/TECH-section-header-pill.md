@@ -99,7 +99,10 @@ Use for primary section titles in hero headers.
 ## Cross-references
 
 - [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — where this pattern is mandatory.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 22 pieces) · Visual properties · Signature layout pattern · The partner grid pattern (signature) · Section header pill badge · CSS variables · Reference template · Target density · Gotchas · Cross-references
 - [TECH-section-band](TECH-section-band.md) — the full-width alternative.
+  > What it does · The CSS · HTML · Numbered section headers with icon prefix · When to use · The color choice · Gotchas · Cross-references
 - [TECH-glow-system](TECH-glow-system.md) — the glow system this uses.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -119,9 +119,12 @@ HTML:
 ## Cross-references
 
 - [TECH-dense-table-component](TECH-dense-table-component.md) — the table this pattern lives in.
+  > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
 - [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — multi-chain ecosystems use this
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 22 pieces) · Visual properties · Signature layout pattern · The partner grid pattern (signature) · Section header pill badge · CSS variables · Reference template · Target density · Gotchas · Cross-references
   heavily.
 - [TECH-signature-palette](TECH-signature-palette.md) — brand colors (which don't override
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
   chain colors).
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

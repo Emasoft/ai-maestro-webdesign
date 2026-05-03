@@ -75,5 +75,6 @@ is wrapped if it exceeds the column span width.
 ## Cross-references
 
 - [TECH-render-mode-sequence](./TECH-render-mode-sequence.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

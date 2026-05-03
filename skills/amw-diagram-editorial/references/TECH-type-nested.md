@@ -115,7 +115,10 @@ Three-level cloud scope, accent on the innermost:
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-tree](TECH-type-tree.md) — if parent-child relationships have explicit edges
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-type-layers](TECH-type-layers.md) — for stacked abstraction without containment
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [design-system](design-system.md) — opacity ramp, corner-label pattern
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

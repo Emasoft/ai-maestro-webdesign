@@ -114,7 +114,10 @@ On light backgrounds, glows look wrong. Disable them:
 ## Cross-references
 
 - [TECH-signature-palette](TECH-signature-palette.md) — where glow colors come from.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-color-palette-recipes](TECH-color-palette-recipes.md) — palettes with explicit glow tokens.
+  > What it does · Dark palettes (99% of work) · AMBER DARK — signature · CYBER TEAL · GAMING RED · HOT PINK WEB3 · EMERALD GAMING · ROYAL PURPLE GAMING · NAVY CRYPTO · WARM GOLD DARK · RETRO PIXEL / ARCADE · LIME CYBERPUNK · Standout palettes · NEON ACID · SUNSET HORIZON · EARTHY TECH · Light mode palettes (rare, <1%) · L1. CLEAN WHITE + AMBER · L2. WARM EDITORIAL · L3. BLUE PROFESSIONAL · Gotchas · Cross-references
 - [TECH-section-header-pill](TECH-section-header-pill.md) — a primary glow consumer.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · CSS · HTML · The four visual layers · When to use · Variants · Without glow (cleaner) · Wider (title-sized) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

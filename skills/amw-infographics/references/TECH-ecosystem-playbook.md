@@ -177,8 +177,12 @@ partners into 3-col grids, don't leave whitespace between logos.
 ## Cross-references
 
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [TECH-hub-spoke-archetype](TECH-hub-spoke-archetype.md) — alternative for platform-centric layouts.
+  > What it does · When to use · The shape · CSS implementation · Connection lines — SVG overlay · Gotchas · Cross-references
 - [TECH-section-header-pill](TECH-section-header-pill.md) — the section pill component.
+  > What it does · CSS · HTML · The four visual layers · When to use · Variants · Without glow (cleaner) · Wider (title-sized) · Gotchas · Cross-references
 - [TECH-glow-system](TECH-glow-system.md) — the neon glow patterns.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

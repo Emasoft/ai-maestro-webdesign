@@ -1,28 +1,12 @@
 ## Table of Contents
 
 - [1. Format definition](#1-format-definition)
-  - [1.1 Character repertoire](#11-character-repertoire)
-  - [1.2 Forbidden characters (validator rejects)](#12-forbidden-characters-validator-rejects)
-  - [1.3 State / status markers](#13-state-status-markers)
 - [2. Dimensional constraints](#2-dimensional-constraints)
 - [3. Parse rules](#3-parse-rules)
 - [4. Emission rules](#4-emission-rules)
-  - [4.1 Four JSON modes](#41-four-json-modes)
-  - [4.2 Key renderer invariants](#42-key-renderer-invariants)
 - [5. Validation rules](#5-validation-rules)
-  - [5.1 Checks](#51-checks)
-  - [5.2 Validation is MANDATORY before delivery](#52-validation-is-mandatory-before-delivery)
 - [6. Per-source breakdown of the technique catalog](#6-per-source-breakdown-of-the-technique-catalog)
 - [7. Technique catalog](#7-technique-catalog)
-  - [S1 — box-diagram-master (gold examples)](#s1-box-diagram-master-gold-examples)
-  - [S2 — ascii-diagrams-skill (CHI'24 refs, 7 files)](#s2-ascii-diagrams-skill-chi24-refs-7-files)
-  - [S3 — cc-plugin-text-visualizations (5 skills)](#s3-cc-plugin-text-visualizations-5-skills)
-  - [S4 — perfect-ascii (renderer)](#s4-perfect-ascii-renderer)
-  - [S5 — diagram-skill styles (ASCII-STYLES.md)](#s5-diagram-skill-styles-ascii-stylesmd)
-  - [S6 — baybee-diagram (SVG patterns with ASCII equivalents)](#s6-baybee-diagram-svg-patterns-with-ascii-equivalents)
-  - [S7 — diagram-design-editorial (editorial)](#s7-diagram-design-editorial-editorial)
-  - [S8 — Structural pairing rules (enforced by validator)](#s8-structural-pairing-rules-enforced-by-validator)
-  - [S9 — Cross-cutting style rules](#s9-cross-cutting-style-rules)
 - [8. Migration note (2026-04-22)](#8-migration-note-2026-04-22)
 
 
@@ -31,21 +15,25 @@
 This file is the single authoritative spec for ASCII diagrams in the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts ASCII pulls from this file. Format semantics, parsing rules, emission rules, validation rules, and the full technique catalog (95 techniques, migrated from `ascii-creator/` and `ascii-to-html/` into this canonical home) are all below.
 
 **Consumers (cross-references):**
-- `../../amw-ascii-creator/SKILL.md` — single-artifact ASCII authoring (structured + freeform modes)
-- `../../amw-ascii-validator/SKILL.md` — validation gate for every ASCII emitter
-- `../../amw-ascii-sketch/SKILL.md` — plan-phase 3-variant loop
-- `../../amw-ascii-to-html/SKILL.md` — ASCII → HTML pipeline (consumes technique catalog S7-S9)
-- `../../amw-ascii-to-svg/SKILL.md` — ASCII → SVG pipeline
-- `../../amw-box-diagram/SKILL.md` — Unicode rounded-corner box author
+- [SKILL](../../amw-ascii-creator/SKILL.md) — single-artifact ASCII authoring (structured + freeform modes)
+- [SKILL](../../amw-ascii-validator/SKILL.md) — validation gate for every ASCII emitter
+- [SKILL](../../amw-ascii-sketch/SKILL.md) — plan-phase 3-variant loop
+- [SKILL](../../amw-ascii-to-html/SKILL.md) — ASCII → HTML pipeline (consumes technique catalog S7-S9)
+- [SKILL](../../amw-ascii-to-svg/SKILL.md) — ASCII → SVG pipeline
+- [SKILL](../../amw-box-diagram/SKILL.md) — Unicode rounded-corner box author
 - `../../text-visual-{workflows,arch,state,cheatsheets,retro}/SKILL.md` — specialized ASCII archetypes
 - `../../bin/amw-ascii-parse.py` — tokenizer (IR input)
 - `../../bin/amw-ascii-render.py` — renderer (4 JSON modes)
 - `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate)
 - `../../bin/amw-validate-ascii.py` — validator (Python mirror)
 - [ir-schema](./ir-schema.md) — when ASCII is a source of the diagram IR
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 - [conversion-matrix](./conversion-matrix.md) — ASCII → {HTML, SVG, Mermaid, PNG} cells
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 - [modify-flow](./modify-flow.md) — edit flow applied to existing `.txt` / `.md` artifacts
+  > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
 - [validation-dispatcher](./validation-dispatcher.md) — unified validator output contract
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 
 ---
 
@@ -112,6 +100,7 @@ Inline bracketed tokens carry semantic meaning (picked up by parsers and the HTM
 ## 3. Parse rules
 
 Parser: `../../bin/amw-ascii-parse.py`. Exposes these functions that produce IR ([ir-schema](./ir-schema.md)) for downstream emitters:
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 
 | Function | Returns | Drives |
 |---|---|---|
@@ -155,6 +144,7 @@ All modes output ≤78 columns. All modes go through the same Grid primitive (TE
 ## 5. Validation rules
 
 Validator: `../../bin/amw-validate-ascii.py` (canonical) + `../../bin/amw-validate-ascii.py` (Python mirror). Output contract per [validation-dispatcher](./validation-dispatcher.md).
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 ### 5.1 Checks
 
@@ -322,5 +312,7 @@ TECH-95 dot-separator-pair: `  ·  ` (space-dot-space, 3 chars) as semantic paus
 This file is the **canonical home** for the ASCII technique catalog. It supersedes (in migration order):
 - `skills/amw-ascii-creator/references/techniques.md` (95 techniques, moved here in full)
 - `skills/amw-ascii-to-html/references/techniques.md` (100 techniques → S7/S9 of [html](./html.md); ASCII-parse hooks S9 mirrored here in §3)
+  > Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · SKILL · SKILL · SKILL · `../../bin/amw-html-export.py` — HTML → PNG/PDF rasterizer (Playwright) · `../../bin/amw-ascii-parse.py` — ASCII → layout JSON consumed by HTML emitter · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
 
 Both original files are preserved at `docs_dev/backups/<timestamp>-phase0-refs/` and now carry a 3-line pointer referencing this file. Future edits to technique catalogs go here, not in per-skill references.

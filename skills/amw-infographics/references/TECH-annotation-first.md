@@ -131,7 +131,10 @@ understand what they're seeing.
 ## Cross-references
 
 - [TECH-reduction-pass](TECH-reduction-pass.md) — removes redundant labels.
+  > What it does · The checklist · Per-aesthetic strictness · The rule · Before / after — gridline removal · Before · After · Before / after — legend to direct labels · Before · After · Before / after — decoration removal · Before (everything shouting) · After (structure creates hierarchy, not decoration) · Decision rule · Gotchas · Cross-references
 - [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — a direct example of this pattern.
+  > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
 - [TECH-bordered-section-component](TECH-bordered-section-component.md) — the callout-box pattern.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Left-accent variant (most common) · Full-border variant · Header styles · HTML · Minimum border opacity · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

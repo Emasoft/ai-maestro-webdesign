@@ -7,6 +7,19 @@ also-in: image-generation/create-infographics/resources/font-pairings.md
 
 # Typography scale — minor third (1.25 ratio)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The scale](#the-scale)
+- [Weight-based hierarchy](#weight-based-hierarchy)
+- [Letter-spacing rules](#letter-spacing-rules)
+- [Tabular numerics (mandatory for numbers)](#tabular-numerics-mandatory-for-numbers)
+- [Summary rules](#summary-rules)
+- [Body font size rules (the density signature)](#body-font-size-rules-the-density-signature)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Harmonious size progression based on the minor-third ratio (1.25).
@@ -113,7 +126,10 @@ Never 14-16px body — that's frontend spacing, not editorial.
 ## Cross-references
 
 - [TECH-font-system](TECH-font-system.md) — which fonts to use.
+  > What it does · The 5 display fonts (authoritative hierarchy) · Generic fallback-only fonts (never as display) · Premium alternative pairings (2025/2026) · The body font hierarchy · Rules (non-negotiable) · Tested font pairings (top 5) · Bebas Neue + Montserrat (signature — 40%+) · Teko + Inter (esports) · Orbitron + Inter (sci-fi / DeFi) · Press Start 2P + VT323 (pixel games) · Bungee + Inter (arcade / meme) · Typography constants · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — spacing and density signature.
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — formatting numbers for the scale.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

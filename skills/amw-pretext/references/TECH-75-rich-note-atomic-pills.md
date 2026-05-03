@@ -7,6 +7,16 @@ also-in: SKILL-15.md (rich-note.ts), pretext-text-measurement/SKILL.md Use Case 
 
 # Rich note (mixed inline fragments with atomic pills)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** motion
 **Status:** stable
 
@@ -53,4 +63,5 @@ See SKILL-15 `demos/rich-note.ts` + `rich-note.html` for a runnable demo.
 
 - Related: TECH-13-rich-inline
 - API reference: [TECH-13-rich-inline](TECH-13-rich-inline.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

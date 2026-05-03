@@ -144,7 +144,10 @@ python scripts/export.py -i infographic.html -o output/pinterest -f png --width 
 ## Cross-references
 
 - [TECH-export-pipeline](TECH-export-pipeline.md) — the export script.
+  > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
 - [TECH-design-brief](TECH-design-brief.md) — platform is Question 3 in the brief.
+  > What it does · The 3 minimum questions · The 5 full-brief questions · Aesthetic direction mapping (Question 2) · Rules · Skip-brief defaults · Thesis extraction (from data) · Thesis formula · Tone → palette mapping · Audience sophistication → density · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — density targets by format.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

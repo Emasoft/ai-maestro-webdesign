@@ -95,6 +95,9 @@ The author agent fills `{{primary-hex}}`, `{{surface-hex}}`, etc. by reading the
 
 ## Cross-references
 
-- `canonical-spec-google-alpha.md` — what's normative in DESIGN.md
-- `TECH-12-companion-files.md` — the tokens.css / tokens.json / component-inventory companion files
-- `TECH-15-design-md-as-input.md` — how downstream Phase B agents consume DESIGN.md
+- [canonical-spec-google-alpha](canonical-spec-google-alpha.md) — what's normative in DESIGN.md
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+- [TECH-12-companion-files](TECH-12-companion-files.md) — the tokens.css / tokens.json / component-inventory companion files
+  > What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
+- [TECH-15-design-md-as-input](TECH-15-design-md-as-input.md) — how downstream Phase B agents consume DESIGN.md
+  > What it does · When this TECH applies · The wireframe-builder's flow when DESIGN.md is the input · Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape · Component tokens — direct passthrough · Failure paths · DESIGN.md fails lint · DESIGN.md is Variant 2 · DESIGN.md missing required fields · CLAUDE.md-coupled projects · Companion-file consumption · Symmetry with non-DESIGN.md inputs · Cross-references

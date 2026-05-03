@@ -66,5 +66,6 @@ i.e. a row with one `span: 2` cell contains one fewer entry than a plain row.
 ## Cross-references
 
 - [TECH-render-mode-table](./TECH-render-mode-table.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -82,7 +82,7 @@ I activate on **narrow, email-specific** phrases from main-agent only.
 
 ### Triggers I do NOT respond to
 
-- "design a landing page" → `../skills/amw-design-principles/SKILL.md` (orchestrator)
+- "design a landing page" → [SKILL](../skills/amw-design-principles/SKILL.md) (orchestrator)
 - "write the email copy" → `amw-multilanguage-copywriter-agent`
 - "check email legal compliance" → `amw-legal-expert-agent`
 - "design the newsletter signup form" → `amw-form-designer-agent`
@@ -142,7 +142,8 @@ For `email_type=marketing`, missing `footer_legal`, `footer_address`, or `unsubs
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -172,8 +173,10 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 2. **Load email reference specs.**
    - If MJML output is requested, load MJML 4 component reference (internalized knowledge; external MJML docs reference if needed).
-   - Read `../skills/amw-design-principles/color-system.md` to validate contrast of `text` on `bg` and `text_dark` on `bg_dark` pairs.
-   - Read `../skills/amw-design-principles/typography-system.md` for minimum font-size rules (email: 14px minimum for body, 22px+ for headlines).
+   - Read [color-system](../skills/amw-design-principles/color-system.md) to validate contrast of `text` on `bg` and `text_dark` on `bg_dark` pairs.
+     > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+   - Read [typography-system](../skills/amw-design-principles/typography-system.md) for minimum font-size rules (email: 14px minimum for body, 22px+ for headlines).
+     > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 
 3. **Choose email layout structure.** Based on `email_purpose`:
    - Transactional (order confirm, receipt, password reset): header → single-column body → CTA → order/product detail table → footer.
@@ -235,10 +238,13 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
     - **Exit 1 → FAIL**: parse the JSON `violations` array; surface every `severity: high` entry as a `blocking_issues` entry in the return contract. The email is not shippable until violations are resolved. Re-author with the violations addressed and re-stage (do NOT re-render in a loop — fail fast and emit `status=partial` with the violations listed). Because the gate runs on the staging path, no half-rendered file lands in `output_dir`.
     - **Exit 2 → INCONCLUSIVE**: file unreadable; emit a `warnings` entry and continue.
     - **Email-specific note:** the script's banned-font check (Rule 7: `Inter`/`Roboto`/`Arial`/`system-ui`) will likely flag every email I produce because Outlook 2016-2021 force-fallback to Arial regardless of the declared web-font. This is a false positive in the email domain. When the only flagged font is `Arial` AND the email uses it as an Outlook fallback (declared inside `<!--[if mso]>...<![endif]-->` or as the last entry of the font stack), document in `warnings` ("Arial flagged by ai-slop-check; permitted as Outlook fallback per email-rendering reality") and treat the entry as advisory rather than blocking. All other Rule 7 fonts remain hard violations.
-    - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading `../skills/amw-design-principles/ai-slop-avoid.md` every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
+    - The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
+      > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+      > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 
 14. **Promote staging to canonical output_dir.**
-    - Resolve `output_dir` from input; if absent, place under the project's `design/emails/` per `../skills/amw-design-principles/references/project-output-routing.md`.
+    - Resolve `output_dir` from input; if absent, place under the project's `design/emails/` per [project-output-routing](../skills/amw-design-principles/references/project-output-routing.md).
+      > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
     - `mkdir -p` the destination, then `cp` the staging files to:
       - `<output_dir>/<slug>.mjml` — MJML source
       - `<output_dir>/<slug>.html` — compiled HTML (if compilation succeeded)
@@ -246,7 +252,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
       - `<output_dir>/<slug>-dark.png` — optional dark-mode preview sketch (ASCII representation if image rendering unavailable)
     - On promotion error, keep staging files intact, set `status=partial`, log error in `blocking_issues`, list staging paths under `artifact_paths` with `purpose: "did not promote to output_dir; staged at /tmp/..."`.
 
-15. **Assemble return contract.** Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-email-designer-<slug>.md`.
+15. **Assemble return contract.** Populate YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-email-designer-<slug>.md`.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -277,7 +284,8 @@ Action: produce default mode only. Note in `warnings` that white-background emai
 Action: scan `copy_blocks` values for `{{...}}` patterns. Any pattern not in `dynamic_variables` is flagged in `warnings`: "Unlisted variable placeholder found in copy: {{order_total}} — add to dynamic_variables for data-pipeline documentation."
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. MJML compile via `bin/amw-mjml-render.sh` is a single-pass gate; if it fails I return `status=failed` rather than attempting programmatic fixes and retrying. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot generation agent — I have no internal fix/retry/regenerate loop. MJML compile via `bin/amw-mjml-render.sh` is a single-pass gate; if it fails I return `status=failed` rather than attempting programmatic fixes and retrying. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -285,11 +293,15 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
-| Always — token contrast check | `../skills/amw-design-principles/color-system.md` | Verify text/bg contrast ratios |
-| Always — font-size floors | `../skills/amw-design-principles/typography-system.md` | Minimum 14px body, 22px headline |
-| RTL locale present | `../skills/amw-design-principles/typography-system.md` (reading-direction section) | RTL layout transformation rules |
+| Always — token contrast check | [color-system](../skills/amw-design-principles/color-system.md) | Verify text/bg contrast ratios |
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+| Always — font-size floors | [typography-system](../skills/amw-design-principles/typography-system.md) | Minimum 14px body, 22px headline |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+| RTL locale present | [typography-system](../skills/amw-design-principles/typography-system.md) (reading-direction section) | RTL layout transformation rules |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
 | Locale-specific copy gaps | Internalized knowledge of i18n / l10n formatting (dates per locale, addresses per country, currency formatting). Consult global Claude Code skill `localization-l10n` if user wants locale-specific deep dive (this is NOT a plugin skill — for plugin-internal copy authoring, route to `amw-multilanguage-copywriter-agent` via main-agent). | Locale formatting rules for dates, addresses in compliance footers |
-| AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation `../skills/amw-design-principles/ai-slop-avoid.md` | Mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
+| AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain — email is not a webpage), `amw-infographics` (different output class).
 
@@ -311,7 +323,8 @@ I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-s
 
 ### What I never delegate to a peer amw-* agent
 
-Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents do not call each other. If I need copy review, I document the gap in `warnings` and let main-agent invoke `amw-multilanguage-copywriter-agent`.
+Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents do not call each other. If I need copy review, I document the gap in `warnings` and let main-agent invoke `amw-multilanguage-copywriter-agent`.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -336,7 +349,8 @@ Action: inline all CSS from the provided HTML fragment — class-based styling w
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. Reproduced here so the protocol is local to this spec.
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md). Reproduced here so the protocol is local to this spec.
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -370,7 +384,8 @@ Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad desi
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-email-designer-<slug>.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-email-designer-<slug>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example — `status=ok`
 
@@ -472,7 +487,7 @@ Cannot produce marketing email template without CAN-SPAM-compliant footer elemen
 
 ## 14. Hard Rules / Veto Power
 
-I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` and `amw-accessibility-auditor-agent` per `../skills/amw-design-principles/references/authority-hierarchy.md`.
+I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` and `amw-accessibility-auditor-agent` per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md).
 
 ### Absolute rules (never violate)
 
@@ -500,11 +515,20 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-multilanguage-copywriter-agent](./amw-multilanguage-copywriter-agent.md) — email copy, subject lines, preheader, localization
 - [amw-legal-expert-agent](./amw-legal-expert-agent.md) — compliance footer content, CAN-SPAM/CASL/GDPR requirements
 - [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream accessibility review (email alt text, link text, reading order)
-- `../skills/amw-design-principles/color-system.md` — contrast ratio validation
-- `../skills/amw-design-principles/typography-system.md` — font-size floor rules, RTL direction
-- `../skills/amw-design-principles/ai-slop-avoid.md` — stock-imagery and generic-gradient check
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md`
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md`
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md`
-- `../skills/amw-design-principles/references/authority-hierarchy.md`
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md`
+- [color-system](../skills/amw-design-principles/color-system.md) — contrast ratio validation
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../skills/amw-design-principles/typography-system.md) — font-size floor rules, RTL direction
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) — stock-imagery and generic-gradient check
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md)
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md)
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md)
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md)
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement

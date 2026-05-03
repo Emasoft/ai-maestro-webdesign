@@ -95,7 +95,10 @@ gets clipped.
 ## Cross-references
 
 - [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the negative cousin (shadow instead of glow).
+  > What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
 - [TECH-colored-shadows](TECH-colored-shadows.md) — color theory for tinted glows.
+  > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
 - [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based alternative.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

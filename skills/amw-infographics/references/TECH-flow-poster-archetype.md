@@ -7,6 +7,17 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 
 # Archetype 2: Flow Poster
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The shape](#the-shape)
+- [CSS implementation](#css-implementation)
+- [Label rule](#label-rule)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Central flow diagram (vertical or circular) dominates the canvas,
@@ -130,8 +141,12 @@ percentage, token name. Never unlabeled arrows in a flow diagram.
 ## Cross-references
 
 - [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — detailed arrow patterns.
+  > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
 - [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the flow_with_arrows CSS.
+  > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
 - [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
+  > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — default alternative.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,7 +7,7 @@ author: ai-maestro-webdesign
 
 # UX Evaluator
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > Executor skill. Triggers are evaluation-specific only — `design-principles` routes already-rendered HTML here when the workflow calls for scored feedback before ship.
 
 ## Overview
@@ -102,17 +102,21 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 
 - Is the user asking about this skill's domain?
   - For "3-dimension evaluation framework (Position, Visual Weight, Spacing)" -> [TECH-uxeval-3-dimension-framework](./references/TECH-uxeval-3-dimension-framework.md)
+    > What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
   - For "Button conventions (position + visual weight + spacing + labels)" -> [TECH-uxeval-button-conventions](./references/TECH-uxeval-button-conventions.md)
   - For "Form conventions (labels / submit / errors / spacing)" -> [TECH-uxeval-form-conventions](./references/TECH-uxeval-form-conventions.md)
   - For "Navigation conventions (logo / primary / utilities)" -> [TECH-uxeval-navigation-conventions](./references/TECH-uxeval-navigation-conventions.md)
+    > What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
   - For "Output format — structured evaluation report" -> [TECH-uxeval-output-format](./references/TECH-uxeval-output-format.md)
   - For "Priority rubric (P1 / P2 / P3)" -> [TECH-uxeval-priority-rubric](./references/TECH-uxeval-priority-rubric.md)
+    > What it does · When to use · How it works · Assignment rule · Output structure · Minimal example · Gotchas · Cross-references
 
 ## References
 
 Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
 
 - **[./references/TECH-uxeval-3-dimension-framework.md](./references/TECH-uxeval-3-dimension-framework.md)**
+  > What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
   - Description: 3-dimension evaluation framework (Position, Visual Weight, Spacing)
   - TOC:
     - What it does
@@ -140,6 +144,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-uxeval-navigation-conventions.md](./references/TECH-uxeval-navigation-conventions.md)**
+  > What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
   - Description: Navigation conventions (logo / primary / utilities)
   - TOC:
     - What it does
@@ -160,6 +165,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-uxeval-priority-rubric.md](./references/TECH-uxeval-priority-rubric.md)**
+  > What it does · When to use · How it works · Assignment rule · Output structure · Minimal example · Gotchas · Cross-references
   - Description: Priority rubric (P1 / P2 / P3)
   - TOC:
     - What it does
@@ -178,7 +184,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ux-evaluator/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -187,7 +195,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. UX evaluation `.md` reports scoring Position / Visual Weight / Spacing). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. UX evaluation `.md` reports scoring Position / Visual Weight / Spacing). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -224,14 +233,20 @@ Full reference in [balsamiq-button-principles](references/balsamiq-button-princi
 
 ## Resources
 
-- `../amw-dev-browser/SKILL.md` — source of live-page DOM + computed-style capture when the input is a URL.
-- `../amw-design-principles/spacing-rhythm.md` — grid / alignment / whitespace rules the evaluator enforces.
-- `../amw-design-principles/typography-system.md` — type-scale compliance check.
-- `../amw-design-principles/color-system.md` — oklch / contrast validation for state surfaces.
-- `../amw-design-principles/ai-slop-avoid.md` — final scan for AI-slop patterns before a Pass verdict.
-- `../amw-ascii-to-html/SKILL.md` — upstream producer of the HTML this skill evaluates.
-- `../amw-ui-ux-reasoning/SKILL.md` — industry-specific anti-pattern taxonomy.
+- [SKILL](../amw-dev-browser/SKILL.md) — source of live-page DOM + computed-style capture when the input is a URL.
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — grid / alignment / whitespace rules the evaluator enforces.
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [typography-system](../amw-design-principles/typography-system.md) — type-scale compliance check.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [color-system](../amw-design-principles/color-system.md) — oklch / contrast validation for state surfaces.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — final scan for AI-slop patterns before a Pass verdict.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [SKILL](../amw-ascii-to-html/SKILL.md) — upstream producer of the HTML this skill evaluates.
+- [SKILL](../amw-ui-ux-reasoning/SKILL.md) — industry-specific anti-pattern taxonomy.
 - [balsamiq-button-principles](references/balsamiq-button-principles.md) — full button-design reference corpus.
+  > Core Principles · Use Conventional Labels · Say Exactly What Happens · Primary and Secondary Should Look Different · Primary Action on the Right · Use Adequate Spacing · Make Buttons Look Clickable · Size Appropriately · Use Icons Wisely · Consider Loading States · Error Prevention · Button Hierarchy Summary · Common Mistakes
 - `/amw-eval` — user-facing slash command that runs this skill.
 
 ## Non-negotiables

@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-state-machine-legend — `[STATE]` boxes + `-->` / `..>` arrows
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Defines a lightweight legend for ASCII state machines: states are
@@ -56,7 +66,10 @@ notation.
 ## Cross-references
 
 - [TECH-state-guards-and-actions](./TECH-state-guards-and-actions.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-metrics-per-transition](./TECH-metrics-per-transition.md)
-- `../../amw-ascii-diagrams-reference/references/TECH-classic-state-machine-arrows.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-classic-state-machine-arrows](../../amw-ascii-diagrams-reference/references/TECH-classic-state-machine-arrows.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

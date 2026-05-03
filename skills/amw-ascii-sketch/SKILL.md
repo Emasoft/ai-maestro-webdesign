@@ -6,7 +6,7 @@ version: 0.1.0
 
 # ASCII Sketch — plan-phase loop
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md` — this skill is the **default** plan-phase executor for webpage design in this plugin. It is not a fast-path alternative; it is the first thing that should run after design-principles has captured context.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md) — this skill is the **default** plan-phase executor for webpage design in this plugin. It is not a fast-path alternative; it is the first thing that should run after design-principles has captured context.
 
 ## Overview
 
@@ -168,7 +168,7 @@ The loop has no fixed iteration count. It terminates **only** when the user prod
 
 Before emitting the first variant set, confirm with the user in ≤ 4 sentences:
 
-1. **Context.** Is there an existing design system, brand tokens, or reference site? If yes, note which constraints bound the variants. If no, say out loud: *"No design context yet — these variants are layout-only; tokens will come later via `/amw-extract-style` or a user-supplied UI kit."* This preserves Rule 1 from `../amw-design-principles/SKILL.md` — context before designing.
+1. **Context.** Is there an existing design system, brand tokens, or reference site? If yes, note which constraints bound the variants. If no, say out loud: *"No design context yet — these variants are layout-only; tokens will come later via `/amw-extract-style` or a user-supplied UI kit."* This preserves Rule 1 from [SKILL](../amw-design-principles/SKILL.md) — context before designing.
 2. **Canvas target.** Desktop 1440-wide, mobile 375-wide, or slide 1920×1080? The ASCII column count and aspect ratio must match the canvas. A desktop sketch and a mobile sketch are not the same shape and must not be drawn as if they were.
 3. **Surface.** Where does the sketch get pasted while iterating? This determines the ASCII width ceiling — not the eventual HTML canvas. Source: `cc-plugin-text-visualizations-main` — every text-visual skill asks "what surface?" first because column width is the single biggest determinant of ASCII layout and cannot be fixed retroactively.
 
@@ -184,11 +184,12 @@ Before emitting the first variant set, confirm with the user in ≤ 4 sentences:
 
 4. **Required elements.** Logo, primary CTA, specific content blocks the user has already named. These must appear in every one of the three variants — they are the user's hard constraints.
 
-**Lane-labeled variants.** When the sketch's subject is a dashboard, console, or multi-panel layout with named regions ("sidebar + main content", "header + body + footer"), represent those regions as `lanes` in `bin/amw-ascii-render.py` input rather than as freeform boxes. Each lane gets a left-margin label (`Nav`, `Content`, `Actions`, etc.) and the renderer aligns the rows automatically. See `../amw-ascii-validator/SKILL.md` § Lane-labeled subsection for the JSON shape. Use this when the user's brief mentions explicit named panels; fall back to freeform boxes when the structure is more organic.
+**Lane-labeled variants.** When the sketch's subject is a dashboard, console, or multi-panel layout with named regions ("sidebar + main content", "header + body + footer"), represent those regions as `lanes` in `bin/amw-ascii-render.py` input rather than as freeform boxes. Each lane gets a left-margin label (`Nav`, `Content`, `Actions`, etc.) and the renderer aligns the rows automatically. See [SKILL](../amw-ascii-validator/SKILL.md) § Lane-labeled subsection for the JSON shape. Use this when the user's brief mentions explicit named panels; fall back to freeform boxes when the structure is more organic.
 
 Do NOT re-run this check on subsequent iteration turns of the same loop. The context is already established; re-running wastes turns. A fresh loop (new sketch subject, user abandoned the previous direction and started over) does re-run it.
 
-If the user has not supplied enough context to answer any of the four questions, pull from `../amw-design-principles/question-templates.md` — ask the minimum questions needed to answer 1, 2, 3, and 4, and wait for the user.
+If the user has not supplied enough context to answer any of the four questions, pull from [question-templates](../amw-design-principles/question-templates.md) — ask the minimum questions needed to answer 1, 2, 3, and 4, and wait for the user.
+> [question-templates.md] Universal must-ask (every design task) · Context & starting point · Task & goal · Variant dimensions · Tweaks · Hard constraints · Task-specific additions · Landing page / Website · Slides / Deck · App / Prototype · Poster / Single image · Infographic / Data viz · Brand collateral (business cards / invitations / emblems) · Questions NOT to ask · Suggested format · Tip
 
 ## Validation gate (MANDATORY, runs between variant generation and presentation)
 
@@ -211,7 +212,7 @@ Every variant this skill emits MUST pass `../../bin/amw-validate-ascii.py` befor
 5. If FAIL → apply every `FIX:` hint in the validator output, re-run. Loop until PASS.
 6. Never present an un-validated variant.
 
-See `../amw-ascii-validator/SKILL.md` for the JSON schema (Mode A) and the validation output contract (both modes).
+See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema (Mode A) and the validation output contract (both modes).
 
 Before generation, substitute every BANNED character (`▼ ▲ ▶ ◀ ⟶ ⇒`) with a safe equivalent (`v ^ > <` or `->` / `=>` / `→`), and replace emoji state-markers with ASCII (`[!]`, `(*)`, `[x]`, `[ ]`) — the validator flags these as forbidden because they render at variable width in common monospaced fonts.
 
@@ -291,13 +292,13 @@ Once the user has produced an explicit satisfaction token:
 1. Derive a short kebab-case slug from the sketch subject (e.g. `devtools-dashboard`, `crypto-landing`, `event-poster`).
 2. Save the final approved ASCII to `/tmp/amw-sketch-<slug>-final.txt`. This file is the single source of truth for the downstream HTML conversion — do not re-describe the layout in prose.
 3. Tell the user: *"ASCII approved. Running `/amw-ascii-to-html` against this sketch now — it will produce the real HTML using design-principles tokens and the selected starter-component chrome."*
-4. Hand off control to `../amw-ascii-to-html/SKILL.md`.
+4. Hand off control to [SKILL](../amw-ascii-to-html/SKILL.md).
 
 Before handing off, if the user has not yet extracted tokens from a reference site and has not supplied a brand kit, offer that step: *"If you have a reference site, `/amw-extract-style <url>` will pull its color, type, and spacing tokens first — that will make the HTML match the brand instead of using generic defaults."* This is an offer, not a gate — the user can decline and let the conversion run on design-principles' fallback tokens.
 
 ## AI-slop checks applied to every ASCII variant
 
-Even at ASCII fidelity — before ever emitting a variant to the user — scan each one against `../amw-design-principles/ai-slop-avoid.md`. The skeleton is the first place AI slop leaks in. Highlights to check:
+Even at ASCII fidelity — before ever emitting a variant to the user — scan each one against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md). The skeleton is the first place AI slop leaks in. Highlights to check:
 
 - Item 10: No "hero → 3-col icons → testimonials → CTA → footer" stamped across all three variants. If A, B, and C all use that same rhythm, the user has been given one answer dressed three ways.
 - Item 15: No fake testimonials ("Sarah J., CEO of TechCorp" with a fabricated quote).
@@ -327,14 +328,17 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator. The three hard rules apply to every variant emitted here.
-- `../amw-design-principles/ai-slop-avoid.md` — applied per variant as described above.
-- `../amw-design-principles/question-templates.md` — source of the questions used in the Step 1 orchestrator check when context is missing.
-- `../amw-ascii-to-html/SKILL.md` — the **terminal handoff**. The approved ASCII file at `/tmp/amw-sketch-<slug>-final.txt` is the input contract.
-- `../amw-ascii-to-svg/SKILL.md` — the adjacent skill for the subset of ASCII sketches that are actually diagrams (boxes and arrows describing a system), not wireframes. If the user's intent was a diagram, route there instead.
-- `../amw-ux-flows/SKILL.md` — when the user already has a PRD, the flow is `ux-flows` first (PRD → flow diagrams → wireframe intent), then `ascii-sketch` for variant exploration on the chosen wireframe. Both routes are valid.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator. The three hard rules apply to every variant emitted here.
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — applied per variant as described above.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [question-templates](../amw-design-principles/question-templates.md) — source of the questions used in the Step 1 orchestrator check when context is missing.
+  > Universal must-ask (every design task) · Context & starting point · Task & goal · Variant dimensions · Tweaks · Hard constraints · Task-specific additions · Landing page / Website · Slides / Deck · App / Prototype · Poster / Single image · Infographic / Data viz · Brand collateral (business cards / invitations / emblems) · Questions NOT to ask · Suggested format · Tip
+- [SKILL](../amw-ascii-to-html/SKILL.md) — the **terminal handoff**. The approved ASCII file at `/tmp/amw-sketch-<slug>-final.txt` is the input contract.
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — the adjacent skill for the subset of ASCII sketches that are actually diagrams (boxes and arrows describing a system), not wireframes. If the user's intent was a diagram, route there instead.
+- [SKILL](../amw-ux-flows/SKILL.md) — when the user already has a PRD, the flow is `ux-flows` first (PRD → flow diagrams → wireframe intent), then `ascii-sketch` for variant exploration on the chosen wireframe. Both routes are valid.
 - `../../bin/amw-preview-server.py` — optional multi-variant HTML comparison server, used **after** handoff if the user wants to see the rendered HTML side by side. Not used inside this loop.
-- `/amw-sketch` — the user-facing slash command (at `../../commands/amw-sketch.md`) that invokes this skill.
+- `/amw-sketch` — the user-facing slash command (at [amw-sketch](../../commands/amw-sketch.md)) that invokes this skill.
 
 ## Non-negotiables
 

@@ -7,7 +7,21 @@ also-in: external/hyperframes/packages/cli/src/commands/inspect.ts
 
 # TECH: `hyperframes inspect` — visual layout audit
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Flags](#flags)
+  - [Output (JSON mode)](#output-json-mode)
+- [Minimal example](#minimal-example)
+- [Opt-out attributes](#opt-out-attributes)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 > For WCAG contrast checks, see [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md). `inspect` is a separate command focused on visual layout overflow, not color contrast.
+> [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
 
 ## What it does
 
@@ -137,7 +151,10 @@ Example:
 ## Cross-references
 
 - [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md) — WCAG contrast audit (runs before `inspect` in the gate sequence)
+  > What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md) — static schema validation (runs first in the gate sequence)
+  > What it does · When to use · How it works · Minimal example · CI integration · Gotchas · Cross-references
 - [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — final step; only reached after `inspect` passes
-- `../SKILL.md` — bridge invocation pattern and full gate sequence
-- `../../../agents/amw-video-producer-agent.md` §6.7 — inspect as the mandatory pre-render gate in the video producer agent
+  > What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
+- [SKILL](../SKILL.md) — bridge invocation pattern and full gate sequence
+- [amw-video-producer-agent](../../../agents/amw-video-producer-agent.md) §6.7 — inspect as the mandatory pre-render gate in the video producer agent

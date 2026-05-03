@@ -6,7 +6,8 @@ model: sonnet
 
 # AMW Video Producer Agent
 
-> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents never call each other; if another agent needs my MP4, main-agent reads my `artifact_paths` and passes the path forward.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents never call each other; if another agent needs my MP4, main-agent reads my `artifact_paths` and passes the path forward.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -106,7 +107,8 @@ Main-agent provides:
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -144,7 +146,7 @@ In priority order:
    # @hyperframes/cli is NOT published to npm — must run from inside the monorepo workspace
    (cd "$MAIN_ROOT/external/hyperframes" && npx hyperframes render --help) >/dev/null 2>&1 || exit-fail "hyperframes CLI not functional — run bun install inside external/hyperframes/"
    ```
-   If either check fails, emit `status=failed` with the specific issue. Recommend user run the clone + install commands documented in `../skills/amw-hyperframes-bridge/SKILL.md`.
+   If either check fails, emit `status=failed` with the specific issue. Recommend user run the clone + install commands documented in [SKILL](../skills/amw-hyperframes-bridge/SKILL.md).
 
 3. **Resolve the project directory.**
    - If `project_dir` is provided: use it directly. Verify it exists and contains `index.html`.
@@ -225,7 +227,7 @@ In priority order:
    ```
    Only run cleanup after the report is written and the MP4 is validated. The guard ensures a user-provided `project_dir` (which has no `HF_USED_SCAFFOLD=1` flag set) is never destroyed.
 
-10. **Write report.** Markdown report at `$MAIN_ROOT/reports/webdesigner/<ts±tz>-amw-video-producer-<slug>-<8-char-hash>.md` (matching `../skills/amw-hyperframes-bridge/SKILL.md` §Output canonical format). Include:
+10. **Write report.** Markdown report at `$MAIN_ROOT/reports/webdesigner/<ts±tz>-amw-video-producer-<slug>-<8-char-hash>.md` (matching [SKILL](../skills/amw-hyperframes-bridge/SKILL.md) §Output canonical format). Include:
    - Inputs (html_scene_path or project_dir, fps, resolution, duration, output_path).
    - Method (monorepo verification results, project-dir resolution path, gate sequence outcomes, render command invoked).
    - Artifacts (MP4 path + size + ffprobe summary).
@@ -233,7 +235,8 @@ In priority order:
    - Warnings (e.g. 60 fps slow, duration much longer than typical, inspect issues count).
    - Deviations (if any, with rationale).
 
-11. **Return.** YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
+11. **Return.** YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md).
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -306,7 +309,8 @@ Hyperframes has a fixed output pipeline. If the user wants H.265 and Hyperframes
 Hyperframes uses Puppeteer + `@puppeteer/browsers` (NOT Playwright) to manage its Chrome binary. If Chrome is not provisioned, the render command will fail with a Puppeteer-specific error. I surface it and recommend: `(cd external/hyperframes && npx hyperframes browser ensure)`. Running `npx playwright install chromium` will NOT fix this — Playwright's Chromium is a separate binary that Hyperframes does not use.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot render agent — I have no internal fix/retry/regenerate loop. Renders are deterministic; a failed render is a configuration issue, not a transient error that a retry loop could fix. I never retry on failure. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot render agent — I have no internal fix/retry/regenerate loop. Renders are deterministic; a failed render is a configuration issue, not a transient error that a retry loop could fix. I never retry on failure. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -342,14 +346,22 @@ There is no alternative renderer. The single-skill nature of this agent is a fea
 
 | Pretext technique in input | Pre-render verification (read this TECH file) |
 |---|---|
-| Kinetic typography (text reflow as width animates) | `../skills/amw-pretext/references/TECH-33-kinetic-width-animation.md` — verify `ensureFontsReady()` mount-time sync is present |
-| Variable-font waves | `../skills/amw-pretext/references/TECH-42-variable-font-waves.md` — verify variable-font is loaded before first frame |
-| Glyph morphing | `../skills/amw-pretext/references/TECH-43-glyph-morphing.md` — verify both source and target letterforms loaded |
-| Text-on-path / glyph-level placement | `../skills/amw-pretext/references/TECH-35-text-on-path.md` — verify path geometry is static or animated correctly |
-| Editorial engine (live multi-column reflow) | `../skills/amw-pretext/references/TECH-48-editorial-engine.md` — verify reflow handles bounded count of frames |
-| Font-loading sync (always required for any pretext output) | `../skills/amw-pretext/references/TECH-17-font-loading-sync.md` — `document.fonts.ready` BEFORE prepare() is non-negotiable |
-| Wrapper-module pattern | `../skills/amw-pretext/references/TECH-64-wrapper-module.md` — line-height conversion + null fallback |
-| Pretext font strategy (named families only, no `system-ui`) | `../skills/amw-pretext/references/TECH-77-font-strategy.md` |
+| Kinetic typography (text reflow as width animates) | [TECH-33-kinetic-width-animation](../skills/amw-pretext/references/TECH-33-kinetic-width-animation.md) — verify `ensureFontsReady()` mount-time sync is present |
+> [TECH-33-kinetic-width-animation.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Variable-font waves | [TECH-42-variable-font-waves](../skills/amw-pretext/references/TECH-42-variable-font-waves.md) — verify variable-font is loaded before first frame |
+> [TECH-42-variable-font-waves.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Glyph morphing | [TECH-43-glyph-morphing](../skills/amw-pretext/references/TECH-43-glyph-morphing.md) — verify both source and target letterforms loaded |
+> [TECH-43-glyph-morphing.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Text-on-path / glyph-level placement | [TECH-35-text-on-path](../skills/amw-pretext/references/TECH-35-text-on-path.md) — verify path geometry is static or animated correctly |
+> [TECH-35-text-on-path.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Editorial engine (live multi-column reflow) | [TECH-48-editorial-engine](../skills/amw-pretext/references/TECH-48-editorial-engine.md) — verify reflow handles bounded count of frames |
+> [TECH-48-editorial-engine.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Font-loading sync (always required for any pretext output) | [TECH-17-font-loading-sync](../skills/amw-pretext/references/TECH-17-font-loading-sync.md) — `document.fonts.ready` BEFORE prepare() is non-negotiable |
+> [TECH-17-font-loading-sync.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Wrapper-module pattern | [TECH-64-wrapper-module](../skills/amw-pretext/references/TECH-64-wrapper-module.md) — line-height conversion + null fallback |
+> [TECH-64-wrapper-module.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Pretext font strategy (named families only, no `system-ui`) | [TECH-77-font-strategy](../skills/amw-pretext/references/TECH-77-font-strategy.md) |
+> [TECH-77-font-strategy.md] What it does · When to use · How it works · Minimal example · Suggested font pairings by mood (source: pretext-frontend-motion-main/references/font-strategy.md) · Gotchas · Cross-references
 
 ---
 
@@ -402,7 +414,8 @@ Anything environmental that cannot be fixed without user action → `blocking_is
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md):
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -422,7 +435,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md).
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example
 
@@ -543,7 +557,7 @@ Cannot render: Hyperframes monorepo not present at external/hyperframes/. This i
 
 ## 14. Hard Rules / Veto Power
 
-I have **no veto power**. Production agents do not hold veto per `../skills/amw-design-principles/references/authority-hierarchy.md`.
+I have **no veto power**. Production agents do not hold veto per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md).
 
 ### Absolute constraints
 
@@ -576,13 +590,19 @@ I have **no veto power**. Production agents do not hold veto per `../skills/amw-
 ## Cross-references
 
 - [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent; receives the MP4 path in my YAML header.
-- `../skills/amw-hyperframes-bridge/SKILL.md` — the only skill this agent uses. Authoritative source for the shell-out command + attribute schema.
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — the 14-section template.
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML header schema.
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T for skill invocation.
-- `../skills/amw-design-principles/references/authority-hierarchy.md` — production agents have no veto.
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase B data flow (no downstream auditor for MP4 in this plugin).
-- `../skills/amw-design-principles/references/agent-reports-location.md` — report path + timestamp format.
+- [SKILL](../skills/amw-hyperframes-bridge/SKILL.md) — the only skill this agent uses. Authoritative source for the shell-out command + attribute schema.
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md) — the 14-section template.
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md) — YAML header schema.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md) — DO/DON'T for skill invocation.
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) — production agents have no veto.
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) — Phase B data flow (no downstream auditor for MP4 in this plugin).
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+- [agent-reports-location](../skills/amw-design-principles/references/agent-reports-location.md) — report path + timestamp format.
+  > Required locations · Why this matters · Main-repo root resolution (works from worktrees and main checkout) · Timestamp format (mandatory) · Compliance table (how each surface complies) · Template: drop this block into every new agent / skill definition · Orchestrator override · Gitignore bootstrap · Anti-patterns (DO NOT DO) · Verification checklist
 - `../external/hyperframes/` — the external monorepo (cloned per `/amw-init` step 6 or by first use). My render target.
-- `../external/hyperframes/CLAUDE.md` — authoritative composition attribute schema once cloned. I read this, not a cached copy.
-- `../CLAUDE.md` — plugin architecture overview.
+- [CLAUDE](../external/hyperframes/CLAUDE.md) — authoritative composition attribute schema once cloned. I read this, not a cached copy.
+- [CLAUDE](../CLAUDE.md) — plugin architecture overview.

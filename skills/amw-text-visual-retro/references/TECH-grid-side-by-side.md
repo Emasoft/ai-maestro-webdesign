@@ -66,8 +66,12 @@ highlights with owners and metric deltas.
 ## Cross-references
 
 - [TECH-milestone-timeline](./TECH-milestone-timeline.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-heatmap-intensity-markers](./TECH-heatmap-intensity-markers.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-owner-action-items](./TECH-owner-action-items.md)
-- `../../amw-ascii-diagrams-reference/references/TECH-classic-before-after-comparison.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-classic-before-after-comparison](../../amw-ascii-diagrams-reference/references/TECH-classic-before-after-comparison.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

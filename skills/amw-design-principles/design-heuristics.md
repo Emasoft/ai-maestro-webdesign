@@ -1,5 +1,19 @@
 # Design Laws and Heuristics
 
+## Table of Contents
+
+- [I. Gestalt's five principles (organizing the visual field)](#i-gestalts-five-principles-organizing-the-visual-field)
+- [II. Fitts's Law](#ii-fittss-law)
+- [III. Hick's Law](#iii-hicks-law)
+- [IV. Miller's Law (7 ± 2)](#iv-millers-law-7-2)
+- [V. Jakob's Law](#v-jakobs-law)
+- [VI. The four dimensions of visual hierarchy](#vi-the-four-dimensions-of-visual-hierarchy)
+- [VII. F-Pattern vs Z-Pattern reading](#vii-f-pattern-vs-z-pattern-reading)
+- [VIII. Peak-End Rule](#viii-peak-end-rule)
+- [IX. Aesthetic-Usability Effect](#ix-aesthetic-usability-effect)
+- [Self-check list](#self-check-list)
+
+
 > These are **classic design laws** that hold across eras and styles. Violating them is like violating physics — the user experience is guaranteed to suffer.
 
 ---

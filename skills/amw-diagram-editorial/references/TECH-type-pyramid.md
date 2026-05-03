@@ -113,8 +113,11 @@ and the top too thin — split into two diagrams or switch to a bar chart.
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-tree](TECH-type-tree.md) — if the hierarchy is strictly parent-child
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-type-layers](TECH-type-layers.md) — if the bands are equal-width
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   abstraction layers, not narrowing tiers
 - [design-system](design-system.md) — mono-value annotation convention
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

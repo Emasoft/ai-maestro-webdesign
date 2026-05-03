@@ -28,6 +28,7 @@ six semantic token roles (`paper`, `ink`, `muted`, `paper-2`, `accent`,
 ## When to use
 
 - **First use** of the skill in a new project. If [style-guide](style-guide.md) still
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
   holds the default stone + rust tokens, pause and ask the user: "Run
   onboarding, paste tokens manually, or proceed with default?"
 - **Brand refresh** — the user has updated their site and wants diagrams
@@ -110,14 +111,18 @@ Code:  ui-monospace, "SF Mono", Menlo, monospace
   the type-role mapping even after brand onboarding — the brand fonts
   override only if the user explicitly opts in.
 - **Preserve the default fallback.** If onboarding fails, [style-guide](style-guide.md)
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
   must fall back to stone + rust, not to empty tokens. Every diagram
   downstream depends on the tokens being resolvable.
 
 ## Cross-references
 
-- `../SKILL.md` — orchestrator; onboarding is step 1 before any diagram
-- `../../amw-dev-browser/SKILL.md` — the only authorised browser-automation
+- [SKILL](../SKILL.md) — orchestrator; onboarding is step 1 before any diagram
+- [SKILL](../../amw-dev-browser/SKILL.md) — the only authorised browser-automation
   primitive
-- `../../amw-design-principles/color-system.md` — oklch / WCAG AA reference
+- [color-system](../../amw-design-principles/color-system.md) — oklch / WCAG AA reference
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [style-guide](style-guide.md) — the file onboarding writes
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 - [TECH-wcag-contrast-validation](TECH-wcag-contrast-validation.md) — the contrast-check step in detail
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references

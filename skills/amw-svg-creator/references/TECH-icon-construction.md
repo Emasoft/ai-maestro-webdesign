@@ -94,8 +94,11 @@ icons that look clear at 200px are illegible at 24.
 ## Cross-references
 
 - [TECH-paint-order-and-spread-method](TECH-paint-order-and-spread-method.md) — `paint-order="stroke fill"`
+  > What it does · `paint-order="stroke fill"` · `spreadMethod` on gradients · Example — brushed metal with `reflect` · `vector-effect="non-scaling-stroke"` · `pathLength="1"` · `gradientTransform` · Gotchas · Cross-references
   for halo-style icons.
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the gradient patterns for app icons.
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
 - [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the shadow used under app icons.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -8,6 +8,22 @@ status: stable
 
 # TECH: Validation failure recovery
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Recovery flowchart](#recovery-flowchart)
+- [Failure categories](#failure-categories)
+  - [Structural failures (S* — P0, must fix before delivery)](#structural-failures-s-p0-must-fix-before-delivery)
+  - [Token-quality failures (T* — P1, must fix before final delivery)](#token-quality-failures-t-p1-must-fix-before-final-delivery)
+  - [Reference failures (R* — P0)](#reference-failures-r-p0)
+  - [Accessibility failures (A* — P0 for body text, P1 for others)](#accessibility-failures-a-p0-for-body-text-p1-for-others)
+  - [Content-integrity failures (C* — P2, warn only)](#content-integrity-failures-c-p2-warn-only)
+- [Iteration cap](#iteration-cap)
+- [What recovery does NOT do](#what-recovery-does-not-do)
+- [Manual recovery flow for users](#manual-recovery-flow-for-users)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents the recovery flow when `bin/amw-design-md-lint.sh`, `bin/amw-design-md-validate.py`, or `bin/amw-design-md-contrast.py` reports an error. Lists every common failure category, its diagnostic signal, the corrective action, and the slash command (if any) that automates the fix.
@@ -156,6 +172,7 @@ These don't block delivery but reduce the rubric score:
 |---|---|
 | `C1`: Placeholders remaining | Search-replace `{{...}}`, `TBD`, `FIXME` |
 | `C3`: Vague Do/Don't rules | Rewrite per [TECH-06-do-donts](TECH-06-do-donts.md) recipe |
+> [TECH-06-do-donts.md] What it does · Why this section matters · Hard rules · Variant 1 — Section 8 "Do's and Don'ts" · Variant 2 — Section 7 "Do's and Don'ts" · Minimum count · Each rule must be specific and actionable · Cover the high-leverage failure modes · Recipe for a good Do · Recipe for a good Don't · Brand-specific anti-patterns · Worked examples · Example A — Editorial minimalist (Variant 1 alternating style) · Example B — Developer SaaS (Variant 2 grouped style) · Common authoring mistakes · Cross-references
 | `C6`: File length out of range (200-1500 lines) | Either expand undeveloped sections or trim verbose ones |
 | `C7`: Section header with no prose underneath | Add a 1-paragraph philosophy note |
 
@@ -195,10 +212,15 @@ When a user is editing a DESIGN.md by hand and a validator fails:
 ## Cross-references
 
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the validators
+  > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component property whitelist
+  > What it does · Hard rules · Property whitelist (per spec.md L312-L319) · Variant naming convention · Composite token references allowed inside `components.*` · Common component patterns · Button (primary/secondary/ghost) · Input · Card · Chip / Badge · Hover-state derivation strategies · Anti-patterns · Cross-references
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution rules
+  > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
 - [review-rubric](./review-rubric.md) — the rubric checks (S*, T*, R*, A*, C*)
+  > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - `../../../bin/amw-design-md-lint.sh`
 - `../../../bin/amw-design-md-validate.py`
 - `../../../bin/amw-design-md-contrast.py`

@@ -7,6 +7,17 @@ also-in: diagrams-skills/beautiful-mermaid-main/SKILL.md
 
 # Wrapping ASCII output for Markdown
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Pattern 1: plain fenced block](#pattern-1-plain-fenced-block)
+- [Pattern 2: inline compact diagram](#pattern-2-inline-compact-diagram)
+- [Pattern 3: ASCII mode for email / plain text](#pattern-3-ascii-mode-for-email-plain-text)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Patterns for embedding `renderMermaidAscii()` output into Markdown,
@@ -70,8 +81,11 @@ const ascii = renderMermaidAscii(diagram, { useAscii: true })
 ## Cross-references
 
 - [TECH-ascii-render-api](TECH-ascii-render-api.md) — the renderer function.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ascii-padding-options](TECH-ascii-padding-options.md) — tuning for width-constrained output.
+  > What it does · When to use · Defaults · What each one does · Minimal example · Gotchas · Cross-references
 - [TECH-terminal-output-ansi](TECH-terminal-output-ansi.md) — ANSI color escape codes on top of
+  > What it does · When to use · Pattern 1: Highlight node names · Pattern 2: Whole-diagram color wrap · Pattern 3: Per-node status colors · Gotchas · Cross-references
   plain ASCII.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

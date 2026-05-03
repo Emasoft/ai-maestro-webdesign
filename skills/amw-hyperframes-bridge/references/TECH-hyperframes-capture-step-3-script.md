@@ -84,4 +84,5 @@ Word count: ~80 words. At Kokoro 160 wpm default → ~30 seconds. Matches the re
 ## Cross-references
 
 - [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md), [TECH-hyperframes-capture-step-4-storyboard](TECH-hyperframes-capture-step-4-storyboard.md), [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

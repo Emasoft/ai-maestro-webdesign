@@ -1,5 +1,38 @@
 # AI-slop anti-patterns specific to DESIGN.md
 
+## Table of Contents
+
+- [Token authoring slop](#token-authoring-slop)
+  - [S1. Vibes without hex values](#s1-vibes-without-hex-values)
+  - [S2. Token name and prose name out of sync](#s2-token-name-and-prose-name-out-of-sync)
+  - [S3. Unresolved token references](#s3-unresolved-token-references)
+  - [S4. Placeholder text never filled in](#s4-placeholder-text-never-filled-in)
+  - [S5. Color names like "blue" or "red" instead of semantic roles](#s5-color-names-like-blue-or-red-instead-of-semantic-roles)
+  - [S6. Typography without a complete row](#s6-typography-without-a-complete-row)
+  - [S7. fontWeight as a string when not a number](#s7-fontweight-as-a-string-when-not-a-number)
+- [Structural slop](#structural-slop)
+  - [S8. Sections out of canonical order](#s8-sections-out-of-canonical-order)
+  - [S9. Duplicate section headings](#s9-duplicate-section-headings)
+  - [S10. Missing the `## Colors` section](#s10-missing-the-colors-section)
+  - [S11. YAML frontmatter not at line 1](#s11-yaml-frontmatter-not-at-line-1)
+  - [S12. YAML frontmatter that is not actually YAML](#s12-yaml-frontmatter-that-is-not-actually-yaml)
+- [Prose slop](#prose-slop)
+  - [S13. Marketing copy where rules belong](#s13-marketing-copy-where-rules-belong)
+  - [S14. Do's and Don'ts that are vague](#s14-dos-and-donts-that-are-vague)
+  - [S15. The `## Overview` section is a wall of adjectives](#s15-the-overview-section-is-a-wall-of-adjectives)
+- [Variant 2 — community 9-section specific](#variant-2-community-9-section-specific)
+  - [S16. Section 7 (Do's and Don'ts) with fewer than 3 dos and 3 don'ts](#s16-section-7-dos-and-donts-with-fewer-than-3-dos-and-3-donts)
+  - [S17. Section 8 (Responsive Behavior) without explicit px breakpoints](#s17-section-8-responsive-behavior-without-explicit-px-breakpoints)
+  - [S18. Section 9 (Agent Prompt Guide) missing a quick-color-reference](#s18-section-9-agent-prompt-guide-missing-a-quick-color-reference)
+  - [S19. Mermaid component-state diagram absent](#s19-mermaid-component-state-diagram-absent)
+- [Conversion slop](#conversion-slop)
+  - [S20. Variant 2 → Variant 1 conversion that loses data](#s20-variant-2-variant-1-conversion-that-loses-data)
+- [Companion-file slop](#companion-file-slop)
+  - [S21. tokens.css with hex values that don't match DESIGN.md frontmatter](#s21-tokenscss-with-hex-values-that-dont-match-designmd-frontmatter)
+  - [S22. tokens.json that is not W3C Design Tokens format](#s22-tokensjson-that-is-not-w3c-design-tokens-format)
+- [Final delivery gate](#final-delivery-gate)
+
+
 A DESIGN.md is a machine-readable specification, not a marketing brochure. Every anti-pattern below makes the file useless to the AI agents that will consume it. Run this checklist before delivering any DESIGN.md.
 
 ## Token authoring slop

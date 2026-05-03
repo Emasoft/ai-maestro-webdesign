@@ -96,5 +96,8 @@ npx hyperframes init acme-launch --audio narration.mp3 --example blank
 ## Cross-references
 
 - [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md)
+  > [TECH-hyperframes-cli-render.md] What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
+  > What it does · When to use · How it works · Studio features · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-registry-add](TECH-hyperframes-registry-add.md) — adding blocks/components post-init
-- `../SKILL.md`
+  > What it does · When to use · How it works · Blocks vs components · Paths (configurable in `hyperframes.json`) · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

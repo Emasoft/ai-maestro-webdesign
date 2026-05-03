@@ -7,7 +7,7 @@ author: ai-maestro-webdesign
 
 # Infographics
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Its triggers are data-infographic-specific only — `design-principles` routes here when the user has real data or a structured brief and wants a shareable, dense editorial graphic.
 
 ## Overview
@@ -42,6 +42,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 - **PNG** — retina (2x) via `../../bin/amw-html-export.py` (Playwright + Chromium).
 - **PDF** — print-ready via the same script.
 - **Canvas sizes** (7): portrait-medium 1080×1440 (default), Twitter/X 1200×675, Instagram 1080×1080, Instagram portrait 1080×1350, LinkedIn 1200×627, Pinterest 1000×1500, website 1100×auto. Full table in [platform-sizes](resources/platform-sizes.md).
+  > Quick Reference · Layout & Font Adjustments Per Platform · Twitter/X (Most Common) · Instagram Post (1:1 Square) · Instagram Story / TikTok (9:16 Vertical) · LinkedIn · Pinterest · Font Size Scaling by Platform · Watermark / Attribution Rule by Platform · export.py Commands by Platform
 
 ## Design DNA (the non-negotiable set)
 
@@ -55,10 +56,13 @@ Derived from 175 real designs. The #1 failure mode is producing something that l
 - **Section variety is mandatory.** 4+ sections must use at least 3 different component types. If 3 sections in a row are card grids, redesign one of them.
 - **Arrows are load-bearing.** If content describes a process, economy, or flow — arrows are mandatory, always labeled (action, percentage, token name).
 - **Visible borders, not ghost borders.** Minimum `rgba(primary, 0.25)`. `rgba(255,255,255,0.08)` is invisible and looks like a frontend component.
-- **Tight spacing inside sections.** Card padding 12–16px (NOT 24–32px). Body font 11–13px for dense content (intentional poster/print-scale exception to design-principles' 16px desktop floor — infographics are shareable graphics, not webpages; see `../amw-design-principles/typography-system.md` for the floor rule this skill carves out from). Gap 8–12px between items. Whitespace separates *sections* from each other, not content within a section.
+- **Tight spacing inside sections.** Card padding 12–16px (NOT 24–32px). Body font 11–13px for dense content (intentional poster/print-scale exception to design-principles' 16px desktop floor — infographics are shareable graphics, not webpages; see [typography-system](../amw-design-principles/typography-system.md) for the floor rule this skill carves out from). Gap 8–12px between items. Whitespace separates *sections* from each other, not content within a section.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - **Content format hierarchy.** Tables → bullet lists → flow diagrams → stat callouts → badges. Paragraphs are a last resort, reserved for 1–2 sentence hero intros.
 
 Full design DNA with code samples: [style-details](resources/style-details.md) (1062 lines) and [layout-patterns](resources/layout-patterns.md) (842 lines).
+> [style-details.md] The Big Picture · Border Radius · Card Border Style · Shadows & Glow Effects · Your Glow System · Top Glow Colors (Use these first) · Spacing System (8px Grid) · Decorative Elements & Backgrounds · Background Texture (39% of designs have texture) · Geometric Shapes (used in many gaming infographics) · Logo Treatment (95% of your infographics have logos) · Progress Bars (45/175 designs — 26%) · Dense Table (Primary Data Component) · Composition Rules (from 175 designs) · Atmospheric Depth Techniques (inline, no external files) · Noise Grain — SVG feTurbulence Filter · Gradient Mesh Background · Scanline Overlay — Cyber Aesthetic · Paper Texture — Editorial Aesthetic · Glassmorphism Accent Panels · Annotation System · Direct Label CSS · Callout Line Technique · Insight Callout Box · Threshold / Benchmark Line · Premium Typography · Tabular Numbers · Minor Third Type Scale (1.25 ratio) · Weight-Based Hierarchy · Letter-Spacing Rules · …(+12)
+> [layout-patterns.md] Layout Statistics · Your Dominant Infographic Types · Layout Recipes by Type · TOKEN-ECONOMICS (35% of your work — your specialty) · GAME-OVERVIEW (19% — your #2 type) · ECOSYSTEM (15% — partner/collaboration type) · CRYPTO-EXPLAINER (12% — educational type) · AIRDROP-GUIDE (8% — action-focused type) · NFT-SHOWCASE (5% — collectible type) · DENSE SPACING REFERENCE (apply across ALL types) · Composition Archetype CSS Implementations · ARCHETYPE 1: Stacked Reference (DEFAULT — 70%+ of pieces) · ARCHETYPE 2: Flow Poster · ARCHETYPE 3: Hub & Spoke · ARCHETYPE 4: Stat Poster · ARCHETYPE 5: Cheat Sheet · Stats Bar / KPI Strip (74/175 = 42%)
 
 ## Non-negotiable rules
 
@@ -173,7 +177,7 @@ Use when the user says "help me figure out the design", "give me options", "show
 
 ## Quality gate (before delivery)
 
-Run both passes:
+Copy this checklist and track your progress as you run both passes:
 
 **Anti-Frontend Checklist** (must all be ✓):
 - [ ] No uniform card grids — at least 3 different component types used.
@@ -185,6 +189,7 @@ Run both passes:
 - [ ] Content block count meets density target.
 
 **Reduction Pass** — remove gridlines that aren't needed for reading values, axis tick marks where direct labels exist, decorative icons, borders/glows on elements already separated by whitespace, text that repeats what the visual shows. Strictness scales to aesthetic (see [style-details](resources/style-details.md) reduction table). Do NOT reduce information density.
+> [style-details.md] The Big Picture · Border Radius · Card Border Style · Shadows & Glow Effects · Your Glow System · Top Glow Colors (Use these first) · Spacing System (8px Grid) · Decorative Elements & Backgrounds · Background Texture (39% of designs have texture) · Geometric Shapes (used in many gaming infographics) · Logo Treatment (95% of your infographics have logos) · Progress Bars (45/175 designs — 26%) · Dense Table (Primary Data Component) · Composition Rules (from 175 designs) · Atmospheric Depth Techniques (inline, no external files) · Noise Grain — SVG feTurbulence Filter · Gradient Mesh Background · Scanline Overlay — Cyber Aesthetic · Paper Texture — Editorial Aesthetic · Glassmorphism Accent Panels · Annotation System · Direct Label CSS · Callout Line Technique · Insight Callout Box · Threshold / Benchmark Line · Premium Typography · Tabular Numbers · Minor Third Type Scale (1.25 ratio) · Weight-Based Hierarchy · Letter-Spacing Rules · …(+12)
 
 **Final quality check** — no fabricated data, display font is not banned, Phosphor CDN included, canvas width matches platform, background mode matches request, footer present (unless user said no), all labels directly on charts (annotation-first), logo present (95% of real pieces), type-specific playbook applied if one fits.
 
@@ -204,20 +209,35 @@ See `examples/` for 15 rendered PNG reference outputs covering each template fam
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — upstream orchestrator; route here only when the user has structured data and wants a dense editorial graphic.
-- `../amw-design-principles/ai-slop-avoid.md` — final AI-slop scan every HTML output must pass.
-- `../amw-design-principles/color-system.md` — brand-color / WCAG AA validation when a custom color is supplied.
-- `../amw-design-principles/typography-system.md` — type-scale rules that compose with this skill's display-font hierarchy.
+- [SKILL](../amw-design-principles/SKILL.md) — upstream orchestrator; route here only when the user has structured data and wants a dense editorial graphic.
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — final AI-slop scan every HTML output must pass.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [color-system](../amw-design-principles/color-system.md) — brand-color / WCAG AA validation when a custom color is supplied.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — type-scale rules that compose with this skill's display-font hierarchy.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - `../../bin/amw-html-export.py` — PNG / PDF / SVG export pipeline; shared with `hyperframes-bridge` and `ascii-to-html`.
 - `../../bin/amw-preview-server.py` — Mode A live preview server, port 7883.
 - [design-brief](resources/design-brief.md) — 5-question intake framework + aesthetic decision table.
+  > The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · From raw numbers: · From a topic brief: · Thesis formula: · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
 - [style-details](resources/style-details.md) — full 1062-line design system with component CSS patterns, type playbooks, reduction-pass rules.
+  > [style-details.md] The Big Picture · Border Radius · Card Border Style · Shadows & Glow Effects · Your Glow System · Top Glow Colors (Use these first) · Spacing System (8px Grid) · Decorative Elements & Backgrounds · Background Texture (39% of designs have texture) · Geometric Shapes (used in many gaming infographics) · Logo Treatment (95% of your infographics have logos) · Progress Bars (45/175 designs — 26%) · Dense Table (Primary Data Component) · Composition Rules (from 175 designs) · Atmospheric Depth Techniques (inline, no external files) · Noise Grain — SVG feTurbulence Filter · Gradient Mesh Background · Scanline Overlay — Cyber Aesthetic · Paper Texture — Editorial Aesthetic · Glassmorphism Accent Panels · Annotation System · Direct Label CSS · Callout Line Technique · Insight Callout Box · Threshold / Benchmark Line · Premium Typography · Tabular Numbers · Minor Third Type Scale (1.25 ratio) · Weight-Based Hierarchy · Letter-Spacing Rules · …(+12)
+  > [style-details.md] The Big Picture · Border Radius · Card Border Style · Shadows & Glow Effects · Your Glow System · Top Glow Colors (Use these first) · Spacing System (8px Grid) · Decorative Elements & Backgrounds · Background Texture (39% of designs have texture) · Geometric Shapes (used in many gaming infographics) · Logo Treatment (95% of your infographics have logos) · Progress Bars (45/175 designs — 26%) · Dense Table (Primary Data Component) · Composition Rules (from 175 designs) · Atmospheric Depth Techniques (inline, no external files) · Noise Grain — SVG feTurbulence Filter · Gradient Mesh Background · Scanline Overlay — Cyber Aesthetic · Paper Texture — Editorial Aesthetic · Glassmorphism Accent Panels · Annotation System · Direct Label CSS · Callout Line Technique · Insight Callout Box · Threshold / Benchmark Line · Premium Typography · Tabular Numbers · Minor Third Type Scale (1.25 ratio) · Weight-Based Hierarchy · Letter-Spacing Rules · …(+12)
+  > The Big Picture · Border Radius · Card Border Style · Shadows & Glow Effects · Your Glow System · Top Glow Colors (Use these first) · Spacing System (8px Grid) · Decorative Elements & Backgrounds · Background Texture (39% of designs have texture) · Geometric Shapes (used in many gaming infographics) · Logo Treatment (95% of your infographics have logos) · Progress Bars (45/175 designs — 26%) · Dense Table (Primary Data Component) · Composition Rules (from 175 designs) · Atmospheric Depth Techniques (inline, no external files) · Noise Grain — SVG feTurbulence Filter · Gradient Mesh Background · Scanline Overlay — Cyber Aesthetic · Paper Texture — Editorial Aesthetic · Glassmorphism Accent Panels · Annotation System · Direct Label CSS · Callout Line Technique · Insight Callout Box · Threshold / Benchmark Line · Premium Typography · Tabular Numbers · Minor Third Type Scale (1.25 ratio) · Weight-Based Hierarchy · Letter-Spacing Rules · …(+12)
+  > The Big Picture · Border Radius · Card Border Style · Shadows & Glow Effects · Your Glow System · Top Glow Colors (Use these first) · Spacing System (8px Grid) · Decorative Elements & Backgrounds · Background Texture (39% of designs have texture) · Geometric Shapes (used in many gaming infographics) · Logo Treatment (95% of your infographics have logos) · Progress Bars (45/175 designs — 26%) · Dense Table (Primary Data Component) · Composition Rules (from 175 designs) · Atmospheric Depth Techniques (inline, no external files) · Noise Grain — SVG feTurbulence Filter · Gradient Mesh Background · Scanline Overlay — Cyber Aesthetic · Paper Texture — Editorial Aesthetic · Glassmorphism Accent Panels · Annotation System · Direct Label CSS · Callout Line Technique · Insight Callout Box · Threshold / Benchmark Line · Premium Typography · Tabular Numbers · Minor Third Type Scale (1.25 ratio) · Weight-Based Hierarchy · Letter-Spacing Rules · …(+12)
 - [layout-patterns](resources/layout-patterns.md) — full 842-line layout and archetype scaffold library with CSS grid implementations per archetype.
+  > Layout Statistics · Your Dominant Infographic Types · Layout Recipes by Type · TOKEN-ECONOMICS (35% of your work — your specialty) · GAME-OVERVIEW (19% — your #2 type) · ECOSYSTEM (15% — partner/collaboration type) · CRYPTO-EXPLAINER (12% — educational type) · AIRDROP-GUIDE (8% — action-focused type) · NFT-SHOWCASE (5% — collectible type) · DENSE SPACING REFERENCE (apply across ALL types) · Composition Archetype CSS Implementations · ARCHETYPE 1: Stacked Reference (DEFAULT — 70%+ of pieces) · ARCHETYPE 2: Flow Poster · ARCHETYPE 3: Hub & Spoke · ARCHETYPE 4: Stat Poster · ARCHETYPE 5: Cheat Sheet · Stats Bar / KPI Strip (74/175 = 42%)
 - [charts](resources/charts.md) — chart rules (bar / line / pie / radar / stat callouts) with annotation-first placement.
+  > When to Use What · SVG Pie Chart (Token Allocation — Your Most-Used) · Color Rule · How SVG Pie Wedges Work · Segment Calculator · Template (4-segment example — amber primary shades) · CSS · CSS Horizontal Bar Chart (Vesting / Allocation Strips) · Chart.js — Complex Charts via CDN · Line Chart Template · Radar Chart Template (Game Stats) · Pure CSS Progress Bar (Vesting Timeline) · Waffle Chart (% of Total — Pure HTML/CSS) · Slope Chart (Before/After — Inline SVG) · Annotated Bar Chart (SVG — Hero Bar + Benchmark) · Proportional Circles (SVG — Area = Value) · Dot Plot (SVG — Distribution / Individual Points)
 - [color-palettes](resources/color-palettes.md) — full palette library by type (token-economics amber, crypto-explainer purple, ecosystem teal, airdrop amber+blue, etc.).
+  > Key Statistics · Per-Type Signature Palettes · Brand Distinction Strategy · Your Signature Background Colors · Your Most-Used Accent Colors (Primary) · Palette Recipes (Named Collections) · AMBER DARK (YOUR SIGNATURE — most used) · CYBER TEAL (Very popular) · GAMING RED (Action-focused) · HOT PINK WEB3 (Crypto-brand favorite) · EMERALD GAMING (Nature/fantasy) · ROYAL PURPLE GAMING (NFT/fantasy) · NAVY CRYPTO (Professional/DeFi) · WARM GOLD DARK (Premium/exclusive) · RETRO PIXEL / GAMING ARCADE · LIME CYBERPUNK · Standout / High-Contrast Palettes · NEON ACID (High energy / Disruptive) · SUNSET HORIZON (Warm / Premium Editorial) · EARTHY TECH (Organic / DePIN / Sustainable) · Glow Color Reference (Top confirmed glow colors) · Light Mode Palettes (When background: "light") · L1. CLEAN WHITE + AMBER (Light version of your signature) · L2. WARM EDITORIAL (Premium light) · L3. BLUE PROFESSIONAL (Clean SaaS / Finance)
 - [font-pairings](resources/font-pairings.md) — display-font prevalence table and body-font pairings per type.
+  > Key Statistics · Your Font Rules (Non-Negotiable) · Your Core Display Fonts (Ranked by usage) · ✦ 2025/2026 Additions (Premium / Fresh) · Your Body Font (Almost Always the Same) · Tested Font Pairings (Your Actual Combinations) · BEBAS NEUE + MONTSERRAT (Your Signature — 40%+ of work) · MONTSERRAT + INTER (Professional/Brand) · RAJDHANI + INTER (Gaming/Technical) · ORBITRON + INTER (Sci-Fi/DeFi) · PRESS START 2P + INTER (Pixel/Retro Gaming) · TEKO + INTER (Esports / Tokenomics) ✦ Confirmed · BUNGEE + INTER (Arcade / Bold Block) · BANGERS + INTER (Meme/Bold) · CINZEL + INTER (Fantasy/NFT Luxury) · SPACE GROTESK + INTER (Modern Web3) · SYNE + DM SANS (Ultra-Modern Web3 / Tech) ✦ New · PLUS JAKARTA SANS (Premium Report / Brand) ✦ New · OUTFIT + INTER (Clean Contemporary) ✦ New · Typography Constants (Always Apply)
 - [platform-sizes](resources/platform-sizes.md) — 7 canvas sizes with per-platform layout/font adjustments and safe zones.
+  > Quick Reference · Layout & Font Adjustments Per Platform · Twitter/X (Most Common) · Instagram Post (1:1 Square) · Instagram Story / TikTok (9:16 Vertical) · LinkedIn · Pinterest · Font Size Scaling by Platform · Watermark / Attribution Rule by Platform · export.py Commands by Platform
 - [copy-guide](resources/copy-guide.md) — headline, callout, and label writing rules.
+  > The Core Rule · Stat Formatting Rules · Numbers — How to Display Them · Labeling Stats · Currency Conventions · Headline Formulas · Rule: UPPERCASE + Verb-First or Noun-Phrase · Subtitle Rules · Per-Component Word Budgets · Color-Coded Keyword Highlighting · Disclaimers & Source Citations · Footer Disclaimer (Always Include) · Source Citation Format · Badge & Tag Copy · Body Copy Rules — Bullets Over Paragraphs · Rule: Bullet points, not paragraphs · Rule: One fact per line · Rule: Sentence fragments, not full sentences · Rule: Inline token coloring — always color `$TOKEN` names · Common Mistakes to Avoid
 - `templates/` — 24 reference templates (see index above).
 - `examples/` — 15 rendered PNG reference outputs for each template family.
 - `evals/evals.json` — 5 scenario test prompts + expected outcomes.
@@ -244,117 +264,176 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `infographics` is the user asking about?
   - **section** (3 techniques)
     - [TECH-section-band](./references/TECH-section-band.md) — Full-width section separator bands
+      > What it does · The CSS · HTML · Numbered section headers with icon prefix · When to use · The color choice · Gotchas · Cross-references
     - [TECH-section-header-pill](./references/TECH-section-header-pill.md) — Section header pill badge (ecosystem signature)
+      > What it does · CSS · HTML · The four visual layers · When to use · Variants · Without glow (cleaner) · Wider (title-sized) · Gotchas · Cross-references
     - [TECH-section-variety-rule](./references/TECH-section-variety-rule.md) — Section Variety Rule — MANDATORY across 4+ sections
+      > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
   - **copy** (2 techniques)
     - [TECH-copy-guide-bullets](./references/TECH-copy-guide-bullets.md) — Bullet points rule — over paragraphs, always
+      > What it does · Why · Rule 1 — Bullets, not paragraphs · Rule 2 — One fact per bullet · Rule 3 — Sentence fragments, not full sentences · Rule 4 — Inline token coloring · Rule 5 — Color-coded keyword highlighting (beyond tokens) · Badge / tag rules · Disclaimer (always include in footer) · Gotchas · Cross-references
     - [TECH-copy-guide-numbers](./references/TECH-copy-guide-numbers.md) — Number formatting rules
+      > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
   - **dense** (2 techniques)
     - [TECH-dense-editorial-dna](./references/TECH-dense-editorial-dna.md) — Dense editorial DNA — the defining aesthetic
+      > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
     - [TECH-dense-table-component](./references/TECH-dense-table-component.md) — `dense_table` — the designer's primary data format
+      > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
   - **flow** (2 techniques)
     - [TECH-flow-poster-archetype](./references/TECH-flow-poster-archetype.md) — Archetype 2: Flow Poster
+      > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
     - [TECH-flow-with-arrows-component](./references/TECH-flow-with-arrows-component.md) — `flow_with_arrows` — horizontal flow nodes with arrow connectors
+      > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
   - **preview** (2 techniques)
     - [TECH-preview-animations](./references/TECH-preview-animations.md) — Preview entrance animations — browser only
+      > What it does · When to use · Per-component animation table · Stat counter — JS · Bar chart — CSS transition · Feature card stagger — CSS · SVG line draw · The export capture · Gotchas · Cross-references
     - [TECH-preview-server](./references/TECH-preview-server.md) — Preview server — live reload during builder sessions
+      > What it does · When to use · Start the server · User instruction · How auto-refresh works · Workflow during iteration · Preview file structure · Full design fidelity in preview · Gotchas · Cross-references
   - **stat** (2 techniques)
     - [TECH-stat-poster-archetype](./references/TECH-stat-poster-archetype.md) — Archetype 4: Stat Poster
+      > What it does · When to use · The shape · CSS implementation · The number-first rule · Tabular numerics mandatory · Gotchas · Cross-references
     - [TECH-stat-strip-component](./references/TECH-stat-strip-component.md) — `stat_strip` — full-width KPI row with colored top borders
+      > What it does · When to use · CSS · HTML · The signature — colored top border · Number formatting rules · Common stat fields · Gotchas · Cross-references
   - **airdrop** (1 techniques)
     - [TECH-airdrop-guide-playbook](./references/TECH-airdrop-guide-playbook.md) — Airdrop-Guide playbook — 10% (17/175)
+      > What it does · When to use · Color system · Typography · Standard component prevalence (across 17 pieces) · Visual properties · Signature layout pattern · The amber+blue value split (signature) · The claim-steps horizontal flow · CSS variables · Reference template · Archetype preference · Gotchas · Cross-references
   - **annotated** (1 techniques)
     - [TECH-annotated-bar-chart](./references/TECH-annotated-bar-chart.md) — Annotated bar chart — SVG with callout + benchmark
+      > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
   - **annotation** (1 techniques)
     - [TECH-annotation-first](./references/TECH-annotation-first.md) — Annotation-first — labels on charts, not in legends
+      > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
   - **anti** (1 techniques)
     - [TECH-anti-frontend-checklist](./references/TECH-anti-frontend-checklist.md) — Anti-Frontend Checklist — pre-delivery gate
+      > What it does · The checklist · Structure · Spacing · Visual · Density · Playbook compliance (if applicable) · Data integrity · Export readiness · Common failure modes · The SaaS Landing Page · The Dashboard · The Slide Deck · The Component Demo · The Floating Islands · After checklist → run Reduction Pass · Gotchas · Cross-references
   - **arrows** (1 techniques)
     - [TECH-arrows-and-connectors](./references/TECH-arrows-and-connectors.md) — Arrows & connectors — 71% of pieces
+      > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
   - **background** (1 techniques)
     - [TECH-background-depth](./references/TECH-background-depth.md) — Background depth — radial gradient orbs, scanlines, paper texture
+      > What it does · Gradient mesh background · SVG noise grain · Scanline overlay (Cyber aesthetic) · Paper texture (Editorial aesthetic) · Glassmorphism accent panels · Background decoration hierarchy · Gotchas · Cross-references
   - **bar** (1 techniques)
     - [TECH-bar-chart-css](./references/TECH-bar-chart-css.md) — CSS horizontal bar chart — vesting / allocation strips
+      > What it does · HTML · CSS · The 3-column grid layout · Animation — CSS transition · Progress bars — single metric variant · Gotchas · Cross-references
   - **bordered** (1 techniques)
     - [TECH-bordered-section-component](./references/TECH-bordered-section-component.md) — `bordered_section` — visible-border content panel
+      > What it does · When to use · Left-accent variant (most common) · Full-border variant · Header styles · HTML · Minimum border opacity · Gotchas · Cross-references
   - **bullet** (1 techniques)
     - [TECH-bullet-panel-component](./references/TECH-bullet-panel-component.md) — `bullet_panel` component — DEFAULT for text content
+      > What it does · When to use · CSS · HTML · The ▸ bullet convention · 2-col grid pattern · One fact per bullet (mandatory) · Gotchas · Cross-references
   - **chain** (1 techniques)
     - [TECH-chain-color-coding](./references/TECH-chain-color-coding.md) — Blockchain chain color-coding
+      > What it does · The color table · CSS tokens · Chain badge component · Table row left-border per chain · When to use · Gotchas · Cross-references
   - **character** (1 techniques)
     - [TECH-character-card-grid](./references/TECH-character-card-grid.md) — Character / NFT card grid — tight 5-column
+      > What it does · CSS · HTML · The tight-grid signature · Stat bar sizing · When to use · Gotchas · Cross-references
   - **chart** (1 techniques)
     - [TECH-chart-selection-guide](./references/TECH-chart-selection-guide.md) — Chart selection — decision tree for chart type
+      > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
   - **cheat** (1 techniques)
     - [TECH-cheat-sheet-archetype](./references/TECH-cheat-sheet-archetype.md) — Archetype 5: Cheat Sheet
+      > What it does · When to use · The shape · CSS implementation · The mixed-layout rule · Flow connector between sections · Gotchas · Cross-references
   - **color** (1 techniques)
     - [TECH-color-palette-recipes](./references/TECH-color-palette-recipes.md) — 13 named palette recipes
+      > What it does · Dark palettes (99% of work) · AMBER DARK — signature · CYBER TEAL · GAMING RED · HOT PINK WEB3 · EMERALD GAMING · ROYAL PURPLE GAMING · NAVY CRYPTO · WARM GOLD DARK · RETRO PIXEL / ARCADE · LIME CYBERPUNK · Standout palettes · NEON ACID · SUNSET HORIZON · EARTHY TECH · Light mode palettes (rare, <1%) · L1. CLEAN WHITE + AMBER · L2. WARM EDITORIAL · L3. BLUE PROFESSIONAL · Gotchas · Cross-references
   - **crypto** (1 techniques)
     - [TECH-crypto-explainer-playbook](./references/TECH-crypto-explainer-playbook.md) — Crypto-Explainer playbook — 17% (29/175)
+      > What it does · When to use · Color system · Typography · Standard component prevalence (across 29 pieces) · Visual properties · Signature layout pattern · CSS variables (purple variant) · CSS variables (pink variant) · Font pair · Reference template · Archetype preference · Gotchas · Cross-references
   - **design** (1 techniques)
     - [TECH-design-brief](./references/TECH-design-brief.md) — Design Brief — 3 (or 5) intake questions
+      > What it does · The 3 minimum questions · The 5 full-brief questions · Aesthetic direction mapping (Question 2) · Rules · Skip-brief defaults · Thesis extraction (from data) · Thesis formula · Tone → palette mapping · Audience sophistication → density · Gotchas · Cross-references
   - **dot** (1 techniques)
     - [TECH-dot-plot](./references/TECH-dot-plot.md) — Dot plot — distribution + individual points
+      > What it does · When to use · HTML · CSS · Y-jitter convention · Annotations — median line, ranges · Gotchas · Cross-references
   - **ecosystem** (1 techniques)
     - [TECH-ecosystem-playbook](./references/TECH-ecosystem-playbook.md) — Ecosystem playbook — 13% (22/175)
+      > What it does · When to use · Color system · Typography · Standard component prevalence (across 22 pieces) · Visual properties · Signature layout pattern · The partner grid pattern (signature) · Section header pill badge · CSS variables · Reference template · Target density · Gotchas · Cross-references
   - **export** (1 techniques)
     - [TECH-export-pipeline](./references/TECH-export-pipeline.md) — Export pipeline — HTML → PNG + PDF + SVG
+      > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
   - **flywheel** (1 techniques)
     - [TECH-flywheel-loop-component](./references/TECH-flywheel-loop-component.md) — `flywheel_loop` — rectangular nodes → circular back to start
+      > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
   - **font** (1 techniques)
     - [TECH-font-system](./references/TECH-font-system.md) — Font system — the 5-font display hierarchy
+      > What it does · The 5 display fonts (authoritative hierarchy) · Generic fallback-only fonts (never as display) · Premium alternative pairings (2025/2026) · The body font hierarchy · Rules (non-negotiable) · Tested font pairings (top 5) · Bebas Neue + Montserrat (signature — 40%+) · Teko + Inter (esports) · Orbitron + Inter (sci-fi / DeFi) · Press Start 2P + VT323 (pixel games) · Bungee + Inter (arcade / meme) · Typography constants · Gotchas · Cross-references
   - **game** (1 techniques)
     - [TECH-game-overview-playbook](./references/TECH-game-overview-playbook.md) — Game-Overview playbook — 14% (25/175)
+      > What it does · When to use · Color system · Typography — two sub-variants · Standard game · Pixel / retro game · Standard component prevalence (across 25 pieces) · Visual properties · Signature layout pattern · Character card grid (signature pattern) · Light-mode sub-variant · CSS variables (standard) · CSS variables (pixel) · Reference template · Gotchas · Cross-references
   - **glow** (1 techniques)
     - [TECH-glow-system](./references/TECH-glow-system.md) — Glow system — neon box-shadow + text-shadow
+      > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
   - **guided** (1 techniques)
     - [TECH-guided-creative-mode](./references/TECH-guided-creative-mode.md) — Guided Creative (Mode C) — show two directions before building
+      > What it does · When to use · The flow · The two-option presentation · Example presentation · User selection handling · Step 5 — one-shot build · Step 6 — Live Editor Block · Gotchas · Cross-references
   - **hub** (1 techniques)
     - [TECH-hub-spoke-archetype](./references/TECH-hub-spoke-archetype.md) — Archetype 3: Hub & Spoke
+      > What it does · When to use · The shape · CSS implementation · Connection lines — SVG overlay · Gotchas · Cross-references
   - **inline** (1 techniques)
     - [TECH-inline-token-coloring](./references/TECH-inline-token-coloring.md) — Inline token coloring — `$TOKEN` names always colored
+      > What it does · The two patterns · Pattern 1: Color-only · Pattern 2: Color + background tint · HTML · What gets colored · The 2-per-bullet cap · The `highlight` class vs `.accent` · The token-pill variant (standalone) · Gotchas · Cross-references
   - **interactive** (1 techniques)
     - [TECH-interactive-builder-mode](./references/TECH-interactive-builder-mode.md) — Interactive Builder (Mode A) — component-by-component iteration
+      > What it does · When to use · The flow · State file — `.infographic/{project}.json` · Preview server · The approval gate (A4) · State schema per component · Why verbatim HTML · Session resume · Gotchas · Cross-references
   - **line** (1 techniques)
     - [TECH-line-chart](./references/TECH-line-chart.md) — Line chart — Chart.js with designer theming
+      > What it does · When to use · HTML · The signature options · The container-height trick · Gotchas · Cross-references
   - **one** (1 techniques)
     - [TECH-one-shot-mode](./references/TECH-one-shot-mode.md) — One-Shot mode (Mode B) — generate the full infographic in one pass
+      > What it does · When to use · The 5 steps · Classification — identify the type · Composition archetype — pick one · Build rules · Head elements (required) · Step 5 — export command · Gotchas · Cross-references
   - **outer** (1 techniques)
     - [TECH-outer-canvas-border](./references/TECH-outer-canvas-border.md) — Outer canvas border — thin accent-colored frame
+      > What it does · Implementation 1 — body outline · Implementation 2 — wrapping container border · Implementation 3 — pseudo-element overlay · When to use · When NOT to use · Color choice · Gotchas · Cross-references
   - **per** (1 techniques)
     - [TECH-per-type-signature-palettes](./references/TECH-per-type-signature-palettes.md) — Per-content-type signature palettes
+      > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
   - **platform** (1 techniques)
     - [TECH-platform-sizing](./references/TECH-platform-sizing.md) — Platform sizing — Twitter, Instagram, LinkedIn, Pinterest
+      > What it does · The size table · Safe zones per platform · CSS — fixed-aspect platforms · Font size scaling by platform · Density by format · Watermark / attribution per platform · Export commands · Gotchas · Cross-references
   - **progress** (1 techniques)
     - [TECH-progress-bar-vesting](./references/TECH-progress-bar-vesting.md) — Progress bar — vesting timeline with milestones
+      > What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
   - **proportional** (1 techniques)
     - [TECH-proportional-circles](./references/TECH-proportional-circles.md) — Proportional circles — area = value
+      > What it does · When to use · The math · HTML · CSS — primary shade coloring · Positioning · Gotchas · Cross-references
   - **radar** (1 techniques)
     - [TECH-radar-chart](./references/TECH-radar-chart.md) — Radar chart — Chart.js for game stats + multi-axis comparison
+      > What it does · When to use · HTML · The signature options · Multi-character comparison — overlay datasets · Gotchas · Cross-references
   - **reduction** (1 techniques)
     - [TECH-reduction-pass](./references/TECH-reduction-pass.md) — Reduction Pass — strip everything that doesn't encode data
+      > What it does · The checklist · Per-aesthetic strictness · The rule · Before / after — gridline removal · Before · After · Before / after — legend to direct labels · Before · After · Before / after — decoration removal · Before (everything shouting) · After (structure creates hierarchy, not decoration) · Decision rule · Gotchas · Cross-references
   - **signature** (1 techniques)
     - [TECH-signature-palette](./references/TECH-signature-palette.md) — Signature palette — near-black + amber + teal/blue complement
+      > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
   - **slope** (1 techniques)
     - [TECH-slope-chart](./references/TECH-slope-chart.md) — Slope chart — before/after comparison
   - **stacked** (1 techniques)
     - [TECH-stacked-reference-archetype](./references/TECH-stacked-reference-archetype.md) — Archetype 1: Stacked Reference (DEFAULT, 70%+ of work)
+      > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
   - **step** (1 techniques)
     - [TECH-step-process-component](./references/TECH-step-process-component.md) — `step_process` — numbered steps with connector line
+      > What it does · When to use · CSS · HTML · The connector line trick · Horizontal variant · Gotchas · Cross-references
   - **svg** (1 techniques)
     - [TECH-svg-pie-chart](./references/TECH-svg-pie-chart.md) — SVG pie chart — token allocation (the #1 chart)
+      > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
   - **swim** (1 techniques)
     - [TECH-swim-lane-architecture](./references/TECH-swim-lane-architecture.md) — Swim-lane architecture diagram
+      > What it does · When to use · CSS · HTML · The vertical label trick · When NOT to use · Gotchas · Cross-references
   - **template** (1 techniques)
     - [TECH-template-registry](./references/TECH-template-registry.md) — Template registry — 24 reference templates
+      > What it does · The shared V4 standards · Crypto / Web3 templates (13) · Generic templates (11) · Template selection by user intent · Usage · Gotchas · Cross-references
   - **tier** (1 techniques)
     - [TECH-tier-comparison-component](./references/TECH-tier-comparison-component.md) — `tier_comparison` — tier badge table
+      > What it does · When to use · CSS — the base table · CSS — the tier badges · HTML · Custom tier names and colors · Gotchas · Cross-references
   - **token** (1 techniques)
     - [TECH-token-economics-playbook](./references/TECH-token-economics-playbook.md) — Token-Economics playbook — 35% of body of work (62/175)
+      > What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
   - **typography** (1 techniques)
     - [TECH-typography-scale](./references/TECH-typography-scale.md) — Typography scale — minor third (1.25 ratio)
+      > What it does · The scale · Weight-based hierarchy · Letter-spacing rules · Tabular numerics (mandatory for numbers) · Summary rules · Body font size rules (the density signature) · Gotchas · Cross-references
   - **waffle** (1 techniques)
     - [TECH-waffle-chart](./references/TECH-waffle-chart.md) — Waffle chart — 10×10 grid for % of total
+      > What it does · When to use · HTML · CSS · JS — add `.filled` + stagger · Legend styling · Gotchas · Cross-references
 
 ## References
 
@@ -400,6 +479,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-anti-frontend-checklist.md](./references/TECH-anti-frontend-checklist.md)**
+  > What it does · The checklist · Structure · Spacing · Visual · Density · Playbook compliance (if applicable) · Data integrity · Export readiness · Common failure modes · The SaaS Landing Page · The Dashboard · The Slide Deck · The Component Demo · The Floating Islands · After checklist → run Reduction Pass · Gotchas · Cross-references
   - Description: Anti-Frontend Checklist — pre-delivery gate
   - TOC:
     - What it does
@@ -513,6 +593,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-color-palette-recipes.md](./references/TECH-color-palette-recipes.md)**
+  > What it does · Dark palettes (99% of work) · AMBER DARK — signature · CYBER TEAL · GAMING RED · HOT PINK WEB3 · EMERALD GAMING · ROYAL PURPLE GAMING · NAVY CRYPTO · WARM GOLD DARK · RETRO PIXEL / ARCADE · LIME CYBERPUNK · Standout palettes · NEON ACID · SUNSET HORIZON · EARTHY TECH · Light mode palettes (rare, <1%) · L1. CLEAN WHITE + AMBER · L2. WARM EDITORIAL · L3. BLUE PROFESSIONAL · Gotchas · Cross-references
   - Description: 13 named palette recipes
   - TOC:
     - What it does
@@ -536,6 +617,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-copy-guide-numbers.md](./references/TECH-copy-guide-numbers.md)**
+  > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
   - Description: Number formatting rules
   - TOC:
     - What it does
@@ -678,6 +760,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-font-system.md](./references/TECH-font-system.md)**
+  > What it does · The 5 display fonts (authoritative hierarchy) · Generic fallback-only fonts (never as display) · Premium alternative pairings (2025/2026) · The body font hierarchy · Rules (non-negotiable) · Tested font pairings (top 5) · Bebas Neue + Montserrat (signature — 40%+) · Teko + Inter (esports) · Orbitron + Inter (sci-fi / DeFi) · Press Start 2P + VT323 (pixel games) · Bungee + Inter (arcade / meme) · Typography constants · Gotchas · Cross-references
   - Description: Font system — the 5-font display hierarchy
   - TOC:
     - What it does
@@ -802,6 +885,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-per-type-signature-palettes.md](./references/TECH-per-type-signature-palettes.md)**
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
   - Description: Per-content-type signature palettes
   - TOC:
     - What it does
@@ -930,6 +1014,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-signature-palette.md](./references/TECH-signature-palette.md)**
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
   - Description: Signature palette — near-black + amber + teal/blue complement
   - TOC:
     - What it does
@@ -1088,7 +1173,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-infographics/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -1097,7 +1184,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. self-contained HTML + retina PNG + print-ready PDF infographic posters). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. self-contained HTML + retina PNG + print-ready PDF infographic posters). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present

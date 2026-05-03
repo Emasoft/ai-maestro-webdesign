@@ -135,7 +135,8 @@ A missing required field (`brand_tokens_seed`, `target_format`, `slug`) is `stat
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -164,11 +165,14 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 1. **Verify preconditions.** Confirm `brand_tokens_seed`, `target_format`, and `slug` are populated.
 
 2. **Load design-principles scales reference.**
-   - Read `../skills/amw-design-principles/color-system.md` for the plugin's canonical color token structure.
-   - Read `../skills/amw-design-principles/typography-system.md` for type-scale anchor values and locale-specific adjustments.
-   - Read `../skills/amw-design-principles/spacing-rhythm.md` for the spacing-unit contract and 8px-grid requirements.
-   - Read `../skills/amw-shadcn-ui/SKILL.md` for the shadcn CSS variable mapping (needed to produce shadcn-compatible tokens).
-   - Read `../skills/amw-tailwind-4/SKILL.md` if `target_format` includes `tailwind-v4` (for `@theme` block syntax).
+   - Read [color-system](../skills/amw-design-principles/color-system.md) for the plugin's canonical color token structure.
+     > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+   - Read [typography-system](../skills/amw-design-principles/typography-system.md) for type-scale anchor values and locale-specific adjustments.
+     > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+   - Read [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) for the spacing-unit contract and 8px-grid requirements.
+     > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+   - Read [SKILL](../skills/amw-shadcn-ui/SKILL.md) for the shadcn CSS variable mapping (needed to produce shadcn-compatible tokens).
+   - Read [SKILL](../skills/amw-tailwind-4/SKILL.md) if `target_format` includes `tailwind-v4` (for `@theme` block syntax).
 
 3. **Generate color token system.**
    - For each `brand_primaries` color, derive an 11-step OKLCH shade scale (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950). Step 500 anchors to the input hex.
@@ -207,7 +211,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 10. **Write artifacts to disk.** Save all export files to `output_dir/` (or project-inferred path if absent).
 
-11. **Assemble return contract.** Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-component-library-architect-<slug>.md`.
+11. **Assemble return contract.** Populate YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-component-library-architect-<slug>.md`.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -235,7 +240,8 @@ Action: produce standard adjustments (increase line-height to 1.8, increase mini
 Action: use the first color as primary, second as accent/secondary, third as tertiary. Any beyond three are documented in `warnings` as "additional brand colors noted but not assigned a semantic role — extend the semantic layer manually if needed."
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot design-system authoring agent — I have no internal fix/retry/regenerate loop. I produce tokens, variant matrices, and export files in a single pass; the lint gate (`bin/amw-design-md-lint.sh runs before delivery`) is a single-pass advisory check, not a fix-and-retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot design-system authoring agent — I have no internal fix/retry/regenerate loop. I produce tokens, variant matrices, and export files in a single pass; the lint gate (`bin/amw-design-md-lint.sh runs before delivery`) is a single-pass advisory check, not a fix-and-retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -243,14 +249,19 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
-| Always — canonical scale anchors | `../skills/amw-design-principles/color-system.md` | Plugin's canonical color token structure |
-| Always — type scale reference | `../skills/amw-design-principles/typography-system.md` | Scale ratios, line-height rules, locale adjustments |
-| Always — spacing reference | `../skills/amw-design-principles/spacing-rhythm.md` | Spacing-unit contract, 8px-grid compliance |
-| `target_format` includes shadcn | `../skills/amw-shadcn-ui/SKILL.md` | CSS variable names and component token mapping |
-| `target_format=tailwind-v4` | `../skills/amw-tailwind-4/SKILL.md` | `@theme` block syntax, `oklch()` color format for v4 |
+| Always — canonical scale anchors | [color-system](../skills/amw-design-principles/color-system.md) | Plugin's canonical color token structure |
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+| Always — type scale reference | [typography-system](../skills/amw-design-principles/typography-system.md) | Scale ratios, line-height rules, locale adjustments |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+| Always — spacing reference | [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) | Spacing-unit contract, 8px-grid compliance |
+> [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
+| `target_format` includes shadcn | [SKILL](../skills/amw-shadcn-ui/SKILL.md) | CSS variable names and component token mapping |
+| `target_format=tailwind-v4` | [SKILL](../skills/amw-tailwind-4/SKILL.md) | `@theme` block syntax, `oklch()` color format for v4 |
 | `component_scope` specified | `../skills/amw-shadcn-ui/docs/components/<name>.mdx` | Component-level token mapping for the cva() variant config |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Catch token naming anti-patterns (generic names, hex-named tokens) |
-| Default — design-token authoring output is a Variant 1 DESIGN.md | `../skills/amw-design-md/SKILL.md` + `../skills/amw-design-md/references/canonical-spec-google-alpha.md` | Style Dictionary / Figma-tokens / W3C-DTCG exports are DERIVED from the DESIGN.md (via `bin/amw-design-md-emit-companions.py` — emits `tokens.css`, `tokens.json`, `component-inventory.md`, `usage-prompt.md`), never the other way around. The DESIGN.md is the source of truth; companions are downstream artifacts. Lint gate: `bin/amw-design-md-lint.sh` runs before delivery. |
+| AI-slop final gate | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Catch token naming anti-patterns (generic names, hex-named tokens) |
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+| Default — design-token authoring output is a Variant 1 DESIGN.md | [SKILL](../skills/amw-design-md/SKILL.md) + [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) | Style Dictionary / Figma-tokens / W3C-DTCG exports are DERIVED from the DESIGN.md (via `bin/amw-design-md-emit-companions.py` — emits `tokens.css`, `tokens.json`, `component-inventory.md`, `usage-prompt.md`), never the other way around. The DESIGN.md is the source of truth; companions are downstream artifacts. Lint gate: `bin/amw-design-md-lint.sh` runs before delivery. |
+> [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (different domain).
 
@@ -272,7 +283,8 @@ I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-s
 
 ### What I never delegate to a peer amw-* agent
 
-Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents do not call each other. If I need brand competitor analysis to validate token choices, I document the gap in `warnings` and let main-agent invoke `amw-brand-researcher-agent`.
+Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents do not call each other. If I need brand competitor analysis to validate token choices, I document the gap in `warnings` and let main-agent invoke `amw-brand-researcher-agent`.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -297,7 +309,8 @@ Action: produce a locale typography variant with the appropriate font family sta
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. Reproduced here so the protocol is local to this spec.
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md). Reproduced here so the protocol is local to this spec.
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -334,7 +347,8 @@ Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad desi
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-component-library-architect-<slug>.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-component-library-architect-<slug>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example — `status=ok`
 
@@ -443,7 +457,7 @@ Token system produced but muted-foreground/muted contrast pair failed WCAG AA. A
 
 ## 14. Hard Rules / Veto Power
 
-I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` and `amw-accessibility-auditor-agent` per `../skills/amw-design-principles/references/authority-hierarchy.md`.
+I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` and `amw-accessibility-auditor-agent` per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md).
 
 ### Absolute rules (never violate)
 
@@ -471,14 +485,24 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of the flat `brand_tokens` output
 - [amw-brand-researcher-agent](./amw-brand-researcher-agent.md) — source of `brand_tokens_seed` (competitor extraction or user upload)
 - [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream WCAG audit of rendered output using these tokens
-- `../skills/amw-design-principles/color-system.md` — plugin's canonical color token structure
-- `../skills/amw-design-principles/typography-system.md` — type scale and locale-specific rules
-- `../skills/amw-design-principles/spacing-rhythm.md` — spacing-unit contract
-- `../skills/amw-shadcn-ui/SKILL.md` — CSS variable mapping for shadcn compatibility
-- `../skills/amw-tailwind-4/SKILL.md` — `@theme` block syntax for Tailwind v4 token output
-- `../skills/amw-design-principles/ai-slop-avoid.md` — token naming anti-patterns
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md`
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md`
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md`
-- `../skills/amw-design-principles/references/authority-hierarchy.md`
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md`
+- [color-system](../skills/amw-design-principles/color-system.md) — plugin's canonical color token structure
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../skills/amw-design-principles/typography-system.md) — type scale and locale-specific rules
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) — spacing-unit contract
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [SKILL](../skills/amw-shadcn-ui/SKILL.md) — CSS variable mapping for shadcn compatibility
+- [SKILL](../skills/amw-tailwind-4/SKILL.md) — `@theme` block syntax for Tailwind v4 token output
+- [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) — token naming anti-patterns
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md)
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md)
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md)
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md)
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement

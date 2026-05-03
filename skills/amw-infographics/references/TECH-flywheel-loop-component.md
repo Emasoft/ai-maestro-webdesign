@@ -146,8 +146,11 @@ circularity. Flywheel is specifically for closed loops.
 ## Cross-references
 
 - [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — linear alternative.
+  > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
 - [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — where flywheels appear most.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — archetype for flywheel-dominant
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
   pieces.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

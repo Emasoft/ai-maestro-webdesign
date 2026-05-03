@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-heatmap-intensity-markers — `[++] [+] [~] [!]` density cells
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Renders an ASCII heatmap where each cell is a 4-char intensity marker:
@@ -60,6 +70,8 @@ Search     [ ]   [ ]   [.]   [.]   [.]
 ## Cross-references
 
 - [TECH-grid-side-by-side](./TECH-grid-side-by-side.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-milestone-timeline](./TECH-milestone-timeline.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

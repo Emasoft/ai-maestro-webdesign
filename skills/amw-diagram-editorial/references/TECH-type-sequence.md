@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/me
 
 # TECH-type-sequence
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Emits a **sequence diagram** — horizontally arranged actor boxes at the top
@@ -106,9 +116,12 @@ OAuth 2.0 authorization code flow, attributed to
 
 ## Cross-references
 
-- `../SKILL.md` — type table; sequence is for *time-ordered messages*
-- `../../amw-ux-flows/references/TECH-mermaid-sequence-authenticated.md` —
+- [SKILL](../SKILL.md) — type table; sequence is for *time-ordered messages*
+- [TECH-mermaid-sequence-authenticated](../../amw-ux-flows/references/TECH-mermaid-sequence-authenticated.md) —
+  > What it does · When to use · How it works · Actor reference · Message syntax · Error-handling pattern · Minimal example · Gotchas · Cross-references
   Mermaid equivalent when docs are in Markdown
 - [TECH-type-architecture](TECH-type-architecture.md) — if the diagram is about static topology
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   rather than temporal flow
 - [design-system](design-system.md) — lifeline dash pattern, arrow marker sizing
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

@@ -7,6 +7,27 @@ also-in: globalCC `modern-web-development` skill (informational only — not a p
 
 # Modern HTML / CSS primitives — 2024-2025 standards
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [`<dialog>` element](#dialog-element)
+- [Popover API](#popover-api)
+- [`<details>` / `<summary>`](#details-summary)
+- [Container Queries (`@container`)](#container-queries-container)
+- [View Transitions API](#view-transitions-api)
+- [`<picture>` + `srcset` + `sizes`](#picture-srcset-sizes)
+- [`loading="lazy"` and `decoding="async"`](#loadinglazy-and-decodingasync)
+- [`<link rel="preload">` for fonts + `font-display: swap`](#link-relpreload-for-fonts-font-display-swap)
+- [CSS `:has()` selector](#css-has-selector)
+- [CSS `color-mix()` and Cascade Layers (`@layer`)](#css-color-mix-and-cascade-layers-layer)
+- [CSS Subgrid](#css-subgrid)
+- [Media-feature: `prefers-color-scheme`, `prefers-contrast`, `prefers-reduced-data`, `prefers-reduced-motion`](#media-feature-prefers-color-scheme-prefers-contrast-prefers-reduced-data-prefers-reduced-motion)
+- [`<input>` modern attributes](#input-modern-attributes)
+- [Anti-patterns to NOT use](#anti-patterns-to-not-use)
+- [What the agent MUST do](#what-the-agent-must-do)
+- [What the agent MUST NOT do](#what-the-agent-must-not-do)
+
+
 ## What it does
 
 Catalog of modern HTML elements and CSS features the wireframe-builder

@@ -60,4 +60,5 @@ See How-it-works — this IS the recommended wrapper.
 
 - Related: TECH-03-layout, TECH-63-progressive-enhancement
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-swimlane-parallel-tracks — per-role lanes across one timeline
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Renders a swimlane timeline where multiple roles / teams work in parallel
@@ -53,6 +63,8 @@ Launch                                 |==go=|
 ## Cross-references
 
 - [TECH-timeline-with-anchors](./TECH-timeline-with-anchors.md)
-- `../../amw-ascii-creator/references/TECH-lane-labeled-diagrams.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-lane-labeled-diagrams](../../amw-ascii-creator/references/TECH-lane-labeled-diagrams.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

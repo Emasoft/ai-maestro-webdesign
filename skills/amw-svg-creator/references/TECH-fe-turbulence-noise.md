@@ -107,7 +107,10 @@ multiply blend, "salt" brightens via overlay blend. See
 ## Cross-references
 
 - [TECH-salt-pepper-texture](TECH-salt-pepper-texture.md) — the advanced two-layer grain filter.
+  > What it does · The filter · When to use · Subtler salt — use `soft-light` instead of `overlay` · Usage pattern · Gotchas · Cross-references
 - [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — subtle paper for editorial looks.
+  > What it does · The filter · Parameter walkthrough · When to use · When NOT to use · Usage · Gotchas · Cross-references
 - [TECH-glassmorphism-filter](TECH-glassmorphism-filter.md) — noise + displacement combined.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The filter · How it works · When to use · When NOT to use · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -6,6 +6,17 @@ category: orchestrator-routing
 
 # Project output routing
 
+## Table of Contents
+
+- [When to consult this doc](#when-to-consult-this-doc)
+- [Detection order](#detection-order)
+- [Per-artifact-type default subpath](#per-artifact-type-default-subpath)
+- [Reconciliation when multiple candidates match](#reconciliation-when-multiple-candidates-match)
+- [Edge cases](#edge-cases)
+- [Quick-reference algorithm (pseudo-code)](#quick-reference-algorithm-pseudo-code)
+- [Cross-references](#cross-references)
+
+
 ## When to consult this doc
 
 Every webdesign skill that produces an artifact reads this doc before deciding
@@ -173,7 +184,7 @@ function resolve_output_path(skill, artifact_kind, user_hint):
 
 ## Cross-references
 
-- `../SKILL.md` — the orchestrator that routes to this doc
-- `../../amw-ascii-sketch/SKILL.md` — plan-phase artifacts (ASCII)
-- `../../amw-ascii-to-html/SKILL.md` — final-phase HTML artifacts
+- [SKILL](../SKILL.md) — the orchestrator that routes to this doc
+- [SKILL](../../amw-ascii-sketch/SKILL.md) — plan-phase artifacts (ASCII)
+- [SKILL](../../amw-ascii-to-html/SKILL.md) — final-phase HTML artifacts
 - Every skill's `## Output` section — links here instead of hardcoding a path

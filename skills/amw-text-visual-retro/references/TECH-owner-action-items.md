@@ -66,7 +66,10 @@ Actions:
 ## Cross-references
 
 - [TECH-milestone-timeline](./TECH-milestone-timeline.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-grid-side-by-side](./TECH-grid-side-by-side.md)
-- `../../amw-text-visual-workflows/references/TECH-metadata-annotation-conventions.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-metadata-annotation-conventions](../../amw-text-visual-workflows/references/TECH-metadata-annotation-conventions.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

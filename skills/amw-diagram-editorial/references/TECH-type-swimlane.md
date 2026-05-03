@@ -125,8 +125,11 @@ Typical width: 820–960px; lane height 88–96px (enough for the step +
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-flowchart](TECH-type-flowchart.md) — if the process is single-actor
-- `../../amw-ux-flows/references/mermaid-patterns.md` — Mermaid has no
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [mermaid-patterns](../../amw-ux-flows/references/mermaid-patterns.md) — Mermaid has no
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
   first-class swimlane; use subgraphs per actor if Mermaid is required
 - [design-system](design-system.md) — lane-band opacity and divider-line conventions
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

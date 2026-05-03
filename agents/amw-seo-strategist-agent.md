@@ -142,7 +142,8 @@ structured_data_plan: <JSON-LD type planned in Phase A, if any>
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -164,8 +165,8 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 
 ### Phase A operations
 
-1. Read `../skills/amw-seo/SKILL.md` for the full rubric.
-2. Read `../skills/amw-ux-flows/SKILL.md` if IA diagramming is needed (Mermaid preferred; ASCII alternative if user prefers ASCII).
+1. Read [SKILL](../skills/amw-seo/SKILL.md) for the full rubric.
+2. Read [SKILL](../skills/amw-ux-flows/SKILL.md) if IA diagramming is needed (Mermaid preferred; ASCII alternative if user prefers ASCII).
 3. Parse `primary_topic` into its core entity and modifiers. Map each modifier to candidate intent buckets.
 4. Build the keyword cluster:
    - Primary (1 keyword): best intent match to the page's purpose
@@ -188,7 +189,7 @@ When the recipe does not cover a case, I fall back to these, in priority order:
 
 ### Phase B operations
 
-1. Read `../skills/amw-seo/SKILL.md`, `../skills/amw-dev-browser/SKILL.md`.
+1. Read [SKILL](../skills/amw-seo/SKILL.md), [SKILL](../skills/amw-dev-browser/SKILL.md).
 2. Launch `dev-browser` via `bash bin/amw-dev-browser-wrapper.sh open <artifact_url>`.
 3. Dump the rendered `<head>` and `<body>` semantic structure:
    - title, meta description, canonical, robots
@@ -246,7 +247,8 @@ Main-agent arbitrates — per `authority-hierarchy.md`, user-research-analyst ha
 **Competitor URLs provided but unreachable** → proceed with the keyword cluster without competitor gap analysis. Warn: `"Competitor analysis incomplete — <N> URLs unreachable"`.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot analysis agent — I have no internal fix/retry/regenerate loop. I perform keyword research and SEO audit in a single pass and return findings. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot analysis agent — I have no internal fix/retry/regenerate loop. I perform keyword research and SEO audit in a single pass and return findings. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -254,11 +256,11 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Signal / need | Skill I read | What I do with it |
 |---|---|---|
-| Need the full SEO rubric | `../skills/amw-seo/SKILL.md` | Anchor my per-criterion checks; reuse the rubric's evaluation tables. |
-| Need to diagram IA as Mermaid (default) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-mermaid-diagram/SKILL.md` | Emit Mermaid for the IA diagram; render via `bin/amw-mermaid-render.sh`. |
-| Need to diagram IA as ASCII (user preference or low-fi phase) | `../skills/amw-ux-flows/SKILL.md` + `../skills/amw-ascii-creator/SKILL.md` | Emit ASCII variant; validate via `bin/amw-validate-ascii.py`. |
-| Need to render the artifact and inspect head elements | `../skills/amw-dev-browser/SKILL.md` | Use `dev-browser` for rendered HTML dump, console/network logs. |
-| Need structured-data examples | `../skills/amw-seo/SKILL.md` references | Pull schema.org type tables and JSON-LD examples. |
+| Need the full SEO rubric | [SKILL](../skills/amw-seo/SKILL.md) | Anchor my per-criterion checks; reuse the rubric's evaluation tables. |
+| Need to diagram IA as Mermaid (default) | [SKILL](../skills/amw-ux-flows/SKILL.md) + [SKILL](../skills/amw-mermaid-diagram/SKILL.md) | Emit Mermaid for the IA diagram; render via `bin/amw-mermaid-render.sh`. |
+| Need to diagram IA as ASCII (user preference or low-fi phase) | [SKILL](../skills/amw-ux-flows/SKILL.md) + [SKILL](../skills/amw-ascii-creator/SKILL.md) | Emit ASCII variant; validate via `bin/amw-validate-ascii.py`. |
+| Need to render the artifact and inspect head elements | [SKILL](../skills/amw-dev-browser/SKILL.md) | Use `dev-browser` for rendered HTML dump, console/network logs. |
+| Need structured-data examples | [SKILL](../skills/amw-seo/SKILL.md) references | Pull schema.org type tables and JSON-LD examples. |
 | Need to flag an accessibility-adjacent issue (alt text missing) | (flag only) | Forward to `amw-accessibility-auditor-agent` via main-agent; do not audit WCAG myself. |
 | Need to flag a legal issue (privacy policy linkage, cookie consent impact on SEO) | (flag only) | Forward to `amw-legal-expert-agent` via main-agent. |
 
@@ -306,7 +308,8 @@ All five resolve through main-agent; I never talk to peer agents or to the user 
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md):
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 **DO:**
 
@@ -329,7 +332,7 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 - Do not issue `/amw-*` prompts from inside the agent — they re-trigger the orchestrator.
 - Do not use broad design vocabulary ("design a landing page", "mockup for a website") in tool-call text.
-- Do not invoke `../skills/amw-design-principles/SKILL.md` as if I am the orchestrator — I am a sub-agent.
+- Do not invoke [SKILL](../skills/amw-design-principles/SKILL.md) as if I am the orchestrator — I am a sub-agent.
 - Do not use Playwright, Puppeteer, or Chrome DevTools MCP directly. `dev-browser` is the only browser-automation primitive.
 - Do not emit free-form prompts that look like user input into the Skill tool.
 
@@ -337,7 +340,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 ## 13. Return Contract
 
-I return to main-agent via the canonical YAML schema from `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
+I return to main-agent via the canonical YAML schema from [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md).
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 **Worked Phase A example:**
 
@@ -440,13 +444,18 @@ Phase B returns the same YAML schema with `phase: B`, `artifact_paths` including
 ## Cross-references
 
 - [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — agent philosophy
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md` — return-contract schema
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T protocol
-- `../skills/amw-design-principles/references/authority-hierarchy.md` — no-veto status; IA arbitration
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase A and Phase B data flow
-- `../skills/amw-seo/SKILL.md` — SEO rubric
-- `../skills/amw-ux-flows/SKILL.md` — IA diagramming
-- `../skills/amw-mermaid-diagram/SKILL.md` — Mermaid IA diagrams
-- `../skills/amw-dev-browser/SKILL.md` — rendered-page inspection
-- `../CLAUDE.md` — plugin architecture overview
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md) — agent philosophy
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md) — return-contract schema
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md) — DO/DON'T protocol
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) — no-veto status; IA arbitration
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) — Phase A and Phase B data flow
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+- [SKILL](../skills/amw-seo/SKILL.md) — SEO rubric
+- [SKILL](../skills/amw-ux-flows/SKILL.md) — IA diagramming
+- [SKILL](../skills/amw-mermaid-diagram/SKILL.md) — Mermaid IA diagrams
+- [SKILL](../skills/amw-dev-browser/SKILL.md) — rendered-page inspection
+- [CLAUDE](../CLAUDE.md) — plugin architecture overview

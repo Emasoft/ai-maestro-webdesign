@@ -60,4 +60,5 @@ spans.forEach((s, i) => {
 
 - Related: TECH-37-typographic-ascii, TECH-35-text-on-path
 - API reference: [TECH-02-prepare-with-segments](TECH-02-prepare-with-segments.md)
+  > What it does · When to use · How it works · Minimal example · TypeScript types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

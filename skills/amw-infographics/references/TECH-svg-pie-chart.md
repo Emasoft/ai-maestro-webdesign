@@ -126,8 +126,11 @@ large-arc-flag = segment_degrees > 180 ? 1 : 0
 ## Cross-references
 
 - [TECH-chart-selection-guide](TECH-chart-selection-guide.md) — when to use pie vs other charts.
+  > What it does · The decision table · The rule · Chart.js when yes · Chart.js loading · The canvas size trick · Gotchas · Cross-references
 - [TECH-waffle-chart](TECH-waffle-chart.md) — alternative for single-percentage stories.
+  > What it does · When to use · HTML · CSS · JS — add `.filled` + stagger · Legend styling · Gotchas · Cross-references
 - [TECH-annotation-first](TECH-annotation-first.md) — labels go on the chart, not in a
+  > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
   separate legend when <5 series.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

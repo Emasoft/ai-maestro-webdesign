@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-protocol-label-arrows — `HTTP`, `gRPC`, `L1 tx` on edges
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Labels every edge in an architecture diagram with the protocol / call
@@ -74,7 +84,10 @@ Conventions:
 ## Cross-references
 
 - [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
-- `../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md`
-- `../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-arrow-vocabulary](../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-async-arrow-vocabulary](../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

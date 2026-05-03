@@ -66,4 +66,5 @@ for (const g of glyphs) {
 
 - Related: TECH-34-wavy-baseline, TECH-43-calligram-shapes, TECH-52-glyph-path-art
 - API reference: [TECH-04-layout-with-lines](TECH-04-layout-with-lines.md)
+  > What it does · When to use · How it works · Minimal example · Return types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

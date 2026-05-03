@@ -68,6 +68,8 @@ Stack/queue variant (source: lines 27-35):
 ## Cross-references
 
 - [TECH-classic-struct-byte-offsets](./TECH-classic-struct-byte-offsets.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [data-structures](./data-structures.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

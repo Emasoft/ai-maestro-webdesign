@@ -153,7 +153,10 @@ Two-UC file for a simple auth flow:
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 1 of the workflow
+- [SKILL](../SKILL.md) — Phase 1 of the workflow
 - [TECH-prd-to-usecases](TECH-prd-to-usecases.md) — how each UC section is filled in
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-4-phase-mandatory-workflow](TECH-4-phase-mandatory-workflow.md) — pipeline that consumes this file
+  > What it does · When to use · How it works · Phase 1 — Use case extraction (Phase-1 gate) · Phase 2 — Mermaid diagrams · Phase 3 — HTML wireframes (MANDATORY) · Phase 4 — Consolidation handoff · Minimal example · Gotchas · Cross-references
 - [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — Phase 2 parser reads this
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references

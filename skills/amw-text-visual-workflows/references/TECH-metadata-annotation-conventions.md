@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-metadata-annotation-conventions — owners, SLAs, tools inline
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Standardizes metadata annotation inside flowchart / timeline nodes so the
@@ -60,6 +70,8 @@ Combine them: `[ Run migrations ] (@db-team, <15min, prod-only)`.
 ## Cross-references
 
 - [TECH-flowchart-paren-bracket-glyphs](./TECH-flowchart-paren-bracket-glyphs.md)
-- `../../amw-text-visual-retro/references/TECH-owner-action-items.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-owner-action-items](../../amw-text-visual-retro/references/TECH-owner-action-items.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

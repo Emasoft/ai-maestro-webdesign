@@ -35,6 +35,7 @@ When this skill activates, it **owns the task** until it explicitly routes to an
 ## Two operating modes
 
 Full spec: [two-mode-workflow](./references/two-mode-workflow.md). Summary here — read the full spec before modifying either mode.
+> [two-mode-workflow.md] Sub-agent delegation (Main-agent mode only) · Mode Detection · Phase A — Iterative Low-Fi Loop · Phase B — Implementation and Spawning · Scenario Testing via dev-browser (mandatory in Phase B) · Anti-Patterns
 
 ### Command mode (fast path)
 
@@ -46,9 +47,14 @@ Full spec: [two-mode-workflow](./references/two-mode-workflow.md). Summary here 
 
 ### Main-agent mode (requirements path)
 
-> **Executed by `../../agents/ai-maestro-webdesign-main-agent.md`** (or any upstream orchestrator following the same Phase A/B contract). See that agent for the full interactive discovery flow, resource-gathering checklist, sub-agent delegation rules, and Phase B spawning roster.
+> **Executed by [ai-maestro-webdesign-main-agent](../../agents/ai-maestro-webdesign-main-agent.md)** (or any upstream orchestrator following the same Phase A/B contract). See that agent for the full interactive discovery flow, resource-gathering checklist, sub-agent delegation rules, and Phase B spawning roster.
 >
 > The `agents/` folder ships 1 main-agent + 19 amw-* sub-agents across 4 tiers (discovery, production, specialists, QA). All sub-agents follow the canonical 14-section template documented at [agent-authoring-philosophy](./references/agent-authoring-philosophy.md). Cross-agent data hand-offs and the one-way tree topology are in [agent-interaction-patterns](./references/agent-interaction-patterns.md). Veto power (legal-expert, accessibility-auditor) and conflict-resolution rules are in [authority-hierarchy](./references/authority-hierarchy.md). The YAML return-contract schema every sub-agent emits is at [sub-agent-return-contract](./references/sub-agent-return-contract.md). The DO/DON'T rules agents follow when invoking skills are at [skill-invocation-protocol](./references/skill-invocation-protocol.md).
+> [agent-authoring-philosophy.md] Skills and agents are not the same kind of thing · What an agent actually needs · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+> [authority-hierarchy.md] Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 **Trigger:** the user states goals, requirements, or broad intent without a concrete format — "design a landing page", "build a dashboard UI", "I need a timeline graphic for the team".
 
@@ -67,6 +73,7 @@ Phase A ends **only** on the canonical satisfaction tokens: `yes`, `ship it`, `a
 After Phase A approval, the orchestrator stops talking to the user and spawns sub-agents to implement the approved design. The orchestrator speaks to the user exactly TWICE during Phase B: a transition confirmation at the start, and the job-completion report at the end.
 
 Phase B always includes `dev-browser`-driven scenario tests for every browser-runnable artifact (`dev-browser` is the only input-automation primitive in this plugin). See [two-mode-workflow](./references/two-mode-workflow.md) §4 for the mandatory test checklist.
+> [two-mode-workflow.md] Sub-agent delegation (Main-agent mode only) · Mode Detection · Phase A — Iterative Low-Fi Loop · Phase B — Implementation and Spawning · Scenario Testing via dev-browser (mandatory in Phase B) · Anti-Patterns
 
 ### Approval gate invariant
 
@@ -117,6 +124,7 @@ Present them side-by-side (tabs, stacked cards, multi-slide deck) so the user ca
 ### Rule 3: Reject every AI-slop pattern
 
 Specific patterns are an instant tell for AI generation. The complete list is in [ai-slop-avoid](ai-slop-avoid.md) (26 patterns + positive-stance section). Highlights:
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 
 - ❌ Large purple-blue or pink-orange linear gradients
 - ❌ Rounded-card + 4px left accent bar
@@ -128,6 +136,7 @@ Specific patterns are an instant tell for AI generation. The complete list is in
 - ❌ "Trust markers" / customer logo walls on every section
 
 Every HTML output runs a final scan against [ai-slop-avoid](ai-slop-avoid.md) before delivery.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 
 ---
 
@@ -140,6 +149,7 @@ Standard plugin runtime — no skill-specific prerequisites beyond the global pl
 1. Read the brief and decide if this skill fires (broad design vocabulary: design, UI, mockup, landing page, wireframe, prototype, slide, deck, poster, website).
 2. Gather context: request UI kit, brand assets, or reference examples; use `amw-ui-ux-reasoning` as last resort if none are available.
 3. Run the question checklist from [question-templates](question-templates.md) (ask ≥ 10 questions), then declare the visual system (font + palette + spacing rhythm).
+  > Universal must-ask (every design task) · Context & starting point · Task & goal · Variant dimensions · Tweaks · Hard constraints · Task-specific additions · Landing page / Website · Slides / Deck · App / Prototype · Poster / Single image · Infographic / Data viz · Brand collateral (business cards / invitations / emblems) · Questions NOT to ask · Suggested format · Tip
 4. Run `/amw-sketch` to iterate ≥ 3 ASCII variants with the user; loop until an explicit satisfaction token is received.
 5. Apply the AI-slop-avoid.md gate over the approved direction before conversion.
 6. Convert to HTML via `/amw-ascii-to-html`, apply tokens, and deliver via `/amw-preview`.
@@ -358,13 +368,16 @@ These skills do NOT ship dedicated slash commands (text-visual output overlaps h
 | `../amw-ascii-diagrams-reference/` | Reference library of validated ASCII archetypes (flowcharts, state-machines, trees, data-structures, network-topology, sequences-tables, graphs-annotations) distilled from the CHI'24 paper on 2,156 real diagrams in Linux/Chromium/LLVM/TensorFlow. Consulted by ascii-sketch / ascii-creator / text-visual-* when selecting a canonical pattern. |
 | `../amw-diagram-formats/` | **Meta-skill (cross-reference, not executor).** Authoritative specs for every diagram-format concern: format specs (ASCII/HTML/SVG/Mermaid), the IR schema (diagram-ir version 1.0), the N×N conversion matrix, the format-detection contract, the validate-dispatcher, the modify-flow pipeline, and the IR-level diff algorithm. All diagram-authoring and diagram-conversion skills import their rules from here — do NOT re-author these specs in the consumer skills. Never triggers independently; consulted implicitly whenever a diagram skill needs a spec. |
 | [project-output-routing](./references/project-output-routing.md) | Detection rules for project-inferred artifact output paths. Every sub-skill references this before writing artifacts instead of hardcoding `/tmp/amw-<skill>/`. Consult when the user has not specified an output path — the doc determines the right folder based on `package.json`, existing design folders, Claude design markers, and framework conventions. |
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 | [pivot-formats](./references/pivot-formats.md) | The plugin's three modular pivot formats (ASCII / DESIGN.md / Diagram-IR), the producers and consumers of each, and how agents pick the right pivot for each pipeline stage. Read before adding a new skill that produces or consumes structured intermediate output — confirms whether the candidate format is already covered by an existing pivot. |
+> [pivot-formats.md] ASCII (chat-native plan-phase pivot) · DESIGN.md (design-system pivot) · Diagram IR (`diagram-ir/1.0`) (cross-format diagram pivot) · How agents pick the right pivot · Adding a fourth pivot
 
 Slash commands: `/amw-eval`, `/amw-preview`, `/amw-doctor`, `/amw-init`.
 
 ### Tier-4 specialists (on-demand, Phase B only)
 
-`amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, and `amw-component-library-architect-agent` are spawned by `ai-maestro-webdesign-main-agent` when the brief surfaces form / email / motion / token-system intent. They have no veto power and produce specs or exports consumed by Tier-3 producers. They are agents, not skills — invoke them via Task delegation, not skill activation. Full roster and delegation rules: `../../agents/ai-maestro-webdesign-main-agent.md` and [two-mode-workflow](./references/two-mode-workflow.md).
+`amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, and `amw-component-library-architect-agent` are spawned by `ai-maestro-webdesign-main-agent` when the brief surfaces form / email / motion / token-system intent. They have no veto power and produce specs or exports consumed by Tier-3 producers. They are agents, not skills — invoke them via Task delegation, not skill activation. Full roster and delegation rules: [ai-maestro-webdesign-main-agent](../../agents/ai-maestro-webdesign-main-agent.md) and [two-mode-workflow](./references/two-mode-workflow.md).
+> [two-mode-workflow.md] Sub-agent delegation (Main-agent mode only) · Mode Detection · Phase A — Iterative Low-Fi Loop · Phase B — Implementation and Spawning · Scenario Testing via dev-browser (mandatory in Phase B) · Anti-Patterns
 
 ---
 

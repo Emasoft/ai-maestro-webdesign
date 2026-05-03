@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Dev Browser
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Its triggers are technical only — `design-principles` routes design intent here when a workflow needs to capture, inspect, or automate a real web page.
 
 ## Overview
@@ -84,9 +84,11 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Resources
 
 - `../../bin/amw-dev-browser-wrapper.sh` — plugin-standard wrapper (the canonical invocation path).
-- `../amw-design-extract/SKILL.md` — downstream consumer: combines `dev-browser` screenshots + DOM dumps with the `designlang` extractor to produce token sets.
-- `../amw-design-principles/SKILL.md` — upstream orchestrator; route design intents through there, not directly to this skill.
-- `../amw-design-principles/ai-slop-avoid.md` — apply after extracting any visual reference, before handing it to a design variant.
+- [SKILL](../amw-design-extract/SKILL.md) — downstream consumer: combines `dev-browser` screenshots + DOM dumps with the `designlang` extractor to produce token sets.
+- [SKILL](../amw-design-principles/SKILL.md) — upstream orchestrator; route design intents through there, not directly to this skill.
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — apply after extracting any visual reference, before handing it to a design variant.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - Slash commands: `/amw-extract-style <url>` (uses this skill + design-extract), `/amw-preview` (local preview server; orthogonal to this skill but often used together), `/amw-init` (installs the CLI).
 
 ## Non-negotiables

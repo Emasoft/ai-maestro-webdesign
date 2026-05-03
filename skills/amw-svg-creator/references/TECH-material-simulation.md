@@ -47,6 +47,7 @@ High-contrast multi-stop gradient with sharp transitions. Add
 Combine with:
 - Thin near-white specular lines along edges
 - Specular filter (see [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md))
+  > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
 - Reflected environment colors at 15-30% opacity
 
 ## Gold
@@ -124,7 +125,10 @@ directional.
 ## Cross-references
 
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the gradient primitive.
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
 - [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the noise primitive.
+  > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
 - [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based light for metals.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

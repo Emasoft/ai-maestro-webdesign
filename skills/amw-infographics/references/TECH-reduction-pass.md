@@ -146,8 +146,11 @@ Usually border alone is enough.
 ## Cross-references
 
 - [TECH-annotation-first](TECH-annotation-first.md) — related: labels over legends.
+  > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
 - [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — the pre-delivery check that
+  > What it does · The checklist · Structure · Spacing · Visual · Density · Playbook compliance (if applicable) · Data integrity · Export readiness · Common failure modes · The SaaS Landing Page · The Dashboard · The Slide Deck · The Component Demo · The Floating Islands · After checklist → run Reduction Pass · Gotchas · Cross-references
   includes this.
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the "don't reduce density" rule.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

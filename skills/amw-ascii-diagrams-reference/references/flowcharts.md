@@ -2,6 +2,13 @@
 
 # Flowcharts and Control Flow
 
+## Table of Contents
+
+- [Reference](#reference)
+
+## Reference
+
+
 Use for: conditional paths, decision trees, request processing pipelines.
 
 **Basic decision flow:**

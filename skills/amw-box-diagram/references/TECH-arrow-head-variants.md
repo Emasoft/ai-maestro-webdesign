@@ -64,8 +64,11 @@ Vertical:     │               ▴
 
 ## Cross-references
 
-- `../../amw-ascii-validator/references/TECH-forbidden-chars-banlist.md`
-- `../../amw-ascii-validator/references/TECH-safe-char-palette.md`
+- [TECH-forbidden-chars-banlist](../../amw-ascii-validator/references/TECH-forbidden-chars-banlist.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-safe-char-palette](../../amw-ascii-validator/references/TECH-safe-char-palette.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

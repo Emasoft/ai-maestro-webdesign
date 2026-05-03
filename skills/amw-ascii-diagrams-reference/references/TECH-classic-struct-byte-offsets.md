@@ -62,7 +62,10 @@ The classic "Offset 0 / 4 / 8 / 12" header strip anchors every diagram.
 ## Cross-references
 
 - [TECH-classic-bit-field-annotation](./TECH-classic-bit-field-annotation.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-classic-linked-list](./TECH-classic-linked-list.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [data-structures](./data-structures.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

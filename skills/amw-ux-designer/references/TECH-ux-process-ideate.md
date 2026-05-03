@@ -58,6 +58,8 @@ Cheapest to test: #2. Build a greyscale wireframe, walk Sarah through it in a 20
 ## Cross-references
 
 - [TECH-ux-process-define](TECH-ux-process-define.md) — upstream (Phase 2)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-prototype](TECH-ux-process-prototype.md) — downstream (Phase 4)
-- `../../amw-ascii-sketch/SKILL.md` — ASCII-first implementation of this phase
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-ascii-sketch/SKILL.md) — ASCII-first implementation of this phase
+- [SKILL](../SKILL.md)

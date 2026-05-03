@@ -155,7 +155,10 @@ that looks like a product grid, not a game roster.
 ## Cross-references
 
 - [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — where this pattern is central.
+  > What it does · When to use · Color system · Typography — two sub-variants · Standard game · Pixel / retro game · Standard component prevalence (across 25 pieces) · Visual properties · Signature layout pattern · Character card grid (signature pattern) · Light-mode sub-variant · CSS variables (standard) · CSS variables (pixel) · Reference template · Gotchas · Cross-references
 - [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — for non-visual tier data.
+  > What it does · When to use · CSS — the base table · CSS — the tier badges · HTML · Custom tier names and colors · Gotchas · Cross-references
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — why gaps are 2px, not 12px.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

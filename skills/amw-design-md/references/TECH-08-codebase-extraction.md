@@ -133,12 +133,17 @@ Plus an `extraction-notes.md` adjacent file with:
 ## When this is the wrong tool
 
 - The user has a Tailwind config and globals.css and wants pure mechanical conversion → use `bin/amw-design-md-from-tailwind.mjs` instead (jiti-based; can eval the config). See [TECH-10-tailwind-conversion](TECH-10-tailwind-conversion.md).
+  > What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
 - The user wants extraction from a deployed URL → use `bin/amw-design-md-from-url.sh`. See [TECH-07-url-extraction](TECH-07-url-extraction.md).
+  > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
 - The user has a finished DESIGN.md and wants to audit drift → use `amw-design-md-auditor-agent` Pass 2 (which calls this script under the hood).
 
 ## Cross-references
 
 - [TECH-07-url-extraction](./TECH-07-url-extraction.md) — URL extraction
+  > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
 - [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — Tailwind-specific extraction (more accurate for TW projects)
+  > What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
 - [audit-passes](./audit-passes.md) — Pass 2 (drift) uses this internally
+  > Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
 - `../../../bin/amw-design-md-from-codebase.py` — the bin script

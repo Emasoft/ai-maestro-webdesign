@@ -1,5 +1,12 @@
 # Tailwind CSS v4 gotchas (quick scan)
 
+## Table of Contents
+
+- [Reference](#reference)
+
+## Reference
+
+
 - Browser support is modern-only: Safari 16.4+, Chrome 111+, Firefox 128+.
 - PostCSS plugin moved to `@tailwindcss/postcss`.
 - CLI moved to `@tailwindcss/cli`.

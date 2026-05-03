@@ -62,5 +62,8 @@ Recommendations: add author bio with qualifications, medical-review byline, link
 ## Cross-references
 
 - [TECH-seo-cwv](TECH-seo-cwv.md) — page experience signals (CWV)
+  > What it does · When to use · How it works · Field data vs lab data · Important context · Minimal example · Gotchas · Cross-references
 - [TECH-seo-content-quality](TECH-seo-content-quality.md), [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-structured-data](TECH-seo-structured-data.md)
-- `../SKILL.md`
+  > [TECH-seo-technical.md] What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

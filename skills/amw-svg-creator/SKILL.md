@@ -6,9 +6,9 @@ version: 0.2.0
 
 # SVG Creator (GATED)
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **GATED — icons / logos / technical SVG / patterns / animations only.**
-> Characters, scenes, mascots, portraits, avatars, people, animals, and any "draw me X" illustration request are **forbidden** by `../amw-design-principles/ai-slop-avoid.md` item 3 ("AI-drawn SVG illustrations / mascots / scenes"). If the user asks for any of those, STOP and explain: "design-principles bans AI-drawn character/scene SVG; use a real asset or a placeholder box instead." Do not attempt a "quick one" or a "simplified" version — the ban is absolute.
+> Characters, scenes, mascots, portraits, avatars, people, animals, and any "draw me X" illustration request are **forbidden** by [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3 ("AI-drawn SVG illustrations / mascots / scenes"). If the user asks for any of those, STOP and explain: "design-principles bans AI-drawn character/scene SVG; use a real asset or a placeholder box instead." Do not attempt a "quick one" or a "simplified" version — the ban is absolute.
 
 ## Overview
 
@@ -28,6 +28,7 @@ See the `## Mandatory workflow` section below for the authoritative 6-step rende
 ## Examples
 
 See [README](examples/README.md) for in-scope examples (icons, logos, patterns, data-vis primitives, animations). Advanced SVG techniques (filter chains, noise texture, gradients) are documented in [advanced-techniques](references/advanced-techniques.md).
+> [advanced-techniques.md] Filter Chain Cookbook · feTurbulence Parameter Guide · feComponentTransfer Color Grading · Material Simulation · Illustration Composition Templates · Atmospheric and Environmental Effects · Icons with Depth · Logos with Dimension · Animation (CSS + SMIL) · Data Visualizations · Patterns and Backgrounds · Power Features Reference · Character Construction Templates
 
 ## Activation
 
@@ -55,13 +56,14 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 - **Scene illustrations** — landscapes, interiors, skies, environments, product scenes.
 - **Animal illustrations** — cats, dogs, foxes, pandas, dragons, anything with a body plan.
 - **Abstract decorative art** — "looks hand-drawn", "organic", "painterly", "mood piece".
-- **Anything whose value is "this looks like a human illustrator drew it"** — the model cannot verify those coordinates, and the output is visibly AI-slop per `../amw-design-principles/ai-slop-avoid.md` item 3.
+- **Anything whose value is "this looks like a human illustrator drew it"** — the model cannot verify those coordinates, and the output is visibly AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 - **Anything that substitutes for a real stock or commissioned illustration** — if the user's brief would normally be fulfilled by an Unsplash photo, a purchased SVG pack, or a hired illustrator, it is not this skill's job.
 
 If the request falls in the CANNOT list, stop. Say so explicitly, cite `ai-slop-avoid.md` item 3, and route the user to one of:
 
 1. A **placeholder box** (gray `<rect>` + size label + `alt` describing what the final asset will show) — then ask the user for real assets.
-2. `../amw-design-principles/SKILL.md` for broader design routing.
+2. [SKILL](../amw-design-principles/SKILL.md) for broader design routing.
 3. Real stock / commissioned assets outside this plugin.
 
 ## Trigger conditions (all narrow, all technical)
@@ -126,13 +128,17 @@ Apply these inside the SVG while building. Each is expanded in [advanced-techniq
 
 ## Resources
 
-- `../amw-design-principles/ai-slop-avoid.md` — item 3 is the gating rule. Re-read it if tempted to stretch scope.
-- `../amw-design-principles/color-system.md` — use `oklch` tokens when the user supplied them; never raw `#000` / `#fff`.
-- `../amw-design-principles/typography-system.md` — any SVG text follows the plugin's type scale.
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — item 3 is the gating rule. Re-read it if tempted to stretch scope.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+- [color-system](../amw-design-principles/color-system.md) — use `oklch` tokens when the user supplied them; never raw `#000` / `#fff`.
+  > I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — any SVG text follows the plugin's type scale.
+  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
 - `../../bin/amw-svg-render.py` — the render-verify-finish loop; see `render`, `finish`, `status`, `reset` subcommands.
-- `../amw-diagram-svg/SKILL.md` — upstream when the request is a freeform node-and-edge diagram.
-- `../amw-ascii-to-svg/SKILL.md` — upstream when the input is ASCII that needs SVG finish.
+- [SKILL](../amw-diagram-svg/SKILL.md) — upstream when the request is a freeform node-and-edge diagram.
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — upstream when the input is ASCII that needs SVG finish.
 - [advanced-techniques](references/advanced-techniques.md) — full cookbook: filter chains, `feTurbulence` parameter guide, `feComponentTransfer` color grading, material simulation, pattern / background recipes, animation timing. Note: the cookbook retains character-construction sections from the upstream skill — **those sections are out of scope here**; consult them only if you are debugging a diagram element that happens to share the same filter technique.
+  > Filter Chain Cookbook · feTurbulence Parameter Guide · feComponentTransfer Color Grading · Material Simulation · Illustration Composition Templates · Atmospheric and Environmental Effects · Icons with Depth · Logos with Dimension · Animation (CSS + SMIL) · Data Visualizations · Patterns and Backgrounds · Power Features Reference · Character Construction Templates
 - [README](examples/README.md) — in-scope examples (icons, logos, patterns, data-vis primitives, animations). The previously-archived character examples (`cat-astronaut.svg`, `fox-yoga-static.svg`) that shipped with the upstream skill have been moved out of `examples/` to `docs_dev/examples_archive/svg-creator-characters/` so they no longer read as templates for this GATED skill.
 
 ## Non-negotiables
@@ -167,7 +173,9 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `svg-creator` is the user asking about?
   - **fe** (2 techniques)
     - [TECH-fe-component-transfer-color-grading](./references/TECH-fe-component-transfer-color-grading.md) — `feComponentTransfer` — per-channel color grading
+      > What it does · Increase contrast · Warm color shift (sunset) · Cool color shift (moonlit) · Posterize (reduce color steps) · Duotone (two-color map) · Gamma curve (lighten midtones) · Gotchas · Cross-references
     - [TECH-fe-turbulence-noise](./references/TECH-fe-turbulence-noise.md) — `feTurbulence` — noise texture that breaks digital perfection
+      > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
   - **atmospheric** (1 techniques)
     - [TECH-atmospheric-effects](./references/TECH-atmospheric-effects.md) — Atmospheric effects — light rays, fog, stars, rain, clouds
   - **character** (1 techniques)
@@ -176,42 +184,61 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-colored-shadows](./references/TECH-colored-shadows.md) — Colored shadows (never pure black)
   - **css** (1 techniques)
     - [TECH-css-smil-animation](./references/TECH-css-smil-animation.md) — CSS + SMIL animation in SVG
+      > What it does · The `transform-box` rule · Spinner (CSS) · Line drawing reveal (pathLength + stroke-dasharray) · Staggered entrance · SMIL animation (works in `<img>` tags) · Attribute animation · Transform animation · Motion along a path · Sequential timing via `begin` · Gotchas · Cross-references
   - **data** (1 techniques)
     - [TECH-data-visualization-svg](./references/TECH-data-visualization-svg.md) — Data visualization in SVG — bars, donuts, grids
+      > [TECH-data-visualization-svg.md] What it does · Bar chart with gradient + drop shadow · Donut chart — arc math · Axis lines · Gotchas · Cross-references
   - **drop** (1 techniques)
     - [TECH-drop-shadow-filter](./references/TECH-drop-shadow-filter.md) — Drop shadow, contact shadow, cast shadow (three filter chains)
+      > [TECH-drop-shadow-filter.md] What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
   - **five** (1 techniques)
     - [TECH-five-zone-lighting](./references/TECH-five-zone-lighting.md) — Five-zone lighting model
+      > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
   - **glassmorphism** (1 techniques)
     - [TECH-glassmorphism-filter](./references/TECH-glassmorphism-filter.md) — Glassmorphism filter — frosted glass effect
+      > What it does · The filter · How it works · When to use · When NOT to use · Gotchas · Cross-references
   - **icon** (1 techniques)
     - [TECH-icon-construction](./references/TECH-icon-construction.md) — Icon construction — 24×24 stroke-based + app icons
+      > What it does · 24×24 UI icons · 64×64+ app icons — depth + shine · Test legibility at small size · Gotchas · Cross-references
   - **landscape** (1 techniques)
     - [TECH-landscape-composition](./references/TECH-landscape-composition.md) — Landscape scene composition — 7+ layers
+      > What it does · The layer stack (back to front) · The template · The atmospheric perspective rule · Gotchas · Cross-references
   - **material** (1 techniques)
     - [TECH-material-simulation](./references/TECH-material-simulation.md) — Material simulation — metal, gold, glass, wood, water, stone, fabric
+      > What it does · Metal (steel / chrome) · Gold · Glass / transparent · Wood · Water · Stone / rock · Fabric / cloth · Gotchas · Cross-references
   - **mesh** (1 techniques)
     - [TECH-mesh-gradient-workaround](./references/TECH-mesh-gradient-workaround.md) — Mesh gradient workaround — layered radial gradients
+      > What it does · The technique · Best practices · Gradient parameters that matter · When to use · Gotchas · Cross-references
   - **multi** (1 techniques)
     - [TECH-multi-stop-gradients](./references/TECH-multi-stop-gradients.md) — Multi-stop gradients (4+ stops with hue shifts)
+      > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
   - **paint** (1 techniques)
     - [TECH-paint-order-and-spread-method](./references/TECH-paint-order-and-spread-method.md) — `paint-order` and `spreadMethod` — power features
+      > What it does · `paint-order="stroke fill"` · `spreadMethod` on gradients · Example — brushed metal with `reflect` · `vector-effect="non-scaling-stroke"` · `pathLength="1"` · `gradientTransform` · Gotchas · Cross-references
   - **paper** (1 techniques)
     - [TECH-paper-texture-filter](./references/TECH-paper-texture-filter.md) — Paper texture filter
+      > What it does · The filter · Parameter walkthrough · When to use · When NOT to use · Usage · Gotchas · Cross-references
   - **pattern** (1 techniques)
     - [TECH-pattern-tiles](./references/TECH-pattern-tiles.md) — `<pattern>` tiles — dots, diagonal lines, waves
+      > What it does · Dots · Diagonal lines · Waves · `patternUnits` — the critical attribute · `patternTransform` — rotate / scale / translate the whole pattern · Gotchas · Cross-references
   - **reduced** (1 techniques)
     - [TECH-reduced-motion](./references/TECH-reduced-motion.md) — `prefers-reduced-motion` — mandatory accessibility override
+      > What it does · The minimum implementation · Why `0.01ms` instead of `0s` · SMIL equivalent · When it's OK to ignore · When it's partially OK · Gotchas · Cross-references
   - **render** (1 techniques)
     - [TECH-render-verify-loop](./references/TECH-render-verify-loop.md) — The render-verify-deliver loop (mandatory)
+      > What it does · When to use · The six steps · Why the loop script · Iteration guidelines · Minimal example · Gotchas · Cross-references
   - **salt** (1 techniques)
     - [TECH-salt-pepper-texture](./references/TECH-salt-pepper-texture.md) — Salt & pepper texture — two-layer professional grain
+      > What it does · The filter · When to use · Subtler salt — use `soft-light` instead of `overlay` · Usage pattern · Gotchas · Cross-references
   - **soft** (1 techniques)
     - [TECH-soft-glow-filter](./references/TECH-soft-glow-filter.md) — Soft glow filter
+      > What it does · The basic filter · Colored glow variant · `stdDeviation` tuning · Filter region · When to use · Gotchas · Cross-references
   - **specular** (1 techniques)
     - [TECH-specular-diffuse-lighting](./references/TECH-specular-diffuse-lighting.md) — `feSpecularLighting` + `feDiffuseLighting` — physics-based shading
+      > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
   - **vignette** (1 techniques)
     - [TECH-vignette-overlay](./references/TECH-vignette-overlay.md) — Vignette overlay — edge darkening
+      > What it does · The gradient · The parameters · Layer order · Off-center vignettes · When to use · When NOT to use · Gotchas · Cross-references
 
 ## References
 
@@ -251,6 +278,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-css-smil-animation.md](./references/TECH-css-smil-animation.md)**
+  > What it does · The `transform-box` rule · Spinner (CSS) · Line drawing reveal (pathLength + stroke-dasharray) · Staggered entrance · SMIL animation (works in `<img>` tags) · Attribute animation · Transform animation · Motion along a path · Sequential timing via `begin` · Gotchas · Cross-references
   - Description: CSS + SMIL animation in SVG
   - TOC:
     - What it does
@@ -485,7 +513,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-svg-creator/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -494,7 +523,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. standalone `.svg` icons, logos, technical primitives). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. standalone `.svg` icons, logos, technical primitives). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present

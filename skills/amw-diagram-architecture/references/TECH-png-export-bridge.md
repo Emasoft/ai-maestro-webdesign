@@ -98,9 +98,12 @@ To save as PNG:
 ## Cross-references
 
 - [formats](formats.md) — the full transform spec for all 4 formats
+  > Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 - [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — the transform that produces the SVG
+  > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
 - `../../../bin/amw-svg-render.py` — optional local rasteriser (Python +
   cairosvg)
 - [validation](validation.md) — Stage 2 PNG checks (instructions after SVG, etc.)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Stage 1 — Graph Validation (all formats) · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Stage 2 — Format Validation · Format: `graph` · Format: `mermaid` · Format: `svg` · Format: `png` · Validation Summary (quick reference) · **Stage 1 — Graph validation**: structural checks on the graph JSON. · **Stage 2 — Format validation**: surface-level checks on the rendered output.
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

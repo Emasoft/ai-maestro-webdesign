@@ -7,6 +7,17 @@ also-in: globalCC skills `vercel-development`, `netlify-development`, `cloudflar
 
 # Production deployment targets
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When this is relevant](#when-this-is-relevant)
+- [Catalog](#catalog)
+- [Decision tree](#decision-tree)
+- [What main-agent surfaces](#what-main-agent-surfaces)
+- [What main-agent MUST NOT do](#what-main-agent-must-not-do)
+- [Plugin-scope boundary](#plugin-scope-boundary)
+
+
 ## What it does
 
 When the user asks "where do I deploy this?" after a Phase B build completes, the main-agent surfaces this catalog. The plugin produces unbuilt HTML/CSS/JS by default; deployment is out of plugin scope but the recommendations below let main-agent orient the user without inventing platform-specific advice.

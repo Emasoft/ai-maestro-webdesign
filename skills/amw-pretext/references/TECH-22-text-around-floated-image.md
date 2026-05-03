@@ -7,6 +7,16 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-14.md, SKILL-15.md, SKILL-16.md, pretex
 
 # Text flowing around a floated image
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** layout
 **Status:** stable
 
@@ -60,4 +70,5 @@ while (true) {
 
 - Related: TECH-05-layout-next-line, TECH-20-polygon-obstacle-mask
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

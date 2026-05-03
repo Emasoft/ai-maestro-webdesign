@@ -7,6 +7,17 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 
 # Theme selection decision tree
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Decision tree](#decision-tree)
+- [Context-to-theme cheat table](#context-to-theme-cheat-table)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 A short decision tree that maps user context to one of the 15 built-in
@@ -80,8 +91,11 @@ node scripts/render.mjs -i diagram.mmd -o out.svg -t zinc-light
 ## Cross-references
 
 - [TECH-built-in-themes](TECH-built-in-themes.md) — the full catalog.
+  > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
 - [TECH-enriched-mode](TECH-enriched-mode.md) — when the chosen theme is 80% right and
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   needs one tweak.
 - [TECH-mono-mode](TECH-mono-mode.md) — when no pre-baked theme fits at all.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

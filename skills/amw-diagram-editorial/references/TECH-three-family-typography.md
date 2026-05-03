@@ -107,9 +107,13 @@ Incorrect (mono creep — everything reads as code):
 
 ## Cross-references
 
-- `../SKILL.md` — typography overview in Design System section
+- [SKILL](../SKILL.md) — typography overview in Design System section
 - [design-system](design-system.md) — full type scale with sizes per role
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [style-guide](style-guide.md) — the font-stack record (user-editable)
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 - [TECH-brand-url-onboarding](TECH-brand-url-onboarding.md) — onboarding substitutes families but
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   keeps the three-role map
 - [primitive-annotation](primitive-annotation.md) — italic Instrument Serif for in-margin asides
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation

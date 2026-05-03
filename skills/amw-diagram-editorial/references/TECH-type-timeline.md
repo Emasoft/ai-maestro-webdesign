@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/cc-plugin-text-visualizations-main.
 
 # TECH-type-timeline
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Emits a **timeline diagram** — events arranged in temporal order along a
@@ -101,9 +111,11 @@ Horizontal timeline, one accent event:
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-state-machine](TECH-type-state-machine.md) — if the "events" are really state
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   transitions, that's a different primitive
-- `../../amw-text-visual-retro/SKILL.md` — ASCII timeline cousin for retros
+- [SKILL](../../amw-text-visual-retro/SKILL.md) — ASCII timeline cousin for retros
   and milestone docs
 - [design-system](design-system.md) — mono-date convention
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

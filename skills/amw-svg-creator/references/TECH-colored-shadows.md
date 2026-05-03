@@ -80,7 +80,10 @@ drop-shadow filters use `#000` here, which is the amateur mistake.
 ## Cross-references
 
 - [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — where shadows live in the bigger model.
+  > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
 - [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the full filter chain.
+  > What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
 - [TECH-vignette-overlay](TECH-vignette-overlay.md) — scene-level darkening at edges.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The gradient · The parameters · Layer order · Off-center vignettes · When to use · When NOT to use · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

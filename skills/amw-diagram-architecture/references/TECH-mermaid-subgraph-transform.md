@@ -123,9 +123,14 @@ flowchart TD
 ## Cross-references
 
 - [formats](formats.md) — full transform spec
+  > Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 - [validation](validation.md) — Stage 2 Mermaid checks
+  > Stage 1 — Graph Validation (all formats) · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Stage 2 — Format Validation · Format: `graph` · Format: `mermaid` · Format: `svg` · Format: `png` · Validation Summary (quick reference) · **Stage 1 — Graph validation**: structural checks on the graph JSON. · **Stage 2 — Format validation**: surface-level checks on the rendered output.
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — source schema
+  > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
 - [TECH-layer-palette-5-colors](TECH-layer-palette-5-colors.md) — palette used in classDefs
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — sibling transform for the SVG format
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

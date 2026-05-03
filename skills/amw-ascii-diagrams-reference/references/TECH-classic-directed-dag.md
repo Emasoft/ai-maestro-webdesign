@@ -62,7 +62,8 @@ leftward arrows for "depends on" relationships.
 
 ## Cross-references
 
-- `../../amw-diagram-architecture/SKILL.md` (JSON → Mermaid / SVG path)
+- [SKILL](../../amw-diagram-architecture/SKILL.md) (JSON → Mermaid / SVG path)
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

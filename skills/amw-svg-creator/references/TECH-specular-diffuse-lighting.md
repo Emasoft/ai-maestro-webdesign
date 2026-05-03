@@ -87,9 +87,12 @@ horizon.
 ## Cross-references
 
 - [TECH-soft-glow-filter](TECH-soft-glow-filter.md) — simpler alternative when you just
+  > What it does · The basic filter · Colored glow variant · `stdDeviation` tuning · Filter region · When to use · Gotchas · Cross-references
   want a halo.
 - [TECH-glassmorphism-filter](TECH-glassmorphism-filter.md) — specular + displacement for glass.
+  > What it does · The filter · How it works · When to use · When NOT to use · Gotchas · Cross-references
 - [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — the artistic model for when you
+  > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
   don't want physics.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,7 +7,7 @@ author: ai-maestro-webdesign
 
 # Mermaid Render
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. `design-principles` routes here when the user
 > has committed to a Mermaid diagram and wants it as SVG (for docs/slides)
 > or ASCII (for terminal/markdown/READMEs).
@@ -459,10 +459,10 @@ vendor-fetch instructions and `/amw-doctor` for the runtime probe.
 
 ## Resources
 
-- Orchestrator: `../amw-design-principles/SKILL.md`
-- Validator the ASCII path pipes through: `../amw-ascii-validator/SKILL.md`
-- Editorial diagram alternative (HTML+SVG, 13 fixed types, brand tokens): `../amw-diagram-editorial/SKILL.md`
-- Architecture diagram pipeline (accepts free text, emits Mermaid or SVG): `../amw-diagram-architecture/SKILL.md`
+- Orchestrator: [SKILL](../amw-design-principles/SKILL.md)
+- Validator the ASCII path pipes through: [SKILL](../amw-ascii-validator/SKILL.md)
+- Editorial diagram alternative (HTML+SVG, 13 fixed types, brand tokens): [SKILL](../amw-diagram-editorial/SKILL.md)
+- Architecture diagram pipeline (accepts free text, emits Mermaid or SVG): [SKILL](../amw-diagram-architecture/SKILL.md)
 - Vendored backend + LICENSE: `../../external/mermaid-render/`
 - Shell wrapper: `../../bin/amw-mermaid-render.sh`
 
@@ -525,6 +525,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-svg-render-api](./references/TECH-svg-render-api.md) — `renderMermaid()` — Mermaid → SVG
   - **terminal** (1 techniques)
     - [TECH-terminal-output-ansi](./references/TECH-terminal-output-ansi.md) — Adding ANSI colors to ASCII output
+      > What it does · When to use · Pattern 1: Highlight node names · Pattern 2: Whole-diagram color wrap · Pattern 3: Per-node status colors · Gotchas · Cross-references
   - **theme** (1 techniques)
     - [TECH-theme-selection-guide](./references/TECH-theme-selection-guide.md) — Theme selection decision tree
 
@@ -673,7 +674,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-mermaid-render/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -682,7 +685,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. `.svg` or terminal-ASCII renderings of Mermaid source). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. `.svg` or terminal-ASCII renderings of Mermaid source). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present

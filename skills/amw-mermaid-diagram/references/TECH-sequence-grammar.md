@@ -7,6 +7,20 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/SKILL.md
 
 # Sequence diagram grammar
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Participants](#participants)
+- [Message arrow types](#message-arrow-types)
+- [Activations — show processing time](#activations-show-processing-time)
+- [Notes](#notes)
+- [Loops & alt/else](#loops-altelse)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 `sequenceDiagram` grammar authors an interaction sequence between
@@ -102,8 +116,11 @@ sequenceDiagram
 ## Cross-references
 
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-temporal flows.
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [TECH-state-grammar](TECH-state-grammar.md) — for FSMs where time isn't the axis.
+  > What it does · When to use · Basic syntax · Composite states — nested state machines · Choice pseudo-state — conditional branching · Concurrency — parallel regions · Notes · Minimal example · Gotchas · Cross-references
 - [TECH-edge-styles](TECH-edge-styles.md) — not directly — sequence arrows differ from
+  > What it does · Line-and-arrow combinations · Inline label — two syntaxes · Minimal example · Styling edges with `linkStyle` · Gotchas · Cross-references
   flowchart arrows.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

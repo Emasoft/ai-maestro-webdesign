@@ -109,9 +109,13 @@ JSON.parse(raw);   // works
 ## Cross-references
 
 - [prompts](prompts.md) — the full API call pattern
+  > System Prompt · API Call Pattern · JSON Repair
 - [TECH-json-repair-recipe](TECH-json-repair-recipe.md) — downstream repair if parsing still
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   fails
 - [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — structural validation after parse
+  > What it does · When to use · How it works · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Minimal example · Gotchas · Cross-references
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — the target schema
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

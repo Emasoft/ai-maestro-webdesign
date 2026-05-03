@@ -7,6 +7,16 @@ also-in: ascii-diagram-validator-main/README.md, box-diagram-master/skills/amw-b
 
 # TECH-width-mismatch-rule — every frame line shares one display width
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The validator asserts that every line in a framed ASCII diagram has the same
@@ -53,7 +63,10 @@ Issues Found:
 ## Cross-references
 
 - [TECH-fix-hint-actionable-format](./TECH-fix-hint-actionable-format.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-group-aware-width-detection](./TECH-group-aware-width-detection.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-wide-character-detection](./TECH-wide-character-detection.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

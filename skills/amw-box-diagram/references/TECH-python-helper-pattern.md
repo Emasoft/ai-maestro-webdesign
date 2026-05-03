@@ -78,7 +78,10 @@ print(border_bot(10))
 ## Cross-references
 
 - [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-fan-out-fan-in-junctions](./TECH-fan-out-fan-in-junctions.md)
-- `../../amw-ascii-validator/references/TECH-wide-character-detection.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-wide-character-detection](../../amw-ascii-validator/references/TECH-wide-character-detection.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

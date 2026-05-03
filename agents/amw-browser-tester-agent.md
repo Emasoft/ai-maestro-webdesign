@@ -6,7 +6,8 @@ model: sonnet
 
 # AMW Browser Tester Agent
 
-> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents never call each other; if `amw-accessibility-auditor-agent` or `amw-seo-strategist-agent` also need to run on the same artifact, main-agent orchestrates us in sequence or parallel.
+> I am spawned by `ai-maestro-webdesign-main-agent` only. I do not interact with the user directly. My output is returned to the main-agent who integrates it into the broader workflow. Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents never call each other; if `amw-accessibility-auditor-agent` or `amw-seo-strategist-agent` also need to run on the same artifact, main-agent orchestrates us in sequence or parallel.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -132,7 +133,8 @@ I do NOT activate on: "design the test plan" (that's main-agent), "debug this te
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -239,7 +241,8 @@ In priority order:
 
 7. **Close session.** `Bash: bash bin/amw-dev-browser-wrapper.sh pass-through close` (or equivalent). Persistent sessions hold memory — always clean up.
 
-8. **Return.** YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`, with `status=ok` if all scenarios PASS, `status=partial` if some FAIL or INCONCLUSIVE, `status=failed` if the artifact was unreachable or dev-browser itself crashed.
+8. **Return.** YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md), with `status=ok` if all scenarios PASS, `status=partial` if some FAIL or INCONCLUSIVE, `status=failed` if the artifact was unreachable or dev-browser itself crashed.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -308,7 +311,8 @@ The ux-evaluator 3-dimension framework needs a specific component to score. If t
 Report what succeeded before the crash. Emit `status=partial` with `blocking_issues` citing the crash. Recommend: "dev-browser crashed on scenario `<name>` — re-invoke with only the remaining scenarios, or run `dev-browser install` to re-provision Chromium if crash recurs".
 
 ### Iteration cap
-Per `../skills/amw-design-principles/references/iteration-budget.md`, my per-scenario timeout budget is **10 s by default; 30 s when invoked with `retry_with:wait_timeout=30s`**. This cap is time-based, not attempt-count-based. A scenario that does not resolve within its timeout budget is marked INCONCLUSIVE and the test run continues with remaining scenarios. I do not loop indefinitely waiting for a slow page. The `attempts_log[]` in my return contract records each scenario's timeout configuration and actual duration.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), my per-scenario timeout budget is **10 s by default; 30 s when invoked with `retry_with:wait_timeout=30s`**. This cap is time-based, not attempt-count-based. A scenario that does not resolve within its timeout budget is marked INCONCLUSIVE and the test run continues with remaining scenarios. I do not loop indefinitely waiting for a slow page. The `attempts_log[]` in my return contract records each scenario's timeout configuration and actual duration.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -379,7 +383,8 @@ INCONCLUSIVE with a specific retry recommendation is my default for anything amb
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md):
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -400,7 +405,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md).
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example
 
@@ -560,7 +566,7 @@ Cannot test: artifact at file:///Users/demo/project/mockup.html not found on dis
 
 ## 14. Hard Rules / Veto Power
 
-I have **no veto power**. Per `../skills/amw-design-principles/references/authority-hierarchy.md`, veto is reserved for `amw-legal-expert-agent` and `amw-accessibility-auditor-agent`. I am a functional tester, not an authority.
+I have **no veto power**. Per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md), veto is reserved for `amw-legal-expert-agent` and `amw-accessibility-auditor-agent`. I am a functional tester, not an authority.
 
 ### Absolute constraints
 
@@ -593,14 +599,20 @@ I have **no veto power**. Per `../skills/amw-design-principles/references/author
 ## Cross-references
 
 - [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent; consumes my verdicts and decides next steps.
-- `../skills/amw-dev-browser/SKILL.md` — the only browser-automation primitive. Authoritative invocation patterns.
-- `../skills/amw-ux-evaluator/SKILL.md` — optional UX-quality scoring layer (3-dimension framework).
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — the 14-section template.
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md` — canonical YAML header schema.
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T for skill invocation.
-- `../skills/amw-design-principles/references/authority-hierarchy.md` — I have no veto; accessibility auditor has veto on WCAG AA blockers.
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase B data-flow (my verdicts feed back to main-agent; if WCAG concerns surface, main-agent routes to `amw-accessibility-auditor-agent`).
-- `../skills/amw-design-principles/references/agent-reports-location.md` — report + screenshot + console-log path rules.
+- [SKILL](../skills/amw-dev-browser/SKILL.md) — the only browser-automation primitive. Authoritative invocation patterns.
+- [SKILL](../skills/amw-ux-evaluator/SKILL.md) — optional UX-quality scoring layer (3-dimension framework).
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md) — the 14-section template.
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md) — canonical YAML header schema.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md) — DO/DON'T for skill invocation.
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) — I have no veto; accessibility auditor has veto on WCAG AA blockers.
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) — Phase B data-flow (my verdicts feed back to main-agent; if WCAG concerns surface, main-agent routes to `amw-accessibility-auditor-agent`).
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+- [agent-reports-location](../skills/amw-design-principles/references/agent-reports-location.md) — report + screenshot + console-log path rules.
+  > Required locations · Why this matters · Main-repo root resolution (works from worktrees and main checkout) · Timestamp format (mandatory) · Compliance table (how each surface complies) · Template: drop this block into every new agent / skill definition · Orchestrator override · Gitignore bootstrap · Anti-patterns (DO NOT DO) · Verification checklist
 - `../bin/amw-dev-browser-wrapper.sh` — plugin-standard wrapper (canonical invocation path).
 - [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — peer agent for full WCAG AA audit (via main-agent).
-- `../CLAUDE.md` — plugin architecture overview.
+- [CLAUDE](../CLAUDE.md) — plugin architecture overview.

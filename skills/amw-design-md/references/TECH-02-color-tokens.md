@@ -8,6 +8,25 @@ status: stable
 
 # TECH: Color tokens authoring
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Hard rules](#hard-rules)
+  - [At least primary required](#at-least-primary-required)
+  - [Hex format](#hex-format)
+  - [Recommended semantic names (non-normative)](#recommended-semantic-names-non-normative)
+  - [Tonal-scale convention](#tonal-scale-convention)
+- [Prose section authoring](#prose-section-authoring)
+- [Contrast checking](#contrast-checking)
+- [Common patterns](#common-patterns)
+  - [Light + dark mode token pairs](#light-dark-mode-token-pairs)
+  - [Brand-tinted shadows](#brand-tinted-shadows)
+- [Anti-patterns (from `ai-slop-avoid.md`)](#anti-patterns-from-ai-slop-avoidmd)
+- [Worked example](#worked-example)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents how to declare the `colors:` map in YAML frontmatter and how to write the `## Colors` prose section. Covers required tokens, recommended naming, contrast checking, and tonal-scale conventions.
@@ -165,6 +184,10 @@ A high-contrast neutral palette anchored by a single earthy red accent.
 ## Cross-references
 
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-05-token-references](./TECH-05-token-references.md) — using `{colors.X}` in components
+  > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the contrast checker
-- `../ai-slop-avoid.md` — color-token anti-patterns
+  > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
+- [ai-slop-avoid](../ai-slop-avoid.md) — color-token anti-patterns
+  > Token authoring slop · S1. Vibes without hex values · S2. Token name and prose name out of sync · S3. Unresolved token references · S4. Placeholder text never filled in · S5. Color names like "blue" or "red" instead of semantic roles · S6. Typography without a complete row · S7. fontWeight as a string when not a number · Structural slop · S8. Sections out of canonical order · S9. Duplicate section headings · S10. Missing the `## Colors` section · S11. YAML frontmatter not at line 1 · S12. YAML frontmatter that is not actually YAML · Prose slop · S13. Marketing copy where rules belong · S14. Do's and Don'ts that are vague · S15. The `## Overview` section is a wall of adjectives · Variant 2 — community 9-section specific · S16. Section 7 (Do's and Don'ts) with fewer than 3 dos and 3 don'ts · S17. Section 8 (Responsive Behavior) without explicit px breakpoints · S18. Section 9 (Agent Prompt Guide) missing a quick-color-reference · S19. Mermaid component-state diagram absent · Conversion slop · S20. Variant 2 → Variant 1 conversion that loses data · Companion-file slop · S21. tokens.css with hex values that don't match DESIGN.md frontmatter · S22. tokens.json that is not W3C Design Tokens format · Final delivery gate

@@ -7,6 +7,16 @@ also-in: SKILL-15.md (accordion.ts demo), pretext-frontend-motion-main (Accordio
 
 # Accordion panel height (expand/collapse with known height)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** motion
 **Status:** stable
 
@@ -47,4 +57,5 @@ panel.style.setProperty('--expanded-height', `${height}px`)
 
 - Related: TECH-03-layout, TECH-30-layout-shift-prevention
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

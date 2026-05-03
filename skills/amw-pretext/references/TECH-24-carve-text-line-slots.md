@@ -67,4 +67,5 @@ for (const slot of slots) {
 
 - Related: TECH-23-animated-obstacle-reflow, TECH-20-polygon-obstacle-mask
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

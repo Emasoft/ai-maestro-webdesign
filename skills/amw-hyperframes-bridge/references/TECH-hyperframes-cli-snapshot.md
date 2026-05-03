@@ -83,6 +83,9 @@ open snapshots/
 ## Cross-references
 
 - [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md) — programmatic layout audit; use both for pre-render QA
+  > What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
 - [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — the full render step that follows successful QA
+  > What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
 - [TECH-hyperframes-cli-browser](TECH-hyperframes-cli-browser.md) — Chrome provisioning
-- `../SKILL.md`
+  > What it does · When to use · How it works · Sub-commands · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

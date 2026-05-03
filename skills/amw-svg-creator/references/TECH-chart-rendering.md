@@ -7,6 +7,18 @@ also-in: ../docs/components/chart.mdx (shadcn-ui chart wrapper for Recharts), TE
 
 # Chart rendering — library trade-off matrix
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Boundary](#boundary)
+- [Library matrix](#library-matrix)
+- [Decision flow](#decision-flow)
+- [Brand-token integration](#brand-token-integration)
+- [Accessibility](#accessibility)
+- [Output format](#output-format)
+- [What the agent must NOT do](#what-the-agent-must-not-do)
+
+
 ## What it does
 
 Decision matrix for picking a chart library or hand-authoring SVG when the

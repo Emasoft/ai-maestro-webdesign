@@ -69,6 +69,8 @@ and its siblings.
 ## Cross-references
 
 - [TECH-python-helper-pattern](./TECH-python-helper-pattern.md)
-- `../../amw-ascii-validator/references/TECH-safe-char-palette.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-safe-char-palette](../../amw-ascii-validator/references/TECH-safe-char-palette.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

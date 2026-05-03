@@ -7,6 +7,22 @@ also-in: image-generation/create-infographics/SKILL.md
 
 # Per-content-type signature palettes
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The 5 major-type palettes](#the-5-major-type-palettes)
+- [Why these](#why-these)
+- [The full selection order](#the-full-selection-order)
+- [CSS variables per type](#css-variables-per-type)
+  - [Token-Economics](#token-economics)
+  - [Crypto-Explainer](#crypto-explainer)
+  - [Game-Overview](#game-overview)
+  - [Ecosystem](#ecosystem)
+  - [Airdrop-Guide](#airdrop-guide)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 When the content type is known — token-economics, crypto-explainer,
@@ -102,11 +118,18 @@ Each emerged from analyzing 175 pieces:
 ## Cross-references
 
 - [TECH-signature-palette](TECH-signature-palette.md) — the universal default.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-color-palette-recipes](TECH-color-palette-recipes.md) — named alternative palettes.
+  > What it does · Dark palettes (99% of work) · AMBER DARK — signature · CYBER TEAL · GAMING RED · HOT PINK WEB3 · EMERALD GAMING · ROYAL PURPLE GAMING · NAVY CRYPTO · WARM GOLD DARK · RETRO PIXEL / ARCADE · LIME CYBERPUNK · Standout palettes · NEON ACID · SUNSET HORIZON · EARTHY TECH · Light mode palettes (rare, <1%) · L1. CLEAN WHITE + AMBER · L2. WARM EDITORIAL · L3. BLUE PROFESSIONAL · Gotchas · Cross-references
 - [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — the token-economics type rules.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
 - [TECH-crypto-explainer-playbook](TECH-crypto-explainer-playbook.md) — crypto-explainer type rules.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 29 pieces) · Visual properties · Signature layout pattern · CSS variables (purple variant) · CSS variables (pink variant) · Font pair · Reference template · Archetype preference · Gotchas · Cross-references
 - [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — game-overview type rules.
+  > What it does · When to use · Color system · Typography — two sub-variants · Standard game · Pixel / retro game · Standard component prevalence (across 25 pieces) · Visual properties · Signature layout pattern · Character card grid (signature pattern) · Light-mode sub-variant · CSS variables (standard) · CSS variables (pixel) · Reference template · Gotchas · Cross-references
 - [TECH-ecosystem-playbook](TECH-ecosystem-playbook.md) — ecosystem type rules.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 22 pieces) · Visual properties · Signature layout pattern · The partner grid pattern (signature) · Section header pill badge · CSS variables · Reference template · Target density · Gotchas · Cross-references
 - [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — airdrop-guide type rules.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 17 pieces) · Visual properties · Signature layout pattern · The amber+blue value split (signature) · The claim-steps horizontal flow · CSS variables · Reference template · Archetype preference · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

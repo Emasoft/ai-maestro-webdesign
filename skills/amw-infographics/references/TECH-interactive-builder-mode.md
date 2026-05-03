@@ -134,9 +134,13 @@ When returning to an existing project:
 ## Cross-references
 
 - [TECH-one-shot-mode](TECH-one-shot-mode.md) — the alternative pipeline (generate in
+  > What it does · When to use · The 5 steps · Classification — identify the type · Composition archetype — pick one · Build rules · Head elements (required) · Step 5 — export command · Gotchas · Cross-references
   one pass).
 - [TECH-guided-creative-mode](TECH-guided-creative-mode.md) — a middle ground (two-option UX).
+  > What it does · When to use · The flow · The two-option presentation · Example presentation · User selection handling · Step 5 — one-shot build · Step 6 — Live Editor Block · Gotchas · Cross-references
 - [TECH-template-registry](TECH-template-registry.md) — the assembled HTML starting points.
+  > What it does · The shared V4 standards · Crypto / Web3 templates (13) · Generic templates (11) · Template selection by user intent · Usage · Gotchas · Cross-references
 - [TECH-preview-server](TECH-preview-server.md) — the server implementation.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Start the server · User instruction · How auto-refresh works · Workflow during iteration · Preview file structure · Full design fidelity in preview · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

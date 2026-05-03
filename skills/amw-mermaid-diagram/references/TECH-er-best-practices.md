@@ -89,7 +89,9 @@ erDiagram
 ## Cross-references
 
 - [TECH-er-grammar](TECH-er-grammar.md) — syntax reference.
+  > What it does · When to use · Basic syntax · Cardinality crowsfeet · Attributes (optional but almost always used) · Attribute constraints · Minimal example · Gotchas · Cross-references
 - [TECH-class-grammar](TECH-class-grammar.md) — when you'd rather show classes than
+  > What it does · When to use · Class definition · Visibility markers · Relationship arrows (UML) · Cardinality · Abstract / interface / generic · Minimal example · Gotchas · Cross-references
   tables.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

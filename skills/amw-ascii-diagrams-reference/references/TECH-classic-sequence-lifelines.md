@@ -52,15 +52,18 @@ columns, timing implied by vertical order.
 
 - Align every `|` to the same column per actor — off-by-one drift is the
   most common bug (see
-  `../../amw-ascii-validator/references/TECH-vertical-line-continuity.md`).
+  [TECH-vertical-line-continuity](../../amw-ascii-validator/references/TECH-vertical-line-continuity.md)).
 - 4+ actors rarely fit in 78 cols without abbreviating names.
 - For complex flows with alt/opt/par fragments, switch to
   `TECH-render-mode-sequence.md` (JSON→ASCII renderer).
 
 ## Cross-references
 
-- `../../amw-ascii-creator/references/TECH-render-mode-sequence.md`
+- [TECH-render-mode-sequence](../../amw-ascii-creator/references/TECH-render-mode-sequence.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-classic-timeline-events](./TECH-classic-timeline-events.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [sequences-tables](./sequences-tables.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Sequence Diagrams · Tables
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

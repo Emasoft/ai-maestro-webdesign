@@ -81,6 +81,8 @@ flowchart TD
 ## Cross-references
 
 - [TECH-edge-styles](TECH-edge-styles.md) — the full arrow syntax catalog.
+  > What it does · Line-and-arrow combinations · Inline label — two syntaxes · Minimal example · Styling edges with `linkStyle` · Gotchas · Cross-references
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the parent grammar.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

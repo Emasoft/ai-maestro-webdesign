@@ -6,11 +6,11 @@ version: 0.1.0
 
 # HTML Diagram — thin authoring + modify dispatcher
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
-> **Format spec (authoritative):** `../amw-diagram-formats/references/html.md`.
-> **Modify pipeline (authoritative):** `../amw-diagram-formats/references/modify-flow.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
+> **Format spec (authoritative):** [html](../amw-diagram-formats/references/html.md).
+> **Modify pipeline (authoritative):** [modify-flow](../amw-diagram-formats/references/modify-flow.md).
 
-This skill does not redefine HTML / SVG / a11y / Tweaks / React-pins / AI-slop-avoid rules — every one of those lives once in `../amw-diagram-formats/references/html.md`. The skill's job is to DISPATCH to the right backing producer (editorial vs infographic) and to run the shared modify-flow when the input is an existing `.html`.
+This skill does not redefine HTML / SVG / a11y / Tweaks / React-pins / AI-slop-avoid rules — every one of those lives once in [html](../amw-diagram-formats/references/html.md). The skill's job is to DISPATCH to the right backing producer (editorial vs infographic) and to run the shared modify-flow when the input is an existing `.html`.
 
 ## Overview
 
@@ -52,11 +52,11 @@ Do NOT activate on:
 
 ## Component detection table (excerpt)
 
-Full table + technique-level citations live in `../amw-diagram-formats/references/html.md` §2 + §9 (100 techniques). The 8 rows below are the most common dispatch cues — consult the ref for the rest.
+Full table + technique-level citations live in [html](../amw-diagram-formats/references/html.md) §2 + §9 (100 techniques). The 8 rows below are the most common dispatch cues — consult the ref for the rest.
 
 | HTML construct | IR node/edge kind | Ref |
 |---|---|---|
-| `<article class="card">` with heading + body | `node{shape:rect, kind:card}` | `../amw-diagram-formats/references/html.md` TECH-71 |
+| `<article class="card">` with heading + body | `node{shape:rect, kind:card}` | [html](../amw-diagram-formats/references/html.md) TECH-71 |
 | `<button type="button">` (min-h 44px) | `node{kind:cta}` | ref TECH-70 + TECH-16 |
 | `<nav role="tablist"><button role="tab">` | `node{kind:tab-group}` + edges to panels | ref TECH-08 + TECH-43 |
 | Inline `<svg>` with `<rect>` + `<line marker-end>` | structural IR (`nodes[]`, `edges[]`) | ref §1.1 + `<./svg.md>` TECH-SV-20 |
@@ -68,16 +68,19 @@ Full table + technique-level citations live in `../amw-diagram-formats/reference
 ## Pipeline (5 steps — matches shared modify-flow)
 
 1. **Detect** source shape. If `$ARGUMENTS` is a path to an existing `.html` → **modify path**. If it's a brief → **create path** (further dispatch by `--style editorial|infographic` or by brief cues; editorial is default).
-2. **Parse** (modify path only) via `bin/amw-parse-html-diagram.py` → IR (schema: `../amw-diagram-formats/references/ir-schema.md`). Create path skips this step.
+2. **Parse** (modify path only) via `bin/amw-parse-html-diagram.py` → IR (schema: [ir-schema](../amw-diagram-formats/references/ir-schema.md)). Create path skips this step.
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 3. **IR operation:**
-   - Create path → generate IR from the brief, route to `../amw-diagram-editorial/SKILL.md` (13-archetype path) or `../amw-infographics/SKILL.md` (dense editorial path) based on `--style` / brief cues, let the producer emit.
-   - Modify path → apply the user's requested edit to the IR (text substitution on `nodes[*].label` for MVP; structural operations once Phase 1 lands — see `../amw-diagram-formats/references/modify-flow.md` §5.2).
+   - Create path → generate IR from the brief, route to [SKILL](../amw-diagram-editorial/SKILL.md) (13-archetype path) or [SKILL](../amw-infographics/SKILL.md) (dense editorial path) based on `--style` / brief cues, let the producer emit.
+   - Modify path → apply the user's requested edit to the IR (text substitution on `nodes[*].label` for MVP; structural operations once Phase 1 lands — see [modify-flow](../amw-diagram-formats/references/modify-flow.md) §5.2).
+     > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
 4. **Re-render** via `bin/amw-diagram-ir.py emit --format html` (wraps the chosen producer for create path; emits the patched IR back to HTML for modify path).
-5. **Re-validate** via `bin/amw-validate-html-diagram.sh` (wraps `xmllint --html --noout` + `tidy -e -q -errors`; unified PASS/FAIL contract per `../amw-diagram-formats/references/validation-dispatcher.md`). A FAIL aborts and leaves the original file untouched. Retry budget = 3 (per shared modify-flow).
+5. **Re-validate** via `bin/amw-validate-html-diagram.sh` (wraps `xmllint --html --noout` + `tidy -e -q -errors`; unified PASS/FAIL contract per [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md)). A FAIL aborts and leaves the original file untouched. Retry budget = 3 (per shared modify-flow).
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 
 ## Final gate (every emitted `.html`)
 
-Before save, the AI-slop-avoid 12-item checklist runs — see `../amw-diagram-formats/references/html.md` §5 for the full list and the final grep command. Any FAIL → revise the affected region and re-check; record the rule that triggered in the file-header comment.
+Before save, the AI-slop-avoid 12-item checklist runs — see [html](../amw-diagram-formats/references/html.md) §5 for the full list and the final grep command. Any FAIL → revise the affected region and re-check; record the rule that triggered in the file-header comment.
 
 ## Output
 
@@ -87,34 +90,46 @@ Produces one self-contained `.html` file (inline CSS + inline SVG, no external b
 
 - **runtime_binaries:** `python3 >= 3.8` (for `bin/amw-parse-html-diagram.py`, `bin/amw-diagram-ir.py`), `xmllint` (libxml2), `tidy` (HTML Tidy) — installed by `/amw-init`; checked by `/amw-doctor`.
 - **python_packages:** `lxml` (HTML parsing in `bin/amw-parse-html-diagram.py`).
-- **npm:** none. Emitted HTML uses pinned React/Babel UMD CDN ONLY if the artifact is interactive (see `../amw-diagram-formats/references/html.md` §4).
+- **npm:** none. Emitted HTML uses pinned React/Babel UMD CDN ONLY if the artifact is interactive (see [html](../amw-diagram-formats/references/html.md) §4).
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
 - **Shared scripts:** `bin/amw-parse-html-diagram.py`, `bin/amw-diagram-ir.py`, `bin/amw-validate-html-diagram.sh`, `bin/amw-html-export.py` (optional PNG export).
 
 ## Examples
 
-See the worked examples in `../amw-diagram-editorial/SKILL.md` (editorial path) and `../amw-infographics/SKILL.md` (infographic path), and the technique catalog at `../amw-diagram-formats/references/html.md`.
+See the worked examples in [SKILL](../amw-diagram-editorial/SKILL.md) (editorial path) and [SKILL](../amw-infographics/SKILL.md) (infographic path), and the technique catalog at [html](../amw-diagram-formats/references/html.md).
 
 ## Resources
 
-- `../amw-diagram-formats/references/html.md` — authoritative HTML format spec + 100-technique catalog.
-- `../amw-diagram-formats/references/modify-flow.md` — authoritative 6-step modify pipeline.
-- `../amw-diagram-formats/references/ir-schema.md` — IR schema consumed by `bin/amw-diagram-ir.py`.
-- `../amw-diagram-formats/references/validation-dispatcher.md` — unified validator output contract.
-- `../amw-design-principles/ai-slop-avoid.md` — final output-ban gate (12 items).
+- [html](../amw-diagram-formats/references/html.md) — authoritative HTML format spec + 100-technique catalog.
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
+- [modify-flow](../amw-diagram-formats/references/modify-flow.md) — authoritative 6-step modify pipeline.
+  > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
+- [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR schema consumed by `bin/amw-diagram-ir.py`.
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
+- [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md) — unified validator output contract.
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — final output-ban gate (12 items).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - `../amw-design-principles/starter-components/` — canonical chrome + tweaks protocol + React/Babel pins.
-- `../amw-ascii-to-html/SKILL.md` — upstream when input is ASCII (ASCII → HTML path).
-- `../amw-diagram-editorial/SKILL.md` — create-path backend for `--style editorial` (13-archetype).
-- `../amw-infographics/SKILL.md` — create-path backend for `--style infographic` (dense editorial).
-- `../amw-design-principles/SKILL.md` — orchestrator.
+- [SKILL](../amw-ascii-to-html/SKILL.md) — upstream when input is ASCII (ASCII → HTML path).
+- [SKILL](../amw-diagram-editorial/SKILL.md) — create-path backend for `--style editorial` (13-archetype).
+- [SKILL](../amw-infographics/SKILL.md) — create-path backend for `--style infographic` (dense editorial).
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator.
 
 ## Non-negotiables
 
-- Exactly one self-contained `.html` per invocation. Inline CSS + inline SVG. No external `<link>` to CDN CSS, no npm install, no bundler. (`../amw-diagram-formats/references/html.md` TECH-61)
+- Exactly one self-contained `.html` per invocation. Inline CSS + inline SVG. No external `<link>` to CDN CSS, no npm install, no bundler. ([html](../amw-diagram-formats/references/html.md) TECH-61)
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
 - Every emitted `.html` passes `bin/amw-validate-html-diagram.sh` AND the AI-slop-avoid 12-item checklist. A FAIL aborts; the original file is untouched.
-- Tweaks block (when included) preserves the three invariants verbatim — listener-before-announce, partial-keys only, valid JSON EDITMODE block. (`../amw-diagram-formats/references/html.md` §3)
-- React/Babel pins are exact — `react@18.3.1`, `react-dom@18.3.1`, `<@babel/standalone@7.29.0>` — with integrity hashes. No `react@18` shorthand, no `type="module"`. (`../amw-diagram-formats/references/html.md` §4)
-- `scrollIntoView` is banned everywhere. Use `window.scrollTo({top, behavior:'smooth'})` with manual offset. (`../amw-diagram-formats/references/html.md` TECH-29)
-- Do NOT re-author the HTML spec inside this skill — reference `../amw-diagram-formats/references/html.md`. If a rule is wrong, fix it there.
+- Tweaks block (when included) preserves the three invariants verbatim — listener-before-announce, partial-keys only, valid JSON EDITMODE block. ([html](../amw-diagram-formats/references/html.md) §3)
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
+- React/Babel pins are exact — `react@18.3.1`, `react-dom@18.3.1`, `<@babel/standalone@7.29.0>` — with integrity hashes. No `react@18` shorthand, no `type="module"`. ([html](../amw-diagram-formats/references/html.md) §4)
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
+- `scrollIntoView` is banned everywhere. Use `window.scrollTo({top, behavior:'smooth'})` with manual offset. ([html](../amw-diagram-formats/references/html.md) TECH-29)
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
+- Do NOT re-author the HTML spec inside this skill — reference [html](../amw-diagram-formats/references/html.md). If a rule is wrong, fix it there.
+  > Format definition · 1 File structure (baseline) · 2 Semantic-HTML requirements · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · 1 Listener-before-announce · 2 Partial-keys only · 3 Valid JSON EDITMODE block · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · S1 — design-principles starter-components (canonical chrome) · S2 — ai-slop-avoid (output-ban gate) · S3 — ui-ux-pro-max-skill (industry patterns) · S4 — ux-designer + accessibility · S5 — create-infographics (editorial density) · S6 — diagram-design-editorial (self-contained HTML+SVG) · S7 — ascii-creator mirror (pattern recognition) · S8 — CHI'24 ASCII classics (mockup → HTML skeleton) · S9 — ascii-parse.py (in-repo tokenizer hooks) · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · …(+9)
 
 ## Error Handling
 

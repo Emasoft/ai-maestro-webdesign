@@ -7,6 +7,17 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md, diagrams-skills/ag
 
 # `paddingX` / `paddingY` / `boxBorderPadding`
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [Defaults](#defaults)
+- [What each one does](#what-each-one-does)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Three tuning knobs on `renderMermaidAscii()` that control horizontal
@@ -73,8 +84,10 @@ const inline = renderMermaidAscii(diagram, {
 ## Cross-references
 
 - [TECH-ascii-render-api](TECH-ascii-render-api.md) — the parent function.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — wrapping output for markdown
+  > What it does · When to use · Pattern 1: plain fenced block · Pattern 2: inline compact diagram · Pattern 3: ASCII mode for email / plain text · Gotchas · Cross-references
   rendering contexts.
 - `../../../bin/amw-mermaid-render.sh` — the shell CLI that accepts `--padding-x`.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

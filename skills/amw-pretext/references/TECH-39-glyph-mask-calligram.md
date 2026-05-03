@@ -55,4 +55,5 @@ Render a huge letterform (e.g. "R" in Playfair) as a Canvas pixel mask via `ctx.
 
 - Related: TECH-38-calligram-shape, TECH-40-letterbox-gallery
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

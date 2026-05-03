@@ -67,7 +67,8 @@ score=82/90
 
 ## Cross-references
 
-- `../../amw-ascii-validator/SKILL.md`
+- [SKILL](../../amw-ascii-validator/SKILL.md)
 - [TECH-78-column-cap](./TECH-78-column-cap.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,10 +7,11 @@ version: 0.1.0
 # Excalidraw Illustrations
 
 > **GATED skill.** Requires `GEMINI_API_KEY` in the environment AND explicit user consent before every Gemini call — each call costs real money on Google's Gemini Pro image tier. Do not invoke silently or in a loop.
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Its triggers are narrow — hand-drawn / Excalidraw / whiteboard-style educational illustration only. The orchestrator routes here for conceptual, illustration-heavy slide or document material where the deliberate rough-sketch aesthetic is the point; everything else stays outside this skill.
 >
-> **Documented exception to `../amw-design-principles/ai-slop-avoid.md` item 3 ("no AI-drawn illustrations").** That rule targets AI-painted people, landscapes, and product shots rendered in photoreal or vector-illustration style — all of which have stiff lines, wrong proportions, and visibly degrade the whole piece. This skill is the carved-out exception **only** because its output is tightly constrained: white background, hand-drawn Excalidraw roughness, concept-diagram / whiteboard use case, integrated labelled text. The constraint itself is what keeps the output from looking like generic AI-illustration slop. Do not use this skill for anything that does not meet all four of those constraints.
+> **Documented exception to [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3 ("no AI-drawn illustrations").** That rule targets AI-painted people, landscapes, and product shots rendered in photoreal or vector-illustration style — all of which have stiff lines, wrong proportions, and visibly degrade the whole piece. This skill is the carved-out exception **only** because its output is tightly constrained: white background, hand-drawn Excalidraw roughness, concept-diagram / whiteboard use case, integrated labelled text. The constraint itself is what keeps the output from looking like generic AI-illustration slop. Do not use this skill for anything that does not meet all four of those constraints.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 
 ## Overview
 
@@ -220,16 +221,22 @@ Do not silently regenerate. Do not silently ship a broken image. Do not invent a
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator. The three hard rules (context before designing, at least three variants, reject AI slop) apply here — except that the "three variants" rule in a single Gemini session is expensive, so for this skill the variants step means three different *concepts / compositions* offered to the user **before** any call is made, not three separate Gemini calls.
-- `../amw-design-principles/ai-slop-avoid.md` — this skill is a **documented exception** to item 3 (AI-drawn illustrations), **only** within the strict constraints stated at the top of this file. Do not extend to non-Excalidraw illustration requests.
-- `../amw-design-principles/color-system.md` — palette discipline: if the user has supplied design tokens (rust accent, sage accent, etc.) prefer those colors over arbitrary ones when writing the prompt. Do not emit raw `#000` / `#fff` as palette instructions — use named color roles from design-principles when available.
-- `../amw-design-principles/typography-system.md` — target font-size floors inside the generated image must respect the slide / body / mobile minimums named there.
-- `../amw-ascii-sketch/SKILL.md` — when the user has not committed to an illustration yet and just wants concept ideas, route through `ascii-sketch` first to pick a composition cheaply before paying the Gemini cost.
-- `../amw-diagram-editorial/SKILL.md`, `../amw-diagram-architecture/SKILL.md`, `../amw-diagram-svg/SKILL.md` — route to these instead when the user actually wants a structured diagram (flowchart, architecture, sequence) rather than a hand-drawn illustration. Excalidraw-style is for concept / teaching / whiteboard feel, not for structured system diagrams.
-- `../amw-svg-creator/SKILL.md` — route there for icons, logos, and purely technical SVG geometry (gated in its own way).
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator. The three hard rules (context before designing, at least three variants, reject AI slop) apply here — except that the "three variants" rule in a single Gemini session is expensive, so for this skill the variants step means three different *concepts / compositions* offered to the user **before** any call is made, not three separate Gemini calls.
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — this skill is a **documented exception** to item 3 (AI-drawn illustrations), **only** within the strict constraints stated at the top of this file. Do not extend to non-Excalidraw illustration requests.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [color-system](../amw-design-principles/color-system.md) — palette discipline: if the user has supplied design tokens (rust accent, sage accent, etc.) prefer those colors over arbitrary ones when writing the prompt. Do not emit raw `#000` / `#fff` as palette instructions — use named color roles from design-principles when available.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — target font-size floors inside the generated image must respect the slide / body / mobile minimums named there.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [SKILL](../amw-ascii-sketch/SKILL.md) — when the user has not committed to an illustration yet and just wants concept ideas, route through `ascii-sketch` first to pick a composition cheaply before paying the Gemini cost.
+- [SKILL](../amw-diagram-editorial/SKILL.md), [SKILL](../amw-diagram-architecture/SKILL.md), [SKILL](../amw-diagram-svg/SKILL.md) — route to these instead when the user actually wants a structured diagram (flowchart, architecture, sequence) rather than a hand-drawn illustration. Excalidraw-style is for concept / teaching / whiteboard feel, not for structured system diagrams.
+- [SKILL](../amw-svg-creator/SKILL.md) — route there for icons, logos, and purely technical SVG geometry (gated in its own way).
 - `/amw-doctor` — reports `GEMINI_API_KEY` presence alongside `ANTHROPIC_API_KEY`.
 - `/amw-init` Section 7 — optional Pillow install for the two-phase overlay fallback.
 - [prompt-template-en](references/prompt-template-en.md) / [prompt-template-es](references/prompt-template-es.md) — filled-in prompt examples.
+  > [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
+  > Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
 - `scripts/generate.py` — the two-phase (visual-first, text-overlay-second) fallback generator with Pillow.
 - Source inspiration: [Ray Amjad](https://github.com/theramjad) — the AI-generated Excalidraw-style illustrations and the narrative-prompt approach that the original source skill was modelled on; the in-prompt "text in frames, many icons, narrative scenes" pattern comes from that work.
 
@@ -249,24 +256,29 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `excalidraw-illustrations` is the user asking about?
   - **aspect** (1 techniques)
     - [TECH-aspect-ratio-selection](./references/TECH-aspect-ratio-selection.md) — TECH-aspect-ratio-selection
+      > What it does · When to use · How it works · Asking the user · API wiring · Minimal example · Gotchas · Cross-references
   - **framed** (1 techniques)
     - [TECH-framed-text-no-floating](./references/TECH-framed-text-no-floating.md) — TECH-framed-text-no-floating
+      > What it does · When to use · How it works · Rounded title frame (section headers) · Speech bubble (tag-line commentary) · Labelled callout with filled background (icon labels, attributions) · Minimal example · Gotchas · Cross-references
   - **gemini** (1 techniques)
     - [TECH-gemini-pro-vs-flash-model-choice](./references/TECH-gemini-pro-vs-flash-model-choice.md) — TECH-gemini-pro-vs-flash-model-choice
   - **letter** (1 techniques)
     - [TECH-letter-by-letter-spelling-block](./references/TECH-letter-by-letter-spelling-block.md) — TECH-letter-by-letter-spelling-block
   - **prompt** (1 techniques)
     - [TECH-prompt-template-structure](./references/TECH-prompt-template-structure.md) — TECH-prompt-template-structure
+      > What it does · When to use · How it works · Section order and purpose · Template skeleton · Minimal example · Gotchas · Cross-references
   - **reference** (1 techniques)
     - [TECH-reference-image-priming](./references/TECH-reference-image-priming.md) — TECH-reference-image-priming
   - **two** (1 techniques)
     - [TECH-two-phase-visual-then-overlay](./references/TECH-two-phase-visual-then-overlay.md) — TECH-two-phase-visual-then-overlay
+      > What it does · When to use · How it works · Phase 1 — visual-only generation · Phase 2 — local text overlay via Pillow · Minimal example · Gotchas · Cross-references
 
 ## References
 
 Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
 
 - **[./references/TECH-aspect-ratio-selection.md](./references/TECH-aspect-ratio-selection.md)**
+  > What it does · When to use · How it works · Asking the user · API wiring · Minimal example · Gotchas · Cross-references
   - Description: TECH-aspect-ratio-selection
   - TOC:
     - What it does
@@ -276,6 +288,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-framed-text-no-floating.md](./references/TECH-framed-text-no-floating.md)**
+  > What it does · When to use · How it works · Rounded title frame (section headers) · Speech bubble (tag-line commentary) · Labelled callout with filled background (icon labels, attributions) · Minimal example · Gotchas · Cross-references
   - Description: TECH-framed-text-no-floating
   - TOC:
     - What it does
@@ -303,6 +316,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-prompt-template-structure.md](./references/TECH-prompt-template-structure.md)**
+  > What it does · When to use · How it works · Section order and purpose · Template skeleton · Minimal example · Gotchas · Cross-references
   - Description: TECH-prompt-template-structure
   - TOC:
     - What it does
@@ -321,6 +335,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-two-phase-visual-then-overlay.md](./references/TECH-two-phase-visual-then-overlay.md)**
+  > What it does · When to use · How it works · Phase 1 — visual-only generation · Phase 2 — local text overlay via Pillow · Minimal example · Gotchas · Cross-references
   - Description: TECH-two-phase-visual-then-overlay
   - TOC:
     - What it does
@@ -335,6 +350,8 @@ Every technique in this skill is documented as a single reference file under `./
 ## Examples
 
 See the worked examples in the per-mode sub-sections above and in [prompt-template-en](references/prompt-template-en.md) / [prompt-template-es](references/prompt-template-es.md).
+> [prompt-template-en.md] Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
+> [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
 
 ## Completion checklist
 
@@ -343,7 +360,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-excalidraw-illustrations/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -352,7 +371,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. Excalidraw-style PNG/SVG illustrations from Gemini API). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. Excalidraw-style PNG/SVG illustrations from Gemini API). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present

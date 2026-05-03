@@ -95,8 +95,12 @@ After emitting `INDEX.md`, run a quick sanity check:
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 3 step 3 (index generation)
+- [SKILL](../SKILL.md) — Phase 3 step 3 (index generation)
 - [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the HTML files being indexed
+  > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
 - [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — the rule this index audits
+  > What it does · When to use · How it works · Minimal example · Validation check · Gotchas · Cross-references
 - [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — source of the link data
+  > What it does · When to use · How it works · Navigation wrapper class · Patterns · Minimal example · Gotchas · Cross-references
 - [TECH-4-phase-mandatory-workflow](TECH-4-phase-mandatory-workflow.md) — Phase 4 consumes this index
+  > What it does · When to use · How it works · Phase 1 — Use case extraction (Phase-1 gate) · Phase 2 — Mermaid diagrams · Phase 3 — HTML wireframes (MANDATORY) · Phase 4 — Consolidation handoff · Minimal example · Gotchas · Cross-references

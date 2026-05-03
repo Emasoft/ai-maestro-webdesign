@@ -8,6 +8,20 @@ status: stable
 
 # TECH: Companion files (tokens.css, tokens.json, component-inventory.md, usage-prompt.md)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [The four companions](#the-four-companions)
+  - [1. `tokens.css` — CSS custom properties](#1-tokenscss-css-custom-properties)
+  - [2. `tokens.json` — W3C Design Tokens format](#2-tokensjson-w3c-design-tokens-format)
+  - [3. `component-inventory.md` — human-readable component list](#3-component-inventorymd-human-readable-component-list)
+  - [4. `usage-prompt.md` — Drop-in agent prompt](#4-usage-promptmd-drop-in-agent-prompt)
+- [Inputs to the emitter](#inputs-to-the-emitter)
+- [Resolution behavior](#resolution-behavior)
+- [Synchronization rule](#synchronization-rule)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents the four companion files the plugin can emit alongside a DESIGN.md to serve different downstream consumers (build systems, CI, AI agents, designers). The bin script is `bin/amw-design-md-emit-companions.py`.
@@ -266,6 +280,9 @@ Drift fails the audit. The fix is always: re-run the emitter, do not hand-edit.
 ## Cross-references
 
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
+  > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how downstream agents consume the companion files
+  > What it does · When this TECH applies · The wireframe-builder's flow when DESIGN.md is the input · Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape · Component tokens — direct passthrough · Failure paths · DESIGN.md fails lint · DESIGN.md is Variant 2 · DESIGN.md missing required fields · CLAUDE.md-coupled projects · Companion-file consumption · Symmetry with non-DESIGN.md inputs · Cross-references
 - [review-rubric](./review-rubric.md) — `X1`-`X6` drift checks
+  > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - `../../../bin/amw-design-md-emit-companions.py` — the bin script

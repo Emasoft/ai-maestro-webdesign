@@ -3,22 +3,10 @@
 - [1. The pipeline](#1-the-pipeline)
 - [2. Create vs modify dispatch](#2-create-vs-modify-dispatch)
 - [3. Step-by-step detail](#3-step-by-step-detail)
-  - [Step 1 — Detect](#step-1-detect)
-  - [Step 2 — Parse to IR](#step-2-parse-to-ir)
-  - [Step 3 — Patch](#step-3-patch)
-  - [Step 4 — (loop point)](#step-4-loop-point)
-  - [Step 5 — Emit](#step-5-emit)
-  - [Step 6 — Re-validate](#step-6-re-validate)
 - [4. Work directory and file naming](#4-work-directory-and-file-naming)
 - [5. Per-format guidance](#5-per-format-guidance)
-  - [5.1 ASCII modify (MVP structural)](#51-ascii-modify-mvp-structural)
-  - [5.2 HTML modify (MVP raw-source; Phase 1 structural)](#52-html-modify-mvp-raw-source-phase-1-structural)
-  - [5.3 SVG modify (MVP raw-source; Phase 1 structural)](#53-svg-modify-mvp-raw-source-phase-1-structural)
-  - [5.4 Mermaid modify (MVP raw-source; Phase 1 structural)](#54-mermaid-modify-mvp-raw-source-phase-1-structural)
 - [6. Conversion is a modify-flow variant](#6-conversion-is-a-modify-flow-variant)
 - [7. Composition with round-trip skills](#7-composition-with-round-trip-skills)
-  - [7.1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`)](#71-diagram-webpage-sync-amw-modify-webpage-from-diagram)
-  - [7.2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`)](#72-webpage-to-diagram-amw-modify-diagram-of-webpage)
 - [8. Related references](#8-related-references)
 
 
@@ -88,6 +76,7 @@ fmt="$(bin/amw-diagram-detect-format.sh "$INPUT_PATH")"
 ```
 
 See [detect-format](./detect-format.md). If `fmt == "png"`, abort with the standard PNG refusal. If `fmt == "unknown"`, ask the user to disambiguate via `--format`.
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 
 ### Step 2 — Parse to IR
 
@@ -96,6 +85,7 @@ bin/amw-diagram-ir.py parse --in "$INPUT_PATH" --out "$WORK_DIR/ir.json"
 ```
 
 MVP: only ASCII parses to a structural IR. HTML / SVG / Mermaid parse to a **raw-source stub** (see [ir-schema](./ir-schema.md) §4). Phase 1 replaces these stubs with native parsers; the modify-flow does not change.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 
 The IR is validated immediately after parsing:
 
@@ -220,7 +210,12 @@ Phase 0 / 1: MVP extract only (step 1). Phase 2 adds step 3 (selector-aware sync
 ## 8. Related references
 
 - [ir-schema](./ir-schema.md) — what the IR looks like (step 2 output shape).
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 - [conversion-matrix](./conversion-matrix.md) — step 5 target-format table.
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 - [detect-format](./detect-format.md) — step 1 decision tree.
+  > Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 - [validation-dispatcher](./validation-dispatcher.md) — step 6 contract.
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 - [diff-algorithm](./diff-algorithm.md) — consumed by `/amw-compare-diagrams`, which is a related but NON-modify pipeline (it does steps 1+2 on two inputs and then diffs the IRs).
+  > Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references

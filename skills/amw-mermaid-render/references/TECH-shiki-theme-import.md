@@ -67,7 +67,10 @@ const svg = await renderMermaid(diagram, colors)
 ## Cross-references
 
 - [TECH-built-in-themes](TECH-built-in-themes.md) — pre-baked alternatives when Shiki is overkill.
+  > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
 - [TECH-enriched-mode](TECH-enriched-mode.md) — the option shape Shiki's output conforms to.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-live-theme-switch](TECH-live-theme-switch.md) — runtime theme changes without re-rendering.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

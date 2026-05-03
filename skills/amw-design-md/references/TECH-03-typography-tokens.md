@@ -8,6 +8,28 @@ status: stable
 
 # TECH: Typography tokens authoring
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Hard rules](#hard-rules)
+  - [Required Typography sub-fields (per spec.md L64-L68)](#required-typography-sub-fields-per-specmd-l64-l68)
+  - [fontSize units](#fontsize-units)
+  - [fontWeight rules](#fontweight-rules)
+  - [lineHeight conventions](#lineheight-conventions)
+  - [letterSpacing](#letterspacing)
+  - [fontFeature / fontVariation (OpenType)](#fontfeature-fontvariation-opentype)
+- [Recommended level taxonomy](#recommended-level-taxonomy)
+  - [Variable fonts and weight axis](#variable-fonts-and-weight-axis)
+- [Font fallback chains](#font-fallback-chains)
+- [CJK considerations](#cjk-considerations)
+- [Common patterns](#common-patterns)
+  - [Display + headline + body × 3 sizes (11 levels)](#display-headline-body-3-sizes-11-levels)
+  - [Compact 7-level (developer tools)](#compact-7-level-developer-tools)
+  - [Marketing-rich 15-level (consumer brands)](#marketing-rich-15-level-consumer-brands)
+- [Worked example — full row](#worked-example-full-row)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents how to declare the `typography:` map in YAML frontmatter. Covers font-family selection, the level taxonomy, fontWeight rules, line-height conventions, letter-spacing best-practices, and OpenType feature settings.
@@ -190,6 +212,10 @@ typography:
 ## Cross-references
 
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-05-token-references](./TECH-05-token-references.md) — using `{typography.X}` in components
+  > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
 - [TECH-cjk-localization](./TECH-cjk-localization.md) — CJK font / size / line-height adjustments
-- `canonical-spec-google-alpha.md` — full Typography spec
+  > What it does · When to use · How it works · Typography (per language) · Layout · Punctuation + line breaking · Cultural symbolism · Microcopy patterns · Locale machinery · SEO impacts · Performance · Minimal example · Gotchas · Cross-references · Source attribution
+- [canonical-spec-google-alpha](canonical-spec-google-alpha.md) — full Typography spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references

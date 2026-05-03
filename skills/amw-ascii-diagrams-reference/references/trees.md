@@ -2,6 +2,13 @@
 
 # Trees and Hierarchies
 
+## Table of Contents
+
+- [Reference](#reference)
+
+## Reference
+
+
 Use for: file systems, org charts, class hierarchies, DOM trees.
 
 **File tree:**

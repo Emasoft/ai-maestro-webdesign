@@ -6,7 +6,7 @@ version: 0.1.0
 
 # ASCII Diagrams Reference
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > Executor. Narrow technical triggers only — the orchestrator routes here when the user wants a text-based diagram for code comments / READMEs / ADRs / design docs, rendered with the classic `+--+ | -` ASCII character set.
 
 ## Overview
@@ -111,7 +111,9 @@ Every file under `references/` is a short catalogue of proven patterns. Pick the
 | Data structures | [[data-structures](references/data-structures.md)](references/data-structures.md) | Memory layouts, packet formats, bit fields, linked lists |
 | Network / Architecture | [[network-topology](references/network-topology.md)](references/network-topology.md) | K8s topology, service meshes, observability stacks |
 | Sequences / Tables | [[sequences-tables](references/sequences-tables.md)](references/sequences-tables.md) | Request flows, timelines, comparison tables |
+> [sequences-tables.md] Sequence Diagrams · Tables
 | Graphs / Annotations | [[graphs-annotations](references/graphs-annotations.md)](references/graphs-annotations.md) | DAGs, code annotations, before/after, UI sketches |
+> [graphs-annotations.md] Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
 
 When responding:
 
@@ -130,7 +132,7 @@ When the diagram lives inside a `//` / `#` / `*` comment block:
 
 ## Non-negotiables
 
-Every ASCII diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.py` before presentation to the user. See `../amw-ascii-validator/SKILL.md` for the validator contract.
+Every ASCII diagram this skill emits **MUST** pass `../../bin/amw-validate-ascii.py` before presentation to the user. See [SKILL](../amw-ascii-validator/SKILL.md) for the validator contract.
 
 ```bash
 python3 bin/amw-validate-ascii.py /tmp/ascii-diagram-<slug>.txt
@@ -351,7 +353,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ascii-diagrams-reference/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -360,7 +364,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. validated ASCII `.txt` diagrams matching one of the CHI'24 archetypes). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. validated ASCII `.txt` diagrams matching one of the CHI'24 archetypes). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -398,20 +403,24 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources
 
-- `../amw-ascii-validator/SKILL.md` — MANDATORY validation gate; all emitted ASCII passes `validate-ascii.py`
+- [SKILL](../amw-ascii-validator/SKILL.md) — MANDATORY validation gate; all emitted ASCII passes `validate-ascii.py`
 - `../../bin/amw-validate-ascii.py` — the validator itself (Python, exits non-zero on failure, emits `FIX:` hints)
-- `../amw-box-diagram/SKILL.md` — Unicode rounded-corner counterpart for terminal / GitHub-README contexts
-- `../amw-ascii-sketch/SKILL.md` — framed rectangular wireframe layouts (different output medium)
-- `../amw-ascii-to-svg/SKILL.md` — downstream: convert an approved ASCII diagram to SVG
-- `../amw-diagram-svg/SKILL.md` — skip ASCII entirely, go direct to SVG
-- `../amw-design-principles/ai-slop-avoid.md` — misaligned ASCII is a form of AI-slop
+- [SKILL](../amw-box-diagram/SKILL.md) — Unicode rounded-corner counterpart for terminal / GitHub-README contexts
+- [SKILL](../amw-ascii-sketch/SKILL.md) — framed rectangular wireframe layouts (different output medium)
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — downstream: convert an approved ASCII diagram to SVG
+- [SKILL](../amw-diagram-svg/SKILL.md) — skip ASCII entirely, go direct to SVG
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned ASCII is a form of AI-slop
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - [[flowcharts](references/flowcharts.md)](references/flowcharts.md) — control-flow / decision trees / pipelines
 - [[state-machines](references/state-machines.md)](references/state-machines.md) — protocol states, lifecycles
 - [[trees](references/trees.md)](references/trees.md) — hierarchies, file trees, class trees
 - [[data-structures](references/data-structures.md)](references/data-structures.md) — packet / struct / bit-field layouts
 - [[network-topology](references/network-topology.md)](references/network-topology.md) — service architectures, K8s, observability
 - [[sequences-tables](references/sequences-tables.md)](references/sequences-tables.md) — request flows, timelines, tables
+  > Sequence Diagrams · Tables
 - [[graphs-annotations](references/graphs-annotations.md)](references/graphs-annotations.md) — DAGs, code annotations, before/after
+  > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
 
 ## Error Handling
 

@@ -92,5 +92,10 @@ Pre-render checklist:
 ## Cross-references
 
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md), [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md)
+  > [TECH-hyperframes-timeline-contract.md] What it does · When to use · How it works · Required pattern · Banned patterns · Allowed GSAP properties · Minimal example · Use `tl.set()` for later-scene clips · Gotchas · Cross-references
+  > [TECH-hyperframes-data-attributes.md] What it does · When to use · How it works · Clip attributes (all clips) · Composition-level attributes (on the root `data-composition-id`) · Relative timing · Banned / deprecated attributes · Minimal example · Sub-composition wrapping · Per-instance variable injection via `data-variable-values` · Gotchas · Cross-references
+  > [TECH-hyperframes-scene-transitions.md] What it does · When to use · How it works · Rule 1 — ALWAYS use transitions between scenes · Rule 2 — ALWAYS use entrance animations on every scene · Rule 3 — NEVER use exit animations except on the final scene · Rule 4 — Final scene only may fade elements out · Wrong pattern · Right pattern · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 - [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md) — the linter that catches most of these
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · CI integration · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

@@ -69,4 +69,5 @@ Pretext needs `<canvas>` and `Intl.Segmenter` — both browser-only. In Astro pr
 
 - Related: TECH-17-font-loading-sync, TECH-30-layout-shift-prevention
 - API reference: [TECH-01-prepare-basics](TECH-01-prepare-basics.md)
+  > What it does · When to use · How it works · Minimal example · Configuration options (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

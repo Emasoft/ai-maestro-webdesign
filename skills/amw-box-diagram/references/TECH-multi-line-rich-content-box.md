@@ -64,7 +64,9 @@ Last line: `╰──────────╯`
 ## Cross-references
 
 - [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
-- `../../amw-ascii-creator/references/TECH-multi-line-box-body.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-multi-line-box-body](../../amw-ascii-creator/references/TECH-multi-line-box-body.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../amw-box-diagram/examples/incident-response.txt`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Diagram Formats — shared reference library
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Consumer scope:** every other diagram skill and every `wd-*-diagram*` command pulls its format / IR / conversion / validation rules from this meta-skill. Do NOT re-author these specs inside the consumer skills — they cross-reference this library.
 
 ## Overview
@@ -76,13 +76,18 @@ Every entry below is an authoritative, hand-maintained source. Consumer skills a
 |---|---|---|
 | [ascii](./references/ascii.md) | ASCII format spec — syntax, parse, emit, validate, techniques. Authored by the sibling `format-refs` agent. | `ascii-creator`, `ascii-validator`, `ascii-sketch`, `ascii-to-html`, `ascii-to-svg`, `/amw-ascii-to-html`, `/amw-ascii-to-svg` |
 | [html](./references/html.md) | HTML+inline-SVG format spec — starter-components, AI-slop gate, Tweaks invariants, React/Babel pins, ARIA/a11y. Authored by the sibling `format-refs` agent. | `html-diagram`, `diagram-editorial`, `infographics`, `/amw-create-or-modify-html-diagram` |
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · ai-slop-avoid · `../../amw-design-principles/starter-components/*` — all 9 canonical chrome components · color-system · typography-system · SKILL · SKILL · SKILL · SKILL · SKILL · `../../bin/amw-html-export.py` — HTML → PNG/PDF rasterizer (Playwright) · `../../bin/amw-ascii-parse.py` — ASCII → layout JSON consumed by HTML emitter · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
 | [svg](./references/svg.md) | Standalone SVG format spec — primitives, viewport, text, cairosvg path. Authored by the sibling `format-refs` agent. | `svg-diagram`, `svg-creator`, `diagram-svg`, `diagram-architecture`, `/amw-create-or-modify-svg-diagram` |
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · SKILL · SKILL · SKILL · SKILL · SKILL · advanced-techniques · `../../bin/amw-svg-render.py` — render-verify-finish loop (`render` / `finish` / `status` / `reset`) · ir-schema · conversion-matrix · png · validation-dispatcher
 | [mermaid](./references/mermaid.md) | Mermaid grammar subset, themes, mmdc flags, SVG/PNG/ASCII output paths. Authored by the sibling `format-refs` agent. | `mermaid-diagram`, `mermaid-render`, `diagram-architecture`, `/amw-create-or-modify-mermaid-diagram` |
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns · SKILL · SKILL · SKILL · `../../external/mermaid-render/` — vendored beautiful-mermaid backend · `../../bin/amw-mermaid-render.sh` — shell wrapper (SVG / PNG / ASCII) · `../../bin/amw-mermaid-lint.sh` (planned; Task 0c) — validator wrapper (`mmdc` dry-run) · `../../bin/amw-validate-ascii.py` — warn-only gate on ASCII rendering · ir-schema · conversion-matrix · validation-dispatcher
 | [png](./references/png.md) | PNG as OUTPUT TARGET only — rasterize pipelines per source format. PNG as SOURCE is `impossible` per user directive. Authored by the sibling `format-refs` agent. | `excalidraw-illustrations`, `infographics`, `hyperframes-bridge`, `/amw-create-excalidraw-like-diagram-png` |
+> [png.md] PNG is OUTPUT-ONLY — why · 1 Refusal messages (verbatim) · Rasterization pipelines (per source format → PNG) · 1 SVG → PNG (via cairosvg) · 2 HTML → PNG (via Playwright screenshot) · 3 ASCII → PNG (two-step: ASCII → SVG → PNG) · 4 Mermaid → PNG (direct via `mmdc -t png` OR via SVG) · 5 Hand-drawn-style PNG (via `excalidraw-illustrations`) · Refusal path implementation · 1 `bin/amw-diagram-detect-format.sh` · 2 `bin/amw-validate-diagram.sh` — PNG branch · 3 Conversion dispatcher · Per-source technique catalog · S1 — bin/amw-svg-render.py + cairosvg · S2 — bin/amw-html-export.py + Playwright · S3 — bin/amw-mermaid-render.sh + beautiful-mermaid + mmdc · S4 — Hand-drawn (excalidraw-illustrations) · PNG as INPUT is refused — the full story · 1 Format detection (`bin/amw-diagram-detect-format.sh`) · 2 Per-command refusal · 3 No OCR, no vision-model retry · Failure modes · SKILL · SKILL · SKILL · `../../bin/amw-html-export.py` — HTML → PNG via Playwright screenshot · `../../bin/amw-svg-render.py` — SVG → PNG via cairosvg · `../../bin/amw-mermaid-render.sh` — Mermaid → SVG then → PNG · `../../bin/amw-validate-diagram.sh` (planned; Task 0c) — unified validator dispatcher, PNG branch = hardcoded refusal · conversion-matrix · …(+1)
 | [ir-schema](./references/ir-schema.md) | IR JSON schema in prose + examples + lossy-conversion table per format. | `diagram-ir.py`, every `wd-*-diagram*` command, every parser in `bin/` |
 | [conversion-matrix](./references/conversion-matrix.md) | Canonical N×N table. PNG-input cells = `impossible`. Every dispatch rule for `/amw-convert-any-diagram-format`. | `diagram-convert`, `/amw-convert-any-diagram-format`, `/amw-create-webpage-from-diagram` |
 | [modify-flow](./references/modify-flow.md) | Shared detect → parse → IR-patch → re-render → re-validate pipeline. | All 4 `wd-create-or-modify-*-diagram` commands; `diagram-webpage-sync` |
 | [diff-algorithm](./references/diff-algorithm.md) | IR-level structural diff algorithm (node-id match, edge set diff, markdown report). | `diagram-compare`, `/amw-compare-diagrams`, `bin/amw-diagram-ir.py --diff` |
+> [diff-algorithm.md] Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references
 | [detect-format](./references/detect-format.md) | Format detection decision tree (magic lines, extensions, content sniffing). | `bin/amw-diagram-detect-format.sh`, every dispatcher |
 | [validation-dispatcher](./references/validation-dispatcher.md) | Unified `PASS \| FAIL: <line>: <message> [FIX: <hint>]` output contract. | `ascii-validator`, `/amw-validate-any-diagram-format`, every per-format validator wrapper |
 | `./schema.json` | Machine-readable JSON Schema (draft-07) for the IR. Consumed by `bin/amw-diagram-ir.py`. | `bin/amw-diagram-ir.py validate`, any JSON-schema-aware tooling |
@@ -92,10 +97,13 @@ Every entry below is an authoritative, hand-maintained source. Consumer skills a
 These live in `bin/`, not in this skill. The skill documents them; it does not own them.
 
 - `bin/amw-diagram-ir.py` — parse / emit / validate / diff the IR (see [ir-schema](./references/ir-schema.md)).
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 - `bin/amw-diagram-detect-format.sh` — sniffs format; see [detect-format](./references/detect-format.md).
+  > Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 - `bin/amw-validate-diagram.sh` — top-level validator dispatcher; see [validation-dispatcher](./references/validation-dispatcher.md).
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 - `bin/amw-validate-html-diagram.sh`, `bin/amw-validate-svg-diagram.sh`, `bin/amw-mermaid-lint.sh` — per-format validator wrappers (see the corresponding references/*.md).
-- `bin/amw-validate-ascii.py`, `bin/amw-validate-ascii.py` — ASCII validators; the contract lines up with the unified output format. See `../amw-ascii-validator/SKILL.md`.
+- `bin/amw-validate-ascii.py`, `bin/amw-validate-ascii.py` — ASCII validators; the contract lines up with the unified output format. See [SKILL](../amw-ascii-validator/SKILL.md).
 
 ## Locked decisions (do not re-litigate)
 
@@ -115,6 +123,7 @@ Per user directive 2026-04-22:
 2. Locate the needed file using the Reference index table: format spec, IR schema, conversion matrix, detect-format contract, validation dispatcher, modify-flow, or diff algorithm.
 3. Reference files via relative paths (`../amw-diagram-formats/references/<name>.md`); never copy the prose inline into other skills.
 4. Before performing any cross-format operation, check the conversion matrix at [conversion-matrix](references/conversion-matrix.md) for the correct cell type (`direct`, `via IR`, `via X`, `wrap`, or `impossible`).
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 5. Consult `<references/locked-decisions.md>` for immutable rules established by user directive; do not override these decisions.
 
 Consumers reference this library via relative paths (`../amw-diagram-formats/references/<name>.md`). Never copy the prose inline. Use the Reference index table to find the right file for each concern (format spec, IR schema, conversion matrix, etc.). See `## Locked decisions` for immutable rules established by user directive.
@@ -139,11 +148,15 @@ On failure, the skill emits a non-zero exit code or returns a structured error i
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator; routes generic design intent to executor skills.
-- `../amw-ascii-creator/SKILL.md` — primary ASCII authoring skill; pulls [ascii](./references/ascii.md) + [modify-flow](./references/modify-flow.md).
-- `../amw-ascii-validator/SKILL.md` — ASCII validator; pulls [validation-dispatcher](./references/validation-dispatcher.md).
-- `../amw-ascii-sketch/SKILL.md` — plan-phase ASCII loop; pulls [ascii](./references/ascii.md).
-- `../amw-ascii-to-html/SKILL.md`, `../amw-ascii-to-svg/SKILL.md` — direct ASCII conversion skills.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator; routes generic design intent to executor skills.
+- [SKILL](../amw-ascii-creator/SKILL.md) — primary ASCII authoring skill; pulls [ascii](./references/ascii.md) + [modify-flow](./references/modify-flow.md).
+  > [ascii.md] Format definition · Dimensional constraints · Parse rules · Emission rules · Validation rules · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · SKILL · SKILL · SKILL · SKILL · SKILL · SKILL · `../../text-visual-{workflows,arch,state,cheatsheets,retro}/SKILL.md` — specialized ASCII archetypes · `../../bin/amw-ascii-parse.py` — tokenizer (IR input) · `../../bin/amw-ascii-render.py` — renderer (4 JSON modes) · `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate) · `../../bin/amw-validate-ascii.py` — validator (Python mirror) · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
+  > [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
+- [SKILL](../amw-ascii-validator/SKILL.md) — ASCII validator; pulls [validation-dispatcher](./references/validation-dispatcher.md).
+  > [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
+- [SKILL](../amw-ascii-sketch/SKILL.md) — plan-phase ASCII loop; pulls [ascii](./references/ascii.md).
+  > [ascii.md] Format definition · Dimensional constraints · Parse rules · Emission rules · Validation rules · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22) · SKILL · SKILL · SKILL · SKILL · SKILL · SKILL · `../../text-visual-{workflows,arch,state,cheatsheets,retro}/SKILL.md` — specialized ASCII archetypes · `../../bin/amw-ascii-parse.py` — tokenizer (IR input) · `../../bin/amw-ascii-render.py` — renderer (4 JSON modes) · `../../bin/amw-validate-ascii.py` — validator (Perl, mandatory gate) · `../../bin/amw-validate-ascii.py` — validator (Python mirror) · ir-schema · conversion-matrix · modify-flow · validation-dispatcher
+- [SKILL](../amw-ascii-to-html/SKILL.md), [SKILL](../amw-ascii-to-svg/SKILL.md) — direct ASCII conversion skills.
 
 ## Non-negotiables
 

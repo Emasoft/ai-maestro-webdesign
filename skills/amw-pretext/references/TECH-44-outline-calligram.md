@@ -7,6 +7,16 @@ also-in:
 
 # Outline calligram (text fills the exact contour of a glyph)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** art
 **Status:** demo-only
 
@@ -44,4 +54,5 @@ Not runnable in a few lines — combines two libraries and per-Y raycasting.
 
 - Related: TECH-38-calligram-shape, TECH-39-glyph-mask-calligram, TECH-52-glyph-path-art
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

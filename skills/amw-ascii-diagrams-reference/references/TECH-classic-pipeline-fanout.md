@@ -71,7 +71,10 @@ format-specific parsers that converge on a common downstream step.
 ## Cross-references
 
 - [TECH-classic-flowchart-diamond](./TECH-classic-flowchart-diamond.md)
-- `../../amw-ascii-creator/references/TECH-render-mode-layers.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-render-mode-layers](../../amw-ascii-creator/references/TECH-render-mode-layers.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [flowcharts](./flowcharts.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

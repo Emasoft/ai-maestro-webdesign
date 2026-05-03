@@ -133,8 +133,12 @@ it. Signature palette is the fallback, not the first choice.
 ## Cross-references
 
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the parent design philosophy.
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [TECH-color-palette-recipes](TECH-color-palette-recipes.md) — all 13 named palette recipes.
+  > What it does · Dark palettes (99% of work) · AMBER DARK — signature · CYBER TEAL · GAMING RED · HOT PINK WEB3 · EMERALD GAMING · ROYAL PURPLE GAMING · NAVY CRYPTO · WARM GOLD DARK · RETRO PIXEL / ARCADE · LIME CYBERPUNK · Standout palettes · NEON ACID · SUNSET HORIZON · EARTHY TECH · Light mode palettes (rare, <1%) · L1. CLEAN WHITE + AMBER · L2. WARM EDITORIAL · L3. BLUE PROFESSIONAL · Gotchas · Cross-references
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — content-type-specific palettes.
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [TECH-chain-color-coding](TECH-chain-color-coding.md) — the multi-chain blockchain palette.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The color table · CSS tokens · Chain badge component · Table row left-border per chain · When to use · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

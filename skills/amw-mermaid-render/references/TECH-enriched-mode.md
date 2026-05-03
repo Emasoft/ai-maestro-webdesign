@@ -65,7 +65,10 @@ const svg = await renderMermaid(diagram, {
 ## Cross-references
 
 - [TECH-mono-mode](TECH-mono-mode.md) — the fall-through rules.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-built-in-themes](TECH-built-in-themes.md) — pre-baked palettes that use this shape.
+  > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
 - [TECH-theme-selection-guide](TECH-theme-selection-guide.md) — when to even reach for Enriched Mode.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Decision tree · Context-to-theme cheat table · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

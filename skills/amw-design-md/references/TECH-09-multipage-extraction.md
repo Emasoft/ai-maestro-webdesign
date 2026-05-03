@@ -8,6 +8,27 @@ status: stable
 
 # TECH: Multi-page extraction with session awareness
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [When NOT to use](#when-not-to-use)
+- [Architecture](#architecture)
+- [Session handling](#session-handling)
+- [Page-list strategy](#page-list-strategy)
+  - [A. User provides explicit URL list](#a-user-provides-explicit-url-list)
+  - [B. Crawl mode (limited)](#b-crawl-mode-limited)
+- [Per-page token aggregation](#per-page-token-aggregation)
+  - [Colors](#colors)
+  - [Typography](#typography)
+  - [Components](#components)
+  - [Layout](#layout)
+- [Provenance annotations](#provenance-annotations)
+- [Failure modes](#failure-modes)
+- [Privacy and credential handling](#privacy-and-credential-handling)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents how to extract a single DESIGN.md from a website that spans multiple pages — typically requiring authenticated browsing (login + N internal pages). Extends [TECH-07-url-extraction](TECH-07-url-extraction.md) to handle session cookies, page-by-page traversal, and per-page token aggregation.
@@ -23,7 +44,9 @@ The flow uses `amw-dev-browser` for the session-aware browsing. There is no dedi
 ## When NOT to use
 
 - Public-only single-page extraction → use [TECH-07-url-extraction](TECH-07-url-extraction.md)
+  > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
 - Local codebase available → use [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) (faster, no auth issues)
+  > What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
 - Pages behind a paywall the user does not own → out of scope; refuse
 
 ## Architecture
@@ -152,7 +175,9 @@ This transparency lets the user accept or reject suspect tokens before the file 
 ## Cross-references
 
 - [TECH-07-url-extraction](./TECH-07-url-extraction.md) — single-URL extraction (subset of this flow)
+  > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
 - [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — when local source is available (preferred)
+  > What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive
-- `../../amw-dev-browser/SKILL.md` — dev-browser skill spec
-- `../../../agents/amw-design-md-extractor-agent.md` — the agent that owns this flow
+- [SKILL](../../amw-dev-browser/SKILL.md) — dev-browser skill spec
+- [amw-design-md-extractor-agent](../../../agents/amw-design-md-extractor-agent.md) — the agent that owns this flow

@@ -77,6 +77,8 @@ File-format annotation variant (from Chromium):
 ## Cross-references
 
 - [TECH-classic-bit-field-annotation](./TECH-classic-bit-field-annotation.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

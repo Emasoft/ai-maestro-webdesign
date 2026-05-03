@@ -90,7 +90,10 @@ grain over the clipped bounds without covering the underlying fill.
 ## Cross-references
 
 - [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — the simpler single-layer cousin.
+  > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
 - [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — warmer grain for editorial looks.
+  > What it does · The filter · Parameter walkthrough · When to use · When NOT to use · Usage · Gotchas · Cross-references
 - [TECH-colored-shadows](TECH-colored-shadows.md) — salt+pepper pairs well with blue shadows.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -36,6 +36,7 @@ Before writing HTML, think at a high level:
 2. **Structure** — how many compositions, which are sub-compositions vs inline, what tracks carry video / audio / overlays / captions.
 3. **Timing** — which clips drive the duration, where do transitions land, what's the pacing.
 4. **Layout** — build the end-state first (see [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md)).
+  > What it does · When to use · How it works · Why this matters · Minimal example · Wrong pattern (hardcoded dimensions + absolute positioning) · Layered + temporal intent · Gotchas · Cross-references
 5. **Animate** — then add motion using the rules.
 
 For small edits (fix a color, adjust timing), skip straight to the rules.
@@ -98,9 +99,15 @@ No composition uses `#333`, `#3b82f6`, or `Roboto` — those indicate the gate w
 ## Cross-references
 
 - [TECH-hyperframes-identity-gate](TECH-hyperframes-identity-gate.md) — the hard-gate rule applied here
+  > What it does · When to use · How it works · DESIGN.md exists in the project? · visual-style.md exists? · User named a style (e.g. "Swiss Pulse", "dark and techy", "luxury brand")? · None of the above? · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-layout-before-animation](TECH-hyperframes-layout-before-animation.md) — positioning strategy
+  > What it does · When to use · How it works · Why this matters · Minimal example · Wrong pattern (hardcoded dimensions + absolute positioning) · Layered + temporal intent · Gotchas · Cross-references
 - [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md) — full attribute reference
+  > What it does · When to use · How it works · Clip attributes (all clips) · Composition-level attributes (on the root `data-composition-id`) · Relative timing · Banned / deprecated attributes · Minimal example · Sub-composition wrapping · Per-instance variable injection via `data-variable-values` · Gotchas · Cross-references
 - [TECH-hyperframes-timeline-contract](TECH-hyperframes-timeline-contract.md) — GSAP timeline rules
+  > What it does · When to use · How it works · Required pattern · Banned patterns · Allowed GSAP properties · Minimal example · Use `tl.set()` for later-scene clips · Gotchas · Cross-references
 - [TECH-hyperframes-scene-transitions](TECH-hyperframes-scene-transitions.md) — inter-scene rules
+  > What it does · When to use · How it works · Rule 1 — ALWAYS use transitions between scenes · Rule 2 — ALWAYS use entrance animations on every scene · Rule 3 — NEVER use exit animations except on the final scene · Rule 4 — Final scene only may fade elements out · Wrong pattern · Right pattern · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-non-negotiables](TECH-hyperframes-non-negotiables.md) — banned patterns
-- `../SKILL.md`
+  > What it does · When to use · How it works · The twelve rules · Determinism clause · Animation scope clause · Animation conflict clause · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

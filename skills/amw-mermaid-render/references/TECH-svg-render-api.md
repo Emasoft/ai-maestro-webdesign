@@ -66,8 +66,10 @@ Full option set: `bg`, `fg`, `font`, `transparent`, `line`, `accent`,
 ## Cross-references
 
 - [TECH-ascii-render-api](TECH-ascii-render-api.md) — the sync ASCII cousin.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-mono-mode](TECH-mono-mode.md) — the 2-color theming foundation.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../../bin/amw-mermaid-render.sh` — the shell entrypoint used by every other
   plugin skill that needs Mermaid SVG.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

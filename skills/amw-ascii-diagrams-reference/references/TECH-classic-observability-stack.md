@@ -72,7 +72,10 @@ Discord).
 ## Cross-references
 
 - [TECH-classic-multi-service-architecture](./TECH-classic-multi-service-architecture.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-classic-namespace-nesting](./TECH-classic-namespace-nesting.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [network-topology](./network-topology.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

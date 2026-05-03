@@ -2,20 +2,6 @@
 
 - [Schema](#schema)
 - [Field semantics](#field-semantics)
-  - [`agent` — required, string](#agent-required-string)
-  - [`phase` — required, enum `A | B`](#phase-required-enum-a-b)
-  - [`status` — required, enum `ok | partial | failed`](#status-required-enum-ok-partial-failed)
-  - [`confidence` — required, enum `high | medium | low`](#confidence-required-enum-high-medium-low)
-  - [`execution_time_ms` — optional, int](#execution_time_ms-optional-int)
-  - [`max_iterations` — required, int](#max_iterations-required-int)
-  - [`attempts_count` — required, int](#attempts_count-required-int)
-  - [`attempts_log` — required, list of objects](#attempts_log-required-list-of-objects)
-  - [`blocking_issues` — required (empty list ok), list of strings](#blocking_issues-required-empty-list-ok-list-of-strings)
-  - [`warnings` — required (empty list ok), list of strings](#warnings-required-empty-list-ok-list-of-strings)
-  - [`artifact_paths` — required (empty list ok), list of objects](#artifact_paths-required-empty-list-ok-list-of-objects)
-  - [`recommendations` — required (empty list ok), list of strings](#recommendations-required-empty-list-ok-list-of-strings)
-  - [`next_action` — required, string (free-form but see conventions)](#next_action-required-string-free-form-but-see-conventions)
-  - [`report_path` — required, string](#report_path-required-string)
 - [Markdown body structure](#markdown-body-structure)
 - [How main-agent consumes the contract](#how-main-agent-consumes-the-contract)
 - [Contract invariants (enforced by smoke tests)](#contract-invariants-enforced-by-smoke-tests)
@@ -86,6 +72,7 @@ Wall-clock time the agent spent on the job. Useful for main-agent to detect runa
 ### `max_iterations` — required, int
 The hard cap on retry/fix/regenerate loop attempts for this agent, as declared in
 [iteration-budget](iteration-budget.md). One-shot agents that have no internal retry loop set this to `1`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ### `attempts_count` — required, int
 The number of attempts actually made during this invocation (`1 … max_iterations`).
@@ -101,6 +88,7 @@ The last entry's `failure_reason` is `null` when `status=ok`, or a non-null stri
 `status=failed` (cap was hit). One-shot agents set `attempts_log: []`.
 
 See [iteration-budget](iteration-budget.md) for the full contract, cap table, and fail-fast rules.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ### `blocking_issues` — required (empty list ok), list of strings
 Issues that prevent main-agent from proceeding without intervention. Examples:
@@ -123,6 +111,7 @@ Every file the agent produced. Each entry has:
 - `purpose` — one-line description for main-agent's job-completion summary.
 
 Artifacts always land at project-inferred paths per [project-output-routing](project-output-routing.md), or at the path main-agent explicitly requested. Reports always land under `$MAIN_ROOT/reports/webdesigner/`.
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 ### `recommendations` — required (empty list ok), list of strings
 Actionable suggestions for main-agent's next step. Differs from `warnings` in that these are forward-looking ("consider invoking X", "pair with Y next") rather than descriptive ("Z was observed").
@@ -138,6 +127,7 @@ The colon-separated form for `retry_with` is the convention; main-agent parses t
 
 ### `report_path` — required, string
 Absolute path to the full markdown report. Lives under `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-<agent-name>-<slug>.md` per [agent-reports-location](agent-reports-location.md). Main-agent never inlines the report body in its own reply; it always cites the path.
+> [agent-reports-location.md] Required locations · Why this matters · Main-repo root resolution (works from worktrees and main checkout) · Timestamp format (mandatory) · Compliance table (how each surface complies) · Template: drop this block into every new agent / skill definition · Orchestrator override · Gitignore bootstrap · Anti-patterns (DO NOT DO) · Verification checklist
 
 ## Markdown body structure
 

@@ -105,7 +105,8 @@ Six semantic tokens — do not introduce new roles without explicit user instruc
 - **Accent reserved for 1–2 focal nodes.** The thing the reader looks at first. If everything is accent, nothing is accent.
 - **Everything else uses `ink`, `muted`, `paper-2`.** In that order of prominence.
 - **Target visual density: 4/10.** Ruthlessly sparse. Seven nodes is usually enough; twelve is always too many.
-- **oklch equivalents validate against `../../amw-design-principles/color-system.md`.** Brand-onboarded palettes must pass WCAG AA (4.5:1 at 12px) before shipping.
+- **oklch equivalents validate against [color-system](../../amw-design-principles/color-system.md).** Brand-onboarded palettes must pass WCAG AA (4.5:1 at 12px) before shipping.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 
 ### Focal node vs standard node
 

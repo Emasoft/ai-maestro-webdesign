@@ -150,9 +150,13 @@ stateDiagram-v2
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 2 of the workflow
+- [SKILL](../SKILL.md) — Phase 2 of the workflow
 - [mermaid-patterns](mermaid-patterns.md) — the full reference bundled in the skill
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
 - [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — sibling flowchart diagram
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-mermaid-sequence-authenticated](TECH-mermaid-sequence-authenticated.md) — sibling sequence diagram
-- `../../amw-diagram-editorial/references/TECH-type-state-machine.md` —
+  > What it does · When to use · How it works · Actor reference · Message syntax · Error-handling pattern · Minimal example · Gotchas · Cross-references
+- [TECH-type-state-machine](../../amw-diagram-editorial/references/TECH-type-state-machine.md) —
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   editorial HTML+SVG cousin for blog-ready state diagrams

@@ -85,5 +85,7 @@ Goals: Wants a good experience. Likes easy-to-use apps.
 ## Cross-references
 
 - [TECH-ux-rule-research](TECH-ux-rule-research.md)
+  > What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-define](TECH-ux-process-define.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

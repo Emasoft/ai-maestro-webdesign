@@ -112,9 +112,11 @@ Here's your diagram:
 
 ## Cross-references
 
-- `../SKILL.md` — Robustness Rules section
+- [SKILL](../SKILL.md) — Robustness Rules section
 - [TECH-canvas-1000x1000](TECH-canvas-1000x1000.md) — the canvas constraint (complements these
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   rules)
 - [TECH-svg-group-structure](TECH-svg-group-structure.md) — the structural convention
+  > What it does · When to use · How it works · Why this order · Minimal example · Gotchas · Cross-references
 - `../../../bin/amw-svg-render.py` — render-verify-fix loop; treat its output
   as ground truth for "valid SVG that renders"

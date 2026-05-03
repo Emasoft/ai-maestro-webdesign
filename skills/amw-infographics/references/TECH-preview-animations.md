@@ -140,7 +140,10 @@ state — static final frame.
 ## Cross-references
 
 - [TECH-interactive-builder-mode](TECH-interactive-builder-mode.md) — the mode these are used in.
+  > What it does · When to use · The flow · State file — `.infographic/{project}.json` · Preview server · The approval gate (A4) · State schema per component · Why verbatim HTML · Session resume · Gotchas · Cross-references
 - [TECH-preview-server](TECH-preview-server.md) — where these animations play.
+  > What it does · When to use · Start the server · User instruction · How auto-refresh works · Workflow during iteration · Preview file structure · Full design fidelity in preview · Gotchas · Cross-references
 - [TECH-export-pipeline](TECH-export-pipeline.md) — how the post-animation state is captured.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

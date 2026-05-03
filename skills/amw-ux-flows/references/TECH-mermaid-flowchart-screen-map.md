@@ -141,10 +141,15 @@ graph TD
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 2 of the workflow
+- [SKILL](../SKILL.md) — Phase 2 of the workflow
 - [mermaid-patterns](mermaid-patterns.md) — the full reference bundled in the skill
+  > Flowchart Patterns · State Diagram Patterns · Sequence Diagram Patterns · Best Practices
 - [TECH-mermaid-state-diagram-screen](TECH-mermaid-state-diagram-screen.md) — per-UC state diagrams
+  > What it does · When to use · How it works · Basic transitions · Nested states · Parallel states · Minimal example · Gotchas · Cross-references
 - [TECH-mermaid-sequence-authenticated](TECH-mermaid-sequence-authenticated.md) — per-UC sequence diagrams
+  > What it does · When to use · How it works · Actor reference · Message syntax · Error-handling pattern · Minimal example · Gotchas · Cross-references
 - [TECH-split-large-flows-subflow-linking](TECH-split-large-flows-subflow-linking.md) — splitting strategy
-- `../../amw-diagram-editorial/references/TECH-type-flowchart.md` — editorial
+  > What it does · When to use · How it works · Step 1 — Identify logical boundaries · Step 2 — Create a high-level overview flow · Step 3 — Create each sub-flow as a separate diagram · Minimal example · Gotchas · Cross-references
+- [TECH-type-flowchart](../../amw-diagram-editorial/references/TECH-type-flowchart.md) — editorial
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   HTML+SVG cousin when the flowchart graduates to a blog asset

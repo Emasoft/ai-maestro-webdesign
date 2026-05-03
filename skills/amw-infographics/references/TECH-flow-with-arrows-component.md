@@ -149,7 +149,10 @@ fit, use a smaller font or a shorter label.
 ## Cross-references
 
 - [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — broader arrow patterns.
+  > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
 - [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
+  > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
 - [TECH-step-process-component](TECH-step-process-component.md) — numbered-steps variant.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · CSS · HTML · The connector line trick · Horizontal variant · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

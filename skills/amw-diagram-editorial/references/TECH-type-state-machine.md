@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/me
 
 # TECH-type-state-machine
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Emits a **state machine** — each state is a rounded rect, each transition
@@ -109,8 +119,11 @@ Order lifecycle:
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type selection table
-- `../../amw-ux-flows/references/TECH-mermaid-state-diagram-screen.md` —
+- [SKILL](../SKILL.md) — 13-type selection table
+- [TECH-mermaid-state-diagram-screen](../../amw-ux-flows/references/TECH-mermaid-state-diagram-screen.md) —
+  > What it does · When to use · How it works · Basic transitions · Nested states · Parallel states · Minimal example · Gotchas · Cross-references
   Mermaid equivalent for per-screen UI state
 - [TECH-type-flowchart](TECH-type-flowchart.md) — if the intent is decision logic, not lifecycle
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [design-system](design-system.md) — dot/double-circle terminal marker sizing
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist

@@ -69,22 +69,32 @@ rules = engine.search("fintech payment app")
 
 ## Gotchas
 
-- The raw catalog is permissive — it lists patterns observed on real sites, not all of them ai-slop-free. Always filter the output against `../../amw-design-principles/ai-slop-avoid.md` BEFORE proposing to the user.
+- The raw catalog is permissive — it lists patterns observed on real sites, not all of them ai-slop-free. Always filter the output against [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) BEFORE proposing to the user.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - BM25 relevance can misfire on highly specific product descriptions — `"autonomous drone delivery fleet"` may resolve to a generic "logistics" rule. Inspect the returned category before committing to its anti-pattern list.
 - The catalog is a taxonomy credit to the upstream author; the plugin does NOT vendor the 161-rule data file itself. Agents can drill into specific rules via the upstream CLI (`npx uipro-cli rules search "<industry>"`) or treat this file as a conceptual reference.
 
 ## Top 10 distinctive rules — broken out as individual TECH files
 
 - [TECH-uiux-rule-fintech](TECH-uiux-rule-fintech.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-rule-healthcare](TECH-uiux-rule-healthcare.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-rule-luxury-ecommerce](TECH-uiux-rule-luxury-ecommerce.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-rule-saas-dashboard](TECH-uiux-rule-saas-dashboard.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-rule-food-restaurant](TECH-uiux-rule-food-restaurant.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 Remaining 156 rules are addressable via the upstream CLI; this catalog documents their structure.
 
 ## Cross-references
 
 - [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md), [TECH-uiux-palettes-catalog](TECH-uiux-palettes-catalog.md), [TECH-uiux-font-pairings-catalog](TECH-uiux-font-pairings-catalog.md), [TECH-uiux-lp-patterns-catalog](TECH-uiux-lp-patterns-catalog.md) — sibling catalogs
-- `../SKILL.md`
-- `../../amw-design-principles/ai-slop-avoid.md` — mandatory filter applied BEFORE emission
+  > What it does · When to use · How it works · Representative styles (partial list — full 67 are in the upstream corpus) · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — mandatory filter applied BEFORE emission
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)

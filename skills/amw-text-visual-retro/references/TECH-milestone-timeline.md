@@ -72,7 +72,10 @@ Actions:
 ## Cross-references
 
 - [TECH-grid-side-by-side](./TECH-grid-side-by-side.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-owner-action-items](./TECH-owner-action-items.md)
-- `../../amw-text-visual-workflows/references/TECH-timeline-with-anchors.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-timeline-with-anchors](../../amw-text-visual-workflows/references/TECH-timeline-with-anchors.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

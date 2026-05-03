@@ -93,4 +93,6 @@ When eligible, Google renders an expandable FAQ accordion below the page's searc
 ## Cross-references
 
 - [TECH-seo-technical](TECH-seo-technical.md), [TECH-seo-content-quality](TECH-seo-content-quality.md)
-- `../SKILL.md`
+  > [TECH-seo-content-quality.md] What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

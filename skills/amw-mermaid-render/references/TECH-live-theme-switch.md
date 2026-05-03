@@ -77,7 +77,10 @@ svgElement.style.setProperty('--fg', '#27272a')
 ## Cross-references
 
 - [TECH-mono-mode](TECH-mono-mode.md) — the derivation rules the CSS custom properties implement.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-enriched-mode](TECH-enriched-mode.md) — which tokens exist to override.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-svg-render-api](TECH-svg-render-api.md) — the function that emits these properties.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

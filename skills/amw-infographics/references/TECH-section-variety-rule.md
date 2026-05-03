@@ -94,8 +94,12 @@ Supporting (don't let dominate):
 ## Cross-references
 
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the parent design philosophy.
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — the default text-content primary.
+  > What it does · When to use · CSS · HTML · The ▸ bullet convention · 2-col grid pattern · One fact per bullet (mandatory) · Gotchas · Cross-references
 - [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — often the missing variety.
+  > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — where variety lives.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

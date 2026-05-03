@@ -7,6 +7,21 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 
 # TECH: Rule — Interaction Design (flows + microcopy)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Flow best practices](#flow-best-practices)
+  - [Multi-step flows](#multi-step-flows)
+  - [Error recovery](#error-recovery)
+  - [Microcopy](#microcopy)
+  - [Specific rules](#specific-rules)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 HIGH-priority rule. Covers the two elements that most directly determine whether users complete tasks or abandon them: user flows (step sequences, errors, recovery) and microcopy (button labels, error messages, empty states, confirmations).
@@ -88,4 +103,8 @@ Cart → "Login required!" → Shipping → "Re-enter email" → Payment → "Su
 ## Cross-references
 
 - [TECH-ux-rule-research](TECH-ux-rule-research.md), [TECH-ux-rule-accessibility](TECH-ux-rule-accessibility.md), [TECH-ux-rule-ia](TECH-ux-rule-ia.md), [TECH-ux-rule-visual](TECH-ux-rule-visual.md)
-- `../SKILL.md`
+  > [TECH-ux-rule-accessibility.md] What it does · When to use · How it works · WCAG AA (minimum floor) — four POUR pillars · Inclusive design patterns (beyond compliance) · Testing checklist · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-ia.md] What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
+  > [TECH-ux-rule-visual.md] What it does · When to use · How it works · Establishing hierarchy · Typography scale · Color usage · Layout · Design-system essentials · Component documentation · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

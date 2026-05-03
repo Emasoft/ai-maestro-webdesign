@@ -1,38 +1,11 @@
 ## Table of Contents
 
 - [0. Sub-agent delegation (Main-agent mode only)](#0-sub-agent-delegation-main-agent-mode-only)
-  - [Naming convention](#naming-convention)
-  - [One-way delegation rule](#one-way-delegation-rule)
-  - [Delegation timing](#delegation-timing)
-  - [Full sub-agent roster (19 amw-* agents across four tiers)](#full-sub-agent-roster-19-amw-agents-across-four-tiers)
-  - [Cross-references](#cross-references)
 - [1. Mode Detection](#1-mode-detection)
-  - [Command mode signals (fast path — dispatch immediately)](#command-mode-signals-fast-path-dispatch-immediately)
-  - [Main-agent mode signals (requirements path — enter Phase A first)](#main-agent-mode-signals-requirements-path-enter-phase-a-first)
-  - [Tie-breaking rule](#tie-breaking-rule)
 - [2. Phase A — Iterative Low-Fi Loop](#2-phase-a-iterative-low-fi-loop)
-  - [Inputs](#inputs)
-  - [Low-fi artifact types (pick the cheapest that fits)](#low-fi-artifact-types-pick-the-cheapest-that-fits)
-  - [Iteration rules](#iteration-rules)
-  - [RDD (Requirements Design Document) — auto-pass Phase A](#rdd-requirements-design-document-auto-pass-phase-a)
-  - [Satisfaction gate (hard stop — non-skippable)](#satisfaction-gate-hard-stop-non-skippable)
-  - [What Phase A does NOT include](#what-phase-a-does-not-include)
 - [3. Phase B — Implementation and Spawning](#3-phase-b-implementation-and-spawning)
-  - [Transition protocol](#transition-protocol)
-  - [Sub-agent spawning rules](#sub-agent-spawning-rules)
-  - [Non-conversation rule](#non-conversation-rule)
-  - [Job-completion report](#job-completion-report)
 - [4. Scenario Testing via dev-browser (mandatory in Phase B)](#4-scenario-testing-via-dev-browser-mandatory-in-phase-b)
-  - [What a scenario test covers](#what-a-scenario-test-covers)
-  - [dev-browser is the ONLY input-automation primitive](#dev-browser-is-the-only-input-automation-primitive)
-  - [Scenario test output format](#scenario-test-output-format)
 - [5. Anti-Patterns](#5-anti-patterns)
-  - [Skipping Phase A when requirements are vague](#skipping-phase-a-when-requirements-are-vague)
-  - [Starting Phase B before explicit approval](#starting-phase-b-before-explicit-approval)
-  - [Spawning sub-agents during Phase A](#spawning-sub-agents-during-phase-a)
-  - [Talking to the user during Phase B](#talking-to-the-user-during-phase-b)
-  - [Treating commands as the only path to a skill](#treating-commands-as-the-only-path-to-a-skill)
-  - [Omitting scenario tests from Phase B](#omitting-scenario-tests-from-phase-b)
 
 
 # Two Operating Modes — Formal Spec
@@ -116,10 +89,15 @@ The plugin ships 20 agents total (1 main-agent + 7 Tier-2 + 8 Tier-3 + 4 Tier-4 
 ### Cross-references
 
 - [agent-authoring-philosophy](./agent-authoring-philosophy.md) — why agents differ from skills (recipe layer vs judgment layer); mandatory 14-section template
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
 - [sub-agent-return-contract](./sub-agent-return-contract.md) — YAML header schema every amw-* sub-agent returns to main-agent
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 - [agent-interaction-patterns](./agent-interaction-patterns.md) — explicit data hand-offs between agents in Phase A and Phase B; the one-way tree topology
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 - [skill-invocation-protocol](./skill-invocation-protocol.md) — DO/DON'T block for how agents invoke skills without re-triggering the orchestrator
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
 - [authority-hierarchy](./authority-hierarchy.md) — conflict-resolution rules; veto power for legal-expert and accessibility-auditor
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 
 ---
 
@@ -329,10 +307,12 @@ absent artifacts.
 
 **Return contracts:** every sub-agent returns a YAML header per
 [sub-agent-return-contract](./sub-agent-return-contract.md). Main-agent parses the header (not the body)
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 to decide proceed / retry / escalate / stop.
 
 **Authority and vetoes:** sub-agent conflicts are resolved per
 [authority-hierarchy](./authority-hierarchy.md). Legal-expert and accessibility-auditor have veto
+> [authority-hierarchy.md] Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 power over mandatory regulatory / WCAG AA blockers; other agents hold
 non-veto authority in their respective domains.
 

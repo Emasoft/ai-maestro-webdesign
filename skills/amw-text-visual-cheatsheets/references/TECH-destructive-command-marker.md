@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-destructive-command-marker — `*` prefix + footnote caveat
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Marks destructive or non-obvious commands in a CLI cheat-sheet with a
@@ -62,6 +72,8 @@ explaining the risk and the safety guardrail.
 ## Cross-references
 
 - [TECH-side-by-side-platforms](./TECH-side-by-side-platforms.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-category-sections](./TECH-category-sections.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

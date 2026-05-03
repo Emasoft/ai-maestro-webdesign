@@ -7,18 +7,20 @@ author: ai-maestro-webdesign
 
 # UI/UX Reasoning (Last-Resort Library)
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > Only run this skill when design-principles has determined that Rule 1 context-gathering has no anchor — no UI kit, no brand tokens, no reference URL, no existing components, and the user cannot name a style. If any anchor exists, skip this skill entirely.
 
 ## Overview
 
-Last-resort fallback library consulted only when design-principles has exhausted Rule 1 context-gathering with no result. Collapses an infinite-choice space into a confirmable shortlist: 3 style + 3 palette + 3 font DNA candidates drawn from 67 UI styles, 161 color palettes, and 57 font pairings — all pre-filtered against `../amw-design-principles/ai-slop-avoid.md`. Produces named anchors only; the user picks, then `amw-ascii-sketch` resumes with those anchors.
+Last-resort fallback library consulted only when design-principles has exhausted Rule 1 context-gathering with no result. Collapses an infinite-choice space into a confirmable shortlist: 3 style + 3 palette + 3 font DNA candidates drawn from 67 UI styles, 161 color palettes, and 57 font pairings — all pre-filtered against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md). Produces named anchors only; the user picks, then `amw-ascii-sketch` resumes with those anchors.
 
 ## Instructions
 
 1. Confirm the activation condition: only proceed if design-principles has already attempted Rule 1 context-gathering and found no anchors (no UI kit, no brand tokens, no reference URL, no existing components); if any anchor exists, stop and route back to `../amw-design-principles/`.
 2. Acknowledge the fallback in one sentence: "No anchors found — presenting three visual-DNA candidates from 67 styles / 161 palettes / 57 font pairings, filtered against ai-slop."
-3. Present three style candidates (name, 3-5 keywords, best-for, one-sentence feel), pre-filtered against `../amw-design-principles/ai-slop-avoid.md`.
+3. Present three style candidates (name, 3-5 keywords, best-for, one-sentence feel), pre-filtered against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 4. Present three palette candidates (mood tag, primary/secondary/CTA/background/text, one-sentence industry fit) and three font-pair candidates (heading + body, pairing rationale, tone).
 5. Ask the user to pick one from each column (or mix); do not emit HTML, ASCII wireframes, or CSS here — those belong to `../amw-ascii-sketch/`.
 
@@ -77,7 +79,7 @@ Do NOT trigger on: "design a landing page", "make a nice site", "build a dashboa
 | Font pairings | 57 | Heading + body combos with Google Fonts URLs; pre-filtered to exclude ai-slop defaults |
 | Landing-page patterns | 24 | Conversion-optimized section structures, CTA placement, social-proof cadence |
 
-All outputs are descriptive anchors, not production tokens. Any palette chosen here must be re-expressed in oklch form via `../amw-design-principles/color-system.md` before the output phase.
+All outputs are descriptive anchors, not production tokens. Any palette chosen here must be re-expressed in oklch form via [color-system](../amw-design-principles/color-system.md) before the output phase.
 
 ## Dependencies
 
@@ -99,10 +101,14 @@ Do not generate HTML, ASCII wireframes, or CSS here. Those belong to `ascii-sket
 ## Non-negotiables
 
 - **Never runs on the happy path.** If any anchor exists (reference URL, brand doc, existing component, screenshot), skip this skill entirely.
-- **Every candidate is screened against `../amw-design-principles/ai-slop-avoid.md` BEFORE emission.** Inter, Roboto, Arial, system-default stacks are never proposed. Purple-blue linear gradients, rounded-card + 4px accent bar, AI-illustrated mascots — all filtered out at source.
+- **Every candidate is screened against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) BEFORE emission.** Inter, Roboto, Arial, system-default stacks are never proposed. Purple-blue linear gradients, rounded-card + 4px accent bar, AI-illustrated mascots — all filtered out at source.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - **At least three candidates per dimension.** Never a single recommendation — matches design-principles Rule 2.
-- **Palettes must be oklch-convertible.** See `../amw-design-principles/color-system.md`. If a palette can't be cleanly re-expressed in oklch, drop it.
-- **Font pairings must satisfy `../amw-design-principles/typography-system.md`** — two-family limit, full weight coverage, Google-Fonts-available.
+- **Palettes must be oklch-convertible.** See [color-system](../amw-design-principles/color-system.md). If a palette can't be cleanly re-expressed in oklch, drop it.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- **Font pairings must satisfy [typography-system](../amw-design-principles/typography-system.md)** — two-family limit, full weight coverage, Google-Fonts-available.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - **Does not emit HTML or code.** Output is named anchors. Handoff to `../amw-ascii-sketch/` is mandatory.
 - **Industry anti-patterns travel with every candidate.** If the reasoning rule for "finance" says avoid playful fonts and neon colors, the fallback output must annotate that constraint on fintech-leaning candidates.
 
@@ -117,6 +123,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-uiux-lp-patterns-catalog](./references/TECH-uiux-lp-patterns-catalog.md) — Landing-page patterns catalog (24 conversion-optimized structures)
     - [TECH-uiux-palettes-catalog](./references/TECH-uiux-palettes-catalog.md) — Color-palette catalog (161 industry-matched palettes)
     - [TECH-uiux-pre-delivery-checklist](./references/TECH-uiux-pre-delivery-checklist.md) — Universal pre-delivery checklist
+      > What it does · When to use · How it works · Accessibility · Responsive · Performance · Interaction · Minimal example · Gotchas · Cross-references
     - [TECH-uiux-rule-fintech](./references/TECH-uiux-rule-fintech.md) — Reasoning rule — Fintech / Crypto / Banking
     - (see `## References` for the remaining 6 in this group)
 
@@ -161,6 +168,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-uiux-pre-delivery-checklist.md](./references/TECH-uiux-pre-delivery-checklist.md)**
+  > What it does · When to use · How it works · Accessibility · Responsive · Performance · Interaction · Minimal example · Gotchas · Cross-references
   - Description: Universal pre-delivery checklist
   - TOC:
     - What it does
@@ -244,7 +252,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ui-ux-reasoning/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -253,7 +263,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. UI/UX reasoning notes (picked rules, palette, font pairing, pattern) as `.md`). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. UI/UX reasoning notes (picked rules, palette, font pairing, pattern) as `.md`). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -295,12 +306,17 @@ Example 3 — ai-slop filter applied before emission:
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator that routes here as a fallback
-- `../amw-ascii-sketch/SKILL.md` — resumes variant exploration once anchors are picked
-- `../amw-design-principles/color-system.md` — oklch structure the palettes must conform to
-- `../amw-design-principles/typography-system.md` — font-pairing compatibility rules
-- `../amw-design-principles/ai-slop-avoid.md` — mandatory filter applied BEFORE emission
-- `../amw-design-principles/question-templates.md` — the upstream checklist used to confirm no anchor exists
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator that routes here as a fallback
+- [SKILL](../amw-ascii-sketch/SKILL.md) — resumes variant exploration once anchors are picked
+- [color-system](../amw-design-principles/color-system.md) — oklch structure the palettes must conform to
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — font-pairing compatibility rules
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — mandatory filter applied BEFORE emission
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [question-templates](../amw-design-principles/question-templates.md) — the upstream checklist used to confirm no anchor exists
+  > Universal must-ask (every design task) · Context & starting point · Task & goal · Variant dimensions · Tweaks · Hard constraints · Task-specific additions · Landing page / Website · Slides / Deck · App / Prototype · Poster / Single image · Infographic / Data viz · Brand collateral (business cards / invitations / emblems) · Questions NOT to ask · Suggested format · Tip
 
 ## Error Handling
 

@@ -91,8 +91,10 @@ patternTransform="translate(5 0)"  Offset horizontally
 ## Cross-references
 
 - [TECH-mesh-gradient-workaround](TECH-mesh-gradient-workaround.md) — overlapping radials as an
+  > What it does · The technique · Best practices · Gradient parameters that matter · When to use · Gotchas · Cross-references
   alternative "organic" background.
 - [TECH-fe-turbulence-noise](TECH-fe-turbulence-noise.md) — stochastic noise instead of
+  > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
   regular tiling.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

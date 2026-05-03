@@ -75,7 +75,9 @@ Container (inside "System"):
 ## Cross-references
 
 - [TECH-protocol-label-arrows](./TECH-protocol-label-arrows.md)
-- `../../amw-diagram-architecture/SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-diagram-architecture/SKILL.md)
 - [TECH-footnote-tags-deployment](./TECH-footnote-tags-deployment.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

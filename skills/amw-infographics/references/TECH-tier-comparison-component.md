@@ -112,7 +112,10 @@ Match the badge color to the tier meaning:
 ## Cross-references
 
 - [TECH-dense-table-component](TECH-dense-table-component.md) — the base table pattern.
+  > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
 - [TECH-game-overview-playbook](TECH-game-overview-playbook.md) — rarity tiers in game content.
+  > What it does · When to use · Color system · Typography — two sub-variants · Standard game · Pixel / retro game · Standard component prevalence (across 25 pieces) · Visual properties · Signature layout pattern · Character card grid (signature pattern) · Light-mode sub-variant · CSS variables (standard) · CSS variables (pixel) · Reference template · Gotchas · Cross-references
 - [TECH-signature-palette](TECH-signature-palette.md) — how tiers relate to brand colors.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

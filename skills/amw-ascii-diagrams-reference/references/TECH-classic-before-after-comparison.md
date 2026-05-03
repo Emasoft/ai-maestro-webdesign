@@ -69,7 +69,9 @@ optimization examples.
 
 ## Cross-references
 
-- `../../amw-text-visual-retro/references/TECH-grid-side-by-side.md`
+- [TECH-grid-side-by-side](../../amw-text-visual-retro/references/TECH-grid-side-by-side.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

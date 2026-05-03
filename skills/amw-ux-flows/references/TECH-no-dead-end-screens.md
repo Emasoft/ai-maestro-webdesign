@@ -130,7 +130,10 @@ an empty or zero outgoing-links list is a bug.
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 3 of the workflow
+- [SKILL](../SKILL.md) — Phase 3 of the workflow
 - [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the HTML scaffold
+  > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
 - [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — the link pattern
+  > What it does · When to use · How it works · Navigation wrapper class · Patterns · Minimal example · Gotchas · Cross-references
 - [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the index that audits this rule
+  > What it does · When to use · How it works · Minimal example · Gotchas · Validation pass · Cross-references

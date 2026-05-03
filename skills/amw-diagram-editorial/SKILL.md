@@ -7,7 +7,7 @@ author: ai-maestro-webdesign
 
 # Diagram Editorial
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Its triggers are editorial-diagram-specific only — `design-principles` routes here when the user wants a blog-ready or documentation-ready diagram and has committed to one of the 13 canonical types.
 
 ## Overview
@@ -90,6 +90,7 @@ Every diagram this skill emits respects these non-negotiables. Full spec with co
 - **Typography (three families, three roles).** `Instrument Serif` → titles, italic editorial callouts. `Geist Sans` → node names, labels. `Geist Mono` → technical sublabels (ports, URLs, field types, IDs). Mono is for technical content specifically, not a blanket "dev aesthetic." These three families are load-bearing — keep them as-is.
 - **Color discipline.** One accent color per diagram. Accent reserved for **1–2 focal nodes** — the things the reader looks at first. Everything else uses `ink`, `muted`, `paper-2`. Target visual density: **4/10** — ruthlessly sparse.
 - **Tokens.** Semantic color roles: `paper` (background), `ink` (primary text, borders), `muted` (secondary labels, grid lines), `paper-2` (card fills, lane backgrounds), `accent` (focal nodes — 1–2 per diagram), `accent-fg` (text on accent-colored nodes). Defaults are stone + rust — warm off-white paper, charcoal ink, rust-orange accent. Override via brand onboarding. Concrete default values: `paper: oklch(96% 0.01 80)`, `ink: oklch(25% 0.02 80)`, `accent: oklch(62% 0.19 45)` — full table in [design-system](references/design-system.md).
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 
 ## Brand onboarding (60 seconds)
 
@@ -98,25 +99,37 @@ To match the user's existing site:
 1. User invokes: `"onboard editorial diagrams to https://<site>"`.
 2. This skill routes through `../amw-dev-browser/` (**never** raw WebFetch) to fetch the homepage and serialize the DOM.
 3. Extract dominant palette + font stack. Map values to semantic roles — `paper`, `ink`, `muted`, `paper-2`, `accent`, `accent-fg`.
-4. Run WCAG AA contrast checks against `../amw-design-principles/color-system.md`. Auto-propose adjustments for failures; never silently ship a failing pair.
+4. Run WCAG AA contrast checks against [color-system](../amw-design-principles/color-system.md). Auto-propose adjustments for failures; never silently ship a failing pair.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 5. Show a proposed diff to the user; on confirmation, write tokens to [style-guide](references/style-guide.md) (user-editable) inside this skill folder.
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 
 **First-run gate.** If the default tokens are still in place on first use in a new project, pause and ask the user: *"Run onboarding, paste tokens manually, or proceed with default (stone + rust)?"* Do not guess.
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — upstream orchestrator; route here only when the user has committed to a specific editorial type.
-- `../amw-design-principles/color-system.md` — oklch palette + WCAG AA — extracted tokens must validate against this.
-- `../amw-design-principles/typography-system.md` — type scale and font-stack rules; the three families named above (Instrument Serif / Geist Sans / Geist Mono) are kept exactly as-is from the source skill and are load-bearing for editorial feel.
-- `../amw-design-principles/spacing-rhythm.md` — the 4px grid rule rides on top of this.
-- `../amw-design-principles/ai-slop-avoid.md` — every emitted diagram runs a final check against this file before delivery.
-- `../amw-dev-browser/SKILL.md` — the *only* authorized browser-automation primitive; use for brand onboarding instead of WebFetch.
+- [SKILL](../amw-design-principles/SKILL.md) — upstream orchestrator; route here only when the user has committed to a specific editorial type.
+- [color-system](../amw-design-principles/color-system.md) — oklch palette + WCAG AA — extracted tokens must validate against this.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — type scale and font-stack rules; the three families named above (Instrument Serif / Geist Sans / Geist Mono) are kept exactly as-is from the source skill and are load-bearing for editorial feel.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — the 4px grid rule rides on top of this.
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — every emitted diagram runs a final check against this file before delivery.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [SKILL](../amw-dev-browser/SKILL.md) — the *only* authorized browser-automation primitive; use for brand onboarding instead of WebFetch.
 - `../../bin/amw-svg-render.py` — optional render-verify-finish loop when pixel-level inspection of the emitted SVG is needed before handoff.
 - [type-rules](references/type-rules.md) — full per-type scaffolds and anchor coordinates for all 13 types.
+  > Architecture · Flowchart · Sequence · State machine · ER / data model · Timeline · Swimlane · Quadrant · Nested · Tree · Layer stack · Venn · Pyramid / funnel · Primitives (cross-type) · Annotation callout — italic Instrument Serif + dashed Bézier leader · Sketchy filter — hand-drawn variant
 - [design-system](references/design-system.md) — full 4px-grid / typography / color / primitive spec with worked HTML+SVG code.
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [troubleshooting](references/troubleshooting.md) — symptom-to-fix table (misaligned grid, brand-color mismatch, font loading, contrast failure, too dense, wrong type chosen).
+  > Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill
 - [primitive-sketchy](references/primitive-sketchy.md) — cross-type `<feTurbulence>` + `<feDisplacementMap>` filter for hand-drawn essay-style variants, full parameter reference.
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · 4px grid still applies · Accessibility caveat · Source citation
 - [primitive-annotation](references/primitive-annotation.md) — cross-type italic Instrument Serif callout with dashed Bézier leader line for in-margin asides, full geometry spec.
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
 
 ## Instructions
 
@@ -375,7 +388,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-diagram-editorial/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -384,7 +399,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. editorial-quality HTML + SVG diagram files). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. editorial-quality HTML + SVG diagram files). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -418,7 +434,8 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **One accent color, 1–2 focal nodes.** If everything is accent, nothing is accent. Pick the node the reader should look at first, and leave the rest on `paper-2` + `ink`.
 - **Delete nodes until it hurts, then delete one more.** Target density is 4/10. Twelve-plus nodes means split into two diagrams or switch to a nested / layers type.
 - **Brand onboarding flows through `dev-browser`, not raw WebFetch.** Any URL-reading step in this skill must use `../amw-dev-browser/`.
-- **oklch colors, WCAG AA.** All palette changes go through `../amw-design-principles/color-system.md` validation. Do not hard-code hex without oklch equivalents in the token file.
+- **oklch colors, WCAG AA.** All palette changes go through [color-system](../amw-design-principles/color-system.md) validation. Do not hard-code hex without oklch equivalents in the token file.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **This skill does not substitute for `../amw-diagram-svg/`, `../amw-diagram-architecture/`, or `../amw-svg-creator/`.** If the user wants a freeform shape, an architecture graph, or an icon, route back to `design-principles` and let it pick.
 
 ## Error Handling
@@ -426,8 +443,11 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | Diagram looks "AI-generated" / generic | Coordinates not on 4px grid, or too many accent nodes | Re-snap every x/y/width/gap to a multiple of 4; drop accent on all but 1–2 focal nodes; see [troubleshooting](references/troubleshooting.md). |
+> [troubleshooting.md] Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill
 | Colours don't match the user's site | Brand onboarding never ran, or tokens are still defaults | Re-run onboarding through `../amw-dev-browser/`, or have the user paste hex values into [style-guide](references/style-guide.md). |
+> [style-guide.md] Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 | Fonts fall back to Times/Arial | Google Fonts / Bunny Fonts `<link>` missing from `<head>` | Add the Bunny Fonts `<link>` shown in [troubleshooting](references/troubleshooting.md); fallbacks to system fonts are expected but degrade the editorial look. |
+> [troubleshooting.md] Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill
 | WCAG contrast fails on brand color | Onboarding couldn't find a 4.5:1 pair at 12px | Darken `ink` or lighten `paper` until ratio ≥ 4.5:1; onboarding auto-proposes; never ship a failing pair. |
 | Diagram is cluttered / too dense | Node count above ~8, density above 6/10 | Delete non-essential nodes; split into overview + detail; switch to `nested` or `layer stack` if the intent is hierarchy. |
 | Wrong type was chosen | User's intent maps better to a different type | Ask the user to override explicitly (*"Make this a swimlane, not a flowchart — rows for Design, Eng, PM"*); do not silently switch. |
@@ -435,3 +455,4 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 | User wants before/after comparison | Intent is tabular, not diagrammatic | Route back to `design-principles`; a table beats a diagram for comparisons. |
 
 See [troubleshooting](references/troubleshooting.md) for the full symptom-to-fix list and the "when NOT to use this skill" section.
+> [troubleshooting.md] Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill

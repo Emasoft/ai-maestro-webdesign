@@ -7,6 +7,17 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 
 # Archetype 1: Stacked Reference (DEFAULT, 70%+ of work)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The shape](#the-shape)
+- [CSS implementation](#css-implementation)
+- [The section-variety rule still applies](#the-section-variety-rule-still-applies)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Dense top-to-bottom sections, each structurally different from the
@@ -97,8 +108,12 @@ at least 3 different component types across 4+ sections.
 ## Cross-references
 
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — alternative when flows dominate.
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
 - [TECH-hub-spoke-archetype](TECH-hub-spoke-archetype.md) — alternative for ecosystems.
+  > What it does · When to use · The shape · CSS implementation · Connection lines — SVG overlay · Gotchas · Cross-references
 - [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — the densest, mixed-layout cousin.
+  > What it does · When to use · The shape · CSS implementation · The mixed-layout rule · Flow connector between sections · Gotchas · Cross-references
 - [TECH-section-variety-rule](TECH-section-variety-rule.md) — mandatory variety.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

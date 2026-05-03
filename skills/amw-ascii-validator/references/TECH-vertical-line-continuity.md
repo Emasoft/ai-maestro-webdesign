@@ -7,6 +7,16 @@ also-in: box-diagram-master/skills/amw-box-diagram/validate.py, ascii-diagram-va
 
 # TECH-vertical-line-continuity — `│` / `|` align across consecutive rows
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Between any two consecutive non-border-only lines, the validator checks that
@@ -61,6 +71,8 @@ Example bad output it would catch:
 ## Cross-references
 
 - [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-box-corner-alignment](./TECH-box-corner-alignment.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -217,10 +217,18 @@ Fix any errors before delivering.
 
 ## Cross-references
 
-- `canonical-spec-google-alpha.md` — full spec
-- `TECH-01-yaml-frontmatter.md` — YAML authoring tips
-- `TECH-02-color-tokens.md` — color authoring
-- `TECH-03-typography-tokens.md` — typography authoring
-- `TECH-04-component-tokens.md` — component variants
-- `TECH-06-do-donts.md` — actionable do/don't authoring
-- `../../amw-design-principles/ai-slop-avoid.md` — what NOT to write
+- [canonical-spec-google-alpha](canonical-spec-google-alpha.md) — full spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+- [TECH-01-yaml-frontmatter](TECH-01-yaml-frontmatter.md) — YAML authoring tips
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
+- [TECH-02-color-tokens](TECH-02-color-tokens.md) — color authoring
+  > What it does · When to use · Hard rules · At least primary required · Hex format · Recommended semantic names (non-normative) · Tonal-scale convention · Prose section authoring · Contrast checking · Common patterns · Light + dark mode token pairs · Brand-tinted shadows · Anti-patterns (from `ai-slop-avoid.md`) · Worked example · Cross-references
+- [TECH-03-typography-tokens](TECH-03-typography-tokens.md) — typography authoring
+  > What it does · Hard rules · Required Typography sub-fields (per spec.md L64-L68) · fontSize units · fontWeight rules · lineHeight conventions · letterSpacing · fontFeature / fontVariation (OpenType) · Recommended level taxonomy · Variable fonts and weight axis · Font fallback chains · CJK considerations · Common patterns · Display + headline + body × 3 sizes (11 levels) · Compact 7-level (developer tools) · Marketing-rich 15-level (consumer brands) · Worked example — full row · Cross-references
+- [TECH-04-component-tokens](TECH-04-component-tokens.md) — component variants
+  > What it does · Hard rules · Property whitelist (per spec.md L312-L319) · Variant naming convention · Composite token references allowed inside `components.*` · Common component patterns · Button (primary/secondary/ghost) · Input · Card · Chip / Badge · Hover-state derivation strategies · Anti-patterns · Cross-references
+- [TECH-06-do-donts](TECH-06-do-donts.md) — actionable do/don't authoring
+  > What it does · Why this section matters · Hard rules · Variant 1 — Section 8 "Do's and Don'ts" · Variant 2 — Section 7 "Do's and Don'ts" · Minimum count · Each rule must be specific and actionable · Cover the high-leverage failure modes · Recipe for a good Do · Recipe for a good Don't · Brand-specific anti-patterns · Worked examples · Example A — Editorial minimalist (Variant 1 alternating style) · Example B — Developer SaaS (Variant 2 grouped style) · Common authoring mistakes · Cross-references
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md) — what NOT to write
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)

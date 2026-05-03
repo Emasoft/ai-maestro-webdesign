@@ -28,6 +28,7 @@ enforce the stricter 4.5:1 across the board for simplicity.
 ## When to use
 
 - **Every time** [style-guide](style-guide.md) is written or changed — during brand
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
   onboarding, manual edits, or template updates.
 - **Before returning any generated HTML** when the diagram has overridden
   any token.
@@ -102,9 +103,13 @@ contrast('#B0B0B0', '#FFFFFF') === 2.41    // fails even AA-Large 3:1
 
 ## Cross-references
 
-- `../SKILL.md` — orchestrator; contrast validation is non-skippable
+- [SKILL](../SKILL.md) — orchestrator; contrast validation is non-skippable
 - [TECH-brand-url-onboarding](TECH-brand-url-onboarding.md) — onboarding runs this immediately after
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   palette extraction
-- `../../amw-design-principles/color-system.md` — oklch / WCAG AA reference
+- [color-system](../../amw-design-principles/color-system.md) — oklch / WCAG AA reference
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [style-guide](style-guide.md) — the file whose tokens get validated
+  > Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 - [TECH-four-px-grid-snap](TECH-four-px-grid-snap.md) — the other non-negotiable rule
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references

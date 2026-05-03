@@ -76,5 +76,7 @@ Pricing-page CTA evaluation:
 ## Cross-references
 
 - [TECH-uxeval-3-dimension-framework](TECH-uxeval-3-dimension-framework.md) — where Fail / Warn come from
+  > What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-output-format](TECH-uxeval-output-format.md) — full report template
-- `../SKILL.md`
+  > What it does · When to use · How it works · Fields · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

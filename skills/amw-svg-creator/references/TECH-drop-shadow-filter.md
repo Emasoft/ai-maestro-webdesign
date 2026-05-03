@@ -111,8 +111,11 @@ expected.
 ## Cross-references
 
 - [TECH-colored-shadows](TECH-colored-shadows.md) — the color palette rule these filters implement.
+  > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
 - [TECH-soft-glow-filter](TECH-soft-glow-filter.md) — the positive cousin (glow instead of shadow).
+  > What it does · The basic filter · Colored glow variant · `stdDeviation` tuning · Filter region · When to use · Gotchas · Cross-references
 - [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based alternative for
+  > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
   surface-realistic shading.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

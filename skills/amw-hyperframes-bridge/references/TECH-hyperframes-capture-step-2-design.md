@@ -7,6 +7,17 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes/SKILL.md
 
 # TECH: Step 2 — Write DESIGN.md
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Gate](#gate)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Distills the captured site data into a brand reference every downstream composition reads before writing HTML. DESIGN.md is a cheat sheet, NOT a creative plan — the creative plan is Step 4 (STORYBOARD). DESIGN.md answers "what does this brand look and sound like", not "what should the video show".
@@ -81,6 +92,10 @@ control panel", not "startup landing page".
 ## Cross-references
 
 - [TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md), [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md)
+  > [TECH-hyperframes-capture-step-3-script.md] What it does · When to use · How it works · Narration style rules · Format · Gate · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-identity-gate](TECH-hyperframes-identity-gate.md) — hard-gate rule this step satisfies
+  > What it does · When to use · How it works · DESIGN.md exists in the project? · visual-style.md exists? · User named a style (e.g. "Swiss Pulse", "dark and techy", "luxury brand")? · None of the above? · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-visual-styles-library](TECH-hyperframes-visual-styles-library.md) — 8 named presets you can inherit from
-- `../SKILL.md`
+  > What it does · When to use · How it works · Preset shape (each entry contains) · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

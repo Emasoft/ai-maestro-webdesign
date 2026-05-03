@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-every-state-has-ingress-egress — verification rule for correctness
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Enforces a verification rule: every state in a state-machine diagram
@@ -64,6 +74,8 @@ Good (every state reachable and leaveable):
 ## Cross-references
 
 - [TECH-state-machine-legend](./TECH-state-machine-legend.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-state-guards-and-actions](./TECH-state-guards-and-actions.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

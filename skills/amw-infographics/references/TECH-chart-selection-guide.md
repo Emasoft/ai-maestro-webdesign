@@ -89,9 +89,14 @@ Chart.js needs an explicit container height or it'll render at 0px.
 ## Cross-references
 
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — the most-used SVG chart.
+  > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
 - [TECH-waffle-chart](TECH-waffle-chart.md) — the single-percentage alternative.
+  > What it does · When to use · HTML · CSS · JS — add `.filled` + stagger · Legend styling · Gotchas · Cross-references
 - [TECH-line-chart](TECH-line-chart.md) — when to use Chart.js line.
+  > What it does · When to use · HTML · The signature options · The container-height trick · Gotchas · Cross-references
 - [TECH-bar-chart-css](TECH-bar-chart-css.md) — the CSS horizontal bar.
+  > What it does · HTML · CSS · The 3-column grid layout · Animation — CSS transition · Progress bars — single metric variant · Gotchas · Cross-references
 - [TECH-radar-chart](TECH-radar-chart.md) — Chart.js radar for game stats.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · HTML · The signature options · Multi-character comparison — overlay datasets · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

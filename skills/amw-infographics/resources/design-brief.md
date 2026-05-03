@@ -1,4 +1,21 @@
 # Design Brief — Intake Framework
+
+## Table of Contents
+
+- [The 5 Brief Questions](#the-5-brief-questions)
+- [Question 2 → Aesthetic Decision Mapping](#question-2-aesthetic-decision-mapping)
+- [Question 3 → Platform Decision Mapping](#question-3-platform-decision-mapping)
+- [Question 1 → Light/Dark Suitability](#question-1-lightdark-suitability)
+- [Thesis Extraction](#thesis-extraction)
+  - [From raw numbers:](#from-raw-numbers)
+  - [From a topic brief:](#from-a-topic-brief)
+  - [Thesis formula:](#thesis-formula)
+- [Tone → Palette Mapping](#tone-palette-mapping)
+- [Audience Sophistication → Density & Vocabulary](#audience-sophistication-density-vocabulary)
+- [Skip-Brief Defaults](#skip-brief-defaults)
+- [Brief → Design Decision Checklist](#brief-design-decision-checklist)
+
+
 # Maps brief questions to concrete design decisions
 
 ---

@@ -7,7 +7,7 @@ version: 0.2.0
 
 # ASCII → HTML converter
 
-> Orchestrated by `../amw-design-principles/SKILL.md`. Terminal step of the `/amw-sketch` plan-phase loop. Do not run without explicit user approval of the ASCII (see Satisfaction Gate).
+> Orchestrated by [SKILL](../amw-design-principles/SKILL.md). Terminal step of the `/amw-sketch` plan-phase loop. Do not run without explicit user approval of the ASCII (see Satisfaction Gate).
 
 ## Overview
 
@@ -26,8 +26,8 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 OUTPUT (terminal — Phase B). Converts an already-validated, already-approved ASCII wireframe into a single-file responsive HTML page. Upstream sources of acceptable input:
 
-- `../amw-ascii-sketch/SKILL.md` — the plan-phase loop — approved variant at `/tmp/amw-sketch-<slug>-final.txt`.
-- `../amw-ascii-creator/SKILL.md` — Mode B freeform wireframe, validator-PASS.
+- [SKILL](../amw-ascii-sketch/SKILL.md) — the plan-phase loop — approved variant at `/tmp/amw-sketch-<slug>-final.txt`.
+- [SKILL](../amw-ascii-creator/SKILL.md) — Mode B freeform wireframe, validator-PASS.
 - User-supplied ASCII pasted into `$ARGUMENTS` (direct mode — flag to the user that the iteration loop was skipped).
 
 All three producers guarantee the ASCII has already passed `bin/amw-validate-ascii.py`. This skill does NOT re-validate by default; it gates on validator-PASS (TECH-99).
@@ -42,7 +42,7 @@ Narrow. This skill does NOT own generic design vocabulary.
 - "build the HTML from the approved sketch"
 - "/amw-ascii-to-html <path>"
 
-Anything matching "design a landing page" / "make a mockup" / "build a dashboard" routes to `../amw-design-principles/SKILL.md` first — that skill decides whether this one gets invoked.
+Anything matching "design a landing page" / "make a mockup" / "build a dashboard" routes to [SKILL](../amw-design-principles/SKILL.md) first — that skill decides whether this one gets invoked.
 
 ## Preconditions (all three must hold)
 
@@ -102,7 +102,8 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
    - Listener registered BEFORE `__edit_mode_available` is posted (TECH-05).
    - `__edit_mode_set_keys` carries partial updates only (TECH-06).
    - `/*EDITMODE-BEGIN*/.../*EDITMODE-END*/` stays valid JSON with double-quoted keys AND values (TECH-04).
-7. **React/Babel pins** — if and ONLY if the wireframe requires React (live state, interactive charts). Use the exact CDN URLs + integrity hashes in `../amw-design-principles/starter-components/react-babel-pins.md` (TECH-01). Name every styles object with a component prefix (TECH-02).
+7. **React/Babel pins** — if and ONLY if the wireframe requires React (live state, interactive charts). Use the exact CDN URLs + integrity hashes in [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) (TECH-01). Name every styles object with a component prefix (TECH-02).
+  > Required CDN URLs · Styles-object naming rule · Sharing components across Babel files · Common error map
 8. **AI-slop gate** — mentally walk `ai-slop-avoid.md` top to bottom. Self-check every rule 1..26 and the density principle. Any FAIL → revise the section and re-check. Record PASS per rule in the file header comment. (TECH-19..TECH-30)
 9. **Smoke test** — optionally load in `dev-browser` and check console for zero errors. Do NOT run this inside the plan phase if the user just asked for a static file.
 10. **Save** to `<cwd>/<Descriptive Filename>.html` (Title-Case, no `v2`/`v3`). Return the file path + AI-slop checklist + a one-line summary.
@@ -134,7 +135,8 @@ Run these before saving. Each is pulled from `ai-slop-avoid.md`:
 - `../amw-design-principles/starter-components/design-canvas.html` — free-standing canvas wrapper.
 - `../amw-design-principles/starter-components/animations.html` — timeline core (~50 LOC) — use FIRST before Popmotion (TECH-12).
 - `../amw-design-principles/starter-components/tweaks-block.html` — live-edit protocol (TECH-04, TECH-05, TECH-06, TECH-13).
-- `../amw-design-principles/starter-components/react-babel-pins.md` — version lock spec (TECH-01, TECH-02, TECH-03).
+- [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) — version lock spec (TECH-01, TECH-02, TECH-03).
+  > Required CDN URLs · Styles-object naming rule · Sharing components across Babel files · Common error map
 
 ## Output
 
@@ -167,7 +169,7 @@ external_services:
 - Three Tweaks protocol invariants preserved verbatim when Tweaks block is included. (TECH-04, TECH-05, TECH-06)
 - `scrollIntoView` is banned everywhere. (TECH-29)
 - No Framer Motion, no GSAP. Timeline core first, Popmotion as physics fallback. (TECH-12)
-- Inherits the three hard rules from `../amw-design-principles/SKILL.md` — context gathered, variants offered upstream, AI-slop refused.
+- Inherits the three hard rules from [SKILL](../amw-design-principles/SKILL.md) — context gathered, variants offered upstream, AI-slop refused.
 
 ## Error Handling
 
@@ -183,18 +185,23 @@ external_services:
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator (ALWAYS activate this first when user says "design").
-- `../amw-ascii-sketch/SKILL.md` — upstream producer of the approved ASCII.
-- `../amw-ascii-creator/SKILL.md` — upstream single-artifact authoring skill.
-- `../amw-ascii-validator/SKILL.md` — the mandatory validation gate (wraps `bin/amw-validate-ascii.py` + `bin/amw-ascii-render.py`).
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator (ALWAYS activate this first when user says "design").
+- [SKILL](../amw-ascii-sketch/SKILL.md) — upstream producer of the approved ASCII.
+- [SKILL](../amw-ascii-creator/SKILL.md) — upstream single-artifact authoring skill.
+- [SKILL](../amw-ascii-validator/SKILL.md) — the mandatory validation gate (wraps `bin/amw-validate-ascii.py` + `bin/amw-ascii-render.py`).
 - `../amw-design-principles/starter-components/` — canonical chrome + tweaks protocol.
-- `../amw-design-principles/ai-slop-avoid.md` — output-ban list (final gate).
-- `../amw-design-principles/color-system.md` — oklch tokens.
-- `../amw-design-principles/typography-system.md` — type scale + fallback stacks.
-- `../amw-design-principles/spacing-rhythm.md` — 8pt grid + radius + shadow tokens.
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — output-ban list (final gate).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [color-system](../amw-design-principles/color-system.md) — oklch tokens.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — type scale + fallback stacks.
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — 8pt grid + radius + shadow tokens.
+  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
 - `../../bin/amw-ascii-parse.py` — parser.
 - `../../bin/amw-validate-ascii.py` — validator.
-- `../amw-dev-browser/SKILL.md` — preview pipeline (optional).
+- [SKILL](../amw-dev-browser/SKILL.md) — preview pipeline (optional).
 - `/amw-ascii-to-html` — user-facing slash command.
 - `/amw-preview` — automatic next step when requested.
 

@@ -7,6 +7,19 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/assets/wirefr
 
 # TECH-wireframe-html-mobile-first
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Scaffold](#scaffold)
+  - [Aesthetic tokens](#aesthetic-tokens)
+  - [Utility classes](#utility-classes)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Produces **self-contained mobile-first HTML wireframes** — one `.html`
@@ -154,9 +167,12 @@ Login screen wireframe:
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 3 of the workflow
+- [SKILL](../SKILL.md) — Phase 3 of the workflow
 - `../assets/wireframe-template.html` — the shipped template
 - [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md) — inter-screen linking rules
+  > What it does · When to use · How it works · Navigation wrapper class · Patterns · Minimal example · Gotchas · Cross-references
 - [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — the "every screen has an outgoing
+  > What it does · When to use · How it works · Minimal example · Validation check · Gotchas · Cross-references
   link" rule
 - [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the `<INDEX.md>` inventory shape
+  > What it does · When to use · How it works · Minimal example · Gotchas · Validation pass · Cross-references

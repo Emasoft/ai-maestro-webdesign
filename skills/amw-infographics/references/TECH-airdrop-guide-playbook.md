@@ -150,9 +150,14 @@ simpler guides.
 ## Cross-references
 
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — the color system.
+  > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — the default archetype.
+  > What it does · When to use · The shape · CSS implementation · The mixed-layout rule · Flow connector between sections · Gotchas · Cross-references
 - [TECH-step-process-component](TECH-step-process-component.md) — the claim steps.
+  > What it does · When to use · CSS · HTML · The connector line trick · Horizontal variant · Gotchas · Cross-references
 - [TECH-dense-table-component](TECH-dense-table-component.md) — the eligibility table.
+  > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
 - [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting bar.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

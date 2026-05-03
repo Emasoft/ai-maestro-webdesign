@@ -73,6 +73,8 @@ DESIGN SCORE: https://vercel.com  Grade A  (91/100)
 ## Cross-references
 
 - [TECH-designlang-diff](TECH-designlang-diff.md) — score two sites and compare
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-brands](TECH-designlang-brands.md) — score N brands in a matrix
-- `../SKILL.md`
-- `../../amw-ux-evaluator/SKILL.md` — complementary UX scoring
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)
+- [SKILL](../../amw-ux-evaluator/SKILL.md) — complementary UX scoring

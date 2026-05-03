@@ -7,6 +7,18 @@ also-in: image-generation/create-infographics/resources/style-details.md
 
 # `dense_table` — the designer's primary data format
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [CSS](#css)
+- [The signature rules](#the-signature-rules)
+- [HTML](#html)
+- [Usage rules](#usage-rules)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Compact reference table with colored row accents, tight cell
@@ -119,7 +131,10 @@ should have one.
 ## Cross-references
 
 - [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — the badge-specific variant.
+  > What it does · When to use · CSS — the base table · CSS — the tier badges · HTML · Custom tier names and colors · Gotchas · Cross-references
 - [TECH-chain-color-coding](TECH-chain-color-coding.md) — for multi-chain row accents.
+  > What it does · The color table · CSS tokens · Chain badge component · Table row left-border per chain · When to use · Gotchas · Cross-references
 - [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — how to format numbers inside cells.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -105,10 +105,14 @@ overlay_text(image_bytes, labels, output_path)
 
 ## Cross-references
 
-- `../SKILL.md` — model selection section
+- [SKILL](../SKILL.md) — model selection section
 - [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md) — the fallback workflow that
+  > What it does · When to use · How it works · Phase 1 — visual-only generation · Phase 2 — local text overlay via Pillow · Minimal example · Gotchas · Cross-references
   uses flash
 - [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — the technique that pushes
+  > What it does · When to use · How it works · Spell-out format · Minimal example · Gotchas · Cross-references
   pro's text accuracy to acceptable
 - [TECH-aspect-ratio-selection](TECH-aspect-ratio-selection.md) — ratio choice interacts with model
+  > What it does · When to use · How it works · Asking the user · API wiring · Minimal example · Gotchas · Cross-references
 - [TECH-reference-image-priming](TECH-reference-image-priming.md) — references work with both models
+  > What it does · When to use · How it works · API call shape · Minimal example · Gotchas · Cross-references

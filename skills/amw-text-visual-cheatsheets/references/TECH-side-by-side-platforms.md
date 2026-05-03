@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-side-by-side-platforms — macOS/Linux vs Windows columns
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Renders a CLI cheat-sheet table with one row per task and one column per
@@ -56,7 +66,10 @@ scrolling / flipping between docs.
 ## Cross-references
 
 - [TECH-destructive-command-marker](./TECH-destructive-command-marker.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-category-sections](./TECH-category-sections.md)
-- `../../amw-text-visual-arch/references/TECH-platform-component-tags.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-platform-component-tags](../../amw-text-visual-arch/references/TECH-platform-component-tags.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

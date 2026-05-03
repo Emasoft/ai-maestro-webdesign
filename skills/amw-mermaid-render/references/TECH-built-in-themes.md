@@ -7,6 +7,17 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 
 # `THEMES[...]` — 15 pre-baked theme objects
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The full 15](#the-full-15)
+- [Recommended defaults](#recommended-defaults)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Exports a `THEMES` dictionary keyed by theme name. Each value is a
@@ -60,7 +71,10 @@ const svg = await renderMermaid(diagram, THEMES['tokyo-night'])
 ## Cross-references
 
 - [TECH-theme-selection-guide](TECH-theme-selection-guide.md) — human-readable decision tree.
+  > What it does · When to use · Decision tree · Context-to-theme cheat table · Minimal example · Gotchas · Cross-references
 - [TECH-mono-mode](TECH-mono-mode.md) — what makes a theme work with two colors.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-shiki-theme-import](TECH-shiki-theme-import.md) — import any VS Code theme on demand.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Shiki → diagram token mapping · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

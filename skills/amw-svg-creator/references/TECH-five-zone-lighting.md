@@ -80,7 +80,10 @@ pulls an object out of flat-fill territory into perceived 3D.
 ## Cross-references
 
 - [TECH-colored-shadows](TECH-colored-shadows.md) — the shadow-color rule in isolation.
+  > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the 5-stop radial maps to the five zones.
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
 - [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — apply lighting per body part.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The incremental build order · The thick-line trick for static characters · 8-head proportions (standing adult) · For animated characters — React + forward kinematics · Animation timing · When to recommend external tools · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

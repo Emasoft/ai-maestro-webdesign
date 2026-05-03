@@ -7,6 +7,18 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes-cli/SKILL
 
 # TECH: `hyperframes validate` — WCAG contrast audit
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Output](#output)
+  - [When warnings appear](#when-warnings-appear)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 > For visual layout overflow checks (text overflow, container clipping), see [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md). `validate` is strictly a WCAG color-contrast pass.
 
 ## What it does
@@ -72,6 +84,10 @@ $ npx hyperframes validate
 ## Cross-references
 
 - [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md), [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md)
+  > [TECH-hyperframes-cli-render.md] What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
+  > What it does · When to use · How it works · Minimal example · CI integration · Gotchas · Cross-references
 - [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md) — next gate after `validate` in the pre-render sequence; catches layout overflow
+  > What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-7-validate](TECH-hyperframes-capture-step-7-validate.md) — use in the capture pipeline
-- `../SKILL.md`
+  > What it does · When to use · How it works · Validate sequence · Gate · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

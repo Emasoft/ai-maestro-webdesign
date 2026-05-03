@@ -7,6 +7,16 @@ also-in: cc-plugin-text-visualizations-main/README.md
 
 # TECH-footnote-tags-deployment — post-diagram SLAs / owners / repos
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Keeps the diagram frame tight by moving deployment metadata (SLAs, team
@@ -69,6 +79,8 @@ Component details:
 ## Cross-references
 
 - [TECH-c4-zoom-levels](./TECH-c4-zoom-levels.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-platform-component-tags](./TECH-platform-component-tags.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -61,4 +61,5 @@ if (result === null) return  // fall back to CSS-only layout
 
 - Related: TECH-64-wrapper-module, TECH-65-vendoring-esm
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

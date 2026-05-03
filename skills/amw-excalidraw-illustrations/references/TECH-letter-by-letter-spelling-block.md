@@ -7,6 +7,17 @@ also-in: skills/amw-excalidraw-illustrations/references/prompt-template-en.md
 
 # TECH-letter-by-letter-spelling-block
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Spell-out format](#spell-out-format)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Forces Gemini to render text correctly by **spelling out every key word
@@ -97,11 +108,16 @@ TEXT RULES — VERIFY LETTER BY LETTER:
 
 ## Cross-references
 
-- `../SKILL.md` — rules section
+- [SKILL](../SKILL.md) — rules section
 - [prompt-template-en](prompt-template-en.md) / [prompt-template-es](prompt-template-es.md) — complete prompts
+  > [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
+  > Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
   containing the spell-out block
 - [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — the 7-section prompt this fits
+  > What it does · When to use · How it works · Section order and purpose · Template skeleton · Minimal example · Gotchas · Cross-references
   into
 - [TECH-framed-text-no-floating](TECH-framed-text-no-floating.md) — the related rule on framing
+  > What it does · When to use · How it works · Rounded title frame (section headers) · Speech bubble (tag-line commentary) · Labelled callout with filled background (icon labels, attributions) · Minimal example · Gotchas · Cross-references
 - [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md) — the fallback when spell-out
+  > What it does · When to use · How it works · Phase 1 — visual-only generation · Phase 2 — local text overlay via Pillow · Minimal example · Gotchas · Cross-references
   alone isn't enough

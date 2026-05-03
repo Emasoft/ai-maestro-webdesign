@@ -55,5 +55,7 @@ Research plan for a SaaS onboarding flow:
 ## Cross-references
 
 - [TECH-ux-rule-research](TECH-ux-rule-research.md) — detailed rule for interview planning, synthesis, and persona creation
+  > What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-define](TECH-ux-process-define.md) — next phase (Define)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

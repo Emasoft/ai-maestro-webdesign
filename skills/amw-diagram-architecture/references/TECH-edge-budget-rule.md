@@ -7,6 +7,16 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/vali
 
 # TECH-edge-budget-rule
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Caps the number of edges in an architecture graph at **`floor(n × 0.8)`**
@@ -95,10 +105,15 @@ tradeoff — visual clarity over exhaustive completeness.
 ## Cross-references
 
 - [prompts](prompts.md) — rule is in the LLM system prompt
+  > System Prompt · API Call Pattern · JSON Repair
 - [validation](validation.md) — Stage 1 edge-integrity section
+  > Stage 1 — Graph Validation (all formats) · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Stage 2 — Format Validation · Format: `graph` · Format: `mermaid` · Format: `svg` · Format: `png` · Validation Summary (quick reference) · **Stage 1 — Graph validation**: structural checks on the graph JSON. · **Stage 2 — Format validation**: surface-level checks on the rendered output.
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — schema constraint table includes this
+  > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
 - [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — how the rule is enforced
-- `../../amw-diagram-editorial/references/TECH-density-4-of-10.md` — the
+  > What it does · When to use · How it works · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Minimal example · Gotchas · Cross-references
+- [TECH-density-4-of-10](../../amw-diagram-editorial/references/TECH-density-4-of-10.md) — the
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   editorial analogue (node density cap)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

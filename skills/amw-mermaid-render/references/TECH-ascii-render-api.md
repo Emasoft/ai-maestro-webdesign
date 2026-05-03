@@ -7,6 +7,16 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md, diagrams-skills/ag
 
 # `renderMermaidAscii()` — Mermaid → ASCII / Unicode
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Synchronous function that renders Mermaid source as plain-text box-drawing
@@ -58,7 +68,10 @@ Options: `useAscii` (default `false` — Unicode), `paddingX` (5),
 ## Cross-references
 
 - [TECH-ascii-padding-options](TECH-ascii-padding-options.md) — tuning horizontal/vertical spacing.
+  > What it does · When to use · Defaults · What each one does · Minimal example · Gotchas · Cross-references
 - [TECH-svg-render-api](TECH-svg-render-api.md) — the async SVG cousin.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — wrapping output in fenced code blocks.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Pattern 1: plain fenced block · Pattern 2: inline compact diagram · Pattern 3: ASCII mode for email / plain text · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

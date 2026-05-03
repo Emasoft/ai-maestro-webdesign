@@ -89,7 +89,10 @@ lighting — the hotspot offset toward a virtual light source.
 ## Cross-references
 
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — individual gradient tuning.
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
 - [TECH-pattern-tiles](TECH-pattern-tiles.md) — regular-tile alternative for backgrounds.
+  > What it does · Dots · Diagonal lines · Waves · `patternUnits` — the critical attribute · `patternTransform` — rotate / scale / translate the whole pattern · Gotchas · Cross-references
 - [TECH-vignette-overlay](TECH-vignette-overlay.md) — often combined to darken edges.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The gradient · The parameters · Layer order · Off-center vignettes · When to use · When NOT to use · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

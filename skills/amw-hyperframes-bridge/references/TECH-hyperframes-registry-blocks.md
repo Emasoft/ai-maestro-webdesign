@@ -103,5 +103,9 @@ Host `index.html`:
 ## Cross-references
 
 - [TECH-hyperframes-registry-add](TECH-hyperframes-registry-add.md), [TECH-hyperframes-registry-components](TECH-hyperframes-registry-components.md)
+  > [TECH-hyperframes-registry-components.md] What it does · When to use · How it works · Wiring process · Example component file · Merging into host · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Blocks vs components · Paths (configurable in `hyperframes.json`) · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md), [TECH-hyperframes-data-attributes](TECH-hyperframes-data-attributes.md)
-- `../SKILL.md`
+  > [TECH-hyperframes-data-attributes.md] What it does · When to use · How it works · Clip attributes (all clips) · Composition-level attributes (on the root `data-composition-id`) · Relative timing · Banned / deprecated attributes · Minimal example · Sub-composition wrapping · Per-instance variable injection via `data-variable-values` · Gotchas · Cross-references
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

@@ -126,7 +126,9 @@ sequenceDiagram
 ## Cross-references
 
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — the parent grammar.
+  > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
 - [TECH-sequence-activations](TECH-sequence-activations.md) — activation blocks nest inside
+  > What it does · When to use · Syntax · Nested activations — double-stacking · Manual activate/deactivate (alt syntax) · Minimal example · Gotchas · Cross-references
   loops / alts seamlessly.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

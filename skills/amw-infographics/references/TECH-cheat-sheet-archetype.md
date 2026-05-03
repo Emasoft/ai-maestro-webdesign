@@ -7,6 +7,18 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 
 # Archetype 5: Cheat Sheet
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The shape](#the-shape)
+- [CSS implementation](#css-implementation)
+- [The mixed-layout rule](#the-mixed-layout-rule)
+- [Flow connector between sections](#flow-connector-between-sections)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Maximum density. Multiple section types mixed freely — tables,
@@ -134,8 +146,12 @@ distinct sections to show flow.
 ## Cross-references
 
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — less dense alternative.
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [TECH-flow-poster-archetype](TECH-flow-poster-archetype.md) — when flow is the main story.
+  > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
 - [TECH-section-variety-rule](TECH-section-variety-rule.md) — mandatory here.
+  > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
 - [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — airdrop guides often use this.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 17 pieces) · Visual properties · Signature layout pattern · The amber+blue value split (signature) · The claim-steps horizontal flow · CSS variables · Reference template · Archetype preference · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

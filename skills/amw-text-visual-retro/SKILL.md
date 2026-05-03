@@ -6,7 +6,7 @@ version: 0.1.0
 
 # Text-Visual Retro — ASCII retrospectives and readouts
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 
 ## Overview
 
@@ -155,7 +155,7 @@ The flow:
 5. If FAIL → apply every `FIX:` hint, re-run. Loop until PASS.
 6. Never present an un-validated artifact.
 
-For heatmaps, `../../bin/amw-ascii-render.py` in `table` mode guarantees column alignment. Strongly recommended when the heatmap has >5 columns. See `../amw-ascii-validator/SKILL.md` for the JSON schema.
+For heatmaps, `../../bin/amw-ascii-render.py` in `table` mode guarantees column alignment. Strongly recommended when the heatmap has >5 columns. See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
 
 ## Instructions
 
@@ -243,7 +243,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-text-visual-retro/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -252,7 +254,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. monospaced ASCII retro grids / milestone timelines / heatmaps for post-mortems). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. monospaced ASCII retro grids / milestone timelines / heatmaps for post-mortems). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -288,14 +291,14 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Resources
 
-- `../amw-design-principles/SKILL.md` — orchestrator.
-- `../amw-ascii-validator/SKILL.md` — validation contract.
-- `../amw-text-visual-workflows/SKILL.md` — sibling for workflows and timelines (the forward-looking kind).
-- `../amw-text-visual-arch/SKILL.md` — sibling for architecture diagrams.
-- `../amw-text-visual-state/SKILL.md` — sibling for state machines.
-- `../amw-text-visual-cheatsheets/SKILL.md` — sibling for CLI panels.
-- `../amw-ux-evaluator/SKILL.md` — per-page UX scoring, for post-launch evaluations that want a rubric rather than a retro.
-- `../amw-seo/SKILL.md` — for performance / Core Web Vitals retros specifically.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator.
+- [SKILL](../amw-ascii-validator/SKILL.md) — validation contract.
+- [SKILL](../amw-text-visual-workflows/SKILL.md) — sibling for workflows and timelines (the forward-looking kind).
+- [SKILL](../amw-text-visual-arch/SKILL.md) — sibling for architecture diagrams.
+- [SKILL](../amw-text-visual-state/SKILL.md) — sibling for state machines.
+- [SKILL](../amw-text-visual-cheatsheets/SKILL.md) — sibling for CLI panels.
+- [SKILL](../amw-ux-evaluator/SKILL.md) — per-page UX scoring, for post-launch evaluations that want a rubric rather than a retro.
+- [SKILL](../amw-seo/SKILL.md) — for performance / Core Web Vitals retros specifically.
 - `/amw-eval` — slash command for UX evaluation.
 
 ## How to invoke via existing commands

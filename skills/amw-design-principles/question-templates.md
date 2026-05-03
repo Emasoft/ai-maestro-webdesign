@@ -1,5 +1,14 @@
 # Question Templates for Design Tasks
 
+## Table of Contents
+
+- [Universal must-ask (every design task)](#universal-must-ask-every-design-task)
+- [Task-specific additions](#task-specific-additions)
+- [Questions NOT to ask](#questions-not-to-ask)
+- [Suggested format](#suggested-format)
+- [Tip](#tip)
+
+
 > **Rule**: before kicking off any design task, ask at least 10 questions. Be greedy, don't be shy.
 > One focused round of questions beats three rounds of rework.
 

@@ -103,5 +103,7 @@ FFmpeg: 6.1.1 /opt/homebrew/bin/ffmpeg
 ## Cross-references
 
 - [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — the command this diagnoses
+  > What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
 - [TECH-hyperframes-cli-lint](TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-preview](TECH-hyperframes-cli-preview.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · CI integration · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

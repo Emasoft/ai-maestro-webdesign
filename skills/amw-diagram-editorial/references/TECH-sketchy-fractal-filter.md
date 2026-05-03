@@ -105,10 +105,13 @@ graceful degradation, not a failure.
 
 ## Cross-references
 
-- `../SKILL.md` — Primitives section
+- [SKILL](../SKILL.md) — Primitives section
 - [primitive-sketchy](primitive-sketchy.md) — full primitive spec with browser-support notes
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · 4px grid still applies · Accessibility caveat · Source citation
 - [TECH-four-px-grid-snap](TECH-four-px-grid-snap.md) — grid rule that still applies
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [design-system](design-system.md) — standard 1px stroke convention (this primitive
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
   overrides to 1.5px locally)
-- `../../amw-ascii-diagrams-reference/SKILL.md` — ASCII alternative for
+- [SKILL](../../amw-ascii-diagrams-reference/SKILL.md) — ASCII alternative for
   contexts that need to look even more casual

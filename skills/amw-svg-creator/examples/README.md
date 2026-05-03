@@ -1,5 +1,12 @@
 # svg-creator examples — in-scope only
 
+## Table of Contents
+
+- [Reference](#reference)
+
+## Reference
+
+
 This folder holds in-scope examples for the `svg-creator` skill (icons, logos,
 patterns, data-vis primitives, SVG animations). It is intentionally empty at
 the moment — real in-scope examples will be added as they are produced by

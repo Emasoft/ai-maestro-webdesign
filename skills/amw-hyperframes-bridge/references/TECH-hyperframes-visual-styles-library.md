@@ -86,5 +86,7 @@ Step 4: Generate DESIGN.md from preset, continue to compositions.
 ## Cross-references
 
 - [TECH-hyperframes-identity-gate](TECH-hyperframes-identity-gate.md) — the gate that reads this library
+  > What it does · When to use · How it works · DESIGN.md exists in the project? · visual-style.md exists? · User named a style (e.g. "Swiss Pulse", "dark and techy", "luxury brand")? · None of the above? · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md) — DESIGN.md creation
-- `../SKILL.md`
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

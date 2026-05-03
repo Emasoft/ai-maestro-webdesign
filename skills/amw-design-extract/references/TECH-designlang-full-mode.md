@@ -57,5 +57,7 @@ npx designlang https://stripe.com --full
 ## Cross-references
 
 - [TECH-designlang-basic-extraction](TECH-designlang-basic-extraction.md) — non-`--full` default
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-designlang-dark-mode](TECH-designlang-dark-mode.md), [TECH-designlang-responsive](TECH-designlang-responsive.md), [TECH-designlang-interactions](TECH-designlang-interactions.md), [TECH-designlang-screenshots](TECH-designlang-screenshots.md) — the four modes `--full` enables
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

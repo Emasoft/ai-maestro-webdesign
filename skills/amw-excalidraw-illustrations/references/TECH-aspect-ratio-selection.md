@@ -126,9 +126,12 @@ python3 scripts/generate.py \
 
 ## Cross-references
 
-- `../SKILL.md` — aspect ratio section
+- [SKILL](../SKILL.md) — aspect ratio section
 - [TECH-gemini-pro-vs-flash-model-choice](TECH-gemini-pro-vs-flash-model-choice.md) — model choice interacts
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   with ratio (some ratios perform differently per model)
 - [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — FORMAT section declares ratio
+  > What it does · When to use · How it works · Section order and purpose · Template skeleton · Minimal example · Gotchas · Cross-references
 - [TECH-reference-image-priming](TECH-reference-image-priming.md) — references should match the
+  > What it does · When to use · How it works · API call shape · Minimal example · Gotchas · Cross-references
   chosen ratio for best style transfer

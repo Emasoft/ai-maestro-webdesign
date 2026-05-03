@@ -105,9 +105,12 @@ labels: inside the overlap region, italic `Instrument Serif` 11–12px
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-quadrant](TECH-type-quadrant.md) — for two-axis positioning (often a better fit
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   when users first think "Venn")
 - [design-system](design-system.md) — italic serif for overlap labels
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [primitive-annotation](primitive-annotation.md) — if you need an arrow pointing to a specific
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
   region from outside the circles

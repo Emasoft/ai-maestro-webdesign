@@ -86,7 +86,9 @@ Client → Gateway ─┬─→ Service A → DB-A
 ## Cross-references
 
 - [TECH-arrow-vocabulary](./TECH-arrow-vocabulary.md)
-- `../../amw-ascii-creator/SKILL.md` (style presets section)
-- `../../amw-ascii-validator/references/TECH-forbidden-chars-banlist.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-ascii-creator/SKILL.md) (style presets section)
+- [TECH-forbidden-chars-banlist](../../amw-ascii-validator/references/TECH-forbidden-chars-banlist.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

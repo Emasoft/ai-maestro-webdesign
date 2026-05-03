@@ -7,6 +7,16 @@ also-in:
 
 # TECH: UX process — Prototype & Test (Phase 4)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The fourth of five phases. HIGH priority. Phase 4 builds interactive prototypes for the selected wireframes and runs usability tests to validate them before engineering investment. Outputs are quantitative task-success metrics plus qualitative observations.
@@ -44,5 +54,7 @@ Prototype for Sarah's "basics rail":
 ## Cross-references
 
 - [TECH-ux-process-ideate](TECH-ux-process-ideate.md) — upstream (Phase 3)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-handoff](TECH-ux-process-handoff.md) — downstream (Phase 5)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

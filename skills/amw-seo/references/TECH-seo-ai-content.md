@@ -80,5 +80,7 @@ The first is generic; an editor (human) replaced it with specifics the AI didn't
 ## Cross-references
 
 - [TECH-seo-eeat](TECH-seo-eeat.md) — quality lens AI content must pass
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-seo-content-quality](TECH-seo-content-quality.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

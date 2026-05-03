@@ -64,7 +64,9 @@ Arrows:       → ← ↑ ↓ ↔ ↕
 ## Cross-references
 
 - [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-wide-character-detection](./TECH-wide-character-detection.md)
-- `../../amw-box-diagram/SKILL.md` (character set table)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-box-diagram/SKILL.md) (character set table)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

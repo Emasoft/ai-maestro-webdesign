@@ -118,12 +118,16 @@ No text floats without a container.
 
 ## Cross-references
 
-- `../SKILL.md` — key principles #1 and #6
+- [SKILL](../SKILL.md) — key principles #1 and #6
 - [TECH-prompt-template-structure](TECH-prompt-template-structure.md) — this rule is wired into every
+  > What it does · When to use · How it works · Section order and purpose · Template skeleton · Minimal example · Gotchas · Cross-references
   panel description
 - [TECH-reference-image-priming](TECH-reference-image-priming.md) — the reference images demonstrate
+  > What it does · When to use · How it works · API call shape · Minimal example · Gotchas · Cross-references
   framed-text convention
 - [TECH-letter-by-letter-spelling-block](TECH-letter-by-letter-spelling-block.md) — spell-out rules keep the
+  > What it does · When to use · How it works · Spell-out format · Minimal example · Gotchas · Cross-references
   framed text readable
 - [TECH-two-phase-visual-then-overlay](TECH-two-phase-visual-then-overlay.md) — even Pillow-overlaid text
+  > What it does · When to use · How it works · Phase 1 — visual-only generation · Phase 2 — local text overlay via Pillow · Minimal example · Gotchas · Cross-references
   sits inside frames drawn by Gemini in Phase 1

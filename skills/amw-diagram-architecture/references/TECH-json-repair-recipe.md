@@ -130,9 +130,13 @@ The sequence handled:
 ## Cross-references
 
 - [prompts](prompts.md) — the full API pattern this wraps
+  > System Prompt · API Call Pattern · JSON Repair
 - [TECH-assistant-prefill-json](TECH-assistant-prefill-json.md) — upstream; reduces how often repair
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   is needed
 - [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — downstream; consumes parsed object
+  > What it does · When to use · How it works · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Minimal example · Gotchas · Cross-references
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — the target schema
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

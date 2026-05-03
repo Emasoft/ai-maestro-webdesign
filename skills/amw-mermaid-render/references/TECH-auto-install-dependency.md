@@ -7,6 +7,16 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/scripts/batch.mjs, diagrams-
 
 # Auto-install `beautiful-mermaid` on first use
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example — setup.sh equivalent](#minimal-example-setupsh-equivalent)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 On first invocation, the render/batch scripts try to import
@@ -77,6 +87,7 @@ npm install beautiful-mermaid
 ## Cross-references
 
 - [TECH-batch-rendering](TECH-batch-rendering.md) — uses the same loader.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../../external/mermaid-render/` — the plugin's vendored copy lives there.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

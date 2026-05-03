@@ -99,8 +99,12 @@ Table cell padding:        6px 10px  (NOT 12px 16px)
 ## Cross-references
 
 - [TECH-section-variety-rule](TECH-section-variety-rule.md) — the mandatory 3+ component types rule.
+  > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
 - [TECH-signature-palette](TECH-signature-palette.md) — colors and near-black backgrounds.
+  > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — the flow diagram rule.
+  > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default canvas architecture.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

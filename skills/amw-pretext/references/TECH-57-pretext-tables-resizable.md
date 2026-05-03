@@ -7,6 +7,16 @@ also-in:
 
 # Resizable table (column + row resize with scroll anchor)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** tables
 **Status:** stable
 
@@ -45,4 +55,5 @@ See pretext-tables-main `ResizableTable` component.
 
 - Related: TECH-56-pretext-tables-virtualized, TECH-66-resize-observer-pattern
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

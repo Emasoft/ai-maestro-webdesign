@@ -90,6 +90,7 @@ lower the quality bar, do not silently succeed with a broken artifact.
 - **Not a file-size or token-count limit.** Those are per-skill concerns.
 - **Not a cap on how many agents main-agent may spawn.** Orchestration
   parallelism is governed by [agent-interaction-patterns](agent-interaction-patterns.md).
+  > [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ## How agents apply this
 
@@ -109,6 +110,9 @@ One-shot agents MUST acknowledge their one-shot status in §8 under a
 ## Cross-references
 
 - [sub-agent-return-contract](sub-agent-return-contract.md) — canonical YAML schema that includes
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
   `max_iterations`, `attempts_count`, and `attempts_log[]`
 - [agent-authoring-philosophy](agent-authoring-philosophy.md) — §8 and §13 template sections
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
 - [authority-hierarchy](authority-hierarchy.md) — veto logic that can abort a loop before cap
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement

@@ -58,7 +58,9 @@ Output: `docs/ux-flows/diagrams/` with:
 
 See [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md),
 [TECH-mermaid-state-diagram-screen](TECH-mermaid-state-diagram-screen.md),
+> [TECH-mermaid-state-diagram-screen.md] What it does · When to use · How it works · Basic transitions · Nested states · Parallel states · Minimal example · Gotchas · Cross-references
 [TECH-mermaid-sequence-authenticated](TECH-mermaid-sequence-authenticated.md).
+> [TECH-mermaid-sequence-authenticated.md] What it does · When to use · How it works · Actor reference · Message syntax · Error-handling pattern · Minimal example · Gotchas · Cross-references
 
 ### Phase 3 — HTML wireframes (MANDATORY)
 
@@ -137,8 +139,12 @@ step.
 
 ## Cross-references
 
-- `../SKILL.md` — the workflow section
+- [SKILL](../SKILL.md) — the workflow section
 - [TECH-prd-to-usecases](TECH-prd-to-usecases.md) — Phase 1 details
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-mermaid-flowchart-screen-map](TECH-mermaid-flowchart-screen-map.md) — Phase 2 screen map
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — Phase 3 wireframe template
+  > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
 - [TECH-figma-code-to-canvas-export](TECH-figma-code-to-canvas-export.md) — optional Phase 5
+  > What it does · When to use · How it works · Prerequisites (MUST be mentioned before any Figma operation) · Protocol · Export workflow (once prerequisites are confirmed) · Minimal example · Gotchas · Cross-references

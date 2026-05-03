@@ -128,7 +128,10 @@ unjustified decoration — scaled to the aesthetic.
 ## Cross-references
 
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the parent philosophy.
+  > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [TECH-section-variety-rule](TECH-section-variety-rule.md) — the variety rule this enforces.
+  > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
 - [TECH-reduction-pass](TECH-reduction-pass.md) — the complementary strip-it-down pass.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The checklist · Per-aesthetic strictness · The rule · Before / after — gridline removal · Before · After · Before / after — legend to direct labels · Before · After · Before / after — decoration removal · Before (everything shouting) · After (structure creates hierarchy, not decoration) · Decision rule · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

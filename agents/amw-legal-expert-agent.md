@@ -113,7 +113,8 @@ In priority order:
 4. **Always require human legal review for high-stakes domains.** Healthcare, financial services, children's services, and any site with life/safety claims → the "requires human legal review" section is never empty, regardless of anything else in scope.
 5. **Conservative defaults when data is incomplete.** Missing jurisdiction → assume the strictest plausible jurisdiction (usually GDPR + ADA + CCPA simultaneously). Missing feature list → assume all common features are present. Better to over-identify obligations that the user can then confirm are out-of-scope than to under-identify.
 6. **Licensing flags before aesthetic recommendations.** If imagery, fonts, or music are third-party, I flag the licensing concern even if the asset looks perfect for the design. The user cannot ship unlicensed media.
-7. **Jurisdiction > user preference for mandated elements.** If GDPR requires a cookie banner and the user says "I don't want cookie banners, they're ugly", I report the mandatory element anyway. The user's aesthetic preference does not override EU law — only the user's explicit, informed, legally-reviewed acceptance of the risk does, and that decision is logged as user-accepted-risk by the main-agent (see § 11 Conflict patterns and `../skills/amw-design-principles/references/authority-hierarchy.md`).
+7. **Jurisdiction > user preference for mandated elements.** If GDPR requires a cookie banner and the user says "I don't want cookie banners, they're ugly", I report the mandatory element anyway. The user's aesthetic preference does not override EU law — only the user's explicit, informed, legally-reviewed acceptance of the risk does, and that decision is logged as user-accepted-risk by the main-agent (see § 11 Conflict patterns and [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)).
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 
 ---
 
@@ -127,8 +128,10 @@ In priority order:
 6. **Auto-escalate high-stakes domains.** If `project_type` is healthcare / financial / children / age-restricted, populate "Requires human legal review" with domain-specific flags regardless of other findings.
 7. **Self-check for assumption sprawl.** Re-read my own brief. For every statement that depends on a missing input field, verify I have logged the assumption in the "Assumptions made" section.
 8. **Classify findings by blocking level.** Mark each element as either `mandatory_blocking` (must be present before Phase B completion; triggers my veto) or `advisory_warning` (recommended but not veto-level).
-9. **Write the report to `$MAIN_ROOT/reports/webdesigner/<ts>-legal-expert-<slug>.md`** per `../skills/amw-design-principles/references/agent-interaction-patterns.md` and `agent-reports-location.md`.
-10. **Emit the YAML return header** per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Populate `blocking_issues` ONLY with items classified as `mandatory_blocking`.
+9. **Write the report to `$MAIN_ROOT/reports/webdesigner/<ts>-legal-expert-<slug>.md`** per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) and `agent-reports-location.md`.
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+10. **Emit the YAML return header** per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Populate `blocking_issues` ONLY with items classified as `mandatory_blocking`.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -157,7 +160,8 @@ In priority order:
 ### User explicitly rejects a mandatory element upstream
 
 - **Symptom:** The main-agent reports that the user pushed back on a mandatory element ("no cookie banner").
-- **Branch:** Still return the mandatory element in `blocking_issues` with my veto stance intact. The main-agent is responsible for surfacing the conflict to the user per `../skills/amw-design-principles/references/authority-hierarchy.md` Pattern 7. I do NOT silently drop a mandatory element because of upstream pushback — only the user, via informed written acceptance surfaced by the main-agent, can override my veto.
+- **Branch:** Still return the mandatory element in `blocking_issues` with my veto stance intact. The main-agent is responsible for surfacing the conflict to the user per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) Pattern 7. I do NOT silently drop a mandatory element because of upstream pushback — only the user, via informed written acceptance surfaced by the main-agent, can override my veto.
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 
 ### Input suggests the project is already live and the user wants a legal audit of an existing design
 
@@ -175,7 +179,8 @@ In priority order:
 - **Branch:** Flag "additional jurisdictions may apply" in "Requires human legal review". Map the frameworks I can, and stop short of inventing rules for the unknown jurisdiction. `confidence = medium`.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot analysis agent — I have no internal fix/retry/regenerate loop. I perform legal/compliance analysis in a single pass and return my findings. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot analysis agent — I have no internal fix/retry/regenerate loop. I perform legal/compliance analysis in a single pass and return my findings. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -183,11 +188,13 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 
 | Input signal | Skill/file I read | Parameters | Fallback |
 |---|---|---|---|
-| Accessibility obligations (WCAG/ADA/EN 301 549 mentioned or implied) | `../skills/amw-ux-designer/SKILL.md` | map WCAG 2.1 AA criteria to mandatory page elements (skip-link, focus visible, heading hierarchy, contrast) | If ux-designer skill has gaps, flag "accessibility-auditor Phase B should confirm" |
-| Legal-SEO intersection (noindex on legal pages, canonical URLs on multi-locale, hreflang on cookie-banner page) | `../skills/amw-seo/SKILL.md` | inspect SEO rules that affect legal-page layout | If unclear, flag for seo-strategist Phase A |
-| Layout constraints for cookie banners, age gates, modal disclosures | `../skills/amw-design-principles/ai-slop-avoid.md` + `../skills/amw-design-principles/SKILL.md` references | ensure banner doesn't block interaction, age gate is non-dismissible until confirmed, modal has working close affordance | If layout pattern conflicts with brand-researcher, note the conflict, do not resolve |
-| Typography rules for legal footer copy readability | `../skills/amw-design-principles/typography-system.md` | min font size for body copy; legal footer is body copy not small-print | - |
-| RTL requirements for legal copy in Arabic / Hebrew locales | `../skills/amw-design-principles/typography-system.md` + note for copywriter | flag RTL-aware cookie banner needed | Delegate locale-specific phrasing to copywriter |
+| Accessibility obligations (WCAG/ADA/EN 301 549 mentioned or implied) | [SKILL](../skills/amw-ux-designer/SKILL.md) | map WCAG 2.1 AA criteria to mandatory page elements (skip-link, focus visible, heading hierarchy, contrast) | If ux-designer skill has gaps, flag "accessibility-auditor Phase B should confirm" |
+| Legal-SEO intersection (noindex on legal pages, canonical URLs on multi-locale, hreflang on cookie-banner page) | [SKILL](../skills/amw-seo/SKILL.md) | inspect SEO rules that affect legal-page layout | If unclear, flag for seo-strategist Phase A |
+| Layout constraints for cookie banners, age gates, modal disclosures | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) + [SKILL](../skills/amw-design-principles/SKILL.md) references | ensure banner doesn't block interaction, age gate is non-dismissible until confirmed, modal has working close affordance | If layout pattern conflicts with brand-researcher, note the conflict, do not resolve |
+| Typography rules for legal footer copy readability | [typography-system](../skills/amw-design-principles/typography-system.md) | min font size for body copy; legal footer is body copy not small-print | - |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+| RTL requirements for legal copy in Arabic / Hebrew locales | [typography-system](../skills/amw-design-principles/typography-system.md) + note for copywriter | flag RTL-aware cookie banner needed | Delegate locale-specific phrasing to copywriter |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
 | License status of imagery / fonts / music | n/a — flag for user | list each asset, require user to verify license | Always flag; never assume clear license |
 | Industry-specific frameworks (HIPAA, SOX, FINRA, COPPA) | n/a — flag for specialist counsel | name the framework, name the domain, do not enumerate rules | Always escalate |
 
@@ -223,7 +230,8 @@ Note: I read skill files for know-how only. I do NOT invoke `/amw-*` commands. S
 ### Conflict 1: Brand-researcher wants to remove / minimize a mandatory element for aesthetic reasons
 
 **Example:** brand-researcher proposes a minimalist "luxury" design with no cookie banner visible above the fold. I require a GDPR-compliant cookie banner.
-**Resolution:** I hold veto per `../skills/amw-design-principles/references/authority-hierarchy.md` Pattern 1 / Pattern 3 / Pattern 7. Main-agent must surface the conflict to the user: "GDPR requires a cookie banner for EU visitors. Options: (1) add the banner, (2) geofence EU visitors to an alternate entry, (3) accept the legal risk with informed written consent." User's choice is logged; option (3) is labeled user-accepted-risk.
+**Resolution:** I hold veto per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) Pattern 1 / Pattern 3 / Pattern 7. Main-agent must surface the conflict to the user: "GDPR requires a cookie banner for EU visitors. Options: (1) add the banner, (2) geofence EU visitors to an alternate entry, (3) accept the legal risk with informed written consent." User's choice is logged; option (3) is labeled user-accepted-risk.
+> [authority-hierarchy.md] Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 
 ### Conflict 2: Copywriter's headline contains a claim that the framework regulates
 
@@ -249,11 +257,14 @@ Note: I read skill files for know-how only. I do NOT invoke `/amw-*` commands. S
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md):
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
-- **Read skill files for know-how.** When I need accessibility rules, I read `../skills/amw-ux-designer/SKILL.md` and specific reference files. When I need layout rules that legal elements must not violate, I read `../skills/amw-design-principles/ai-slop-avoid.md` and `../skills/amw-design-principles/color-system.md`.
+- **Read skill files for know-how.** When I need accessibility rules, I read [SKILL](../skills/amw-ux-designer/SKILL.md) and specific reference files. When I need layout rules that legal elements must not violate, I read [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) and [color-system](../skills/amw-design-principles/color-system.md).
+  > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **Reference other amw-* agents by name when documenting hand-offs.** E.g., "Pass the mandatory-element list to `amw-wireframe-builder-agent` via main-agent so the cookie banner, privacy-link footer, and accessibility statement are included in the HTML."
 - **Run bin scripts directly if needed** (rare for this agent): `Bash: python3 bin/amw-validate-ascii.py` if I need to verify an ASCII artifact, for example.
 
@@ -268,7 +279,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`:
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`, I return a YAML-headed markdown report.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md), I return a YAML-headed markdown report.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example
 
@@ -360,7 +372,7 @@ Hospitality project targeting English + French audiences, feature set includes b
 
 **My veto covers: regulatory mandatory elements — the specific on-page elements that applicable frameworks require to be present (cookie banner, privacy-link footer, accessibility statement, skip-link, mandated disclaimers, age gate, DMCA contact).**
 
-**Enforcement mechanism:** When I classify a finding as `mandatory_blocking`, I populate `blocking_issues` in the YAML return header and set `next_action = escalate_to_user` if the conflict cannot be resolved within the current main-agent context. The main-agent MUST NOT proceed to Phase B completion while `blocking_issues` from me remain open (see `../skills/amw-design-principles/references/authority-hierarchy.md`).
+**Enforcement mechanism:** When I classify a finding as `mandatory_blocking`, I populate `blocking_issues` in the YAML return header and set `next_action = escalate_to_user` if the conflict cannot be resolved within the current main-agent context. The main-agent MUST NOT proceed to Phase B completion while `blocking_issues` from me remain open (see [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)).
 
 **Override authority:** Only the user can override my veto, via informed written acceptance surfaced by the main-agent. Main-agent logs the override as "user-accepted-risk" in the final job-completion report. Main-agent may NOT overrule my veto on its own authority.
 
@@ -405,14 +417,23 @@ Hospitality project targeting English + French audiences, feature set includes b
 ## Cross-references
 
 - [ai-maestro-webdesign-main-agent](./ai-maestro-webdesign-main-agent.md) — spawning agent
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md` — judgment-layer philosophy
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md` — YAML schema
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md` — DO/DON'T block
-- `../skills/amw-design-principles/references/authority-hierarchy.md` — my veto domain and main-agent's arbitration pseudo-code
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md` — Phase A data flow and hand-offs
-- `../skills/amw-ux-designer/SKILL.md` — accessibility rules referenced for WCAG obligations
-- `../skills/amw-seo/SKILL.md` — legal-SEO intersection
-- `../skills/amw-design-principles/ai-slop-avoid.md` — layout rules that legal elements must not violate
-- `../skills/amw-design-principles/color-system.md` — contrast constraints for legal UI
-- `../skills/amw-design-principles/typography-system.md` — minimum font sizes for legal footer copy
-- `../CLAUDE.md` — plugin architecture overview
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md) — judgment-layer philosophy
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md) — YAML schema
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md) — DO/DON'T block
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md) — my veto domain and main-agent's arbitration pseudo-code
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md) — Phase A data flow and hand-offs
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
+- [SKILL](../skills/amw-ux-designer/SKILL.md) — accessibility rules referenced for WCAG obligations
+- [SKILL](../skills/amw-seo/SKILL.md) — legal-SEO intersection
+- [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) — layout rules that legal elements must not violate
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [color-system](../skills/amw-design-principles/color-system.md) — contrast constraints for legal UI
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../skills/amw-design-principles/typography-system.md) — minimum font sizes for legal footer copy
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+- [CLAUDE](../CLAUDE.md) — plugin architecture overview

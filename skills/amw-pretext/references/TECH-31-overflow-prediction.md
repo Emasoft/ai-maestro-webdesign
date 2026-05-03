@@ -56,4 +56,5 @@ if (layout(prepare('Get Started Now →', '14px Inter'), 80, 20).lineCount > 1) 
 
 - Related: TECH-27-auto-fit-font-size, TECH-08-measure-natural-width
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

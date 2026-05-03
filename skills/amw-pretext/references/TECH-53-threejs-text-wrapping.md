@@ -7,6 +7,16 @@ also-in: pretext-skill-main/patterns.md (3D Text Wrapping)
 
 # Three.js — text wrapping around 3D objects
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** 3d
 **Status:** demo-only
 
@@ -44,4 +54,5 @@ Conceptual only — the full demo is in `pretext-threejs-viral-frontend-design.z
 
 - Related: TECH-20-polygon-obstacle-mask, TECH-23-animated-obstacle-reflow, TECH-54-splat-editor
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

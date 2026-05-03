@@ -7,6 +7,17 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/prom
 
 # TECH-graph-json-schema
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Constraints](#constraints)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Defines the canonical **layered graph JSON** that all four output formats
@@ -118,9 +129,14 @@ SaaS analytics platform, 4 layers × 9 nodes × 8 edges:
 ## Cross-references
 
 - [formats](formats.md) — the four transforms that consume this schema
+  > Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 - [validation](validation.md) — Stage 1 validation rules
+  > Stage 1 — Graph Validation (all formats) · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Stage 2 — Format Validation · Format: `graph` · Format: `mermaid` · Format: `svg` · Format: `png` · Validation Summary (quick reference) · **Stage 1 — Graph validation**: structural checks on the graph JSON. · **Stage 2 — Format validation**: surface-level checks on the rendered output.
 - [TECH-layer-palette-5-colors](TECH-layer-palette-5-colors.md) — the fixed palette for layer colors
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-edge-budget-rule](TECH-edge-budget-rule.md) — `floor(n × 0.8)` cap
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — validation catalogue
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -26,7 +26,7 @@ Ships 161 curated color palettes, each labeled by industry fit and emotional moo
 
 ## When to use
 
-Fallback flow only. When `ui-ux-reasoning` is routed to and must return three palette candidates, this catalog is the source. Each candidate must be re-expressed in oklch (via `../../amw-design-principles/color-system.md`) before it reaches downstream output. Palettes that cannot be cleanly oklch-ified are dropped.
+Fallback flow only. When `ui-ux-reasoning` is routed to and must return three palette candidates, this catalog is the source. Each candidate must be re-expressed in oklch (via [color-system](../../amw-design-principles/color-system.md)) before it reaches downstream output. Palettes that cannot be cleanly oklch-ified are dropped.
 
 Do NOT use in the happy-path flow — there the brand tokens are already defined via `design-extract` or user input.
 
@@ -77,7 +77,8 @@ print(ds.css_variables)
 
 ## Gotchas
 
-- Hex values in the raw catalog are sRGB — they must be converted to oklch (`../../amw-design-principles/color-system.md`) before entering the plugin's token pipeline.
+- Hex values in the raw catalog are sRGB — they must be converted to oklch ([color-system](../../amw-design-principles/color-system.md)) before entering the plugin's token pipeline.
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - Some palettes include purple-pink gradients or neon accents that are on the ai-slop list. Filter before emission.
 - Industry fit is a hint, not a constraint — a "clinical trust" palette can work for a B2B SaaS onboarding flow even though the catalog tags it for healthcare.
 - Contrast is not guaranteed across all pairings. Always check `--background / --text` and `--cta / --background` against WCAG 4.5:1 before finalizing.
@@ -85,7 +86,12 @@ print(ds.css_variables)
 ## Cross-references
 
 - [TECH-uiux-rules-catalog](TECH-uiux-rules-catalog.md) — rules that reference palette moods
+  > What it does · When to use · How it works · Minimal example · Gotchas · Top 10 distinctive rules — broken out as individual TECH files · Cross-references
 - [TECH-uiux-styles-catalog](TECH-uiux-styles-catalog.md) — styles that pair with palettes
-- `../../amw-design-principles/color-system.md` — oklch structure all palettes conform to
-- `../../amw-design-principles/ai-slop-avoid.md`
-- `../SKILL.md`
+  > What it does · When to use · How it works · Representative styles (partial list — full 67 are in the upstream corpus) · Minimal example · Gotchas · Cross-references
+- [color-system](../../amw-design-principles/color-system.md) — oklch structure all palettes conform to
+  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [ai-slop-avoid](../../amw-design-principles/ai-slop-avoid.md)
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [SKILL](../SKILL.md)

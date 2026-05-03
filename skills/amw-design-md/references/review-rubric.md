@@ -2,8 +2,6 @@
 
 - [Output schema](#output-schema)
 - [Structural checks (must-pass)](#structural-checks-must-pass)
-  - [Variant 1 (canonical)](#variant-1-canonical)
-  - [Variant 2 (community)](#variant-2-community)
 - [Token-quality checks (must-pass — both variants)](#token-quality-checks-must-pass-both-variants)
 - [Sync checks (must-pass — when companion files exist)](#sync-checks-must-pass-when-companion-files-exist)
 - [Content-integrity checks (soft — affects score)](#content-integrity-checks-soft-affects-score)
@@ -179,8 +177,11 @@ After authoring a draft DESIGN.md, the author agent:
 ## Cross-references
 
 - [audit-passes](./audit-passes.md) — 5-pass audit (broader than the rubric)
+  > Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - [community-9-section-spec](./community-9-section-spec.md) — Variant 2 spec
+  > Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
 - `../../../bin/amw-design-md-validate.py` — runs `S*` / `T*` checks
 - `../../../bin/amw-design-md-contrast.py` — runs `A1` / `A2`
 - `../../../bin/amw-design-md-lint.sh` — runs the official linter

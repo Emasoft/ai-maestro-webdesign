@@ -88,4 +88,6 @@ Every heading maps to a question the user might have. The outline reflects real 
 ## Cross-references
 
 - [TECH-seo-eeat](TECH-seo-eeat.md), [TECH-seo-ai-content](TECH-seo-ai-content.md), [TECH-seo-structured-data](TECH-seo-structured-data.md)
-- `../SKILL.md`
+  > [TECH-seo-ai-content.md] What it does · When to use · How it works · Effective use · Risky use · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

@@ -7,6 +7,16 @@ also-in: SKILL-11.md
 
 # Dragon text reflow (text flowing around an 80-segment creature)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** motion
 **Status:** demo-only
 
@@ -41,4 +51,5 @@ Not a few-line snippet. See community demos at https://chenglou.me/pretext/ and 
 
 - Related: TECH-23-animated-obstacle-reflow, TECH-24-carve-text-line-slots
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

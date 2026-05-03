@@ -175,6 +175,7 @@ No extension match, no content to sniff → **unknown**. Exit 1.
 2. **Multi-format files** (e.g. `.html` with embedded `data:image/svg+xml`) classify as the outer format only. The dispatcher relies on this — inner content is handled by the per-format parsers.
 3. **Compressed / binary SVG** (`svgz`) is NOT supported. Users must decompress first.
 4. **Mixed-ASCII** (ASCII + Unicode + emoji) classifies as ASCII, but `bin/amw-validate-ascii.py` will flag the emoji / Unicode as "forbidden" at validation time (see [validation-dispatcher](./validation-dispatcher.md)).
+  > Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · 1 ASCII — `bin/amw-validate-ascii.py` (primary) and `bin/amw-validate-ascii.py` (fallback) · 2 SVG — `bin/amw-validate-svg-diagram.sh` · 3 HTML — `bin/amw-validate-html-diagram.sh` · 4 Mermaid — `bin/amw-mermaid-lint.sh` · Caller integration patterns · 1 Post-create gate · 2 Post-convert gate · 3 Modify-flow loop · 4 Multi-format mode (ascii-validator) · Known limitations (Phase 0) · Related references
 
 ## 6. Callers
 
@@ -195,8 +196,10 @@ Add a new format (e.g. Graphviz DOT, PlantUML) by:
    - An extension dispatch rule (`.dot`, `.puml`).
    - A content-sniff rule (first-line keyword: `graph G`, `@startuml`).
 3. Add the new format to the enum in `../schema.json::source_format` and bump the IR version per [ir-schema](./ir-schema.md) §6.
+  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 4. Update [conversion-matrix](./conversion-matrix.md) with a new row and column.
+  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
 5. Add the per-format parser / emitter / validator in `bin/`.
-6. Update `../SKILL.md` reference index.
+6. Update [SKILL](../SKILL.md) reference index.
 
 All five steps must land in one commit. A half-landed format is worse than no format.

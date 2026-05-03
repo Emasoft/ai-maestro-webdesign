@@ -16,6 +16,7 @@
 **Adapted from:** `docs_dev/extracted/google-labs/MDDesign-main/MDDesign-main/commands/critique.md` (Apache-2.0). The MDDesign skill defines a 5-pass audit; this file ports the audit dimensions to the plugin's `amw-design-md-auditor-agent` and the `bin/amw-design-md-validate.py` offline validator.
 
 The 5-pass audit is broader than [review-rubric](review-rubric.md). The rubric is a structured pass/fail checklist for a single file; the audit examines a DESIGN.md against the **actual code** of the project that uses it, looking for drift, orphan tokens, contrast failures, and consistency gaps.
+> [review-rubric.md] Output schema · Structural checks (must-pass) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 
 The auditor produces `<DESIGN.md>.critique.md` adjacent to the input, listing findings with stable IDs (`F1`, `F2`, ...) and proposed fixes. The auditor never edits DESIGN.md itself.
 
@@ -222,10 +223,13 @@ Before starting Pass 1:
 ## Cross-references
 
 - [review-rubric](./review-rubric.md) — single-file pass/fail checklist
+  > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - [community-9-section-spec](./community-9-section-spec.md) — Variant 2 spec
+  > Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
 - `../../../bin/amw-design-md-lint.sh` — official linter
 - `../../../bin/amw-design-md-validate.py` — pure-Python validator
 - `../../../bin/amw-design-md-contrast.py` — contrast checker
 - `../../../bin/amw-design-md-from-codebase.py` — codebase scanner (used in Pass 2)
-- `../../../agents/amw-design-md-auditor-agent.md` — the agent that runs the 5 passes
+- [amw-design-md-auditor-agent](../../../agents/amw-design-md-auditor-agent.md) — the agent that runs the 5 passes

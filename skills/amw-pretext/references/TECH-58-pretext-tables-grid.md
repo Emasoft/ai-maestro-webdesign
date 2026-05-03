@@ -66,4 +66,5 @@ See pretext-tables-main `GridTable`, `SpanningTable`, `ColumnControlsTable`, `Dr
 
 - Related: TECH-56-pretext-tables-virtualized
 - API reference: [TECH-03-layout](TECH-03-layout.md)
+  > What it does · When to use · How it works · Minimal example · Return value · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

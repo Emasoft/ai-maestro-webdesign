@@ -102,9 +102,11 @@ tight, but stay on the 4px grid.
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [TECH-type-nested](TECH-type-nested.md) — for containment hierarchy
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-type-pyramid](TECH-type-pyramid.md) — if the hierarchy is ranked rather than strictly
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   parent-child
-- `../../amw-ascii-diagrams-reference/SKILL.md` — ASCII tree cousin for
+- [SKILL](../../amw-ascii-diagrams-reference/SKILL.md) — ASCII tree cousin for
   terminal documentation

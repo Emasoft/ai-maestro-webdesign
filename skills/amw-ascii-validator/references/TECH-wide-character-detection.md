@@ -7,6 +7,16 @@ also-in: ascii-diagram-validator-main/validate_ascii.pl, ascii-diagram-validator
 
 # TECH-wide-character-detection — flag CJK/emoji double-width chars
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The validator walks every character in every line, computes its display
@@ -57,7 +67,9 @@ Good: │ Hello [!] World │      ← bracket marker = 1 col, frame stays align
 
 ## Cross-references
 
-- `../../amw-ascii-creator/references/TECH-78-column-cap.md`
+- [TECH-78-column-cap](../../amw-ascii-creator/references/TECH-78-column-cap.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

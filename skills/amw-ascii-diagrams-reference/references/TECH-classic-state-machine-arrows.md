@@ -75,6 +75,7 @@ the canonical TCP connection state diagram (`CLOSED → OPENING → CONNECTED
 ## Cross-references
 
 - [state-machines](./state-machines.md) (legacy pattern file)
-- `../../amw-text-visual-state/references/TECH-state-guards-and-actions.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [TECH-state-guards-and-actions](../../amw-text-visual-state/references/TECH-state-guards-and-actions.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

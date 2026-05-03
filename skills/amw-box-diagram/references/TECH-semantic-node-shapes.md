@@ -7,6 +7,16 @@ also-in: box-diagram-master/skills/amw-box-diagram/SKILL.md, diagram-skill-main/
 
 # TECH-semantic-node-shapes — DB / queue / external / decision glyphs
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Uses different node shapes to distinguish types of nodes in an
@@ -58,7 +68,9 @@ Database:        Queue:          External:
 ## Cross-references
 
 - [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
-- `../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md`
-- `../../amw-ascii-creator/SKILL.md` (style presets)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-arrow-vocabulary](../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-ascii-creator/SKILL.md) (style presets)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -6,7 +6,7 @@ version: 0.2.0
 
 # Diagram Architecture
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > This skill is an executor. Triggers are architecture-diagram-specific only.
 
 ## Overview
@@ -24,7 +24,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 OUTPUT (Phase B). Structural architecture diagrammer — transforms a free-text system description into a single layered diagram rendered in the caller's chosen format. One graph, three surfaces: canvas-renderable graph JSON, SVG, or PNG (SVG + export instructions). Visual quality is a first-class constraint: 3–5 layers, 6–12 nodes, balanced layouts, bounded edges — a clean 8-node diagram always beats a cluttered 18-node one.
 
-**Mermaid output is intentionally NOT emitted by this skill.** Per CLAUDE.md's one-renderer rule, all Mermaid generation routes through `../amw-mermaid-diagram/SKILL.md` (source authoring, 9 grammars) and `../amw-mermaid-render/SKILL.md` (rendering to SVG/ASCII). When Mermaid output is requested, this skill produces graph JSON; hand the JSON to `amw-mermaid-diagram` to emit Mermaid source.
+**Mermaid output is intentionally NOT emitted by this skill.** Per CLAUDE.md's one-renderer rule, all Mermaid generation routes through [SKILL](../amw-mermaid-diagram/SKILL.md) (source authoring, 9 grammars) and [SKILL](../amw-mermaid-render/SKILL.md) (rendering to SVG/ASCII). When Mermaid output is requested, this skill produces graph JSON; hand the JSON to `amw-mermaid-diagram` to emit Mermaid source.
 
 ## Trigger conditions
 
@@ -377,7 +377,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-diagram-architecture/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -386,7 +386,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. graph JSON / layered SVG / PNG export). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. graph JSON / layered SVG / PNG export). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -414,15 +414,15 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Resources
 
-- `../amw-design-principles/color-system.md` — when emitting SVG palettes, prefer mapping the five-layer hex palette into oklch for print/contrast parity with the rest of the plugin's output surface
-- `../amw-design-principles/typography-system.md` — node label and description legibility must respect the minimum-font thresholds (desktop body ≥ 16px, slides ≥ 24px) when the SVG is scaled for presentation
+- [color-system](../amw-design-principles/color-system.md) — when emitting SVG palettes, prefer mapping the five-layer hex palette into oklch for print/contrast parity with the rest of the plugin's output surface
+- [typography-system](../amw-design-principles/typography-system.md) — node label and description legibility must respect the minimum-font thresholds (desktop body ≥ 16px, slides ≥ 24px) when the SVG is scaled for presentation
 - `../../bin/amw-svg-render.py` — visual-verify loop for the SVG / PNG output paths; renders the generated SVG so the caller can confirm layout before delivery
 - `../../bin/amw-ascii-render.py` — perfect-ASCII renderer; used by the versioning layer to preview saved versions inline in chat (layers / diagram / sequence JSON modes)
-- `../amw-ascii-validator/SKILL.md` — owns the ASCII render + validate contract; the versioning layer consumes `bin/amw-ascii-render.py` via the interface documented there
-- `../amw-diagram-editorial/SKILL.md` — route here when the request is editorial-infographic-style rather than architecture-layered (timelines, comparison tables, dense narrative)
-- `../amw-diagram-svg/SKILL.md` — route here for freeform, non-layered, single-figure SVGs (icons, illustrations, custom diagrams)
-- `../amw-ascii-to-svg/SKILL.md` — receives routing when the user pastes an ASCII architecture sketch; that skill may defer here when the subject is a layered architecture rather than a freeform figure
-- `../amw-ux-flows/SKILL.md` — the sibling for user-journey / task-flow / onboarding-funnel charts (not architecture)
+- [SKILL](../amw-ascii-validator/SKILL.md) — owns the ASCII render + validate contract; the versioning layer consumes `bin/amw-ascii-render.py` via the interface documented there
+- [SKILL](../amw-diagram-editorial/SKILL.md) — route here when the request is editorial-infographic-style rather than architecture-layered (timelines, comparison tables, dense narrative)
+- [SKILL](../amw-diagram-svg/SKILL.md) — route here for freeform, non-layered, single-figure SVGs (icons, illustrations, custom diagrams)
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — receives routing when the user pastes an ASCII architecture sketch; that skill may defer here when the subject is a layered architecture rather than a freeform figure
+- [SKILL](../amw-ux-flows/SKILL.md) — the sibling for user-journey / task-flow / onboarding-funnel charts (not architecture)
 - `/amw-ascii-to-svg` — the user-facing slash command that routes here when the pasted ASCII is architectural in nature
 - [prompts](references/prompts.md) — verbatim LLM system prompt, API call pattern, and JSON-repair recipe
 - [validation](references/validation.md) — Stage 1 (graph) and Stage 2 (format) validation checks and fixes
@@ -442,7 +442,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
   - Layer 3 — logic / services / agents: `oklch(65% 0.13 190)` / hex `#4FA9A3` (teal-accent)
   - Layer 4 — tools / integrations: `oklch(78% 0.14 85)` / hex `#D9A441` (amber-accent)
   - Layer 5 — data / storage: `oklch(60% 0.09 140)` / hex `#6E9B6A` (sage-accent)
-  The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by `../amw-design-principles/ai-slop-avoid.md` item #1. Substituting tokens from `../amw-design-principles/color-system.md` is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
+  The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item #1. Substituting tokens from [color-system](../amw-design-principles/color-system.md) is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
 - **Validation is mandatory, not advisory.** Every Stage 1 and Stage 2 check must pass before return. Surfacing an error to the caller is the last resort — apply the listed fixes first, regenerate if the triggers fire.
 
 ## Error Handling

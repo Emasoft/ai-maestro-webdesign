@@ -7,6 +7,16 @@ also-in: diagram-skill-main/ASCII-STYLES.md
 
 # TECH-async-arrow-vocabulary — `-->` / `==>` / `~~>` / `..>` distinctions
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Differentiates sync / emphasized / async / optional transitions in a
@@ -61,7 +71,10 @@ for sync calls within one diagram.
 ## Cross-references
 
 - [TECH-flowchart-paren-bracket-glyphs](./TECH-flowchart-paren-bracket-glyphs.md)
-- `../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md`
-- `../../amw-box-diagram/references/TECH-arrow-head-variants.md`
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-arrow-vocabulary](../../amw-diagram-architecture/references/TECH-arrow-vocabulary.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [TECH-arrow-head-variants](../../amw-box-diagram/references/TECH-arrow-head-variants.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

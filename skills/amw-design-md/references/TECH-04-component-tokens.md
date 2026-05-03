@@ -8,6 +8,23 @@ status: stable
 
 # TECH: Component tokens authoring
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [Hard rules](#hard-rules)
+  - [Property whitelist (per spec.md L312-L319)](#property-whitelist-per-specmd-l312-l319)
+  - [Variant naming convention](#variant-naming-convention)
+  - [Composite token references allowed inside `components.*`](#composite-token-references-allowed-inside-components)
+- [Common component patterns](#common-component-patterns)
+  - [Button (primary/secondary/ghost)](#button-primarysecondaryghost)
+  - [Input](#input)
+  - [Card](#card)
+  - [Chip / Badge](#chip-badge)
+- [Hover-state derivation strategies](#hover-state-derivation-strategies)
+- [Anti-patterns](#anti-patterns)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Documents the `components:` frontmatter map. Covers naming, variants, properties, and the special permission for composite token references inside component values.
@@ -204,6 +221,10 @@ This is accepted; the AI agent reads the prose and applies the derivation to the
 ## Cross-references
 
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+  > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-05-token-references](./TECH-05-token-references.md) — `{path.to.token}` syntax
+  > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how wireframe-builder consumes these tokens
-- `canonical-spec-google-alpha.md` — full Components spec
+  > What it does · When this TECH applies · The wireframe-builder's flow when DESIGN.md is the input · Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape · Component tokens — direct passthrough · Failure paths · DESIGN.md fails lint · DESIGN.md is Variant 2 · DESIGN.md missing required fields · CLAUDE.md-coupled projects · Companion-file consumption · Symmetry with non-DESIGN.md inputs · Cross-references
+- [canonical-spec-google-alpha](canonical-spec-google-alpha.md) — full Components spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references

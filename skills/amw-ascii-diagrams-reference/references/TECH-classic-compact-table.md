@@ -69,8 +69,10 @@ and status-code tables where visual ceremony is overhead.
 
 ## Cross-references
 
-- `../../amw-ascii-creator/references/TECH-render-mode-table.md` (JSON-driven,
+- [TECH-render-mode-table](../../amw-ascii-creator/references/TECH-render-mode-table.md) (JSON-driven,
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   supports cell-spans, multi-row headers)
 - [sequences-tables](./sequences-tables.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Sequence Diagrams · Tables
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

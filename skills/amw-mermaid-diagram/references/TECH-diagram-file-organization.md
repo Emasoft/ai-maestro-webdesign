@@ -90,8 +90,10 @@ done
 
 ## Cross-references
 
-- `../../amw-mermaid-render/references/TECH-batch-rendering.md` — the
+- [TECH-batch-rendering](../../amw-mermaid-render/references/TECH-batch-rendering.md) — the
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   batch script.
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — what goes inside each file.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

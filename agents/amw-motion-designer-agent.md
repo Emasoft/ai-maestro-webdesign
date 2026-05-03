@@ -145,7 +145,8 @@ A missing required field (`artifact_url_or_brief`, `motion_intents`, `prefers_re
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -208,9 +209,12 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 10. **Produce JS orchestration file** (if any JS-driven animations exist). A single `<slug>-motion.js` module that sets up Intersection Observers, event listeners, and View Transitions API calls. Self-contained, no framework dependencies unless `animation_library` is specified.
 
-11. **Run AI-slop avoidance check.** Read `../skills/amw-design-principles/ai-slop-avoid.md`. Flag: overuse of parallax (performance trap), infinite scroll animations without user intent, bouncing/spinning logo animations (decoration without function).
+11. **Run AI-slop avoidance check.** Read [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md). Flag: overuse of parallax (performance trap), infinite scroll animations without user intent, bouncing/spinning logo animations (decoration without function).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 
-12. **Assemble return contract.** Populate YAML header per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-motion-designer-<slug>.md`.
+12. **Assemble return contract.** Populate YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-motion-designer-<slug>.md`.
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ---
 
@@ -238,7 +242,8 @@ Action: add `warnings` entry: "10+ distinct animation intents on one page risks 
 Action: `status=failed`, `blocking_issues=["Framer Motion requires a React runtime — incompatible with static-html target_stack. Use css-only, animations-html, anime-js, or gsap for static targets."]`, `next_action=retry_with:compatible_animation_library`.
 
 ### Iteration cap (one-shot)
-Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one-shot spec-generation agent — I have no internal fix/retry/regenerate loop. I produce animation specs and CSS/JS in a single pass; incompatible combinations result in `status=failed` rather than an internal retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot spec-generation agent — I have no internal fix/retry/regenerate loop. I produce animation specs and CSS/JS in a single pass; incompatible combinations result in `status=failed` rather than an internal retry cycle. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -247,22 +252,35 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, I am a one
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
 | Always — animation baseline | `../skills/amw-design-principles/starter-components/animations.html` | Plugin's ~50-LOC timeline core; use before external libraries |
-| Motion technique guidance — kinetic typography (text reflows as width animates) | `../skills/amw-pretext/references/TECH-33-kinetic-width-animation.md` | Frame-by-frame Canvas/SVG, no Framer/GSAP |
-| Motion technique — wavy / curved baseline | `../skills/amw-pretext/references/TECH-34-wavy-baseline.md` | Per-glyph baseline animation |
-| Motion technique — variable-font per-character waves | `../skills/amw-pretext/references/TECH-42-variable-font-waves.md` | Weight/width axis ripples |
-| Motion technique — glyph morphing (interpolate letterforms) | `../skills/amw-pretext/references/TECH-43-glyph-morphing.md` | Variable-font interpolation |
-| Motion technique — animated obstacle reflow (60 fps text reflow around moving geometry) | `../skills/amw-pretext/references/TECH-23-animated-obstacle-reflow.md` | Live re-layout on rAF |
-| Motion technique — editorial engine (live multi-column reflow) | `../skills/amw-pretext/references/TECH-48-editorial-engine.md` | Multi-column live reflow |
-| Motion technique — dragon text reflow (text flowing around animated creature) | `../skills/amw-pretext/references/TECH-74-dragon-text-reflow.md` | 80-segment animated obstacle |
-| Motion technique — cycling text auto-fit (rotating headlines) | `../skills/amw-pretext/references/TECH-50-cycling-text-autofit.md` | Recompute font-size per cycle |
-| Motion technique — glyph path art (SVG stroke-draw) | `../skills/amw-pretext/references/TECH-52-glyph-path-art.md` | SVG stroke-dasharray animation |
-| Motion technique — splat editor (text wrapping around Gaussian splats in real time) | `../skills/amw-pretext/references/TECH-54-splat-editor.md` | Three.js + pretext bridge |
-| Pretext decision guide (when in doubt about which TECH applies) | `../skills/amw-pretext/SKILL.md` (Technique selection section) | Master TECH-72 decision guide also at `../skills/amw-pretext/references/TECH-72-use-pretext-decision-guide.md` |
+| Motion technique guidance — kinetic typography (text reflows as width animates) | [TECH-33-kinetic-width-animation](../skills/amw-pretext/references/TECH-33-kinetic-width-animation.md) | Frame-by-frame Canvas/SVG, no Framer/GSAP |
+> [TECH-33-kinetic-width-animation.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — wavy / curved baseline | [TECH-34-wavy-baseline](../skills/amw-pretext/references/TECH-34-wavy-baseline.md) | Per-glyph baseline animation |
+> [TECH-34-wavy-baseline.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — variable-font per-character waves | [TECH-42-variable-font-waves](../skills/amw-pretext/references/TECH-42-variable-font-waves.md) | Weight/width axis ripples |
+> [TECH-42-variable-font-waves.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — glyph morphing (interpolate letterforms) | [TECH-43-glyph-morphing](../skills/amw-pretext/references/TECH-43-glyph-morphing.md) | Variable-font interpolation |
+> [TECH-43-glyph-morphing.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — animated obstacle reflow (60 fps text reflow around moving geometry) | [TECH-23-animated-obstacle-reflow](../skills/amw-pretext/references/TECH-23-animated-obstacle-reflow.md) | Live re-layout on rAF |
+> [TECH-23-animated-obstacle-reflow.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — editorial engine (live multi-column reflow) | [TECH-48-editorial-engine](../skills/amw-pretext/references/TECH-48-editorial-engine.md) | Multi-column live reflow |
+> [TECH-48-editorial-engine.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — dragon text reflow (text flowing around animated creature) | [TECH-74-dragon-text-reflow](../skills/amw-pretext/references/TECH-74-dragon-text-reflow.md) | 80-segment animated obstacle |
+> [TECH-74-dragon-text-reflow.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — cycling text auto-fit (rotating headlines) | [TECH-50-cycling-text-autofit](../skills/amw-pretext/references/TECH-50-cycling-text-autofit.md) | Recompute font-size per cycle |
+> [TECH-50-cycling-text-autofit.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — glyph path art (SVG stroke-draw) | [TECH-52-glyph-path-art](../skills/amw-pretext/references/TECH-52-glyph-path-art.md) | SVG stroke-dasharray animation |
+> [TECH-52-glyph-path-art.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Motion technique — splat editor (text wrapping around Gaussian splats in real time) | [TECH-54-splat-editor](../skills/amw-pretext/references/TECH-54-splat-editor.md) | Three.js + pretext bridge |
+> [TECH-54-splat-editor.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+| Pretext decision guide (when in doubt about which TECH applies) | [SKILL](../skills/amw-pretext/SKILL.md) (Technique selection section) | Master TECH-72 decision guide also at [TECH-72-use-pretext-decision-guide](../skills/amw-pretext/references/TECH-72-use-pretext-decision-guide.md) |
+> [TECH-72-use-pretext-decision-guide.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 | `animation_library=framer-motion` | Internalized knowledge of Framer Motion 11 (Variants API, AnimatePresence, layout animation, gesture handlers). Consult global Claude Code skill `framer-motion` if user wants library-specific deep dive (this is NOT a plugin skill — it lives in the user's global skill set). | Variants API, AnimatePresence, layout animation patterns |
 | `animation_library=gsap` | Internalized knowledge of GSAP 3 (Timeline, ScrollTrigger plugin, ease catalog, MotionPath plugin). Consult global Claude Code skill `gsap` for library-specific deep dive (this is NOT a plugin skill). | Timeline, ScrollTrigger, ease catalog |
 | `animation_library=anime-js` | Internalized knowledge of anime.js 3 (lightweight sequencing, SVG animation, stagger). Consult global Claude Code skill `anime-js` for library-specific deep dive (this is NOT a plugin skill). | Lightweight sequencing, SVG animation |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Catch parallax overuse, infinite spinning logos, decorative excess |
-| RTL locale present | `../skills/amw-design-principles/typography-system.md` | Direction-specific transform adjustments (slide-in direction flips for RTL) |
+| AI-slop final gate | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Catch parallax overuse, infinite spinning logos, decorative excess |
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+| RTL locale present | [typography-system](../skills/amw-design-principles/typography-system.md) | Direction-specific transform adjustments (slide-in direction flips for RTL) |
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A only), `amw-wireframe-builder` (peer agent), `amw-video-producer` (different output class).
 
@@ -284,7 +302,8 @@ I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-s
 
 ### What I never delegate to a peer amw-* agent
 
-Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents do not call each other. If I need brand token refinement, I document the gap in `warnings` and let main-agent invoke `amw-brand-researcher-agent`.
+Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents do not call each other. If I need brand token refinement, I document the gap in `warnings` and let main-agent invoke `amw-brand-researcher-agent`.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -309,7 +328,8 @@ Action: specify Framer Motion `AnimatePresence` with `layoutId` for shared eleme
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`. Reproduced here so the protocol is local to this spec.
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md). Reproduced here so the protocol is local to this spec.
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -344,7 +364,8 @@ Enforcement: main-agent's smoke test greps for `/amw-` substrings and broad desi
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-motion-designer-<slug>.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-motion-designer-<slug>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example — `status=ok`
 
@@ -443,7 +464,7 @@ Cannot produce animation spec without a specified reduced-motion behavior. Every
 
 ## 14. Hard Rules / Veto Power
 
-I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` and `amw-accessibility-auditor-agent` per `../skills/amw-design-principles/references/authority-hierarchy.md`.
+I have **NO veto power** over any other agent's recommendations. Veto power is held only by `amw-legal-expert-agent` and `amw-accessibility-auditor-agent` per [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md).
 
 ### Absolute rules (never violate)
 
@@ -475,9 +496,16 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream WCAG 2.3.3 verification
 - `../skills/amw-design-principles/starter-components/animations.html` — plugin's animation timeline core
 - `../skills/amw-pretext/` — motion technique TECH-NN reference files
-- `../skills/amw-design-principles/ai-slop-avoid.md` — decorative animation anti-patterns
-- `../skills/amw-design-principles/references/agent-authoring-philosophy.md`
-- `../skills/amw-design-principles/references/sub-agent-return-contract.md`
-- `../skills/amw-design-principles/references/skill-invocation-protocol.md`
-- `../skills/amw-design-principles/references/authority-hierarchy.md`
-- `../skills/amw-design-principles/references/agent-interaction-patterns.md`
+- [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) — decorative animation anti-patterns
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md)
+  > Skills and agents are not the same kind of thing · What an agent actually needs · Recipe layer (deterministic floor) · Judgment layer (non-deterministic surface) · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
+- [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md)
+  > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
+- [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md)
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
+- [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)
+  > Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · Pattern 1: Visual vs. functional tension · Pattern 2: SEO vs. UX content hierarchy · Pattern 3: Copywriter locale vs. legal disclaimer · Pattern 4: Production agent vs. discovery agent · Pattern 5: Two discovery agents with opposite readings of the same data · Pattern 6: Missing data from a domain · Pattern 7: Upstream contradiction between user and an agent · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
+- [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md)
+  > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement

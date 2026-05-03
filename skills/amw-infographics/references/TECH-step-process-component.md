@@ -156,7 +156,10 @@ For landscape canvases, flip to horizontal:
 ## Cross-references
 
 - [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — when steps aren't numbered.
+  > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
 - [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — the playbook that uses this heavily.
+  > What it does · When to use · Color system · Typography · Standard component prevalence (across 17 pieces) · Visual properties · Signature layout pattern · The amber+blue value split (signature) · The claim-steps horizontal flow · CSS variables · Reference template · Archetype preference · Gotchas · Cross-references
 - [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — horizontal variant uses arrows.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -7,6 +7,18 @@ also-in: image-generation/create-infographics/resources/style-details.md
 
 # Swim-lane architecture diagram
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [CSS](#css)
+- [HTML](#html)
+- [The vertical label trick](#the-vertical-label-trick)
+- [When NOT to use](#when-not-to-use)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Two-tier (or multi-tier) horizontal labeled bands showing protocol
@@ -117,10 +129,13 @@ nodes.
 ## Cross-references
 
 - [TECH-flow-with-arrows-component](TECH-flow-with-arrows-component.md) — the flow-node pattern
+  > What it does · When to use · Horizontal flow — CSS · Vertical connector — CSS · HTML · Arrow icons — Phosphor only · Label rule — mandatory · Gotchas · Cross-references
   inside the lane.
 - [TECH-template-registry](TECH-template-registry.md) — DeFi Protocol template where this
+  > What it does · The shared V4 standards · Crypto / Web3 templates (13) · Generic templates (11) · Template selection by user intent · Usage · Gotchas · Cross-references
   pattern fits.
 - [TECH-hub-spoke-archetype](TECH-hub-spoke-archetype.md) — alternative for hub-centric
+  > What it does · When to use · The shape · CSS implementation · Connection lines — SVG overlay · Gotchas · Cross-references
   architectures.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

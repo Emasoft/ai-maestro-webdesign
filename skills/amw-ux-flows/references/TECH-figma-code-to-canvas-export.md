@@ -7,6 +7,19 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/fi
 
 # TECH-figma-code-to-canvas-export
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Prerequisites (MUST be mentioned before any Figma operation)](#prerequisites-must-be-mentioned-before-any-figma-operation)
+  - [Protocol](#protocol)
+  - [Export workflow (once prerequisites are confirmed)](#export-workflow-once-prerequisites-are-confirmed)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Exports the clickable HTML wireframes to Figma as editable frames using
@@ -113,9 +126,13 @@ Agent: [reads references/figma-integration.md, runs the export workflow]
 
 ## Cross-references
 
-- `../SKILL.md` — Figma export section at the end of the workflow
+- [SKILL](../SKILL.md) — Figma export section at the end of the workflow
 - [figma-integration](figma-integration.md) — the detailed steps (loaded only after user
+  > Code to Canvas · Export Workflow
   confirmation)
 - [install-commands](install-commands.md) — MCP install commands
+  > Auxiliary Skills · Figma MCP (only if user requests Figma) · Browser Preview (plugin-standard)
 - [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the wireframes being exported
+  > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
 - [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — source of frame names
+  > What it does · When to use · How it works · Minimal example · Gotchas · Validation pass · Cross-references

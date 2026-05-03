@@ -97,6 +97,10 @@ Email signup form done right:
 ## Cross-references
 
 - [TECH-uxeval-button-conventions](TECH-uxeval-button-conventions.md), [TECH-uxeval-navigation-conventions](TECH-uxeval-navigation-conventions.md)
-- `../../amw-ux-designer/references/TECH-ux-rule-accessibility.md`
-- `../../amw-ux-designer/references/TECH-ux-rule-interaction.md` — microcopy for errors
-- `../SKILL.md`
+  > [TECH-uxeval-navigation-conventions.md] What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
+  > What it does · When to use · How it works · Position · Visual weight · Spacing · Labels · Minimal example · Gotchas · Cross-references
+- [TECH-ux-rule-accessibility](../../amw-ux-designer/references/TECH-ux-rule-accessibility.md)
+  > What it does · When to use · How it works · WCAG AA (minimum floor) — four POUR pillars · Inclusive design patterns (beyond compliance) · Testing checklist · Minimal example · Gotchas · Cross-references
+- [TECH-ux-rule-interaction](../../amw-ux-designer/references/TECH-ux-rule-interaction.md) — microcopy for errors
+  > What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

@@ -83,6 +83,7 @@ After capture, the output directory contains a partial Hyperframes project. The 
 - The output is a starting point, not a ready-to-render composition. Manual curation (adding `data-start`, `data-duration`, timeline scripts) is typically needed.
 - `@hyperframes/cli` is NOT published to npm. Invoke via `(cd external/hyperframes && npx hyperframes capture <url>)` from outside the monorepo.
 - This CLI command automates Step 1 of the 7-step manual pipeline ([TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md)). For full context on what each step produces and how to proceed, read the step-by-step TECH files.
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 
 ## Out of scope for the bridge
 
@@ -91,7 +92,11 @@ The following CLI commands exist in the upstream monorepo but are out of scope f
 ## Cross-references
 
 - [TECH-hyperframes-capture-overview](TECH-hyperframes-capture-overview.md) — full 7-step pipeline overview
+  > What it does · When to use · How it works · Video type reference · Format presets · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md) — manual capture step (what this command automates)
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-cli-render](TECH-hyperframes-cli-render.md) — the final render step
+  > What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
 - [TECH-hyperframes-cli-browser](TECH-hyperframes-cli-browser.md) — Chrome provisioning (required for capture)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Sub-commands · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

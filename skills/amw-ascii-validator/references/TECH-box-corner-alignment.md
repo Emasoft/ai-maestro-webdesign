@@ -7,6 +7,16 @@ also-in: box-diagram-master/skills/amw-box-diagram/validate.py, ascii-diagram-va
 
 # TECH-box-corner-alignment — nested boxes share corner columns
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The validator checks that between any two corner characters on the same line
@@ -57,6 +67,8 @@ Example bug this catches:
 ## Cross-references
 
 - [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-vertical-line-continuity](./TECH-vertical-line-continuity.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -58,4 +58,5 @@ npm smartpage file.md --theme classic
 
 - Related: TECH-27-auto-fit-font-size
 - API reference: [TECH-27-auto-fit-font-size](TECH-27-auto-fit-font-size.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

@@ -117,8 +117,10 @@ black to `(0.9, 0.6, 0.95)` at white.
 ## Cross-references
 
 - [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — uses slope+intercept to compress
+  > What it does · The filter · Parameter walkthrough · When to use · When NOT to use · Usage · Gotchas · Cross-references
   noise.
 - [TECH-material-simulation](TECH-material-simulation.md) — gradient-based material recipes
+  > What it does · Metal (steel / chrome) · Gold · Glass / transparent · Wood · Water · Stone / rock · Fabric / cloth · Gotchas · Cross-references
   (alternative to channel-level grading).
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

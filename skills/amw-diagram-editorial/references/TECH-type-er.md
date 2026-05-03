@@ -131,8 +131,11 @@ Two-entity ER (User 1—∞ Order), accent on the focal entity:
 
 ## Cross-references
 
-- `../SKILL.md` — 13-type table
+- [SKILL](../SKILL.md) — 13-type table
 - [primitive-annotation](primitive-annotation.md) — for in-margin field explanations
+  > When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
 - [design-system](design-system.md) — row-height / font-size rules
+  > Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 - [TECH-type-architecture](TECH-type-architecture.md) — if the intent is component-level topology
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   rather than data schema

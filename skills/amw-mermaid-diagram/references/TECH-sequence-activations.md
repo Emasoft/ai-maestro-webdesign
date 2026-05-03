@@ -95,7 +95,9 @@ sequenceDiagram
 ## Cross-references
 
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — the parent grammar.
+  > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
 - [TECH-sequence-notes-and-loops](TECH-sequence-notes-and-loops.md) — annotations and loops around
+  > What it does · Notes · Loops · Alt/else · `opt` — optional block (one-sided alt) · `par` — parallel block · Minimal example — realistic API flow · Gotchas · Cross-references
   activated regions.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

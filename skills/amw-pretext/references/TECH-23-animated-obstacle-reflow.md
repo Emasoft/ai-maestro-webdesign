@@ -66,4 +66,5 @@ while (cursor) {
 
 - Related: TECH-20-polygon-obstacle-mask, TECH-44-editorial-engine, TECH-54-dragon-text-reflow
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

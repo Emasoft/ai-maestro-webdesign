@@ -7,6 +7,16 @@ also-in: ascii-diagrams-skill-main/references/graphs-annotations.md
 
 # TECH-classic-bit-field-annotation — bit-width register layout
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Renders a register or packed bit-field with a bit-position scale on top,
@@ -64,7 +74,11 @@ With pointer-style annotation (source: graphs-annotations.md lines 23-32):
 ## Cross-references
 
 - [TECH-classic-struct-byte-offsets](./TECH-classic-struct-byte-offsets.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-classic-annotation-pointer-arrows](./TECH-classic-annotation-pointer-arrows.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [data-structures](./data-structures.md), [graphs-annotations](./graphs-annotations.md) (legacy pattern files)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > [graphs-annotations.md] Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
+  > Reference
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

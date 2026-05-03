@@ -92,6 +92,8 @@ Claude: Versiones de auth-flow:
 ## Cross-references
 
 - [TECH-yaml-canonical-schema](./TECH-yaml-canonical-schema.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-export-mermaid-plantuml-d2](./TECH-export-mermaid-plantuml-d2.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

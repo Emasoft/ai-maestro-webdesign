@@ -146,8 +146,12 @@ Three connected nodes with labels:
 
 ## Cross-references
 
-- `../SKILL.md` — structure is mentioned in the Canvas section
+- [SKILL](../SKILL.md) — structure is mentioned in the Canvas section
 - [TECH-canvas-1000x1000](TECH-canvas-1000x1000.md) — the container for this structure
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-arrow-marker-def](TECH-arrow-marker-def.md) — markers that go in `<defs>`
+  > What it does · When to use · How it works · Attribute breakdown · Minimal example · Gotchas · Cross-references
 - [TECH-node-shape-vocabulary](TECH-node-shape-vocabulary.md) — the shapes inside `#nodes`
+  > What it does · When to use · How it works · Example snippets · Gotchas · Cross-references
 - [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — style defaults
+  > What it does · When to use · How it works · Usage pattern · Minimal example · Gotchas · Cross-references

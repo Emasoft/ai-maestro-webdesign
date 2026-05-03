@@ -23,7 +23,7 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 > This skill is GATED to icons / logos / technical SVG / patterns / animations only.
 > Characters, avatars, mascots, figures, animals, and any "draw me X" illustration
 > request are **explicitly forbidden** by `../amw-design-principles/ai-slop-avoid.md`
-> item 3 and by `../SKILL.md` (Scope — what this skill CANNOT produce).
+> item 3 and by [SKILL](../SKILL.md) (Scope — what this skill CANNOT produce).
 >
 > This reference file is retained **for diagnosis only** — if a diagram element
 > happens to share a filter technique (e.g. thick rounded lines for connector
@@ -135,8 +135,11 @@ Offer to generate the static SVG as a starting point for import.
 ## Cross-references
 
 - [TECH-render-verify-loop](TECH-render-verify-loop.md) — the master iteration loop.
+  > What it does · When to use · The six steps · Why the loop script · Iteration guidelines · Minimal example · Gotchas · Cross-references
 - [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — apply per body part once positions
+  > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
   are right.
 - [TECH-reduced-motion](TECH-reduced-motion.md) — accessibility for animated characters.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · The minimum implementation · Why `0.01ms` instead of `0s` · SMIL equivalent · When it's OK to ignore · When it's partially OK · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

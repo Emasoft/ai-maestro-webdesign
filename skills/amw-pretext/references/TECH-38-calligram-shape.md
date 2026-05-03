@@ -56,4 +56,5 @@ const shapes = ['heart', 'circle', 'star', 'wave', 'spiral']
 
 - Related: TECH-19-shaped-container, TECH-39-glyph-mask-calligram
 - API reference: [TECH-05-layout-next-line](TECH-05-layout-next-line.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

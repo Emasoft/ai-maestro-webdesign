@@ -97,8 +97,11 @@ duration rather than removed entirely:
 ## Cross-references
 
 - [TECH-css-smil-animation](TECH-css-smil-animation.md) — the animations this governs.
+  > What it does · The `transform-box` rule · Spinner (CSS) · Line drawing reveal (pathLength + stroke-dasharray) · Staggered entrance · SMIL animation (works in `<img>` tags) · Attribute animation · Transform animation · Motion along a path · Sequential timing via `begin` · Gotchas · Cross-references
 - [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — stars / rain that need this override.
+  > Scope note · What it does · Light rays (god rays) · Fog / mist (masked gradient) · Stars with twinkling · Rain · Clouds · Gotchas · Cross-references
 - [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — animated characters
+  > What it does · The incremental build order · The thick-line trick for static characters · 8-head proportions (standing adult) · For animated characters — React + forward kinematics · Animation timing · When to recommend external tools · Gotchas · Cross-references
   need it too.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

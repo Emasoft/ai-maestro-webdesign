@@ -75,8 +75,8 @@ I activate on **narrow, DESIGN.md-extraction** phrases from main-agent only.
 
 ### Triggers I do NOT respond to
 
-- "design a landing page" → `../skills/amw-design-principles/SKILL.md` (orchestrator)
-- "extract design tokens from <url>" without DESIGN.md keyword → `../skills/amw-design-extract/SKILL.md`
+- "design a landing page" → [SKILL](../skills/amw-design-principles/SKILL.md) (orchestrator)
+- "extract design tokens from <url>" without DESIGN.md keyword → [SKILL](../skills/amw-design-extract/SKILL.md)
 - "create a DESIGN.md for our new product" (creative authoring) → `amw-design-md-author-agent`
 - "audit this DESIGN.md" → `amw-design-md-auditor-agent`
 - "build the HTML for this design" → `amw-wireframe-builder-agent`
@@ -109,7 +109,8 @@ A missing required field for the chosen `input_type` is `status=failed` / `next_
 
 Integrity check: I compute sha256 of the file at `approved_ascii_path` and compare to `approved_ascii_sha256`. On mismatch, I emit `status=failed` with `blocking_issues: ["frozen spec checksum mismatch — main-agent must re-freeze before retry"]`. This catches the case where Phase A output was modified after the spec was frozen.
 
-See `../skills/amw-design-principles/references/phase-a-frozen-spec.md` for the canonical schema.
+See [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) for the canonical schema.
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 ---
 
@@ -127,7 +128,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 5. **Lint before deliver.** `bin/amw-design-md-lint.sh` runs on the produced file before I return. P0/P1 errors that I can fix mechanically (e.g., re-ordering frontmatter keys, normalizing hex case) I fix. Errors that require source-level data I cannot fabricate stay as `blocking_issues` with `status=partial`.
 
-6. **Never re-emit broad design vocabulary in tool calls.** Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`, I never use phrases like "design a landing page" or "build a UI" in my tool-call text — that re-triggers the orchestrator.
+6. **Never re-emit broad design vocabulary in tool calls.** Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md), I never use phrases like "design a landing page" or "build a UI" in my tool-call text — that re-triggers the orchestrator.
+  > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
 
 ---
 
@@ -269,7 +271,8 @@ Action: skip companion generation. The companions would derive from a broken DES
 Action: this is likely a brand-by-design choice (e.g., a low-contrast luxury aesthetic). Surface every failing pair in `warnings`, set `confidence=medium` (not low — extraction itself was faithful), and recommend `amw-accessibility-auditor-agent` for a full audit. Do not modify the source's intentional contrast choices.
 
 ### Iteration cap
-Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
+Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
 
@@ -284,14 +287,21 @@ Per `../skills/amw-design-principles/references/iteration-budget.md`, my lint me
 | Companions requested | `bin/amw-design-md-emit-companions.py` | Emit `tokens.css`, `tokens.json`, `component-inventory.md`, `usage-prompt.md` |
 | Lint gate (all paths) | `bin/amw-design-md-lint.sh` | Structural + semantic validation (P0/P1/P2) |
 | Contrast check (all paths) | `bin/amw-design-md-contrast.py` | WCAG 2.1 AA pair-level contrast verification |
-| Always — DESIGN.md format spec | `../skills/amw-design-md/SKILL.md` | Canonical Variant 1 structure and token contracts |
-| Variant 1 spec details | `../skills/amw-design-md/references/canonical-spec-google-alpha.md` | Field-level spec for every YAML key |
-| Tailwind extraction technique | `../skills/amw-design-md/references/TECH-10-tailwind-conversion.md` | Tailwind theme → DESIGN.md mapping rules |
-| URL extraction technique | `../skills/amw-design-md/references/TECH-07-url-extraction.md` | URL → DESIGN.md flow (delegates to dev-browser) |
-| Codebase extraction technique | `../skills/amw-design-md/references/TECH-08-codebase-extraction.md` | Codebase scan → DESIGN.md flow |
-| Multi-page session needed | `../skills/amw-design-md/references/TECH-09-multipage-extraction.md` | Multi-page session-aware extraction (login + N pages) |
-| AI-slop final gate | `../skills/amw-design-principles/ai-slop-avoid.md` | Ensure no slop patterns in prose sections |
-| Validation failure recovery | `../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md` | What to do when lint fails persistently |
+| Always — DESIGN.md format spec | [SKILL](../skills/amw-design-md/SKILL.md) | Canonical Variant 1 structure and token contracts |
+| Variant 1 spec details | [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) | Field-level spec for every YAML key |
+> [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+| Tailwind extraction technique | [TECH-10-tailwind-conversion](../skills/amw-design-md/references/TECH-10-tailwind-conversion.md) | Tailwind theme → DESIGN.md mapping rules |
+> [TECH-10-tailwind-conversion.md] What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
+| URL extraction technique | [TECH-07-url-extraction](../skills/amw-design-md/references/TECH-07-url-extraction.md) | URL → DESIGN.md flow (delegates to dev-browser) |
+> [TECH-07-url-extraction.md] What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
+| Codebase extraction technique | [TECH-08-codebase-extraction](../skills/amw-design-md/references/TECH-08-codebase-extraction.md) | Codebase scan → DESIGN.md flow |
+> [TECH-08-codebase-extraction.md] What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
+| Multi-page session needed | [TECH-09-multipage-extraction](../skills/amw-design-md/references/TECH-09-multipage-extraction.md) | Multi-page session-aware extraction (login + N pages) |
+> [TECH-09-multipage-extraction.md] What it does · When to use · When NOT to use · Architecture · Session handling · Page-list strategy · A. User provides explicit URL list · B. Crawl mode (limited) · Per-page token aggregation · Colors · Typography · Components · Layout · Provenance annotations · Failure modes · Privacy and credential handling · Cross-references
+| AI-slop final gate | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Ensure no slop patterns in prose sections |
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+| Validation failure recovery | [TECH-14-validation-failure-recovery](../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md) | What to do when lint fails persistently |
+> [TECH-14-validation-failure-recovery.md] What it does · Recovery flowchart · Failure categories · Structural failures (S* — P0, must fix before delivery) · Token-quality failures (T* — P1, must fix before final delivery) · Reference failures (R* — P0) · Accessibility failures (A* — P0 for body text, P1 for others) · Content-integrity failures (C* — P2, warn only) · Iteration cap · What recovery does NOT do · Manual recovery flow for users · Cross-references
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-author-agent` or `amw-design-md-auditor-agent` (peers — route through main-agent).
 
@@ -313,7 +323,8 @@ I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-s
 
 ### What I never delegate to a peer amw-* agent
 
-Per `../skills/amw-design-principles/references/agent-interaction-patterns.md`, sub-agents do not call each other. If I need an additional brand-voice paragraph for `## Overview` and the source did not provide one, I emit `# TODO:` and let main-agent decide whether to spawn `amw-multilanguage-copywriter-agent` for prose authoring after extraction.
+Per [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), sub-agents do not call each other. If I need an additional brand-voice paragraph for `## Overview` and the source did not provide one, I emit `# TODO:` and let main-agent decide whether to spawn `amw-multilanguage-copywriter-agent` for prose authoring after extraction.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 
 ---
 
@@ -335,13 +346,15 @@ Action: this is normal in brand systems (e.g., `primary` and `accent` both `#0a2
 Action: emit them under the closest canonical key. If no canonical key fits, document the orphan tokens in `warnings` and suggest the user run `amw-design-md-auditor-agent` for the structural audit.
 
 ### Pattern 6: User wants Variant 2 (community 9-section) output
-Action: extract to Variant 1 first (canonical). Note in `recommendations` that V1→V2 conversion is not yet implemented in `bin/`; the user can manually re-format the prose sections per `../skills/amw-design-md/references/community-9-section-template.md`.
+Action: extract to Variant 1 first (canonical). Note in `recommendations` that V1→V2 conversion is not yet implemented in `bin/`; the user can manually re-format the prose sections per [community-9-section-template](../skills/amw-design-md/references/community-9-section-template.md).
+> [community-9-section-template.md] Optional extension sections · Validation · Cross-references
 
 ---
 
 ## 12. Skill Invocation Protocol
 
-Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
+Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md).
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ### DO
 
@@ -376,7 +389,8 @@ Per `../skills/amw-design-principles/references/skill-invocation-protocol.md`.
 
 ## 13. Return Contract
 
-Per `../skills/amw-design-principles/references/sub-agent-return-contract.md`. Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-design-md-extractor-<slug>.md`.
+Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Every run ends with a YAML-headed report written to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-design-md-extractor-<slug>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 
 ### Worked example — `status=ok` (URL path with smoke probe)
 
@@ -523,15 +537,21 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-design-md-author-agent](./amw-design-md-author-agent.md) — peer (creative authoring path)
 - [amw-design-md-auditor-agent](./amw-design-md-auditor-agent.md) — downstream consumer (audit the produced DESIGN.md)
 - [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — Phase B consumer of the produced DESIGN.md
-- `../skills/amw-design-md/SKILL.md` — canonical DESIGN.md format and token contracts
-- `../skills/amw-design-md/references/canonical-spec-google-alpha.md` — full Variant 1 spec
-- `../skills/amw-design-md/references/TECH-07-url-extraction.md` — URL extraction technique
-- `../skills/amw-design-md/references/TECH-08-codebase-extraction.md` — codebase extraction technique
-- `../skills/amw-design-md/references/TECH-09-multipage-extraction.md` — multi-page session-aware extraction
-- `../skills/amw-design-md/references/TECH-10-tailwind-conversion.md` — Tailwind config → DESIGN.md
-- `../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md` — lint failure recovery
-- `../skills/amw-dev-browser/SKILL.md` — interactive browser primitive
-- `../skills/amw-design-extract/SKILL.md` — sibling URL-extraction skill (looser format)
+- [SKILL](../skills/amw-design-md/SKILL.md) — canonical DESIGN.md format and token contracts
+- [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) — full Variant 1 spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+- [TECH-07-url-extraction](../skills/amw-design-md/references/TECH-07-url-extraction.md) — URL extraction technique
+  > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
+- [TECH-08-codebase-extraction](../skills/amw-design-md/references/TECH-08-codebase-extraction.md) — codebase extraction technique
+  > What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
+- [TECH-09-multipage-extraction](../skills/amw-design-md/references/TECH-09-multipage-extraction.md) — multi-page session-aware extraction
+  > What it does · When to use · When NOT to use · Architecture · Session handling · Page-list strategy · A. User provides explicit URL list · B. Crawl mode (limited) · Per-page token aggregation · Colors · Typography · Components · Layout · Provenance annotations · Failure modes · Privacy and credential handling · Cross-references
+- [TECH-10-tailwind-conversion](../skills/amw-design-md/references/TECH-10-tailwind-conversion.md) — Tailwind config → DESIGN.md
+  > What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
+- [TECH-14-validation-failure-recovery](../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md) — lint failure recovery
+  > What it does · Recovery flowchart · Failure categories · Structural failures (S* — P0, must fix before delivery) · Token-quality failures (T* — P1, must fix before final delivery) · Reference failures (R* — P0) · Accessibility failures (A* — P0 for body text, P1 for others) · Content-integrity failures (C* — P2, warn only) · Iteration cap · What recovery does NOT do · Manual recovery flow for users · Cross-references
+- [SKILL](../skills/amw-dev-browser/SKILL.md) — interactive browser primitive
+- [SKILL](../skills/amw-design-extract/SKILL.md) — sibling URL-extraction skill (looser format)
 - `../bin/amw-design-md-from-url.sh` — URL extraction driver
 - `../bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver
 - `../bin/amw-design-md-from-codebase.py` — codebase scanner driver

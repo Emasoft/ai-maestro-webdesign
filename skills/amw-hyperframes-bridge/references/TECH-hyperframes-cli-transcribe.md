@@ -106,4 +106,5 @@ npx hyperframes transcribe narration.wav --model medium.en --language en
 ## Cross-references
 
 - [TECH-hyperframes-cli-tts](TECH-hyperframes-cli-tts.md), [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Flags · Voice naming scheme · Speed tuning · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

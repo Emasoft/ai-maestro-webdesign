@@ -74,7 +74,10 @@ python3 bin/amw-validate-ascii.py /tmp/diagram.txt
 ## Cross-references
 
 - [TECH-width-mismatch-rule](./TECH-width-mismatch-rule.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-vertical-line-continuity](./TECH-vertical-line-continuity.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

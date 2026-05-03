@@ -7,6 +7,16 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/scripts/render.mjs
 
 # CLI color overrides — per-invocation theming
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [The seven override flags](#the-seven-override-flags)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 The Pretty-mermaid CLI lets you pass seven optional `--color-name` flags
@@ -70,7 +80,9 @@ node scripts/render.mjs \
 ## Cross-references
 
 - [TECH-enriched-mode](TECH-enriched-mode.md) — the programmatic equivalent for Node/TS.
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-built-in-themes](TECH-built-in-themes.md) — when you'd rather NOT handcraft every token.
+  > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
 - `../../../bin/amw-mermaid-render.sh` — the plugin-shipped shell wrapper.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

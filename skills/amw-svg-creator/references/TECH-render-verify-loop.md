@@ -100,9 +100,12 @@ python3 /path/to/skill/scripts/svg_loop.py finish /home/claude/draft.svg output-
 ## Cross-references
 
 - [TECH-five-zone-lighting](TECH-five-zone-lighting.md) — applied during the assess/fix steps.
+  > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
 - [TECH-multi-stop-gradients](TECH-multi-stop-gradients.md) — the visual quality techniques
+  > What it does · When to use · Sky gradient — 6 stops · Sphere radial — 5 stops with offset focal · The `color-interpolation="linearRGB"` rule · Gotchas · Cross-references
   applied while building.
 - [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — category-specific
+  > What it does · The incremental build order · The thick-line trick for static characters · 8-head proportions (standing adult) · For animated characters — React + forward kinematics · Animation timing · When to recommend external tools · Gotchas · Cross-references
   iteration pattern.
-- [`../SKILL.md`](../SKILL.md) — parent skill
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

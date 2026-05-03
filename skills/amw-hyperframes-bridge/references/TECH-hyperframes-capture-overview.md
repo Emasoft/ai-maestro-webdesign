@@ -84,11 +84,19 @@ Output: `output.mp4`, 1080×1920, 25 sec.
 ## Cross-references
 
 - [TECH-hyperframes-capture-step-1-capture](TECH-hyperframes-capture-step-1-capture.md)
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-2-design](TECH-hyperframes-capture-step-2-design.md)
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-3-script](TECH-hyperframes-capture-step-3-script.md)
+  > What it does · When to use · How it works · Narration style rules · Format · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-4-storyboard](TECH-hyperframes-capture-step-4-storyboard.md)
+  > What it does · When to use · How it works · Asset audit table · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-5-vo](TECH-hyperframes-capture-step-5-vo.md)
+  > What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-6-build](TECH-hyperframes-capture-step-6-build.md)
+  > What it does · When to use · How it works · Per-composition workflow · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-capture-step-7-validate](TECH-hyperframes-capture-step-7-validate.md)
+  > What it does · When to use · How it works · Validate sequence · Gate · Minimal example · Gotchas · Cross-references
 - [TECH-hyperframes-composition-core](TECH-hyperframes-composition-core.md)
-- `../SKILL.md`
+  > What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

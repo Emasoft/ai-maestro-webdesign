@@ -71,6 +71,7 @@ the entry to each lower-row box.
 ## Cross-references
 
 - [TECH-render-mode-layers](./TECH-render-mode-layers.md)
-- `../../amw-box-diagram/SKILL.md` (manual fan-out/fan-in with `┌┬┐`/`└┴┘`)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+- [SKILL](../../amw-box-diagram/SKILL.md) (manual fan-out/fan-in with `┌┬┐`/`└┴┘`)
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

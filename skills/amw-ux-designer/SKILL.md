@@ -6,7 +6,7 @@ version: 0.1.0
 
 # UX Designer
 
-> **Orchestrated by:** `../amw-design-principles/SKILL.md`.
+> **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 
 ## Overview
 
@@ -73,9 +73,9 @@ Invoked by the orchestrator or directly when a UX-process trigger fires. Reads t
 - [visual-design](rules/visual-design.md) — hierarchy, design system essentials
 
 **Handoff:**
-- When the user has a PRD and wants wireframes → route to `../amw-ux-flows/SKILL.md`
-- When the user wants visual design iterations → return methodology output, then route to `../amw-ascii-sketch/SKILL.md` for 3-variant proposals
-- When the user wants validation on an existing design → route to `../amw-ux-evaluator/SKILL.md`
+- When the user has a PRD and wants wireframes → route to [SKILL](../amw-ux-flows/SKILL.md)
+- When the user wants visual design iterations → return methodology output, then route to [SKILL](../amw-ascii-sketch/SKILL.md) for 3-variant proposals
+- When the user wants validation on an existing design → route to [SKILL](../amw-ux-evaluator/SKILL.md)
 
 ## Technique selection
 
@@ -84,6 +84,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 - Which aspect of `ux-designer` is the user asking about?
   - **ux** (11 techniques)
     - [TECH-ux-persona-template](./references/TECH-ux-persona-template.md) — Persona template + good vs bad examples
+      > What it does · When to use · How it works · Minimal example · Good persona · Bad persona · Gotchas · Cross-references
     - [TECH-ux-process-define](./references/TECH-ux-process-define.md) — UX process — Define (Phase 2)
     - [TECH-ux-process-discover](./references/TECH-ux-process-discover.md) — UX process — Discover & Research (Phase 1)
     - [TECH-ux-process-handoff](./references/TECH-ux-process-handoff.md) — UX process — Handoff & Iterate (Phase 5)
@@ -96,6 +97,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
 
 - **[./references/TECH-ux-persona-template.md](./references/TECH-ux-persona-template.md)**
+  > What it does · When to use · How it works · Minimal example · Good persona · Bad persona · Gotchas · Cross-references
   - Description: Persona template + good vs bad examples
   - TOC:
     - What it does
@@ -153,6 +155,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-ux-rule-accessibility.md](./references/TECH-ux-rule-accessibility.md)**
+  > What it does · When to use · How it works · WCAG AA (minimum floor) — four POUR pillars · Inclusive design patterns (beyond compliance) · Testing checklist · Minimal example · Gotchas · Cross-references
   - Description: Rule — Accessibility & Inclusive Design (WCAG AA)
   - TOC:
     - What it does
@@ -162,6 +165,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-ux-rule-ia.md](./references/TECH-ux-rule-ia.md)**
+  > What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
   - Description: Rule — Information Architecture
   - TOC:
     - What it does
@@ -171,6 +175,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-ux-rule-interaction.md](./references/TECH-ux-rule-interaction.md)**
+  > What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references
   - Description: Rule — Interaction Design (flows + microcopy)
   - TOC:
     - What it does
@@ -180,6 +185,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-ux-rule-research.md](./references/TECH-ux-rule-research.md)**
+  > What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
   - Description: Rule — User Research (interviews + personas + synthesis)
   - TOC:
     - What it does
@@ -189,6 +195,7 @@ Every technique in this skill is documented as a single reference file under `./
     - Gotchas
     - Cross-references
 - **[./references/TECH-ux-rule-visual.md](./references/TECH-ux-rule-visual.md)**
+  > What it does · When to use · How it works · Establishing hierarchy · Typography scale · Color usage · Layout · Design-system essentials · Component documentation · Minimal example · Gotchas · Cross-references
   - Description: Rule — Visual Design (hierarchy + design system)
   - TOC:
     - What it does
@@ -207,7 +214,9 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
 - At least one `TECH-*.md` file from `skills/amw-ux-designer/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per `../amw-design-principles/ai-slop-avoid.md` (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -216,7 +225,8 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. UX methodology deliverables — personas, journey maps, IA sitemaps, wireframe instructions). The output path is determined by **project inference**, NOT hardcoded. See [`../amw-design-principles/references/project-output-routing.md`](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. UX methodology deliverables — personas, journey maps, IA sitemaps, wireframe instructions). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -243,11 +253,13 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 **Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
 
 ## Resources
-- `../amw-design-principles/SKILL.md` — orchestrator; applies the three hard rules
-- `../amw-ux-flows/SKILL.md` — PRD → wireframes pipeline (when the user has a PRD)
-- `../amw-ux-evaluator/SKILL.md` — validation at the end of the UX process
-- `../amw-design-principles/question-templates.md` — question patterns for user research
-- `../amw-design-principles/design-heuristics.md` — Gestalt/Fitts/Hick laws for IA and prototyping
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator; applies the three hard rules
+- [SKILL](../amw-ux-flows/SKILL.md) — PRD → wireframes pipeline (when the user has a PRD)
+- [SKILL](../amw-ux-evaluator/SKILL.md) — validation at the end of the UX process
+- [question-templates](../amw-design-principles/question-templates.md) — question patterns for user research
+  > Universal must-ask (every design task) · Context & starting point · Task & goal · Variant dimensions · Tweaks · Hard constraints · Task-specific additions · Landing page / Website · Slides / Deck · App / Prototype · Poster / Single image · Infographic / Data viz · Brand collateral (business cards / invitations / emblems) · Questions NOT to ask · Suggested format · Tip
+- [design-heuristics](../amw-design-principles/design-heuristics.md) — Gestalt/Fitts/Hick laws for IA and prototyping
+  > I. Gestalt's five principles (organizing the visual field) · Proximity · Similarity · Closure · Continuity · Figure-Ground · II. Fitts's Law · Application · III. Hick's Law · Application · Counter-example · IV. Miller's Law (7 ± 2) · Application · V. Jakob's Law · Application · VI. The four dimensions of visual hierarchy · Counter-example (no hierarchy) · Correct example (clear hierarchy) · VII. F-Pattern vs Z-Pattern reading · F-Pattern (long content / text-dense) · Z-Pattern (short content / visually driven) · VIII. Peak-End Rule · Application · IX. Aesthetic-Usability Effect · Self-check list
 - `../amw-design-principles/starter-components/design-canvas.html` — the 8pt-grid canvas where personas land in plan-to-visual handoff.
 
 ## Non-negotiables

@@ -7,6 +7,16 @@ also-in: SKILL-15.md (variable-typographic-ascii.ts)
 
 # Variable Typographic ASCII (Canvas glyph field anchored to measured lines)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** art
 **Status:** stable
 
@@ -44,4 +54,5 @@ See SKILL-15 `demos/variable-typographic-ascii.ts`.
 
 - Related: TECH-37-typographic-ascii, TECH-04-layout-with-lines
 - API reference: [TECH-04-layout-with-lines](TECH-04-layout-with-lines.md)
+  > What it does · When to use · How it works · Minimal example · Return types (source: pretext-skill-master/SKILL.md) · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)

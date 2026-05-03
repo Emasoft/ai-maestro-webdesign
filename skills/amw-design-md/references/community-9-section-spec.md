@@ -288,8 +288,13 @@ The plugin's default canonical output is Variant 1. Variant 2 is accepted as inp
 ## Cross-references
 
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — Variant 1 spec
+  > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - [extension-sections-10-14](./extension-sections-10-14.md) — optional Variant 2 extensions
+  > Section 10 — Naming Convention (Page > Section > Block > Element) · Section 11 — Page Specifications · Section 12 — Composite Components · Section 13 — Token Mapping · Section 14 — i18n References · When to use these extensions · Cross-references · "What to build" (page-level specs, requirements) · Component composition (LoginPage as a unit, not just Button + Input) · Token-to-Tailwind / token-to-CSS-var mapping table · i18n string-resource mapping
 - [community-9-section-template](./community-9-section-template.md) — fillable Variant 2 skeleton
+  > Optional extension sections · Validation · Cross-references
 - [review-rubric](./review-rubric.md) — Variant 2 quality scoring
+  > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
+  > What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references
 - `../../../bin/amw-design-md-convert-v2-to-v1.py` — conversion bin script

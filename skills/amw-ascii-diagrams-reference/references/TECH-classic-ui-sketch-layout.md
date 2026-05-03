@@ -68,8 +68,9 @@ mockups in PRs, issues, and design docs where Figma/Sketch is overhead.
 
 ## Cross-references
 
-- `../../amw-ascii-sketch/SKILL.md`
-- `../../amw-ascii-creator/SKILL.md` (Mode B freeform wireframes)
+- [SKILL](../../amw-ascii-sketch/SKILL.md)
+- [SKILL](../../amw-ascii-creator/SKILL.md) (Mode B freeform wireframes)
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

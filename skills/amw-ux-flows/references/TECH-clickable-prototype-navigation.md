@@ -183,9 +183,12 @@ Home screen with tab bar + navigable cards:
 
 ## Cross-references
 
-- `../SKILL.md` — Phase 3 of the workflow
+- [SKILL](../SKILL.md) — Phase 3 of the workflow
 - [TECH-wireframe-html-mobile-first](TECH-wireframe-html-mobile-first.md) — the full HTML scaffold
+  > What it does · When to use · How it works · Scaffold · Aesthetic tokens · Utility classes · Minimal example · Gotchas · Cross-references
 - [TECH-no-dead-end-screens](TECH-no-dead-end-screens.md) — companion rule (every screen has ≥1
+  > What it does · When to use · How it works · Minimal example · Validation check · Gotchas · Cross-references
   outgoing link)
 - [TECH-wireframe-index-inventory](TECH-wireframe-index-inventory.md) — the inventory that tracks
+  > What it does · When to use · How it works · Minimal example · Gotchas · Validation pass · Cross-references
   link targets

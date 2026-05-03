@@ -7,6 +7,17 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/form
 
 # TECH-arrow-marker-def
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+  - [Attribute breakdown](#attribute-breakdown)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 ## What it does
 
 Defines a reusable **SVG arrowhead marker** in `<defs>`, then applies it
@@ -102,9 +113,13 @@ Two directional edges with arrows:
 
 ## Cross-references
 
-- `../SKILL.md` — defs and marker section
+- [SKILL](../SKILL.md) — defs and marker section
 - [TECH-svg-group-structure](TECH-svg-group-structure.md) — where markers live (always in `<defs>`)
+  > What it does · When to use · How it works · Why this order · Minimal example · Gotchas · Cross-references
 - [TECH-stroke-width-4-palette](TECH-stroke-width-4-palette.md) — arrow colour and stroke coupling
-- `../../amw-diagram-architecture/references/TECH-svg-layered-layout.md` —
+  > What it does · When to use · How it works · Usage pattern · Minimal example · Gotchas · Cross-references
+- [TECH-svg-layered-layout](../../amw-diagram-architecture/references/TECH-svg-layered-layout.md) —
+  > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
   sibling arrow convention with `markerUnits="userSpaceOnUse"`
 - [TECH-svg-animate-motion](TECH-svg-animate-motion.md) — animating dots along an arrow path
+  > What it does · When to use · How it works · Animate a dot along a path (data-in-transit pattern) · Blink a node (alert pattern) · Pulse a ring (activation pattern) · Mandatory attributes · Minimal example · Gotchas · Cross-references

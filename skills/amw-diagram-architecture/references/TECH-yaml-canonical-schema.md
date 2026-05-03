@@ -113,7 +113,10 @@ edges:
 ## Cross-references
 
 - [TECH-version-history-yaml](./TECH-version-history-yaml.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-export-mermaid-plantuml-d2](./TECH-export-mermaid-plantuml-d2.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [formats](./formats.md) (existing reference)
-- [`../SKILL.md`](../SKILL.md) — parent skill
+  > Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
+- [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
 

@@ -110,5 +110,7 @@ Desktop navbar done right:
 ## Cross-references
 
 - [TECH-uxeval-button-conventions](TECH-uxeval-button-conventions.md), [TECH-uxeval-form-conventions](TECH-uxeval-form-conventions.md)
-- `../../amw-ux-designer/references/TECH-ux-rule-ia.md`
-- `../SKILL.md`
+  > What it does · When to use · How it works · Position · Visual weight · Spacing · Labels · Minimal example · Gotchas · Cross-references
+- [TECH-ux-rule-ia](../../amw-ux-designer/references/TECH-ux-rule-ia.md)
+  > What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
+- [SKILL](../SKILL.md)

@@ -7,6 +7,16 @@ also-in: pretext-text-measurement/SKILL.md, SKILL-13.md, pretext-frontend-motion
 
 # Balanced headline (widow-free multiline titles)
 
+## Table of Contents
+
+- [What it does](#what-it-does)
+- [When to use](#when-to-use)
+- [How it works](#how-it-works)
+- [Minimal example](#minimal-example)
+- [Gotchas](#gotchas)
+- [Cross-references](#cross-references)
+
+
 **Category:** typography
 **Status:** stable
 
@@ -56,4 +66,5 @@ h1.style.maxWidth = `${balancedW}px`
 
 - Related: TECH-06-walk-line-ranges, TECH-25-shrinkwrap-width, TECH-49-justification-comparison
 - API reference: [TECH-07-measure-line-stats](TECH-07-measure-line-stats.md)
+  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - Plugin skill: [skills/amw-pretext/SKILL.md](../SKILL.md)
