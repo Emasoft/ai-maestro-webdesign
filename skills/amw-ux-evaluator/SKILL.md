@@ -105,6 +105,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     > What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
   - For "Button conventions (position + visual weight + spacing + labels)" -> [TECH-uxeval-button-conventions](./references/TECH-uxeval-button-conventions.md)
   - For "Form conventions (labels / submit / errors / spacing)" -> [TECH-uxeval-form-conventions](./references/TECH-uxeval-form-conventions.md)
+    > What it does · When to use · How it works · Position · Visual weight · Spacing · Accessibility floor · Minimal example · Gotchas · Cross-references
   - For "Navigation conventions (logo / primary / utilities)" -> [TECH-uxeval-navigation-conventions](./references/TECH-uxeval-navigation-conventions.md)
     > What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
   - For "Output format — structured evaluation report" -> [TECH-uxeval-output-format](./references/TECH-uxeval-output-format.md)
@@ -140,6 +141,10 @@ Every technique in this skill is documented as a single reference file under `./
     - What it does
     - When to use
     - How it works
+    - Position
+    - Visual weight
+    - Spacing
+    - Accessibility floor
     - Minimal example
     - Gotchas
     - Cross-references

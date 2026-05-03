@@ -4,11 +4,6 @@
 
 - [Quick Reference](#quick-reference)
 - [Layout & Font Adjustments Per Platform](#layout-font-adjustments-per-platform)
-  - [Twitter/X (Most Common)](#twitterx-most-common)
-  - [Instagram Post (1:1 Square)](#instagram-post-11-square)
-  - [Instagram Story / TikTok (9:16 Vertical)](#instagram-story-tiktok-916-vertical)
-  - [LinkedIn](#linkedin)
-  - [Pinterest](#pinterest)
 - [Font Size Scaling by Platform](#font-size-scaling-by-platform)
 - [Watermark / Attribution Rule by Platform](#watermark-attribution-rule-by-platform)
 - [export.py Commands by Platform](#exportpy-commands-by-platform)

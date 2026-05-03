@@ -10,8 +10,7 @@
 - [8. Technique catalog](#8-technique-catalog)
 - [9. Failure modes](#9-failure-modes)
 
-
-# SVG — canonical format reference
+## Overview — canonical format reference
 
 This file is the single authoritative spec for SVG within the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts SVG pulls from this file. Format definition, structural primitives, viewport rules, text rendering, rasterization path, validation, and the technique catalog are all below.
 

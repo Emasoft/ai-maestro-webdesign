@@ -72,13 +72,17 @@ The output is the diagram. No prose wrapper, no explanation, unless the caller e
 
 ## Core pipeline
 
-1. **Graph generation** — call the LLM with the verbatim system prompt in [prompts](references/prompts.md) (assistant prefill `{` to force JSON-first output). The prompt encodes the 3–5-layer, 6–12-node, ≤ floor(n × 0.8) edge rules and the five-layer color palette. The JSON response is parsed (and repaired if needed via the recipe in `prompts.md`) to produce the internal graph — the single source of truth for all formats.
+1. **Graph generation** — call the LLM with the verbatim system prompt in [prompts](references/prompts.md) (assistant prefill `{` to force JSON-first output). The prompt encodes the 3–5-layer, 6–12-node, ≤ floor(n × 0.8) edge rules and the five-layer color palette. The JSON response is parsed (and repaired if needed via the recipe in prompts.md) to produce the internal graph — the single source of truth for all formats.
+   > System Prompt · API Call Pattern · JSON Repair
 2. **Stage 1 validation** — run every check in [validation](references/validation.md) § Stage 1 on the raw graph: layer count (2–6 hard, 3–5 preferred), node count (4–14 hard, 8–10 preferred), balanced layout (≤ 5 nodes per layer), label/description quality, edge integrity (no danglers, no self-loops, no reverse duplicates, edge budget enforced), ID integrity, layer-order sequence. Apply every listed fix inline. If re-generation is required (too few layers or nodes), discard and repeat step 1.
+   > Stage 1 — Graph Validation (all formats) · Stage 2 — Format Validation · Validation Summary (quick reference)
 3. **Format transformation** — run the transform matching `output_format`, per [formats](references/formats.md):
+   > Format 1: `graph` (default) · Format 2: `mermaid` · Format 3: `svg` · Format 4: `png`
    - `graph` → return the validated JSON as-is
    - `svg` → run the layout algorithm (820px canvas, 160×64 node cards, centred per-layer rows, cubic-bezier downward edges, defs/grid/arrow marker, accent bars, title block)
    - `png` → same SVG + the standard five-line PNG-export instructions block appended after `</svg>`
 4. **Stage 2 validation** — run the format-specific checks in [validation](references/validation.md) § Stage 2: SVG well-formedness (`<svg>` root + `<defs>` + arrow marker + no unescaped `&` / `<` in text), SVG layout sanity (node count, layer band count, no overflow, no overlap, edges drawn before nodes), PNG (SVG checks + instructions appended after SVG, never before). Apply every listed fix. If any SVG layout-sanity check fails, discard and re-run step 3 from the validated graph.
+   > Stage 1 — Graph Validation (all formats) · Stage 2 — Format Validation · Validation Summary (quick reference)
 5. **Return** — return the output. No prose wrapper.
 
 ## Versioning (optional, opt-in)
@@ -212,8 +216,11 @@ Spanish — "Agrega un servicio de cache", etc.). Translated to English below.
 ## Instructions
 
 1. Call the LLM with the system prompt from [prompts](references/prompts.md) (assistant prefill `{` to force JSON output) to generate the graph; enforce 3–5 layers, 6–12 nodes, and the edge budget rule.
+   > System Prompt · API Call Pattern · JSON Repair
 2. Run Stage 1 validation per [validation](references/validation.md): check layer count, node count, balanced layout, label quality, edge integrity, and ID integrity; apply all listed fixes inline.
+   > Stage 1 — Graph Validation (all formats) · Stage 2 — Format Validation · Validation Summary (quick reference)
 3. Select the output format (`graph`, `svg`, or `png`) and run the matching format transformation from [formats](references/formats.md).
+   > Format 1: `graph` (default) · Format 2: `mermaid` · Format 3: `svg` · Format 4: `png`
 4. Run Stage 2 validation (format-specific checks); fix any SVG well-formedness or layout-sanity issues; if re-generation is required, discard and repeat from step 1.
 5. If versioning is enabled, write the output and update `history.yaml` with the new version entry.
 6. Return the output without a prose wrapper; report artifact paths.
@@ -253,6 +260,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 ## Examples
 
 See the worked examples in the per-mode sub-sections above and in [examples](references/examples.md).
+> Input · Design Decisions · Output 1: `graph` · Output 2: `mermaid` · Output 3: `svg` · Output 4: `png`
 
 ## References
 
@@ -378,6 +386,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-diagram-architecture/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -386,7 +395,10 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. graph JSON / layered SVG / PNG export). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
+1. **Artifact(s)** — the actual work product (e.g. graph JSON / layered SVG / PNG export). The output path is determined by **project inference**, NOT hardcoded. See [project-output-routing](../amw-design-principles/references/project-output-routing.md) for the full detection rules.
+   > When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
+
+   Summary of the priority order:
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -415,7 +427,9 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 ## Resources
 
 - [color-system](../amw-design-principles/color-system.md) — when emitting SVG palettes, prefer mapping the five-layer hex palette into oklch for print/contrast parity with the rest of the plugin's output surface
+  > I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [typography-system](../amw-design-principles/typography-system.md) — node label and description legibility must respect the minimum-font thresholds (desktop body ≥ 16px, slides ≥ 24px) when the SVG is scaled for presentation
+  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
 - `../../bin/amw-svg-render.py` — visual-verify loop for the SVG / PNG output paths; renders the generated SVG so the caller can confirm layout before delivery
 - `../../bin/amw-ascii-render.py` — perfect-ASCII renderer; used by the versioning layer to preview saved versions inline in chat (layers / diagram / sequence JSON modes)
 - [SKILL](../amw-ascii-validator/SKILL.md) — owns the ASCII render + validate contract; the versioning layer consumes `bin/amw-ascii-render.py` via the interface documented there
@@ -425,9 +439,13 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - [SKILL](../amw-ux-flows/SKILL.md) — the sibling for user-journey / task-flow / onboarding-funnel charts (not architecture)
 - `/amw-ascii-to-svg` — the user-facing slash command that routes here when the pasted ASCII is architectural in nature
 - [prompts](references/prompts.md) — verbatim LLM system prompt, API call pattern, and JSON-repair recipe
+  > System Prompt · API Call Pattern · JSON Repair
 - [validation](references/validation.md) — Stage 1 (graph) and Stage 2 (format) validation checks and fixes
+  > Stage 1 — Graph Validation (all formats) · Stage 2 — Format Validation · Validation Summary (quick reference)
 - [formats](references/formats.md) — transform specifications for all four output formats, plus SVG layout constants and height formula
+  > Format 1: `graph` (default) · Format 2: `mermaid` · Format 3: `svg` · Format 4: `png`
 - [examples](references/examples.md) — a fully worked SaaS-analytics-platform example rendered across all four formats
+  > Input · Design Decisions · Output 1: `graph` · Output 2: `mermaid` · Output 3: `svg` · Output 4: `png`
 
 ## Non-negotiables
 
@@ -435,6 +453,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **Layers are the spine.** Every diagram is top-down, strictly layered; nodes connect within their layer's slot first, then across layers.
 - **Edges signal flow, not exhaustion.** Maximum edges = `floor(nodeCount × 0.8)`. Draw only primary data or control flow; drop the rest.
 - **Model freshness.** Use a capable modern Claude Sonnet or Opus (e.g. `claude-sonnet-4-6` or newer). NEVER pin the legacy dated Sonnet-4 snapshot from the 2025-05 series — that snapshot is outdated and scheduled for retirement. Update the model string in [prompts](references/prompts.md) whenever Anthropic ships a newer production model.
+  > System Prompt · API Call Pattern · JSON Repair
 - **No prose wrapper by default.** The output IS the diagram. Add narration only when the caller explicitly asks for it.
 - **Palette coherence.** Five non-adjacent-hue anchors form the canonical identity of this diagram family — each layer gets a distinct hue band so layers remain distinguishable at a glance. Use the oklch values as the primary spec; hex fallbacks are provided for legacy tooling only:
   - Layer 1 — frontend: `oklch(30% 0.04 260)` / hex `#3B4252` (slate-ink)
@@ -442,7 +461,11 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
   - Layer 3 — logic / services / agents: `oklch(65% 0.13 190)` / hex `#4FA9A3` (teal-accent)
   - Layer 4 — tools / integrations: `oklch(78% 0.14 85)` / hex `#D9A441` (amber-accent)
   - Layer 5 — data / storage: `oklch(60% 0.09 140)` / hex `#6E9B6A` (sage-accent)
-  The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item #1. Substituting tokens from [color-system](../amw-design-principles/color-system.md) is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
+  The previous indigo-purple defaults (`#6366F1` / `#8B5CF6`) were retired because they sit in the "purple-blue gradient" band flagged by [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item #1.
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+
+  Substituting tokens from [color-system](../amw-design-principles/color-system.md) is permitted only when the caller has supplied an explicit design-token override; silent recoloring breaks cross-diagram recognisability.
+  > I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **Validation is mandatory, not advisory.** Every Stage 1 and Stage 2 check must pass before return. Surfacing an error to the caller is the last resort — apply the listed fixes first, regenerate if the triggers fire.
 
 ## Error Handling
@@ -451,5 +474,6 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 - **Too-few or too-many layers/nodes** — re-run generation. The skill does not silently stretch (too few) or truncate (too many) — it regenerates. Patching these conditions produces visually incoherent diagrams.
 - **SVG text overflow** — a label longer than `NODE_W = 160px` at 13pt wraps visually ugly. Stage 1.4 fix: truncate to 3 title-case words. If that still overflows, re-run generation and ask the model for a shorter label.
 - **Model timeout / parse failure** — the LLM returned prose instead of JSON, or the JSON is malformed. Apply the `repairAndParse` recipe from [prompts](references/prompts.md) in order (strip fences → extract outermost braces → strip trailing commas → normalise newlines in string values). If both attempts fail, re-run generation once; on a second failure, surface the raw parse error to the caller rather than fabricate a graph.
+  > System Prompt · API Call Pattern · JSON Repair
 - **Auth missing** (embedded / standalone callers only) — `ANTHROPIC_API_KEY` is not set; surface the error immediately, do not retry. Inside Claude.ai / Claude Code, the platform handles auth — this failure mode does not apply.
 - **Empty / too-abstract description** — the caller gave one sentence or a single noun. The prompt explicitly says "infer a clean canonical architecture — do not ask"; the model produces a best-effort default. If the result feels wrong, the caller should re-invoke with more specifics rather than iterate inside this skill.

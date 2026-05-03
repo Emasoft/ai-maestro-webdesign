@@ -11,8 +11,7 @@
 - [9. Technique catalog](#9-technique-catalog)
 - [10. Migration note (2026-04-22)](#10-migration-note-2026-04-22)
 
-
-# HTML — canonical format reference
+## Overview — canonical format reference
 
 This file is the single authoritative spec for HTML diagrams and HTML pages emitted by the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts HTML pulls from this file. Semantic HTML patterns, starter-components mapping, AI-slop-avoid gate, Tweaks invariants, React/Babel pins, ARIA/a11y rules, CSS custom properties, and the full technique catalog (100 techniques, migrated from `ascii-to-html/` into this canonical home) are all below.
 

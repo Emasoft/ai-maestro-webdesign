@@ -521,6 +521,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-mono-mode](./references/TECH-mono-mode.md) — Mono Mode — 2-color theme foundation
   - **shiki** (1 techniques)
     - [TECH-shiki-theme-import](./references/TECH-shiki-theme-import.md) — `fromShikiTheme()` — import any VS Code theme
+      > What it does · When to use · Shiki → diagram token mapping · Minimal example · Gotchas · Cross-references
   - **svg** (1 techniques)
     - [TECH-svg-render-api](./references/TECH-svg-render-api.md) — `renderMermaid()` — Mermaid → SVG
   - **terminal** (1 techniques)

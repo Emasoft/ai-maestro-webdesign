@@ -58,7 +58,7 @@ Derived from 175 real designs. The #1 failure mode is producing something that l
   > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 - **Content format hierarchy.** Tables → bullet lists → flow diagrams → stat callouts → badges. Paragraphs are a last resort, reserved for 1–2 sentence hero intros.
 
-Full design DNA with code samples: [style-details](resources/style-details.md) and [layout-patterns](resources/layout-patterns.md).
+Full design DNA with code samples: see style-details and layout-patterns in Resources.
 
 ## Non-negotiable rules
 
@@ -149,7 +149,7 @@ Use when the user says "show me each", "piece by piece", "step by step", "let me
 4. **Approval gate** — only write approved components to the state file `{cwd}/.infographic/{project}.json`. Verbatim HTML, no re-generation.
 5. **Assemble** on user command (`assemble`, `finalize`, `done`) — stitch approved components, wrap with header/footer, run Reduction Pass, export via `html-export.py`.
 
-Full builder protocol (state file schema, approval vocabulary, assembly rules): [layout-patterns](resources/layout-patterns.md) and the `create-infographics` upstream SKILL.md.
+Full builder protocol (state file schema, approval vocabulary, assembly rules): see layout-patterns and the `create-infographics` upstream SKILL.md (both linked in Resources).
 
 ### B. One-Shot — generate the full infographic in one pass
 
@@ -184,7 +184,7 @@ Copy this checklist and track your progress as you run both passes:
 - [ ] At least one table if data has comparisons/specs/rates.
 - [ ] Content block count meets density target.
 
-**Reduction Pass** — remove gridlines that aren't needed for reading values, axis tick marks where direct labels exist, decorative icons, borders/glows on elements already separated by whitespace, text that repeats what the visual shows. Strictness scales to aesthetic (see [style-details](resources/style-details.md) reduction table). Do NOT reduce information density.
+**Reduction Pass** — remove gridlines that aren't needed for reading values, axis tick marks where direct labels exist, decorative icons, borders/glows on elements already separated by whitespace, text that repeats what the visual shows. Strictness scales to aesthetic (see style-details reduction table in Resources). Do NOT reduce information density.
 
 **Final quality check** — no fabricated data, display font is not banned, Phosphor CDN included, canvas width matches platform, background mode matches request, footer present (unless user said no), all labels directly on charts (annotation-first), logo present (95% of real pieces), type-specific playbook applied if one fits.
 
@@ -227,6 +227,11 @@ exact `TECH-<slug>.md` filename plus a one-line description per technique.
 
 **Token-economics example (One-Shot mode):** Input: a tokenomics brief with allocation %, vesting schedule, and brand color. Routing: `token-economics.html` template, [TECH-token-economics-playbook](references/TECH-token-economics-playbook.md), [TECH-stacked-reference-archetype](references/TECH-stacked-reference-archetype.md), [TECH-svg-pie-chart](references/TECH-svg-pie-chart.md), [TECH-progress-bar-vesting](references/TECH-progress-bar-vesting.md). Output: HTML + retina PNG + PDF at 1080×1440 with 11 content blocks.
 
+> [TECH-token-economics-playbook.md] What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
+> [TECH-stacked-reference-archetype.md] What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
+> [TECH-svg-pie-chart.md] What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
+> [TECH-progress-bar-vesting.md] What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
+
 ## Resources
 
 - [SKILL](../amw-design-principles/SKILL.md) — upstream orchestrator; route here only when the user has structured data and wants a dense editorial graphic.
@@ -241,6 +246,7 @@ exact `TECH-<slug>.md` filename plus a one-line description per technique.
 - [design-brief](resources/design-brief.md) — 5-question intake framework + aesthetic decision table.
   > The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · From raw numbers: · From a topic brief: · Thesis formula: · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
 - [style-details](resources/style-details.md) — full 1062-line design system with component CSS patterns, type playbooks, reduction-pass rules.
+  > [style-details.md] The Big Picture · Visual Treatments (radius, borders, shadows, spacing, decorations) · Composition Components (logos, progress bars, dense tables) · Composition Rules and Atmospheric Depth · Annotation, Typography, Reduction Pass · Reference Image Patterns (Vision Analysis — 12 real pieces)
 - [layout-patterns](resources/layout-patterns.md) — full 842-line layout and archetype scaffold library with CSS grid implementations per archetype.
   > Layout Statistics · Your Dominant Infographic Types · Layout Recipes by Type · TOKEN-ECONOMICS (35% of your work — your specialty) · GAME-OVERVIEW (19% — your #2 type) · ECOSYSTEM (15% — partner/collaboration type) · CRYPTO-EXPLAINER (12% — educational type) · AIRDROP-GUIDE (8% — action-focused type) · NFT-SHOWCASE (5% — collectible type) · DENSE SPACING REFERENCE (apply across ALL types) · Composition Archetype CSS Implementations · ARCHETYPE 1: Stacked Reference (DEFAULT — 70%+ of pieces) · ARCHETYPE 2: Flow Poster · ARCHETYPE 3: Hub & Spoke · ARCHETYPE 4: Stat Poster · ARCHETYPE 5: Cheat Sheet · Stats Bar / KPI Strip (74/175 = 42%)
 - [charts](resources/charts.md) — chart rules (bar / line / pie / radar / stat callouts) with annotation-first placement.
@@ -257,6 +263,7 @@ exact `TECH-<slug>.md` filename plus a one-line description per technique.
 - `examples/` — 15 rendered PNG reference outputs for each template family.
 - `evals/evals.json` — 5 scenario test prompts + expected outcomes.
 - [_index](references/_index.md) — flat alphabetical/numeric catalog of every TECH file with one-line descriptions.
+  > [_index.md] Modes (3) · Archetypes (5) · Playbooks (5 content-type playbooks) · Components (15) · Charts (10) · Color & typography (8) · Copy (3) · Aesthetic systems (3) · Pre-delivery / quality (2) · Pipeline / preview / export (3) · Cross-references
 
 ## Error Handling
 

@@ -3,24 +3,15 @@
 ## Table of Contents
 
 - [The Big Picture](#the-big-picture)
-- [Border Radius](#border-radius)
-- [Card Border Style](#card-border-style)
-- [Shadows & Glow Effects](#shadows-glow-effects)
-- [Spacing System (8px Grid)](#spacing-system-8px-grid)
-- [Decorative Elements & Backgrounds](#decorative-elements-backgrounds)
-- [Logo Treatment (95% of your infographics have logos)](#logo-treatment-95-of-your-infographics-have-logos)
-- [Progress Bars (45/175 designs — 26%)](#progress-bars-45175-designs-26)
-- [Dense Table (Primary Data Component)](#dense-table-primary-data-component)
-- [Composition Rules (from 175 designs)](#composition-rules-from-175-designs)
-- [Atmospheric Depth Techniques (inline, no external files)](#atmospheric-depth-techniques-inline-no-external-files)
-- [Annotation System](#annotation-system)
-- [Premium Typography](#premium-typography)
-- [Reduction Pass Examples](#reduction-pass-examples)
+- [Visual Treatments (radius, borders, shadows, spacing, decorations)](#visual-treatments-radius-borders-shadows-spacing-decorations)
+- [Composition Components (logos, progress bars, dense tables)](#composition-components-logos-progress-bars-dense-tables)
+- [Composition Rules and Atmospheric Depth](#composition-rules-and-atmospheric-depth)
+- [Annotation, Typography, Reduction Pass](#annotation-typography-reduction-pass)
 - [Reference Image Patterns (Vision Analysis — 12 real pieces)](#reference-image-patterns-vision-analysis-12-real-pieces)
 
+## Overview
 
-# Extracted from 175 real infographics via Claude Vision analysis
-# Last updated: March 2026
+Extracted from 175 real infographics via Claude Vision analysis. Last updated: March 2026.
 
 ## The Big Picture
 
@@ -37,7 +28,9 @@
 
 ---
 
-## Border Radius
+## Visual Treatments (radius, borders, shadows, spacing, decorations)
+
+### Border Radius
 
 Your measured border radius distribution across 175 designs:
 
@@ -61,7 +54,7 @@ sharp (0px)          — 3 designs   (2%)  ← rarely
 
 ---
 
-## Card Border Style
+### Card Border Style
 
 ```
 solid-thin border     — 108 designs (62%) ← YOUR DEFAULT
@@ -100,7 +93,7 @@ glow border           — 9 designs   (5%)  ← important cards
 
 ---
 
-## Shadows & Glow Effects
+### Shadows & Glow Effects
 
 **Glow effects used in 75% of your designs** — this is a core signature:
 
@@ -150,7 +143,7 @@ uses glassmorphism      — rare (< 5%)
 
 ---
 
-## Spacing System (8px Grid)
+### Spacing System (8px Grid)
 
 Your measured spacing density:
 ```
@@ -197,7 +190,7 @@ Body font size:           11–13px for dense content, 14px max
 
 ---
 
-## Decorative Elements & Backgrounds
+### Decorative Elements & Backgrounds
 
 ### Background Texture (39% of designs have texture)
 ```
@@ -240,7 +233,9 @@ Common shapes in your work: circles, hexagons, abstract curves, soft blobs, rect
 
 ---
 
-## Logo Treatment (95% of your infographics have logos)
+## Composition Components (logos, progress bars, dense tables)
+
+### Logo Treatment (95% of your infographics have logos)
 
 Your logo placement patterns:
 - **Dual logo lockup** (left brand + right partner) — very common for collab infographics
@@ -265,7 +260,7 @@ Your logo placement patterns:
 
 ---
 
-## Progress Bars (45/175 designs — 26%)
+### Progress Bars (45/175 designs — 26%)
 
 Very common in tokenomics (vesting schedules, allocation bars):
 
@@ -288,7 +283,7 @@ Very common in tokenomics (vesting schedules, allocation bars):
 
 ---
 
-## Dense Table (Primary Data Component)
+### Dense Table (Primary Data Component)
 
 Tables are the designer's #1 data format — more common than charts. Every infographic with comparisons, specs, rates, tiers, or requirements should have one.
 
@@ -345,7 +340,9 @@ Tables are the designer's #1 data format — more common than charts. Every info
 
 ---
 
-## Composition Rules (from 175 designs)
+## Composition Rules and Atmospheric Depth
+
+### Composition Rules (from 175 designs)
 
 ```
 left-aligned dominant    — 155/175 (89%) ← YOUR RULE
@@ -358,7 +355,7 @@ moderate negative space  — most common
 
 ---
 
-## Atmospheric Depth Techniques (inline, no external files)
+### Atmospheric Depth Techniques (inline, no external files)
 
 These techniques add tactile depth without external assets. All are self-contained HTML/CSS/SVG.
 
@@ -509,7 +506,9 @@ Use sparingly — one or two panels maximum. Never the entire background.
 
 ---
 
-## Annotation System
+## Annotation, Typography, Reduction Pass
+
+### Annotation System
 
 Labels live on the chart. Legends are a last resort.
 
@@ -677,7 +676,7 @@ Horizontal reference line with a label — shows target, average, or industry be
 
 ---
 
-## Premium Typography
+### Premium Typography
 
 ### Tabular Numbers
 
@@ -778,7 +777,7 @@ Size alone is weak. Pair size changes with weight changes for clear signal.
 
 ---
 
-## Reduction Pass Examples
+### Reduction Pass Examples
 
 These before/after examples illustrate the reduction pass described in SKILL.md.
 

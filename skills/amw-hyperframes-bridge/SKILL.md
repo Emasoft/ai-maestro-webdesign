@@ -101,6 +101,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    npx hyperframes inspect --json  # abort if any errors (non-zero exit with --strict)
    ```
    See [TECH-hyperframes-cli-lint](./references/TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-validate](./references/TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](./references/TECH-hyperframes-cli-inspect.md).
+   > [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
    > [TECH-hyperframes-cli-inspect.md] What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
 
    > **Gate-sequence note:** The bridge's sequence (`lint → validate → inspect → render`) intentionally extends upstream's (`lint → inspect → preview → render`, see `external/hyperframes/skills/hyperframes-cli/SKILL.md:14-17`) by adding `validate` for unattended Phase B pipelines and dropping `preview` (a developer-loop primitive).
@@ -141,6 +142,7 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
     - [TECH-hyperframes-capture-step-3-script](./references/TECH-hyperframes-capture-step-3-script.md) — Step 3 — Write SCRIPT.md
       > What it does · When to use · How it works · Narration style rules · Format · Gate · Minimal example · Gotchas · Cross-references
     - [TECH-hyperframes-capture-step-4-storyboard](./references/TECH-hyperframes-capture-step-4-storyboard.md) — Step 4 — Write STORYBOARD.md
+      > What it does · When to use · How it works · Asset audit table · Gate · Minimal example · Gotchas · Cross-references
     - [TECH-hyperframes-capture-step-5-vo](./references/TECH-hyperframes-capture-step-5-vo.md) — Step 5 — Generate VO + map timing to beats
     - (see `## References` for the remaining 21 in this group)
 
@@ -191,13 +193,10 @@ Every technique in this skill is documented as a single reference file under `./
     - What it does
     - When to use
     - How it works
+    - Narration style rules
+    - Format
     - Gate
     - Minimal example
-    - Beat 1 (hook)
-    - Beat 2 (problem)
-    - Beat 3 (solution)
-    - Beat 4 (proof)
-    - Beat 5 (CTA)
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-capture-step-4-storyboard.md](./references/TECH-hyperframes-capture-step-4-storyboard.md)**
@@ -206,12 +205,9 @@ Every technique in this skill is documented as a single reference file under `./
     - What it does
     - When to use
     - How it works
+    - Asset audit table
     - Gate
     - Minimal example
-    - Beat 1 (hook, 0-2.5 s) — "Address verification, in under 120 milliseconds."
-    - Beat 2 (problem, 2.5-7.5 s) — ...
-    - ...
-    - Asset Audit
     - Gotchas
     - Cross-references
 - **[./references/TECH-hyperframes-capture-step-5-vo.md](./references/TECH-hyperframes-capture-step-5-vo.md)**
@@ -325,6 +321,8 @@ Every technique in this skill is documented as a single reference file under `./
     - What it does
     - When to use
     - How it works
+    - Output
+    - When warnings appear
     - Minimal example
     - Gotchas
     - Cross-references

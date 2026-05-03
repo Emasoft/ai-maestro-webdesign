@@ -1,32 +1,14 @@
 ## Table of Contents
 
 - [Stage 1 — Graph Validation (all formats)](#stage-1-graph-validation-all-formats)
-  - [1.1 Layer count](#11-layer-count)
-  - [1.2 Node count](#12-node-count)
-  - [1.3 Layer balance](#13-layer-balance)
-  - [1.4 Node label quality](#14-node-label-quality)
-  - [1.5 Edge integrity](#15-edge-integrity)
-  - [1.6 ID integrity](#16-id-integrity)
-  - [1.7 Layer order sequence](#17-layer-order-sequence)
 - [Stage 2 — Format Validation](#stage-2-format-validation)
-  - [Format: `graph`](#format-graph)
-  - [Format: `mermaid`](#format-mermaid)
-  - [Format: `svg`](#format-svg)
-  - [Format: `png`](#format-png)
 - [Validation Summary (quick reference)](#validation-summary-quick-reference)
 
+## Overview
 
-# Architecture Canvas — Output Validation
+Validation runs in two stages. Both must pass before returning output. Stage 1 — Graph validation: structural checks on the graph JSON. Runs for every `output_format`, immediately after the LLM call. Stage 2 — Format validation: surface-level checks on the rendered output. Runs after the transform, specific to each format.
 
-Validation runs in two stages. Both must pass before returning output.
-
-- **Stage 1 — Graph validation**: structural checks on the graph JSON.
-  Runs for every `output_format`, immediately after the LLM call.
-- **Stage 2 — Format validation**: surface-level checks on the rendered output.
-  Runs after the transform, specific to each format.
-
-If a check fails, apply the listed fix inline. Do not surface errors to the
-caller unless the fix is impossible.
+If a check fails, apply the listed fix inline. Do not surface errors to the caller unless the fix is impossible.
 
 ---
 

@@ -1,30 +1,13 @@
 ## Table of Contents
 
 - [1. PNG is OUTPUT-ONLY — why](#1-png-is-output-only-why)
-  - [1.1 Refusal messages (verbatim)](#11-refusal-messages-verbatim)
 - [2. Rasterization pipelines (per source format → PNG)](#2-rasterization-pipelines-per-source-format-png)
-  - [2.1 SVG → PNG (via cairosvg)](#21-svg-png-via-cairosvg)
-  - [2.2 HTML → PNG (via Playwright screenshot)](#22-html-png-via-playwright-screenshot)
-  - [2.3 ASCII → PNG (two-step: ASCII → SVG → PNG)](#23-ascii-png-two-step-ascii-svg-png)
-  - [2.4 Mermaid → PNG (direct via `mmdc -t png` OR via SVG)](#24-mermaid-png-direct-via-mmdc-t-png-or-via-svg)
-  - [2.5 Hand-drawn-style PNG (via `excalidraw-illustrations`)](#25-hand-drawn-style-png-via-excalidraw-illustrations)
 - [3. Refusal path implementation](#3-refusal-path-implementation)
-  - [3.1 `bin/amw-diagram-detect-format.sh`](#31-binamw-diagram-detect-formatsh)
-  - [3.2 `bin/amw-validate-diagram.sh` — PNG branch](#32-binamw-validate-diagramsh-png-branch)
-  - [3.3 Conversion dispatcher](#33-conversion-dispatcher)
 - [4. Per-source technique catalog](#4-per-source-technique-catalog)
-  - [S1 — bin/amw-svg-render.py + cairosvg](#s1-binamw-svg-renderpy-cairosvg)
-  - [S2 — bin/amw-html-export.py + Playwright](#s2-binamw-html-exportpy-playwright)
-  - [S3 — bin/amw-mermaid-render.sh + beautiful-mermaid + mmdc](#s3-binamw-mermaid-rendersh-beautiful-mermaid-mmdc)
-  - [S4 — Hand-drawn (excalidraw-illustrations)](#s4-hand-drawn-excalidraw-illustrations)
 - [5. PNG as INPUT is refused — the full story](#5-png-as-input-is-refused-the-full-story)
-  - [5.1 Format detection (`bin/amw-diagram-detect-format.sh`)](#51-format-detection-binamw-diagram-detect-formatsh)
-  - [5.2 Per-command refusal](#52-per-command-refusal)
-  - [5.3 No OCR, no vision-model retry](#53-no-ocr-no-vision-model-retry)
 - [6. Failure modes](#6-failure-modes)
 
-
-# PNG — canonical format reference (OUTPUT-ONLY)
+## Overview — canonical format reference (OUTPUT-ONLY)
 
 > **⚠️ USER DIRECTIVE (2026-04-22): PNG is OUTPUT-ONLY.**
 >

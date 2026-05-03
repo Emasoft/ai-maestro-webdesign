@@ -4,23 +4,12 @@
 
 - [The Core Rule](#the-core-rule)
 - [Stat Formatting Rules](#stat-formatting-rules)
-  - [Numbers — How to Display Them](#numbers-how-to-display-them)
-  - [Labeling Stats](#labeling-stats)
-  - [Currency Conventions](#currency-conventions)
 - [Headline Formulas](#headline-formulas)
-  - [Rule: UPPERCASE + Verb-First or Noun-Phrase](#rule-uppercase-verb-first-or-noun-phrase)
-  - [Subtitle Rules](#subtitle-rules)
 - [Per-Component Word Budgets](#per-component-word-budgets)
 - [Color-Coded Keyword Highlighting](#color-coded-keyword-highlighting)
 - [Disclaimers & Source Citations](#disclaimers-source-citations)
-  - [Footer Disclaimer (Always Include)](#footer-disclaimer-always-include)
-  - [Source Citation Format](#source-citation-format)
 - [Badge & Tag Copy](#badge-tag-copy)
 - [Body Copy Rules — Bullets Over Paragraphs](#body-copy-rules-bullets-over-paragraphs)
-  - [Rule: Bullet points, not paragraphs](#rule-bullet-points-not-paragraphs)
-  - [Rule: One fact per line](#rule-one-fact-per-line)
-  - [Rule: Sentence fragments, not full sentences](#rule-sentence-fragments-not-full-sentences)
-  - [Rule: Inline token coloring — always color `$TOKEN` names](#rule-inline-token-coloring-always-color-token-names)
 - [Common Mistakes to Avoid](#common-mistakes-to-avoid)
 
 

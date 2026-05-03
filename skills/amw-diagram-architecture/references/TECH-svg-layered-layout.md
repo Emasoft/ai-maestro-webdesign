@@ -9,15 +9,9 @@ also-in:
 - [What it does](#what-it-does)
 - [When to use](#when-to-use)
 - [How it works](#how-it-works)
-  - [Canvas constants](#canvas-constants)
-  - [Algorithm](#algorithm)
-  - [Height calculation](#height-calculation)
-  - [Node card structure](#node-card-structure)
-  - [Layer band structure](#layer-band-structure)
 - [Minimal example](#minimal-example)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
-
 
 # TECH-svg-layered-layout
 
