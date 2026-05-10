@@ -16,7 +16,6 @@ also-in: SKILL-15.md (dynamic-layout.ts demo), pretext-main-2 demos
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** motion
 **Status:** stable
 

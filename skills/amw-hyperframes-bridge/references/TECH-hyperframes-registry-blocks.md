@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Wiring registry blocks into host compositions
 
 ## What it does

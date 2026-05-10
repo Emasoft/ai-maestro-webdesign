@@ -28,7 +28,6 @@ status: stable
 - [Privacy and credential handling](#privacy-and-credential-handling)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents how to extract a single DESIGN.md from a website that spans multiple pages — typically requiring authenticated browsing (login + N internal pages). Extends [TECH-07-url-extraction](TECH-07-url-extraction.md) to handle session cookies, page-by-page traversal, and per-page token aggregation.

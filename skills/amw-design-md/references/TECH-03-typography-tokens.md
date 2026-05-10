@@ -29,7 +29,6 @@ status: stable
 - [Worked example — full row](#worked-example-full-row)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents how to declare the `typography:` map in YAML frontmatter. Covers font-family selection, the level taxonomy, fontWeight rules, line-height conventions, letter-spacing best-practices, and OpenType feature settings.

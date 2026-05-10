@@ -16,7 +16,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/scripts/batch.mjs, diagrams-
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 On first invocation, the render/batch scripts try to import
@@ -90,4 +89,3 @@ npm install beautiful-mermaid
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../../external/mermaid-render/` — the plugin's vendored copy lives there.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `designlang diff` — pairwise brand comparison
 
 ## What it does

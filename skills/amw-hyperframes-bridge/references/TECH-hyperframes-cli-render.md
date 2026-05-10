@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `hyperframes render` — capture composition to MP4 / WebM
 
 ## What it does

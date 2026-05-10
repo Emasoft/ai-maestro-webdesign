@@ -25,7 +25,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Anti-Frontend Checklist — pre-delivery gate
 
 ## What it does
@@ -134,4 +133,3 @@ unjustified decoration — scaled to the aesthetic.
 - [TECH-reduction-pass](TECH-reduction-pass.md) — the complementary strip-it-down pass.
   > What it does · The checklist · Per-aesthetic strictness · The rule · Before / after — gridline removal · Before · After · Before / after — legend to direct labels · Before · After · Before / after — decoration removal · Before (everything shouting) · After (structure creates hierarchy, not decoration) · Decision rule · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

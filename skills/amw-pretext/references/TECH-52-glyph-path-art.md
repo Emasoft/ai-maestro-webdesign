@@ -13,7 +13,6 @@ also-in: pretext-skill-main (3D / splat-editor)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Glyph path art (SVG letterforms with stroke-draw animation)
 
 **Category:** art

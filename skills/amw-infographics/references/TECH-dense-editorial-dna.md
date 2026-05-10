@@ -16,7 +16,6 @@ also-in: image-generation/create-infographics/resources/style-details.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Dense editorial DNA — the defining aesthetic
 
 ## What it does
@@ -107,4 +106,3 @@ Table cell padding:        6px 10px  (NOT 12px 16px)
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — the default canvas architecture.
   > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

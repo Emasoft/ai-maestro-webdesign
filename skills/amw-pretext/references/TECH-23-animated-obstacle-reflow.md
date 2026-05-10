@@ -13,7 +13,6 @@ also-in: pretext-skill-main/patterns.md (Text Around Obstacles — Animated)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # 60 fps text reflow around animated obstacles
 
 **Category:** layout

@@ -8,7 +8,6 @@
 - [4px grid still applies](#4px-grid-still-applies)
 - [Source citation](#source-citation)
 
-
 # Primitive — Editorial annotation callout
 
 > **Cross-type primitive.** Applies to any of the 13 editorial diagram types

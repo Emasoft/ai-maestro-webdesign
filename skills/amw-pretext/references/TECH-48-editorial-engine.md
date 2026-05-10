@@ -16,7 +16,6 @@ also-in: SKILL-15.md (editorial-engine.ts), pretext-skill-main/patterns.md, pret
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** motion
 **Status:** stable
 

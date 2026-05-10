@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Renders a CLI cheat-sheet table with one row per task and one column per
@@ -72,4 +71,3 @@ scrolling / flipping between docs.
 - [TECH-platform-component-tags](../../amw-text-visual-arch/references/TECH-platform-component-tags.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

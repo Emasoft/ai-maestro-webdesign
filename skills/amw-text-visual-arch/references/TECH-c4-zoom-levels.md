@@ -13,7 +13,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-c4-zoom-levels — context / container / component framing
 
 ## What it does
@@ -80,4 +79,3 @@ Container (inside "System"):
 - [TECH-footnote-tags-deployment](./TECH-footnote-tags-deployment.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

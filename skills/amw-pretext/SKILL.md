@@ -28,7 +28,6 @@ See the `## How to use this skill` section below for the authoritative step-by-s
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when the approved design requires precision text layout beyond what CSS flow provides (virtualization, shrink-wrap, obstacle-aware flow, kinetic typography). Also callable directly when the user explicitly names `pretext` or its API.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -136,7 +135,7 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 - **Input:** "make this textarea auto-height as the user types"
 - **Routing:** Decision tree → "Workflow assembly" → [TECH-71](references/TECH-71-auto-height-textarea.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
-- **Output:** ~80 LOC component using `prepare()` once at mount, `layout()` per keystroke, `whiteSpace: pre-wrap` parity per [TECH-15](references/TECH-15-textarea-prewrap.md), wrapper module per [TECH-64](references/TECH-64-wrapper-module.md). Saved to the project's component folder (Vite → `./src/components/AutoTextarea.tsx`).
+- **Output:** ~80 LOC component using `prepare()` once at mount, `layout()` per keystroke, `whiteSpace: pre-wrap` parity per [TECH-15](references/TECH-15-textarea-prewrap.md), wrapper module per [TECH-64](references/TECH-64-wrapper-module.md). Saved to the project's component folder (Vite layout → *src/components/AutoTextarea.tsx*).
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 **Concrete example — virtualized list with variable-height rows:**

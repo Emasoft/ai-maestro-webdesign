@@ -24,7 +24,6 @@ status: stable
 - [Validation](#validation)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the rules for writing the YAML frontmatter at the top of a Variant 1 (canonical `@google/design.md`) DESIGN.md file. Covers delimiters, top-level fields, value types, escaping rules, and common gotchas.

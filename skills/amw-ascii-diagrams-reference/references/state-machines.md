@@ -8,7 +8,6 @@
 
 ## Reference
 
-
 Use for: protocol states, lifecycle management, connection handling.
 
 **TCP-style connection states:**

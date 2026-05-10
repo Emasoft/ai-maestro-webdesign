@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `feComponentTransfer` — per-channel color grading
 
 ## What it does
@@ -123,4 +122,3 @@ black to `(0.9, 0.6, 0.95)` at white.
   > What it does · Metal (steel / chrome) · Gold · Glass / transparent · Wood · Water · Stone / rock · Fabric / cloth · Gotchas · Cross-references
   (alternative to channel-level grading).
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

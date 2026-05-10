@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-namespace-nesting — Linux netns + overlay/underlay
 
 ## What it does
@@ -80,4 +79,3 @@ via overlay, with veth pairs living on the underlay.
 - [network-topology](./network-topology.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

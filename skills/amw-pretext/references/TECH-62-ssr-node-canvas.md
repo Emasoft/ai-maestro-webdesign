@@ -13,7 +13,6 @@ also-in: pretext-docs/SKILL.md, pretext-main-2 docs/cross-platform.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # SSR / Node.js integration (node-canvas shim)
 
 **Category:** integrate

@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `hyperframes transcribe` — audio → word-level timestamps
 
 ## What it does

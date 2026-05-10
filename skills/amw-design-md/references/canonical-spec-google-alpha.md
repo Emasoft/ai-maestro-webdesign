@@ -9,7 +9,6 @@
 - [Worked example (full file)](#worked-example-full-file)
 - [Cross-references](#cross-references)
 
-
 # Canonical DESIGN.md spec — Variant 1 (official `@google/design.md` alpha)
 
 **Source:** `docs_dev/extracted/google-labs/design.md-main/design.md-main/docs/spec.md` (Google Labs `design.md` repository, v0.1.1, version literal `alpha`).

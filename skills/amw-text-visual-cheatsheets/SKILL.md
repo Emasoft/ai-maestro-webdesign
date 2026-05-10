@@ -20,7 +20,6 @@ See the `## Panel format` section below for a minimal standard-layout panel exam
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for CLI reference sketches) or Phase B (when the approved design requires a validated ASCII cheat-sheet artifact). The orchestrator may apply any column layout and platform-variant technique from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

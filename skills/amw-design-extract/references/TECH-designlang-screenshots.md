@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Captures PNG screenshots of individual components — buttons, cards, navigation bars, hero sections — by locating them in the DOM and cropping the viewport to their bounding box. Output goes to a `components/` subfolder alongside the usual token files.

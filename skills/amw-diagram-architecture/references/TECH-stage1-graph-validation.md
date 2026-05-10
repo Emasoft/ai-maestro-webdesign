@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-stage1-graph-validation
 
 ## What it does
@@ -138,4 +137,3 @@ Apply fixes:
 - [TECH-json-repair-recipe](TECH-json-repair-recipe.md) — upstream repair before validation runs
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

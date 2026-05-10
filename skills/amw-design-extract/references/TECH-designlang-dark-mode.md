@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Re-renders the target URL with `prefers-color-scheme: dark` emulated so designlang captures dark-theme colors, backgrounds, and component surfaces alongside (or instead of) the default light mode.

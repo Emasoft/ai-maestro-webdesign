@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-density-4-of-10
 
 ## What it does

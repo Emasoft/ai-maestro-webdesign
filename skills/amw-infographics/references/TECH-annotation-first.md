@@ -16,7 +16,6 @@ also-in: image-generation/create-infographics/resources/style-details.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Annotation-first — labels on charts, not in legends
 
 ## What it does
@@ -137,4 +136,3 @@ understand what they're seeing.
 - [TECH-bordered-section-component](TECH-bordered-section-component.md) — the callout-box pattern.
   > What it does · When to use · Left-accent variant (most common) · Full-border variant · Header styles · HTML · Minimum border opacity · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

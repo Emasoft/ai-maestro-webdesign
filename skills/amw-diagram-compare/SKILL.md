@@ -26,7 +26,6 @@ Structural comparison of two diagrams via IR-level diff. Accepts any two source-
 
 Callable directly via the `/amw-compare-diagrams` command (user shortcut for users who already have two diagram paths and want a structural diff), or invoked by the `design-principles` orchestrator during **Phase B** when a compare task is part of a broader design workflow. An agent in Main-agent mode may also invoke this skill directly via the orchestrator without going through the command.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

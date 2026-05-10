@@ -16,7 +16,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/cc-plugin-text-visualizations-main.
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Emits a **timeline diagram** — events arranged in temporal order along a

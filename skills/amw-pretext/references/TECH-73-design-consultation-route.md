@@ -13,7 +13,6 @@ also-in: SKILL-18.md, SKILL-22.md, SKILL-24.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Full-pipeline design consultation (gstack design-html)
 
 **Category:** consult

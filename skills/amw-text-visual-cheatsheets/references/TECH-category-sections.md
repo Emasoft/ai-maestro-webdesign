@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Splits a large CLI cheat-sheet into small per-category panels, each
@@ -86,4 +85,3 @@ small panel:
 - [TECH-destructive-command-marker](./TECH-destructive-command-marker.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

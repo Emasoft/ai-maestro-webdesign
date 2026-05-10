@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Relative importance of SEO factors
 
 ## What it does

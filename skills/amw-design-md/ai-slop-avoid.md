@@ -32,7 +32,6 @@
   - [S22. tokens.json that is not W3C Design Tokens format](#s22-tokensjson-that-is-not-w3c-design-tokens-format)
 - [Final delivery gate](#final-delivery-gate)
 
-
 A DESIGN.md is a machine-readable specification, not a marketing brochure. Every anti-pattern below makes the file useless to the AI agents that will consume it. Run this checklist before delivering any DESIGN.md.
 
 ## Token authoring slop

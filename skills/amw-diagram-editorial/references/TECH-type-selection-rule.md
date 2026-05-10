@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-type-selection-rule
 
 ## What it does

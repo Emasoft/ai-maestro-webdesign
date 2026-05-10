@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-render-mode-layers — layered architecture with bus connectors
 
 ## What it does
@@ -76,4 +75,3 @@ pair of rows.
 - [TECH-bus-connectors](./TECH-bus-connectors.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

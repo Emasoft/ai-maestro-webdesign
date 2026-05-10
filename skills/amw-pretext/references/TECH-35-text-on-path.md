@@ -13,7 +13,6 @@ also-in: SKILL-11.md (Pretext + opentype.js)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Text on a path (glyph-level placement along a curve)
 
 **Category:** art

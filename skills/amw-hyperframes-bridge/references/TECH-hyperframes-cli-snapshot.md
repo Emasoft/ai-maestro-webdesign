@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `hyperframes snapshot` — capture key frames as PNG screenshots
 
 ## What it does

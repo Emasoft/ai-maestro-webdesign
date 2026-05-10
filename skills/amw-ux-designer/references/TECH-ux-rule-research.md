@@ -17,7 +17,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Rule — User Research (interviews + personas + synthesis)
 
 ## What it does

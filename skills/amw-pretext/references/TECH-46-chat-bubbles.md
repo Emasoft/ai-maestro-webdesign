@@ -16,7 +16,6 @@ also-in: use-pretext/SKILL.md Recipe 2, SKILL-13, SKILL-15, pretext-skill-main/p
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** motion
 **Status:** stable
 

@@ -21,7 +21,6 @@ status: stable
 - [Synchronization rule](#synchronization-rule)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the four companion files the plugin can emit alongside a DESIGN.md to serve different downstream consumers (build systems, CI, AI agents, designers). The bin script is `bin/amw-design-md-emit-companions.py`.

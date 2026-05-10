@@ -107,7 +107,10 @@ while IFS= read -r line; do
 done <"$tmp_err"
 
 if [ "$count" -eq 0 ]; then
-  # mjml exited non-zero but no parseable error — emit a generic fail
+  # mjml exited non-zero but no parseable error — emit a generic fail.
+  # The literal backticks inside the FIX hint are intentional (Markdown-style
+  # code spans the user reads); shellcheck SC2016 is a false positive here.
+  # shellcheck disable=SC2016
   printf 'FAIL: 0: mjml exited with status %s; see stderr for details [FIX: run `npx --yes mjml --validate strict %s` manually]\n' \
     "$mjml_exit" "$input"
 fi

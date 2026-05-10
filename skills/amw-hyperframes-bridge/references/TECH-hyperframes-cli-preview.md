@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `hyperframes preview` — live studio preview
 
 ## What it does

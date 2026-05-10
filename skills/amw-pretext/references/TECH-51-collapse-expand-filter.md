@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Animated filter (CSS collapse/expand, NOT virtualization)
 
 **Category:** motion

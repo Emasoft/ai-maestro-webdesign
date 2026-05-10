@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Defines a lightweight legend for ASCII state machines: states are
@@ -72,4 +71,3 @@ notation.
 - [TECH-classic-state-machine-arrows](../../amw-ascii-diagrams-reference/references/TECH-classic-state-machine-arrows.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

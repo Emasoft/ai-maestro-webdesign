@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # CSS horizontal bar chart — vesting / allocation strips
 
 ## What it does
@@ -169,4 +168,3 @@ requestAnimationFrame(() => {
 - [TECH-annotated-bar-chart](TECH-annotated-bar-chart.md) — SVG bar with annotations.
   > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

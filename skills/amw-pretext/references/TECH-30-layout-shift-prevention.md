@@ -13,7 +13,6 @@ also-in: SKILL-11.md, SKILL-13.md, use-pretext/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Prevent layout shift (CLS) on dynamic content
 
 **Category:** typography

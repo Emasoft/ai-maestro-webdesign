@@ -16,7 +16,6 @@ also-in: SKILL-13, SKILL-16, SKILL-21, use-pretext/SKILL.md Recipe 4, pretext-ta
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** workflow
 **Status:** stable
 

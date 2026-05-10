@@ -18,7 +18,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Export pipeline — HTML → PNG + PDF + SVG
 
 ## What it does
@@ -131,4 +130,3 @@ notes that the PDF can be dragged directly into Figma as a fallback.
 - [TECH-anti-frontend-checklist](TECH-anti-frontend-checklist.md) — run BEFORE export.
   > What it does · The checklist · Structure · Spacing · Visual · Density · Playbook compliance (if applicable) · Data integrity · Export readiness · Common failure modes · The SaaS Landing Page · The Dashboard · The Slide Deck · The Component Demo · The Floating Islands · After checklist → run Reduction Pass · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

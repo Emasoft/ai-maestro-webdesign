@@ -7,7 +7,6 @@
 - [What this document is NOT](#what-this-document-is-not)
 - [Cross-references](#cross-references)
 
-
 # Agent-authoring philosophy — judgment layer vs recipe layer
 
 This document is the governing principle for every agent under `agents/` in this plugin. It exists because the common mistake when authoring an agent is to write it like a skill — a recipe of "if A then B, if X then Y" — and then discover at runtime that reality doesn't match the recipe.

@@ -81,6 +81,9 @@ process_file() {
     # Extract backtick-quoted paths.
     # Use a Python-free scan: portable grep -oE.
     # First the backtick paths.
+    # The single-quoted regex / sed scripts contain LITERAL backticks; SC2016
+    # would only matter if we wanted variable expansion here, which we do not.
+    # shellcheck disable=SC2016
     printf '%s\n' "$content" | \
       grep -oE '`[^`]+`' 2>/dev/null | \
       sed 's/^`//; s/`$//' | \
@@ -127,8 +130,12 @@ emit_check() {
   # Skip refs that look like inline-code language tokens or shell flags
   # (`bash`, `python3`, `--strict`, etc.). Heuristic: must contain '/' or '.' or
   # start with '~'.
+  # NOTE: `*/*` already covers the home-relative `~/*` case (any path with a
+  # slash matches `*/*` first), so we drop the redundant `~/*` glob — keeps
+  # the linter (SC2221/SC2222) clean. Tilde-prefixed paths still match via
+  # the leading `*/*` because they all contain at least one slash.
   case "$ref" in
-    */*|*.md|*.py|*.sh|*.mjs|*.ts|*.tsx|*.html|*.json|*.yaml|*.css|*.svg|*.png|*.jpg|*.txt|*.pdf|*.mmd|~/*) ;;
+    */*|*.md|*.py|*.sh|*.mjs|*.ts|*.tsx|*.html|*.json|*.yaml|*.css|*.svg|*.png|*.jpg|*.txt|*.pdf|*.mmd) ;;
     *) return ;;
   esac
 
@@ -142,7 +149,10 @@ emit_check() {
 
   if [ ! -e "$resolved" ]; then
     # Path is recorded relative to plugin root for legibility.
-    local rel_source="${file#$PLUGIN_ROOT/}"
+    # Quote the parameter expansion so glob-pattern matching (the default
+    # behaviour of `${var#pattern}`) does not accidentally treat magic
+    # characters in $PLUGIN_ROOT as wildcards (SC2295).
+    local rel_source="${file#"$PLUGIN_ROOT"/}"
     printf 'MISSING: %s:%s -> %s\n' "$rel_source" "$lineno" "$ref"
     BROKEN=$((BROKEN + 1))
     # Persist BROKEN across the subshell via a temp file.

@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-svg-group-structure
 
 ## What it does

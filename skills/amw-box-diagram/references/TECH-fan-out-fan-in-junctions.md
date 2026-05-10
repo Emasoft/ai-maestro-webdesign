@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-fan-out-fan-in-junctions — `┌┬┐` / `└┴┘` to diverge and rejoin
 
 ## What it does
@@ -94,4 +93,3 @@ Full fan-out + fan-in (source: box-diagram-master/README.md lines 16-26):
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../amw-box-diagram/examples/ci-cd-pipeline.txt`
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

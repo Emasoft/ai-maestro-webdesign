@@ -23,7 +23,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The playbook for token-economics infographics — the single most
@@ -137,4 +136,3 @@ between sections: 24-32px; within sections: 8-12px.
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — the allocation chart.
   > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

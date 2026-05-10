@@ -20,7 +20,6 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Authors finite-state machines and state-transition graphs. Supports
@@ -129,4 +128,3 @@ stateDiagram-v2
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — for time-ordered interactions.
   > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

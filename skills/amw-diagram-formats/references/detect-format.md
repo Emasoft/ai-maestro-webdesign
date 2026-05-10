@@ -15,7 +15,6 @@
 - [6. Callers](#6-callers)
 - [7. When to extend this](#7-when-to-extend-this)
 
-
 # Format detection — `bin/amw-diagram-detect-format.sh`
 
 **Authoritative spec for how the plugin sniffs diagram format.** The sniffer is the **first step** of every cross-format pipeline — conversion, validation, modify-flow, compare. Get it wrong and every downstream step misfires.

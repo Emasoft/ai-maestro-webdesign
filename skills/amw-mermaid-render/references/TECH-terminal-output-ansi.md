@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Adding ANSI colors to ASCII output
 
 ## What it does
@@ -77,4 +76,3 @@ const coloredByStatus = ascii
   > What it does · When to use · Pattern 1: plain fenced block · Pattern 2: inline compact diagram · Pattern 3: ASCII mode for email / plain text · Gotchas · Cross-references
   persistent Markdown output.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

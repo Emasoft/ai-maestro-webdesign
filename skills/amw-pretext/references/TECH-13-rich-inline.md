@@ -13,7 +13,6 @@ also-in: SKILL-13.md, pretext-frontend-motion-main/SKILL.md, pretext-agents-skil
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # prepareRichInline() — mixed-font inline flow (chips, mentions, code spans)
 
 **Category:** api

@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Cycling text with auto-fit (rotating headline reveals)
 
 **Category:** motion

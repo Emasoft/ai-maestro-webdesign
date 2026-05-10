@@ -21,7 +21,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 HIGH-priority rule. Covers the two elements that most directly determine whether users complete tasks or abandon them: user flows (step sequences, errors, recovery) and microcopy (button labels, error messages, empty states, confirmations).

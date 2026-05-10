@@ -20,7 +20,6 @@ See the `## Diagram framing` section below for minimal examples of context, cont
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for architecture sketches) or Phase B (when the approved design requires a validated ASCII architecture artifact). The orchestrator may apply any zoom-level, context/container/component, and export technique from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -340,6 +339,6 @@ No dedicated slash command. Invoke via:
 | Diagram has more than 10 services and cannot fit 100 cols | Drop to two stacked diagrams: group by domain (e.g. `Auth`, `Orders`, `Billing`) and emit one container diagram per group. |
 | User asks for the component layer without naming modules | Ask for the module list; do not guess. An invented `UserRepository` is worse than no diagram. |
 | Mixed sync and async with unclear protocols | Add a legend block above the diagram: `-> sync HTTP, ~> async event, => primary call`. |
-| External system count dominates the internal system | Use a two-column layout: left column internal, right column external, with clear trust-boundary separator `| | | | |` between them. |
+| External system count dominates the internal system | Use a two-column layout: left column internal, right column external, with clear trust-boundary separator `\| \| \| \| \|` between them. |
 | User wants C4 style but explicitly ASCII | This is exactly the skill's sweet spot — use context + container as the two stacked diagrams. |
 | User wants the same picture as SVG | Emit the ASCII first, then route to `../amw-ascii-to-svg/` after approval. Do not try to emit SVG from this skill. |

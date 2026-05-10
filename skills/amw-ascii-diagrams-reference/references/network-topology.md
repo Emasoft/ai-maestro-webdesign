@@ -8,7 +8,6 @@
 
 ## Reference
 
-
 Use for: service architecture, Kubernetes layouts, infrastructure diagrams.
 
 **Kubernetes service topology:**

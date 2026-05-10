@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Waffle chart — 10×10 grid for % of total
 
 ## What it does
@@ -135,4 +134,3 @@ document.querySelectorAll('.waffle-grid').forEach(grid => {
 - [TECH-annotation-first](TECH-annotation-first.md) — the accompanying stat/label pattern.
   > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Sequence diagram — notes, loops, alt/else blocks
 
 ## What it does
@@ -131,4 +130,3 @@ sequenceDiagram
   > What it does · When to use · Syntax · Nested activations — double-stacking · Manual activate/deactivate (alt syntax) · Minimal example · Gotchas · Cross-references
   loops / alts seamlessly.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

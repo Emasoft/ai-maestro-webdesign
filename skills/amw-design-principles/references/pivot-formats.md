@@ -6,7 +6,6 @@
 - [How agents pick the right pivot](#how-agents-pick-the-right-pivot)
 - [Adding a fourth pivot](#adding-a-fourth-pivot)
 
-
 # Pivot formats — the three modular intermediates
 
 The plugin's modularity (any agent can pick up an artifact at any pipeline stage) rests on **three standardized pivot formats**. Every other skill is a parser, emitter, or transformer that reads or writes one of these three. This is what lets agents recombine recipes freely instead of getting locked into a single skill chain.

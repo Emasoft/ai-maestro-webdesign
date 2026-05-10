@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Variable-font per-character waves (weight / width ripples)
 
 **Category:** art

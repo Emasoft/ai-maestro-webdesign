@@ -13,7 +13,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `renderMermaid()` — Mermaid → SVG
 
 ## What it does
@@ -72,4 +71,3 @@ Full option set: `bg`, `fg`, `font`, `transparent`, `line`, `accent`,
 - `../../../bin/amw-mermaid-render.sh` — the shell entrypoint used by every other
   plugin skill that needs Mermaid SVG.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

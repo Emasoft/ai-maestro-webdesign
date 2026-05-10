@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Sequence diagram activations
 
 ## What it does
@@ -100,4 +99,3 @@ sequenceDiagram
   > What it does · Notes · Loops · Alt/else · `opt` — optional block (one-sided alt) · `par` — parallel block · Minimal example — realistic API flow · Gotchas · Cross-references
   activated regions.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -20,7 +20,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Number formatting rules
 
 ## What it does
@@ -147,4 +146,3 @@ article. Cut it.
 - [TECH-inline-token-coloring](TECH-inline-token-coloring.md) — `$TOKEN` span styling.
   > What it does · The two patterns · Pattern 1: Color-only · Pattern 2: Color + background tint · HTML · What gets colored · The 2-per-bullet cap · The `highlight` class vs `.accent` · The token-pill variant (standalone) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

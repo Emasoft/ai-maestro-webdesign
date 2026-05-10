@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `flywheel_loop` — rectangular nodes → circular back to start
 
 ## What it does
@@ -153,4 +152,3 @@ circularity. Flywheel is specifically for closed loops.
   > What it does · When to use · The shape · CSS implementation · Label rule · Gotchas · Cross-references
   pieces.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Class diagram grammar
 
 ## What it does
@@ -126,4 +125,3 @@ classDiagram
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — for non-class graph structures.
   > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

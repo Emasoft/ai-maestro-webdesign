@@ -27,7 +27,6 @@ also-in: globalCC `modern-web-development` skill (informational only — not a p
 - [What the agent MUST do](#what-the-agent-must-do)
 - [What the agent MUST NOT do](#what-the-agent-must-not-do)
 
-
 ## What it does
 
 Catalog of modern HTML elements and CSS features the wireframe-builder

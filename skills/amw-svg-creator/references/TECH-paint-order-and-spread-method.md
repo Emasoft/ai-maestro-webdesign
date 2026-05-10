@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `paint-order` and `spreadMethod` — power features
 
 ## What it does
@@ -114,4 +113,3 @@ gradient.
   > What it does · The `transform-box` rule · Spinner (CSS) · Line drawing reveal (pathLength + stroke-dasharray) · Staggered entrance · SMIL animation (works in `<img>` tags) · Attribute animation · Transform animation · Motion along a path · Sequential timing via `begin` · Gotchas · Cross-references
   for line-draw animations.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

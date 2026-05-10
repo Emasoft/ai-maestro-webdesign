@@ -26,7 +26,6 @@ status: stable
 - [Validation gate](#validation-gate)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents how to extract a Variant 1 DESIGN.md from a live URL. The plugin's URL-extraction path goes through `amw-dev-browser` (the only browser-automation primitive in this plugin). The bin script is `bin/amw-design-md-from-url.sh`. The agent that owns this flow is `amw-design-md-extractor-agent`.

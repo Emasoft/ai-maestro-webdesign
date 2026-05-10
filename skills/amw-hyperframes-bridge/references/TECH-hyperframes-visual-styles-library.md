@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `visual-styles.md` — 8 named visual-style presets
 
 ## What it does

@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `bullet_panel` component — DEFAULT for text content
 
 ## What it does
@@ -140,4 +139,3 @@ bullet or use a table.
 - [TECH-copy-guide-bullets](TECH-copy-guide-bullets.md) — writing the bullet text.
   > What it does · Why · Rule 1 — Bullets, not paragraphs · Rule 2 — One fact per bullet · Rule 3 — Sentence fragments, not full sentences · Rule 4 — Inline token coloring · Rule 5 — Color-coded keyword highlighting (beyond tokens) · Badge / tag rules · Disclaimer (always include in footer) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

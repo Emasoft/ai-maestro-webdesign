@@ -13,7 +13,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Batch rendering — worker-pool directory mode
 
 ## What it does
@@ -90,4 +89,3 @@ Found 3 diagram(s) to render...
 - [TECH-built-in-themes](TECH-built-in-themes.md) — valid `--theme` values.
   > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

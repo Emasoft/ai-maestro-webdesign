@@ -13,7 +13,6 @@ also-in: SKILL-13.md, SKILL-21.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # CJK keep-all word-break
 
 **Category:** measure

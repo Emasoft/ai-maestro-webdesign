@@ -18,7 +18,6 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The Mermaid `flowchart` (also `graph`) grammar authors a directed
@@ -97,4 +96,3 @@ flowchart LR
 - [TECH-sequence-grammar](TECH-sequence-grammar.md) — the Mermaid cousin for API/message flows.
   > What it does · When to use · Participants · Message arrow types · Activations — show processing time · Notes · Loops & alt/else · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

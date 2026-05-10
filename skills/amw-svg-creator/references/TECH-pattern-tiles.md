@@ -15,7 +15,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `<pattern>` tiles — dots, diagonal lines, waves
 
 ## What it does
@@ -97,4 +96,3 @@ patternTransform="translate(5 0)"  Offset horizontally
   > What it does · The basic filter · `baseFrequency` — texture scale · Directional stretch — two-value baseFrequency · `numOctaves` — complexity · `type="fractalNoise"` vs `type="turbulence"` · `stitchTiles="stitch"` · `seed` — reproducibility · Salt & Pepper texture (advanced) · Gotchas · Cross-references
   regular tiling.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

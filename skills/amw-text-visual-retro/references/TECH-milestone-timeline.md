@@ -13,7 +13,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-milestone-timeline — weekly timeline + highlights + actions
 
 ## What it does
@@ -78,4 +77,3 @@ Actions:
 - [TECH-timeline-with-anchors](../../amw-text-visual-workflows/references/TECH-timeline-with-anchors.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -19,7 +19,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Data attributes — clip + composition schema
 
 ## What it does

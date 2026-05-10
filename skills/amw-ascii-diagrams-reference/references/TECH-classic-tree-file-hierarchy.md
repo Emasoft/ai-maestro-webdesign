@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-tree-file-hierarchy — `+--` / `|` file-tree rendering
 
 ## What it does
@@ -76,4 +75,3 @@ high-value cue the reader's eye uses for depth tracking.
 - [trees](./trees.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

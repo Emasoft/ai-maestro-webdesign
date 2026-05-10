@@ -19,7 +19,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/fi
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Exports the clickable HTML wireframes to Figma as editable frames using

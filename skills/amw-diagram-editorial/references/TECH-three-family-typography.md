@@ -14,7 +14,6 @@ also-in:
 - [Minimal `<head>` snippet](#minimal-head-snippet)
 - [Cross-references](#cross-references)
 
-
 # TECH-three-family-typography
 
 ## What it does

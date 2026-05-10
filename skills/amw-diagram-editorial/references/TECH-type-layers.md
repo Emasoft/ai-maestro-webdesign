@@ -16,7 +16,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/form
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Emits a **layer-stack diagram** — horizontal full-width bands stacked

@@ -16,7 +16,6 @@ also-in: SKILL-15.md (variable-typographic-ascii.ts)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** art
 **Status:** stable
 

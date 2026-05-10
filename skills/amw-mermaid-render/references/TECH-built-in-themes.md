@@ -17,7 +17,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Exports a `THEMES` dictionary keyed by theme name. Each value is a
@@ -77,4 +76,3 @@ const svg = await renderMermaid(diagram, THEMES['tokyo-night'])
 - [TECH-shiki-theme-import](TECH-shiki-theme-import.md) — import any VS Code theme on demand.
   > What it does · When to use · Shiki → diagram token mapping · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

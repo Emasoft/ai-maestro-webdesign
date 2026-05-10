@@ -14,7 +14,6 @@ also-in:
 - [Browser-support caveat](#browser-support-caveat)
 - [Cross-references](#cross-references)
 
-
 # TECH-sketchy-fractal-filter
 
 ## What it does

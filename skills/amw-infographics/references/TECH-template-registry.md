@@ -15,7 +15,6 @@ also-in: image-generation/create-infographics/templates/
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Template registry — 24 reference templates
 
 ## What it does
@@ -122,4 +121,3 @@ Every template uses:
 - [TECH-one-shot-mode](TECH-one-shot-mode.md) — the mode that uses templates.
   > What it does · When to use · The 5 steps · Classification — identify the type · Composition archetype — pick one · Build rules · Head elements (required) · Step 5 — export command · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

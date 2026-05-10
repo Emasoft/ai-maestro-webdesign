@@ -19,7 +19,6 @@ also-in: external/hyperframes/packages/cli/src/commands/inspect.ts
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 > For WCAG contrast checks, see [TECH-hyperframes-cli-validate](TECH-hyperframes-cli-validate.md). `inspect` is a separate command focused on visual layout overflow, not color contrast.
 > [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
 

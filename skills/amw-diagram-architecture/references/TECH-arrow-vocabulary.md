@@ -13,7 +13,6 @@ also-in: diagram-skill-main/REFERENCE.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-arrow-vocabulary — 6-type connection taxonomy
 
 ## What it does
@@ -77,4 +76,3 @@ Order ──── Invoice (association)
 - [TECH-async-arrow-vocabulary](../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

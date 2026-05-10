@@ -16,7 +16,6 @@ also-in: ascii-diagram-validator-main/validate_ascii.pl, ascii-diagram-validator
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The validator walks every character in every line, computes its display
@@ -72,4 +71,3 @@ Good: │ Hello [!] World │      ← bracket marker = 1 col, frame stays align
 - [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

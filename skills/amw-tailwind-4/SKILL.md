@@ -37,7 +37,6 @@ See [gotchas](references/gotchas.md) for v3→v4 migration examples and [enginee
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when the implementation target uses Tailwind CSS v4, or pulled in by `shadcn-ui` for Tailwind-specific questions. Also callable directly when the user names Tailwind v4 syntax, migration, or directive questions.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-bus-connectors — auto fan-out / fan-in between tiers
 
 ## What it does
@@ -74,4 +73,3 @@ the entry to each lower-row box.
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [SKILL](../../amw-box-diagram/SKILL.md) (manual fan-out/fan-in with `┌┬┐`/`└┴┘`)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -13,7 +13,6 @@ also-in: SKILL-21.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Exact-line truncate with "Read more"
 
 **Category:** typography

@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Proportional circles — area = value
 
 ## What it does
@@ -118,4 +117,3 @@ interest rather than baseline-aligning everything.
 - [TECH-svg-pie-chart](TECH-svg-pie-chart.md) — alternative for normalized percentages.
   > What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

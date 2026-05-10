@@ -8,7 +8,6 @@
 
 ## Reference
 
-
 Use for: conditional paths, decision trees, request processing pipelines.
 
 **Basic decision flow:**

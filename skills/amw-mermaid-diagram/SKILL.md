@@ -31,7 +31,6 @@ See the `## Pipeline (5 steps — matches shared modify-flow)` section below for
 
 Callable directly via the `/amw-create-or-modify-mermaid-diagram` command (user shortcut for users who already know they want Mermaid source and have either a brief or an existing `.mmd` to modify), or invoked by the `design-principles` orchestrator during **Phase B** when the approved deliverable is Mermaid diagram source. An agent in Main-agent mode may also invoke this skill directly via the orchestrator without going through the command.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -136,7 +135,7 @@ See [SKILL](../amw-mermaid-render/SKILL.md) and [mermaid](../amw-diagram-formats
 | Labels contain shell metacharacters | User brief embedded quotes / semicolons | Quote labels with `A["..."]` form (TECH-MM-35). |
 | Modify path hits retry budget 3 FAILs | Patch conflicts with grammar structure | Surface the lint report; ask the user to refine the edit. |
 | Parser returns empty IR (modify path) | File is NOT Mermaid (missing header) or uses an unsupported grammar | Raw-source stub per `modify-flow.md` §5.4; warn that structural patching is unavailable until the Phase 1 grammar parser lands. |
-| User asks for render | Wrong skill — produce / modify the `.mmd` here, then call `bin/amw-mermaid-render.sh` or route through `../amw-mermaid-render/`. |
+| User asks for render | Wrong skill | Produce / modify the `.mmd` here, then call `bin/amw-mermaid-render.sh` or route through `../amw-mermaid-render/`. |
 
 ## Examples
 

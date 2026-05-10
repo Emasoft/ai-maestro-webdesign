@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-pipeline-fanout — request → parse → split → rejoin
 
 ## What it does
@@ -77,4 +76,3 @@ format-specific parsers that converge on a common downstream step.
 - [flowcharts](./flowcharts.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

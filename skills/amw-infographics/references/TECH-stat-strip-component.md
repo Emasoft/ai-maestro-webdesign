@@ -19,7 +19,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Full-width row of 3-4 KPIs with colored top borders. Placed at the
@@ -129,4 +128,3 @@ Always format for scannability. See [TECH-copy-guide-numbers](TECH-copy-guide-nu
 - [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — number formatting rules.
   > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

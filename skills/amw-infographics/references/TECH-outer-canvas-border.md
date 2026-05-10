@@ -16,7 +16,6 @@ also-in: image-generation/create-infographics/resources/style-details.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Outer canvas border — thin accent-colored frame
 
 ## What it does
@@ -105,4 +104,3 @@ Useful when you want the border to persist above all content
   > What it does · When to use · Left-accent variant (most common) · Full-border variant · Header styles · HTML · Minimum border opacity · Gotchas · Cross-references
   borders.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -16,7 +16,6 @@ also-in: image-generation/svg-creator/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Vignette overlay — edge darkening
 
 ## What it does
@@ -94,4 +93,3 @@ Move `cx` / `cy` to emphasize a specific area:
   > What it does · The technique · Best practices · Gradient parameters that matter · When to use · Gotchas · Cross-references
   different angle.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

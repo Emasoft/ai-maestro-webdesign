@@ -15,7 +15,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/rules/research.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Persona template + good vs bad examples
 
 ## What it does

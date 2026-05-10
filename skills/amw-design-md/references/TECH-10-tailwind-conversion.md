@@ -25,7 +25,6 @@ status: stable
 - [Validation](#validation)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the high-fidelity mechanical conversion path from a Tailwind project (`tailwind.config.{ts,js,mjs,cjs}` + `globals.css` with `:root` CSS variables) to a Variant 1 DESIGN.md. Unlike [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) which is regex-based, this path uses `jiti` to actually evaluate the Tailwind config — so it handles dynamic values, computed configs, and shadcn-style HSL+CSS-variable patterns correctly.

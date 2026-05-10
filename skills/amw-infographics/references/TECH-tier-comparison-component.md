@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `tier_comparison` — tier badge table
 
 ## What it does
@@ -118,4 +117,3 @@ Match the badge color to the tier meaning:
 - [TECH-signature-palette](TECH-signature-palette.md) — how tiers relate to brand colors.
   > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

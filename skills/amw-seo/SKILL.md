@@ -26,7 +26,6 @@ Walk the `## Technique selection` tree to pick the matching TECH reference for t
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when the user requests SEO scoring alongside design work, or when `/amw-eval` triggers an SEO + UX combined audit. Also callable directly when the user explicitly names SEO, Core Web Vitals, E-E-A-T, or structured data.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

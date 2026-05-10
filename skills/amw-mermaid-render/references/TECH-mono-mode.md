@@ -13,7 +13,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Mono Mode — 2-color theme foundation
 
 ## What it does
@@ -74,4 +73,3 @@ const svg = await renderMermaid(diagram, {
 - [TECH-shiki-theme-import](TECH-shiki-theme-import.md) — map a VS Code theme to a Mono Mode pair.
   > What it does · When to use · Shiki → diagram token mapping · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

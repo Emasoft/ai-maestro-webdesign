@@ -16,7 +16,6 @@ also-in: SKILL-15.md (accordion.ts demo), pretext-frontend-motion-main (Accordio
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** motion
 **Status:** stable
 

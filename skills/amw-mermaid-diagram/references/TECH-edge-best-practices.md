@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Edge best practices — when to use which arrow
 
 ## What it does
@@ -85,4 +84,3 @@ flowchart TD
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — the parent grammar.
   > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

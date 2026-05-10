@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Letterbox gallery (each character its own filled canvas)
 
 **Category:** art

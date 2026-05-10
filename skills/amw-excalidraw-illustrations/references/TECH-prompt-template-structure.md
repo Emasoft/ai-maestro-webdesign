@@ -18,7 +18,6 @@ also-in: skills/amw-excalidraw-illustrations/references/prompt-template-en.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Structures every Gemini prompt into **seven mandatory sections** in a

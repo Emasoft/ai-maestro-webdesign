@@ -29,7 +29,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # 13 named palette recipes
 
 ## What it does
@@ -158,4 +157,3 @@ Use: DeFi reports, investment summaries, fintech.
   > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
   dictates the palette.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

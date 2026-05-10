@@ -16,7 +16,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Character construction — incremental with aggressive feedback
 
 > **GATE — OUT OF SCOPE FOR SVG-CREATOR.**
@@ -142,4 +141,3 @@ Offer to generate the static SVG as a starting point for import.
 - [TECH-reduced-motion](TECH-reduced-motion.md) — accessibility for animated characters.
   > What it does · The minimum implementation · Why `0.01ms` instead of `0s` · SMIL equivalent · When it's OK to ignore · When it's partially OK · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

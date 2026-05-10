@@ -15,7 +15,6 @@ also-in: image-generation/svg-creator/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Drop shadow, contact shadow, cast shadow (three filter chains)
 
 ## What it does
@@ -118,4 +117,3 @@ expected.
   > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
   surface-realistic shading.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Section header pill badge (ecosystem signature)
 
 ## What it does
@@ -105,4 +104,3 @@ Use for primary section titles in hero headers.
 - [TECH-glow-system](TECH-glow-system.md) — the glow system this uses.
   > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

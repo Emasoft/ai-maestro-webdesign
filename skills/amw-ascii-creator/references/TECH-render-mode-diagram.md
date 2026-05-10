@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-render-mode-diagram — grid-based flowchart/block-diagram renderer
 
 ## What it does
@@ -87,4 +86,3 @@ vertical; same-row as horizontal.
 - [TECH-multi-line-box-body](./TECH-multi-line-box-body.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

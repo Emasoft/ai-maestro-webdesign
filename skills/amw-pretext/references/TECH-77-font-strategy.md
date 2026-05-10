@@ -14,7 +14,6 @@ also-in: SKILL-11.md, SKILL-23.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Font strategy for pretext (named families, load order, fallbacks)
 
 **Category:** typography

@@ -13,7 +13,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Data visualization in SVG — bars, donuts, grids
 
 ## What it does
@@ -85,4 +84,3 @@ Key moves:
 - [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the shadow filter used above.
   > What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

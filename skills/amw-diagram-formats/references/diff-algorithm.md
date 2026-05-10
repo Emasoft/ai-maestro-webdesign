@@ -11,7 +11,6 @@
 - [9. Visual mode (optional, future)](#9-visual-mode-optional-future)
 - [10. Related references](#10-related-references)
 
-
 # IR Diff Algorithm — `bin/amw-diagram-ir.py diff` and `bin/diagram-ir-diff.py`
 
 **Authoritative spec for structural diagram comparison.** Consumed by `/amw-compare-diagrams` (via the `diagram-compare/` skill) and by any workflow that needs to answer *"what semantic changes happened between these two versions?"*.

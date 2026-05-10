@@ -3,7 +3,6 @@
 - [Filling guide](#filling-guide)
 - [Cross-references](#cross-references)
 
-
 # Canonical DESIGN.md template (Variant 1 — `@google/design.md` alpha)
 
 Copy the block below to a new `DESIGN.md`. Fill every `<placeholder>` with a real value. Leave optional sections out entirely if not relevant — do NOT leave empty section headers. After filling, run `bin/amw-design-md-lint.sh DESIGN.md` and fix any errors.

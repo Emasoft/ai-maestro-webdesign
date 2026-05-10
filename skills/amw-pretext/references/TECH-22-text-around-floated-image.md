@@ -16,7 +16,6 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-14.md, SKILL-15.md, SKILL-16.md, pretex
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** layout
 **Status:** stable
 

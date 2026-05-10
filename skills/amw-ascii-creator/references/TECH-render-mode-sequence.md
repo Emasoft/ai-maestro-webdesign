@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-render-mode-sequence — lifelines + messages + notes
 
 ## What it does
@@ -74,4 +73,3 @@ Top-level `sequence` key holds:
 - [TECH-sequence-notes](./TECH-sequence-notes.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -17,7 +17,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Dense top-to-bottom sections, each structurally different from the
@@ -116,4 +115,3 @@ at least 3 different component types across 4+ sections.
 - [TECH-section-variety-rule](TECH-section-variety-rule.md) — mandatory variety.
   > What it does · Acceptable section variety · Anti-patterns (reject and redesign) · The enforcement routine · The available component types (pick 3+) · Rule of thumb · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

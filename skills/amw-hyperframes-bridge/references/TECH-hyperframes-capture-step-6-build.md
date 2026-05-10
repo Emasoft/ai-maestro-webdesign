@@ -18,7 +18,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Builds the actual HTML compositions, one per beat (or per scene grouping). Each composition reads DESIGN.md for identity, STORYBOARD.md for direction, transcript.json for timing. After each composition is written, run self-review for layout + asset placement + animation quality.

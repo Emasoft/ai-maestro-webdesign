@@ -24,7 +24,6 @@ status: stable
 - [Anti-patterns](#anti-patterns)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the `components:` frontmatter map. Covers naming, variants, properties, and the special permission for composite token references inside component values.

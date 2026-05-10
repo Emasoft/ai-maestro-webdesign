@@ -13,7 +13,6 @@ also-in: diagram-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-version-history-yaml — v1 / v2 / ... + history.yaml + rollback
 
 ## What it does
@@ -96,4 +95,3 @@ Claude: Versiones de auth-flow:
 - [TECH-export-mermaid-plantuml-d2](./TECH-export-mermaid-plantuml-d2.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

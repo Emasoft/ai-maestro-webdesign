@@ -16,7 +16,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md, diagrams-skills/ag
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Synchronous function that renders Mermaid source as plain-text box-drawing
@@ -74,4 +73,3 @@ Options: `useAscii` (default `false` — Unicode), `paddingX` (5),
 - [TECH-ascii-markdown-integration](TECH-ascii-markdown-integration.md) — wrapping output in fenced code blocks.
   > What it does · When to use · Pattern 1: plain fenced block · Pattern 2: inline compact diagram · Pattern 3: ASCII mode for email / plain text · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

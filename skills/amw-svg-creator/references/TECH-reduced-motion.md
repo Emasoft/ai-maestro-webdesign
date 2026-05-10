@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `prefers-reduced-motion` — mandatory accessibility override
 
 ## What it does
@@ -104,4 +103,3 @@ duration rather than removed entirely:
   > What it does · The incremental build order · The thick-line trick for static characters · 8-head proportions (standing adult) · For animated characters — React + forward kinematics · Animation timing · When to recommend external tools · Gotchas · Cross-references
   need it too.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

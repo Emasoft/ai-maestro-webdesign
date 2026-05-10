@@ -10,7 +10,6 @@
 - [VI. Palette inspiration libraries (use these instead of inventing)](#vi-palette-inspiration-libraries-use-these-instead-of-inventing)
 - [VII. Self-check list](#vii-self-check-list)
 
-
 > Color is not picked by eye. It is picked by **color space + contrast numbers + a structured palette**.
 
 ---

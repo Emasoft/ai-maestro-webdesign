@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Embeds quantitative deltas inline in retro bullets using signed percent
@@ -79,4 +78,3 @@ p99 latency -180ms               ← absolute improvement
 - [TECH-metrics-per-transition](../../amw-text-visual-state/references/TECH-metrics-per-transition.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

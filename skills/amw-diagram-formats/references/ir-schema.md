@@ -10,7 +10,6 @@
 - [8. Validation](#8-validation)
 - [9. Consumers](#9-consumers)
 
-
 # IR Schema — `diagram-ir/1.0`
 
 **Authoritative spec for the plugin's Intermediate Representation.** Pair this prose with the machine-readable `../schema.json`; they describe the same shape. Changes to either MUST change both together, and MUST be gated by an ADR + explicit version bump (§6 below).

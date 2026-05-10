@@ -15,7 +15,6 @@ also-in: image-generation/create-infographics/resources/style-details.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Blockchain chain color-coding
 
 ## What it does
@@ -127,4 +126,3 @@ HTML:
   > What it does · Background rules · The default accent hierarchy · Palette temperature · Other most-used accents (in order) · Named palette recipes (top 3) · AMBER DARK (signature, most used) · CYBER TEAL · HOT PINK WEB3 · Rule — brand first, signature second · Gotchas · Cross-references
   chain colors).
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

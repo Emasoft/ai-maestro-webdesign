@@ -16,7 +16,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/SKILL.md, SKILL
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Emits an **architecture diagram** — a set of component rectangles joined by

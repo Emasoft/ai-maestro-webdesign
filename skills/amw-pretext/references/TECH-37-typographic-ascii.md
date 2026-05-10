@@ -13,7 +13,6 @@ also-in: pretext-frontend-motion-main (Variable Typographic ASCII), pretext-skil
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Typographic ASCII art (proportional-width characters)
 
 **Category:** art

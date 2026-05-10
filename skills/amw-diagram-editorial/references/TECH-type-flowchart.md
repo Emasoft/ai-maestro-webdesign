@@ -16,7 +16,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/references/me
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Emits a **decision flowchart** — rectangles for process steps, diamonds for

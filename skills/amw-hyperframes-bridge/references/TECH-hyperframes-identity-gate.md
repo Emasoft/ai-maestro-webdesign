@@ -20,7 +20,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/website-to-hyperframe
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 A hard gate applied before **any** composition HTML is written. The gate ensures every composition traces its palette, typography, and motion back to an explicit source — DESIGN.md, visual-style.md, a named preset, or direct user input. Compositions with generic defaults (`#333`, `#3b82f6`, `Roboto`) are evidence the gate was skipped.

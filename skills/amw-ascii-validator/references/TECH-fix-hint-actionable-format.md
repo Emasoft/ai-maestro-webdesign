@@ -13,7 +13,6 @@ also-in: ascii-diagram-validator-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-fix-hint-actionable-format — every finding carries a mechanical FIX:
 
 ## What it does
@@ -80,4 +79,3 @@ python3 bin/amw-validate-ascii.py /tmp/diagram.txt
 - [TECH-forbidden-chars-banlist](./TECH-forbidden-chars-banlist.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

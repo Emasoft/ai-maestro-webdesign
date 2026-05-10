@@ -16,7 +16,6 @@ also-in: box-diagram-master/skills/amw-box-diagram/SKILL.md, diagram-skill-main/
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Uses different node shapes to distinguish types of nodes in an
@@ -73,4 +72,3 @@ Database:        Queue:          External:
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [SKILL](../../amw-ascii-creator/SKILL.md) (style presets)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -13,7 +13,6 @@ also-in: diagram-skill-main/ASCII-STYLES.md, box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-arrow-head-variants — `▸ ▾ ▴ ◂` vs banned `▶ ▼ ▲ ◀`
 
 ## What it does
@@ -71,4 +70,3 @@ Vertical:     │               ▴
 - [TECH-unicode-rounded-corner-set](./TECH-unicode-rounded-corner-set.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

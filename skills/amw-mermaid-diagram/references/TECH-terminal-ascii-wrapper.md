@@ -17,7 +17,6 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/render.ts
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 A minimal Bun/TypeScript CLI that accepts a Mermaid source string and
@@ -110,4 +109,3 @@ bun run render.ts --padding-x 3 "graph TD; A --> B"
 - `../../amw-mermaid-render/` — the full-featured plugin skill with batch
   support and more flags.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

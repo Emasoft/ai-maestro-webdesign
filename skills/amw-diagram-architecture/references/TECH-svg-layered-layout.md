@@ -169,4 +169,3 @@ total_svg_h = PAD + total_content_h + PAD + 32   // +32 for title row
 - [TECH-mermaid-subgraph-transform](TECH-mermaid-subgraph-transform.md) — sibling transform for Mermaid
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -149,9 +149,12 @@ def _validate_ir(ir: Dict[str, Any]) -> List[str]:
             errors.append(f"node[{i}] not an object")
             continue
         nid = n.get("id")
-        if not isinstance(nid, str) or not ID_SAFE_RE.fullmatch("") is None and not re.fullmatch(
-            r"[A-Za-z0-9_\-]+", nid or ""
-        ):
+        # Per IR spec, node ids must be non-empty strings of [A-Za-z0-9_-].
+        # (The previous version mistakenly OR'd a no-op `ID_SAFE_RE.fullmatch("")`
+        # check that always evaluated False due to operator precedence, so the
+        # regex-shape check was dead code. Reinstated as a single explicit
+        # match against the safe-id alphabet.)
+        if not isinstance(nid, str) or not re.fullmatch(r"[A-Za-z0-9_\-]+", nid):
             errors.append(f"node[{i}].id invalid: {nid!r}")
             continue
         if nid in node_ids:

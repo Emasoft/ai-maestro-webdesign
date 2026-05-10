@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Enforces a consistent layout grid in an ASCII architecture diagram: each
@@ -73,4 +72,3 @@ makes a diagram read as if it has bugs the reader must decode.
 - [TECH-fan-out-fan-in-junctions](../../amw-box-diagram/references/TECH-fan-out-fan-in-junctions.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -16,7 +16,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/scripts/render.mjs
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The Pretty-mermaid CLI lets you pass seven optional `--color-name` flags
@@ -85,4 +84,3 @@ node scripts/render.mjs \
   > What it does · When to use · The full 15 · Recommended defaults · Minimal example · Gotchas · Cross-references
 - `../../../bin/amw-mermaid-render.sh` — the plugin-shipped shell wrapper.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

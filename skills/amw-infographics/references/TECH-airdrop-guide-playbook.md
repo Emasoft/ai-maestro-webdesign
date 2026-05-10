@@ -21,7 +21,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Airdrop-Guide playbook — 10% (17/175)
 
 ## What it does
@@ -160,4 +159,3 @@ simpler guides.
 - [TECH-progress-bar-vesting](TECH-progress-bar-vesting.md) — the vesting bar.
   > What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

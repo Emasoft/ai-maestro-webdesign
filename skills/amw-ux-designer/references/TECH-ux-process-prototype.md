@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The fourth of five phases. HIGH priority. Phase 4 builds interactive prototypes for the selected wireframes and runs usability tests to validate them before engineering investment. Outputs are quantitative task-success metrics plus qualitative observations.

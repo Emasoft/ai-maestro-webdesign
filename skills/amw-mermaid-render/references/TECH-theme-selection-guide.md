@@ -16,7 +16,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 A short decision tree that maps user context to one of the 15 built-in
@@ -97,4 +96,3 @@ node scripts/render.mjs -i diagram.mmd -o out.svg -t zinc-light
 - [TECH-mono-mode](TECH-mono-mode.md) — when no pre-baked theme fits at all.
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

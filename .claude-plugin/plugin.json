@@ -26,6 +26,11 @@
   ],
   "cpv": {
     "allow_root_dirs": ["external", "SKILLS-TO-INTEGRATE", "claude-design-principles"],
+    "strip": {
+      "allowed_submodule_urls": [
+        "https://github.com/heygen-com/hyperframes.git"
+      ]
+    },
     "allow_orchestrator_traversal": [
       "skills/amw-design-principles",
       "skills/amw-pretext",

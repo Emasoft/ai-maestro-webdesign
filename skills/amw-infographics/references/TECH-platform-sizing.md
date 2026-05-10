@@ -17,7 +17,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Platform sizing — Twitter, Instagram, LinkedIn, Pinterest
 
 ## What it does
@@ -150,4 +149,3 @@ python scripts/export.py -i infographic.html -o output/pinterest -f png --width 
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — density targets by format.
   > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

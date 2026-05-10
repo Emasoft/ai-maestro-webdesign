@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-render-mode-table — data grids with cell-span and wrap
 
 ## What it does
@@ -75,4 +74,3 @@ repeating the first column for continuation.
 - [TECH-json-render-four-modes](./TECH-json-render-four-modes.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

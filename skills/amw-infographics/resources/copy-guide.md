@@ -12,8 +12,7 @@
 - [Body Copy Rules — Bullets Over Paragraphs](#body-copy-rules-bullets-over-paragraphs)
 - [Common Mistakes to Avoid](#common-mistakes-to-avoid)
 
-
-# Last updated: March 2026
+> Last updated: March 2026
 
 ## The Core Rule
 Infographics are not articles. Every word competes for space. **Cut 40% of whatever you write first.** Lead with the number, not the explanation.

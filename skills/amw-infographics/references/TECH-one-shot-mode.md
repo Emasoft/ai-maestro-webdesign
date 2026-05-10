@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # One-Shot mode (Mode B) — generate the full infographic in one pass
 
 ## What it does
@@ -131,4 +130,3 @@ Produces `{name}.png`, `{name}.pdf`, `{name}.svg`.
 - [TECH-export-pipeline](TECH-export-pipeline.md) — Step 5 details.
   > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

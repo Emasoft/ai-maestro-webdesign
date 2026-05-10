@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-before-after-comparison — N-scenario side-by-side ASCII
 
 ## What it does
@@ -74,4 +73,3 @@ optimization examples.
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
   > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

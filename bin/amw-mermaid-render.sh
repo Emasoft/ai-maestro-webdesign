@@ -93,7 +93,6 @@ FORMAT="svg"
 OUT_PATH=""
 HAS_INPUT=0
 ARGS=()
-i=0
 while [ $# -gt 0 ]; do
   case "$1" in
     --format|-f)

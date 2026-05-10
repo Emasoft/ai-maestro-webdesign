@@ -24,7 +24,6 @@ status: stable
 - [Symmetry with non-DESIGN.md inputs](#symmetry-with-non-designmd-inputs)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents how the plugin's downstream Phase B agents — chiefly `amw-wireframe-builder-agent` — consume a DESIGN.md as their canonical token source. This is the LAST step in the DESIGN.md lifecycle: after authoring / extraction / validation, the DESIGN.md drives actual UI generation.

@@ -13,7 +13,6 @@ also-in: SKILL-15.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Overflow prediction (will this button's label wrap?)
 
 **Category:** typography

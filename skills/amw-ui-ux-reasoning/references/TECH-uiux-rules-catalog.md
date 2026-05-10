@@ -14,7 +14,6 @@ also-in:
 - [Top 10 distinctive rules — broken out as individual TECH files](#top-10-distinctive-rules-broken-out-as-individual-tech-files)
 - [Cross-references](#cross-references)
 
-
 # TECH: Reasoning-rules catalog (161 rules)
 
 ## What it does

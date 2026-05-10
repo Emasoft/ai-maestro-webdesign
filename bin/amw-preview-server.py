@@ -194,7 +194,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         else:
             assert PreviewHandler.root_dir is not None, "root_dir must be set in multi-variant mode"
             root_dir = PreviewHandler.root_dir
-            from urllib.parse import urlparse, parse_qs
+            from urllib.parse import parse_qs, urlparse
             q = parse_qs(urlparse(self.path).query)
             p = q.get("p", ["/index.html"])[0].lstrip("/")
             target = root_dir / (p or "index.html")

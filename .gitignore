@@ -83,8 +83,24 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Hyperframes vendored repo — managed as git submodule (see .gitmodules)
-# Excluded from this gitignore-comment because the submodule registration uses .gitmodules.
+# Hyperframes vendored repo — managed as git submodule (see .gitmodules).
+# The submodule itself is git-tracked via the gitlink at external/hyperframes,
+# but its CONTENTS are upstream code that this plugin does not own. We tell
+# CPV's gitignore-aware scanners (htmlhint, hadolint, ruff, markdownlint,
+# absolute-path scan) to skip everything inside the submodule so the plugin's
+# own validation report only flags issues in code we can fix (RULE 0 forbids
+# editing vendored upstream sources). The submodule registration in
+# .gitmodules is unaffected — git still tracks the gitlink.
+external/hyperframes/**
+
+# Vendored shadcn-ui upstream docs (skills/amw-shadcn-ui/docs/) — 201 MDX files
+# imported verbatim from https://ui.shadcn.com/. These are reference material
+# documenting the upstream component library; this plugin does not author them
+# and re-syncs would re-introduce any local style fixes. Listing them here
+# tells CPV's gitignore-aware scanners to skip them, while git continues to
+# track the already-committed files (gitignore only affects untracked files —
+# tracked files remain tracked, so these still ship with the plugin).
+skills/amw-shadcn-ui/docs/**
 
 # Janitor heartbeat state (per-session, transient)
 .janitor/

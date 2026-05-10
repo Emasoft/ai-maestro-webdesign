@@ -16,7 +16,6 @@ also-in: ascii-diagram-validator-main/README.md, box-diagram-master/skills/amw-b
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The validator asserts that every line in a framed ASCII diagram has the same
@@ -69,4 +68,3 @@ Issues Found:
 - [TECH-wide-character-detection](./TECH-wide-character-detection.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

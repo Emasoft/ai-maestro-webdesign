@@ -16,7 +16,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/form
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Assigns one of **five fixed layer colours** to each layer of a layered
@@ -107,4 +106,3 @@ are re-ordered. The hex values track the semantic layer, not the
 - [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — SVG uses it for band + accent bar + dot
   > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

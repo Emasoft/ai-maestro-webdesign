@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: 3-dimension evaluation framework (Position, Visual Weight, Spacing)
 
 ## What it does

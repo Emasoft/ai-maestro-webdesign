@@ -13,7 +13,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/references/THEMES.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Enriched Mode — override specific derived tokens
 
 ## What it does
@@ -71,4 +70,3 @@ const svg = await renderMermaid(diagram, {
 - [TECH-theme-selection-guide](TECH-theme-selection-guide.md) — when to even reach for Enriched Mode.
   > What it does · When to use · Decision tree · Context-to-theme cheat table · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

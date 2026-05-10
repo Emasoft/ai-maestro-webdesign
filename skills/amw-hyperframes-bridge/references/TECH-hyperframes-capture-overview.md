@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Website-to-Hyperframes capture — pipeline overview
 
 ## What it does

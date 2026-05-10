@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # ER diagram best practices
 
 ## What it does
@@ -48,12 +47,12 @@ Pick the crowsfoot that matches your DB's real semantics:
 
 | Semantics | Crowsfoot |
 |-----------|-----------|
-| A customer can have 0 or more orders | `CUSTOMER ||--o{ ORDER` |
-| An order must have at least 1 item | `ORDER ||--|{ ORDER_ITEM` |
-| A product is used in 0 or more order items | `PRODUCT ||--o{ ORDER_ITEM` |
-| A user has exactly one profile (1:1) | `USER ||--|| PROFILE` |
+| A customer can have 0 or more orders | `CUSTOMER \|\|--o{ ORDER` |
+| An order must have at least 1 item | `ORDER \|\|--\|{ ORDER_ITEM` |
+| A product is used in 0 or more order items | `PRODUCT \|\|--o{ ORDER_ITEM` |
+| A user has exactly one profile (1:1) | `USER \|\|--\|\| PROFILE` |
 
-"Can be zero" → `o`. "Must be one" → `|`. "Can be many" → `{`.
+"Can be zero" → `o`. "Must be one" → `\|`. "Can be many" → `{`.
 
 ## Minimal example — good style
 
@@ -94,4 +93,3 @@ erDiagram
   > What it does · When to use · Class definition · Visibility markers · Relationship arrows (UML) · Cardinality · Abstract / interface / generic · Minimal example · Gotchas · Cross-references
   tables.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

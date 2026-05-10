@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: UX process — Ideate & Design (Phase 3)
 
 ## What it does

@@ -8,7 +8,6 @@
 - [How agents apply this](#how-agents-apply-this)
 - [Cross-references](#cross-references)
 
-
 # Iteration budget — hard caps for all agent retry loops
 
 This document is the single source of truth for maximum attempt counts in

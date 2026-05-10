@@ -9,7 +9,6 @@
 - [7. Tools index (required backends)](#7-tools-index-required-backends)
 - [8. Related references](#8-related-references)
 
-
 # Conversion Matrix — 5 formats, N×N cells
 
 **Authoritative dispatch table** consumed by `/amw-convert-any-diagram-format` and every `wd-create-or-modify-*-diagram` command that needs to normalize an incoming diagram to a specific format.

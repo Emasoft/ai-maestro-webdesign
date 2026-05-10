@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-png-export-bridge
 
 ## What it does
@@ -106,4 +105,3 @@ To save as PNG:
 - [validation](validation.md) — Stage 2 PNG checks (instructions after SVG, etc.)
   > Stage 1 — Graph Validation (all formats) · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Stage 2 — Format Validation · Format: `graph` · Format: `mermaid` · Format: `svg` · Format: `png` · Validation Summary (quick reference) · **Stage 1 — Graph validation**: structural checks on the graph JSON. · **Stage 2 — Format validation**: surface-level checks on the rendered output.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

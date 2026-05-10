@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Enforces a verification rule: every state in a state-machine diagram
@@ -78,4 +77,3 @@ Good (every state reachable and leaveable):
 - [TECH-state-guards-and-actions](./TECH-state-guards-and-actions.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

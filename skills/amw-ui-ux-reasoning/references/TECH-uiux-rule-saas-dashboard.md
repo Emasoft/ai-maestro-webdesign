@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Reasoning rule — SaaS Dashboard / B2B Analytics
 
 ## What it does

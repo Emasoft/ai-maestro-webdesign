@@ -37,7 +37,6 @@ See `## Pipeline (7 steps)` below.
 
 Callable directly via the `/amw-create-diagram-from-webpage` command (user shortcut for users who have a URL or local `.html` and want to extract its structural diagram), or invoked by the `design-principles` orchestrator during **Phase B** as the forward leg of the webpage round-trip. An agent in Main-agent mode may also invoke this skill directly via the orchestrator without going through the command.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

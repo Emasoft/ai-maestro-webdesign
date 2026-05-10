@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Labels every edge in an architecture diagram with the protocol / call
@@ -90,4 +89,3 @@ Conventions:
 - [TECH-async-arrow-vocabulary](../../amw-text-visual-workflows/references/TECH-async-arrow-vocabulary.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

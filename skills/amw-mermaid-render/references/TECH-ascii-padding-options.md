@@ -17,7 +17,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md, diagrams-skills/ag
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Three tuning knobs on `renderMermaidAscii()` that control horizontal
@@ -90,4 +89,3 @@ const inline = renderMermaidAscii(diagram, {
   rendering contexts.
 - `../../../bin/amw-mermaid-render.sh` — the shell CLI that accepts `--padding-x`.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

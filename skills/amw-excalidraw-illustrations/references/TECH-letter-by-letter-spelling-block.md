@@ -16,7 +16,6 @@ also-in: skills/amw-excalidraw-illustrations/references/prompt-template-en.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Forces Gemini to render text correctly by **spelling out every key word

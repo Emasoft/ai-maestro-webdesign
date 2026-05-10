@@ -14,7 +14,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Colored shadows (never pure black)
 
 ## What it does
@@ -86,4 +85,3 @@ drop-shadow filters use `#000` here, which is the amateur mistake.
 - [TECH-vignette-overlay](TECH-vignette-overlay.md) — scene-level darkening at edges.
   > What it does · The gradient · The parameters · Layer order · Off-center vignettes · When to use · When NOT to use · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

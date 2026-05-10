@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Annotates each transition in a product-lifecycle state machine with the
@@ -81,4 +80,3 @@ Format:
 - [TECH-metadata-annotation-conventions](../../amw-text-visual-workflows/references/TECH-metadata-annotation-conventions.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

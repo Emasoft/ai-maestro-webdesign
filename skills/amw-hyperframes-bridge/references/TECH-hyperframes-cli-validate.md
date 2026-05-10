@@ -18,7 +18,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes-cli/SKILL
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 > For visual layout overflow checks (text overflow, container clipping), see [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md). `validate` is strictly a WCAG color-contrast pass.
 
 ## What it does

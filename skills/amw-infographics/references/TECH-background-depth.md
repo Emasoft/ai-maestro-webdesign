@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Background depth — radial gradient orbs, scanlines, paper texture
 
 ## What it does
@@ -185,4 +184,3 @@ Playful/Loud:     Gradient mesh, saturation OK
   > What it does · The technique · Best practices · Gradient parameters that matter · When to use · Gotchas · Cross-references
   the gradient mesh technique in depth.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

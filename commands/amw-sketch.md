@@ -140,4 +140,3 @@ If a variant slides toward any of these, rework it before showing.
 - User has stated a design intent ("dashboard for a devtools team", "landing page for a crypto protocol", "poster for an event") but has not given a concrete layout.
 - Design-principles Rule 2 (≥ 3 variants) applies; ASCII is the cheapest medium for satisfying it.
 - User has not yet supplied or confirmed a design system. If they have, still run this step — picking ASCII direction first keeps token/component choices from over-constraining layout.
-

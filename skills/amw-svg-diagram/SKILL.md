@@ -30,7 +30,6 @@ See `## Pipeline (5 steps — matches shared modify-flow)` below.
 
 Callable directly via the `/amw-create-or-modify-svg-diagram` command (user shortcut for users who already know they want an SVG diagram and have either a brief or an existing `.svg` to modify), or invoked by the `design-principles` orchestrator during **Phase B** when the approved deliverable is a standalone SVG diagram. An agent in Main-agent mode may also invoke this skill directly via the orchestrator without going through the command.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -96,7 +95,8 @@ One standalone `.svg` file per invocation (well-formed XML, `xmlns="http://www.w
 **Concrete example — author a freeform SVG diagram:**
 
 - **Input:** "Show the request flow between a browser, an API gateway, and three microservices, with arrows labeled by transport (HTTPS, gRPC)."
-- **Operation:** parse the brief to IR (nodes + edges + transport annotations) via `bin/amw-diagram-ir.py`. Emit standalone SVG with measured node boxes, oklch color tokens from `amw-design-principles/color-system.md`, and aria-labels on every shape. Validate via `bin/amw-validate-svg-diagram.sh` (checks viewBox, font stack, no forbidden primitives). Render via `bin/amw-svg-render.py`.
+- **Operation:** parse the brief to IR (nodes + edges + transport annotations) via `bin/amw-diagram-ir.py`. Emit standalone SVG with measured node boxes, oklch color tokens from the orchestrator's color-system reference (see [color-system](../amw-design-principles/color-system.md)), and aria-labels on every shape. Validate via `bin/amw-validate-svg-diagram.sh` (checks viewBox, font stack, no forbidden primitives). Render via `bin/amw-svg-render.py`.
+  > [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **Output:** `request-flow.svg` (self-contained, no external deps, raster-friendly via cairosvg).
 
 **Concrete example — modify an existing layered architecture diagram:**

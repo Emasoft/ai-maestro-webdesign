@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Uses angle-bracket placeholders (`<branch>`, `<repo>`, `<env>`) for
@@ -76,4 +75,3 @@ Legend:
 - [TECH-category-sections](./TECH-category-sections.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -16,7 +16,6 @@ Runs the ASCII plan-phase iteration loop. Produces three layout variants per tur
 
 Callable via the `/amw-sketch` command (user shortcut — fast entry with explicit parameters), or invoked automatically by the `design-principles` orchestrator as the default Phase A medium after context is gathered in Main-agent mode. In Main-agent mode the orchestrator may apply iteration techniques from this skill beyond what the `/amw-sketch` command parameters expose.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

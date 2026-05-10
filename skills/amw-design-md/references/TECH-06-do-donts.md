@@ -27,7 +27,6 @@ status: stable
 - [Common authoring mistakes](#common-authoring-mistakes)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents how to write the final section of a DESIGN.md (Variant 1: Section 8 "Do's and Don'ts"; Variant 2: Section 7 "Do's and Don'ts"). Covers content guidelines, minimum count, what makes a rule actionable vs vague, and worked examples.

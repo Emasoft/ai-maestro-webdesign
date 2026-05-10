@@ -17,7 +17,6 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-14.md, SKILL-16.md, pretext-text-measur
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** api
 **Status:** stable
 

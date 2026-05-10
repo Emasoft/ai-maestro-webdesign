@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-multi-service-architecture — client → gateway → services → DB
 
 ## What it does
@@ -77,4 +76,3 @@ pattern.
 - [network-topology](./network-topology.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

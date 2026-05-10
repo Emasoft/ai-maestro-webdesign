@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-lane-labeled-diagrams — swimlanes via `lanes[]` in diagram mode
 
 ## What it does
@@ -77,4 +76,3 @@ render as L-elbows crossing rows.
 - [TECH-render-mode-layers](./TECH-render-mode-layers.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

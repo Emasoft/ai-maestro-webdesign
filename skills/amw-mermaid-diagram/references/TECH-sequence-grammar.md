@@ -20,7 +20,6 @@ also-in: diagrams-skills/agent-skill-diagramming-flows-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 `sequenceDiagram` grammar authors an interaction sequence between
@@ -123,4 +122,3 @@ sequenceDiagram
   > What it does · Line-and-arrow combinations · Inline label — two syntaxes · Minimal example · Styling edges with `linkStyle` · Gotchas · Cross-references
   flowchart arrows.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

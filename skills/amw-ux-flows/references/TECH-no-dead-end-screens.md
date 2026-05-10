@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-no-dead-end-screens
 
 ## What it does

@@ -21,7 +21,6 @@ status: stable
 - [CI integration suggestion (out-of-scope but documented)](#ci-integration-suggestion-out-of-scope-but-documented)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the three validation tools the plugin runs on every authored or extracted DESIGN.md before delivery. All three must pass cleanly (or have failures explicitly accepted in the agent's `warnings`) before the file is considered final.

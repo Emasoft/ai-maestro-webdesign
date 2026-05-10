@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Style profiles (pick ONE aesthetic per pretext output)
 
 **Category:** consult

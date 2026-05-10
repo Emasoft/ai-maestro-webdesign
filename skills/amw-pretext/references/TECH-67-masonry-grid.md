@@ -16,7 +16,6 @@ also-in: SKILL-15.md (masonry/index.ts), use-pretext/SKILL.md Recipe 1, pretext-
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** workflow
 **Status:** stable
 

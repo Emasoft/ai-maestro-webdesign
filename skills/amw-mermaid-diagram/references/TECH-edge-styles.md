@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Edge styles — arrows, lines, labels
 
 ## What it does
@@ -92,4 +91,3 @@ flowchart LR
   > What it does · When to use · The heuristic table · Label conventions · Arrow density rule · Minimal example — mixed arrows with purpose · Gotchas · Cross-references
   vs thin.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

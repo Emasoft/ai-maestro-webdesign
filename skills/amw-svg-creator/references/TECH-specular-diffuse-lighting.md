@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `feSpecularLighting` + `feDiffuseLighting` — physics-based shading
 
 ## What it does
@@ -95,4 +94,3 @@ horizon.
   > What it does · The five zones · Implementation — radial gradient + overlays · When to use · Gotchas · Cross-references
   don't want physics.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

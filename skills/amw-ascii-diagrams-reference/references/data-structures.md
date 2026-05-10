@@ -8,7 +8,6 @@
 
 ## Reference
 
-
 Use for: packet formats, struct layouts, buffer organization, bit interpretation.
 
 **Struct/packet layout with byte offsets:**

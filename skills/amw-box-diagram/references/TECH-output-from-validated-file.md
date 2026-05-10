@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-output-from-validated-file — read back, never re-type
 
 ## What it does
@@ -78,4 +77,3 @@ cat /tmp/diagram.txt                       # ← read back
 - [TECH-fix-hint-actionable-format](../../amw-ascii-validator/references/TECH-fix-hint-actionable-format.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

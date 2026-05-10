@@ -19,7 +19,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/ux-flow-designer-main/assets/wirefr
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Produces **self-contained mobile-first HTML wireframes** — one `.html`
@@ -94,8 +93,7 @@ dependencies.
 | `.wf-divider` | Dashed horizontal separator |
 | `.wf-spacer` | 16px vertical spacing |
 | `.wf-label` / `.wf-title` / `.wf-subtitle` | Typography |
-| `.wf-link` | Navigation wrapper (see
-  [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md)) |
+| `.wf-link` | Navigation wrapper (see [TECH-clickable-prototype-navigation](TECH-clickable-prototype-navigation.md)) |
 | `.wf-back` | Back button text style |
 | `.wf-footer` | Bottom meta footer (screen name + use-case ID) |
 

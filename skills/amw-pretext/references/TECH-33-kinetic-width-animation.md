@@ -13,7 +13,6 @@ also-in: skills/amw-pretext-art/SKILL.md, SKILL-14.md, SKILL-11.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Kinetic typography (text reflows as width animates)
 
 **Category:** art

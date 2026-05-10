@@ -9,9 +9,8 @@
 - [Tested Font Pairings (Your Actual Combinations)](#tested-font-pairings-your-actual-combinations)
 - [Typography Constants (Always Apply)](#typography-constants-always-apply)
 
-
-# Extracted from 175 real infographics — cross-validated by Claude Vision + GPT-5.4
-# Last updated: March 2026
+> Extracted from 175 real infographics — cross-validated by Claude Vision + GPT-5.4
+> Last updated: March 2026
 
 ## Key Statistics
 - **100% of infographics use UPPERCASE labels** — this is your universal signature

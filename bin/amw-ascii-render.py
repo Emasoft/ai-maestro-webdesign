@@ -166,7 +166,7 @@ def render_diagram(data):
     # Compute lane label margin
     lane_margin = 0
     if lanes:
-        max_lane_len = max((len(l) for l in lanes), default=0)
+        max_lane_len = max((len(lbl) for lbl in lanes), default=0)
         if max_lane_len > 0:
             lane_margin = max_lane_len + 3  # "label | "
 
@@ -254,7 +254,7 @@ def render_diagram(data):
 
     # Draw lane labels
     if lanes:
-        max_ll = max((len(l) for l in lanes), default=0)
+        max_ll = max((len(lbl) for lbl in lanes), default=0)
         for ri in range(num_rows):
             if ri < len(lanes) and lanes[ri]:
                 label_y = y_positions[ri] + row_heights[ri] // 2
@@ -413,10 +413,10 @@ def draw_connector(g, box_positions, from_id, to_id, label, grid_layout,
                 # Work top-to-bottom regardless of direction
                 if going_down:
                     src_t, src_l, src_w, src_h = ft, fl, fw, fh
-                    dst_t, dst_l, dst_w, dst_h = tt, tl, tw, th
+                    dst_t, dst_l, dst_w, _dst_h = tt, tl, tw, th
                 else:
                     src_t, src_l, src_w, src_h = tt, tl, tw, th
-                    dst_t, dst_l, dst_w, dst_h = ft, fl, fw, fh
+                    dst_t, dst_l, dst_w, _dst_h = ft, fl, fw, fh
 
                 src_center = src_l + src_w // 2
                 dst_center = dst_l + dst_w // 2

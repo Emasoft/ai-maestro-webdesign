@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-unicode-rounded-corner-set — `╭ ╮ ╰ ╯ │ ─` box character set
 
 ## What it does
@@ -73,4 +72,3 @@ and its siblings.
 - [TECH-safe-char-palette](../../amw-ascii-validator/references/TECH-safe-char-palette.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -3,7 +3,6 @@
 - [Example concept: "Realism vs Naturalism — art history lesson"](#example-concept-realism-vs-naturalism-art-history-lesson)
 - [Notes on this shape](#notes-on-this-shape)
 
-
 # Prompt template (English) — filled-in example
 
 Worked example of the skill's prompt shape. Use it verbatim as a starting point

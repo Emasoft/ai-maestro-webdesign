@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Reasoning rule — Food / Restaurant / Hospitality
 
 ## What it does

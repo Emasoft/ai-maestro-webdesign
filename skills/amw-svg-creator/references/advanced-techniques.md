@@ -800,7 +800,6 @@ On gradient elements for smoother, more physically accurate color transitions. P
 
 ---
 
-
 ## 13. Characters and Figures
 
 ### The Fundamental Challenge

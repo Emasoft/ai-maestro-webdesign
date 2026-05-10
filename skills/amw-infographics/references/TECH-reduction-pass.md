@@ -23,7 +23,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Reduction Pass — strip everything that doesn't encode data
 
 ## What it does
@@ -153,4 +152,3 @@ Usually border alone is enough.
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the "don't reduce density" rule.
   > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

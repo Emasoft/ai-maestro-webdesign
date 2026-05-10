@@ -28,7 +28,6 @@ See the `## Invocation pattern` section below for the authoritative execution st
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator as the final Phase B step in Main-agent mode when the approved design requires MP4 video output. The orchestrator may apply the full Hyperframes shell-out pipeline and composition techniques from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -103,7 +102,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    See [TECH-hyperframes-cli-lint](./references/TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-validate](./references/TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](./references/TECH-hyperframes-cli-inspect.md).
    > [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
    > [TECH-hyperframes-cli-inspect.md] What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
-
+   >
    > **Gate-sequence note:** The bridge's sequence (`lint → validate → inspect → render`) intentionally extends upstream's (`lint → inspect → preview → render`, see `external/hyperframes/skills/hyperframes-cli/SKILL.md:14-17`) by adding `validate` for unattended Phase B pipelines and dropping `preview` (a developer-loop primitive).
 
 4. **Render.** From inside the resolved project directory:

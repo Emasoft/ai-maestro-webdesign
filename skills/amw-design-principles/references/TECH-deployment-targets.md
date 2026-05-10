@@ -17,7 +17,6 @@ also-in: globalCC skills `vercel-development`, `netlify-development`, `cloudflar
 - [What main-agent MUST NOT do](#what-main-agent-must-not-do)
 - [Plugin-scope boundary](#plugin-scope-boundary)
 
-
 ## What it does
 
 When the user asks "where do I deploy this?" after a Phase B build completes, the main-agent surfaces this catalog. The plugin produces unbuilt HTML/CSS/JS by default; deployment is out of plugin scope but the recommendations below let main-agent orient the user without inventing platform-specific advice.

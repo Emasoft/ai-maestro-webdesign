@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Glyph morphing (interpolate letterforms A → Z)
 
 **Category:** art

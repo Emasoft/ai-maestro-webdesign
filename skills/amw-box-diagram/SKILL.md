@@ -17,7 +17,6 @@ Authors clean Unicode rounded-corner box diagrams (`╭╮╰╯│─`) for pip
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for pipeline/topology sketches) or Phase B (when the approved design requires a validated box diagram artifact). The orchestrator may apply any box-drawing and layout technique from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -434,4 +433,4 @@ See the worked examples in the per-mode sub-sections above and in references/.
 | Validator reports WIDTH_MISMATCH on a multi-line box | Content line is shorter/longer than the frame's inner width | Re-pad every content line with trailing spaces to match |
 | Vertical `│` walks one column to the right between rows | Adjacent boxes in the upper row differ in width | Re-equalize the upper-row boxes (same `inner_width`) |
 | Fan-out `┌ ┬ ┐` does not line up with the children below | Column offsets differ between parent row and child row | Fix the grid first — every box in a column shares one left-edge offset |
-| Output looks right in the reply but breaks in the user's terminal | User's terminal is not UTF-8 or has a proportional font | Fall back to `../amw-ascii-diagrams-reference/` which uses only `+`, `-`, `|` |
+| Output looks right in the reply but breaks in the user's terminal | User's terminal is not UTF-8 or has a proportional font | Fall back to `../amw-ascii-diagrams-reference/` which uses only `+`, `-`, `\|` |

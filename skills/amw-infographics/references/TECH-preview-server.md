@@ -17,7 +17,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Preview server — live reload during builder sessions
 
 ## What it does
@@ -131,4 +130,3 @@ sandbox. Nothing is restricted.
 - [TECH-export-pipeline](TECH-export-pipeline.md) — where finalized HTML goes.
   > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

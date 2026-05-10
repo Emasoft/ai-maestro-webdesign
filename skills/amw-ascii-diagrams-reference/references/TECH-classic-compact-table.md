@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-compact-table — pipe-separated table with dash underline
 
 ## What it does
@@ -75,4 +74,3 @@ and status-code tables where visual ceremony is overhead.
 - [sequences-tables](./sequences-tables.md) (legacy pattern file)
   > Sequence Diagrams · Tables
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

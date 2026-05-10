@@ -57,7 +57,10 @@ while IFS= read -r line; do
     ""|[Dd]eprecation*|\[WARNING\]*|warn\ *)
       continue
       ;;
-    *Error*|*error*|*SyntaxError*|*"Parse error"*|*"Unknown diagram"*)
+    *Error*|*error*|*"Unknown diagram"*)
+      # NOTE: *Error* covers SyntaxError; *error* covers "Parse error";
+      # we keep only the prefix patterns so shellcheck (SC2221/SC2222)
+      # doesn't flag unreachable case branches.
       count=$((count + 1))
       # Try to find a "Parse error on line N:" pattern for the line number.
       lineno="$(printf '%s' "$line" | sed -nE 's/.*line ([0-9]+).*/\1/p' | head -n 1)"

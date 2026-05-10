@@ -8,8 +8,7 @@
 - [Watermark / Attribution Rule by Platform](#watermark-attribution-rule-by-platform)
 - [export.py Commands by Platform](#exportpy-commands-by-platform)
 
-
-# Last updated: March 2026
+> Last updated: March 2026
 
 ## Quick Reference
 

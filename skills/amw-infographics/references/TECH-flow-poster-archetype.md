@@ -17,7 +17,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Central flow diagram (vertical or circular) dominates the canvas,
@@ -149,4 +148,3 @@ percentage, token name. Never unlabeled arrows in a flow diagram.
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — default alternative.
   > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Font-pairings catalog (57 heading+body combos)
 
 ## What it does

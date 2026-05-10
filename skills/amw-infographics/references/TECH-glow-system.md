@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Glow system — neon box-shadow + text-shadow
 
 ## What it does
@@ -120,4 +119,3 @@ On light backgrounds, glows look wrong. Disable them:
 - [TECH-section-header-pill](TECH-section-header-pill.md) — a primary glow consumer.
   > What it does · CSS · HTML · The four visual layers · When to use · Variants · Without glow (cleaner) · Wider (title-sized) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

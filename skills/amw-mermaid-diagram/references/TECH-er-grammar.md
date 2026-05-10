@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # ER diagram grammar (`erDiagram`)
 
 ## What it does
@@ -112,4 +111,3 @@ erDiagram
   > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
   as a graph than a schema.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

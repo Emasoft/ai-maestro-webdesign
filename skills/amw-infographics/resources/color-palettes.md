@@ -12,9 +12,8 @@
 - [Glow Color Reference (Top confirmed glow colors)](#glow-color-reference-top-confirmed-glow-colors)
 - [Light Mode Palettes (When background: "light")](#light-mode-palettes-when-background-light)
 
-
-# Extracted from 175 real infographics — cross-validated by Claude Vision + GPT-5.4
-# Last updated: March 2026
+> Extracted from 175 real infographics — cross-validated by Claude Vision + GPT-5.4
+> Last updated: March 2026
 
 ## Key Statistics
 - **99% dark mode** (173/175 infographics)
@@ -46,7 +45,7 @@ Brand colors override these defaults — extract from the project logo first. Us
 
 ## Brand Distinction Strategy
 
-To make an infographic stand out, **prioritize brand identity over industry norms**. 
+To make an infographic stand out, **prioritize brand identity over industry norms**.
 
 1. **Avoid the "Tech Blue" Default:** Unless the brand explicitly uses blue, avoid defaulting to it. Blue and purple are the most overused colors in the space.
 2. **Logo-First Extraction:** Extract the dominant color from the client's logo and build a complementary or split-complementary palette around it.

@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Section Variety Rule — MANDATORY across 4+ sections
 
 ## What it does
@@ -102,4 +101,3 @@ Supporting (don't let dominate):
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — where variety lives.
   > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

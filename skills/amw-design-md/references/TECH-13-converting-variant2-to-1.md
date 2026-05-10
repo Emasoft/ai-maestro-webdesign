@@ -28,7 +28,6 @@ status: stable
 - [Round-trip notes](#round-trip-notes)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the field-level conversion from a Variant 2 DESIGN.md (community 9-section format, all in prose) to a Variant 1 DESIGN.md (canonical `@google/design.md`, with YAML frontmatter). The bin script is `bin/amw-design-md-convert-v2-to-v1.py`. Pure-Python, no external deps beyond PyYAML.

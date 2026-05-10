@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-sequence-lifelines — Client/Server/DB actor columns
 
 ## What it does
@@ -66,4 +65,3 @@ columns, timing implied by vertical order.
 - [sequences-tables](./sequences-tables.md) (legacy pattern file)
   > Sequence Diagrams · Tables
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

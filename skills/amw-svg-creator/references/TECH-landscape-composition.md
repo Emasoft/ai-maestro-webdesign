@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Landscape scene composition — 7+ layers
 
 > **GATE — OUT OF SCOPE FOR SVG-CREATOR.**
@@ -116,4 +115,3 @@ Foreground is full color.
 - [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — fog, rays, rain.
   > Scope note · What it does · Light rays (god rays) · Fog / mist (masked gradient) · Stars with twinkling · Rain · Clouds · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

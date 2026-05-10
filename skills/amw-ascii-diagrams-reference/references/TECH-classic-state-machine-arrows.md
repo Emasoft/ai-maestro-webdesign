@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-state-machine-arrows — TCP-style state diagram
 
 ## What it does
@@ -78,4 +77,3 @@ the canonical TCP connection state diagram (`CLOSED → OPENING → CONNECTED
 - [TECH-state-guards-and-actions](../../amw-text-visual-state/references/TECH-state-guards-and-actions.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

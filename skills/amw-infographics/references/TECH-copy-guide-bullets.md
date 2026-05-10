@@ -18,7 +18,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Bullet points rule — over paragraphs, always
 
 ## What it does
@@ -164,4 +163,3 @@ Short: "Not financial advice. DYOR."
 - [TECH-bullet-panel-component](TECH-bullet-panel-component.md) — the container pattern.
   > What it does · When to use · CSS · HTML · The ▸ bullet convention · 2-col grid pattern · One fact per bullet (mandatory) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -19,7 +19,6 @@ also-in: image-generation/create-infographics/resources/color-palettes.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Signature palette — near-black + amber + teal/blue complement
 
 ## What it does
@@ -141,4 +140,3 @@ it. Signature palette is the fallback, not the first choice.
 - [TECH-chain-color-coding](TECH-chain-color-coding.md) — the multi-chain blockchain palette.
   > What it does · The color table · CSS tokens · Chain badge component · Table row left-border per chain · When to use · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

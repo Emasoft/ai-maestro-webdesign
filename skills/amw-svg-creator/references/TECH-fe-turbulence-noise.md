@@ -18,7 +18,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `feTurbulence` — noise texture that breaks digital perfection
 
 ## What it does
@@ -113,4 +112,3 @@ multiply blend, "salt" brightens via overlay blend. See
 - [TECH-glassmorphism-filter](TECH-glassmorphism-filter.md) — noise + displacement combined.
   > What it does · The filter · How it works · When to use · When NOT to use · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

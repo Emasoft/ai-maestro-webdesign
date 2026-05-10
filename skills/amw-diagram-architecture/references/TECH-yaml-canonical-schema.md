@@ -13,7 +13,6 @@ also-in: diagram-skill-main/SKILL.md, diagram-skill-main/EXAMPLES.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-yaml-canonical-schema — `meta / nodes / edges / groups / notes`
 
 ## What it does
@@ -119,4 +118,3 @@ edges:
 - [formats](./formats.md) (existing reference)
   > Format 1: `graph` (default) · Schema · Constraints · Format 2: `mermaid` · Transform Rules · Layer Color Mapping · Mermaid Output Template · Mermaid ID Safety · Format 3: `svg` · Layout Algorithm · SVG Structure · SVG Height Calculation · Format 4: `png`
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

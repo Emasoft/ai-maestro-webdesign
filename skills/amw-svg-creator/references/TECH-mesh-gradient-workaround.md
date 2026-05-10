@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Mesh gradient workaround — layered radial gradients
 
 ## What it does
@@ -95,4 +94,3 @@ lighting — the hotspot offset toward a virtual light source.
 - [TECH-vignette-overlay](TECH-vignette-overlay.md) — often combined to darken edges.
   > What it does · The gradient · The parameters · Layer order · Off-center vignettes · When to use · When NOT to use · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

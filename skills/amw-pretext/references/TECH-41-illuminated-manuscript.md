@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Illuminated manuscript (medieval page with living ornaments)
 
 **Category:** art

@@ -35,7 +35,6 @@ See the `## Usage` section below for the full flag surface and shell invocation 
 
 Callable directly via the `/amw-create-or-modify-mermaid-diagram` command (user shortcut — fast path for Mermaid source authoring and rendering). Also invoked by the `design-principles` orchestrator as a Phase B renderer after Phase A approval in Main-agent mode, and internally by diagram-editorial, diagram-architecture, and ux-flows when they need Mermaid output rendered. In Main-agent mode the orchestrator may apply any of the 15+ themes and batch-render techniques from this skill beyond what the command parameters expose.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -286,7 +285,7 @@ post-processing. The backend accepts 17 flags total:
 | `--border <hex>` | (derived) | Node stroke color. |
 | `--font <name>` | `Inter` | Font family for SVG labels. |
 | `--transparent` | off | Transparent background (SVG only). |
-| `--use-ascii` | off | Pure ASCII (`+` `-` `|` `>`) instead of Unicode box-drawing (ASCII only). |
+| `--use-ascii` | off | Pure ASCII (`+` `-` `\|` `>`) instead of Unicode box-drawing (ASCII only). |
 | `--padding-x <n>` | `5` | Horizontal node spacing (ASCII only). |
 | `--padding-y <n>` | `5` | Vertical node spacing (ASCII only). |
 | `--box-border-padding <n>` | `1` | Padding inside node boxes (ASCII only). |
@@ -400,8 +399,8 @@ is present.)
 | Flowchart | `graph TD` / `graph LR` / `graph BT` / `graph RL` / `flowchart ...` | `graph LR; A --> B` |
 | State | `stateDiagram-v2` | `stateDiagram-v2\n[*] --> Active` |
 | Sequence | `sequenceDiagram` | `sequenceDiagram\nAlice->>Bob: Hi` |
-| Class | `classDiagram` | `classDiagram\nAnimal <|-- Dog` |
-| ER | `erDiagram` | `erDiagram\nUSER ||--o{ ORDER : places` |
+| Class | `classDiagram` | `classDiagram\nAnimal <\|-- Dog` |
+| ER | `erDiagram` | `erDiagram\nUSER \|\|--o{ ORDER : places` |
 
 Templates for all 5 types live under `../../external/mermaid-render/examples/`. Copy one, edit, render.
 

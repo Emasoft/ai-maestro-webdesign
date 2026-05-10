@@ -4,7 +4,6 @@
 - [Validation](#validation)
 - [Cross-references](#cross-references)
 
-
 # Community 9-section DESIGN.md template (Variant 2)
 
 Copy the block below to a new `DESIGN.md`. Fill every `{{placeholder}}` with a real value. Do not leave `TBD`, `???`, or `<TODO>` — the review rubric ([review-rubric](review-rubric.md)) fails any file containing those.

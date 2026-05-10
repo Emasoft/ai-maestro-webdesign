@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: UX process — Handoff & Iterate (Phase 5)
 
 ## What it does

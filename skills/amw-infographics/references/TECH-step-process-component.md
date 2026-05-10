@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `step_process` — numbered steps with connector line
 
 ## What it does
@@ -162,4 +161,3 @@ For landscape canvases, flip to horizontal:
 - [TECH-arrows-and-connectors](TECH-arrows-and-connectors.md) — horizontal variant uses arrows.
   > What it does · When arrows are MANDATORY · Rule · Horizontal arrow connector · Vertical connector line between sections · Flow diagram row · Phosphor Icons CDN · Labels on arrows (for flow diagrams) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

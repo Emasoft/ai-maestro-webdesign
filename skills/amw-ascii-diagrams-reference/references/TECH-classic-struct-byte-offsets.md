@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-struct-byte-offsets — packet/struct layout with byte scale
 
 ## What it does
@@ -68,4 +67,3 @@ The classic "Offset 0 / 4 / 8 / 12" header strip anchors every diagram.
 - [data-structures](./data-structures.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

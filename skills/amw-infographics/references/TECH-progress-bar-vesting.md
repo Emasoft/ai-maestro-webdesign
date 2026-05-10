@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Progress bar — vesting timeline with milestones
 
 ## What it does
@@ -142,4 +141,3 @@ visually "fills toward" the goal.
 - [TECH-token-economics-playbook](TECH-token-economics-playbook.md) — 50% of token-economics use this.
   > What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

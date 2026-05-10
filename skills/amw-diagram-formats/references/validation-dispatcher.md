@@ -8,7 +8,6 @@
 - [6. Known limitations (Phase 0)](#6-known-limitations-phase-0)
 - [7. Related references](#7-related-references)
 
-
 # Validation dispatcher — `bin/amw-validate-diagram.sh`
 
 **Authoritative spec for how the plugin validates ANY diagram**, regardless of format. Consumers: `/amw-validate-any-diagram-format`, every `wd-create-or-modify-*-diagram` command (post-emit gate), every conversion (post-conversion gate), and `ascii-validator/SKILL.md` (multi-format mode).

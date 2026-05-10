@@ -30,7 +30,6 @@ See [TECH-uxeval-output-format](references/TECH-uxeval-output-format.md) for a c
 
 Callable directly via the `/amw-eval` command (user shortcut — fast path for UX evaluation of a specific HTML file). Also invoked by the `design-principles` orchestrator as a Phase B validation step after HTML is produced in Main-agent mode. In Main-agent mode the orchestrator may apply the full 3-dimension framework and heuristic checklist from this skill beyond what the `/amw-eval` command parameters expose.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

@@ -23,7 +23,6 @@ status: stable
 - [Manual recovery flow for users](#manual-recovery-flow-for-users)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the recovery flow when `bin/amw-design-md-lint.sh`, `bin/amw-design-md-validate.py`, or `bin/amw-design-md-contrast.py` reports an error. Lists every common failure category, its diagnostic signal, the corrective action, and the slash command (if any) that automates the fix.

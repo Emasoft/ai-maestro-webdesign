@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Universal pre-delivery checklist
 
 ## What it does

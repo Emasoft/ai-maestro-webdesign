@@ -15,8 +15,7 @@
 - [Skip-Brief Defaults](#skip-brief-defaults)
 - [Brief → Design Decision Checklist](#brief-design-decision-checklist)
 
-
-# Maps brief questions to concrete design decisions
+> Maps brief questions to concrete design decisions
 
 ---
 

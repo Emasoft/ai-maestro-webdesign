@@ -21,7 +21,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Ecosystem playbook — 13% (22/175)
 
 ## What it does
@@ -185,4 +184,3 @@ partners into 3-col grids, don't leave whitespace between logos.
 - [TECH-glow-system](TECH-glow-system.md) — the neon glow patterns.
   > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

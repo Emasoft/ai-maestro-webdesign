@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Paper texture filter
 
 ## What it does
@@ -87,4 +86,3 @@ into the mid-gray range before blending.
   > What it does · Increase contrast · Warm color shift (sunset) · Cool color shift (moonlit) · Posterize (reduce color steps) · Duotone (two-color map) · Gamma curve (lighten midtones) · Gotchas · Cross-references
   primitive this filter uses.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -23,7 +23,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Game-Overview playbook — 14% (25/175)
 
 ## What it does
@@ -161,4 +160,3 @@ right default for THAT sub-type.
 - [TECH-tier-comparison-component](TECH-tier-comparison-component.md) — rarity tables.
   > What it does · When to use · CSS — the base table · CSS — the tier badges · HTML · Custom tier names and colors · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

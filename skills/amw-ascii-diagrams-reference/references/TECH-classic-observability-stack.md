@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-observability-stack — exporters → tsdb → alertmanager → sinks
 
 ## What it does
@@ -78,4 +77,3 @@ Discord).
 - [network-topology](./network-topology.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

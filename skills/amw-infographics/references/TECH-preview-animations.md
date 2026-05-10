@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Preview entrance animations — browser only
 
 ## What it does
@@ -146,4 +145,3 @@ state — static final frame.
 - [TECH-export-pipeline](TECH-export-pipeline.md) — how the post-animation state is captured.
   > What it does · When to use · Install · Basic invocation · With local server (recommended) · Width and scale · Per-platform widths · Wait-for-render helper · SVG export · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

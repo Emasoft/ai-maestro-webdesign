@@ -18,7 +18,6 @@
 - [Comparison vs Variant 1](#comparison-vs-variant-1)
 - [Cross-references](#cross-references)
 
-
 # Community 9-section DESIGN.md spec — Variant 2 (VoltAgent / getdesign.md style)
 
 **Source:** `docs_dev/extracted/google-labs/design-md-creator-skill-main/design-md-creator-skill-main/.claude/skills/design-md-creator/DESIGN_MD_SPEC.md`. The author of that skill reverse-engineered the format from analysis of 58 brand DESIGN.md files in the public corpus (`docs_dev/extracted/google-labs/awesome-design-md-pre-paywall-main/`).

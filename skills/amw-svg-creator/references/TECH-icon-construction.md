@@ -13,7 +13,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Icon construction — 24×24 stroke-based + app icons
 
 ## What it does
@@ -101,4 +100,3 @@ icons that look clear at 200px are illegible at 24.
 - [TECH-drop-shadow-filter](TECH-drop-shadow-filter.md) — the shadow used under app icons.
   > What it does · Drop shadow (standard) · Contact shadow (tight, right under object) · Cast shadow (large, soft, far) · Inner shadow (not a drop shadow — opposite direction) · The obligatory `color-interpolation-filters="linearRGB"` · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

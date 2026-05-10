@@ -4,7 +4,6 @@
 - [API Call Pattern](#api-call-pattern)
 - [JSON Repair](#json-repair)
 
-
 # Architecture Canvas — Prompts & API
 
 ## System Prompt

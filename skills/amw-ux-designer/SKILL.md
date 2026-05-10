@@ -30,7 +30,6 @@ See [TECH-ux-persona-template](references/TECH-ux-persona-template.md) for a com
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (when requirements analysis calls for UX methodology deliverables) or Phase B (when a WCAG audit or IA review is part of the implementation). The orchestrator may apply any research, persona, or accessibility technique from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

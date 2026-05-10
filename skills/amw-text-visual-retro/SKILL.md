@@ -20,7 +20,6 @@ See the `## Template archetypes` section below for minimal examples of a grid, m
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for retro grid sketches) or Phase B (when the approved design requires a validated ASCII retrospective artifact). The orchestrator may apply any grid, heatmap, or timeline technique from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

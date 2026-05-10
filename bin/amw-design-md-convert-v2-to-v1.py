@@ -22,7 +22,6 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-
 HEX_RE = re.compile(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b")
 COLOR_BULLET_RE = re.compile(
     r"^\s*-\s*\*\*([^*]+?)\*\*\s*\(\s*`([#a-fA-F0-9]+)`(?:\s*[/,]\s*`[^`]*`)*\s*\)\s*:\s*(.+)$"

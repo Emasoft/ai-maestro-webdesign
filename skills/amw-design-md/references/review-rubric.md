@@ -11,7 +11,6 @@
 - [How `amw-design-md-author-agent` uses the rubric on its own output](#how-amw-design-md-author-agent-uses-the-rubric-on-its-own-output)
 - [Cross-references](#cross-references)
 
-
 # DESIGN.md review rubric
 
 **Adapted from:** `docs_dev/extracted/google-labs/design-md-builder-main/design-md-builder-main/references/review-rubric.md` (Apache-2.0 / MIT, attributed to design-md-builder).

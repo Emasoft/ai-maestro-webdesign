@@ -16,7 +16,6 @@ also-in: SKILL-11.md, SKILL-14.md, SKILL-16.md, SKILL-21.md, SKILL-23.md, use-pr
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** measure
 **Status:** stable
 

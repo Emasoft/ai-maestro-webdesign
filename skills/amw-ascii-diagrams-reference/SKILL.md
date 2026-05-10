@@ -17,7 +17,6 @@ Reference library of battle-tested ASCII diagram forms for code comments, README
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when the user has approved an ASCII-first plan and the deliverable is a technical diagram (code comments, ADRs, READMEs). May also be invoked directly by users who already know they want a classic `+--+` ASCII reference without going through the plan phase.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -427,6 +426,6 @@ See the worked examples in the per-mode sub-sections above and in references/.
 | Symptom | Cause | Fix |
 |---|---|---|
 | Validator reports `WIDTH_MISMATCH` after adding `//` prefix | Prefix indentation was not accounted for in the grid | Re-grid from column 0 **after** prefixing; every line has the same prefix width |
-| Tree branches diverge — the `|` on the parent row is one column off from the `+--` on the child | Parent column offset was counted wrong by one | Recount from the root; last child drops the continuing `|` |
+| Tree branches diverge — the `\|` on the parent row is one column off from the `+--` on the child | Parent column offset was counted wrong by one | Recount from the root; last child drops the continuing `\|` |
 | Fan-in / fan-out arrows do not connect | A `+` corner is missing where branches rejoin | Insert `+` at every intersection; validator flags this as broken-corner |
 | Emoji / Unicode glyph in a label reports wide-char | Author slipped a UTF-8 glyph into classic-ASCII output | Replace with ASCII equivalent — this skill is classic ASCII only; Unicode diagrams belong to `../amw-box-diagram/` |

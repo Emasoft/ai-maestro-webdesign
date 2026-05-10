@@ -11,7 +11,6 @@
 - [4. Density calibration](#4-density-calibration)
 - [5. Coordinate-level checklist](#5-coordinate-level-checklist)
 
-
 # Design System — full spec for editorial diagrams
 
 Load this file when a diagram needs the complete grid / typography / colour contract and the primitive scaffolds. The compact SKILL.md carries the summary; this file carries the full rules and worked examples.

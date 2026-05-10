@@ -22,7 +22,6 @@ status: stable
 - [When this is the wrong tool](#when-this-is-the-wrong-tool)
 - [Cross-references](#cross-references)
 
-
 # TECH: Codebase scan → DESIGN.md extraction
 
 ## What it does

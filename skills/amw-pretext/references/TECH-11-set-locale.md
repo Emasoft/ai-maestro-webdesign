@@ -13,7 +13,6 @@ also-in: SKILL-11.md, use-pretext/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # setLocale() — global Intl.Segmenter locale override
 
 **Category:** api

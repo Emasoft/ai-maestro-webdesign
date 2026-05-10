@@ -21,7 +21,6 @@ Generates hand-drawn Excalidraw-style conceptual illustrations via the Gemini AP
 
 Callable directly via the `/amw-create-excalidraw-like-diagram-png` command (user shortcut for users who want a hand-drawn Excalidraw-style illustration and have `GEMINI_API_KEY` set), or invoked by the `design-principles` orchestrator during **Phase B** when the approved design calls for a hand-drawn / whiteboard-aesthetic conceptual illustration. **GATED:** explicit cost consent required before every invocation in both modes.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -238,7 +237,7 @@ Do not silently regenerate. Do not silently ship a broken image. Do not invent a
   > [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
   > Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
 - `scripts/generate.py` — the two-phase (visual-first, text-overlay-second) fallback generator with Pillow.
-- Source inspiration: [Ray Amjad](https://github.com/theramjad) — the AI-generated Excalidraw-style illustrations and the narrative-prompt approach that the original source skill was modelled on; the in-prompt "text in frames, many icons, narrative scenes" pattern comes from that work.
+- Source inspiration: Ray Amjad — the AI-generated Excalidraw-style illustrations and the narrative-prompt approach that the original source skill was modelled on; the in-prompt "text in frames, many icons, narrative scenes" pattern comes from that work.
 
 ## Instructions
 

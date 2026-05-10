@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # SVG pie chart — token allocation (the #1 chart)
 
 ## What it does
@@ -133,4 +132,3 @@ large-arc-flag = segment_degrees > 180 ? 1 : 0
   > What it does · The per-chart-type rule · Legend exception · Callout line technique — highlight outliers · Insight callout box (for major insights) · Threshold / benchmark line · The rule · Gotchas · Cross-references
   separate legend when <5 series.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

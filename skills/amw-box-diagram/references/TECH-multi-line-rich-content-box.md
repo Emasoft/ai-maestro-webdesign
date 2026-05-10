@@ -13,7 +13,6 @@ also-in: box-diagram-master/skills/amw-box-diagram/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-multi-line-rich-content-box — title + separator + body lines
 
 ## What it does
@@ -69,4 +68,3 @@ Last line: `╰──────────╯`
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../amw-box-diagram/examples/incident-response.txt`
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

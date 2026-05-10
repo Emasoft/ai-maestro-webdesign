@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Tags platform-specific or environment-specific components with bracketed
@@ -81,4 +80,3 @@ Multiple tags allowed: `[iOS] [prod]` for a prod-only iOS component.
 - [TECH-side-by-side-platforms](../../amw-text-visual-cheatsheets/references/TECH-side-by-side-platforms.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

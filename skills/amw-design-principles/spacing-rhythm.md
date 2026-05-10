@@ -12,7 +12,6 @@
 - [VIII. Shadow system](#viii-shadow-system)
 - [IX. Self-check](#ix-self-check)
 
-
 > Spacing is not "whatever feels comfortable." You **pick from a fixed set of numbers**. Any spacing value not in the table is forbidden.
 
 ---

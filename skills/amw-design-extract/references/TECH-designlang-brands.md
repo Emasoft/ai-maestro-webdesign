@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: `designlang brands` — N-way brand comparison matrix
 
 ## What it does

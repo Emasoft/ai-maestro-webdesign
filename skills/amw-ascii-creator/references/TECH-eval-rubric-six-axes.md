@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/bench/scenarios.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-eval-rubric-six-axes — score an ASCII diagram on six 1-5 axes
 
 ## What it does
@@ -71,4 +70,3 @@ score=82/90
 - [TECH-78-column-cap](./TECH-78-column-cap.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

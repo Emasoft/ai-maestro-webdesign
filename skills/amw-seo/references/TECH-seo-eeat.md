@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: E-E-A-T — Quality Evaluation Framework
 
 ## What it does

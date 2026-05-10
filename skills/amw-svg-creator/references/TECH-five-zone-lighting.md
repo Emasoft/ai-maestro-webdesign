@@ -13,7 +13,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Five-zone lighting model
 
 ## What it does
@@ -86,4 +85,3 @@ pulls an object out of flat-fill territory into perceived 3D.
 - [TECH-character-incremental-construction](TECH-character-incremental-construction.md) — apply lighting per body part.
   > What it does · The incremental build order · The thick-line trick for static characters · 8-head proportions (standing adult) · For animated characters — React + forward kinematics · Animation timing · When to recommend external tools · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

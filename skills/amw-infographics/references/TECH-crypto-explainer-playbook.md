@@ -21,7 +21,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Crypto-Explainer playbook — 17% (29/175)
 
 ## What it does
@@ -139,4 +138,3 @@ feature-heavy explainers.
 - [TECH-glow-system](TECH-glow-system.md) — the neon glow patterns.
   > What it does · The glow system · Double-layer glow pattern · Top confirmed glow colors · When to use each · Light-mode override · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

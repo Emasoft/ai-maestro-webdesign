@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-cell-spanning — `{text, span: N}` for multi-column cells
 
 ## What it does
@@ -68,4 +67,3 @@ i.e. a row with one `span: 2` cell contains one fewer entry than a plain row.
 - [TECH-render-mode-table](./TECH-render-mode-table.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

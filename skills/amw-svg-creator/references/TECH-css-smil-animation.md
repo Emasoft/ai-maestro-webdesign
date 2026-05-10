@@ -19,7 +19,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # CSS + SMIL animation in SVG
 
 ## What it does
@@ -156,4 +155,3 @@ the SVG is embedded as `<img src>` or CSS `background-image`.
 - [TECH-atmospheric-effects](TECH-atmospheric-effects.md) — stars, rain use these patterns.
   > Scope note · What it does · Light rays (god rays) · Fog / mist (masked gradient) · Stars with twinkling · Rain · Clouds · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

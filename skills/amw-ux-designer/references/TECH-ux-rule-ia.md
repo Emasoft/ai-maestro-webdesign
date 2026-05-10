@@ -19,7 +19,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Rule — Information Architecture
 
 ## What it does

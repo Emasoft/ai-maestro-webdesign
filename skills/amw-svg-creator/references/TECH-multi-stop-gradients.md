@@ -14,7 +14,6 @@ also-in: image-generation/svg-creator/references/advanced-techniques.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Multi-stop gradients (4+ stops with hue shifts)
 
 ## What it does
@@ -90,4 +89,3 @@ gradients and filters.
   > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
   purple / teal, not pure black.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

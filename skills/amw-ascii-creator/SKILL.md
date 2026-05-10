@@ -18,7 +18,6 @@ Produces ONE validated perfect-ASCII artifact from a brief. Uses `bin/amw-ascii-
 
 Callable directly via the `/amw-create-or-modify-ascii-diagram` command (user shortcut — fast path for single-artifact ASCII creation or modification). Also invoked by the `design-principles` orchestrator as a Phase B finisher after Phase A approval in Main-agent mode, when the user has committed to a specific ASCII artifact. In Main-agent mode the orchestrator may apply Mode A (structured via ascii-render.py) or Mode B (freeform validate-iterate) techniques from this skill beyond what the command exposes.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -369,7 +368,7 @@ or the skill will infer it from context (target is a plain-text README
 |---|---|---|---|---|
 | `detallado` (detailed) | Unicode box-drawing + `▶ ▼ ╭╮╰╯` | Yes (numbered `1. Request`) | Widest | Docs/review artifacts, high clarity, labelled steps |
 | `unicode` | Unicode box-drawing | No | Medium | Large diagrams where label clutter dominates |
-| `clasico` (classic) | Pure ASCII (`+` `-` `|` `>` `<` `v` `^`) | Optional | Medium | READMEs, maximum compatibility, copy-paste-safe |
+| `clasico` (classic) | Pure ASCII (`+` `-` `\|` `>` `<` `v` `^`) | Optional | Medium | READMEs, maximum compatibility, copy-paste-safe |
 | `compacto` (compact) | One-line inline: `A → B → C` with `─┬─` / `└─` fan-outs | No | Narrowest | Linear flows, single-line summaries, captions |
 
 ### Preset examples
@@ -514,12 +513,12 @@ See the worked examples in the per-mode sub-sections above and in references/.
 |---|---|---|
 | `ascii-render.py` exits with "width exceeds 78" | Label too long or too many columns in a horizontal layer | Shorten labels, split the diagram into two, or switch Mode A sub-mode (e.g. `layers` for wide architecture) |
 | Validator reports "WIDTH_MISMATCH" on every line | Author is not padding trailing whitespace — every line in a frame must have the SAME column width | Pad each line with trailing spaces to the max line's width |
-| Validator reports "VERTICAL_MISALIGNED" | Nested box corners drift by a column between rows | Lock each `│` / `|` to an explicit column number, re-check each row |
+| Validator reports "VERTICAL_MISALIGNED" | Nested box corners drift by a column between rows | Lock each `│` / `\|` to an explicit column number, re-check each row |
 | Validator reports "WIDE_CHAR" on what you thought was 1-col | Emoji / CJK / filled triangle | Substitute per the banned-character table |
 | Validator reports "FORBIDDEN_CHAR_MEDIUM" | Variable-width triangle or long arrow | Substitute per the banned-character table |
 | Mode-classification wrong — LLM picks wrong sub-mode | Brief has both structural AND freeform aspects | Split into two invocations: first the structural sub-diagram, then embed its output inside the freeform frame |
-| User wants THREE variants | Wrong skill — route to `../amw-ascii-sketch/` |
-| User wants the diagram as HTML | Wrong skill — produce the ASCII here, then route to `../amw-ascii-to-html/` |
+| User wants THREE variants | Wrong skill | Route to `../amw-ascii-sketch/` |
+| User wants the diagram as HTML | Wrong skill | Produce the ASCII here, then route to `../amw-ascii-to-html/` |
 
 ## Modify flow (shared)
 

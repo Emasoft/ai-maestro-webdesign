@@ -12,7 +12,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-node-shape-vocabulary
 
 ## What it does

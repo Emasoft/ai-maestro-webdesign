@@ -17,7 +17,6 @@
   - [Annotation callout — italic Instrument Serif + dashed Bézier leader](#annotation-callout-italic-instrument-serif-dashed-bézier-leader)
   - [Sketchy filter — hand-drawn variant](#sketchy-filter-hand-drawn-variant)
 
-
 # Type Rules — all 13 canonical editorial diagram types
 
 Load this file only when the chosen type needs its specific scaffold. The compact SKILL.md carries the selection table; this file carries the per-type canonical layout, anchor coordinates, and working HTML+SVG scaffolds.

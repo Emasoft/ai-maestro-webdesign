@@ -35,7 +35,6 @@ See `## Usage` below.
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A as a fallback library when Rule 1 context-gathering finds no anchor. The orchestrator may consult any reasoning rule, palette, font pairing, or landing-page pattern from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

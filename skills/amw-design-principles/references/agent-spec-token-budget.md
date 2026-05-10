@@ -8,7 +8,6 @@
 - [What was applied in the 2026-04-27 fix pass](#what-was-applied-in-the-2026-04-27-fix-pass)
 - [See also](#see-also)
 
-
 **Status:** Deferred (verified-safe trim deferred to a separate, focused pass)
 **Identified:** 2026-04-27 capability audit
 **Affected:** All 17 agents under `agents/`

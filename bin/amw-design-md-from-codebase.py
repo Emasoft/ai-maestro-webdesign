@@ -26,6 +26,7 @@ import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+
 IGNORE_DIRS = {
     "node_modules", ".git", ".next", ".turbo", "dist", "build",
     "out", ".cache", "coverage", "__pycache__", ".venv", "venv",

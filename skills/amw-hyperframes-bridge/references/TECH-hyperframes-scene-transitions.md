@@ -19,7 +19,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Scene transitions (non-negotiable rules)
 
 ## What it does

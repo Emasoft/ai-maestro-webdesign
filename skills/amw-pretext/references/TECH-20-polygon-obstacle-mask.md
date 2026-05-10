@@ -13,7 +13,6 @@ also-in: pretext-frontend-motion-main, pretext-skill-main/patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Polygon / obstacle mask routing
 
 **Category:** layout

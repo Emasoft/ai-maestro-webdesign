@@ -62,7 +62,6 @@ The original 8 pretext-art effects (kinetic / shaped / wavy / tapering / poster-
 
 No dedicated slash command and no active implementation — this skill is a **redirect stub** only. Any request landing here is routed immediately to `skills/amw-pretext/SKILL.md`, which is invoked by the `design-principles` orchestrator during **Phase B** for all creative text / kinetic typography / calligram deliverables.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Action required

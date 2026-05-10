@@ -15,7 +15,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Full-width section separator bands
 
 ## What it does
@@ -120,4 +119,3 @@ and mechanic breakdowns.
   > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
   matter.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

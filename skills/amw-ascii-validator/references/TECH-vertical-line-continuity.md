@@ -16,7 +16,6 @@ also-in: box-diagram-master/skills/amw-box-diagram/validate.py, ascii-diagram-va
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Between any two consecutive non-border-only lines, the validator checks that
@@ -75,4 +74,3 @@ Example bad output it would catch:
 - [TECH-box-corner-alignment](./TECH-box-corner-alignment.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

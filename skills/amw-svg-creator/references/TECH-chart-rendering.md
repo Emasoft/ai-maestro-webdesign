@@ -18,7 +18,6 @@ also-in: ../docs/components/chart.mdx (shadcn-ui chart wrapper for Recharts), TE
 - [Output format](#output-format)
 - [What the agent must NOT do](#what-the-agent-must-not-do)
 
-
 ## What it does
 
 Decision matrix for picking a chart library or hand-authoring SVG when the

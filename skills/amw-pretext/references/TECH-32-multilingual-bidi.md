@@ -18,7 +18,6 @@ also-in: SKILL-13.md, SKILL-16.md, pretext-main-2/README.md
 - [QA checklist](#qa-checklist)
 - [Cross-references](#cross-references)
 
-
 **Category:** typography
 **Status:** stable
 

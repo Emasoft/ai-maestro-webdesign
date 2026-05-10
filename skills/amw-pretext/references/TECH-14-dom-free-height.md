@@ -16,7 +16,6 @@ also-in: SKILL-11.md, SKILL-13.md, SKILL-16.md, SKILL-23.md, use-pretext/SKILL.m
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** measure
 **Status:** stable
 

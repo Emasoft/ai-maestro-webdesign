@@ -18,7 +18,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Maximum density. Multiple section types mixed freely — tables,
@@ -154,4 +153,3 @@ distinct sections to show flow.
 - [TECH-airdrop-guide-playbook](TECH-airdrop-guide-playbook.md) — airdrop guides often use this.
   > What it does · When to use · Color system · Typography · Standard component prevalence (across 17 pieces) · Visual properties · Signature layout pattern · The amber+blue value split (signature) · The claim-steps horizontal flow · CSS variables · Reference template · Archetype preference · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

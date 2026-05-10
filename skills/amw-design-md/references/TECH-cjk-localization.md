@@ -24,7 +24,6 @@ status: stable
 - [Cross-references](#cross-references)
 - [Source attribution](#source-attribution)
 
-
 ## What it does
 
 Provides a single reference for localizing webpages into Japanese, Chinese

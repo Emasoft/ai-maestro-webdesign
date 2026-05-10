@@ -13,7 +13,6 @@ also-in: skills/amw-pretext-art/SKILL.md, SKILL-14.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Generative poster / text-block grid
 
 **Category:** art

@@ -17,7 +17,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/hyperframes/skills/hyperframes/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Distills the captured site data into a brand reference every downstream composition reads before writing HTML. DESIGN.md is a cheat sheet, NOT a creative plan — the creative plan is Step 4 (STORYBOARD). DESIGN.md answers "what does this brand look and sound like", not "what should the video show".

@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Step 7 — Validate & Deliver
 
 > **Bridge note (v0.4.30+).** The bridge's pre-render gate sequence is `lint → validate → inspect → render` (see [SKILL](../SKILL.md) and [TECH-hyperframes-cli-inspect](TECH-hyperframes-cli-inspect.md)). This step file describes the upstream `website-to-hyperframes` pipeline, which predates the `inspect` command. For automated Phase B pipelines, insert `npx hyperframes inspect --json > inspect.json` between steps 2 (validate) and 3 (preview / render). `inspect` is the dedicated visual-layout-overflow audit; `validate` checks WCAG contrast + console errors during composition load only.

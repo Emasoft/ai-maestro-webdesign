@@ -13,7 +13,6 @@ also-in: pretext-frontend-motion-main
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # carveTextLineSlots — fill both sides of a mid-line obstacle
 
 **Category:** layout

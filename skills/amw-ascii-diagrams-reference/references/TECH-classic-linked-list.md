@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-linked-list — head → node → node → NULL chain
 
 ## What it does
@@ -72,4 +71,3 @@ Stack/queue variant (source: lines 27-35):
 - [data-structures](./data-structures.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

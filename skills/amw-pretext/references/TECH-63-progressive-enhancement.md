@@ -13,7 +13,6 @@ also-in: SKILL-11.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Progressive enhancement (pretext as feature gate)
 
 **Category:** integrate

@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Guided Creative (Mode C) — show two directions before building
 
 ## What it does
@@ -131,4 +130,3 @@ Apply changes when the user pastes updates.
 - [TECH-cheat-sheet-archetype](TECH-cheat-sheet-archetype.md) — for the densest mode.
   > What it does · When to use · The shape · CSS implementation · The mixed-layout rule · Flow connector between sections · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

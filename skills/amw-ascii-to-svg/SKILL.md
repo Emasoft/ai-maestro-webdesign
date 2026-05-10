@@ -20,7 +20,6 @@ Deprecated direct ASCII→SVG parser and router. Parses ASCII box-drawing input,
 
 Callable directly via the `/amw-ascii-to-svg` command (user shortcut — fast path for users with a ready ASCII diagram), or invoked by the `design-principles` orchestrator as a Phase B renderer after Phase A approval in Main-agent mode. In Main-agent mode the orchestrator may apply parser-routing and format-detection techniques from this skill beyond what the `/amw-ascii-to-svg` command parameters expose.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

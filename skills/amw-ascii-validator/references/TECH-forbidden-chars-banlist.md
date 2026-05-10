@@ -16,7 +16,6 @@ also-in: ascii-diagram-validator-main/README.md, box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The validator maintains a curated ban list of arrow glyphs and filled
@@ -64,4 +63,3 @@ Good: A ──→ B       ← U+2192 is single-width in standard monospace
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [SKILL](../../amw-ascii-creator/SKILL.md) (banned-characters table)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

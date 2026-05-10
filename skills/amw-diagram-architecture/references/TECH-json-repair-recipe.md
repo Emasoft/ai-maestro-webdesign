@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-json-repair-recipe
 
 ## What it does
@@ -139,4 +138,3 @@ The sequence handled:
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — the target schema
   > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

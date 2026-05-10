@@ -15,7 +15,6 @@ also-in:
 - [Out of scope for the bridge](#out-of-scope-for-the-bridge)
 - [Cross-references](#cross-references)
 
-
 # TECH: `hyperframes capture` — capture a website as editable Hyperframes components
 
 ## What it does

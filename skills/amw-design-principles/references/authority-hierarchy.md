@@ -7,7 +7,6 @@
 - [What the hierarchy does NOT do](#what-the-hierarchy-does-not-do)
 - [Enforcement](#enforcement)
 
-
 # Authority hierarchy — conflict resolution and veto power
 
 This document specifies who wins when two amw-* sub-agents return recommendations that cannot both be satisfied. Without explicit hierarchy, main-agent silently picks one, which is worse than picking the wrong one — it hides the conflict from the user.

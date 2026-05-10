@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Svelte / Astro islands integration (client:load)
 
 **Category:** integrate

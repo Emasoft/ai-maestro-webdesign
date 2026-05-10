@@ -94,8 +94,12 @@ from html.parser import HTMLParser
 from typing import Any, Dict, List, Optional, Tuple
 
 # Optional dependencies — detected at import time, never required.
+# We only check availability (parser uses the stdlib HTMLParser on this path),
+# so import the module itself instead of a symbol — keeps ruff F401 clean
+# while still surfacing _HAS_BS4 to downstream branches that may want to
+# delegate to a richer parser when bs4 is present.
 try:
-    from bs4 import BeautifulSoup  # type: ignore
+    import bs4  # type: ignore  # noqa: F401
 
     _HAS_BS4 = True
 except ImportError:
@@ -513,14 +517,14 @@ def _parse_svg_to_ir(
     edges: List[Dict[str, Any]] = []
     used_edge_ids: set = set()
     edge_candidates = [
-        *({**l, "kind": "line"} for l in lines if l["has_arrow"]),
+        *({**ln, "kind": "line"} for ln in lines if ln["has_arrow"]),
         *({**p, "kind": "path"} for p in paths if p["has_arrow"]),
     ]
     if not edge_candidates:
         # Also consider non-arrow lines — an author may have forgotten the
         # marker. Better an edge than a silent drop.
         edge_candidates = [
-            *({**l, "kind": "line"} for l in lines),
+            *({**ln, "kind": "line"} for ln in lines),
             *({**p, "kind": "path"} for p in paths),
         ]
 

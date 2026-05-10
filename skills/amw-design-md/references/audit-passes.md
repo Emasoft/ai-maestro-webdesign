@@ -10,7 +10,6 @@
 - [Pre-flight checks](#pre-flight-checks)
 - [Cross-references](#cross-references)
 
-
 # 5-pass DESIGN.md audit
 
 **Adapted from:** `docs_dev/extracted/google-labs/MDDesign-main/MDDesign-main/commands/critique.md` (Apache-2.0). The MDDesign skill defines a 5-pass audit; this file ports the audit dimensions to the plugin's `amw-design-md-auditor-agent` and the `bin/amw-design-md-validate.py` offline validator.

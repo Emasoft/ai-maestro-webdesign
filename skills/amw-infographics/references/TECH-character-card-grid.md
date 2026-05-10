@@ -15,7 +15,6 @@ also-in: image-generation/create-infographics/resources/style-details.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Character / NFT card grid — tight 5-column
 
 ## What it does
@@ -161,4 +160,3 @@ that looks like a product grid, not a game roster.
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — why gaps are 2px, not 12px.
   > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

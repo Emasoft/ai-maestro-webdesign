@@ -16,7 +16,6 @@ also-in: ascii-diagrams-skill-main/references/graphs-annotations.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Renders a register or packed bit-field with a bit-position scale on top,
@@ -81,4 +80,3 @@ With pointer-style annotation (source: graphs-annotations.md lines 23-32):
   > [graphs-annotations.md] Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

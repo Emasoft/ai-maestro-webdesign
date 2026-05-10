@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Diagram file organization — folder layout for `.mmd` libraries
 
 ## What it does
@@ -96,4 +95,3 @@ done
 - [TECH-flowchart-grammar](TECH-flowchart-grammar.md) — what goes inside each file.
   > What it does · When to use · Node shapes (authoritative list) · Direction tokens · Connections · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

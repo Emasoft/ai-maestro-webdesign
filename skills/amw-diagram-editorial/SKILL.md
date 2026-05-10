@@ -18,7 +18,6 @@ Editorial-quality HTML+SVG diagrams with brand-matched styling. Supports 13 fixe
 
 Callable directly via the `/amw-create-or-modify-html-diagram` command with `--style editorial` (user shortcut — fast path for editorial diagram creation). Also invoked by the `design-principles` orchestrator as a Phase B renderer after Phase A approval in Main-agent mode. In Main-agent mode the orchestrator may apply any of the 13 diagram types and brand-onboarding techniques from this skill beyond what the command's `--style` flag exposes.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

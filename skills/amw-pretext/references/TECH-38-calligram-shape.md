@@ -13,7 +13,6 @@ also-in: pretext-ui-claude-skills-main
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Calligram (word rendered in the shape of what it describes)
 
 **Category:** art

@@ -18,7 +18,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Inline token coloring — `$TOKEN` names always colored
 
 ## What it does
@@ -134,4 +133,3 @@ with body text.
 - [TECH-dense-table-component](TECH-dense-table-component.md) — the `.accent` table-cell variant.
   > What it does · When to use · CSS · The signature rules · HTML · Usage rules · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

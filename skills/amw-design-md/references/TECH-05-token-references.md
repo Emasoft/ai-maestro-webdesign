@@ -24,7 +24,6 @@ status: stable
 - [Validation](#validation)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents the canonical reference syntax used in DESIGN.md frontmatter to point one token at another. Covers syntax rules, scope (where references are allowed), what they resolve to, and common errors.

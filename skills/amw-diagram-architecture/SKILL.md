@@ -17,7 +17,6 @@ Converts a free-text system description into a clean, visually-balanced, layered
 
 Callable directly via the `/amw-create-or-modify-svg-diagram` command (user shortcut — fast path for architecture diagram creation), or invoked by the `design-principles` orchestrator as a Phase B renderer after Phase A approval in Main-agent mode. In Main-agent mode the orchestrator may apply layering, node-reduction, and multi-format export techniques from this skill beyond what the command exposes.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

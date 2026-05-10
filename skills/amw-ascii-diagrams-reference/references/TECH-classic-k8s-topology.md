@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-k8s-topology — Ingress → Service → Pods fan-out
 
 ## What it does
@@ -75,4 +74,3 @@ K8s intro doc.
 - [network-topology](./network-topology.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

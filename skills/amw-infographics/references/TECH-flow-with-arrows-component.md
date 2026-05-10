@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `flow_with_arrows` — horizontal flow nodes with arrow connectors
 
 ## What it does
@@ -155,4 +154,3 @@ fit, use a smaller font or a shorter label.
 - [TECH-step-process-component](TECH-step-process-component.md) — numbered-steps variant.
   > What it does · When to use · CSS · HTML · The connector line trick · Horizontal variant · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

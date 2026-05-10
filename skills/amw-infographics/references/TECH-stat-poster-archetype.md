@@ -18,7 +18,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Oversized numbers / stats dominate the canvas. Minimal supporting
@@ -156,4 +155,3 @@ Without this, digits jitter when animating counters.
 - [TECH-stacked-reference-archetype](TECH-stacked-reference-archetype.md) — when you have multiple equal stats.
   > What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

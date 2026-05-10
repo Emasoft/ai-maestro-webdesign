@@ -13,7 +13,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-grid-side-by-side — `Went Well` / `Needs Attention` 2-column grid
 
 ## What it does
@@ -74,4 +73,3 @@ highlights with owners and metric deltas.
 - [TECH-classic-before-after-comparison](../../amw-ascii-diagrams-reference/references/TECH-classic-before-after-comparison.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

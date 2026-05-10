@@ -10,7 +10,6 @@
 - [VI. Recommended font stacks (avoiding AI slop)](#vi-recommended-font-stacks-avoiding-ai-slop)
 - [VII. Fallback-stack syntax](#vii-fallback-stack-syntax)
 
-
 > Font size, weight, line-height, and letter-spacing are all numbers — there is no "aesthetic debate," only **scale selection**.
 
 ---

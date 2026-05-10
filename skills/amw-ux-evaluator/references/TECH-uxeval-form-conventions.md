@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Form conventions (labels / submit / errors / spacing)
 
 ## What it does

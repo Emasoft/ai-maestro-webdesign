@@ -27,7 +27,6 @@ Produces dense editorial infographics as self-contained HTML + retina PNG + prin
 
 Callable directly via the `/amw-create-or-modify-html-diagram` command with `--style infographic` (user shortcut — fast path for infographic creation). Also invoked by the `design-principles` orchestrator as a Phase B renderer after Phase A approval in Main-agent mode when the user needs a dense editorial graphic. In Main-agent mode the orchestrator may apply the full 24-template library, 175-design DNA, and multi-format export techniques from this skill beyond what the command's parameters expose.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

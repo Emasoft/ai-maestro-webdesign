@@ -8,7 +8,6 @@
 - [Suggested format](#suggested-format)
 - [Tip](#tip)
 
-
 > **Rule**: before kicking off any design task, ask at least 10 questions. Be greedy, don't be shy.
 > One focused round of questions beats three rounds of rework.
 

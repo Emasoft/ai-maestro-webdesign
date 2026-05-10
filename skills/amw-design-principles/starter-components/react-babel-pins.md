@@ -7,7 +7,6 @@
 - [Sharing components across Babel files](#sharing-components-across-babel-files)
 - [Common error map](#common-error-map)
 
-
 > When writing React components inside an HTML file, you MUST use this exact CDN set — **never casually upgrade**.
 
 ## Required CDN URLs

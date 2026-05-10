@@ -16,7 +16,6 @@ also-in: diagrams-skills/Pretty-mermaid-skills-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Wraps a cluster of flowchart nodes in a labeled border. The
@@ -93,4 +92,3 @@ flowchart LR
   > What it does · Line-and-arrow combinations · Inline label — two syntaxes · Minimal example · Styling edges with `linkStyle` · Gotchas · Cross-references
   styles than arrows within.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -18,7 +18,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Interactive Builder (Mode A) — component-by-component iteration
 
 ## What it does
@@ -143,4 +142,3 @@ When returning to an existing project:
 - [TECH-preview-server](TECH-preview-server.md) — the server implementation.
   > What it does · When to use · Start the server · User instruction · How auto-refresh works · Workflow during iteration · Preview file structure · Full design fidelity in preview · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

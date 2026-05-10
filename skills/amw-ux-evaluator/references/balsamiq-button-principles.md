@@ -14,7 +14,6 @@
 - [Button Hierarchy Summary](#button-hierarchy-summary)
 - [Common Mistakes](#common-mistakes)
 
-
 # Balsamiq Button Design Best Practices
 
 Source: https://balsamiq.com/blog/button-design-best-practices/

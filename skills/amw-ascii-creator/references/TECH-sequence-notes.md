@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-sequence-notes — inline boxed annotations between lifelines
 
 ## What it does
@@ -77,4 +76,3 @@ is wrapped if it exceeds the column span width.
 - [TECH-render-mode-sequence](./TECH-render-mode-sequence.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

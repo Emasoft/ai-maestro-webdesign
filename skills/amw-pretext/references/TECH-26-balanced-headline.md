@@ -16,7 +16,6 @@ also-in: pretext-text-measurement/SKILL.md, SKILL-13.md, pretext-frontend-motion
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** typography
 **Status:** stable
 

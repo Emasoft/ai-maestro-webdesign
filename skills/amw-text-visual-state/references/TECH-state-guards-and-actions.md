@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Annotates state transitions with guard conditions and side-effect
@@ -77,4 +76,3 @@ Order in the label: guard → trigger → action → target state.
 - [TECH-metrics-per-transition](./TECH-metrics-per-transition.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

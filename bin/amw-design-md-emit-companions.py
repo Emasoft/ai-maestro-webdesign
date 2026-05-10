@@ -201,7 +201,7 @@ def _infer_type_for_property(prop: str) -> str:
 
 
 def emit_component_inventory(fm: dict) -> str:
-    lines = [f"# Component Inventory", "",
+    lines = ["# Component Inventory", "",
              "Generated from DESIGN.md. Do not edit by hand.", ""]
     components = fm.get("components") or {}
     if not isinstance(components, dict) or not components:
@@ -235,7 +235,7 @@ def emit_component_inventory(fm: dict) -> str:
 def emit_usage_prompt(fm: dict) -> str:
     name = fm.get("name", "Design System")
     lines = [
-        f"# Design System Reference Prompt",
+        "# Design System Reference Prompt",
         "",
         f"You are generating UI for the {name} design system. Apply ALL of the following constraints when writing HTML, JSX, CSS, or Tailwind classes.",
         "",

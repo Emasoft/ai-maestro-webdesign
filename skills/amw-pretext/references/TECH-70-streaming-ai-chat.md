@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Streaming AI chat (measure tokens as they arrive)
 
 **Category:** workflow

@@ -13,7 +13,6 @@ also-in: diagrams-skills/beautiful-mermaid-main/references/themes.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Live theme switching — CSS custom properties
 
 ## What it does
@@ -83,4 +82,3 @@ svgElement.style.setProperty('--fg', '#27272a')
 - [TECH-svg-render-api](TECH-svg-render-api.md) — the function that emits these properties.
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

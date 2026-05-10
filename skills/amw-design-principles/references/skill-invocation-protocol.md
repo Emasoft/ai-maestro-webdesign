@@ -5,7 +5,6 @@
 - [Examples](#examples)
 - [Enforcement](#enforcement)
 
-
 # Skill invocation protocol — how agents invoke skills without creating orchestration loops
 
 Every agent under `agents/` must invoke skills by skill path, not by command syntax, and must avoid any tool-call text that would re-trigger the design-principles orchestrator. This document specifies the protocol.

@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-flowchart-diamond — branching decision with `+--+` diamond
 
 ## What it does
@@ -75,4 +74,3 @@ from each branch.
 - [flowcharts](./flowcharts.md) (legacy pattern file)
   > Reference
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

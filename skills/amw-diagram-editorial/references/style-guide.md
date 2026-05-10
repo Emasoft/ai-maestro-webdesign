@@ -5,7 +5,6 @@
 - [Grid + line rules](#grid-line-rules)
 - [Brand onboarding flow](#brand-onboarding-flow)
 
-
 # Editorial Diagrams — Brand Style Guide
 
 > **User-editable.** This file holds the semantic color tokens and font stack

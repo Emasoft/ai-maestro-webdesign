@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Glassmorphism filter — frosted glass effect
 
 ## What it does
@@ -90,4 +89,3 @@ the light catching the surface.
 - [TECH-paper-texture-filter](TECH-paper-texture-filter.md) — contrasting "paper" feel.
   > What it does · The filter · Parameter walkthrough · When to use · When NOT to use · Usage · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

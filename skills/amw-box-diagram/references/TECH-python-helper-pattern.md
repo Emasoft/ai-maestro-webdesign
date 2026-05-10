@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-python-helper-pattern — `border_top` / `border_bot` / `box_line`
 
 ## What it does
@@ -84,4 +83,3 @@ print(border_bot(10))
 - [TECH-wide-character-detection](../../amw-ascii-validator/references/TECH-wide-character-detection.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

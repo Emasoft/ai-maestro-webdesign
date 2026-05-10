@@ -16,7 +16,6 @@ also-in: external/hyperframes/packages/cli/src/browser/manager.ts
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 > This is the **canonical Chrome-provisioning command** for Hyperframes. Hyperframes uses Puppeteer + `@puppeteer/browsers` (NOT Playwright) to manage its own Chrome Headless Shell. Running `npx playwright install chromium` is NOT a fix for browser-missing errors in Hyperframes — use `hyperframes browser ensure` instead.
 
 ## What it does

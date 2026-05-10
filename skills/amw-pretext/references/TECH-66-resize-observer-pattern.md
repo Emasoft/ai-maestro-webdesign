@@ -13,7 +13,6 @@ also-in: SKILL-21.md, use-pretext/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # ResizeObserver pattern (re-layout, not re-prepare)
 
 **Category:** integrate

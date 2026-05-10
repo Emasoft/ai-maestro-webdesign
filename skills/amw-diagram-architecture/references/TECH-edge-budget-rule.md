@@ -16,7 +16,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/vali
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Caps the number of edges in an architecture graph at **`floor(n × 0.8)`**
@@ -116,4 +115,3 @@ tradeoff — visual clarity over exhaustive completeness.
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   editorial analogue (node density cap)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

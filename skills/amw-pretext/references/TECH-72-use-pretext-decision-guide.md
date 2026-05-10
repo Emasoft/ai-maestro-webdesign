@@ -13,7 +13,6 @@ also-in: SKILL-11.md, SKILL-16.md, SKILL-21.md, pretext-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Decision guide — when to use pretext (and when NOT)
 
 **Category:** consult

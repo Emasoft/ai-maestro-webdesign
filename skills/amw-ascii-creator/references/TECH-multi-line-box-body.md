@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-multi-line-box-body — rich multi-row boxes via `body[]`
 
 ## What it does
@@ -84,4 +83,3 @@ The renderer computes the frame width as `max(len(label), max(len(line) for line
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - `../../amw-box-diagram/examples/incident-response.txt`
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

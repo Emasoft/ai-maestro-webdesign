@@ -15,7 +15,6 @@ also-in: image-generation/svg-creator/scripts/svg_loop.py
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # The render-verify-deliver loop (mandatory)
 
 ## What it does
@@ -108,4 +107,3 @@ python3 /path/to/skill/scripts/svg_loop.py finish /home/claude/draft.svg output-
   > What it does · The incremental build order · The thick-line trick for static characters · 8-head proportions (standing adult) · For animated characters — React + forward kinematics · Animation timing · When to recommend external tools · Gotchas · Cross-references
   iteration pattern.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

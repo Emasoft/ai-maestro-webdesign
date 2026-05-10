@@ -16,7 +16,6 @@ also-in: SKILL-15.md (rich-note.ts), pretext-text-measurement/SKILL.md Use Case 
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** motion
 **Status:** stable
 

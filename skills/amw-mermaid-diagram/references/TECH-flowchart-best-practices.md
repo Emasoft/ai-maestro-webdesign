@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Flowchart authoring best practices
 
 ## What it does
@@ -95,4 +94,3 @@ flowchart TD
 - [TECH-edge-best-practices](TECH-edge-best-practices.md) — arrow conventions.
   > What it does · When to use · The heuristic table · Label conventions · Arrow density rule · Minimal example — mixed arrows with purpose · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

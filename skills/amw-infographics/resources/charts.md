@@ -13,8 +13,7 @@
 - [8. Proportional Circles (SVG — Area = Value)](#8-proportional-circles-svg-area-value)
 - [9. Dot Plot (SVG — Distribution / Individual Points)](#9-dot-plot-svg-distribution-individual-points)
 
-
-# Last updated: March 2026
+> Last updated: March 2026
 
 ## When to Use What
 

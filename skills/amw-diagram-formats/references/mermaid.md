@@ -11,7 +11,6 @@
 - [9. Failure modes](#9-failure-modes)
 - [10. Anti-patterns](#10-anti-patterns)
 
-
 # Mermaid — canonical format reference
 
 This file is the single authoritative spec for Mermaid within the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts Mermaid pulls from this file. Supported grammars, themes, `mmdc` CLI flags, output paths (SVG / PNG / ASCII), validation, and the technique catalog are all below.
@@ -100,7 +99,7 @@ Direction suffixes for flowchart/graph:
 | `A -.-> B` | Dotted arrow (async) |
 | `A ==> B` | Thick arrow (emphasis) |
 | `A --"label"--> B` | Labelled arrow |
-| `A -->|label| B` | Labelled arrow (alt syntax) |
+| `A -->\|label\| B` | Labelled arrow (alt syntax) |
 | `A --- B` | Line without arrow |
 
 ---
@@ -177,7 +176,7 @@ All flags documented in `../../skills/amw-mermaid-render/SKILL.md`. Forwarded ve
 | `--border <hex>` | derived | Node stroke color |
 | `--font <name>` | `Inter` | Font family for SVG labels |
 | `--transparent` | off | Transparent background (SVG only) |
-| `--use-ascii` | off | Pure ASCII (`+ - |`) instead of Unicode box-drawing |
+| `--use-ascii` | off | Pure ASCII (`+ - \|`) instead of Unicode box-drawing |
 | `--padding-x <n>` | `5` | Horizontal node spacing (ASCII) |
 | `--padding-y <n>` | `5` | Vertical node spacing (ASCII) |
 | `--box-border-padding <n>` | `1` | Padding inside node boxes (ASCII) |

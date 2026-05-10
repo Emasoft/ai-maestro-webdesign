@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-json-render-four-modes — JSON → ASCII, four exclusive modes
 
 ## What it does
@@ -85,4 +84,3 @@ Output (2-box vertical flowchart):
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [SKILL](../../amw-ascii-validator/SKILL.md)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

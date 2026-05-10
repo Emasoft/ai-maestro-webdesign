@@ -34,7 +34,6 @@ See [README](examples/README.md) for in-scope examples (icons, logos, patterns, 
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator as a Phase B finisher in Main-agent mode when the approved design requires polished technical SVG (icons, logos, patterns, animations). The orchestrator may apply any technique this skill exposes — there is no command-layer restriction on access.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

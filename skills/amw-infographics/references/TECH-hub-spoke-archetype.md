@@ -17,7 +17,6 @@ also-in: image-generation/create-infographics/resources/layout-patterns.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Central entity (logo, token, platform) with radiating connections
@@ -135,4 +134,3 @@ overlay an SVG:
 - [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular variant.
   > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

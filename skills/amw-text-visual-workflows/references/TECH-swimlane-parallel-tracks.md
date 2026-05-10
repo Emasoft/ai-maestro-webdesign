@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Renders a swimlane timeline where multiple roles / teams work in parallel
@@ -67,4 +66,3 @@ Launch                                 |==go=|
 - [TECH-lane-labeled-diagrams](../../amw-ascii-creator/references/TECH-lane-labeled-diagrams.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

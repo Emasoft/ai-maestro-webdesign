@@ -13,7 +13,6 @@ also-in: ascii-diagram-validator-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-validate-before-emit — never show un-validated ASCII
 
 ## What it does
@@ -76,4 +75,3 @@ fi
 - [SKILL](../../amw-ascii-creator/SKILL.md) (Mode B workflow step 4-7)
 - [SKILL](../../amw-box-diagram/SKILL.md) (Workflow section)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -19,7 +19,6 @@ This skill is a SYNTHESIS — it composes techniques from 9 sources (starter-com
 
 Callable directly via the `/amw-ascii-to-html` command (user shortcut — fast path for users who already have an approved ASCII), or invoked by the `design-principles` orchestrator as the Phase B terminal step after Phase A approval in Main-agent mode. In Main-agent mode the orchestrator may apply rendering and token-application techniques from this skill beyond what the `/amw-ascii-to-html` command parameters expose.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
@@ -72,7 +71,7 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
 | Nav tabs bar (3-line buttons in a row) | `<nav role="tablist"><button role="tab" aria-selected="true">` | `browser-window.html` tab chrome | `--primary`, `--radius` | TECH-08, TECH-43 |
 | Numbered `1. STAGE` / `2. STAGE` | `<ol class="stages">` | — | `--text` | TECH-79 |
 | Sparkline axis row `│────────│` inside a KPI card | inline `<svg viewBox>`+`<polyline>` placeholder | diagram-design-editorial | `--primary` | TECH-66, TECH-78 |
-| `+---+|   |+---+` classic mode (detect_format = ascii) | `<pre class="classic-ascii">` preserving chars | — | mono font | TECH-88, TECH-94 |
+| `+---+\|   \|+---+` classic mode (detect_format = ascii) | `<pre class="classic-ascii">` preserving chars | — | mono font | TECH-88, TECH-94 |
 | Empty row `│                │` inside box | extra `padding-top` on next child (not `<br>`) | — | `--space-*` | TECH-100 |
 
 ## Instructions

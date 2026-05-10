@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Keeps the diagram frame tight by moving deployment metadata (SLAs, team
@@ -83,4 +82,3 @@ Component details:
 - [TECH-platform-component-tags](./TECH-platform-component-tags.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

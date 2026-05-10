@@ -11,7 +11,6 @@
 - [Anti-patterns (DO NOT DO)](#anti-patterns-do-not-do)
 - [Verification checklist](#verification-checklist)
 
-
 # Agent Report Location
 
 **Rule:** Every agent, skill, or tool that writes a report MUST save it under

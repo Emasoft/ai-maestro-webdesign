@@ -19,7 +19,6 @@
 - [Review checklist](#review-checklist)
 - [Practical defaults](#practical-defaults)
 
-
 # Tailwind Engineering Playbook
 
 Use this reference for implementation, refactor, and review tasks where you need practical engineering judgment in addition to the official Tailwind docs. Its purpose is to help you make good architectural decisions quickly when you are writing, reviewing or refactoring Tailwind code.

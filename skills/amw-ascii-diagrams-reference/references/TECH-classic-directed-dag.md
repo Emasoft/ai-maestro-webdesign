@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-directed-dag — build-dependency graph with backward edges
 
 ## What it does
@@ -66,4 +65,3 @@ leftward arrows for "depends on" relationships.
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
   > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

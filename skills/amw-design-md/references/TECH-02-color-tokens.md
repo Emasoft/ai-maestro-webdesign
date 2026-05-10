@@ -26,7 +26,6 @@ status: stable
 - [Worked example](#worked-example)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Documents how to declare the `colors:` map in YAML frontmatter and how to write the `## Colors` prose section. Covers required tokens, recommended naming, contrast checking, and tonal-scale conventions.

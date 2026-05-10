@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Chart selection — decision tree for chart type
 
 ## What it does
@@ -99,4 +98,3 @@ Chart.js needs an explicit container height or it'll render at 0px.
 - [TECH-radar-chart](TECH-radar-chart.md) — Chart.js radar for game stats.
   > What it does · When to use · HTML · The signature options · Multi-character comparison — overlay datasets · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

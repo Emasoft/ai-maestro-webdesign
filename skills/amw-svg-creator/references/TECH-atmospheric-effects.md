@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Atmospheric effects — light rays, fog, stars, rain, clouds
 
 **Scope note.** These effects are **in-scope** for svg-creator when applied as decorative background elements inside a technical SVG (e.g. a star field behind a space-themed logo, a fog overlay on a dark diagram background, a rain-stripe texture). They are **out of scope** if the goal is building a full landscape scene or character environment — that territory is forbidden by [SKILL](../SKILL.md) (Scope — what this skill CANNOT produce).
@@ -122,4 +121,3 @@ Overlapping ellipses with soft blur filter.
 - [TECH-reduced-motion](TECH-reduced-motion.md) — accessibility override.
   > What it does · The minimum implementation · Why `0.01ms` instead of `0s` · SMIL equivalent · When it's OK to ignore · When it's partially OK · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

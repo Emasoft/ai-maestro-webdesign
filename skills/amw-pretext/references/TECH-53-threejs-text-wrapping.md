@@ -16,7 +16,6 @@ also-in: pretext-skill-main/patterns.md (3D Text Wrapping)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** 3d
 **Status:** demo-only
 

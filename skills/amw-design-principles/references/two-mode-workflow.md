@@ -7,7 +7,6 @@
 - [4. Scenario Testing via dev-browser (mandatory in Phase B)](#4-scenario-testing-via-dev-browser-mandatory-in-phase-b)
 - [5. Anti-Patterns](#5-anti-patterns)
 
-
 # Two Operating Modes — Formal Spec
 
 This document is the authoritative spec for how `design-principles` and every

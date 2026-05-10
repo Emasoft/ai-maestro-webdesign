@@ -17,7 +17,6 @@ also-in: pretext-frontend-motion-main demo-family-map
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 **Category:** motion
 **Status:** stable
 

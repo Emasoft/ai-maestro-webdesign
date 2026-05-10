@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Glyph-mask calligram (big letter filled with small text)
 
 **Category:** art

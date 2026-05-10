@@ -527,7 +527,7 @@ def _render_ir_as_svg(ir: Dict[str, Any]) -> str:
     width = max(320, 20 + max((len(n.get("label", "")) for n in nodes), default=10) * 8)
     height = max(60, 20 + len(nodes) * 24)
     parts = [
-        f'<?xml version="1.0" encoding="UTF-8"?>',
+        '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
         f'viewBox="0 0 {width} {height}">',
     ]

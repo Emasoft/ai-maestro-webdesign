@@ -19,7 +19,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Navigation conventions (logo / primary / utilities)
 
 ## What it does

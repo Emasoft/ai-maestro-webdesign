@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Renders an ASCII heatmap where each cell is a 4-char intensity marker:
@@ -74,4 +73,3 @@ Search     [ ]   [ ]   [.]   [.]   [.]
 - [TECH-milestone-timeline](./TECH-milestone-timeline.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

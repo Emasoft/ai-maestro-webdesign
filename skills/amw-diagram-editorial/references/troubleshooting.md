@@ -12,7 +12,6 @@
   - [Diagram output opens blank](#diagram-output-opens-blank)
 - [When NOT to use this skill](#when-not-to-use-this-skill)
 
-
 # Troubleshooting — editorial diagrams
 
 Symptom-to-fix table for the most common failure modes, plus the "when NOT to use this skill" routing table.

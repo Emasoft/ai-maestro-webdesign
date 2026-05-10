@@ -16,7 +16,6 @@ also-in: diagram-skill-main/ASCII-STYLES.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Differentiates sync / emphasized / async / optional transitions in a
@@ -77,4 +76,3 @@ for sync calls within one diagram.
 - [TECH-arrow-head-variants](../../amw-box-diagram/references/TECH-arrow-head-variants.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

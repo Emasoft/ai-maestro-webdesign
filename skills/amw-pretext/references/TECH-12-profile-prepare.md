@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # profilePrepare() — diagnostic timing breakdown
 
 **Category:** api

@@ -22,7 +22,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Font system — the 5-font display hierarchy
 
 ## What it does
@@ -160,4 +159,3 @@ Use: meme tokens, community airdrop guides, arcade energy.
 - [TECH-per-type-signature-palettes](TECH-per-type-signature-palettes.md) — type-specific font choices.
   > What it does · The 5 major-type palettes · Why these · The full selection order · CSS variables per type · Token-Economics · Crypto-Explainer · Game-Overview · Ecosystem · Airdrop-Guide · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

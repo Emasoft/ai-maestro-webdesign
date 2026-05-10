@@ -9,7 +9,6 @@
 - [7. Technique catalog](#7-technique-catalog)
 - [8. Migration note (2026-04-22)](#8-migration-note-2026-04-22)
 
-
 # ASCII — canonical format reference
 
 This file is the single authoritative spec for ASCII diagrams in the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts ASCII pulls from this file. Format semantics, parsing rules, emission rules, validation rules, and the full technique catalog (95 techniques, migrated from `ascii-creator/` and `ascii-to-html/` into this canonical home) are all below.
@@ -52,7 +51,7 @@ Both Unicode and classic may appear in the plugin, but **never mixed in the same
 | Class | Unicode (default) | Classic ASCII |
 |---|---|---|
 | Corners | `╭ ╮ ╰ ╯` (rounded) or `┌ ┐ └ ┘` (square) | `+` (all four) |
-| Walls | `│ ─` | `| -` |
+| Walls | `│ ─` | `\| -` |
 | T-junctions | `├ ┤ ┬ ┴` | `+` |
 | Cross | `┼` | `+` |
 | Dashed (external) | `╌ ╎` | `- -` (spaced) |
@@ -166,7 +165,7 @@ Every skill that emits ASCII MUST pipe through `../../bin/amw-validate-ascii.py`
 | Src | Source material | TECH range | Focus |
 |---|---|---|---|
 | S1 | `box-diagram-master` (gold examples) | TECH-01 .. TECH-15 | Rounded-frame dashboards, fan-out, numbered stages |
-| S2 | `ascii-diagrams-skill` (CHI'24 refs, 7 files) | TECH-16 .. TECH-36 | Classic `+-|` idioms, decisions, sequences, trees |
+| S2 | `ascii-diagrams-skill` (CHI'24 refs, 7 files) | TECH-16 .. TECH-36 | Classic `+-\|` idioms, decisions, sequences, trees |
 | S3 | `cc-plugin-text-visualizations` (5 skills) | TECH-37 .. TECH-53 | Swimlanes, heatmaps, timelines, cheatsheets |
 | S4 | `perfect-ascii` renderer | TECH-54 .. TECH-62 | Render invariants, lane labels, bus fan-out |
 | S5 | `diagram-skill/ASCII-STYLES.md` | TECH-63 .. TECH-72 | DB shapes, sync/async edges, grouping containers |

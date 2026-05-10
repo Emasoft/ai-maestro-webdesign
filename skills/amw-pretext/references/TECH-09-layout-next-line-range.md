@@ -14,7 +14,6 @@ also-in: SKILL-13.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # layoutNextLineRange() + materializeLineRange() — variable-width iterator without strings
 
 **Category:** api

@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Dot plot — distribution + individual points
 
 ## What it does
@@ -111,4 +110,3 @@ shape without forcing them to read every dot.
 - [TECH-slope-chart](TECH-slope-chart.md) — 2-point alternative.
   > What it does · When to use · Coordinate system · HTML · CSS · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

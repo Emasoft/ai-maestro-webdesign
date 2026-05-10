@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Virtualized table with pretext-measured row heights
 
 **Category:** tables

@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Grid table (CSS Grid layout with sticky headers)
 
 **Category:** tables

@@ -6,7 +6,6 @@
 - [How main-agent consumes the contract](#how-main-agent-consumes-the-contract)
 - [Contract invariants (enforced by smoke tests)](#contract-invariants-enforced-by-smoke-tests)
 
-
 # Sub-agent return contract — canonical YAML schema
 
 Every sub-agent under `agents/amw-*.md` returns a report to main-agent in the shape below. The first block is a YAML frontmatter header the main-agent parses mechanically. The rest is free-form markdown for human readers and for main-agent's prose synthesis.

@@ -8,7 +8,6 @@
 - [Accessibility caveat](#accessibility-caveat)
 - [Source citation](#source-citation)
 
-
 # Primitive — Sketchy filter (hand-drawn variant)
 
 > **Cross-type primitive.** Applies to any of the 13 editorial diagram types

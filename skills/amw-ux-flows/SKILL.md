@@ -34,7 +34,6 @@ See [TECH-4-phase-mandatory-workflow](references/TECH-4-phase-mandatory-workflow
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (when a PRD is present and wireframe flows need to be validated before Phase B) or as part of Phase B when clickable wireframes are an implementation deliverable. The orchestrator may apply the full PRD-to-wireframe pipeline from this skill without command-layer restriction.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

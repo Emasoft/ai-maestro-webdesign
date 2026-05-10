@@ -17,7 +17,6 @@ Extracts a design system (colors, fonts, spacing, shadows, tokens) from a live U
 
 Callable directly via the `/amw-extract-style` command (user shortcut — fast path to extract tokens from a specific URL). Also invoked by the `design-principles` orchestrator during Phase A context-gathering (Rule 1) or at the start of Phase B in Main-agent mode. In Main-agent mode the orchestrator may apply token-mapping and design-system reconstruction techniques from this skill beyond what the `/amw-extract-style` command exposes.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

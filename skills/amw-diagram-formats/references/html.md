@@ -250,7 +250,7 @@ Tweaks edits: `document.documentElement.style.setProperty('--foo', value)` — n
 | S5 | `SKILLS-TO-INTEGRATE/image-generation/create-infographics/SKILL.md` | TECH-51 .. TECH-60 | Dense editorial HTML, bold borders, section separators, table primacy |
 | S6 | `SKILLS-TO-INTEGRATE/diagrams-skills/diagram-design-editorial/SKILL.md` | TECH-61 .. TECH-68 | Self-contained HTML+SVG, 13 diagram archetypes, no-build layout |
 | S7 | `skills/amw-ascii-creator/references/techniques.md` (ASCII-parse source) | TECH-69 .. TECH-80 | ASCII-pattern recognition primitives (mirrors of ascii-creator authoring catalog) |
-| S8 | `SKILLS-TO-INTEGRATE/diagrams-skills/ascii-diagrams-skill-main/references/` (CHI'24 classics) | TECH-81 .. TECH-90 | Classic `+-|` HTML-table equivalents, UI-mockup sidebar grid → CSS grid |
+| S8 | `SKILLS-TO-INTEGRATE/diagrams-skills/ascii-diagrams-skill-main/references/` (CHI'24 classics) | TECH-81 .. TECH-90 | Classic `+-\|` HTML-table equivalents, UI-mockup sidebar grid → CSS grid |
 | S9 | `bin/amw-ascii-parse.py` (in-repo tokenizer) | TECH-91 .. TECH-100 | find_boxes / find_arrows / classify → HTML-emission hooks |
 
 Total: **100 techniques**, 9 sources.

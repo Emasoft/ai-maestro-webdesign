@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Radar chart — Chart.js for game stats + multi-axis comparison
 
 ## What it does
@@ -127,4 +126,3 @@ readable.
 - [TECH-line-chart](TECH-line-chart.md) — the other Chart.js type in the library.
   > What it does · When to use · HTML · The signature options · The container-height trick · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

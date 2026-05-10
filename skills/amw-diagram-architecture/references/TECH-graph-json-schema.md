@@ -17,7 +17,6 @@ also-in: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/prom
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Defines the canonical **layered graph JSON** that all four output formats
@@ -139,4 +138,3 @@ SaaS analytics platform, 4 layers × 9 nodes × 8 edges:
 - [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — validation catalogue
   > What it does · When to use · How it works · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

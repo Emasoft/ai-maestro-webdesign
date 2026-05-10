@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-ui-sketch-layout — `+---+` UI wireframe mockup
 
 ## What it does
@@ -73,4 +72,3 @@ mockups in PRs, issues, and design docs where Figma/Sketch is overhead.
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
   > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -13,7 +13,6 @@ also-in: box-diagram-master/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-group-aware-width-detection — per-structure width, not global mode
 
 ## What it does
@@ -96,4 +95,3 @@ Passes group-aware detection, FAILS global-mode detection:
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [SKILL](../../amw-box-diagram/SKILL.md)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

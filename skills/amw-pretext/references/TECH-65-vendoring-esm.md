@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Vendoring pretext as a single ESM file (no build step)
 
 **Category:** integrate

@@ -13,7 +13,6 @@ also-in: perfect-ascii-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-78-column-cap — hard 78-col rule and its consequences
 
 ## What it does
@@ -62,4 +61,3 @@ echo '{"layers":{"levels":[{"label":"L","boxes":["A very long label that will no
 - [TECH-width-mismatch-rule](../../amw-ascii-validator/references/TECH-width-mismatch-rule.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

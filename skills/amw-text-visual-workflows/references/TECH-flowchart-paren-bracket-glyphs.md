@@ -16,7 +16,6 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Uses lightweight ASCII punctuation as node-shape markers so a workflow
@@ -75,4 +74,3 @@ yes   no
 - [TECH-render-mode-diagram](../../amw-ascii-creator/references/TECH-render-mode-diagram.md)
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

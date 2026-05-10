@@ -13,7 +13,6 @@ also-in: SKILL-15.md, SKILL-17.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Vanilla TypeScript integration (no framework)
 
 **Category:** integrate

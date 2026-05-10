@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Salt & pepper texture — two-layer professional grain
 
 ## What it does
@@ -96,4 +95,3 @@ grain over the clipped bounds without covering the underlying fill.
 - [TECH-colored-shadows](TECH-colored-shadows.md) — salt+pepper pairs well with blue shadows.
   > What it does · The palette · Where the color goes · Drop-shadow filter with colored shadow · Opacity rules · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

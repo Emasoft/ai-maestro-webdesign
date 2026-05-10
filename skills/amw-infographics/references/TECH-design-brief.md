@@ -19,7 +19,6 @@ also-in: image-generation/create-infographics/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Design Brief — 3 (or 5) intake questions
 
 ## What it does
@@ -147,4 +146,3 @@ If no clear thesis: present two candidates and ask which direction.
 - [TECH-platform-sizing](TECH-platform-sizing.md) — Question 3 mapping.
   > What it does · The size table · Safe zones per platform · CSS — fixed-aspect platforms · Font size scaling by platform · Density by format · Watermark / attribution per platform · Export commands · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

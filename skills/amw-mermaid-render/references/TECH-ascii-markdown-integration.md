@@ -17,7 +17,6 @@ also-in: diagrams-skills/beautiful-mermaid-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Patterns for embedding `renderMermaidAscii()` output into Markdown,
@@ -88,4 +87,3 @@ const ascii = renderMermaidAscii(diagram, { useAscii: true })
   > What it does · When to use · Pattern 1: Highlight node names · Pattern 2: Whole-diagram color wrap · Pattern 3: Per-node status colors · Gotchas · Cross-references
   plain ASCII.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

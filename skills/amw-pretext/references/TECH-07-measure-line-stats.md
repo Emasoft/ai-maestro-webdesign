@@ -13,7 +13,6 @@ also-in: SKILL-13.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # measureLineStats() — aggregate line stats without string alloc
 
 **Category:** api

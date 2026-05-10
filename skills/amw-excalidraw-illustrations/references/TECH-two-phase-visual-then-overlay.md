@@ -18,7 +18,6 @@ also-in: skills/amw-excalidraw-illustrations/scripts/generate.py
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Fallback workflow for when Gemini stubbornly misspells a key word in the

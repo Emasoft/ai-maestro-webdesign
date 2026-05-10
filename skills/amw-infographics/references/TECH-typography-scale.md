@@ -19,7 +19,6 @@ also-in: image-generation/create-infographics/resources/font-pairings.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Harmonious size progression based on the minor-third ratio (1.25).
@@ -132,4 +131,3 @@ Never 14-16px body — that's frontend spacing, not editorial.
 - [TECH-copy-guide-numbers](TECH-copy-guide-numbers.md) — formatting numbers for the scale.
   > What it does · The number format table · Labeling rules · Currency · Headline formulas (ALL CAPS + verb-first OR noun phrase) · Type A — Verb-first (action, how-it-works, airdrop) · Type B — Noun phrase (token-economics, stats, reports) · Type C — Mission statement (launch, profile) · Subtitle rules · Per-component word budgets · Common mistakes to avoid · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

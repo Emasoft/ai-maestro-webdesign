@@ -17,7 +17,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Arrows & connectors — 71% of pieces
 
 ## What it does
@@ -142,4 +141,3 @@ names, token names:
 - [TECH-flywheel-loop-component](TECH-flywheel-loop-component.md) — circular arrow pattern.
   > What it does · When to use · CSS · HTML · Arrow labels (mandatory) · When to use a horizontal flow instead · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

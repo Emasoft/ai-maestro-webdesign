@@ -13,7 +13,6 @@ also-in: SKILL-11.md, SKILL-14.md, skills/amw-pretext-art/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Shaped container (text inside a circle / polygon / outline)
 
 **Category:** layout

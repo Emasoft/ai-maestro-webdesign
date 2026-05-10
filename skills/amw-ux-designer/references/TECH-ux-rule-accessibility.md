@@ -19,7 +19,6 @@ also-in: SKILLS-TO-INTEGRATE/web-design/ux-designer/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 The CRITICAL-priority rule covering WCAG 2.1 AA compliance plus inclusive-design patterns (motor / visual / cognitive / situational accommodations). Accessibility is legally required in many jurisdictions (ADA in the US, EN 301 549 in the EU, AODA in Ontario) and is a moral imperative everywhere else.

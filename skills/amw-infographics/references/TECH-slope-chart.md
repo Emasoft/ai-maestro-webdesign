@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Slope chart — before/after comparison
 
 ## What it does
@@ -130,4 +129,3 @@ Y positions spread evenly between 40 and 260.
   > What it does · When to use · HTML (excerpt — see source for full) · CSS · The hero bar signature · Gotchas · Cross-references
   comparisons.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

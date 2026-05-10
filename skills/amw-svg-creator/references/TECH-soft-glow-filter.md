@@ -15,7 +15,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Soft glow filter
 
 ## What it does
@@ -101,4 +100,3 @@ gets clipped.
 - [TECH-specular-diffuse-lighting](TECH-specular-diffuse-lighting.md) — physics-based alternative.
   > What it does · Specular — shiny surface · Diffuse — matte surface · When to use · When NOT to use · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

@@ -13,7 +13,6 @@ also-in: SKILL-13.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # measureNaturalWidth() — unconstrained text width
 
 **Category:** api

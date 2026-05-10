@@ -14,7 +14,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Annotated bar chart — SVG with callout + benchmark
 
 ## What it does
@@ -131,4 +130,3 @@ crossing the chart. No Chart.js dependency.
 - [TECH-slope-chart](TECH-slope-chart.md) — for before/after stories.
   > What it does · When to use · Coordinate system · HTML · CSS · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

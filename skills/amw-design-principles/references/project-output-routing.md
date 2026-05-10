@@ -16,7 +16,6 @@ category: orchestrator-routing
 - [Quick-reference algorithm (pseudo-code)](#quick-reference-algorithm-pseudo-code)
 - [Cross-references](#cross-references)
 
-
 ## When to consult this doc
 
 Every webdesign skill that produces an artifact reads this doc before deciding

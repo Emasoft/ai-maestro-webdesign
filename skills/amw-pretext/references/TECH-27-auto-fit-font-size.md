@@ -13,7 +13,6 @@ also-in: pretext-skill-main/patterns.md, SKILL-17 (SmartPage)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Auto-fit font size (largest font that stays within N lines)
 
 **Category:** typography

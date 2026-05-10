@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # SmartPage — auto-fit Markdown to one A4 page
 
 **Category:** workflow

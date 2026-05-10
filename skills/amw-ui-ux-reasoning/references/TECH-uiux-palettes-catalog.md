@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Color-palette catalog (161 industry-matched palettes)
 
 ## What it does

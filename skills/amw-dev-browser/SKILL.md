@@ -17,7 +17,6 @@ Browser automation and page-state capture via the `dev-browser` CLI. The plugin'
 
 Callable directly via the `/amw-preview` command (screenshot + self-check shortcut) or `/amw-extract-style` command (style-token extraction shortcut) for users who want those specific actions immediately. Also invoked by the `design-principles` orchestrator during Phase B in Main-agent mode for scenario testing of every browser-runnable artifact. In Main-agent mode the orchestrator may apply interaction, DOM inspection, and multi-step navigation techniques from this skill beyond what any individual command exposes.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH: Landing-page patterns catalog (24 conversion-optimized structures)
 
 ## What it does

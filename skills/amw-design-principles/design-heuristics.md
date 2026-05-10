@@ -13,7 +13,6 @@
 - [IX. Aesthetic-Usability Effect](#ix-aesthetic-usability-effect)
 - [Self-check list](#self-check-list)
 
-
 > These are **classic design laws** that hold across eras and styles. Violating them is like violating physics — the user experience is guaranteed to suffer.
 
 ---

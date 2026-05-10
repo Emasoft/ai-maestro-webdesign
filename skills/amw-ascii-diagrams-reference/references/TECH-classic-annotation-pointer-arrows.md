@@ -13,7 +13,6 @@ also-in: ascii-diagrams-skill-main/SKILL.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-classic-annotation-pointer-arrows — label-to-element connectors
 
 ## What it does
@@ -81,4 +80,3 @@ File-format annotation variant (from Chromium):
 - [graphs-annotations](./graphs-annotations.md) (legacy pattern file)
   > Directed Graphs · Code Annotations · Before/After Comparisons · UI Sketches
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

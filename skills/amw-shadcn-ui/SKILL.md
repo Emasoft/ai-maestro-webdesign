@@ -33,7 +33,6 @@ This skill produces no standalone artifacts — it provides component source sni
 
 No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when extracted design tokens or explicit user request indicate a shadcn/ui-based implementation target. Also callable directly when the user names a specific shadcn component, theming question, or registry workflow.
 
-
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow

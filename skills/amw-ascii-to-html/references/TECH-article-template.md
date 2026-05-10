@@ -21,7 +21,6 @@ also-in: ../../amw-seo/SKILL.md (Article JSON-LD schema)
 - [What the agent MUST do](#what-the-agent-must-do)
 - [What the agent MUST NOT do](#what-the-agent-must-not-do)
 
-
 ## What it does
 
 Structural contract for long-form article and blog-post pages:

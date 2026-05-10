@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `fromShikiTheme()` — import any VS Code theme
 
 ## What it does
@@ -73,4 +72,3 @@ const svg = await renderMermaid(diagram, colors)
 - [TECH-live-theme-switch](TECH-live-theme-switch.md) — runtime theme changes without re-rendering.
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

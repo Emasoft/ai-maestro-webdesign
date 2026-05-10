@@ -8,7 +8,6 @@
 - [Why this topology (instead of peer-to-peer)](#why-this-topology-instead-of-peer-to-peer)
 - [Enforcement](#enforcement)
 
-
 # Agent interaction patterns — data hand-offs across the 13-agent roster
 
 This document specifies who talks to whom, when, and what data flows between them. It exists because an agent roster without explicit data-flow documentation forces main-agent to re-pass, re-fetch, or silently drop information between sub-agent calls.

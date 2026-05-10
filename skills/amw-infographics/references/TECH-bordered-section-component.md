@@ -16,7 +16,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # `bordered_section` — visible-border content panel
 
 ## What it does
@@ -109,4 +108,3 @@ richer. The visible border is the signature — ghost borders
 - [TECH-dense-editorial-dna](TECH-dense-editorial-dna.md) — the visible-borders rule.
   > What it does · The success state · The failure mode · The Anti-Frontend Checklist (run before delivery) · Density targets by canvas · Spacing rules (THE signature) · Content format hierarchy (top = prefer) · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

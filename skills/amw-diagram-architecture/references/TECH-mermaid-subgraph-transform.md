@@ -13,7 +13,6 @@ also-in:
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-mermaid-subgraph-transform
 
 ## What it does
@@ -133,4 +132,3 @@ flowchart TD
 - [TECH-svg-layered-layout](TECH-svg-layered-layout.md) — sibling transform for the SVG format
   > What it does · When to use · How it works · Canvas constants · Algorithm · Height calculation · Node card structure · Layer band structure · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

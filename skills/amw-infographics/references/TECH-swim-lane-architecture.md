@@ -18,7 +18,6 @@ also-in: image-generation/create-infographics/resources/style-details.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 ## What it does
 
 Two-tier (or multi-tier) horizontal labeled bands showing protocol
@@ -138,4 +137,3 @@ nodes.
   > What it does · When to use · The shape · CSS implementation · Connection lines — SVG overlay · Gotchas · Cross-references
   architectures.
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-

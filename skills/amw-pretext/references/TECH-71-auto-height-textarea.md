@@ -13,7 +13,6 @@ also-in: SKILL-23.md (AutoHeightTextarea)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # Auto-height textarea (pre-wrap, no scroll bar)
 
 **Category:** workflow

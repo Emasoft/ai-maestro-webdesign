@@ -19,7 +19,6 @@ also-in: globalCC skill `pwa-development` for library-specific deep dive
 - [What the agent MUST do](#what-the-agent-must-do)
 - [What the agent MUST NOT do](#what-the-agent-must-not-do)
 
-
 ## What it does
 
 Augments the produced HTML wireframe with the four PWA primitives every

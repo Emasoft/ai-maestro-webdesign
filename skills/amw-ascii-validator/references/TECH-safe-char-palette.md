@@ -13,7 +13,6 @@ also-in: box-diagram-master/skills/amw-box-diagram/validate.py
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-
 # TECH-safe-char-palette — the characters that always render 1-col
 
 ## What it does
@@ -38,7 +37,7 @@ against [TECH-forbidden-chars-banlist](TECH-forbidden-chars-banlist.md) and [TEC
 | Heavy line | `━ ┃ ┏ ┓ ┗ ┛` | Bold borders; fewer junctions available |
 | Rounded corners | `╭ ╮ ╰ ╯` | Pair with `─ │` for modern terminal look |
 | Safe arrows | `→ ← ↑ ↓ ↔ ↕` | All U+2190-U+2195; all 1-col |
-| ASCII fallback | `+ - = | > < ^ v` | Lowest common denominator |
+| ASCII fallback | `+ - = \| > < ^ v` | Lowest common denominator |
 
 ## Minimal example
 
@@ -69,4 +68,3 @@ Arrows:       → ← ↑ ↓ ↔ ↕
   > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [SKILL](../../amw-box-diagram/SKILL.md) (character set table)
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
-
