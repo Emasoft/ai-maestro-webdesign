@@ -2,7 +2,7 @@
 
 - [1. ASCII (chat-native plan-phase pivot)](#1-ascii-chat-native-plan-phase-pivot)
 - [2. DESIGN.md (design-system pivot)](#2-designmd-design-system-pivot)
-- [3. Diagram IR (`diagram-ir/1.0`) (cross-format diagram pivot)](#3-diagram-ir-diagram-ir10-cross-format-diagram-pivot)
+- [3. Diagram IR — schema-name diagram-ir version 1.0 (cross-format diagram pivot)](#3-diagram-ir--schema-name-diagram-ir-version-10-cross-format-diagram-pivot)
 - [How agents pick the right pivot](#how-agents-pick-the-right-pivot)
 - [Adding a fourth pivot](#adding-a-fourth-pivot)
 
@@ -63,7 +63,7 @@ This document is the canonical inventory. When adding a fourth pivot, register i
 
 ---
 
-## 3. Diagram IR (`diagram-ir/1.0`) (cross-format diagram pivot)
+## 3. Diagram IR — schema-name diagram-ir version 1.0 (cross-format diagram pivot)
 
 **Schema:** JSON schema documented in `skills/amw-diagram-formats/references/ir-schema.md`. Common-denominator graph representation: nodes (with layout hints, style), edges (with labels, arrowheads), and clusters (for layered architecture). Validated by `bin/amw-diagram-ir.py --validate`.
 

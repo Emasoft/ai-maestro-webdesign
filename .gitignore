@@ -104,3 +104,8 @@ skills/amw-shadcn-ui/docs/**
 
 # Janitor heartbeat state (per-session, transient)
 .janitor/
+
+# Added by CPV standardize
+llm_externalizer_output/
+*_dev/
+.coverage

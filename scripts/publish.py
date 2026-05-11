@@ -64,6 +64,36 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Load gh / git retry wrappers from the sibling module so every push +
+# `gh release create` survives transient github.com hiccups (the retry
+# pattern from ~/.claude/rules/github-timeouts.md). Shipped verbatim
+# from the canonical CPV install via gen_cpv_network_resilience_py().
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    from cpv_network_resilience import gh_with_retry, git_with_retry
+except ImportError:
+    # Fallback: scripts/cpv_network_resilience.py was not shipped with this
+    # plugin (older scaffold). Define no-op shims so publish.py still works,
+    # but warn so the user knows to refresh via `cpv standardize --force-templates`.
+    print(
+        "[publish.py] WARNING: scripts/cpv_network_resilience.py missing — "
+        "network calls will not auto-retry on transient errors. "
+        "Run `cpv standardize --force-templates` to refresh.",
+        file=sys.stderr,
+    )
+    def gh_with_retry(cmd, **kwargs):  # type: ignore[no-redef,misc]
+        kwargs.pop("max_attempts", None)
+        kwargs.pop("backoff", None)
+        kwargs.setdefault("check", True)
+        kwargs.setdefault("capture_output", False)
+        return subprocess.run(cmd, **kwargs)
+    def git_with_retry(cmd, **kwargs):  # type: ignore[no-redef,misc]
+        kwargs.pop("max_attempts", None)
+        kwargs.pop("backoff", None)
+        kwargs.setdefault("check", True)
+        kwargs.setdefault("capture_output", False)
+        return subprocess.run(cmd, **kwargs)
+
 # -- ANSI colors ---------------------------------------------------------------
 
 
@@ -104,6 +134,94 @@ def get_repo_root() -> Path:
     r = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                        capture_output=True, text=True, check=True)
     return Path(r.stdout.strip())
+
+
+# -- gh-auth precheck (TRDD-bbff5bc5) ---------------------------------------
+
+
+def _parse_owner_repo_from_remote(remote_url: str) -> tuple[str, str] | None:
+    """Extract (owner, repo) from `git@host:owner/repo.git` or
+    `https://host/owner/repo[.git]`. Returns None on unparseable input.
+    """
+    if not remote_url:
+        return None
+    url = remote_url.strip().rstrip("/")
+    if url.endswith(".git"):
+        url = url[:-4]
+    match = re.search(r"[:/]([^:/\s]+)/([^/\s]+)$", url)
+    if not match:
+        return None
+    return match.group(1), match.group(2)
+
+
+def _resolve_owner_repo(plugin_root: Path) -> tuple[str, str]:
+    """Read remote.origin.url, parse (owner, repo). Exit 1 on failure."""
+    result = subprocess.run(
+        ["git", "config", "--get", "remote.origin.url"],
+        cwd=str(plugin_root), capture_output=True, text=True, timeout=10, check=False,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        cprint(f"  {RED}Could not read remote.origin.url. Run: git remote add origin <url>{NC}")
+        sys.exit(1)
+    parsed = _parse_owner_repo_from_remote(result.stdout.strip())
+    if parsed is None:
+        cprint(f"  {RED}Could not parse owner/repo from remote URL: {result.stdout.strip()!r}{NC}")
+        sys.exit(1)
+    return parsed
+
+
+def _ensure_gh_auth(owner: str, repo: str) -> None:
+    """Verify gh CLI installed + authenticated + push perm on owner/repo.
+
+    Called BEFORE every push gate. Exits 1 on any of: gh missing, not
+    authed, no push permission. Per TRDD-bbff5bc5 §4.1: never invokes
+    `gh auth token`; uses only `gh auth status` and `gh api` so PAT-shaped
+    strings cannot leak to stdout/stderr.
+    """
+    if os.environ.get("CPV_SKIP_GH_AUTH_CHECK") == "1":
+        return
+    gh_bin = shutil.which("gh")
+    if gh_bin is None:
+        cprint(f"  {RED}gh CLI not installed. Install: brew install gh{NC}")
+        sys.exit(1)
+    # 60s timeout (was 15s) — slow-link tolerance; downstream push gates
+    # still enforce real auth on failure.
+    try:
+        status = subprocess.run(
+            [gh_bin, "auth", "status"],
+            capture_output=True, text=True, timeout=60, check=False,
+        )
+    except subprocess.TimeoutExpired:
+        cprint(f"  {RED}gh auth status timed out after 60 s — flaky network. Retry, or set CPV_SKIP_GH_AUTH_CHECK=1.{NC}")
+        sys.exit(1)
+    if status.returncode != 0:
+        cprint(f"  {RED}gh CLI not authenticated.{NC}")
+        cprint(f"  {YELLOW}Run: gh auth login --hostname github.com --git-protocol https{NC}")
+        sys.exit(1)
+    try:
+        perms = subprocess.run(
+            [gh_bin, "api", f"repos/{owner}/{repo}", "--jq", ".permissions.push"],
+            capture_output=True, text=True, timeout=60, check=False,
+        )
+    except subprocess.TimeoutExpired:
+        cprint(f"  {RED}gh permission check timed out after 60 s — set CPV_SKIP_GH_AUTH_CHECK=1 to bypass this gate.{NC}")
+        sys.exit(1)
+    if perms.returncode != 0 or perms.stdout.strip() != "true":
+        active_login = ""
+        for line in (status.stdout + status.stderr).splitlines():
+            line = line.strip()
+            if "account " in line and ("Logged in" in line or "Active" in line):
+                m = re.search(r"account\s+(\S+)", line)
+                if m:
+                    active_login = m.group(1)
+                    break
+        login_str = f" '{active_login}'" if active_login else ""
+        cprint(f"  {RED}gh user{login_str} has no push permission on {owner}/{repo}.{NC}")
+        cprint(f"  {YELLOW}Diagnose:{NC}")
+        cprint(f"  {YELLOW}  1. Ask the repo owner to add you as a collaborator with write access.{NC}")
+        cprint(f"  {YELLOW}  2. If you have multiple gh accounts: gh auth status; gh auth switch{NC}")
+        cprint(f"  {YELLOW}  3. If using a fine-grained token: ensure 'Contents: write' on this repo.{NC}")
+        sys.exit(1)
 
 
 # -- Semver --------------------------------------------------------------------
@@ -631,11 +749,20 @@ def run_gate(root: Path) -> int:
 # -- Pipeline stages -----------------------------------------------------------
 
 def stage_bypass_guard() -> None:
-    """Step 0: Reject any env var that could bypass a check. No exceptions."""
+    """Step 0: Reject any env var that could bypass a check. No exceptions.
+
+    TRDD-bbff5bc5 §6.1: the canonical names are PLUGIN_SKIP_*; CPV_SKIP_*
+    are kept as legacy aliases for one release.
+    """
     cprint(f"\n{BOLD}[0/11] Checking for bypass attempts...{NC}")
     forbidden = [
+        # New canonical names (TRDD-bbff5bc5)
+        "PLUGIN_SKIP_TESTS", "PLUGIN_SKIP_LINT", "PLUGIN_SKIP_VALIDATE",
+        "PLUGIN_FORCE_PUBLISH", "PLUGIN_BYPASS_CHECKS",
+        # Legacy aliases — removed in next release.
         "CPV_SKIP_TESTS", "CPV_SKIP_LINT", "CPV_SKIP_VALIDATE",
         "CPV_FORCE_PUBLISH", "CPV_BYPASS_CHECKS",
+        # Generic bypass attempts — always rejected.
         "SKIP_TESTS", "SKIP_LINT", "SKIP_VALIDATE", "NO_VERIFY",
     ]
     attempted = [v for v in forbidden if os.environ.get(v)]
@@ -985,9 +1112,110 @@ def stage_consistency(root: Path) -> None:
         sys.exit(1)
     cprint(f"  {GREEN}Consistent.{NC}")
 
+def _read_remote_version(plugin_root: Path) -> str | None:
+    """Read .claude-plugin/plugin.json's `version` from origin/master (or main).
+
+    Idempotency baseline: the publish pipeline reads the REMOTE version, not
+    the local one, so an interrupted publish that already bumped + committed
+    locally cannot double-bump on re-run. Returns None when offline / no
+    remote ref / file missing — caller must fall back to local baseline.
+    """
+    for ref in ("origin/master", "origin/main", "origin/HEAD"):
+        try:
+            r = subprocess.run(
+                ["git", "show", f"{ref}:.claude-plugin/plugin.json"],
+                capture_output=True, text=True, cwd=str(plugin_root),
+                check=False, timeout=15,
+            )
+        except (OSError, subprocess.SubprocessError):
+            continue
+        if r.returncode != 0:
+            continue
+        try:
+            v = json.loads(r.stdout).get("version")
+        except json.JSONDecodeError:
+            continue
+        if isinstance(v, str):
+            return v
+    return None
+
+
+def _infer_bump_type(old: str, new: str) -> str | None:
+    """Classify a semver delta as 'major', 'minor', 'patch', or None."""
+    o = parse_semver(old)
+    n = parse_semver(new)
+    if o is None or n is None or n <= o:
+        return None
+    if n[0] != o[0]:
+        return "major"
+    if n[1] != o[1]:
+        return "minor"
+    return "patch"
+
+
+def _git_porcelain_clean(root: Path) -> bool:
+    """True iff `git status --porcelain` is empty (working tree clean)."""
+    try:
+        r = subprocess.run(
+            ["git", "status", "--porcelain"],
+            capture_output=True, text=True, cwd=str(root),
+            check=False, timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return False
+    return r.returncode == 0 and not r.stdout.strip()
+
+
+def _head_commit_message(root: Path) -> str:
+    """Return the subject line of HEAD, or '' on failure."""
+    try:
+        r = subprocess.run(
+            ["git", "log", "-1", "--pretty=%s"],
+            capture_output=True, text=True, cwd=str(root),
+            check=False, timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return ""
+    return r.stdout.strip() if r.returncode == 0 else ""
+
+
+def _local_tag_exists(root: Path, tag: str) -> bool:
+    """True iff `tag` already exists in the local git repo."""
+    try:
+        r = subprocess.run(
+            ["git", "rev-parse", "--verify", f"refs/tags/{tag}"],
+            capture_output=True, text=True, cwd=str(root),
+            check=False, timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return False
+    return r.returncode == 0
+
+
 def stage_bump(root: Path, new_ver: str, dry_run: bool) -> None:
-    """Step 6: Bump version."""
+    """Step 7: Bump version. Idempotent — skips when local already matches target.
+
+    Recovery semantics: when a previous publish was interrupted between the
+    local commit+tag and the push (transient network failure during git push,
+    pre-push hook reject, etc.), the local repo is at the bumped version while
+    origin is one minor behind. Re-running publish.py would DOUBLE-BUMP
+    (read-local-then-add-1 → next minor on top of the already-bumped local).
+    The fix: read REMOTE plugin.json as baseline, infer bump type from
+    local-vs-remote delta, and skip the bump entirely when local already
+    matches the target.
+    """
     cprint(f"\n{BOLD}[7/11] Bumping version...{NC}")
+    current = get_current_version(root)
+    remote = _read_remote_version(root)
+    if remote and current and current == new_ver:
+        cprint(f"  {YELLOW}Local plugin.json is already at {new_ver} (remote at {remote}) — "
+               f"skipping bump (interrupted-publish recovery).{NC}")
+        return
+    if remote and current and current != remote and current != new_ver:
+        cprint(f"  {RED}REFUSED: local plugin.json is at {current} but remote is at "
+               f"{remote} and target is {new_ver}. Refuse to guess what state this is.{NC}")
+        cprint(f"  {RED}Manual intervention required: align local with remote, then re-run.{NC}")
+        sys.exit(1)
     if not do_bump(root, new_ver, dry_run=dry_run):
         cprint(f"  {RED}Version bump failed.{NC}")
         sys.exit(1)
@@ -1040,9 +1268,14 @@ def detect_bump_type(root: Path) -> str:
     """Auto-detect the next bump type from conventional commits via git-cliff.
 
     Runs `git-cliff --bumped-version` and compares the predicted version to
-    the current one to determine major/minor/patch. Falls back to 'patch' on
-    any failure (git-cliff missing, repo empty, parse error) so the cornerstone
-    rule — every push is a bump — is never violated.
+    the REMOTE one (origin/master) to determine major/minor/patch. Falls back
+    to 'patch' on any failure (git-cliff missing, repo empty, parse error) so
+    the cornerstone rule — every push is a bump — is never violated.
+
+    Idempotency: when the local repo already has a release commit (interrupted
+    publish), reading local plugin.json would over-shoot the bump (current is
+    already the bumped version, git-cliff would compute current+1). Reading
+    remote/origin gives the true baseline.
 
     Conventional commit mapping (git-cliff defaults):
       feat:                 -> minor
@@ -1053,7 +1286,7 @@ def detect_bump_type(root: Path) -> str:
     if cliff_bin is None:
         cprint(f"{YELLOW}git-cliff not installed — auto-bump falls back to 'patch'.{NC}")
         return "patch"
-    current = get_current_version(root)
+    current = _read_remote_version(root) or get_current_version(root)
     if not current:
         cprint(f"{YELLOW}Cannot read current version for auto-bump — falling back to 'patch'.{NC}")
         return "patch"
@@ -1120,22 +1353,69 @@ def stage_changelog(root: Path, new_ver: str, dry_run: bool) -> None:
     cprint(f"  {GREEN}CHANGELOG.md updated with {tag}.{NC}")
 
 def stage_commit_and_push(root: Path, new_ver: str, dry_run: bool) -> None:
-    """Step 9: Commit, tag, push."""
+    """Step 10: Commit, tag, push. Idempotent on commit + tag.
+
+    Idempotency: if HEAD's subject is already `chore: bump version to <new_ver>`
+    AND the working tree is clean, skip the commit step (interrupted-publish
+    recovery). If the tag already exists locally, skip the tag step. The push
+    always runs — that is what brings the remote into sync.
+
+    TRDD-bbff5bc5 §5: gh-auth precheck runs BEFORE the first push so the
+    user gets an actionable error if their gh CLI is unauthed/lacks push
+    perm — instead of an opaque git push failure mid-pipeline.
+    """
     cprint(f"\n{BOLD}[10/11] Committing and pushing...{NC}")
     tag = f"v{new_ver}"
+    expected_subject = f"chore: bump version to {new_ver}"
+    head_subject = _head_commit_message(root)
+    tree_clean = _git_porcelain_clean(root)
+    tag_exists = _local_tag_exists(root, tag)
+
     if dry_run:
-        cprint(f"  Would commit: chore: bump version to {new_ver}")
-        cprint(f"  Would tag: {tag}")
+        if head_subject == expected_subject and tree_clean:
+            cprint(f"  Would skip commit (HEAD already '{expected_subject}', tree clean)")
+        else:
+            cprint(f"  Would commit: {expected_subject}")
+        if tag_exists:
+            cprint(f"  Would skip tag (already exists locally): {tag}")
+        else:
+            cprint(f"  Would tag: {tag}")
         cprint("  Would push: origin HEAD --tags")
         return
-    run(["git", "add", "-A"], cwd=root)
-    run(["git", "commit", "-m", f"chore: bump version to {new_ver}"], cwd=root)
-    run(["git", "tag", "-a", tag, "-m", f"Release {tag}"], cwd=root)
-    run(["git", "push", "origin", "HEAD", "--tags"], cwd=root)
+
+    if head_subject == expected_subject and tree_clean:
+        cprint(f"  {YELLOW}HEAD is already '{expected_subject}' and tree is clean — "
+               f"skipping commit (interrupted-publish recovery).{NC}")
+    else:
+        run(["git", "add", "-A"], cwd=root)
+        run(["git", "commit", "-m", expected_subject], cwd=root)
+
+    if tag_exists:
+        cprint(f"  {YELLOW}Tag {tag} already exists locally — skipping tag step.{NC}")
+    else:
+        run(["git", "tag", "-a", tag, "-m", f"Release {tag}"], cwd=root)
+
+    # gh-auth precheck — fail fast with actionable error if gh missing/unauthed.
+    owner, repo = _resolve_owner_repo(root)
+    _ensure_gh_auth(owner, repo)
+    # Retry-wrap the push: a single transient github.com hiccup used to
+    # leave the repo in a half-published state. git_with_retry tolerates
+    # up to GIT_MAX_ATTEMPTS × GIT_BACKOFF_SEC of transient errors and
+    # returns immediately on a permanent error (4xx, non-fast-forward).
+    cprint(f"  {BLUE}$ git push origin HEAD --tags{NC}")
+    git_with_retry(
+        ["git", "push", "origin", "HEAD", "--tags"],
+        cwd=str(root), capture_output=False,
+    )
     cprint(f"  {GREEN}Pushed {tag}.{NC}")
 
 def stage_gh_release(root: Path, new_ver: str, dry_run: bool) -> None:
-    """Step 10: Create GitHub release via gh CLI."""
+    """Step 10: Create GitHub release via gh CLI.
+
+    TRDD-bbff5bc5 §5: re-runs the gh-auth precheck before `gh release
+    create` so an auth state change between gates 10 and 11 (token
+    revoked, account switched) surfaces as an actionable error.
+    """
     cprint(f"\n{BOLD}[11/11] Creating GitHub release...{NC}")
     tag = f"v{new_ver}"
     if not shutil.which("gh"):
@@ -1144,12 +1424,25 @@ def stage_gh_release(root: Path, new_ver: str, dry_run: bool) -> None:
     if dry_run:
         cprint(f"  Would create release: {tag}")
         return
+    owner, repo = _resolve_owner_repo(root)
+    _ensure_gh_auth(owner, repo)
     changelog_file = root / "CHANGELOG.md"
-    args = ["gh", "release", "create", tag, "--title", tag, "--generate-notes"]
+    # Use --notes-file when CHANGELOG exists (the git-cliff structured
+    # release notes are the right thing to ship). Fall back to
+    # --generate-notes only when no CHANGELOG is present. Passing both
+    # flags simultaneously produces undefined behavior across gh versions
+    # (some concatenate, some override) — never both.
+    args = ["gh", "release", "create", tag, "--title", tag]
     if changelog_file.is_file():
         args.extend(["--notes-file", str(changelog_file)])
-    result = run(args, cwd=root, check=False)
-    # Check returncode before claiming success
+    else:
+        args.append("--generate-notes")
+    cprint(f"  {BLUE}$ {' '.join(args)}{NC}")
+    result = gh_with_retry(args, cwd=str(root), check=False, capture_output=True)
+    if result.stdout and result.stdout.strip():
+        cprint(result.stdout.strip())
+    if result.stderr and result.stderr.strip():
+        print(result.stderr.strip(), file=sys.stderr)
     if result.returncode != 0:
         cprint(f"  {RED}Failed to create release (exit code {result.returncode}).{NC}")
     else:
@@ -1203,10 +1496,17 @@ def main() -> int:
         return run_gate(root)
 
     # Full publish pipeline — auto-detect bump type unless user forced one.
-    current = get_current_version(root)
-    if not current:
+    # Idempotency: read REMOTE plugin.json (origin/master) as the bump
+    # baseline. When local is ahead (interrupted publish: bumped + committed
+    # but not pushed), bumping from local would double-bump. From remote,
+    # bumping recomputes the SAME target as the original interrupted run,
+    # and stage_bump's "already-at-target" guard then skips the bump.
+    local = get_current_version(root)
+    if not local:
         cprint(f"{RED}Cannot read version from .claude-plugin/plugin.json{NC}")
         return 1
+    remote = _read_remote_version(root)
+    baseline = remote or local
 
     if args.bump is None:
         bump_type = detect_bump_type(root)
@@ -1215,10 +1515,15 @@ def main() -> int:
         bump_type = args.bump
         cprint(f"{BLUE}Bump type: {bump_type} (forced via --{bump_type}){NC}")
 
-    new_ver = bump_semver(current, bump_type)
+    new_ver = bump_semver(baseline, bump_type)
     if not new_ver:
-        cprint(f"{RED}Cannot parse current version: {current}{NC}")
+        cprint(f"{RED}Cannot parse baseline version: {baseline}{NC}")
         return 1
+
+    if remote and local != remote:
+        cprint(f"{YELLOW}Local plugin.json is at {local} but origin is at {remote} — "
+               f"using remote as bump baseline (interrupted-publish recovery).{NC}")
+    current = baseline
 
     cprint(f"\n{BOLD}Publish pipeline: {current} -> {new_ver}{NC}")
     if args.dry_run:

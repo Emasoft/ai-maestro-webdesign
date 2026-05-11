@@ -370,7 +370,7 @@ These skills do NOT ship dedicated slash commands (text-visual output overlaps h
 | [project-output-routing](./references/project-output-routing.md) | Detection rules for project-inferred artifact output paths. Every sub-skill references this before writing artifacts instead of hardcoding `/tmp/amw-<skill>/`. Consult when the user has not specified an output path — the doc determines the right folder based on `package.json`, existing design folders, Claude design markers, and framework conventions. |
 > [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 | [pivot-formats](./references/pivot-formats.md) | The plugin's three modular pivot formats (ASCII / DESIGN.md / Diagram-IR), the producers and consumers of each, and how agents pick the right pivot for each pipeline stage. Read before adding a new skill that produces or consumes structured intermediate output — confirms whether the candidate format is already covered by an existing pivot. |
-> [pivot-formats.md] ASCII (chat-native plan-phase pivot) · DESIGN.md (design-system pivot) · Diagram IR (`diagram-ir/1.0`) (cross-format diagram pivot) · How agents pick the right pivot · Adding a fourth pivot
+> [pivot-formats.md] ASCII (chat-native plan-phase pivot) · DESIGN.md (design-system pivot) · Diagram IR — schema-name diagram-ir version 1.0 (cross-format diagram pivot) · How agents pick the right pivot · Adding a fourth pivot
 
 Slash commands: `/amw-eval`, `/amw-preview`, `/amw-doctor`, `/amw-init`.
 

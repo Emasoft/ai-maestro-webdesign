@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  merge_group:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mega-Linter
+        uses: oxsecurity/megalinter@v8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+
+      - name: Upload Mega-Linter reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mega-linter-reports
+          path: |
+            megalinter-reports/
+            mega-linter.log
+
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Run plugin validation (remote CPV, --strict)
+        # Fetches CPV from GitHub via uvx so downstream plugins do not need
+        # to vendor a local validator. Matches publish.py's local gate
+        # so CI and local gate agree. Issue #11: scaffolded plugins do
+        # not ship a local validator script.
+        run: |
+          set +e
+          uvx --from git+https://github.com/Emasoft/claude-plugins-validation \
+              --with pyyaml \
+              cpv-remote-validate plugin . --strict
+          exit_code=$?
+          set -e
+          if [ $exit_code -eq 0 ]; then
+            echo "Validation passed"
+            exit 0
+          elif [ $exit_code -ge 5 ]; then
+            echo "Only WARNING-level findings (exit $exit_code) — advisory, not blocking"
+            exit 0
+          else
+            echo "::error::Validation failed (exit $exit_code: CRITICAL/MAJOR/MINOR/NIT)"
+            exit $exit_code
+          fi
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Run tests
+        run: |
+          # Skip cleanly when the test directory has no python test files.
+          # The canonical-pipeline scaffold creates an empty test root for
+          # plugins that have not yet authored test scripts; this guard keeps
+          # CI green until they do.
+          TEST_ROOT="tests"
+          if [ -d "$TEST_ROOT" ]; then
+            test_files=$(find "$TEST_ROOT" -maxdepth 2 -name 'test_*.py' -print -quit 2>/dev/null || true)
+            if [ -n "$test_files" ]; then
+              uv run pytest "$TEST_ROOT" -v
+            else
+              echo "No python test files found, skipping pytest"
+            fi
+          else
+            echo "Test root not present, skipping pytest"
+          fi
