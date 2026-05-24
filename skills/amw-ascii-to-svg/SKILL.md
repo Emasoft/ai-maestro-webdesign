@@ -1,7 +1,7 @@
 ---
 name: amw-ascii-to-svg
 description: Deprecated. See ../amw-diagram-convert/ for the IR-pivot conversion path. This file remains as a low-level primitive callable from /amw-ascii-to-svg only — it has no auto-trigger phrases. Use when the /amw-ascii-to-svg command is explicitly invoked. Trigger with /amw-ascii-to-svg.
-version: 0.2.0
+version: 0.1.0
 ---
 
 # ASCII to SVG (DEPRECATED — see amw-diagram-convert)

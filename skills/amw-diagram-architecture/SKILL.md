@@ -1,7 +1,7 @@
 ---
 name: amw-diagram-architecture
 description: Convert a free-text system description into a layered architecture diagram (graph JSON, SVG, or PNG). Triggers on "draw my architecture", "architecture diagram for X", "layered diagram", "export architecture as SVG/PNG", "component diagram". Does NOT trigger on "design", "sketch the UI" — routes to design-principles / diagram-editorial. For Mermaid, use `amw-mermaid-diagram`. Use when converting a system description into a layered diagram. Trigger with /amw-create-or-modify-svg-diagram.
-version: 0.2.0
+version: 0.1.0
 ---
 
 # Diagram Architecture

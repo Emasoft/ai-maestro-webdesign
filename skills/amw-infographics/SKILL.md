@@ -1,7 +1,7 @@
 ---
 name: amw-infographics
 description: Dense editorial infographics as HTML + PNG + PDF from a structured data brief — tokenomics, whitepaper summaries, ecosystem maps, roadmaps, airdrop guides, staking breakdowns, stat posters. Triggers on "infographic", "tokenomics graphic", "ecosystem map", "turn stats into a graphic". NOT for generic design (design-principles) or editorial diagrams (diagram-editorial). Use when producing a dense infographic from a data brief. Trigger with /amw-create-or-modify-html-diagram.
-version: 0.2.0
+version: 0.1.0
 author: ai-maestro-webdesign
 ---
 

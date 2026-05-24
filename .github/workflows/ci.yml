@@ -85,9 +85,9 @@ jobs:
 
       - name: Run plugin validation (remote CPV, --strict)
         # Fetches CPV from GitHub via uvx so downstream plugins do not need to
-        # vendor scripts/validate_plugin.py. Matches publish.py's local gate
-        # so CI and local gate agree. Issue #11: do NOT call local
-        # scripts/validate_plugin.py — it does not exist in scaffolded plugins.
+        # vendor a local validator script. Matches publish.py's local gate
+        # so CI and local gate agree. Issue #11: do NOT call a local
+        # validator script — scaffolded plugins do not ship one.
         run: |
           set +e
           uvx --from git+https://github.com/Emasoft/claude-plugins-validation \

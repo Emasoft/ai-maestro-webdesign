@@ -1,7 +1,7 @@
 ---
 name: amw-pretext-art
 description: Deprecated. See ../amw-pretext/ for the unified pretext skill. This file is a redirect stub only. Use when the pretext-art trigger is invoked — redirect to amw-pretext. Trigger with explicit "pretext-art" or legacy pretext-art phrasing.
-version: 0.2.0
+version: 0.1.0
 ---
 
 # pretext-art (MOVED TO `skills/amw-pretext/`)
