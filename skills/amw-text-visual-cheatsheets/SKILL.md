@@ -47,103 +47,26 @@ Do NOT activate on broad "make docs" or "write a guide" requests. A multi-paragr
 
 If the user gives you commands for one platform only, ask whether they want the other — do not invent Windows variants of POSIX commands by guessing escaping rules.
 
-## Panel format
+## Panel format (summary — full spec in TECH-panel-format)
 
-### Standard layout
+Tabular layout: one action per row, one platform per column, left-aligned,
+fixed-width. Columns sized to longest cell + 2 spaces padding. Box corners
+`+`, verticals `|`, horizontals `-`. **No tabs, no emoji, no variable-width
+glyphs.** Width ceiling: 100 cols (README) / 80 cols (terminal `--help`).
 
-Table with fixed-width columns, one action per row, one platform per column:
+Destructive commands: prefix action with `*`, add footnote below the table.
+Multi-workflow command sets: split into separate small panels with
+section headers. Placeholders use `<...>` brackets with a legend below.
 
-```
-+------------------+--------------------------------+---------------------------------------+
-| Action           | macOS / Linux                  | Windows (PowerShell)                  |
-+------------------+--------------------------------+---------------------------------------+
-| Clone            | gh repo clone org/repo ~/code  | gh repo clone org/repo $HOME\code     |
-| Create PR        | gh pr create --fill            | gh pr create --fill                   |
-| *Force push      | git push --force-with-lease    | git push --force-with-lease           |
-| Check CI         | gh pr checks --watch           | gh pr checks --watch                  |
-+------------------+--------------------------------+---------------------------------------+
-```
+Footer every panel with: last-verified date, source-doc link, owner tag.
 
-### Column alignment
+Extended connection-arrow vocabulary (`-->`, `==>`, `~~>`, `..>`, `<--`,
+`<-->`, `---▷`, `───`) — use sparingly; if a flow needs > 2 arrows, route
+to `../amw-text-visual-workflows/` instead.
 
-- Left-align every column.
-- Column widths: longest cell plus 2 spaces of padding. Never wrap a command mid-cell.
-- Headers match column widths with `-` fill in the separator row.
-
-### Highlighting critical / destructive commands
-
-- Prefix the action name with `*` — e.g. `*Force push`, `*Drop database`, `*Reset local branch`.
-- Add a footnote line below the table per starred action:
-
-```
-* Force push: rewrites remote history. Use `--force-with-lease` to avoid
-  clobbering teammates' commits. Never on `main` / `master` / `release/*`.
-```
-
-- For non-destructive but non-obvious commands, use a `(note)` suffix and expand in the footer.
-
-### Categorizing into sections
-
-If the command set spans multiple workflows (setup vs daily vs deploy), split into **separate small panels** with a header line per section:
-
-```
-### Setup (one-time)
-
-+------------------+---------------------------+---------------------------+
-| Install gh       | brew install gh           | winget install gh         |
-| Authenticate     | gh auth login             | gh auth login             |
-+------------------+---------------------------+---------------------------+
-
-### Daily workflow
-
-+------------------+---------------------------+---------------------------+
-| Sync main        | git fetch && git pull     | git fetch; git pull       |
-| Create branch    | git checkout -b feat/x    | git checkout -b feat/x    |
-+------------------+---------------------------+---------------------------+
-```
-
-A single monolithic 20-row panel is nearly unreadable. Two five-row panels with clear headers is always better.
-
-### Placeholders and context
-
-- Explicit placeholder syntax: `<branch>`, `<env>`, `<issue-id>`. Consistent `<...>` brackets.
-- Legend below the panel listing every placeholder: `<branch> = the feature branch, e.g. feat/order-refactor`.
-- Note env vars inline: `GH_TOKEN=$(op read op://...) gh pr create`.
-
-## Glyph and width standards
-
-- **Width ceiling:** 100 columns for GitHub READMEs; 80 for terminal `--help` embedding. Drop to 80 when in doubt.
-- **Box corners:** `+`, verticals `|`, horizontals `-`.
-- **No tabs.** Spaces only.
-- **No variable-width glyphs.** No emoji. Use `*` for "important" and `(note)` for "has a footnote".
-- **Consistent quoting.** Use double quotes in shell commands when a variable expands; escape PowerShell variables as `$env:USERPROFILE` not `%USERPROFILE%` unless the target shell is CMD.
-
-## Extended connection types
-
-Cheat sheets are mostly tabular, but occasionally a panel needs an inline command-flow annotation ("command A pipes to command B", "set-env then run") or a cross-reference arrow (`see also ---▷ ...`). Use this vocabulary when the panel needs to show relationships alongside the command grid. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
-
-| Type | Glyph | Meaning |
-|---|---|---|
-| sync | `-->` | Command A chains into command B (sequential). |
-| emphasized | `==>` | Primary / most-used command path; single accented arrow per panel. |
-| async | `~~>` | Command fires a background job (non-blocking). |
-| optional | `..>` | Optional follow-up (only if previous succeeded). |
-| return | `<--` | Reverse command (undo / rollback reference). |
-| bidirectional | `<-->` | Two-way sync command (e.g. `git pull <--> git push`). |
-| dependency | `---▷` | "See also" cross-reference to another panel / command. |
-| association | `───` | Plain grouping / shared context indicator. |
-
-Use sparingly — cheat sheets are read by scanning columns, not by tracing arrows. When a command flow has more than 2 arrows in it, promote to `text-visual-workflows` instead.
-
-## Footer metadata
-
-End every panel with:
-
-- A last-tested date: `Last verified: 2026-04-22 on macOS 14 / Windows 11.`
-- Link(s) to source docs if applicable: `See: https://cli.github.com/manual/`.
-- Owner / reviewer tag if cross-team: `Owner: @platform-team.`
-
-Stale cheat sheets are worse than no cheat sheet. The footer forces accountability.
+See [TECH-panel-format](references/TECH-panel-format.md) for the full
+authoring contract (layout / alignment / markers / placeholders / glyph
+standards / arrow vocabulary / footer).
 
 ## Validation gate (MANDATORY)
 
@@ -170,107 +93,43 @@ For tabular panels, `../../bin/amw-ascii-render.py` in `table` mode guarantees c
 6. Present each panel in its own fenced code block under a section header.
 7. If the user intends to commit this to a repo, suggest a canonical location (e.g. `<docs/cli-cheatsheet.md>`). Do not write until approved.
 
-## Technique selection
+## Technique selection and references
 
-Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
+Every technique is a single `TECH-*.md` file under `./references/`. Each
+file has the same TOC: *What it does · When to use · How it works ·
+Minimal example · Gotchas · Cross-references*. Read only the one whose
+topic matches.
 
-- Which aspect of `text-visual-cheatsheets` is the user asking about?
-  - **category** (1 techniques)
-    - [TECH-category-sections](./references/TECH-category-sections.md) — split by workflow stage with section headers
-  - **destructive** (1 techniques)
-    - [TECH-destructive-command-marker](./references/TECH-destructive-command-marker.md) — `*` prefix + footnote caveat
-  - **legend** (1 techniques)
-    - [TECH-legend-and-placeholders](./references/TECH-legend-and-placeholders.md) — `<branch>` convention + legend caption
-  - **side** (1 techniques)
-    - [TECH-side-by-side-platforms](./references/TECH-side-by-side-platforms.md) — macOS/Linux vs Windows columns
-
-## References
-
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
-
-- **[./references/TECH-category-sections.md](./references/TECH-category-sections.md)**
-  - Description: split by workflow stage with section headers
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-destructive-command-marker.md](./references/TECH-destructive-command-marker.md)**
-  - Description: `*` prefix + footnote caveat
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-legend-and-placeholders.md](./references/TECH-legend-and-placeholders.md)**
-  - Description: `<branch>` convention + legend caption
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-side-by-side-platforms.md](./references/TECH-side-by-side-platforms.md)**
-  - Description: macOS/Linux vs Windows columns
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-category-sections](./references/TECH-category-sections.md) —
+  split by workflow stage with section headers.
+- [TECH-destructive-command-marker](./references/TECH-destructive-command-marker.md)
+  — `*` prefix + footnote caveat.
+- [TECH-legend-and-placeholders](./references/TECH-legend-and-placeholders.md)
+  — `<branch>` convention + legend caption.
+- [TECH-side-by-side-platforms](./references/TECH-side-by-side-platforms.md)
+  — macOS/Linux vs Windows columns.
 
 <!-- end of references -->
 
 ## Completion checklist
 
-Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
+Before reporting complete (FAIL on any item triggers a remediation loop):
 
-- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
-- At least one `TECH-*.md` file from `skills/amw-text-visual-cheatsheets/references/` was consulted and is cited in the final report.
-- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
-- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
-- User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
+- Inputs captured verbatim — no silent paraphrasing.
+- At least one `TECH-*.md` consulted and cited.
+- Output passes `## Non-negotiables`.
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+- Every panel passes `bin/amw-validate-ascii.py`.
+- Cross-skill hand-offs documented.
+- Filename is descriptive English (`gh-cheatsheet.md`, not `out.txt`).
 
 ## Output
 
-This skill produces TWO kinds of output:
-
-1. **Artifact(s)** — the actual work product (e.g. monospaced ASCII CLI cheat-sheet panels for READMEs and wiki pages). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
-   - User-supplied path (honor verbatim)
-   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
-   - Existing `./design/<subtype>/` folder if present
-   - Generic fallback (`./design/diagrams/` or `./docs/` created fresh)
-   - Last-resort scratch: `/tmp/amw-text-visual-cheatsheets-<slug>/`
-
-   Every artifact file is listed with its path in the report (next item).
-
-2. **Job-completion report** — a markdown file at:
-   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
-
-   The report must contain, in order:
-   - **Inputs** — what the user provided + any auto-detected context
-   - **Method** — which TECH references were consulted, which pipeline steps ran
-   - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
-   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
-   - **Deviations** — any step skipped or changed, with rationale
-
-   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+TWO outputs (ASCII panels + job-completion report). Full contract in
+[skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md)
+and [project-output-routing](../amw-design-principles/references/project-output-routing.md).
+Report path: `$MAIN_ROOT/reports/webdesigner/<ts>_<slug>_<hash>.md`.
+Every artifact MUST be linked from the report.
 
 ## Prerequisites
 

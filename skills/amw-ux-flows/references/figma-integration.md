@@ -27,7 +27,7 @@ Figma's official **Code to Canvas** integration captures rendered UI from the br
    - Open Figma desktop → Preferences → Enable "Dev Mode MCP Server"
 2. **Add the MCP to Claude Code**:
    ```
-   claude mcp add --transport sse figma-dev-mode-mcp-server http://127.0.0.1:3845/sse
+   claude mcp add --transport sse figma-dev-mode-mcp-server http://localhost:3845/sse
    ```
 
 ### Capabilities
@@ -45,7 +45,7 @@ Figma's official **Code to Canvas** integration captures rendered UI from the br
 
 1. Figma desktop app with Dev Mode MCP Server enabled
 2. `dev-browser` CLI installed via `/amw-init` (same tool used for wireframe preview in Phase 3)
-3. Connection verified: Dev Mode MCP Server responding on `http://127.0.0.1:3845/sse`
+3. Connection verified: Dev Mode MCP Server responding on `http://localhost:3845/sse`
 
 ### Steps
 

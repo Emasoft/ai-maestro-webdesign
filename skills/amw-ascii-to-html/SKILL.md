@@ -17,31 +17,23 @@ This skill is a SYNTHESIS — it composes techniques from 9 sources (starter-com
 
 ## Activation
 
-Callable directly via the `/amw-ascii-to-html` command (user shortcut — fast path for users who already have an approved ASCII), or invoked by the `design-principles` orchestrator as the Phase B terminal step after Phase A approval in Main-agent mode. In Main-agent mode the orchestrator may apply rendering and token-application techniques from this skill beyond what the `/amw-ascii-to-html` command parameters expose.
-
-This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+Direct via `/amw-ascii-to-html` (fast path), or invoked by `design-principles` as the Phase B terminal step after Phase A approval. Autonomous and self-contained — any agent can use it by reading this SKILL.md.
 
 ## Position in flow
 
-OUTPUT (terminal — Phase B). Converts an already-validated, already-approved ASCII wireframe into a single-file responsive HTML page. Upstream sources of acceptable input:
+**OUTPUT (terminal — Phase B).** Validated + approved ASCII wireframe → single-file responsive HTML. Acceptable inputs:
 
-- [SKILL](../amw-ascii-sketch/SKILL.md) — the plan-phase loop — approved variant at `/tmp/amw-sketch-<slug>-final.txt`.
+- [SKILL](../amw-ascii-sketch/SKILL.md) — approved variant at `/tmp/amw-sketch-<slug>-final.txt`.
 - [SKILL](../amw-ascii-creator/SKILL.md) — Mode B freeform wireframe, validator-PASS.
-- User-supplied ASCII pasted into `$ARGUMENTS` (direct mode — flag to the user that the iteration loop was skipped).
+- User-supplied ASCII via `$ARGUMENTS` (direct mode — flag that iteration loop was skipped).
 
-All three producers guarantee the ASCII has already passed `bin/amw-validate-ascii.py`. This skill does NOT re-validate by default; it gates on validator-PASS (TECH-99).
+All inputs must have already passed `bin/amw-validate-ascii.py` (TECH-99).
 
 ## Trigger conditions
 
-Narrow. This skill does NOT own generic design vocabulary.
+Narrow. Examples: "convert this ASCII to HTML", "render this wireframe as HTML", "turn my ASCII mockup into a webpage", "build the HTML from the approved sketch", "/amw-ascii-to-html <path>".
 
-- "convert this ASCII to HTML"
-- "render this wireframe as HTML"
-- "turn my ASCII mockup into a webpage"
-- "build the HTML from the approved sketch"
-- "/amw-ascii-to-html <path>"
-
-Anything matching "design a landing page" / "make a mockup" / "build a dashboard" routes to [SKILL](../amw-design-principles/SKILL.md) first — that skill decides whether this one gets invoked.
+Generic design intent ("design a landing page" / "make a mockup" / "build a dashboard") → routes to [SKILL](../amw-design-principles/SKILL.md) first.
 
 ## Preconditions (all three must hold)
 
@@ -74,15 +66,6 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
 | `+---+\|   \|+---+` classic mode (detect_format = ascii) | `<pre class="classic-ascii">` preserving chars | — | mono font | TECH-88, TECH-94 |
 | Empty row `│                │` inside box | extra `padding-top` on next child (not `<br>`) | — | `--space-*` | TECH-100 |
 
-## Instructions
-
-1. Validate the ASCII input with `bin/amw-validate-ascii.py`; stop and surface errors if FAIL.
-2. Parse with `bin/amw-ascii-parse.py --mode wireframe` to produce a layout JSON; pattern-match each box/line against the component detection table.
-3. Emit semantic HTML using `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<table>`, and `<footer>` mapped from the ASCII structure.
-4. Apply design tokens from `/amw-extract-style` or a user-supplied palette to `:root { --primary; --text; --bg; --radius; ... }`.
-5. Insert the optional Tweaks block (if requested), React/Babel pins (if React is needed), and run the AI-slop gate checklist.
-6. Optionally smoke-test in `dev-browser`, then save to `<cwd>/<Descriptive Filename>.html` and return the file path.
-
 ## Conversion pipeline
 
 1. **Validate** with `bin/amw-validate-ascii.py --in <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
@@ -102,7 +85,6 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
    - `__edit_mode_set_keys` carries partial updates only (TECH-06).
    - `/*EDITMODE-BEGIN*/.../*EDITMODE-END*/` stays valid JSON with double-quoted keys AND values (TECH-04).
 7. **React/Babel pins** — if and ONLY if the wireframe requires React (live state, interactive charts). Use the exact CDN URLs + integrity hashes in [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) (TECH-01). Name every styles object with a component prefix (TECH-02).
-  > Required CDN URLs · Styles-object naming rule · Sharing components across Babel files · Common error map
 8. **AI-slop gate** — mentally walk `ai-slop-avoid.md` top to bottom. Self-check every rule 1..26 and the density principle. Any FAIL → revise the section and re-check. Record PASS per rule in the file header comment. (TECH-19..TECH-30)
 9. **Smoke test** — optionally load in `dev-browser` and check console for zero errors. Do NOT run this inside the plan phase if the user just asked for a static file.
 10. **Save** to `<cwd>/<Descriptive Filename>.html` (Title-Case, no `v2`/`v3`). Return the file path + AI-slop checklist + a one-line summary.
@@ -135,7 +117,6 @@ Run these before saving. Each is pulled from `ai-slop-avoid.md`:
 - `../amw-design-principles/starter-components/animations.html` — timeline core (~50 LOC) — use FIRST before Popmotion (TECH-12).
 - `../amw-design-principles/starter-components/tweaks-block.html` — live-edit protocol (TECH-04, TECH-05, TECH-06, TECH-13).
 - [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) — version lock spec (TECH-01, TECH-02, TECH-03).
-  > Required CDN URLs · Styles-object naming rule · Sharing components across Babel files · Common error map
 
 ## Output
 
@@ -190,14 +171,9 @@ external_services:
 - [SKILL](../amw-ascii-validator/SKILL.md) — the mandatory validation gate (wraps `bin/amw-validate-ascii.py` + `bin/amw-ascii-render.py`).
 - `../amw-design-principles/starter-components/` — canonical chrome + tweaks protocol.
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — output-ban list (final gate).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- [color-system](../amw-design-principles/color-system.md) — oklch tokens.
-  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
-- [typography-system](../amw-design-principles/typography-system.md) — type scale + fallback stacks.
-  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
-- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — 8pt grid + radius + shadow tokens.
-  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [color-system](../amw-design-principles/color-system.md) — oklch tokens, WCAG contrast, palette structure.
+- [typography-system](../amw-design-principles/typography-system.md) — type scale + font stacks (no Inter/Roboto/Arial default).
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — 8pt grid, radius, shadow tokens, hit-target rules.
 - `../../bin/amw-ascii-parse.py` — parser.
 - `../../bin/amw-validate-ascii.py` — validator.
 - [SKILL](../amw-dev-browser/SKILL.md) — preview pipeline (optional).
@@ -206,17 +182,4 @@ external_services:
 
 ### Technique catalog
 
-Full catalog with source citations: [techniques](references/techniques.md) (100 techniques, 9 sources).
-
-Representative techniques per conversion step:
-
-- Step 1 (validate): TECH-99 (validate-alignment-pre-parse), TECH-94 (detect_format-choose-mode).
-- Step 2 (parse): TECH-91 (find_boxes), TECH-92 (find_arrows), TECH-95 (find_wireframe_components).
-- Step 3 (pattern-match): TECH-69 (outer-frame), TECH-70 (3-line button), TECH-82 (pipe-table), TECH-75 ([!] alert), TECH-73 (3-peer-row).
-- Step 4 (semantic HTML): TECH-42 (semantic tags), TECH-47 (role=alert), TECH-49 (th scope), TECH-50 (label for).
-- Step 5 (tokens): TECH-07 (css-var-root), TECH-17 (border-radius-scale), TECH-46 (contrast 4.5:1).
-- Step 6 (tweaks): TECH-04 (EDITMODE block), TECH-05 (listener-before-announce), TECH-06 (partial updates).
-- Step 7 (React pins): TECH-01 (integrity hashes), TECH-02 (styles prefix), TECH-03 (window export).
-- Step 8 (slop gate): TECH-19 (no purple gradient), TECH-20 (no left-accent), TECH-24 (no Inter default), TECH-29 (no scrollIntoView), TECH-52 (visible borders).
-- Step 9 (smoke-test): TECH-44 (focus ring), TECH-45 (prefers-reduced-motion).
-- Step 10 (save): TECH-61 (single-file no-build), TECH-30 (every element earns place).
+Full catalog with source citations and per-step TECH-NN mapping: [techniques](references/techniques.md) (100 techniques, 9 sources).

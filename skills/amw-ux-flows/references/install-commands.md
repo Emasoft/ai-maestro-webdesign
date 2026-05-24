@@ -20,7 +20,7 @@ Tools, skills, and MCPs that ux-flows can propose to the user.
 
 | MCP | Purpose | Install Command |
 |-----|---------|-----------------|
-| Figma Dev Mode MCP Server | Code to Canvas — bidirectional Figma integration | Enable in Figma desktop preferences, then: `claude mcp add --transport sse figma-dev-mode-mcp-server http://127.0.0.1:3845/sse` |
+| Figma Dev Mode MCP Server | Code to Canvas — bidirectional Figma integration | Enable in Figma desktop preferences, then: `claude mcp add --transport sse figma-dev-mode-mcp-server http://localhost:3845/sse` |
 
 ## Browser Preview (plugin-standard)
 
@@ -28,7 +28,7 @@ This plugin uses `dev-browser` (via the plugin-standard wrapper) for any interac
 
 | Tool | Purpose | Install Command |
 |-----|---------|-----------------|
-| `dev-browser` CLI | Browser automation for wireframe preview (wrapped by `bin/amw-dev-browser-wrapper.sh`) | `/amw-init` (plugin-managed install) or manually: `npm install -g dev-browser && dev-browser install` |
+| `dev-browser` CLI | Browser automation for wireframe preview (wrapped by `bin/amw-dev-browser-wrapper.sh`) | `/amw-init` (plugin-managed install) or manually: run `npm install -g dev-browser`, then `dev-browser install` |
 | `bin/amw-dev-browser-wrapper.sh` | Plugin-standard wrapper enforcing viewport/UA/output conventions | Bundled with the plugin — no install step |
 
 Wireframe preview invocation from this skill:

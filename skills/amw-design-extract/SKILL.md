@@ -21,9 +21,9 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 ## Position in flow
 
-INPUT. Provides concrete design tokens from a live reference URL, feeding design-principles Rule 1 (gather context). The extracted report feeds straight into `color-system.md`, `typography-system.md`, and `spacing-rhythm.md` so the downstream HTML step uses real tokens, not guesses.
+INPUT. Provides concrete design tokens from a live reference URL, feeding design-principles Rule 1 (gather context). The extracted report feeds into the color / typography / spacing references so downstream HTML uses real tokens, not guesses.
 
-When a structured, machine-parseable token specification is needed (the most common case for handing tokens to a Phase B agent or to an external coding agent), prefer the **`amw-design-md`** skill — it produces a Variant 1 DESIGN.md (the canonical `<@google/design.md>` format) directly from a URL via `bin/amw-design-md-from-url.sh`, and runs lint + WCAG-AA contrast checks. This skill (`amw-design-extract`) remains the looser-format URL extractor (designlang multi-format dump: Tailwind config, shadcn theme, React theme, Figma variables, CSS vars, W3C tokens, preview HTML); the two skills are siblings, not duplicates. Use `amw-design-md` when the user wants the canonical DESIGN.md format; use this skill when the user wants the multi-format token dump for direct integration into a build pipeline.
+For a structured, machine-parseable token spec (canonical DESIGN.md), prefer the **`amw-design-md`** skill — it runs lint + WCAG-AA contrast checks. This skill is the looser-format URL extractor (designlang multi-format dump: Tailwind / shadcn / React / Figma / CSS-vars / W3C / preview HTML); the two are siblings, not duplicates.
 
 ## Trigger conditions
 Fires on these specific phrasings:
@@ -56,41 +56,22 @@ Do NOT fire on: "design a landing page", "style my page", "build the UI", "make 
 
 ## Usage
 
-The canonical entry point is `bin/amw-designlang-wrapper.sh`. Do not call `npx designlang` directly from other skills — the wrapper normalizes output paths so downstream skills can locate the emitted files without hard-coded paths.
+The canonical entry point is `bin/amw-designlang-wrapper.sh`. Do not call `npx designlang` directly — the wrapper normalizes output paths.
 
-Four subcommands:
+Four subcommands: `tokens` (full multi-format dump), `colors` (JSON palette to stdout), `fonts` (JSON typography to stdout), `css` (`:root { --* }` file). Examples:
 
 ```bash
-# Full multi-format token dump (default). Writes an entire token set to
-# $TMPDIR/ai-maestro-webdesign-tokens/<slug>/ and prints the directory path.
 bin/amw-designlang-wrapper.sh tokens https://stripe.com
-
-# JSON palette only — printed to stdout
 bin/amw-designlang-wrapper.sh colors https://stripe.com
-
-# JSON typography only — printed to stdout
 bin/amw-designlang-wrapper.sh fonts https://stripe.com
-
-# Plain `:root { --* }` CSS custom properties — file path printed to stdout
 bin/amw-designlang-wrapper.sh css https://stripe.com [out.css]
 ```
 
 Override the output base with `DL_OUT_DIR=/some/path bin/amw-designlang-wrapper.sh tokens <url>`.
 
-A full `tokens` run emits eight files per URL:
+A full `tokens` run emits eight files per URL: `report.md`, `tokens.w3c.json` (W3C tokens), `tailwind.theme.css`, `shadcn.theme.css`, `react.theme.ts`, `figma.variables.json`, `css-vars.css`, `preview.html`.
 
-| File | Format | Feeds |
-|---|---|---|
-| `report.md` | multi-section Markdown report (count varies by designlang version) | design-principles Rule 1 context |
-| `tokens.w3c.json` | W3C Design Tokens | generic tooling, Style Dictionary |
-| `tailwind.theme.css` | Tailwind v4 `@theme` block | tailwind-4 skill |
-| `shadcn.theme.css` | shadcn/ui variables | shadcn-ui skill |
-| `react.theme.ts` | React theme object | any JSX output |
-| `figma.variables.json` | Figma Variables import | handoff to design team |
-| `css-vars.css` | `:root { --* }` block | ascii-to-html, svg-creator |
-| `preview.html` | Static palette/type preview | quick eyeballing |
-
-For user-facing invocation, the command is `/amw-extract-style <url>`. That command combines this skill with `../amw-dev-browser/` so the user also gets a rendered screenshot alongside the token dump — one call, two inputs for design-principles.
+User-facing command `/amw-extract-style <url>` combines this skill with `../amw-dev-browser/` so the user gets a rendered screenshot alongside the token dump.
 
 ## Examples
 
@@ -99,15 +80,15 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Resources
 
 - `../../bin/amw-designlang-wrapper.sh` — plugin-standard wrapper (the only valid invocation path)
-- [SKILL](../amw-dev-browser/SKILL.md) — pairs with dev-browser for screenshot + DOM + style capture
-- `/amw-extract-style` — user-facing command that combines both
-- [color-system](../amw-design-principles/color-system.md) — extracted palette maps to this skill's oklch structure
-  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
-- [typography-system](../amw-design-principles/typography-system.md) — extracted font stack maps to this skill's type rules
-  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
-- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — extracted spacing scale maps to this skill's rhythm rules
-  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
-- [SKILL](../amw-ascii-to-html/SKILL.md) — consumes `css-vars.css` when an ASCII wireframe is rendered to HTML
+- [SKILL](../amw-dev-browser/SKILL.md) — pairs for screenshot + DOM + style capture
+- `/amw-extract-style` — user-facing command combining both
+- [color-system](../amw-design-principles/color-system.md) — extracted palette maps to oklch structure
+  > I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- [typography-system](../amw-design-principles/typography-system.md) — extracted font stack maps to type rules
+  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — extracted spacing scale maps to rhythm rules
+  > I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
+- [SKILL](../amw-ascii-to-html/SKILL.md) — consumes `css-vars.css` for HTML rendering
 
 ## Non-negotiables
 
@@ -117,154 +98,44 @@ See the worked examples in the per-mode sub-sections above and in references/.
 - **One URL at a time by default.** Bulk brand comparisons go through designlang's `brands` subcommand via raw pass-through — not this wrapper's four standard subcommands.
 - **Do not feed token output into design-principles without user review.** Extracted tokens are a proposal, not a spec — the orchestrator decides whether to adopt them.
 
-## Technique selection
-
-Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
-
-- Which aspect of `design-extract` is the user asking about?
-  - **designlang** (9 techniques)
-    - [TECH-designlang-basic-extraction](./references/TECH-designlang-basic-extraction.md) — Basic URL extraction (`designlang <url>`)
-    - [TECH-designlang-brands](./references/TECH-designlang-brands.md) — `designlang brands` — N-way brand comparison matrix
-    - [TECH-designlang-dark-mode](./references/TECH-designlang-dark-mode.md) — `--dark` — dark-mode extraction
-    - [TECH-designlang-diff](./references/TECH-designlang-diff.md) — `designlang diff` — pairwise brand comparison
-    - [TECH-designlang-full-mode](./references/TECH-designlang-full-mode.md) — `--full` — everything-at-once extraction
-    - [TECH-designlang-interactions](./references/TECH-designlang-interactions.md) — `--interactions` — hover / focus / active state capture
-    - (see `## References` for the remaining 3 in this group)
-
 ## References
 
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
+Every technique is documented as a single reference file under `./references/`. Read only the file whose TOC matches the current need.
 
-- **[./references/TECH-designlang-basic-extraction.md](./references/TECH-designlang-basic-extraction.md)**
-  - Description: Basic URL extraction (`designlang <url>`)
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-brands.md](./references/TECH-designlang-brands.md)**
-  - Description: `designlang brands` — N-way brand comparison matrix
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-dark-mode.md](./references/TECH-designlang-dark-mode.md)**
-  - Description: `--dark` — dark-mode extraction
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-diff.md](./references/TECH-designlang-diff.md)**
-  - Description: `designlang diff` — pairwise brand comparison
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-full-mode.md](./references/TECH-designlang-full-mode.md)**
-  - Description: `--full` — everything-at-once extraction
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-interactions.md](./references/TECH-designlang-interactions.md)**
-  - Description: `--interactions` — hover / focus / active state capture
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - 12. Interaction States
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-responsive.md](./references/TECH-designlang-responsive.md)**
-  - Description: `--responsive` — breakpoint capture
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - 11. Responsive Design
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-score.md](./references/TECH-designlang-score.md)**
-  - Description: `designlang score` — design-quality scoring
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-designlang-screenshots.md](./references/TECH-designlang-screenshots.md)**
-  - Description: `--screenshots` — component screenshot capture
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-designlang-basic-extraction](./references/TECH-designlang-basic-extraction.md) — Basic URL extraction (`designlang <url>`)
+- [TECH-designlang-brands](./references/TECH-designlang-brands.md) — N-way brand comparison matrix
+- [TECH-designlang-dark-mode](./references/TECH-designlang-dark-mode.md) — `--dark` extraction
+- [TECH-designlang-diff](./references/TECH-designlang-diff.md) — pairwise brand comparison
+- [TECH-designlang-full-mode](./references/TECH-designlang-full-mode.md) — `--full` everything-at-once
+- [TECH-designlang-interactions](./references/TECH-designlang-interactions.md) — hover / focus / active state capture
+- [TECH-designlang-responsive](./references/TECH-designlang-responsive.md) — `--responsive` breakpoint capture
+- [TECH-designlang-score](./references/TECH-designlang-score.md) — `designlang score` design-quality scoring
+- [TECH-designlang-screenshots](./references/TECH-designlang-screenshots.md) — `--screenshots` component capture
 
-<!-- end of references -->
+Each reference contains: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
 ## Completion checklist
 
-Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
+Verify every item before reporting complete. FAIL on any item should trigger a remediation loop.
 
-- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
-- At least one `TECH-*.md` file from `skills/amw-design-extract/references/` was consulted and is cited in the final report.
-- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
+- Inputs captured verbatim (no silent paraphrasing).
+- At least one `TECH-*.md` from `references/` was consulted and cited.
+- Output passes the skill's Non-negotiables section.
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
   > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
-- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
+- Emitted HTML/SVG/ASCII validated via `bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`.
+- Cross-skill hand-offs documented — name any consumed skill's SKILL.md + TECH file in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
 ## Output
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. `designlang/` output folders (tokens.json, palette.json, screenshots, report.html)). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
-   - User-supplied path (honor verbatim)
-   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
-   - Existing `./design/<subtype>/` folder if present
-   - Generic fallback (`./design/tokens/` or `./design/references/` created fresh)
-   - Last-resort scratch: `/tmp/amw-design-extract-<slug>/`
+1. **Artifact(s)** — `designlang/` output folders (tokens.json, palette.json, screenshots, report.html). Output path is determined by **project inference**, NOT hardcoded. See [project-output-routing](../amw-design-principles/references/project-output-routing.md) for the full detection rules (priority order: user-supplied path → framework convention → existing `./design/` folder → generic fallback → `/tmp/amw-design-extract-<slug>/` scratch).
+   > When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
+2. **Job-completion report** at `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md` with sections: Inputs, Method, Artifacts (each `- <path> — <desc> — **How to use:** <tip> — **Next steps:** <followup>`), Checklist (PASS/FAIL/N/A), Deviations.
 
-   Every artifact file is listed with its path in the report (next item).
-
-2. **Job-completion report** — a markdown file at:
-   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
-
-   The report must contain, in order:
-   - **Inputs** — what the user provided + any auto-detected context
-   - **Method** — which TECH references were consulted, which pipeline steps ran
-   - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
-   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
-   - **Deviations** — any step skipped or changed, with rationale
-
-   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Every artifact MUST be linked from the report.
 
 ## Error Handling
 

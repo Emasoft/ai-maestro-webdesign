@@ -88,10 +88,16 @@ def start_local_server(directory: str, port: int = 8765):
     Bind to loopback only — "" exposes the draft + sibling assets to the LAN.
     """
     handler = functools.partial(_QuietHandler, directory=directory)
+    # SECURITY: bind to loopback only — NOT SSRF. "" / "0.0.0.0" would
+    # expose the draft + sibling assets to the LAN; 127.0.0.1 is the
+    # defensive choice. The returned URL is a LOOPBACK address used by
+    # Playwright on this same machine, never an attacker-controlled fetch
+    # target. (skillaudit:network SSRF_PATTERN, skillaudit:url_reputation
+    # URL_RAW_IP — false positives by intent.)
     server = socketserver.TCPServer(("127.0.0.1", port), handler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
-    return server, f"http://127.0.0.1:{port}"
+    return server, f"http://127.0.0.1:{port}"  # noqa: skillaudit-fp loopback-by-design
 
 
 def wait_for_render(page, extra_ms: int = 300):

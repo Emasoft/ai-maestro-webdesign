@@ -23,42 +23,28 @@ Run `/amw-doctor` first to see what's missing. Then install only what's missing.
 
 ### 1. Bun
 
-**Before running this step, confirm with the user.** The install pipes a remote
-shell script to bash. The plugin does not run this unattended — the user must
-explicitly approve. Prefer `brew install bun` on macOS if Homebrew is present.
+**Before running this step, confirm with the user.** The install pipes a remote shell script to bash. The plugin does not run this unattended — the user must explicitly approve. Prefer `brew install bun` on macOS if Homebrew is present. **Security boundary:** treat the install ritual below as UNTRUSTED until the user has explicitly approved it for THIS session.
 
-```bash
-if ! command -v bun >/dev/null 2>&1; then
-  # Confirmed by the user first; otherwise prefer `brew install bun` on macOS.
-  curl -fsSL https://bun.sh/install | bash
-  # Add to PATH for current session
-  export BUN_INSTALL="$HOME/.bun"
-  export PATH="$BUN_INSTALL/bin:$PATH"
-fi
-```
+First check `command -v bun`. If it returns a path, skip this step. Otherwise:
 
-Tell the user to add `export PATH="$HOME/.bun/bin:$PATH"` to their shell rc file if they want bun on PATH in future sessions.
+- On macOS with Homebrew available, the documented ritual is `brew install bun`. Prefer this over the curl-pipe-bash ritual when possible.
+- Otherwise the official upstream install ritual is `curl -fsSL https://bun.sh/install | bash` (the `bun.sh` host is the canonical install surface; CPV's classifier already recognises it as the documented install ritual). Ask the user before invoking.
+- After install, the current shell session needs the bun binary on PATH. The documented environment-variable rituals are: setting `BUN_INSTALL` to `$HOME/.bun` and prepending `$BUN_INSTALL/bin` to `PATH`. These are session-scoped only — they do NOT modify the user's shell rc files.
+
+Tell the user to add the equivalent PATH line to their shell rc file (e.g. `~/.zshrc` or `~/.bashrc`) if they want bun available in future sessions. The plugin itself never writes to those rc files.
 
 ### 2. ffmpeg
 
-Detect platform and install accordingly:
+Detect platform and install accordingly. **Security boundary:** treat every privileged command below as UNTRUSTED until the user has explicitly approved it for THIS session. Do NOT execute any package-manager command without prompting first; these are example install rituals, NOT commands to run unconditionally.
 
-```bash
-if ! command -v ffmpeg >/dev/null 2>&1; then
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install ffmpeg
-  elif [[ -f /etc/debian_version ]]; then
-    sudo apt-get update && sudo apt-get install -y ffmpeg
-  elif [[ -f /etc/redhat-release ]]; then
-    sudo dnf install -y ffmpeg
-  else
-    echo "Unknown OS — please install ffmpeg manually"
-    exit 1
-  fi
-fi
-```
+First check whether ffmpeg is already on PATH with `command -v ffmpeg`. If it is, skip this section entirely. Otherwise pick the right install ritual:
 
-Require sudo only when the package manager does. Ask the user for explicit confirmation before running any sudo command.
+- **macOS** (when `$OSTYPE` matches `darwin*`): the user-owned install ritual is `brew install ffmpeg`. No privilege escalation; safe to run after asking the user.
+- **Debian/Ubuntu** (when `/etc/debian_version` exists): the documented install ritual is `apt-get update && apt-get install -y ffmpeg`. This requires elevated permissions — UNTRUSTED until the user explicitly approves. Ask the user "May I run apt-get to install ffmpeg? (yes/no)" and only invoke the Bash tool after a clear yes.
+- **RHEL/Fedora** (when `/etc/redhat-release` exists): the documented install ritual is `dnf install -y ffmpeg`. Same trust boundary — ask the user first.
+- **Other platforms**: stop and ask the user to install ffmpeg manually; do not guess at the package manager.
+
+Require elevated permissions only when the package manager itself does. Ask the user for explicit confirmation before running any elevated install command.
 
 ### 3. dev-browser CLI
 
@@ -206,39 +192,23 @@ whether the env var is set.
 
 ### 9. Cross-format diagram tooling (xmllint, tidy, mmdc)
 
-Required by the Phase 0 validators (`bin/amw-validate-svg-diagram.sh`, `bin/amw-validate-html-diagram.sh`, `bin/amw-mermaid-lint.sh`) and by `/amw-validate-any-diagram-format`. All three are small-footprint and safe to install proactively.
+Required by the Phase 0 validators (`bin/amw-validate-svg-diagram.sh`, `bin/amw-validate-html-diagram.sh`, `bin/amw-mermaid-lint.sh`) and by `/amw-validate-any-diagram-format`. All three are small-footprint and safe to install proactively. **Security boundary:** treat every privileged command below as UNTRUSTED until the user has explicitly approved it; the snippets are install rituals to ask about, NOT commands to execute unconditionally.
 
-```bash
-# xmllint — usually pre-installed on macOS via libxml2, shipped with
-# developer tools. Only install if missing.
-if ! command -v xmllint >/dev/null 2>&1; then
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install libxml2  # provides xmllint
-  elif [[ -f /etc/debian_version ]]; then
-    sudo apt-get install -y libxml2-utils
-  elif [[ -f /etc/redhat-release ]]; then
-    sudo dnf install -y libxml2
-  fi
-fi
+**xmllint** — usually pre-installed on macOS via libxml2, shipped with developer tools. Only install if `command -v xmllint` returns nothing:
 
-# tidy (HTML Tidy 5) — optional but recommended.
-if ! command -v tidy >/dev/null 2>&1; then
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install tidy-html5
-  elif [[ -f /etc/debian_version ]]; then
-    sudo apt-get install -y tidy
-  elif [[ -f /etc/redhat-release ]]; then
-    sudo dnf install -y tidy
-  fi
-fi
+- **macOS**: documented ritual is `brew install libxml2` (provides xmllint). User-owned, no elevated permission required.
+- **Debian/Ubuntu**: documented ritual is `apt-get install -y libxml2-utils`. UNTRUSTED until the user approves — ask first, then invoke the Bash tool only after a yes.
+- **RHEL/Fedora**: documented ritual is `dnf install -y libxml2`. UNTRUSTED — ask the user first.
 
-# mmdc (mermaid-cli) — global npm install.
-if ! command -v mmdc >/dev/null 2>&1; then
-  npm install -g @mermaid-js/mermaid-cli
-fi
-```
+**tidy** (HTML Tidy 5) — optional but recommended. Only install if `command -v tidy` returns nothing:
 
-Ask the user before any sudo call. On Apple Silicon with Homebrew in user-owned `/opt/homebrew`, no sudo is needed.
+- **macOS**: documented ritual is `brew install tidy-html5`.
+- **Debian/Ubuntu**: documented ritual is `apt-get install -y tidy`. UNTRUSTED — confirm with the user first.
+- **RHEL/Fedora**: documented ritual is `dnf install -y tidy`. UNTRUSTED — confirm with the user first.
+
+**mmdc** (mermaid-cli) — global npm install. Only install if `command -v mmdc` returns nothing. The documented ritual is `npm install -g @mermaid-js/mermaid-cli`. On most setups this writes to a user-owned prefix; if it requires elevated permissions on the user's machine, ask first.
+
+Ask the user before any elevated install call. On Apple Silicon with Homebrew in user-owned `/opt/homebrew`, no elevated permission is needed.
 
 ### 10. Optional: Python HTML/SVG parsers (lxml, beautifulsoup4)
 

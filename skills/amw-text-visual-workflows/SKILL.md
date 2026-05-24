@@ -14,19 +14,17 @@ Produces ASCII flowcharts and timelines for multi-step workflows — PR lifecycl
 
 ## Examples
 
-See the `## Diagram archetypes` section below for minimal skeleton examples of a flowchart, timeline, and swimlane.
+See [examples](./references/examples.md) for full rendered ASCII of flowchart, timeline, and swimlane.
 
 ## Activation
 
-No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for workflow/timeline sketches) or Phase B (when the approved design requires a validated workflow ASCII artifact). The orchestrator may apply any flowchart, timeline, or swimlane technique from this skill without command-layer restriction.
-
-This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+No dedicated slash command. Invoked by the `design-principles` orchestrator during Phase A (low-fi sketch) or Phase B (validated artifact). Skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
 
-OUTPUT. This is a text-visualization executor, not a diagram renderer. It produces monospaced ASCII that a user can paste unmodified into a GitHub PR body, a Slack message, a terminal transcript, or a Notion/Markdown doc. It does not emit SVG or HTML — if the user wants pixels, route them to `../amw-ascii-to-svg/` or `../amw-diagram-svg/` instead.
+OUTPUT. Monospaced ASCII pastes unmodified into GitHub PRs, Slack, terminal, Notion. NOT SVG/HTML — route to [ascii-to-svg](../amw-ascii-to-svg/SKILL.md) or [diagram-svg](../amw-diagram-svg/SKILL.md) for pixels.
 
-Scope is strictly **multi-step workflows** — a sequence of actions, a timeline of events, or a branching flow with decision points. Architecture diagrams go to `../amw-text-visual-arch/`. State machines go to `../amw-text-visual-state/`. CLI panels go to `../amw-text-visual-cheatsheets/`. Retrospective grids go to `../amw-text-visual-retro/`.
+Scope: **multi-step workflows**. NOT architecture ([arch](../amw-text-visual-arch/SKILL.md)), state machines ([state](../amw-text-visual-state/SKILL.md)), CLI panels ([cheatsheets](../amw-text-visual-cheatsheets/SKILL.md)), or retrospective grids ([retro](../amw-text-visual-retro/SKILL.md)).
 
 ## Trigger conditions
 
@@ -49,74 +47,11 @@ If any of the three is missing, ask one question to get it. Do not guess — a d
 
 ## Diagram archetypes
 
-This skill supports three shapes. Pick one — do not mix two into a single block.
+Three shapes — pick one per block. See [examples](./references/examples.md) for full rendered ASCII of each.
 
-### 1. Flowchart — branching logic
-
-Use when the workflow has decisions with yes/no or multi-way branches.
-
-Glyphs:
-
-- Start / End: `(start)` `(end)`
-- Process step: `[ action ]`
-- Decision: `{ condition? }`
-- Sync arrow: `-->`
-- Emphasized arrow: `==>`
-- Async / eventual arrow: `~~>`
-
-Skeleton:
-
-```
-(start)
-  |
-  v
-[ Open PR ]
-  |
-  v
-{ Checks pass? }
-  |       |
-  yes     no
-  |       |
-  v       v
-[ Review] [ Fix + push ]
-  |           |
-  |           '--> back to checks
-  v
-[ Merge ]
-  |
-  v
-(end)
-```
-
-### 2. Timeline — linear sequence with calendar markers
-
-Use when time ordering and calendar position are the point (launch schedules, onboarding weeks, migration phases).
-
-Skeleton:
-
-```
-Day 0     Day 3     Day 7     Day 14
-|---------|---------|---------|
-Plan      Build     QA        Launch
-@alice    @bob      @cara     @dana
-```
-
-The vertical bars `|` mark the anchor dates; horizontal dashes `-` fill the gap proportional to the interval, not to character count. Annotate each anchor with owner / phase label underneath.
-
-### 3. Swimlane timeline — parallel tracks
-
-Use when multiple roles / teams are working in parallel and you want to show who owns what over time.
-
-Skeleton:
-
-```
-          Day 0     Day 3     Day 7     Day 14
-Dev       |==build==|==test==|
-QA                  |==plan==|==run====|
-Launch                                 |==go=|
-```
-
-Each row is one lane; `==` fills the active window for that lane on that date range.
+1. **Flowchart — branching logic.** Glyphs: `(start)` `(end)`, `[ action ]`, `{ condition? }`, `-->` / `==>` / `~~>`.
+2. **Timeline — linear sequence with calendar markers.** `|` anchors dates, `-` fills proportional gap, owner/label below each anchor.
+3. **Swimlane — parallel tracks.** One lane per role; `==` fills the active window.
 
 ## Glyph and width standards
 
@@ -129,33 +64,22 @@ Each row is one lane; `==` fills the active window for that lane on that date ra
 
 ## Extended connection types
 
-When a flowchart or timeline needs to show response paths, handshakes, non-deterministic transitions, or plain relations alongside the core `-->` / `==>` / `~~>` vocabulary, use this extended set. Pick one style per diagram; do not mix within a single figure. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
+Beyond the core `-->` / `==>` / `~~>`, use the extended vocab when needed. Pick one style per diagram.
 
 | Type | Glyph | Meaning |
 |---|---|---|
-| sync | `-->` | Synchronous sequential step. |
-| emphasized | `==>` | Primary / high-traffic path; single accented arrow per diagram. |
-| async | `~~>` | Async event, out-of-band message, fire-and-forget. |
-| optional | `..>` | Dotted conditional transition (used only when the branch is non-deterministic). |
-| return | `<--` | Callback / response leg (useful in workflows that double as informal sequence diagrams). |
-| bidirectional | `<-->` | Handshake step — both sides exchange data. |
-| dependency | `---▷` | Build/compile dependency (hollow triangle head). |
-| association | `───` | Plain relation, no direction (workflow phase grouping). |
+| sync | `-->` | Sequential step. |
+| emphasized | `==>` | Primary path. |
+| async | `~~>` | Out-of-band message, fire-and-forget. |
+| optional | `..>` | Non-deterministic branch. |
+| return | `<--` | Callback / response leg. |
+| bidirectional | `<-->` | Handshake. |
+| dependency | `---▷` | Build/compile dependency. |
+| association | `───` | Plain relation, no direction. |
 
 ## Validation gate (MANDATORY)
 
-Every diagram this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user.
-
-The flow:
-
-1. Draft the diagram in a scratch buffer.
-2. Write it to `/tmp/amw-tvw-<slug>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-tvw-<slug>.txt`.
-4. If PASS → present in a fenced code block.
-5. If FAIL → apply every `FIX:` hint emitted, re-run. Loop until PASS.
-6. Never present an un-validated diagram.
-
-For strongly-structured flowcharts (many branches, nested decisions) prefer `../../bin/amw-ascii-render.py` with the `diagram` mode — the renderer guarantees alignment by construction. See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
+Every diagram MUST pass `../../bin/amw-validate-ascii.py` before delivery. Flow: draft → `/tmp/amw-tvw-<slug>.txt` → run validator → PASS = present in fenced block; FAIL = apply every `FIX:` hint and re-run until PASS. For strongly-structured flowcharts use `../../bin/amw-ascii-render.py diagram` (alignment guaranteed). See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
 
 ## Instructions
 
@@ -166,118 +90,38 @@ For strongly-structured flowcharts (many branches, nested decisions) prefer `../
 5. Present the diagram inside a fenced code block (no language tag — bare ```), so GitHub renders it in a fixed-width font.
 6. Optionally, if the user asked for a canonical stored copy, suggest saving it to `docs/visuals/<name>.txt` in the project repo. Do not write the file unless they approve.
 
-## Technique selection
+## Technique selection / References
 
-Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
+Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
-- Which aspect of `text-visual-workflows` is the user asking about?
-  - **async** (1 techniques)
-    - [TECH-async-arrow-vocabulary](./references/TECH-async-arrow-vocabulary.md) — `-->` / `==>` / `~~>` / `..>` distinctions
-  - **flowchart** (1 techniques)
-    - [TECH-flowchart-paren-bracket-glyphs](./references/TECH-flowchart-paren-bracket-glyphs.md) — `(start)` `[action]` `{decision?}`
-  - **metadata** (1 techniques)
-    - [TECH-metadata-annotation-conventions](./references/TECH-metadata-annotation-conventions.md) — owners, SLAs, tools inline
-  - **swimlane** (1 techniques)
-    - [TECH-swimlane-parallel-tracks](./references/TECH-swimlane-parallel-tracks.md) — per-role lanes across one timeline
-  - **timeline** (1 techniques)
-    - [TECH-timeline-with-anchors](./references/TECH-timeline-with-anchors.md) — Day/Week markers + labels below
-
-## References
-
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
-
-- **[./references/TECH-async-arrow-vocabulary.md](./references/TECH-async-arrow-vocabulary.md)**
-  - Description: `-->` / `==>` / `~~>` / `..>` distinctions
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-flowchart-paren-bracket-glyphs.md](./references/TECH-flowchart-paren-bracket-glyphs.md)**
-  - Description: `(start)` `[action]` `{decision?}`
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-metadata-annotation-conventions.md](./references/TECH-metadata-annotation-conventions.md)**
-  - Description: owners, SLAs, tools inline
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-swimlane-parallel-tracks.md](./references/TECH-swimlane-parallel-tracks.md)**
-  - Description: per-role lanes across one timeline
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-timeline-with-anchors.md](./references/TECH-timeline-with-anchors.md)**
-  - Description: Day/Week markers + labels below
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-async-arrow-vocabulary](./references/TECH-async-arrow-vocabulary.md) — `-->` / `==>` / `~~>` / `..>` distinctions
+- [TECH-flowchart-paren-bracket-glyphs](./references/TECH-flowchart-paren-bracket-glyphs.md) — `(start)` `[action]` `{decision?}`
+- [TECH-metadata-annotation-conventions](./references/TECH-metadata-annotation-conventions.md) — owners, SLAs, tools inline
+- [TECH-swimlane-parallel-tracks](./references/TECH-swimlane-parallel-tracks.md) — per-role lanes across one timeline
+- [TECH-timeline-with-anchors](./references/TECH-timeline-with-anchors.md) — Day/Week markers + labels below
+- [examples](./references/examples.md) — rendered flowchart / timeline / swimlane
 
 <!-- end of references -->
 
 ## Completion checklist
 
-Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
+Verify all items before reporting complete. FAIL on any triggers a remediation loop.
 
-- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
-- At least one `TECH-*.md` file from `skills/amw-text-visual-workflows/references/` was consulted and is cited in the final report.
-- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
-- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
-- User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
+- Inputs captured verbatim — no silent paraphrasing.
+- At least one `TECH-*.md` consulted and cited in the report.
+- Output passes Non-negotiables (below).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+- Output validated by `bin/amw-validate-ascii.py`.
+- Cross-skill hand-offs documented.
+- User-facing filename is descriptive English.
 
 ## Output
 
-This skill produces TWO kinds of output:
+Two outputs per invocation:
 
-1. **Artifact(s)** — the actual work product (e.g. monospaced ASCII flowcharts / swimlanes / timelines for PRs and issue threads). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
-   - User-supplied path (honor verbatim)
-   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
-   - Existing `./design/<subtype>/` folder if present
-   - Generic fallback (`./design/diagrams/` created fresh)
-   - Last-resort scratch: `/tmp/amw-text-visual-workflows-<slug>/`
+1. **Artifact(s)** — monospaced ASCII flowcharts / swimlanes / timelines. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-workflows-<slug>/`).
 
-   Every artifact file is listed with its path in the report (next item).
-
-2. **Job-completion report** — a markdown file at:
-   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
-
-   The report must contain, in order:
-   - **Inputs** — what the user provided + any auto-detected context
-   - **Method** — which TECH references were consulted, which pipeline steps ran
-   - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
-   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
-   - **Deviations** — any step skipped or changed, with rationale
-
-   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts · Checklist · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 
 ## Prerequisites
 
@@ -289,23 +133,14 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Resources
 
-- [SKILL](../amw-design-principles/SKILL.md) — orchestrator. Rules 1 and 2 (context, variants) apply; for a flowchart, "variants" means offering a flowchart shape vs a timeline shape vs a swimlane if the intent is ambiguous.
-- [SKILL](../amw-ascii-validator/SKILL.md) — the validation contract.
-- [SKILL](../amw-text-visual-arch/SKILL.md) — sibling skill for architecture diagrams (not workflows).
-- [SKILL](../amw-text-visual-state/SKILL.md) — sibling skill for state machines (user journey states, retention loops).
-- [SKILL](../amw-text-visual-cheatsheets/SKILL.md) — sibling skill for CLI command panels.
-- [SKILL](../amw-text-visual-retro/SKILL.md) — sibling skill for retrospectives and experiment readouts.
-- [SKILL](../amw-ascii-to-svg/SKILL.md) — if the user wants the same diagram as an SVG instead of ASCII, route here after they approve the ASCII draft.
-- [SKILL](../amw-diagram-svg/SKILL.md) — natural-language → SVG diagram primitives, for when ASCII is not the output format.
-- `/amw-ascii-to-svg` — slash command that converts an approved ASCII diagram to SVG. No dedicated slash command for this skill — the orchestrator or `/amw-sketch` routes here when the intent is text-only.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator (Rules 1+2: context + variants).
+- [SKILL](../amw-ascii-validator/SKILL.md) — validation contract.
+- Siblings: [arch](../amw-text-visual-arch/SKILL.md), [state](../amw-text-visual-state/SKILL.md), [cheatsheets](../amw-text-visual-cheatsheets/SKILL.md), [retro](../amw-text-visual-retro/SKILL.md).
+- [SKILL](../amw-ascii-to-svg/SKILL.md) + [SKILL](../amw-diagram-svg/SKILL.md) + `/amw-ascii-to-svg` — for SVG output after ASCII approval.
 
-## How to invoke via existing commands
+## How to invoke
 
-This skill does NOT ship its own slash command. Invoke it via:
-
-- **Direct skill activation** — user phrases like "ASCII flowchart of the release workflow" trigger this skill directly through the orchestrator.
-- `/amw-sketch` — when the user is in the ASCII-first plan phase and asks for a workflow visualization (this skill borrows the validation contract and output format).
-- `/amw-ascii-to-svg` — after a workflow ASCII is approved, convert it to SVG for publication in a non-monospace surface.
+No dedicated slash command. Triggered by phrases like "ASCII flowchart of the release workflow". Also `/amw-sketch` (plan phase) and `/amw-ascii-to-svg` (after approval).
 
 ## Non-negotiables
 

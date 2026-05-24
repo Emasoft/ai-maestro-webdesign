@@ -7,7 +7,7 @@ version: 0.1.0
 # ASCII Diagrams Reference
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
-> Executor. Narrow technical triggers only — the orchestrator routes here when the user wants a text-based diagram for code comments / READMEs / ADRs / design docs, rendered with the classic `+--+ | -` ASCII character set.
+> Executor with narrow technical triggers. Activates on requests for text-based diagrams in code comments, READMEs, ADRs, or design docs that use the classic ASCII character set (plus-sign corners, hyphen horizontals, pipe verticals).
 
 ## Overview
 
@@ -52,7 +52,7 @@ Do **not** activate on broad "design", "UI", "mockup", "wireframe", "landing pag
 Treat monospace text as a grid. Align every vertical line, keep horizontal spans consistent, and fix misalignment **before** emission. The validator (below) enforces this.
 
 ### 2. Prefer plain ASCII that renders everywhere
-Basic ASCII characters (`+ - | > < ^ v`) render in any font, terminal, or tool. Use Unicode box-drawing (`─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼`) **only** when the target context is a GitHub-rendered README / modern terminal — for code comments, stick to ASCII. When in doubt, route to this skill (ASCII) not `../amw-box-diagram/` (Unicode).
+Basic ASCII characters (`+ - | > < ^ v`) render in any font, terminal, or tool. Use Unicode box-drawing (`─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼`) **only** when the target context is a GitHub-rendered README / modern terminal — for code comments, plain ASCII is the safer default. The ambiguous case (ASCII vs. Unicode) belongs to this skill; Unicode rounded-corner diagrams belong to `../amw-box-diagram/`.
 
 ### 3. Keep it minimal
 Show the essential structure, not every detail. If the diagram grows beyond ~30 lines, split it or simplify it.

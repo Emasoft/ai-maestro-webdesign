@@ -233,7 +233,7 @@ sequenceDiagram
     Note over App,API: Subsequent authenticated requests
 
     User->>App: Request data
-    App->>API: GET /data (Authorization: Bearer token)
+    App->>API: GET /data with Bearer access token in header
     API->>Auth: Validate token
 
     alt Token valid

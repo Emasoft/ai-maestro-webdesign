@@ -40,7 +40,7 @@ For each use case, document:
 
 | Field | Description |
 |---|---|
-| `ID` | `UC-001`, `UC-002`, ... — padded to 3 digits for sorting |
+| **ID** | `UC-001`, `UC-002`, ... — padded to 3 digits for sorting |
 | `Name` | Short descriptive name (3–6 words) |
 | `Actors` | Who participates — User, System, Admin, Third-Party API, etc. |
 | `Preconditions` | What must be true before the flow starts |

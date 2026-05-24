@@ -14,19 +14,17 @@ Produces layered ASCII architecture diagrams at context, container, or component
 
 ## Examples
 
-See the `## Diagram framing` section below for minimal examples of context, container, and component diagrams.
+See [examples](./references/examples.md) for full rendered ASCII at context, container, and component zoom levels.
 
 ## Activation
 
-No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for architecture sketches) or Phase B (when the approved design requires a validated ASCII architecture artifact). The orchestrator may apply any zoom-level, context/container/component, and export technique from this skill without command-layer restriction.
-
-This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+No dedicated slash command. Invoked by the `design-principles` orchestrator during Phase A (low-fi sketch) or Phase B (validated artifact). Skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
 
-OUTPUT. Renders system, service, and data architectures as ASCII diagrams paste-compatible with terminal output, GitHub PRs, markdown ADRs, and code comments. Maintains multiple zoom levels (context, container, component) in monospaced text.
+OUTPUT. Renders system, service, and data architectures as ASCII diagrams paste-compatible with terminals, GitHub PRs, markdown ADRs, and code comments. Multiple zoom levels (context, container, component).
 
-This skill is for **architectural structure** — components, services, contracts, deployment topology. It is not for flowcharts (`../amw-text-visual-workflows/`), state machines (`../amw-text-visual-state/`), CLI panels (`../amw-text-visual-cheatsheets/`), or retrospectives (`../amw-text-visual-retro/`). If the user wants the same architecture rendered as SVG or a prettier graphic, route them to `../amw-diagram-architecture/` or `../amw-ascii-to-svg/` after the ASCII is approved.
+This skill is for **architectural structure**. It is NOT for flowcharts ([workflows](../amw-text-visual-workflows/SKILL.md)), state machines ([state](../amw-text-visual-state/SKILL.md)), CLI panels ([cheatsheets](../amw-text-visual-cheatsheets/SKILL.md)), or retrospectives ([retro](../amw-text-visual-retro/SKILL.md)). For SVG/PNG output route to [diagram-architecture](../amw-diagram-architecture/SKILL.md) after ASCII approval.
 
 ## Trigger conditions
 
@@ -50,67 +48,11 @@ If any is missing, ask one bundled question — do not guess. A diagram that inv
 
 ## Diagram framing (pick one zoom level per diagram)
 
-### 1. Context diagram
+1. **Context diagram** — outer boundary = the system; everything outside is users or external systems. (3-7 boxes.)
+2. **Container diagram** — inside the system, break out services and data stores.
+3. **Component diagram** — inside one service, break out modules / packages / classes.
 
-Outer boundary = "the system"; everything outside is users or external systems.
-
-```
-+-----------------+       +-----------------+
-|     User        |------>|  The System     |
-| (web, mobile)   |       |                 |
-+-----------------+       +--------+--------+
-                                   |
-                                   v
-                         +-----------------+
-                         |  Payment API    |
-                         |  (3rd party)    |
-                         +-----------------+
-```
-
-### 2. Container diagram
-
-Inside "the system", break out services and data stores.
-
-```
-+-------------------+     HTTP      +-------------------+
-|  Web Frontend     | ============> |  API Gateway      |
-|  [React, CDN]     |               |  [AWS ALB]        |
-+-------------------+               +---------+---------+
-                                              |
-                         +--------------------+--------------------+
-                         |                    |                    |
-                         v                    v                    v
-                +-----------------+  +-----------------+  +-----------------+
-                |  Auth Service   |  |  Orders Service |  |  Billing Service|
-                |  [Node, k8s]    |  |  [Go, k8s]      |  |  [Python, k8s] |
-                +--------+--------+  +--------+--------+  +--------+--------+
-                         |                    |                    |
-                         v                    v                    v
-                +-----------------+  +-----------------+  +-----------------+
-                |  Users DB       |  |  Orders DB      |  |  Stripe API     |
-                |  [Postgres]     |  |  [Postgres]     |  |  (external)     |
-                +-----------------+  +-----------------+  +-----------------+
-```
-
-### 3. Component diagram
-
-Inside one service, break out modules / packages / classes.
-
-```
-+-------------------------- Orders Service -----------------------+
-|                                                                 |
-|  +---------------+   +---------------+   +----------------+     |
-|  |  HTTP Handler | ->|  Order Domain | ->|  Repository    |     |
-|  |  [REST]       |   |  [pure Go]    |   |  [Postgres]    |     |
-|  +---------------+   +---------------+   +--------+-------+     |
-|                              |                    |             |
-|                              v                    v             |
-|                      +---------------+   +----------------+     |
-|                      |  Event Bus    |   |  Read Model    |     |
-|                      |  [Kafka out]  |   |  [Redis cache] |     |
-|                      +---------------+   +----------------+     |
-+-----------------------------------------------------------------+
-```
+See [examples](./references/examples.md) for the full rendered ASCII of each level.
 
 ## Glyph and layout standards
 
@@ -125,51 +67,28 @@ Inside one service, break out modules / packages / classes.
 
 ## Extended connection types
 
-Architecture diagrams often need to show more than just "A calls B" — request/response pairs, handshakes, compile-time dependencies, plain associations. Use this vocabulary when the short `->` / `=>` / `~>` set is not expressive enough. Pick one style per diagram; do not mix styles within a single figure. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
+Architecture diagrams sometimes need richer arrow vocab than `->` / `=>` / `~>`. Pick one style per diagram; do not mix.
 
 | Type | Glyph | Meaning |
 |---|---|---|
-| sync | `-->` | Synchronous call (A calls B, waits for response). |
-| emphasized | `==>` | Primary / high-volume sync path; single accented arrow per diagram. |
-| async | `~~>` | Async event, fire-and-forget message. |
-| optional | `..>` | Dotted optional / non-deterministic / conditional transition. |
-| return | `<--` | Response leg of a sync call (A calls B, B returns to A). |
-| bidirectional | `<-->` | Handshake — protocol exchange where both sides send. |
-| dependency | `---▷` | Compile/build dependency (hollow triangle head, UML-style). |
-| association | `───` | Plain association, no direction (topology link, deployment relation). |
+| sync | `-->` | Synchronous call. |
+| emphasized | `==>` | Primary / high-volume sync. |
+| async | `~~>` | Async event, fire-and-forget. |
+| optional | `..>` | Optional / conditional. |
+| return | `<--` | Response leg of a sync call. |
+| bidirectional | `<-->` | Handshake — both sides send. |
+| dependency | `---▷` | Compile/build dependency (UML hollow triangle). |
+| association | `───` | Plain association, no direction. |
 
-`return` arrows are especially important for architecture diagrams that double as informal sequence diagrams — showing just the request without the response leaves the reader guessing where the data comes back. Use `<--` labeled with the return payload.
+`return` arrows matter when the diagram doubles as an informal sequence — without the return leg the reader can't see where data comes back.
 
 ## Multi-zoom presentation
 
-When the user asks for "the architecture" without a zoom level, produce two diagrams stacked: a context diagram first (3–7 nodes), then a container diagram (the inside of the system from the context box). Label each block:
-
-```
-### Context
-
-... context diagram ...
-
-### Container
-
-... container diagram ...
-```
-
-Do not produce all three zoom levels in one response unless the user asks — it overwhelms the reviewer and the third level (component) is usually one-per-service.
+When the user asks for "the architecture" without a zoom level, produce two diagrams stacked: a context diagram first (3-7 nodes), then a container diagram (the inside of the system). Label each block `### Context` / `### Container`. Do not produce all three zoom levels in one response unless the user asks — it overwhelms the reviewer and the third level (component) is usually one-per-service.
 
 ## Validation gate (MANDATORY)
 
-Every diagram this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user.
-
-The flow:
-
-1. Draft the diagram.
-2. Write it to `/tmp/amw-tva-<slug>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-tva-<slug>.txt`.
-4. If PASS → present in a fenced code block.
-5. If FAIL → apply every `FIX:` hint, re-run. Loop until PASS.
-6. Never present an un-validated diagram.
-
-For layered architectures with uniform rows, use `../../bin/amw-ascii-render.py` in `layers` mode — the renderer guarantees alignment by construction. See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
+Every emitted diagram MUST pass `../../bin/amw-validate-ascii.py` before delivery. Flow: draft → write to `/tmp/amw-tva-<slug>.txt` → run validator → PASS = present in fenced block; FAIL = apply every `FIX:` hint and re-run until PASS. Never present un-validated output. For uniform-row layouts, use `../../bin/amw-ascii-render.py layers` (alignment guaranteed by construction). See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
 
 ## Instructions
 
@@ -180,118 +99,38 @@ For layered architectures with uniform rows, use `../../bin/amw-ascii-render.py`
 5. Present inside a fenced code block (no language tag).
 6. Offer to save a canonical copy to `docs/architecture/<name>.txt` in the project repo. Do not write until user approves.
 
-## Technique selection
+## Technique selection / References
 
-Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
+Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references. Open only the file whose label matches the current need.
 
-- Which aspect of `text-visual-arch` is the user asking about?
-  - **c4** (1 techniques)
-    - [TECH-c4-zoom-levels](./references/TECH-c4-zoom-levels.md) — context / container / component framing
-  - **consistent** (1 techniques)
-    - [TECH-consistent-layer-spacing](./references/TECH-consistent-layer-spacing.md) — fixed grid + 2-space layer separator
-  - **footnote** (1 techniques)
-    - [TECH-footnote-tags-deployment](./references/TECH-footnote-tags-deployment.md) — post-diagram SLAs / owners / repos
-  - **platform** (1 techniques)
-    - [TECH-platform-component-tags](./references/TECH-platform-component-tags.md) — `[iOS]` `[Windows]` `[prod]` prefixes
-  - **protocol** (1 techniques)
-    - [TECH-protocol-label-arrows](./references/TECH-protocol-label-arrows.md) — `HTTP`, `gRPC`, `L1 tx` on edges
-
-## References
-
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
-
-- **[./references/TECH-c4-zoom-levels.md](./references/TECH-c4-zoom-levels.md)**
-  - Description: context / container / component framing
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-consistent-layer-spacing.md](./references/TECH-consistent-layer-spacing.md)**
-  - Description: fixed grid + 2-space layer separator
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-footnote-tags-deployment.md](./references/TECH-footnote-tags-deployment.md)**
-  - Description: post-diagram SLAs / owners / repos
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-platform-component-tags.md](./references/TECH-platform-component-tags.md)**
-  - Description: `[iOS]` `[Windows]` `[prod]` prefixes
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-protocol-label-arrows.md](./references/TECH-protocol-label-arrows.md)**
-  - Description: `HTTP`, `gRPC`, `L1 tx` on edges
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-c4-zoom-levels](./references/TECH-c4-zoom-levels.md) — context / container / component framing
+- [TECH-consistent-layer-spacing](./references/TECH-consistent-layer-spacing.md) — fixed grid + 2-space layer separator
+- [TECH-footnote-tags-deployment](./references/TECH-footnote-tags-deployment.md) — post-diagram SLAs / owners / repos
+- [TECH-platform-component-tags](./references/TECH-platform-component-tags.md) — `[iOS]` `[Windows]` `[prod]` prefixes
+- [TECH-protocol-label-arrows](./references/TECH-protocol-label-arrows.md) — `HTTP`, `gRPC`, `L1 tx` on edges
+- [examples](./references/examples.md) — three rendered ASCII zoom-level diagrams
 
 <!-- end of references -->
 
 ## Completion checklist
 
-Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
+Verify all items before reporting complete. FAIL on any item triggers a remediation loop.
 
-- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
-- At least one `TECH-*.md` file from `skills/amw-text-visual-arch/references/` was consulted and is cited in the final report.
-- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
-- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
-- User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
+- Inputs captured verbatim from the user — no silent paraphrasing.
+- At least one `TECH-*.md` consulted and cited in the report.
+- Output passes Non-negotiables (below).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+- Output rendered/validated by the matching tool (`bin/amw-validate-ascii.py` here).
+- Cross-skill hand-offs documented in the report.
+- User-facing filename is descriptive English.
 
 ## Output
 
-This skill produces TWO kinds of output:
+Two outputs per invocation:
 
-1. **Artifact(s)** — the actual work product (e.g. monospaced ASCII layered architecture diagrams pasted into PRs / ADRs / terminals). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
-   - User-supplied path (honor verbatim)
-   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
-   - Existing `./design/<subtype>/` folder if present
-   - Generic fallback (`./design/diagrams/` created fresh)
-   - Last-resort scratch: `/tmp/amw-text-visual-arch-<slug>/`
+1. **Artifact(s)** — monospaced ASCII layered architecture diagrams pasted into PRs / ADRs / terminals. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-arch-<slug>/`).
 
-   Every artifact file is listed with its path in the report (next item).
-
-2. **Job-completion report** — a markdown file at:
-   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
-
-   The report must contain, in order:
-   - **Inputs** — what the user provided + any auto-detected context
-   - **Method** — which TECH references were consulted, which pipeline steps ran
-   - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
-   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
-   - **Deviations** — any step skipped or changed, with rationale
-
-   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts (path + 1-line · How to use · Next steps) · Checklist (PASS/FAIL/N/A per item) · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 
 ## Prerequisites
 
@@ -303,23 +142,15 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Resources
 
-- [SKILL](../amw-design-principles/SKILL.md) — orchestrator. Rule 1 (context) matters especially here: without knowing the real services, the diagram is a fabrication.
+- [SKILL](../amw-design-principles/SKILL.md) — orchestrator (Rule 1: without real services, the diagram is fabrication).
 - [SKILL](../amw-ascii-validator/SKILL.md) — validation contract.
-- [SKILL](../amw-text-visual-workflows/SKILL.md) — sibling for flowcharts and timelines.
-- [SKILL](../amw-text-visual-state/SKILL.md) — sibling for state machines.
-- [SKILL](../amw-text-visual-cheatsheets/SKILL.md) — sibling for CLI panels.
-- [SKILL](../amw-text-visual-retro/SKILL.md) — sibling for retrospectives.
-- [SKILL](../amw-diagram-architecture/SKILL.md) — if the user wants SVG / PNG instead of ASCII, route here after ASCII is approved.
-- [SKILL](../amw-ascii-to-svg/SKILL.md) — convert approved ASCII to SVG.
-- `/amw-ascii-to-svg` — slash command for the SVG conversion step.
+- Siblings: [workflows](../amw-text-visual-workflows/SKILL.md), [state](../amw-text-visual-state/SKILL.md), [cheatsheets](../amw-text-visual-cheatsheets/SKILL.md), [retro](../amw-text-visual-retro/SKILL.md).
+- [SKILL](../amw-diagram-architecture/SKILL.md) — route here after ASCII approval for SVG/PNG.
+- [SKILL](../amw-ascii-to-svg/SKILL.md) + `/amw-ascii-to-svg` — convert ASCII to SVG.
 
-## How to invoke via existing commands
+## How to invoke
 
-No dedicated slash command. Invoke via:
-
-- **Direct skill activation** — phrases like "ascii architecture diagram of the orders service" trigger this skill.
-- `/amw-sketch` — when used inside the plan phase and the sketch is an architecture overview instead of a UI wireframe.
-- `/amw-ascii-to-svg` — after the ASCII architecture is approved, convert to SVG for publication.
+No dedicated slash command. Triggered by phrases like "ascii architecture diagram of <X>". Also: `/amw-sketch` for plan-phase architecture overviews; `/amw-ascii-to-svg` to convert the approved ASCII.
 
 ## Non-negotiables
 

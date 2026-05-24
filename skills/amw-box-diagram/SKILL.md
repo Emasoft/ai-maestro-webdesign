@@ -268,140 +268,20 @@ Before authoring a new diagram, open the closest example and match its column of
 5. Iterate on FIX hints until PASS; never present an unvalidated diagram.
 6. Save the artifact with a descriptive English filename and write the job-completion report to `reports/webdesigner/`.
 
-## Technique selection
-
-Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
-
-- Which aspect of `box-diagram` is the user asking about?
-  - **arrow** (1 techniques)
-    - [TECH-arrow-head-variants](./references/TECH-arrow-head-variants.md) — `▸ ▾ ▴ ◂` vs banned `▶ ▼ ▲ ◀`
-  - **fan** (1 techniques)
-    - [TECH-fan-out-fan-in-junctions](./references/TECH-fan-out-fan-in-junctions.md) — `┌┬┐` / `└┴┘` to diverge and rejoin
-  - **multi** (1 techniques)
-    - [TECH-multi-line-rich-content-box](./references/TECH-multi-line-rich-content-box.md) — title + separator + body lines
-  - **output** (1 techniques)
-    - [TECH-output-from-validated-file](./references/TECH-output-from-validated-file.md) — read back, never re-type
-  - **python** (1 techniques)
-    - [TECH-python-helper-pattern](./references/TECH-python-helper-pattern.md) — `border_top` / `border_bot` / `box_line`
-  - **semantic** (1 techniques)
-    - [TECH-semantic-node-shapes](./references/TECH-semantic-node-shapes.md) — DB / queue / external / decision glyphs
-  - **unicode** (1 techniques)
-    - [TECH-unicode-rounded-corner-set](./references/TECH-unicode-rounded-corner-set.md) — `╭ ╮ ╰ ╯ │ ─` box character set
-
 ## References
 
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
+Every technique lives in `./references/` (same TOC: *What it does · When to use · How it works · Minimal example · Gotchas · Cross-references*):
 
-- **[./references/TECH-arrow-head-variants.md](./references/TECH-arrow-head-variants.md)**
-  - Description: `▸ ▾ ▴ ◂` vs banned `▶ ▼ ▲ ◀`
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-fan-out-fan-in-junctions.md](./references/TECH-fan-out-fan-in-junctions.md)**
-  - Description: `┌┬┐` / `└┴┘` to diverge and rejoin
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-multi-line-rich-content-box.md](./references/TECH-multi-line-rich-content-box.md)**
-  - Description: title + separator + body lines
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-output-from-validated-file.md](./references/TECH-output-from-validated-file.md)**
-  - Description: read back, never re-type
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-python-helper-pattern.md](./references/TECH-python-helper-pattern.md)**
-  - Description: `border_top` / `border_bot` / `box_line`
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-semantic-node-shapes.md](./references/TECH-semantic-node-shapes.md)**
-  - Description: DB / queue / external / decision glyphs
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-unicode-rounded-corner-set.md](./references/TECH-unicode-rounded-corner-set.md)**
-  - Description: `╭ ╮ ╰ ╯ │ ─` box character set
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-arrow-head-variants](./references/TECH-arrow-head-variants.md), [TECH-fan-out-fan-in-junctions](./references/TECH-fan-out-fan-in-junctions.md)
+- [TECH-multi-line-rich-content-box](./references/TECH-multi-line-rich-content-box.md), [TECH-output-from-validated-file](./references/TECH-output-from-validated-file.md)
+- [TECH-python-helper-pattern](./references/TECH-python-helper-pattern.md), [TECH-semantic-node-shapes](./references/TECH-semantic-node-shapes.md)
+- [TECH-unicode-rounded-corner-set](./references/TECH-unicode-rounded-corner-set.md)
 
 <!-- end of references -->
 
-## Completion checklist
+## Completion checklist + output
 
-Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
-
-- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
-- At least one `TECH-*.md` file from `skills/amw-box-diagram/references/` was consulted and is cited in the final report.
-- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
-- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
-- User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
-
-## Output
-
-This skill produces TWO kinds of output:
-
-1. **Artifact(s)** — the actual work product (e.g. Unicode rounded-corner box-diagram `.txt` files). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
-   - User-supplied path (honor verbatim)
-   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
-   - Existing `./design/<subtype>/` folder if present
-   - Generic fallback (`./design/diagrams/` created fresh)
-   - Last-resort scratch: `/tmp/amw-box-diagram-<slug>/`
-
-   Every artifact file is listed with its path in the report (next item).
-
-2. **Job-completion report** — a markdown file at:
-   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
-
-   The report must contain, in order:
-   - **Inputs** — what the user provided + any auto-detected context
-   - **Method** — which TECH references were consulted, which pipeline steps ran
-   - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
-   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
-   - **Deviations** — any step skipped or changed, with rationale
-
-   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+See [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md) for the standard completion checklist and job-completion report contract every executor in this plugin shares. This skill's `## Non-negotiables` section above lists the skill-specific additions.
 
 ## Prerequisites
 
@@ -415,15 +295,13 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ## Resources
 
-- [SKILL](../amw-ascii-validator/SKILL.md) — MANDATORY validation gate; defines the rule set
-- `../../bin/amw-validate-ascii.py` — the validator (pure-Python, exits non-zero on failure, emits `FIX:` hints; Windows-compatible, group-aware width detection for multi-structure diagrams)
-- [SKILL](../amw-ascii-sketch/SKILL.md) — upstream peer for wireframe layouts; this skill handles the flow-diagram side of the same output medium
-- [SKILL](../amw-ascii-to-svg/SKILL.md) — downstream: convert an approved box diagram to SVG for editorial/print use
-- [SKILL](../amw-ascii-diagrams-reference/SKILL.md) — classic-ASCII (`+--+`) counterpart for legacy contexts that cannot render UTF-8
-- [SKILL](../amw-diagram-svg/SKILL.md) — when the caller wants an SVG output directly (skip the ASCII round trip)
-- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned boxes are a form of AI-slop
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
+- [SKILL](../amw-ascii-validator/SKILL.md) — mandatory validation gate (rule set)
+- `../../bin/amw-validate-ascii.py` — validator (Python; group-aware width, FIX hints; Windows-compatible)
+- [SKILL](../amw-ascii-sketch/SKILL.md) — upstream peer (wireframe layouts vs flow diagrams)
+- [SKILL](../amw-ascii-to-svg/SKILL.md) — downstream (box diagram → SVG)
+- [SKILL](../amw-ascii-diagrams-reference/SKILL.md) — classic-ASCII (`+--+`) counterpart for legacy contexts
+- [SKILL](../amw-diagram-svg/SKILL.md) — direct-SVG path (skip ASCII round trip)
+- [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned boxes are a form of slop
 
 ## Error Handling
 

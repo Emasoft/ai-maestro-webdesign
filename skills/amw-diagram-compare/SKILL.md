@@ -7,16 +7,13 @@ version: 0.1.0
 # Diagram Compare — IR-level structural diff
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
-> **Diff algorithm (authoritative):** [diff-algorithm](../amw-diagram-formats/references/diff-algorithm.md).
-> [diff-algorithm.md] Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references
-> **IR schema (authoritative):** [ir-schema](../amw-diagram-formats/references/ir-schema.md).
-> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
-> **Conversion matrix (authoritative):** [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md).
-> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
-> **Format detection (authoritative):** [detect-format](../amw-diagram-formats/references/detect-format.md).
-> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
+> **Authoritative references** (read each when its content is needed):
+> - [diff-algorithm](../amw-diagram-formats/references/diff-algorithm.md) — IR diff spec, patch ops, report layout.
+> - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR shape and lossy-conversion table.
+> - [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md) — cross-format parse paths.
+> - [detect-format](../amw-diagram-formats/references/detect-format.md) — format sniffer spec.
 
-This skill does not redefine IR or diff semantics — those live once in the shared reference library. The skill's job is to execute the parse → diff → report pipeline and surface findings to the user in a clear markdown report.
+This skill does not redefine IR or diff semantics — those live once in the shared reference library. The skill's job is to execute the parse → diff → report pipeline and surface findings in a clear markdown report.
 
 ## Overview
 
@@ -162,7 +159,6 @@ Report includes:
 2. The summary table (added / removed / changed counts per category).
 3. Sections for each op type with full node/edge details.
 4. A note on cross-format lossy comparison if formats differ (with a link to [ir-schema](../amw-diagram-formats/references/ir-schema.md) §5).
-  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
 
 ## Cross-format comparison: lossy-conversion impact
 
@@ -206,16 +202,11 @@ No new bin scripts needed — `bin/amw-diagram-ir.py diff` is the implementation
 
 ## Resources
 
-- [diff-algorithm](../amw-diagram-formats/references/diff-algorithm.md) — authoritative IR diff spec, patch op format, markdown report layout.
-  > Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references
-- [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR shape and lossy-conversion table.
-  > Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Minimal flowchart (3 nodes, 2 edges) · Sequence (two actors, one message + note) · Architecture (3 layers) · Raw-source stub (MVP HTML → IR) · Validation · Consumers
+- [diff-algorithm](../amw-diagram-formats/references/diff-algorithm.md) — IR diff spec, patch ops, report layout.
+- [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR shape, lossy-conversion table.
 - [detect-format](../amw-diagram-formats/references/detect-format.md) — format sniffer spec.
-  > Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
-- [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md) — cross-format parse paths (Steps 2–3 use this).
-  > Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references · ascii · html · svg · mermaid · png
-- [modify-flow](../amw-diagram-formats/references/modify-flow.md) — diff is a read-only sibling of the modify pipeline (shares Steps 1+2).
-  > The pipeline · Create vs modify dispatch · Step-by-step detail · Step 1 — Detect · Step 2 — Parse to IR · Step 3 — Patch · Step 4 — (loop point) · Step 5 — Emit · Step 6 — Re-validate · Work directory and file naming · Per-format guidance · 1 ASCII modify (MVP structural) · 2 HTML modify (MVP raw-source; Phase 1 structural) · 3 SVG modify (MVP raw-source; Phase 1 structural) · 4 Mermaid modify (MVP raw-source; Phase 1 structural) · Conversion is a modify-flow variant · Composition with round-trip skills · 1 `diagram-webpage-sync` (`/amw-modify-webpage-from-diagram`) · 2 `webpage-to-diagram` (`/amw-modify-diagram-of-webpage`) · Related references · `/amw-create-or-modify-ascii-diagram` → backed by `ascii-creator` · `/amw-create-or-modify-html-diagram` → backed by `html-diagram` · `/amw-create-or-modify-svg-diagram` → backed by `svg-diagram` · `/amw-create-or-modify-mermaid-diagram` → backed by `mermaid-diagram` · `diagram-webpage-sync` / `/amw-modify-webpage-from-diagram` · `webpage-to-diagram` / `/amw-modify-diagram-of-webpage`
-- [SKILL](../amw-diagram-convert/SKILL.md) — when comparing cross-format, both inputs go through IR parse (same pipeline entry).
-- [SKILL](../amw-design-principles/SKILL.md) — orchestrator.
+- [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md) — cross-format parse paths.
+- [modify-flow](../amw-diagram-formats/references/modify-flow.md) — diff is a read-only sibling of the modify pipeline.
+- [amw-diagram-convert](../amw-diagram-convert/SKILL.md) — cross-format compare goes through same IR parse pipeline.
+- [amw-design-principles](../amw-design-principles/SKILL.md) — orchestrator.
 - `/amw-compare-diagrams` — user-facing slash command.

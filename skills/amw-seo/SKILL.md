@@ -48,14 +48,14 @@ Does NOT trigger on: generic "make this look better", pure visual critique, copy
 
 ## Evaluation framework sections
 
-1. **E-E-A-T** — Experience, Expertise, Authoritativeness, Trust. Quality-evaluation lens, not a direct ranking factor; weighted heavily on YMYL topics.
-2. **Core Web Vitals** — LCP < 2.5s (loading), INP < 200ms (interactivity), CLS < 0.1 (visual stability). Rarely override poor content but hold back otherwise-good pages.
-3. **Technical SEO** — Crawl/index control (sitemap, robots.txt, canonical, status codes, HTTPS) plus performance and semantic HTML foundations.
-4. **Content SEO** — Page-level elements (title, meta description, H1, heading hierarchy, alt text) and quality signals (depth, originality, accuracy, clarity, usefulness).
-5. **Structured data** — Schema.org / JSON-LD types (Article, Organization, Person, FAQPage, Product, Review, BreadcrumbList) enable rich-result eligibility; do not boost rankings directly.
-6. **AI-assisted content** — Search engines evaluate output quality, not authorship method. Unedited AI output with factual errors or thin value is the failure mode.
-7. **Relative importance** — No fixed factor order. When pages compete closely: content quality > authority/trust > page experience > mobile optimization > technical accessibility.
-8. **Measurement** — Multi-signal validation: visibility (indexed pages, impressions), engagement (CTR, dwell), performance (CWV field data), coverage (index status), authority (mentions, links).
+1. **E-E-A-T** — Experience, Expertise, Authoritativeness, Trust. Quality lens, not a direct ranking factor; weighted heavily on YMYL topics.
+2. **Core Web Vitals** — LCP < 2.5s, INP < 200ms, CLS < 0.1. Rarely override poor content but hold back otherwise-good pages.
+3. **Technical SEO** — Crawl/index control (sitemap, robots.txt, canonical, status codes, HTTPS), performance, semantic HTML.
+4. **Content SEO** — Page elements (title, meta, H1, headings, alt) + quality signals (depth, originality, accuracy, clarity, usefulness).
+5. **Structured data** — Schema.org / JSON-LD types enable rich-result eligibility; do not boost rankings directly.
+6. **AI-assisted content** — Output quality matters, not authorship method. Unedited AI output with factual errors or thin value is the failure mode.
+7. **Relative importance** — No fixed order. When pages compete closely: content quality > authority/trust > page experience > mobile > technical accessibility.
+8. **Measurement** — Multi-signal validation: visibility, engagement, performance (CWV field data), coverage, authority.
 
 ## Technique selection
 
@@ -63,102 +63,26 @@ Walk this decision tree top-down to pick the right reference. If a branch does n
 
 - Is the user asking about this skill's domain?
   - For "AI-assisted content principles" -> [TECH-seo-ai-content](./references/TECH-seo-ai-content.md)
-    > What it does · When to use · How it works · Effective use · Risky use · Minimal example · Gotchas · Cross-references
   - For "Content SEO — page elements + quality signals" -> [TECH-seo-content-quality](./references/TECH-seo-content-quality.md)
-    > What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
   - For "Core Web Vitals — page-experience signals" -> [TECH-seo-cwv](./references/TECH-seo-cwv.md)
-    > What it does · When to use · How it works · Field data vs lab data · Important context · Minimal example · Gotchas · Cross-references
   - For "E-E-A-T — Quality Evaluation Framework" -> [TECH-seo-eeat](./references/TECH-seo-eeat.md)
   - For "Measurement — multi-signal SEO validation" -> [TECH-seo-measurement](./references/TECH-seo-measurement.md)
-    > What it does · When to use · How it works · Cross-validation examples · KPIs worth tracking vs vanity metrics · Minimal example · Gotchas · Cross-references
   - For "Relative importance of SEO factors" -> [TECH-seo-relative-importance](./references/TECH-seo-relative-importance.md)
-    > What it does · When to use · How it works · Approximate weight hierarchy · The operational rule · Remediation priority · Minimal example · Gotchas · Cross-references
   - For "Structured data (Schema.org / JSON-LD)" -> [TECH-seo-structured-data](./references/TECH-seo-structured-data.md)
   - For "Technical SEO principles" -> [TECH-seo-technical](./references/TECH-seo-technical.md)
-    > What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
 
 ## References
 
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
+Every technique in this skill is documented as a single reference file under `./references/`. Each file follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references. The technique-selection tree above is the authoritative router — open only the file whose tree branch matches the current need.
 
-- **[./references/TECH-seo-ai-content.md](./references/TECH-seo-ai-content.md)**
-  > What it does · When to use · How it works · Effective use · Risky use · Minimal example · Gotchas · Cross-references
-  - Description: AI-assisted content principles
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-content-quality.md](./references/TECH-seo-content-quality.md)**
-  > What it does · When to use · How it works · Page-level elements · Content quality signals · Intent classification · Minimal example · Gotchas · Cross-references
-  - Description: Content SEO — page elements + quality signals
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-cwv.md](./references/TECH-seo-cwv.md)**
-  > What it does · When to use · How it works · Field data vs lab data · Important context · Minimal example · Gotchas · Cross-references
-  - Description: Core Web Vitals — page-experience signals
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-eeat.md](./references/TECH-seo-eeat.md)**
-  - Description: E-E-A-T — Quality Evaluation Framework
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-measurement.md](./references/TECH-seo-measurement.md)**
-  > What it does · When to use · How it works · Cross-validation examples · KPIs worth tracking vs vanity metrics · Minimal example · Gotchas · Cross-references
-  - Description: Measurement — multi-signal SEO validation
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-relative-importance.md](./references/TECH-seo-relative-importance.md)**
-  > What it does · When to use · How it works · Approximate weight hierarchy · The operational rule · Remediation priority · Minimal example · Gotchas · Cross-references
-  - Description: Relative importance of SEO factors
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-structured-data.md](./references/TECH-seo-structured-data.md)**
-  - Description: Structured data (Schema.org / JSON-LD)
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-seo-technical.md](./references/TECH-seo-technical.md)**
-  > What it does · When to use · How it works · Crawl & index control · Performance & accessibility (technical prerequisites for CWV) · Common technical failures · Minimal example · Gotchas · Cross-references
-  - Description: Technical SEO principles
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-seo-ai-content](./references/TECH-seo-ai-content.md) — AI-assisted content principles
+- [TECH-seo-content-quality](./references/TECH-seo-content-quality.md) — Content SEO: page elements + quality signals
+- [TECH-seo-cwv](./references/TECH-seo-cwv.md) — Core Web Vitals: page-experience signals
+- [TECH-seo-eeat](./references/TECH-seo-eeat.md) — E-E-A-T Quality Evaluation Framework
+- [TECH-seo-measurement](./references/TECH-seo-measurement.md) — Multi-signal SEO validation
+- [TECH-seo-relative-importance](./references/TECH-seo-relative-importance.md) — Relative importance of SEO factors
+- [TECH-seo-structured-data](./references/TECH-seo-structured-data.md) — Structured data (Schema.org / JSON-LD)
+- [TECH-seo-technical](./references/TECH-seo-technical.md) — Technical SEO principles
 
 <!-- end of references -->
 
@@ -170,8 +94,6 @@ Before reporting a job using this skill as complete, verify every item below. FA
 - At least one `TECH-*.md` file from `skills/amw-seo/references/` was consulted and is cited in the final report.
 - Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
@@ -180,8 +102,7 @@ Before reporting a job using this skill as complete, verify every item below. FA
 
 This skill produces TWO kinds of output:
 
-1. **Artifact(s)** — the actual work product (e.g. SEO evaluation report `.md` files (no measurements taken — interpretation only)). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
+1. **Artifact(s)** — the actual work product (e.g. SEO evaluation report `.md` files; interpretation only — no measurements taken). The output path is determined by **project inference**, NOT hardcoded. See [project-output-routing](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
    - User-supplied path (honor verbatim)
    - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
    - Existing `./design/<subtype>/` folder if present
@@ -203,9 +124,9 @@ This skill produces TWO kinds of output:
 
    The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
 
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
+Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`.
 
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+**Every artifact MUST be linked from the report.** `reports/webdesigner/` is for user-facing job outputs; `reports/audit/` is for build-time audits — keep them separate.
 
 ## Examples
 

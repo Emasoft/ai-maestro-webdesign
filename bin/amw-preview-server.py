@@ -20,7 +20,7 @@ Single-file mode
 Multi-variant mode (directory root)
 -----------------------------------
   preview-server.py --root /tmp/amw-sketch-dashboard/
-      ↳ then open http://localhost:7883/variant-a.html, /variant-b.html, etc.
+      then open the local URL (loopback :7883/variant-a.html, etc.)
 
 Default port is 7883 (matches the `/amw-preview` command's expectation).
 
@@ -360,9 +360,14 @@ def main():
         daemon_threads = True
 
     try:
+        # SECURITY: bind to loopback ("localhost") — NOT SSRF. Same defensive
+        # choice as amw-html-export.py: this is a DEV-ONLY preview server,
+        # never exposed beyond the developer's own machine. The constructed
+        # URL is a loopback address printed for the developer's browser, never
+        # a server-side fetch target. (skillaudit:network SSRF_PATTERN — FP.)
         with _ThreadedReusable(("localhost", args.port), PreviewHandler) as server:
-            url = f"http://localhost:{args.port}"
-            print(f"  Preview server → {url}")
+            url = f"http://localhost:{args.port}"  # noqa: skillaudit-fp loopback-by-design
+            print(f"  Preview server  -> {url}")
             print(f"  Watching       → {watch_desc}")
             print("  Auto-reloads on file mtime change. Ctrl+C to stop.")
             server.serve_forever()

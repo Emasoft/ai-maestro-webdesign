@@ -18,7 +18,6 @@ Lazy-loaded reference corpus for Tailwind CSS v4. Covers utilities, variants, `@
 2. Check whether `references/docs/` exists; if not, stop and ask the user to run the sync script (`scripts/sync_tailwind_docs.py --accept-docs-license`) before answering v4-specific questions from the synced snapshot.
 3. For migration questions: read [gotchas](references/gotchas.md) first, then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>`.
 4. For implementation or review: read [engineering-playbook](references/engineering-playbook.md) first, then pull the specific utility/directive MDX only if needed.
-  > Default workflow · Core mindset · The abstraction ladder · What good reuse looks like · Tokens first · Arbitrary values · Custom utilities · Component classes · Variant strategy for component classes · `@apply` · Custom variants · Rich text and uncontrolled markup · Generated DOM and JS-replaced markup · Responsive strategy · File organization · Refactor heuristics · Review checklist · Practical defaults
 5. For a specific utility or variant: open the matching MDX file in `references/docs/` directly (e.g. `<references/docs/hover-focus-and-other-states.mdx>`).
 6. Extract only the specific answer; do not reload the full snapshot.
 7. If the snapshot is absent or stale and the user cannot sync, answer from [gotchas](references/gotchas.md) + [engineering-playbook](references/engineering-playbook.md) for common questions; for anything requiring authoritative doc text, stop and ask the user to sync rather than guessing.
@@ -35,9 +34,7 @@ See [gotchas](references/gotchas.md) for v3→v4 migration examples and [enginee
 
 ## Activation
 
-No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during **Phase B** when the implementation target uses Tailwind CSS v4, or pulled in by `shadcn-ui` for Tailwind-specific questions. Also callable directly when the user names Tailwind v4 syntax, migration, or directive questions.
-
-This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+No dedicated slash command. Invoked by the `design-principles` orchestrator during **Phase B** when the target uses Tailwind v4, or pulled in by `shadcn-ui`. Callable directly on Tailwind v4 syntax / migration / directive questions. Skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
 
@@ -85,7 +82,6 @@ Optional flags:
 
 - [gotchas](references/gotchas.md) — v3 to v4 migration pitfalls, quick-scan list. Small and always available (does not need the sync).
 - [engineering-playbook](references/engineering-playbook.md) — implementation / refactor / review guide covering the abstraction ladder, tokens, custom utilities, component classes, `@apply` discipline, responsive strategy, and review checklist. Always available (does not need the sync).
-  > Default workflow · Core mindset · The abstraction ladder · What good reuse looks like · Tokens first · Arbitrary values · Custom utilities · Component classes · Variant strategy for component classes · `@apply` · Custom variants · Rich text and uncontrolled markup · Generated DOM and JS-replaced markup · Responsive strategy · File organization · Refactor heuristics · Review checklist · Practical defaults
 - `references/docs-source.txt` — sync metadata (upstream repo, commit SHA, commit date, snapshot date). Ships with a pre-populated sentinel commit; gets overwritten by the sync script on each run.
 - `references/docs/` — synced Tailwind v4 MDX snapshot. **Not present until the user runs the sync script.**
 - `<references/docs-index.tsx>` — synced sidebar index mapping categories to doc slugs. **Not present until the user runs the sync script.**
@@ -99,7 +95,6 @@ When invoked:
 2. Check whether `references/docs/` exists. If it does not, stop and ask the user to run the sync command from the Setup section — do not attempt to answer v4-specific docs questions from memory.
 3. For migration questions: read [gotchas](references/gotchas.md) first (fast), then `<references/docs/upgrade-guide.mdx>` and `<references/docs/compatibility.mdx>` from the synced snapshot.
 4. For implementation, refactor, or review: read [engineering-playbook](references/engineering-playbook.md) first, then pull the specific utility/directive doc only if needed.
-  > Default workflow · Core mindset · The abstraction ladder · What good reuse looks like · Tokens first · Arbitrary values · Custom utilities · Component classes · Variant strategy for component classes · `@apply` · Custom variants · Rich text and uncontrolled markup · Generated DOM and JS-replaced markup · Responsive strategy · File organization · Refactor heuristics · Review checklist · Practical defaults
 5. For a specific utility or variant: open the matching MDX file in `references/docs/` (for example `<references/docs/hover-focus-and-other-states.mdx>`, `<references/docs/theme.mdx>`, `<references/docs/functions-and-directives.mdx>`).
 6. Treat MDX exports (`export const title`, `export const description`) as metadata. Treat JSX callouts (`<TipInfo>`, `<TipBad>`) as guidance text.
 7. Extract the specific answer; do not reload the whole snapshot.
@@ -110,18 +105,14 @@ If the user is offline or cannot run the sync:
 
 - [gotchas](references/gotchas.md) alone covers the most common v3 to v4 breakage points (directive move, PostCSS plugin rename, prefix syntax, important modifier placement, arbitrary CSS variable syntax, stacked variant order, transform reset utility names, `space-*`/`divide-*` selector change, `@theme` placement rules).
 - [engineering-playbook](references/engineering-playbook.md) alone covers the abstraction ladder, when to create tokens vs utilities vs component classes, `@apply` discipline, and the review checklist.
-  > Default workflow · Core mindset · The abstraction ladder · What good reuse looks like · Tokens first · Arbitrary values · Custom utilities · Component classes · Variant strategy for component classes · `@apply` · Custom variants · Rich text and uncontrolled markup · Generated DOM and JS-replaced markup · Responsive strategy · File organization · Refactor heuristics · Review checklist · Practical defaults
 - For anything that requires authoritative doc text (exact utility flag names, exact variant syntax, full upgrade-guide steps), stop and ask the user to sync the docs rather than guessing.
 
 ## Resources
 
 - [SKILL](../amw-shadcn-ui/SKILL.md) — shadcn/ui ships Tailwind-based components; migration and `@theme` token design should stay aligned.
-- [color-system](../amw-design-principles/color-system.md) — the oklch token approach in design-principles can be expressed as `@theme` variables (`--color-*`) that Tailwind v4 auto-promotes into utilities.
-  > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
-- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — Tailwind's spacing scale (`--spacing-*`) aligns with the 8pt grid used by design-principles.
-  > I. 8pt grid system · Allowed spacing values · T-shirt naming (use tokens) · Forbidden · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · Core rule · Result · IV. Hit targets (tappable areas) · V. Alignment · Left vs centered vs justified · Forbidden · VI. Three principles of whitespace · The most important element gets the most whitespace around it · Related elements cluster, unrelated elements separate (Gestalt proximity) · Outer whitespace > inner whitespace · VII. Border radius · Rules · VIII. Shadow system · Rules · IX. Self-check
+- [color-system](../amw-design-principles/color-system.md) — the oklch token approach can be expressed as `@theme` variables (`--color-*`) auto-promoted into utilities.
+- [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — Tailwind's spacing scale (`--spacing-*`) aligns with the 8pt grid.
 - [typography-system](../amw-design-principles/typography-system.md) — Tailwind's type scale (`--text-*`, `--font-*`) maps to the typography tokens documented there.
-  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
 
 ## Non-negotiables
 
@@ -134,7 +125,6 @@ If the user is offline or cannot run the sync:
 ## Error Handling
 
 - **Sync fails (network/git error):** report the exact command and error to the user; fall back to [gotchas](references/gotchas.md) + [engineering-playbook](references/engineering-playbook.md) for non-doc-lookup questions.
-  > [engineering-playbook.md] Default workflow · Core mindset · The abstraction ladder · What good reuse looks like · Tokens first · Arbitrary values · Custom utilities · Component classes · Variant strategy for component classes · `@apply` · Custom variants · Rich text and uncontrolled markup · Generated DOM and JS-replaced markup · Responsive strategy · File organization · Refactor heuristics · Review checklist · Practical defaults
 - **Upstream repo structure changes (docs moved out of `src/docs/`):** the sync script raises a clear error; update `scripts/sync_tailwind_docs.py` and re-test. Do not silently adapt to stale paths.
 - **User asks a v3-specific question:** answer from [gotchas](references/gotchas.md) (v3→v4 deltas) and note that v3 docs are outside this skill's scope.
 - **Offline environment, docs not synced:** acknowledge the constraint, answer what `gotchas.md` + `engineering-playbook.md` cover, and defer authoritative utility lookups until the user can sync.

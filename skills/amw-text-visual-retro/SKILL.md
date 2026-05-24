@@ -14,19 +14,17 @@ Produces ASCII retrospective grids, milestone timelines, and heatmaps for team r
 
 ## Examples
 
-See the `## Template archetypes` section below for minimal examples of a grid, milestone timeline, and heatmap.
+See [examples](./references/examples.md) for full rendered ASCII of grid, milestone timeline, and heatmap.
 
 ## Activation
 
-No dedicated slash command — this skill has no matching `/amw-*` shortcut. Invoked by the `design-principles` orchestrator during Phase A (as a low-fi ASCII medium for retro grid sketches) or Phase B (when the approved design requires a validated ASCII retrospective artifact). The orchestrator may apply any grid, heatmap, or timeline technique from this skill without command-layer restriction.
-
-This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
+No dedicated slash command. Invoked by the `design-principles` orchestrator during Phase A (low-fi sketch) or Phase B (validated artifact). Skill's techniques are NOT limited to what matching commands expose.
 
 ## Position in flow
 
-OUTPUT. Produces ASCII retrospective artifacts — grids, timelines, heatmaps — for team retros, experiment readouts, and launch post-mortems. Designed to be digestible without slideware, and to drop cleanly into PR descriptions, GitHub Discussions, issue comments, or Slack posts.
+OUTPUT. Produces ASCII retrospective artifacts — grids, timelines, heatmaps — for team retros, experiment readouts, and launch post-mortems. Drops cleanly into PR descriptions, GitHub Discussions, Slack.
 
-Scope is strictly **retrospective / readout visualization**. Not architecture (`../amw-text-visual-arch/`), not state machines (`../amw-text-visual-state/`), not flowcharts (`../amw-text-visual-workflows/`), not CLI panels (`../amw-text-visual-cheatsheets/`). For UX-level evaluation of a shipped page see `../amw-ux-evaluator/`; this skill is for the team-level retro on the whole initiative.
+Scope is strictly **retrospective / readout visualization**. NOT architecture ([arch](../amw-text-visual-arch/SKILL.md)), state machines ([state](../amw-text-visual-state/SKILL.md)), flowcharts ([workflows](../amw-text-visual-workflows/SKILL.md)), or CLI panels ([cheatsheets](../amw-text-visual-cheatsheets/SKILL.md)). For per-page UX evaluation see [ux-evaluator](../amw-ux-evaluator/SKILL.md).
 
 ## Trigger conditions
 
@@ -50,58 +48,11 @@ If any is missing, ask one bundled question. Retros that invent action items or 
 
 ## Template archetypes
 
-This skill supports three shapes. Pick one per artifact — do not merge them.
+Three shapes — pick one per artifact, do not merge them. See [examples](./references/examples.md) for full rendered ASCII of each.
 
-### 1. Grid (categories side-by-side)
-
-Use for `start/stop/continue`, `went well / needs attention`, `4Ls` (liked / learned / lacked / longed-for), or any two-to-four-category split.
-
-```
-+----------------------------+-----------------------------+
-| Went Well                  | Needs Attention             |
-+----------------------------+-----------------------------+
-| Deploy automation shipped  | Flaky tests blocked 3 PRs   |
-| @alice, done               | @bob owns fix (due 04-28)   |
-|                            |                             |
-| +12% DAU post-launch       | Support ticket backlog +40% |
-| metric: dau_daily          | @triage-team to prioritize  |
-+----------------------------+-----------------------------+
-```
-
-### 2. Milestone timeline
-
-Use for launch post-mortems or experiment readouts where the story is temporal.
-
-```
-Week 1      Week 2      Week 3      Week 4
-|-----------|-----------|-----------|-----------|
-Plan        Build       QA          Launch      Post
-@alice      @dev-team   @qa-team    @launch     @all
-
-Highlights:
-  Week 2 -- migration framework shipped (PR #123)
-  Week 3 -- 2 p0 bugs caught (one leaked to prod, see incident #42)
-  Week 4 -- soft launch succeeded, +12% DAU
-
-Actions:
-  [ ] Fix incident #42 runbook (@oncall, due 04-28)
-  [ ] Remove dead migration code (@db-team, due 05-05)
-```
-
-### 3. Heatmap
-
-Use for density / frequency readouts — incident count per day, experiment exposure per segment, error rate per endpoint.
-
-Legend for intensity markers (from low to high): `[ ]`  `[~]`  `[+]`  `[++]`  `[!]`. Use exactly this set — anything else breaks the column alignment.
-
-```
-              Mon   Tue   Wed   Thu   Fri   Sat   Sun
-incidents    [ ]   [~]   [+]   [!]   [++]  [ ]   [ ]
-deploys      [+]   [+]   [+]   [+]   [+]   [ ]   [ ]
-on-call      [ ]   [ ]   [ ]   [!]   [!]   [ ]   [ ]
-
-Legend: [ ] 0,  [~] 1,  [+] 2-3,  [++] 4-6,  [!] 7+
-```
+1. **Grid (categories side-by-side)** — `start/stop/continue`, `went well / needs attention`, `4Ls`, or any 2-4 category split.
+2. **Milestone timeline** — launch post-mortems or experiment readouts where the story is temporal (weeks → highlights → actions).
+3. **Heatmap** — density / frequency readouts. Intensity markers (low→high): `[ ]`  `[~]`  `[+]`  `[++]`  `[!]`. Use exactly this set — anything else breaks alignment.
 
 ## Glyph and width standards
 
@@ -116,20 +67,18 @@ Legend: [ ] 0,  [~] 1,  [+] 2-3,  [++] 4-6,  [!] 7+
 
 ## Extended connection types
 
-Retro grids, timelines, and heatmaps occasionally need arrows — an action item that feeds the next sprint, a root cause that triggered a secondary incident, a before/after pair that shares a relation. Use this vocabulary when the retro doc needs to show relationships alongside the grid. Source: adapted from the diagram-skill-main ASCII-STYLES reference (subsumed into the current skill).
+When the retro shows causal relationships, use this arrow vocab. Pick one style per doc; keep count ≤ 2-3.
 
 | Type | Glyph | Meaning |
 |---|---|---|
-| sync | `-->` | Sequential causation ("A caused B"). |
-| emphasized | `==>` | Primary / highest-impact causal chain. |
-| async | `~~>` | Delayed effect (e.g. bug introduced week 1 surfaced in week 3). |
-| optional | `..>` | Conditional / speculative causal link ("may have contributed"). |
-| return | `<--` | Feedback loop (retro action became new problem). |
-| bidirectional | `<-->` | Mutual reinforcement ("A and B amplified each other"). |
-| dependency | `---▷` | Action item depends on another action (blocking relationship). |
-| association | `───` | Co-occurrence with no causal claim. |
-
-Retros often benefit from the `return` and `bidirectional` arrows because they surface feedback loops — a fix that created a new problem, two systems amplifying each other. Keep the arrow count low (2–3 max per doc) so the retro stays scannable.
+| sync | `-->` | Sequential causation. |
+| emphasized | `==>` | Primary causal chain. |
+| async | `~~>` | Delayed effect (bug introduced week 1 surfaced in week 3). |
+| optional | `..>` | Speculative causal link. |
+| return | `<--` | Feedback loop. |
+| bidirectional | `<-->` | Mutual reinforcement. |
+| dependency | `---▷` | Action depends on another action. |
+| association | `───` | Co-occurrence, no causal claim. |
 
 ## Action-item rigor
 
@@ -143,18 +92,7 @@ Entries without one of these are noise. If the user hasn't named a date or owner
 
 ## Validation gate (MANDATORY)
 
-Every retro artifact this skill emits MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user.
-
-The flow:
-
-1. Draft the artifact.
-2. Write it to `/tmp/amw-tvr-<slug>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-tvr-<slug>.txt`.
-4. If PASS → present in a fenced code block.
-5. If FAIL → apply every `FIX:` hint, re-run. Loop until PASS.
-6. Never present an un-validated artifact.
-
-For heatmaps, `../../bin/amw-ascii-render.py` in `table` mode guarantees column alignment. Strongly recommended when the heatmap has >5 columns. See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
+Every artifact MUST pass `../../bin/amw-validate-ascii.py` before delivery. Flow: draft → write to `/tmp/amw-tvr-<slug>.txt` → run validator → PASS = present in fenced block; FAIL = apply every `FIX:` hint and re-run until PASS. Never present un-validated output. For heatmaps with >5 columns use `../../bin/amw-ascii-render.py table` (alignment guaranteed by construction). See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema.
 
 ## Instructions
 
@@ -167,118 +105,38 @@ For heatmaps, `../../bin/amw-ascii-render.py` in `table` mode guarantees column 
 7. Add a `Next Checkpoint` line below — the date the team will review progress on the action items. Ask if not given.
 8. Offer to save a canonical copy (e.g. `<docs/retros/2026-Q2-sprint-04.md>`). Do not write until user approves.
 
-## Technique selection
+## Technique selection / References
 
-Walk this decision tree top-down to pick the right reference. If a branch does not match the user's intent, skip to the next. Every technique in the catalog is a leaf of this tree.
+Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
-- Which aspect of `text-visual-retro` is the user asking about?
-  - **grid** (1 techniques)
-    - [TECH-grid-side-by-side](./references/TECH-grid-side-by-side.md) — `Went Well` / `Needs Attention` 2-column grid
-  - **heatmap** (1 techniques)
-    - [TECH-heatmap-intensity-markers](./references/TECH-heatmap-intensity-markers.md) — `[++] [+] [~] [!]` density cells
-  - **metric** (1 techniques)
-    - [TECH-metric-delta-inline](./references/TECH-metric-delta-inline.md) — `+12% DAU` / `-180ms p99` signed deltas
-  - **milestone** (1 techniques)
-    - [TECH-milestone-timeline](./references/TECH-milestone-timeline.md) — weekly timeline + highlights + actions
-  - **owner** (1 techniques)
-    - [TECH-owner-action-items](./references/TECH-owner-action-items.md) — `[ ] <action> (@owner, due YYYY-MM-DD)`
-
-## References
-
-Every technique in this skill is documented as a single reference file under `./references/`. The orchestrator should read only the file whose TOC matches its current need.
-
-- **[./references/TECH-grid-side-by-side.md](./references/TECH-grid-side-by-side.md)**
-  - Description: `Went Well` / `Needs Attention` 2-column grid
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-heatmap-intensity-markers.md](./references/TECH-heatmap-intensity-markers.md)**
-  - Description: `[++] [+] [~] [!]` density cells
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-metric-delta-inline.md](./references/TECH-metric-delta-inline.md)**
-  - Description: `+12% DAU` / `-180ms p99` signed deltas
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-milestone-timeline.md](./references/TECH-milestone-timeline.md)**
-  - Description: weekly timeline + highlights + actions
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
-- **[./references/TECH-owner-action-items.md](./references/TECH-owner-action-items.md)**
-  - Description: `[ ] <action> (@owner, due YYYY-MM-DD)`
-  - TOC:
-    - What it does
-    - When to use
-    - How it works
-    - Minimal example
-    - Gotchas
-    - Cross-references
+- [TECH-grid-side-by-side](./references/TECH-grid-side-by-side.md) — `Went Well` / `Needs Attention` 2-column grid
+- [TECH-heatmap-intensity-markers](./references/TECH-heatmap-intensity-markers.md) — `[++] [+] [~] [!]` density cells
+- [TECH-metric-delta-inline](./references/TECH-metric-delta-inline.md) — `+12% DAU` / `-180ms p99` signed deltas
+- [TECH-milestone-timeline](./references/TECH-milestone-timeline.md) — weekly timeline + highlights + actions
+- [TECH-owner-action-items](./references/TECH-owner-action-items.md) — `[ ] <action> (@owner, due YYYY-MM-DD)`
+- [examples](./references/examples.md) — three rendered template archetypes
 
 <!-- end of references -->
 
 ## Completion checklist
 
-Before reporting a job using this skill as complete, verify every item below. FAIL on any item should trigger a remediation loop; do not deliver partial work.
+Verify all items before reporting complete. FAIL on any triggers a remediation loop.
 
-- Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing that changes meaning.
-- At least one `TECH-*.md` file from `skills/amw-text-visual-retro/references/` was consulted and is cited in the final report.
-- Output passes the skill's own non-negotiables (see the `Non-negotiables` section below if present).
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (generic gradients, stock-photo hero, fake testimonials, lorem copy, CTA-hero-features-testimonials template).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
-  > I. Visual style · Purple-blue / pink-purple gradient backgrounds · Rounded card + 4 px colored left-accent · AI-drawn SVG illustrations / mascots / scenes · Emoji overuse · Unrestrained glassmorphism · Cool-but-meaningless 3D decor · II. Typography · Default-font trap · Weight soup · Excessive script / handwriting fonts · III. Layout · Hero → 3-column features → CTA → footer, universal template · Alternating white / pale-gray section backgrounds · One icon per feature · Trust-marker carpet · Every card the same size · IV. Content and copy · Placeholder names / testimonials / numbers · Invented statistics · Filler paragraphs · Meaningless subtitles · Exclamation / question-mark fever · V. Interaction and motion · First-viewport blanket fade-in + Y-translate · Everything `hover: scale(1.05) + shadow` · Parallax everywhere · VI. Color · Saturation at the ceiling · Infinitely expanding palette · …(+8)
-- If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
-- Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
-- User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
+- Inputs captured verbatim — no silent paraphrasing.
+- At least one `TECH-*.md` consulted and cited in the report.
+- Output passes Non-negotiables (below).
+- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+- Output rendered/validated by `bin/amw-validate-ascii.py`.
+- Cross-skill hand-offs documented.
+- User-facing filename is descriptive English.
 
 ## Output
 
-This skill produces TWO kinds of output:
+Two outputs per invocation:
 
-1. **Artifact(s)** — the actual work product (e.g. monospaced ASCII retro grids / milestone timelines / heatmaps for post-mortems). The output path is determined by **project inference**, NOT hardcoded. See [[project-output-routing](../amw-design-principles/references/project-output-routing.md)](../amw-design-principles/references/project-output-routing.md) for the full detection rules. Summary of the priority order:
-  > When to consult this doc · Detection order · User-supplied path · Project-type detection (inspect project root) · Existing design folder · Existing convention from Claude design skills · Generic fallback (no project type detected) · Last resort (nothing matched, no project context at all) · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
-   - User-supplied path (honor verbatim)
-   - Framework convention (React/Vite/Next/Astro → `./src/...`; Flutter → `./lib/`; etc.)
-   - Existing `./design/<subtype>/` folder if present
-   - Generic fallback (`./design/diagrams/` created fresh)
-   - Last-resort scratch: `/tmp/amw-text-visual-retro-<slug>/`
+1. **Artifact(s)** — monospaced ASCII retro grids / milestone timelines / heatmaps. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-retro-<slug>/`).
 
-   Every artifact file is listed with its path in the report (next item).
-
-2. **Job-completion report** — a markdown file at:
-   `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`
-
-   The report must contain, in order:
-   - **Inputs** — what the user provided + any auto-detected context
-   - **Method** — which TECH references were consulted, which pipeline steps ran
-   - **Artifacts** — bullet list, one per produced file, formatted as:
-     `- <artifact-path> — <1-line description> — **How to use:** <usage tip> — **Next steps:** <suggested follow-up>`
-   - **Checklist** — each item from the Completion checklist above, with PASS / FAIL / N/A
-   - **Deviations** — any step skipped or changed, with rationale
-
-   The `<8-char-hash>` is a short content-addressed hash of the report body (e.g. first 8 chars of SHA-256 of the inputs+artifacts list) for uniqueness.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main-repo root, worktree-safe).
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the skill run is considered incomplete. The report path is distinct from `reports/audit/` (build-time audit artifacts) — `reports/webdesigner/` is for user-facing job outputs from this plugin.
+2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts · Checklist · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 
 ## Prerequisites
 
@@ -292,20 +150,13 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator.
 - [SKILL](../amw-ascii-validator/SKILL.md) — validation contract.
-- [SKILL](../amw-text-visual-workflows/SKILL.md) — sibling for workflows and timelines (the forward-looking kind).
-- [SKILL](../amw-text-visual-arch/SKILL.md) — sibling for architecture diagrams.
-- [SKILL](../amw-text-visual-state/SKILL.md) — sibling for state machines.
-- [SKILL](../amw-text-visual-cheatsheets/SKILL.md) — sibling for CLI panels.
-- [SKILL](../amw-ux-evaluator/SKILL.md) — per-page UX scoring, for post-launch evaluations that want a rubric rather than a retro.
-- [SKILL](../amw-seo/SKILL.md) — for performance / Core Web Vitals retros specifically.
-- `/amw-eval` — slash command for UX evaluation.
+- Siblings: [workflows](../amw-text-visual-workflows/SKILL.md), [arch](../amw-text-visual-arch/SKILL.md), [state](../amw-text-visual-state/SKILL.md), [cheatsheets](../amw-text-visual-cheatsheets/SKILL.md).
+- [SKILL](../amw-ux-evaluator/SKILL.md) + `/amw-eval` — per-page UX scoring (post-launch rubric).
+- [SKILL](../amw-seo/SKILL.md) — Core Web Vitals retros.
 
-## How to invoke via existing commands
+## How to invoke
 
-No dedicated slash command. Invoke via:
-
-- **Direct skill activation** — phrases like "ASCII start/stop/continue grid for last sprint" trigger this skill.
-- `/amw-eval` when the retro is specifically a UX-scoring post-launch readout.
+No dedicated slash command. Triggered by phrases like "ASCII start/stop/continue grid for last sprint". Also `/amw-eval` when the retro is a UX-scoring post-launch readout.
 
 ## Non-negotiables
 

@@ -47,7 +47,7 @@ this skill.
    (Preferences → "Enable Dev Mode MCP Server").
 3. **MCP added to Claude Code**:
    ```
-   claude mcp add --transport sse figma-dev-mode-mcp-server http://127.0.0.1:3845/sse
+   claude mcp add --transport sse figma-dev-mode-mcp-server http://localhost:3845/sse
    ```
 4. **Chrome DevTools MCP** already installed (used for wireframe preview
    in Phase 3).
@@ -57,7 +57,7 @@ this skill.
 1. **Inform the requirements FIRST** before attempting anything:
    > "Figma export requires:
    > - Figma desktop with Dev Mode MCP Server enabled
-   > - MCP added via `claude mcp add --transport sse figma-dev-mode-mcp-server http://127.0.0.1:3845/sse`
+   > - MCP added via `claude mcp add --transport sse figma-dev-mode-mcp-server http://localhost:3845/sse`
    > - Chrome DevTools MCP already installed
    > Please confirm these are set up before I proceed."
 2. **Wait for user confirmation.** Do not read
@@ -69,7 +69,7 @@ this skill.
 ### Export workflow (once prerequisites are confirmed)
 
 1. **Verify toolchain** — check Dev Mode MCP is responding at
-   `http://127.0.0.1:3845/sse`, check Chrome DevTools MCP is
+   `http://localhost:3845/sse`, check Chrome DevTools MCP is
    available.
 2. **Open each wireframe in the browser** via Chrome DevTools MCP or
    `open` (already mobile-first 375px from Phase 3).
@@ -95,7 +95,7 @@ Agent: "Figma export via the Code to Canvas integration requires:
   1. Figma desktop app with Dev Mode MCP Server enabled
      (Preferences → Enable Dev Mode MCP Server)
   2. MCP added to Claude Code:
-     claude mcp add --transport sse figma-dev-mode-mcp-server http://127.0.0.1:3845/sse
+     claude mcp add --transport sse figma-dev-mode-mcp-server http://localhost:3845/sse
   3. Chrome DevTools MCP installed (already used for wireframe preview)
 Please confirm these are set up, or ask for setup guidance."
 
