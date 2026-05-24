@@ -48,8 +48,15 @@ Every other skill in this plugin is an **executor**. They are triggered only by 
 - `amw-mermaid-diagram` — author or edit Mermaid source text for all 9 grammar types; delegates rendering to `amw-mermaid-render`
 - `amw-diagram-convert` — cross-format conversion across the full 5-format matrix (ASCII/HTML/SVG/Mermaid → any; PNG is output-only)
 - `amw-diagram-compare` — IR-level structural diff between two diagrams (source formats may differ)
-- `amw-webpage-to-diagram` — extract a structural diagram from a URL or local HTML file (HTML5 landmarks → IR → ASCII/SVG/Mermaid)
+- `amw-webpage-to-diagram` — extract a diagram from a URL or local HTML file. **Structural** mode: HTML5 landmarks → IR → ASCII/SVG/Mermaid. **Spatial** mode: rendered-DOM geometry → box-drawing ASCII wireframe (agent-facing plan-phase tool for cheap pre-design iteration)
 - `amw-diagram-webpage-sync` — reverse leg: take an edited diagram and regenerate the target webpage from it
+
+**React-component reference skills (5 new, MIT, 2026-05-24):**
+- `amw-react-colorful` — `react-colorful` tiny dependency-free color-picker component (Hex/Rgba/Hsl pickers + HexColorInput)
+- `amw-progressive-blur` — `progressive-blur` gradient backdrop blur for React (radial + linear)
+- `amw-hypercomp` — `hypercomp` TypeScript image-processing API that compiles to SVG filters
+- `amw-vecui` — `vecui` immutable vec2/rect math for JS-driven animated layouts
+- `amw-react-promptify` — `react-promptify` async, promise-based custom prompt/dialog modals
 
 ## Shared `bin/` scripts
 
@@ -59,6 +66,7 @@ Scripts shared across skills live in `bin/` rather than being duplicated per-ski
 - `amw-html-export.py` — render HTML → PNG/PDF via Playwright (amw-infographics, amw-hyperframes-bridge)
 - `amw-preview-server.py` — local HTTP server for multi-variant live preview
 - `amw-ascii-parse.py` — Unicode box-drawing → node/edge graph (amw-ascii-to-svg, amw-ascii-to-html)
+- `amw-page-to-ascii-layout.py` — rendered-DOM geometry → box-drawing ASCII spatial wireframe (amw-webpage-to-diagram spatial mode; self-validates via amw-validate-ascii.py)
 - `amw-designlang-wrapper.sh`, `amw-dev-browser-wrapper.sh` — plugin-standard arg wrappers over external CLIs
 
 ## Slash commands

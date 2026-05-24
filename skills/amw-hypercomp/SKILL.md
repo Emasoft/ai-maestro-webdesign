@@ -88,8 +88,24 @@ Do NOT invoke for generic "add an effect", "make it pop/look cool", animation/tr
 
 ## Structure
 
-- [operators](references/operators.md) — full chainable-operator catalog: basis functions, compositing, common transforms, all 16 blend modes, morphology, color manipulation, lighting. Verified signatures + shorthand config keys + the SVG primitive each compiles to.
-- [render-and-react](references/render-and-react.md) — render functions (`css` / `compile` / `unmount` / `.filter()`), React `useFilter`, light sources (`Light.*`), transfer functions (`Transfer.*`), the base region config, key-rendering gotchas, and worked recipes.
+- [operators](references/operators.md) — full chainable-operator catalog: verified signatures + shorthand config keys + the SVG primitive each compiles to. Complete table of contents:
+  - Constant inputs
+  - Basis functions (static on `Effect`)
+  - Compositing functions (`feComposite`)
+  - Common transforms
+  - Blending functions (`feBlend`)
+  - Morphology functions (`feMorphology`)
+  - Color manipulation (`feColorMatrix` / `feComponentTransfer`)
+  - Lighting functions
+- [render-and-react](references/render-and-react.md) — render functions, React `useFilter`, light sources, transfer functions, base region config, gotchas, recipes. Complete table of contents:
+  - Render functions
+  - The `.filter()` attributes
+  - Usage with React
+  - Light sources (`Light.*`)
+  - Transfer functions (`Transfer.*`)
+  - Base region config
+  - Gotchas
+  - Recipes
 
 ## Resources
 
@@ -100,7 +116,7 @@ Do NOT invoke for generic "add an effect", "make it pop/look cool", animation/tr
 ## Non-negotiables
 
 - Does NOT own broad design intent. The orchestrator decides whether an effect is warranted; this skill only answers hypercomp-specific questions.
-- Never paraphrase an operator name or its config keys from memory. Confirm against [operators](references/operators.md) — shorthand keys (`color`, `strength`, `shininess`, `octaves`, `falloff`) are remapped to raw SVG attribute names internally and are easy to get wrong.
+- Never paraphrase an operator name or its config keys from memory. Confirm against the operator catalog reference (linked in Structure above) — shorthand keys (`color`, `strength`, `shininess`, `octaves`, `falloff`) are remapped to raw SVG attribute names internally and are easy to get wrong.
 - Always render with a `key` (`css(effect, key)`) or React `useFilter`. Never recommend keyless data-URL rendering for production — it fails in Safari and breaks `.image()` in Chrome.
 - Effects are immutable builders: each method returns a NEW `Effect`. Reassign or chain; mutating in place is not how the API works.
 - This is a reference for an external MIT library. Do not vendor or copy the library source into the skill. If behavior looks wrong, check the installed package version against the documented `0.4.x` surface rather than patching this SKILL.md.
@@ -110,7 +126,7 @@ Do NOT invoke for generic "add an effect", "make it pop/look cool", animation/tr
 
 - **Filter does not appear / element vanishes:** the most common cause is keyless rendering. Switch to `css(effect, "key")` or `useFilter`. Confirm a DOM exists at render time.
 - **`.image()` renders blank in Chrome, or any filter blank in Safari:** that is the documented data-URL limitation — use the keyed/`useFilter` path, which mounts a real `<filter>` element.
-- **Wrong / no effect from a config option:** verify the shorthand key against [operators](references/operators.md) (e.g. drop-shadow color is `color`, not `flood-color`; turbulence octaves is `octaves`, not `numOctaves`). An unknown key is silently ignored by the SVG renderer.
+- **Wrong / no effect from a config option:** verify the shorthand key against the operator catalog reference (linked in Structure above) — e.g. drop-shadow color is `color`, not `flood-color`; turbulence octaves is `octaves`, not `numOctaves`. An unknown key is silently ignored by the SVG renderer.
 - **`useFilter` import fails:** import it from `hypercomp/react` (not `hypercomp`), and ensure `react` is installed as a peer dependency.
-- **TypeScript error on `.displace(...)`:** the signature is `.displace(displacementMapEffect, scale, config?)` — the displacement-map `Effect` is the FIRST argument, the numeric scale is SECOND. See [operators](references/operators.md).
+- **TypeScript error on `.displace(...)`:** the signature is `.displace(displacementMapEffect, scale, config?)` — the displacement-map `Effect` is the FIRST argument, the numeric scale is SECOND. See the operator catalog reference (linked in Structure above).
 - **Library version differs from this reference:** this skill documents the `0.4.x` API. If the installed package exposes a different surface, report the version mismatch instead of guessing — do not invent methods.

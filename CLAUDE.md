@@ -86,8 +86,15 @@ ai-maestro-webdesign/
 │   ├── amw-mermaid-diagram/           Author or edit Mermaid source text (all 9 grammar types); delegates rendering to amw-mermaid-render
 │   ├── amw-diagram-convert/           Cross-format conversion across full 5-format matrix (ASCII/HTML/SVG/Mermaid/PNG)
 │   ├── amw-diagram-compare/           IR-level structural diff between two diagrams (formats may differ)
-│   ├── amw-webpage-to-diagram/        URL or local HTML → structural IR → ASCII/SVG/Mermaid diagram
-│   └── amw-diagram-webpage-sync/      Edited diagram (ASCII/SVG/Mermaid) → regenerate target webpage (round-trip reverse leg)
+│   ├── amw-webpage-to-diagram/        URL or local HTML → diagram. TWO modes: STRUCTURAL (landmark/link IR graph → ASCII/SVG/Mermaid) + SPATIAL (rendered-DOM geometry → box-drawing ASCII wireframe, agent-facing plan-phase tool, via bin/amw-page-to-ascii-layout.py)
+│   ├── amw-diagram-webpage-sync/      Edited diagram (ASCII/SVG/Mermaid) → regenerate target webpage (round-trip reverse leg)
+│   │
+│   │   ── React-component reference skills (from SKILLS-TO-INTEGRATE/react-components/, 2026-05-24) ──
+│   ├── amw-react-colorful/            react-colorful (MIT) — tiny dependency-free color-picker component (Hex/Rgba/Hsl pickers + HexColorInput)
+│   ├── amw-progressive-blur/          progressive-blur (MIT) — gradient backdrop blur for React (RadialBlur/LinearBlur)
+│   ├── amw-hypercomp/                 hypercomp (MIT) — TS image-processing API compiling to SVG filters (references/operators.md + render-and-react.md)
+│   ├── amw-vecui/                     vecui (MIT) — immutable vec2/rect math for JS-driven animated layouts
+│   └── amw-react-promptify/           react-promptify (MIT) — async createPrompter/prompt() value-returning modals
 ├── external/
 │   ├── hyperframes/               Vendored submodule — not in skills/
 │   └── mermaid-render/            Vendored wrapper for beautiful-mermaid npm package
@@ -238,7 +245,8 @@ Cross-skill utilities live in `bin/`, not duplicated inside each skill:
 | `amw-validate-svg-diagram.sh` | amw-validate-diagram.sh (SVG diagram structure validation) |
 | `amw-mermaid-lint.sh` | amw-validate-diagram.sh (Mermaid syntax lint via mmdc) |
 | `amw-validate-diagram.sh` | amw-validate-any-diagram-format, amw-diagram-convert, amw-diagram-compare (unified format-dispatch validator) |
-| `amw-dom-to-ir.py` | amw-webpage-to-diagram (HTML DOM landmarks → IR graph) |
+| `amw-dom-to-ir.py` | amw-webpage-to-diagram (HTML DOM landmarks → IR graph; STRUCTURAL mode) |
+| `amw-page-to-ascii-layout.py` | amw-webpage-to-diagram (rendered-DOM `getBoundingClientRect` geometry → box-drawing ASCII spatial wireframe; SPATIAL mode; self-validates via amw-validate-ascii.py; clean-room) |
 | `amw-html-diff.py` | amw-diagram-webpage-sync (HTML structural diff for showing what changed after re-emission) |
 | `amw-design-md-lint.sh` | amw-design-md, amw-design-md-author-agent, amw-design-md-extractor-agent, amw-wireframe-builder-agent (wraps `npx @google/design.md lint` — official linter) |
 | `amw-design-md-validate.py` | amw-design-md (offline pure-Python frontmatter + section + token-reference validator) |
@@ -306,6 +314,8 @@ The plan lives at `~/.claude/plans/jazzy-skipping-engelbart.md`. Completed 2026-
 - **Group D (D1/D2/D3/D4/D5/D6)** — 15 adapted executor skills in plugin house style (narrow triggers, orchestrator header, dependency schema, cross-references): amw-dev-browser, amw-design-extract, amw-ui-ux-reasoning, amw-ux-designer, amw-ux-evaluator, amw-ux-flows, amw-diagram-svg, amw-diagram-editorial, amw-diagram-architecture, amw-svg-creator (gated), amw-infographics, amw-pretext-art, amw-hyperframes-bridge, amw-shadcn-ui, amw-tailwind-4, amw-seo. DONE.
 - **Group E (E1)** — 3 NEW ASCII skills: amw-ascii-sketch (plan-phase loop), amw-ascii-to-svg, amw-ascii-to-html. DONE.
 - **Group F** — Structural verification (CJK residue, frontmatter validity, banned-ref scan, model-pin scan, file counts). DONE.
+
+**Inventory addendum (react-components integration, 2026-05-24):** +5 React-component reference skills (`amw-react-colorful`, `amw-progressive-blur`, `amw-hypercomp`, `amw-vecui`, `amw-react-promptify`, all MIT, sourced from `SKILLS-TO-INTEGRATE/react-components/`) and +1 bin script (`amw-page-to-ascii-layout.py`). `amw-webpage-to-diagram` gained a second SPATIAL mode (rendered-DOM geometry → ASCII wireframe). `framer-motion-theatre` was evaluated and SKIPPED (proprietary Theatre.js/Framer-Motion deps + no-Framer-Motion rule); `figma-copy-as-markdown` was NOT ported (unlicensed) — its capability was reimplemented clean-room as the SPATIAL mode. Current totals: 46 skill dirs (45 live + `amw-pretext-art` deprecated redirect), 38 bin scripts, 29 slash commands, 20 agents.
 
 **Final inventory (after diagrams-skills synthesis round + cross-format build + pretext unification, 2026-04-24):** 40 SKILL.md files (amw-pretext-art now redirects to the new unified `amw-pretext/` skill; +1 new `amw-pretext/` with 78 `references/TECH-NN-*.md` files across 11 categories: api, measure, layout, typography, art, motion, tables, 3d, integrate, workflow, consult), 201 shadcn MDX docs preserved, 24 infographic templates, 15 infographic examples, 8 infographic resources, 9 translated starter-components, 7 CHI'24 ASCII-archetype reference files, 20 slash commands, 33 bin scripts, 1 hook, 1 plugin.json, 1 external vendored backend (amw-mermaid-render). Zero CJK in text files. No outdated model pins. All sub-skills reference the orchestrator explicitly.
 

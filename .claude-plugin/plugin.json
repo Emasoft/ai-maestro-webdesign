@@ -71,7 +71,12 @@
       "skills/amw-html-diagram",
       "skills/amw-svg-diagram",
       "skills/amw-hyperframes-bridge",
-      "skills/amw-excalidraw-illustrations"
+      "skills/amw-excalidraw-illustrations",
+      "skills/amw-react-colorful",
+      "skills/amw-progressive-blur",
+      "skills/amw-hypercomp",
+      "skills/amw-vecui",
+      "skills/amw-react-promptify"
     ],
     "skill_size_severity": "warning",
     "max_chars": 12000,
