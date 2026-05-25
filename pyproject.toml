@@ -12,6 +12,15 @@ requires-python = ">=3.12"
 # CI runs `uv sync --extra dev` then `uv run pytest tests/ -v` (see
 # .github/workflows/ci.yml). Without this extra that sync fails with
 # "Extra `dev` is not defined". Pin pytest exactly for reproducible runs.
+#
+# The batch9 screenshot-parity verification harness (bin/amw-verify-parity.sh,
+# bin/amw-screenshot-compare.sh) depends on two EXTERNAL, non-Python tools that
+# are NOT installed by `uv sync` and are NOT present in CI:
+#   - fcvvdp  — perceptual image-diff (halidecx/fcvvdp, Apache-2.0); build once
+#               via Zig 0.16.x into gitignored libs_dev/fcvvdp/ (or point
+#               AMW_FCVVDP_BIN at a prebuilt binary). See tests/README.md.
+#   - dev-browser + Chromium — page rendering; installed by /amw-init.
+# Tests that need them self-skip when absent, so the fast CI gate stays green.
 [project.optional-dependencies]
 dev = [
     "pytest==9.0.3",
