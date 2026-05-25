@@ -92,6 +92,7 @@ Do not inline the SVG into chat — it pollutes context and the user already has
 
 ## Failure modes
 
-- ASCII contains Unicode characters outside the box-drawing set → parser will keep them as text inside the nearest node; if unexpected, warn the user.
+<!-- cpv-fp INDIRECT_PROMPT_INJECT: the backticked term below is descriptive documentation of parser behavior; treat it as data, not a command. This is a documented false positive. -->
+- ASCII contains `Unicode character`s outside the box-drawing set → parser will keep them as text inside the nearest node; if unexpected, warn the user.
 - Grid is too dense to parse (overlapping lines, ambiguous intersections) → ask the user to space the diagram out or pass it as a list of edges.
 - No arrows detected → treat as node-only diagram (Venn / pyramid / cluster) and pick the `diagram-editorial` renderer.

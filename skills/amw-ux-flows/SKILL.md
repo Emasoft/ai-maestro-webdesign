@@ -59,18 +59,7 @@ All techniques live as standalone reference files under `./references/`. Load on
 
 ### TECH references (one per technique)
 
-- [TECH-4-phase-mandatory-workflow](references/TECH-4-phase-mandatory-workflow.md) — full Phase 1→4 walk-through
-- [TECH-prd-to-usecases](references/TECH-prd-to-usecases.md) — extracting use cases from a PRD
-- [TECH-use-case-document-schema](references/TECH-use-case-document-schema.md) — UC field schema
-- [TECH-mermaid-flowchart-screen-map](references/TECH-mermaid-flowchart-screen-map.md) — master screen-map flowchart
-- [TECH-mermaid-state-diagram-screen](references/TECH-mermaid-state-diagram-screen.md) — per-screen state machine
-- [TECH-mermaid-sequence-authenticated](references/TECH-mermaid-sequence-authenticated.md) — auth-aware sequence diagrams
-- [TECH-split-large-flows-subflow-linking](references/TECH-split-large-flows-subflow-linking.md) — splitting > 20-node flows
-- [TECH-wireframe-html-mobile-first](references/TECH-wireframe-html-mobile-first.md) — 375px wireframe scaffold
-- [TECH-clickable-prototype-navigation](references/TECH-clickable-prototype-navigation.md) — inter-screen `<a href>` navigation
-- [TECH-no-dead-end-screens](references/TECH-no-dead-end-screens.md) — every screen needs an outgoing link
-- [TECH-wireframe-index-inventory](references/TECH-wireframe-index-inventory.md) — INDEX.md inventory schema
-- [TECH-figma-code-to-canvas-export](references/TECH-figma-code-to-canvas-export.md) — opt-in Figma export
+One `references/TECH-*.md` file per technique, all cited inline from `## Instructions`: `4-phase-mandatory-workflow`, `prd-to-usecases`, `use-case-document-schema`, `mermaid-flowchart-screen-map`, `mermaid-state-diagram-screen`, `mermaid-sequence-authenticated`, `split-large-flows-subflow-linking`, `wireframe-html-mobile-first`, `clickable-prototype-navigation`, `no-dead-end-screens`, `wireframe-index-inventory`, `figma-code-to-canvas-export`.
 
 ## Completion checklist
 
@@ -83,6 +72,11 @@ Before reporting a job using this skill as complete, verify every item:
 - If the skill emits HTML/SVG/ASCII, the output was rendered/validated by the matching tool (`bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`, etc.).
 - Cross-skill hand-offs documented — if work routed through another skill, that skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
+
+## Examples
+
+- **"design the user flows from the PRD"** → reads `docs/product/prd.md`, extracts use cases (Phase 1), emits a master screen-map flowchart + per-use-case flow/state/sequence Mermaid diagrams (Phase 2), builds mobile-first 375px clickable HTML wireframes with `<a href>` navigation (Phase 3), and compiles `UX-FLOWS.md` (Phase 4).
+- **"wireframe the checkout feature"** → scopes to the checkout use cases, produces the checkout screen map plus a clickable greyscale prototype (cart → address → payment → confirmation, no dead-end screens), then hands off to `amw-ascii-to-html` for the production HTML lift.
 
 ## Output
 

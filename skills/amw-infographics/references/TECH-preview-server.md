@@ -40,6 +40,8 @@ python scripts/preview_server.py &
 
 One-liner to start only if not running:
 
+<!-- cpv-fp SSRF_PATTERN: the localhost URL below is a liveness probe for a local dev preview server (documented example), not a server-side request forgery. -->
+
 ```bash
 curl -s http://localhost:7783/__mtime__ > /dev/null 2>&1 \
   || python scripts/preview_server.py &

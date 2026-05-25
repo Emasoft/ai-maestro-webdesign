@@ -1,6 +1,6 @@
 ---
 name: amw-progressive-blur
-description: progressive-blur reference — the MIT drop-in progressive (gradient) backdrop-blur React component (RadialBlur + LinearBlur). Covers the two components, their strength/steps/falloffPercentage/tint props, LinearBlur's side direction, the layered backdrop-filter plus gradient-mask mechanism, and the Chrome overflow + border-radius gotcha. Does NOT trigger on generic "add a blur", "make it blurry", or a uniform CSS filter blur. Trigger with "progressive blur" or "progressive-blur".
+description: progressive-blur reference — the MIT drop-in progressive (gradient) backdrop-blur React component (RadialBlur + LinearBlur). Covers the two components, their strength/steps/falloffPercentage/tint props, LinearBlur's side direction, the layered backdrop-filter plus gradient-mask mechanism, and the Chrome overflow + border-radius gotcha. Does NOT trigger on generic "add a blur", "make it blurry", or a uniform CSS filter blur. Use when wiring a progressive (gradient) backdrop-blur overlay.
 version: 0.1.0
 ---
 
@@ -46,6 +46,10 @@ The detailed prop reference, the Chrome ancestor gotcha, and the worked examples
 7. Pass any standard `<div>` attribute (`className`, `style`, `id`, `aria-*`) for positioning/styling — both components extend `React.HTMLAttributes<HTMLDivElement>`.
 
 Copy-paste JSX for both components is in the examples reference (see the Reference index above).
+
+## Examples
+
+Copy-paste JSX for both components — a `LinearBlur` sticky-top fade and a `RadialBlur` center-clear spotlight — lives in [examples](./references/examples.md), linked with its full TOC in the [Reference index](#reference-index) above.
 
 ## Output
 

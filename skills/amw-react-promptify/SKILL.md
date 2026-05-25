@@ -1,6 +1,6 @@
 ---
 name: amw-react-promptify
-description: react-promptify reference — the dependency-free window.prompt replacement for React (createPrompter factory, the Prompter render-host, the async prompt() resolving to a typed value or null on cancel). Triggers on "react-promptify", "custom prompt modal", "window.prompt replacement", "createPrompter", "promise-based modal returning a value". Does NOT trigger on generic "add a modal", "open a dialog", or "make a form" — those route to shadcn-ui and the orchestrator. Trigger with "react-promptify".
+description: react-promptify reference — the dependency-free window.prompt replacement for React (createPrompter factory, the Prompter render-host, the async prompt() resolving to a typed value or null on cancel). Triggers on "react-promptify", "custom prompt modal", "window.prompt replacement", "createPrompter", "promise-based modal returning a value". Does NOT trigger on generic "add a modal", "open a dialog", or "make a form". Use when wiring a react-promptify async value-returning prompt flow.
 version: 0.1.0
 ---
 
@@ -57,9 +57,17 @@ Do NOT invoke for generic "add a modal", "open a dialog", "make a form", modal s
 - **Install:** `npm install react-promptify` (zero runtime deps; ships TypeScript types).
 - No build step, CSS import, or runtime binaries — pure documentation. You bring your own modal markup/styles for the `Prompter` host.
 
-## Activation / Position / Output
+## Activation / Position
 
-No dedicated slash command. Invoked by the `design-principles` orchestrator during **Phase B** when an approved design needs an async value-returning prompt/confirm flow, or pulled in by `amw-wireframe-builder-agent` while assembling React UI; also callable directly on API questions. REFERENCE — produces no standalone artifacts, only API answers and JSX snippets; any UI embedding a prompter is assembled by `amw-wireframe-builder-agent` (with [shadcn-ui](../amw-shadcn-ui/SKILL.md) / [tailwind-4](../amw-tailwind-4/SKILL.md) for chrome). Techniques are NOT limited to what any command exposes.
+No dedicated slash command. Invoked by the `design-principles` orchestrator during **Phase B** when an approved design needs an async value-returning prompt/confirm flow, or pulled in by `amw-wireframe-builder-agent` while assembling React UI; also callable directly on API questions. REFERENCE in the flow. Techniques are NOT limited to what any command exposes.
+
+## Examples
+
+Worked code — a stateful custom-modal host, a stateless confirm-style prompt, and a bring-your-own shadcn `Dialog` host — lives in [examples](references/examples.md), linked with its full TOC in the [Reference index](#reference-index) above.
+
+## Output
+
+This skill produces no standalone artifacts — only `react-promptify` API answers and JSX snippets. Any UI embedding a prompter is assembled by `amw-wireframe-builder-agent` (with [shadcn-ui](../amw-shadcn-ui/SKILL.md) / [tailwind-4](../amw-tailwind-4/SKILL.md) for the surrounding chrome).
 
 ## Error Handling
 

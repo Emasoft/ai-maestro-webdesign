@@ -43,30 +43,9 @@ Generic design intent ("design a landing page" / "make a mockup" / "build a dash
 
 ## Component detection table (synthesis evidence)
 
-Every row maps an ASCII pattern → HTML element → which starter-component is the canonical source → which CSS tokens drive it. Parser functions from `bin/amw-ascii-parse.py` are named in parens.
+Every ASCII pattern maps to an HTML element, a canonical starter-component source, and the CSS tokens that drive it. The full 18-row table (frame / button / dropdown / card / card-grid / pipe-table / alert / attribution / route-line / form-inputs / checkbox-radio / sidebar / multi-col / nav-tabs / numbered-stages / sparkline / classic-ASCII / empty-row) lives at [component-detection-table](references/component-detection-table.md). Step 3 of `## Instructions` pattern-matches each parsed box/line against it.
 
-| ASCII pattern | HTML element | Starter-component source | Key CSS tokens | Tech |
-|---|---|---|---|---|
-| Outer `╭─╮ / │..│ / ╰─╯` frame | `<div class="frame">` with `max-width` + `margin: 0 auto` | `browser-window.html` `.browser` | `--radius`, `--bg` | TECH-69, TECH-08 |
-| 3-line rounded button `╭──╮ / │ L │ / ╰──╯` | `<button type="button">L</button>` min-h 44px | `animations.html` primary-btn | `--primary`, `--radius` | TECH-70, TECH-16, TECH-37 |
-| Box with `▾` inside | `<button aria-haspopup="listbox" aria-expanded="false">L <span aria-hidden="true">▾</span></button>` | — | `--primary`, `--text` | TECH-74 |
-| Titled card `│ Title │ / │ ──── │ / │ body │` | `<article class="card"><header class="card-title">` + bottom-border | — | `--bg`, `--text`, `--radius` | TECH-71, TECH-57 |
-| 3 peer cards side-by-side | `<div class="row-3"><div class="card">...</div>×3</div>` CSS `grid-cols-3` | — | `--space-*`, gap | TECH-73, TECH-72 |
-| Pipe-table w/ `----\|----` rule | `<table><thead><th scope="col">` | create-infographics table primacy | `--text`, `--bg` | TECH-82, TECH-54, TECH-49 |
-| `[!]` / `[*]` prefix inside card | `<article role="alert" aria-live="polite" class="alert alert-warn">` | — | `--danger`, `--primary` | TECH-75, TECH-47 |
-| `(@name)` attribution tag | `<span class="owner">@name</span>` with `aria-label` | — | `--text-muted` | TECH-76 |
-| `→ action` inline route line | `<ul class="route-list"><li>` with `::before { content:"→ "; }` | — | `--text`, `--primary` | TECH-80 |
-| `[ Text ]` / `[__ placeholder __]` | `<button>` / `<input>` with `<label for>` | form patterns | `--primary`, `--bg` | TECH-95, TECH-50 |
-| `[x] Text` / `[ ] Text` / `(o)` `( )` | `<input type="checkbox">` / `<input type="radio">` | form patterns | focus-ring | TECH-95, TECH-44 |
-| Sidebar + main `+---+------+` | CSS `grid-template-columns: 260px 1fr` | `macos-window.html` | layout | TECH-81, TECH-11 |
-| T-junction `┬ / ┴` multi-col | CSS `grid-template-columns: repeat(N, 1fr)` | — | gap | TECH-72 |
-| Nav tabs bar (3-line buttons in a row) | `<nav role="tablist"><button role="tab" aria-selected="true">` | `browser-window.html` tab chrome | `--primary`, `--radius` | TECH-08, TECH-43 |
-| Numbered `1. STAGE` / `2. STAGE` | `<ol class="stages">` | — | `--text` | TECH-79 |
-| Sparkline axis row `│────────│` inside a KPI card | inline `<svg viewBox>`+`<polyline>` placeholder | diagram-design-editorial | `--primary` | TECH-66, TECH-78 |
-| `+---+\|   \|+---+` classic mode (detect_format = ascii) | `<pre class="classic-ascii">` preserving chars | — | mono font | TECH-88, TECH-94 |
-| Empty row `│                │` inside box | extra `padding-top` on next child (not `<br>`) | — | `--space-*` | TECH-100 |
-
-## Conversion pipeline
+## Instructions
 
 1. **Validate** with `bin/amw-validate-ascii.py --in <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
 2. **Parse** with `bin/amw-ascii-parse.py --in <source> --mode wireframe --out /tmp/amw-ascii-html-<slug>-layout.json`. This runs `detect_format`, `to_grid`, `find_boxes`, `find_arrows`, `find_wireframe_components`. (TECH-91..TECH-97)
@@ -91,36 +70,17 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
 
 ## AI-slop avoidance gate (checklist, in order)
 
-Run these before saving. Each is pulled from `ai-slop-avoid.md`:
+Run these before saving — each is pulled from [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md):
 
-- (1) No `linear-gradient(135deg, #667eea, #764ba2)` or similar purple-blue gradient. (TECH-19)
-- (2) No `border-left: 4px solid <color>` on cards. (TECH-20)
-- (3) No AI-drawn SVG illustrations (use sized gray placeholder with dimension label). (TECH-21)
-- (4) No emoji carpet-bombing in headings or icons. (TECH-22)
-- (5) No default Inter/Roboto/Arial/system-ui/Fraunces/Poppins for body. (TECH-24)
-- (6) Max 3 font weights on one page. (TECH-25)
-- (7) No alternating white / pale-gray / white mechanical bands. (TECH-26)
-- (8) No "3 features in a row, icon each" stamped hero. (TECH-27)
-- (9) No fabricated testimonials ("Sarah J., CEO at TechCorp"). (TECH-28)
-- (10) No `element.scrollIntoView({behavior:'smooth'})` anywhere. (TECH-29)
-- (11) Borders ≥ `rgba(primary, 0.3)` or solid — no ghost borders. (TECH-52)
-- (12) Every element earns its place — delete decorative fillers. (TECH-30)
+1. No purple-blue `linear-gradient(135deg, #667eea, #764ba2)` (TECH-19); 2. no `border-left: 4px solid` on cards (TECH-20); 3. no AI-drawn SVG illustrations — sized gray placeholder instead (TECH-21); 4. no emoji carpet-bombing (TECH-22); 5. no default Inter/Roboto/Arial/system-ui/Fraunces/Poppins body font (TECH-24); 6. max 3 font weights (TECH-25); 7. no alternating white/pale-gray bands (TECH-26); 8. no "3 features in a row, icon each" hero (TECH-27); 9. no fabricated testimonials (TECH-28); 10. no `scrollIntoView({behavior:'smooth'})` (TECH-29); 11. borders ≥ `rgba(primary, 0.3)` or solid (TECH-52); 12. every element earns its place (TECH-30).
 
 ## Starter-component cross-reference
 
-- `../amw-design-principles/starter-components/browser-window.html` — default desktop chrome (TECH-08).
-- `../amw-design-principles/starter-components/ios-frame.html` — mobile-forced viewport (TECH-09).
-- `../amw-design-principles/starter-components/macos-window.html` — sidebar + main desktop app shell (TECH-11).
-- `../amw-design-principles/starter-components/deck-stage.html` — multi-screen deck with `data-screen-label` (TECH-10).
-- `../amw-design-principles/starter-components/android-frame.html` — mobile Android device frame.
-- `../amw-design-principles/starter-components/design-canvas.html` — free-standing canvas wrapper.
-- `../amw-design-principles/starter-components/animations.html` — timeline core (~50 LOC) — use FIRST before Popmotion (TECH-12).
-- `../amw-design-principles/starter-components/tweaks-block.html` — live-edit protocol (TECH-04, TECH-05, TECH-06, TECH-13).
-- [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) — version lock spec (TECH-01, TECH-02, TECH-03).
+Canonical chrome lives in `../amw-design-principles/starter-components/`: `browser-window.html` (default desktop chrome, TECH-08), `ios-frame.html` / `android-frame.html` (mobile viewports, TECH-09), `macos-window.html` (sidebar + main shell, TECH-11), `deck-stage.html` (multi-screen deck, TECH-10), `design-canvas.html` (free-standing canvas), `animations.html` (timeline core ~50 LOC — use FIRST before Popmotion, TECH-12), `tweaks-block.html` (live-edit protocol, TECH-04/05/06/13), and [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) (version lock, TECH-01/02/03).
 
 ## Output
 
-Produces a single artifact at the path specified in §Conversion pipeline — a self-contained `.html` file with inline CSS and JS, no external dependencies except the CDN pins declared in starter-components.
+Produces a single artifact at the path specified in the `## Instructions` conversion pipeline — a self-contained `.html` file with inline CSS and JS, no external dependencies except the CDN pins declared in starter-components.
 
 ## Examples
 

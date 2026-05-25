@@ -51,14 +51,12 @@ Then route by category (every technique below is one TECH file in `references/`;
 | Workflow assemblies | TECH-67 — TECH-71 | Masonry, virtualized list, SmartPage A4 auto-fit, streaming AI chat, auto-height textarea |
 | Consult / route / mobile | TECH-73 — TECH-78 | design-pipeline consult, dragon-text reflow, rich-note atomic pills, postext (RN), font strategy, style profiles |
 
-## Output and completion checklist
+## Output
 
-Full output contract (artifact-path inference rules, job-completion report shape, mandatory checklist) lives in [TECH-79-output-contract](./references/TECH-79-output-contract.md). Two outputs are mandatory:
-
-1. **Artifacts** — HTML pages / JS modules using `@chenglou/pretext`. Path is inferred from the project (user path → framework convention → `./design/<subtype>/` → fallback `./design/mockups/`).
+1. **Artifacts** — HTML pages / JS modules using `@chenglou/pretext` (wrapper module, layout component, virtualized table, etc.). Path is inferred from the project (user path → framework convention → `./design/<subtype>/` → fallback `./design/mockups/`).
 2. **Job-completion report** at `$MAIN_ROOT/reports/webdesigner/<ts±tz>_<title-slug>_<8-char-hash>.md` listing every artifact + the per-item checklist verdict.
 
-Before reporting complete: every checklist item in TECH-79-output-contract MUST be PASS or N/A. Any FAIL triggers a remediation loop.
+Full output contract (artifact-path inference rules, report shape, mandatory checklist) lives in [TECH-79-output-contract](./references/TECH-79-output-contract.md). Before reporting complete: every checklist item there MUST be PASS or N/A. Any FAIL triggers a remediation loop.
 
 ## How to use this skill
 

@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-creator
-description: Produce ONE validated perfect-ASCII artifact from a brief — structured via bin/amw-ascii-render.py, freeform via validate-iterate loop. Triggers on "ASCII diagram of", "ASCII wireframe of", "perfect ASCII of", "build ASCII mockup". Does NOT trigger on generic design intent — routes to design-principles → ascii-sketch. FINISHING skill — one validated .txt file delivered. Trigger with /amw-create-or-modify-ascii-diagram.
+description: Produce ONE validated perfect-ASCII artifact from a brief — structured via bin/amw-ascii-render.py, freeform via validate-iterate loop. Triggers on "ASCII diagram of", "ASCII wireframe of", "perfect ASCII of", "build ASCII mockup". Does NOT trigger on generic design intent — routes to design-principles → ascii-sketch. FINISHING skill — one validated .txt file delivered. Use when finalizing a single ASCII artifact to file. Trigger with /amw-create-or-modify-ascii-diagram.
 version: 0.1.0
 ---
 
@@ -81,13 +81,13 @@ Every technique lives in `./references/` (same TOC: *What it does · When to use
 - [TECH-sequence-notes](./references/TECH-sequence-notes.md), [style-presets-and-banned-chars](./references/style-presets-and-banned-chars.md)
 <!-- end of references -->
 
-## Completion checklist + output
+## Output
 
-See [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md) for the standard completion checklist and the job-completion report contract every executor in this plugin shares. This skill's `## Non-negotiables` section below lists the skill-specific additions to that baseline (e.g. Mode A renderer-pass requirement, Mode B validator-pass requirement).
+Exactly one validated perfect-ASCII `.txt` file with a descriptive English filename, plus a job-completion report. Mode A output must execute `bin/amw-ascii-render.py` cleanly (non-zero exit = not delivered); Mode B output must PASS `bin/amw-validate-ascii.py` before save. See [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md) for the shared checklist and report contract; this skill's `## Non-negotiables` lists the Mode-specific additions.
 
 ## Style presets and banned characters
 
-The four style presets (`detallado`, `unicode`, `clasico`, `compacto`) and the full validator-enforced banned-character ban-list (severity-rated CRITICAL / HIGH / MEDIUM + always-banned emoji / CJK) live at [style-presets-and-banned-chars](./references/style-presets-and-banned-chars.md). Open that reference to look up which preset to apply or which character substitution the validator will require.
+The four presets (`detallado` / `unicode` / `clasico` / `compacto`) and the full validator-enforced ban-list (severity-rated CRITICAL/HIGH/MEDIUM + always-banned emoji/CJK) live at [style-presets-and-banned-chars](./references/style-presets-and-banned-chars.md).
 
 ## Prerequisites
 

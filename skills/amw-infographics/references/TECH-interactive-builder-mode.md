@@ -75,6 +75,8 @@ A6. Assembly — combine approved components into final HTML
 
 ## Preview server
 
+<!-- cpv-fp SSRF_PATTERN: the localhost URL below is a liveness probe for a local dev preview server (documented example), not a server-side request forgery. -->
+
 ```bash
 # source: image-generation/create-infographics/SKILL.md
 curl -s http://localhost:7783/__mtime__ > /dev/null 2>&1 \

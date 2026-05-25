@@ -131,6 +131,10 @@ Full reference index: [INDEX.md](./references/INDEX.md) — 32 TECH-*.md files g
 
 See the worked examples in the per-step reference files under `./references/TECH-hyperframes-capture-step-*.md` (7-step website-to-video pipeline) and the composition authoring guide at [TECH-hyperframes-composition-core](./references/TECH-hyperframes-composition-core.md).
 
+## Output
+
+A rendered **MP4 video file** plus a job-completion report. The MP4 is produced by `npx hyperframes render --output <mp4>` from the resolved project directory; the bridge confirms the file exists and is non-empty before reporting success. Full contract below.
+
 ## Output and completion checklist
 
 Full output contract (artifact-path inference rules, job-completion report shape, mandatory checklist) lives in [TECH-output-contract](./references/TECH-output-contract.md). Two outputs are mandatory:

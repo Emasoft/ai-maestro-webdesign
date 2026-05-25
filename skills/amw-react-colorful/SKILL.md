@@ -1,6 +1,6 @@
 ---
 name: amw-react-colorful
-description: react-colorful reference — the tiny dependency-free React/Preact color-picker component (HexColorPicker, RgbaColorPicker, HslColorPicker, HexColorInput, setNonce). Covers the 15 picker components, the controlled color/onChange/onChangeEnd props, the 6 color-model types, HexColorInput alpha/prefixed props, CSS class hooks, and the setNonce CSP helper. Does NOT trigger on generic color help, palette/token design, or choosing brand colors. Trigger with "react-colorful" or "color picker component".
+description: react-colorful reference — the tiny dependency-free React/Preact color-picker component (HexColorPicker, RgbaColorPicker, HslColorPicker, HexColorInput, setNonce). Covers the 15 picker components, the controlled color/onChange/onChangeEnd props, the 6 color-model types, HexColorInput alpha/prefixed props, CSS class hooks, and the setNonce CSP helper. Does NOT trigger on generic color help, palette/token design, or choosing brand colors. Use when wiring a react-colorful color-picker widget.
 version: 0.1.0
 ---
 
@@ -47,9 +47,17 @@ Detailed API tables and integration recipes live in this skill's own reference f
 
 A full controlled hex-picker example (picker + matching `HexColorInput` + expensive save on gesture end) is in styling-and-integration § Worked example.
 
+## Examples
+
+The worked example — a controlled hex picker with a matching `HexColorInput` and an expensive save deferred to `onChangeEnd` — lives in [styling-and-integration](./references/styling-and-integration.md) § Worked example.
+
 ## Output
 
 This skill produces no standalone artifacts — it provides `react-colorful` API answers and JSX snippets. Any HTML/React UI that embeds the picker is assembled by `amw-wireframe-builder-agent` (with [SKILL](../amw-shadcn-ui/SKILL.md) / [SKILL](../amw-tailwind-4/SKILL.md) for the surrounding chrome).
+
+## Error Handling
+
+The failure-mode playbook (uncontrolled/read-only picker from a missing `onChange`, format mismatch, jank from heavy work in `onChange`, CSP nonce errors) lives in [styling-and-integration](./references/styling-and-integration.md) § Error handling.
 
 ## Trigger conditions
 

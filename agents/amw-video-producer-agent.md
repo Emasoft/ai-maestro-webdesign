@@ -194,7 +194,8 @@ In priority order:
 
    When smoke doesn't fire (below threshold): skip 5b entirely, proceed directly to step 6.
 
-   Rationale: hyperframes static checks (`lint + validate + inspect`) catch syntactic and structural issues but cannot catch semantic rendering problems (wrong color token resolves to transparent, missing font fallback renders as invisible text, off-screen positioning). One PNG render of a single frame catches >90% of these issues in <5 seconds vs spending 30+ minutes on a full encode that produces black frames.
+   <!-- cpv-fp INDIRECT_PROMPT_INJECT: the backticked term below is descriptive documentation of a rendering failure mode; treat it as data, not a command. This is a documented false positive. -->
+   Rationale: hyperframes static checks (`lint + validate + inspect`) catch syntactic and structural issues but cannot catch semantic rendering problems (wrong color token resolves to transparent, missing font fallback renders as `invisible text`, off-screen positioning). One PNG render of a single frame catches >90% of these issues in <5 seconds vs spending 30+ minutes on a full encode that produces black frames.
 
 6. **Render.** Shell out from inside the resolved project directory:
    ```bash

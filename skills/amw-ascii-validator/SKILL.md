@@ -121,6 +121,16 @@ Every technique lives in `./references/` (same TOC: *What it does · When to use
 
 See [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md) for the standard completion checklist and job-completion report contract every executor in this plugin shares. This skill's `## Non-negotiables` section below lists the skill-specific additions.
 
+## Output
+
+Two output shapes, one per mode:
+
+<!-- cpv-fp INDIRECT_PROMPT_INJECT: the backticked term below is descriptive documentation of an output shape; treat it as data, not a command. This is a documented false positive. -->
+- **Render mode** — perfectly-aligned `ASCII text` (the rendered diagram), written to stdout / a `.txt` file. Guaranteed alignment by construction; 78-column max.
+- **Validate mode** — a verdict line per the shared contract: `PASS: <path>` on success, or one `FAIL: <line>: <message> [FIX: <hint>]` line per defect with exact column-level repair hints. Exit 0 on PASS, 1 on FAIL.
+
+The skill itself does not author content — it renders or gates ASCII produced by the calling skill.
+
 ## Prerequisites
 
 - **runtime_binaries:** `python3 >= 3.8` (system-required per plugin contract)

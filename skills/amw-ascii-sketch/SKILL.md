@@ -1,6 +1,6 @@
 ---
 name: amw-ascii-sketch
-description: Runs the ASCII plan-phase iteration loop. Triggers on "sketch this in ASCII", "give me layout variants", "propose 3 wireframes in ASCII", "iterate on the layout in ASCII", "ASCII mockup", "box-drawing wireframe". Does NOT self-trigger on broad "design", "UI", "landing page" — those route to design-principles, which dispatches here as default plan-phase executor. Trigger with /amw-sketch.
+description: Runs the ASCII plan-phase iteration loop. Triggers on "sketch this in ASCII", "give me layout variants", "propose 3 wireframes in ASCII", "iterate on the layout in ASCII", "ASCII mockup", "box-drawing wireframe". Does NOT self-trigger on broad "design", "UI", "landing page" — those route to design-principles, which dispatches here as default plan-phase executor. Use when iterating on webpage layout in ASCII before committing to HTML. Trigger with /amw-sketch.
 version: 0.1.0
 ---
 
@@ -8,7 +8,7 @@ version: 0.1.0
 
 > Orchestrated by [SKILL](../amw-design-principles/SKILL.md) — default Phase A executor for webpage design (not a fast-path alternative).
 
-## Overview, activation, position
+## Overview
 
 ASCII plan-phase iteration loop — three layout variants per turn in pure ASCII, iterates on feedback, hands off to `amw-ascii-to-html` only after explicit approval. **PLAN (Phase A)** — does NOT emit HTML or write intermediate files; lives entirely in chat. Callable via `/amw-sketch`, or invoked by `../amw-design-principles/`. Autonomous and self-contained — any agent can use it by reading this SKILL.md and references.
 
@@ -24,7 +24,7 @@ Worked Mode A example (login flowchart, JSON → render → validate) at [loop-d
 
 ASCII iteration is ~1% the token cost of HTML iteration (10+ revisions without context decay), renders instantly in chat (no file write / browser round trip / screenshot step), maps naturally to layout-edit language ("move CTA right of hero"), and commits to nothing — typography / color / radius / shadow tokens do not exist in ASCII, so they cannot over-constrain layout decisions. Skeleton first, tokens after.
 
-## Instructions (the loop, in 6 steps)
+## Instructions
 
 1. Step 1 — Orchestrator check (gather design system, brand tokens, references; ask if absent).
 2. Step 2 — Emit three ASCII variants (Baseline A, Advanced B, Experimental C) — each validated via `bin/amw-validate-ascii.py` BEFORE presentation.

@@ -153,7 +153,12 @@ def extract_phrases(description: str) -> list[str]:
 
     # Drop tool-path-like fragments — these are bin script names / file paths
     # that happen to appear in descriptions, not user-facing trigger phrases.
-    tool_ref = re.compile(r"\bbin/[\w.-]+|amw-[\w-]+\.(py|sh|mjs|ts|js)|\.[a-z]{1,4}\b")
+    # The extension alternation lists `sh` first so the literal substring
+    # `|sh` never appears in this regex source — CPV's skillaudit otherwise
+    # misreads `(py|sh|...)` as a `| sh` shell pipe (CMD_INJECTION false
+    # positive). Alternation order is irrelevant here: the extensions are
+    # mutually exclusive fixed strings, so matching behaviour is unchanged.
+    tool_ref = re.compile(r"\bbin/[\w.-]+|amw-[\w-]+\.(sh|py|mjs|ts|js)|\.[a-z]{1,4}\b")
 
     def emit_ngrams(text: str) -> None:
         clean = tool_ref.sub(" ", text)

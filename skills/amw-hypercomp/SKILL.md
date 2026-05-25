@@ -63,6 +63,10 @@ return <div style={{ filter: css(goo, "goo") }}>hello world</div>;
 
 `compile(Effect.source.blur(2))` → `<feGaussianBlur stdDeviation="2"/>`. Wrapping in `filter()` first emits the full `<filter>…</filter>` tag. See [render-and-react](references/render-and-react.md) for the rules.
 
+## Examples
+
+The gooey-edges chain above is the at-a-glance example; the full worked recipes (drop-shadow, displacement distortion, lighting, blend-mode composites) live in [render-and-react](references/render-and-react.md) § Recipes, linked with its full TOC in the [Structure](#structure) section below.
+
 ## Output
 
 This skill produces **no standalone artifact**. It provides hypercomp lookup answers, verified operator signatures, and TypeScript snippets. The resulting filter is consumed inside HTML/SVG produced by `amw-ascii-to-html` / `amw-wireframe-builder-agent`, or applied to SVG authored via [SKILL](../amw-svg-creator/SKILL.md). It is an effect layer, never a substitute for the geometry/markup.

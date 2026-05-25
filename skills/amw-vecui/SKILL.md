@@ -1,6 +1,6 @@
 ---
 name: amw-vecui
-description: vecui reference — tiny immutable vec2 + rect math library (MIT) for JS-driven animated layouts CSS cannot express. Covers vec()/rect() factories, immutable operators (add/sub/mul/div/dot/cross/rotRad/rotDeg/norm/len/lookAt/angleTo) and rect.as.styleObject() for absolutely-positioned elements. Triggers on "vecui", "vec2 layout math", "vector math for layout". Does NOT trigger on generic "animate this", "lay out my page", or CSS layout. Trigger with "vecui" or "vec2 layout math".
+description: vecui reference — tiny immutable vec2 + rect math library (MIT) for JS-driven animated layouts CSS cannot express. Covers vec()/rect() factories, immutable operators (add/sub/mul/div/dot/cross/rotRad/rotDeg/norm/len/lookAt/angleTo) and rect.as.styleObject() for absolutely-positioned elements. Triggers on "vecui", "vec2 layout math", "vector math for layout". Does NOT trigger on generic "animate this", "lay out my page", or CSS layout. Use when doing JS-driven vec2/rect layout math.
 version: 0.1.0
 ---
 
@@ -67,6 +67,10 @@ The full API tables and worked layout patterns live under `references/` — read
 4. For applying the result to the DOM, use `rect.as.styleObject()` (React/`element.style`) or `rect.as.cssText()` (string) — see the Rect API reference, § Applying to the DOM.
 5. Remember every operation returns a **new** value — there is no in-place mutation. Treat vectors and rects like number primitives.
 6. Extract the specific answer; do not paste the whole API back to the user.
+
+## Examples
+
+The canonical positioning patterns — "center, then align-to-side, then expand-on-hover" verbatim from the upstream demo, plus the rotation/coordinate-system worked example — live in [Layout recipes](references/layout-recipes.md), linked with its full TOC in the [Reference index](#reference-index) above.
 
 ## Output
 
