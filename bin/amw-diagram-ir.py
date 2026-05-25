@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""diagram-ir.py — parse / emit / validate / diff the plugin's diagram IR.
+"""amw-diagram-ir.py — parse / emit / validate / diff the plugin's diagram IR.
 
 The IR (Intermediate Representation) is the pivot format for cross-format
 diagram conversion in the `ai-maestro-webdesign` plugin. Its canonical schema
@@ -349,11 +349,11 @@ def parse_ascii(path: pathlib.Path) -> Dict[str, Any]:
 
     The existing parser emits a structured-JSON form. We flatten it into IR
     nodes (one per detected box) and edges (one per detected connector).
-    When ascii-parse.py cannot extract structure (pure freeform wireframe),
+    When amw-ascii-parse.py cannot extract structure (pure freeform wireframe),
     we fall back to the raw-source stub so the renderer can round-trip.
     """
     raw = path.read_text(encoding="utf-8")
-    parser = BIN_DIR / "ascii-parse.py"
+    parser = BIN_DIR / "amw-ascii-parse.py"
     if not parser.exists():
         return _raw_source_ir("ascii", raw)
 
@@ -364,7 +364,7 @@ def parse_ascii(path: pathlib.Path) -> Dict[str, Any]:
         check=False,
     )
     if result.returncode != 0 or not result.stdout.strip():
-        # ascii-parse.py could not find structure; carry raw source instead.
+        # amw-ascii-parse.py could not find structure; carry raw source instead.
         return _raw_source_ir("ascii", raw)
 
     parsed = json.loads(result.stdout)
@@ -412,7 +412,7 @@ def _parse_via_subprocess(fmt: str, path: pathlib.Path) -> Dict[str, Any]:
 
     Fail-fast: raises SystemExit with the parser's stderr on non-zero exit.
     """
-    parser_path = BIN_DIR / f"parse-{fmt}-diagram.py"
+    parser_path = BIN_DIR / f"amw-parse-{fmt}-diagram.py"
     result = subprocess.run(
         [sys.executable, str(parser_path), "--in", str(path)],
         capture_output=True,
@@ -421,7 +421,7 @@ def _parse_via_subprocess(fmt: str, path: pathlib.Path) -> Dict[str, Any]:
     )
     if result.returncode != 0:
         raise SystemExit(
-            f"parse-{fmt}-diagram.py failed (exit {result.returncode}):\n"
+            f"amw-parse-{fmt}-diagram.py failed (exit {result.returncode}):\n"
             + (result.stderr or result.stdout or "(no output)")
         )
     return json.loads(result.stdout)
@@ -464,7 +464,7 @@ def _render_ir_as_ascii(ir: Dict[str, Any]) -> str:
     # Fallback: build a minimal diagram-mode JSON and delegate to
     # bin/amw-ascii-render.py. Only works for simple flowcharts; keeps emitter
     # useful for cross-format via IR even without per-format renderers.
-    renderer = BIN_DIR / "ascii-render.py"
+    renderer = BIN_DIR / "amw-ascii-render.py"
     if not renderer.exists() or not nodes:
         # Last-resort plain text listing.
         lines = [f"[{n.get('id')}] {n.get('label','')}" for n in nodes]

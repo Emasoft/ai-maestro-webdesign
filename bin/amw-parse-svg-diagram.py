@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""parse-svg-diagram.py — parse a standalone SVG document into diagram-IR JSON.
+"""amw-parse-svg-diagram.py — parse a standalone SVG document into diagram-IR JSON.
 
 This is the Phase 1b SVG parser for the `ai-maestro-webdesign` plugin. It
 consumes an SVG document (file or stdin) and emits an IR object whose shape
 is defined by `skills/amw-diagram-formats/schema.json` (`diagram-ir/1.0`).
 
-Replaces the `annotations:["raw-source"]` MVP stub that `bin/diagram-ir.py`
+Replaces the `annotations:["raw-source"]` MVP stub that `bin/amw-diagram-ir.py`
 currently emits for SVG inputs. A separate wire-up agent will integrate the
-call inside `diagram-ir.py::parse_path`; this script does NOT modify that
+call inside `amw-diagram-ir.py::parse_path`; this script does NOT modify that
 module.
 
 Parse strategy
@@ -64,7 +64,7 @@ Metadata:
 
 CLI
 ---
-    parse-svg-diagram.py [--in <path>|-] [--out <path>]
+    amw-parse-svg-diagram.py [--in <path>|-] [--out <path>]
 
 `--in -` or omitted `--in` reads stdin. Omitted `--out` writes to stdout.
 JSON output uses `indent=2, ensure_ascii=False`.
@@ -553,10 +553,11 @@ def _infer_kind(nodes: List[Dict[str, Any]]) -> str:
     return "arch"
 
 
-def _infer_layout_and_ranks(
-    nodes: List[Dict[str, Any]], edges: List[Dict[str, Any]]
-) -> str:
-    """Assign ranks in-place if the y-coordinates form clear bands."""
+def _infer_layout_and_ranks(nodes: List[Dict[str, Any]]) -> str:
+    """Assign ranks in-place if the y-coordinates form clear bands.
+
+    Layout is inferred from node y-band positions only; edges are not consulted.
+    """
     if not nodes:
         return "freeform"
     with_bbox = [n for n in nodes if n.get("bbox")]
@@ -598,7 +599,7 @@ def _first_text(root: ET.Element, local_name: str) -> Optional[str]:
 # ---------------------------------------------------------------------------
 # Lightweight IR validator — duplicates the schema rules from
 # skills/amw-diagram-formats/schema.json just enough to self-check output.
-# This is a local belt-and-braces check; bin/diagram-ir.py's full
+# This is a local belt-and-braces check; bin/amw-diagram-ir.py's full
 # validator will run downstream.
 # ---------------------------------------------------------------------------
 
@@ -677,7 +678,7 @@ def parse_svg(svg_text: str) -> Dict[str, Any]:
     else:
         edges, skipped = _discover_edges(root, nodes, all_texts)
         kind = _infer_kind(nodes)
-        layout = _infer_layout_and_ranks(nodes, edges)
+        layout = _infer_layout_and_ranks(nodes)
         ir = {
             "format": IR_VERSION,
             "source_format": "svg",
@@ -727,7 +728,7 @@ def _write_output(text: str, out_arg: Optional[str]) -> None:
 
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="parse-svg-diagram.py",
+        prog="amw-parse-svg-diagram.py",
         description="Parse a standalone SVG document into diagram-IR JSON (diagram-ir/1.0).",
     )
     parser.add_argument("--in", dest="in_arg", default=None,

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# designlang-wrapper.sh — thin wrapper over `npx designlang`.
+# amw-designlang-wrapper.sh — thin wrapper over `npx designlang`.
 #
 # Used by: skills/amw-design-extract, /amw-extract-style.
 #

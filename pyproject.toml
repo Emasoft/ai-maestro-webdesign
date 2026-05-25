@@ -9,6 +9,14 @@ authors = [
 ]
 requires-python = ">=3.12"
 
+# CI runs `uv sync --extra dev` then `uv run pytest tests/ -v` (see
+# .github/workflows/ci.yml). Without this extra that sync fails with
+# "Extra `dev` is not defined". Pin pytest exactly for reproducible runs.
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.3",
+]
+
 [project.urls]
 Homepage = "https://github.com/Emasoft/ai-maestro-plugins"
 Repository = "https://github.com/Emasoft/ai-maestro-plugins"

@@ -1,14 +1,14 @@
 #!/bin/sh
-# validate-diagram.sh — top-level validator dispatcher.
+# amw-validate-diagram.sh — top-level validator dispatcher.
 #
 # Usage:
-#   bin/validate-diagram.sh <path>
+#   bin/amw-validate-diagram.sh <path>
 #
-# Auto-detects format via bin/diagram-detect-format.sh and routes to:
-#   ascii    -> bin/validate-ascii.py
-#   svg      -> bin/validate-svg-diagram.sh
-#   html     -> bin/validate-html-diagram.sh
-#   mermaid  -> bin/mermaid-lint.sh
+# Auto-detects format via bin/amw-diagram-detect-format.sh and routes to:
+#   ascii    -> bin/amw-validate-ascii.py
+#   svg      -> bin/amw-validate-svg-diagram.sh
+#   html     -> bin/amw-validate-html-diagram.sh
+#   mermaid  -> bin/amw-mermaid-lint.sh
 #   png      -> hardcoded refusal (PNG is output-only by plugin directive)
 #   unknown  -> exit 2 with a hint
 #
@@ -40,28 +40,28 @@ EOF
 input="$1"
 [ -r "$input" ] || { echo "ERROR: cannot read: $input" >&2; exit 3; }
 
-detect="$SELF_DIR/diagram-detect-format.sh"
+detect="$SELF_DIR/amw-diagram-detect-format.sh"
 [ -x "$detect" ] || { echo "ERROR: missing $detect" >&2; exit 3; }
 
 fmt="$("$detect" "$input")"
 
 case "$fmt" in
   ascii)
-    if command -v python3 >/dev/null 2>&1 && [ -x "$SELF_DIR/validate-ascii.py" ]; then
-      exec python3 "$SELF_DIR/validate-ascii.py" "$input"
+    if command -v python3 >/dev/null 2>&1 && [ -x "$SELF_DIR/amw-validate-ascii.py" ]; then
+      exec python3 "$SELF_DIR/amw-validate-ascii.py" "$input"
     else
       echo "ERROR: no ASCII validator available (need python3)." >&2
       exit 3
     fi
     ;;
   svg)
-    exec "$SELF_DIR/validate-svg-diagram.sh" "$input"
+    exec "$SELF_DIR/amw-validate-svg-diagram.sh" "$input"
     ;;
   html)
-    exec "$SELF_DIR/validate-html-diagram.sh" "$input"
+    exec "$SELF_DIR/amw-validate-html-diagram.sh" "$input"
     ;;
   mermaid)
-    exec "$SELF_DIR/mermaid-lint.sh" "$input"
+    exec "$SELF_DIR/amw-mermaid-lint.sh" "$input"
     ;;
   png)
     echo "REFUSE: PNG is output-only by plugin directive; validate the source artifact instead."

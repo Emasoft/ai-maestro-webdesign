@@ -1,5 +1,5 @@
 #!/bin/sh
-# validate-svg-diagram.sh — SVG validator.
+# amw-validate-svg-diagram.sh — SVG validator.
 # Uses xmllint for XML well-formedness + a grep sanity check for the SVG namespace.
 #
 # Output contract (unified across plugin validators):

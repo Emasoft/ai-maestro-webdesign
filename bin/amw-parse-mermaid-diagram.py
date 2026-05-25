@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-r"""parse-mermaid-diagram.py — parse Mermaid source into the plugin's diagram IR.
+r"""amw-parse-mermaid-diagram.py — parse Mermaid source into the plugin's diagram IR.
 
-Replaces the raw-source freeform stub that `bin/diagram-ir.py` emits for Mermaid
+Replaces the raw-source freeform stub that `bin/amw-diagram-ir.py` emits for Mermaid
 inputs with a structured `diagram-ir/1.0` document. The IR schema is mirrored at
 `skills/amw-diagram-formats/schema.json` (authoritative) and documented in prose at
 `skills/amw-diagram-formats/references/ir-schema.md`. The Mermaid grammar reference
@@ -40,7 +40,7 @@ Anything else (`gantt`, `pie`, `journey`, `mindmap`, `quadrantChart`,
 `gitGraph`, `C4Context`, or an unrecognised first line) falls through to a
 `kind: freeform` single-node stub with `annotations: ["raw-source"]` carrying
 the verbatim source. This keeps the conversion pipeline from breaking on
-unsupported inputs — the same contract `bin/diagram-ir.py` uses for the MVP.
+unsupported inputs — the same contract `bin/amw-diagram-ir.py` uses for the MVP.
 
 Directive + comment handling
 ----------------------------
@@ -54,7 +54,7 @@ Directive + comment handling
 
 CLI contract (fail-fast; no try/except swallowing)
 --------------------------------------------------
-  parse-mermaid-diagram.py [--in <path>|-] [--out <path>]
+  amw-parse-mermaid-diagram.py [--in <path>|-] [--out <path>]
 
 Exit codes
 ----------
@@ -77,7 +77,7 @@ from typing import Any, Dict, List, Optional, Tuple
 IR_VERSION = "diagram-ir/1.0"
 
 # ---------------------------------------------------------------------------
-# Inline JSON schema — kept in sync with bin/diagram-ir.py::SCHEMA and with
+# Inline JSON schema — kept in sync with bin/amw-diagram-ir.py::SCHEMA and with
 # skills/amw-diagram-formats/schema.json. Drift here is a parse error.
 # ---------------------------------------------------------------------------
 
@@ -401,13 +401,14 @@ def _arrow_style_for_glyph(glyph: str) -> str:
     return "solid"
 
 
-def parse_flowchart(lines: List[str], direction: str) -> Dict[str, Any]:
+def parse_flowchart(lines: List[str]) -> Dict[str, Any]:
     """Parse a `flowchart`/`graph` body into structured IR.
 
     The first element of `lines` is the header; subsequent lines carry node
     declarations, edges, `subgraph ... end` blocks, and ignorable directives
     (`classDef`, `class`, `click`, `linkStyle`, `style`). Edges are split on
-    `&` (Mermaid's multi-target shortcut) and on newlines.
+    `&` (Mermaid's multi-target shortcut) and on newlines. Layout direction is
+    captured by the caller into `metadata.direction`, so it is not needed here.
     """
     nodes: List[Dict[str, Any]] = []
     edges: List[Dict[str, Any]] = []
@@ -853,7 +854,7 @@ def parse_er(lines: List[str]) -> Dict[str, Any]:
 def _raw_source_ir(raw: str, title: str) -> Dict[str, Any]:
     """Return a `freeform` raw-source IR for unsupported Mermaid grammars.
 
-    Matches the same contract as `bin/diagram-ir.py::_raw_source_ir`:
+    Matches the same contract as `bin/amw-diagram-ir.py::_raw_source_ir`:
     emitters that target the same `source_format` MUST round-trip
     `nodes[0].label` verbatim.
     """
@@ -902,7 +903,7 @@ def parse_mermaid(source: str) -> Dict[str, Any]:
     title = meta.get("title") or default_title
 
     if diagram_type in ("flowchart", "graph"):
-        body = parse_flowchart(lines, direction)
+        body = parse_flowchart(lines)
     elif diagram_type == "sequenceDiagram":
         body = parse_sequence(lines)
     elif diagram_type in ("stateDiagram", "stateDiagram-v2"):
@@ -934,11 +935,11 @@ def parse_mermaid(source: str) -> Dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Self-validation — mirrors bin/diagram-ir.py::validate's semantic checks.
-# Pure stdlib; no import of diagram-ir to avoid circular dependency.
+# Self-validation — mirrors bin/amw-diagram-ir.py::validate's semantic checks.
+# Pure stdlib; no import of amw-diagram-ir to avoid circular dependency.
 # ---------------------------------------------------------------------------
 
-def _validate_ir(ir: Dict[str, Any]) -> List[str]:
+def _validate_ir(ir: Any) -> List[str]:
     """Return a list of validation-error strings; empty list = PASS.
 
     Enforces the schema's required keys, enum memberships, id pattern, and
@@ -1045,7 +1046,7 @@ def _write_output(ir: Dict[str, Any], out_arg: Optional[str]) -> None:
 
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="parse-mermaid-diagram.py",
+        prog="amw-parse-mermaid-diagram.py",
         description="Parse Mermaid source into a diagram-ir/1.0 JSON document.",
     )
     parser.add_argument(

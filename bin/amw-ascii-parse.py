@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ascii-parse.py — tokenize ASCII box-drawing / wireframe text into structured JSON.
+amw-ascii-parse.py — tokenize ASCII box-drawing / wireframe text into structured JSON.
 
 Used by: ascii-to-svg, ascii-to-html, wd-ascii-to-svg, wd-ascii-to-html.
 
@@ -26,8 +26,8 @@ Input formats recognized
 
 Usage
 -----
-  ascii-parse.py --in file.txt [--mode diagram|wireframe|auto] [--out out.json]
-  cat file.txt | ascii-parse.py --mode diagram
+  amw-ascii-parse.py --in file.txt [--mode diagram|wireframe|auto] [--out out.json]
+  cat file.txt | amw-ascii-parse.py --mode diagram
 """
 
 import argparse

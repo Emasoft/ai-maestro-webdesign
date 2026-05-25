@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""parse-html-diagram.py — HTML (and HTML + inline SVG) → diagram-ir/1.0 JSON.
+"""amw-parse-html-diagram.py — HTML (and HTML + inline SVG) → diagram-ir/1.0 JSON.
 
 CLI
 ---
-    parse-html-diagram.py [--in <path>|-] [--out <path>]
+    amw-parse-html-diagram.py [--in <path>|-] [--out <path>]
 
     --in  <path>   Input HTML file. Use `-` to read from stdin. Default: stdin.
     --out <path>   Output JSON file. Omitted = stdout.
@@ -57,11 +57,7 @@ Implementation notes
 --------------------
 - Primary parser: `html.parser.HTMLParser` from the stdlib. A minimal
   subclass is used for the semantic-landmark and freeform branches.
-- Optional: `lxml` and `beautifulsoup4` are detected at import time; when
-  available they're used for the inline-SVG branch because SVG geometry
-  extraction is significantly more reliable with a real XML parser.
-- No hard dependency on lxml / bs4. The stdlib path produces valid IR for
-  all three branches.
+- All three branches use the stdlib parser only; no lxml / bs4 dependency.
 - Fail-fast. No broad `except`. Only the FREEFORM FALLBACK is a "fallback",
   and it's documented above — not an error recovery.
 
@@ -93,26 +89,6 @@ import sys
 from html.parser import HTMLParser
 from typing import Any, Dict, List, Optional, Tuple
 
-# Optional dependencies — detected at import time, never required.
-# We only check availability (parser uses the stdlib HTMLParser on this path),
-# so import the module itself instead of a symbol — keeps ruff F401 clean
-# while still surfacing _HAS_BS4 to downstream branches that may want to
-# delegate to a richer parser when bs4 is present.
-try:
-    import bs4  # type: ignore  # noqa: F401
-
-    _HAS_BS4 = True
-except ImportError:
-    _HAS_BS4 = False
-
-try:
-    import lxml.etree  # type: ignore  # noqa: F401
-
-    _HAS_LXML = True
-except ImportError:
-    _HAS_LXML = False
-
-
 IR_VERSION = "diagram-ir/1.0"
 SOURCE_FORMAT = "html"
 
@@ -123,11 +99,11 @@ ID_SAFE_RE = re.compile(r"[^A-Za-z0-9_\-]+")
 
 # ---------------------------------------------------------------------------
 # IR validation (minimal, self-contained — mirrors schema.json invariants).
-# Kept local so this script has zero runtime dependency on diagram-ir.py.
+# Kept local so this script has zero runtime dependency on amw-diagram-ir.py.
 # ---------------------------------------------------------------------------
 
 
-def _validate_ir(ir: Dict[str, Any]) -> List[str]:
+def _validate_ir(ir: Any) -> List[str]:
     """Return a list of error strings. Empty list = PASS.
 
     Enforces the rules from schema.json + ir-schema.md §8:

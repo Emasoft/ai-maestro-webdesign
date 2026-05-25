@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 #
-# mermaid-render.sh — ai-maestro-webdesign plugin wrapper for
+# amw-mermaid-render.sh — ai-maestro-webdesign plugin wrapper for
 # external/mermaid-render (consolidates beautiful-mermaid + pretty-mermaid +
 # agent-skill-diagramming-flows). Single entry point used by the
 # `mermaid-render` skill and by any skill that needs a Mermaid → SVG or
 # Mermaid → ASCII render.
 #
 # Usage:
-#   bin/mermaid-render.sh --input <file|-> --format <svg|ascii> [--theme <name>] [--out <path>] [other flags...]
+#   bin/amw-mermaid-render.sh --input <file|-> --format <svg|ascii> [--theme <name>] [--out <path>] [other flags...]
 #
 # --input -        reads Mermaid text from stdin (explicit form)
 # (no --input)     if stdin is a pipe (not a TTY), stdin is auto-consumed
 # --format svg     emits SVG to --out (or stdout)
-# --format ascii   emits ASCII to --out (or stdout), piped through validate-ascii.py as a warn-only gate
+# --format ascii   emits ASCII to --out (or stdout), piped through amw-validate-ascii.py as a warn-only gate
 # --theme <name>   one of the 15 built-in themes; see `--list-themes`
 # --list-themes    prints the built-in theme list and exits
 # --version        prints the wrapper version and exits
@@ -37,7 +37,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGIN_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 VENDOR_DIR="$PLUGIN_ROOT/external/mermaid-render"
-VALIDATOR="$SCRIPT_DIR/validate-ascii.py"
+VALIDATOR="$SCRIPT_DIR/amw-validate-ascii.py"
 
 WRAPPER_VERSION="1.0.0"
 
@@ -45,7 +45,7 @@ WRAPPER_VERSION="1.0.0"
 for a in "$@"; do
   case "$a" in
     --version|-v)
-      echo "mermaid-render.sh $WRAPPER_VERSION (ai-maestro-webdesign plugin wrapper)"
+      echo "amw-mermaid-render.sh $WRAPPER_VERSION (ai-maestro-webdesign plugin wrapper)"
       exit 0
       ;;
     --list-themes)
@@ -120,7 +120,7 @@ done
 # --- stdin fallback ------------------------------------------------------
 # If no --input was provided AND stdin is a pipe (not a TTY), consume stdin
 # into a temp file and inject --input <tmpfile> into the forwarded args.
-# This keeps the single-line `echo "..." | mermaid-render.sh --format svg`
+# This keeps the single-line `echo "..." | amw-mermaid-render.sh --format svg`
 # invocation working without a fragile "--input -" incantation.
 STDIN_TMPFILE=""
 if [ "$HAS_INPUT" -eq 0 ] && [ ! -t 0 ]; then
@@ -139,16 +139,16 @@ if ! node "$VENDOR_DIR/scripts/render.mjs" "${ARGS[@]}"; then
   exit 1
 fi
 
-# --- post-process ASCII output through validate-ascii.py (warn-only) ----
+# --- post-process ASCII output through amw-validate-ascii.py (warn-only) ----
 if [ "$FORMAT" = "ascii" ] && [ -n "$OUT_PATH" ] && [ -f "$OUT_PATH" ]; then
   if [ -x "$VALIDATOR" ] || [ -f "$VALIDATOR" ]; then
-    # validate-ascii.py returns non-zero on issues. We intentionally ignore
+    # amw-validate-ascii.py returns non-zero on issues. We intentionally ignore
     # its exit code here: the Mermaid backend is deterministic and a
     # validation failure usually means "your input labels produced
     # variable-width glyphs" — the fix is to rename labels, not to fail
     # the render. Surface the diagnostic to stderr and continue.
     if ! python3 "$VALIDATOR" "$OUT_PATH" >&2; then
-      echo "[mermaid-render] warn: validate-ascii.py flagged issues in $OUT_PATH (see above). Output written anyway." >&2
+      echo "[mermaid-render] warn: amw-validate-ascii.py flagged issues in $OUT_PATH (see above). Output written anyway." >&2
     fi
   fi
 fi

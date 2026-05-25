@@ -1,5 +1,5 @@
 #!/bin/sh
-# diagram-detect-format.sh — sniff a diagram file (or stdin) and print exactly
+# amw-diagram-detect-format.sh — sniff a diagram file (or stdin) and print exactly
 # one of: ascii, html, svg, mermaid, png, unknown — to stdout.
 #
 # Canonical detection rules (per §3.2 of the 12-commands build plan):
@@ -28,8 +28,8 @@
 #   2 — CLI misuse (missing arg, unreadable path)
 #
 # Usage:
-#   bin/diagram-detect-format.sh <path>
-#   cat foo.txt | bin/diagram-detect-format.sh -
+#   bin/amw-diagram-detect-format.sh <path>
+#   cat foo.txt | bin/amw-diagram-detect-format.sh -
 
 set -eu
 

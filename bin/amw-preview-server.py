@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-preview-server.py — shared local preview server with auto-reload.
+amw-preview-server.py — shared local preview server with auto-reload.
 
 Extracted and generalized from
   SKILLS-TO-INTEGRATE/image-generation/create-infographics/scripts/preview_server.py.
@@ -14,12 +14,12 @@ Stdlib only — no dependencies.
 
 Single-file mode
 ----------------
-  preview-server.py --file /tmp/preview.html
-  preview-server.py --file /tmp/preview.html --port 7883
+  amw-preview-server.py --file /tmp/preview.html
+  amw-preview-server.py --file /tmp/preview.html --port 7883
 
 Multi-variant mode (directory root)
 -----------------------------------
-  preview-server.py --root /tmp/amw-sketch-dashboard/
+  amw-preview-server.py --root /tmp/amw-sketch-dashboard/
       then open the local URL (loopback :7883/variant-a.html, etc.)
 
 Default port is 7883 (matches the `/amw-preview` command's expectation).
@@ -366,7 +366,7 @@ def main():
         # URL is a loopback address printed for the developer's browser, never
         # a server-side fetch target. (skillaudit:network SSRF_PATTERN — FP.)
         with _ThreadedReusable(("localhost", args.port), PreviewHandler) as server:
-            url = f"http://localhost:{args.port}"  # noqa: skillaudit-fp loopback-by-design
+            url = f"http://localhost:{args.port}"
             print(f"  Preview server  -> {url}")
             print(f"  Watching       → {watch_desc}")
             print("  Auto-reloads on file mtime change. Ctrl+C to stop.")

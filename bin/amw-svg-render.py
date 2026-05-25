@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-svg-render.py — shared SVG render-verify-finish loop for ai-maestro-webdesign.
+amw-svg-render.py — shared SVG render-verify-finish loop for ai-maestro-webdesign.
 
 Extracted and generalized from SKILLS-TO-INTEGRATE/image-generation/svg-creator/
 scripts/svg_loop.py. Used by: svg-creator, ascii-to-svg, diagram-editorial.
@@ -130,7 +130,7 @@ def load_state(sd: Path):
         except (json.JSONDecodeError, OSError) as e:
             print(
                 f"WARN: state file {sf} is corrupt ({type(e).__name__}: {e}); "
-                f"starting fresh. Run `svg-render.py reset` to clean up.",
+                f"starting fresh. Run `amw-svg-render.py reset` to clean up.",
                 file=sys.stderr,
             )
     return {"iterations": 0, "history": [], "svg_file": None}
@@ -239,7 +239,7 @@ def cmd_finish(svg_file: str, output_name, sd: Path, out_dir: Path):
     if state["iterations"] == 0:
         print(bar)
         print("  BLOCKED — SVG was never rendered in this session.")
-        print(f"  Run first: svg-render.py render {svg_file}")
+        print(f"  Run first: amw-svg-render.py render {svg_file}")
         print("  Then view the PNG, fix issues, and re-run finish.")
         print(bar)
         sys.exit(1)
@@ -250,7 +250,7 @@ def cmd_finish(svg_file: str, output_name, sd: Path, out_dir: Path):
         # Warning but proceeding made the minimum "1", defeating the point.
         print(bar)
         print(f"  BLOCKED — only {state['iterations']} render(s) done (need >=2).")
-        print(f"  Re-render: svg-render.py render {svg_file}")
+        print(f"  Re-render: amw-svg-render.py render {svg_file}")
         print("  View the PNG, fix issues, re-render. Then re-run finish.")
         print(bar)
         sys.exit(1)

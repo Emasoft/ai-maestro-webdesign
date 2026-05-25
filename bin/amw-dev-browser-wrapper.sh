@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# dev-browser-wrapper.sh — thin wrapper over the `dev-browser` CLI.
+# amw-dev-browser-wrapper.sh — thin wrapper over the `dev-browser` CLI.
 #
 # Used by: skills/amw-dev-browser, /amw-preview, /amw-extract-style, and any skill
 # that needs interactive browser automation.

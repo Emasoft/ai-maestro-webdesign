@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""validate-ascii.py — ASCII diagram validator.
+"""amw-validate-ascii.py — ASCII diagram validator.
 
 Checks ASCII + Unicode inputs; offers box-diagram-master's group-detection
 refinement for more precise error messages on multi-structure diagrams.
@@ -22,8 +22,8 @@ Checks (mirror of the Perl validator):
 Exit codes: 0 = all files pass, 1 = at least one file failed.
 
 Usage:
-  python3 bin/validate-ascii.py file1.txt [file2.txt ...]
-  python3 bin/validate-ascii.py diagrams/*.txt
+  python3 bin/amw-validate-ascii.py file1.txt [file2.txt ...]
+  python3 bin/amw-validate-ascii.py diagrams/*.txt
 
 Format of each finding:
   <N>. Line LLL, Col CCC: [TYPE] <message>. FIX: <actionable hint>
@@ -830,7 +830,7 @@ def print_result(result: FileResult) -> None:
 def main(argv: list[str]) -> int:
     if not argv:
         print(f"Usage: {Path(sys.argv[0]).name} <file1> [file2] [...]")
-        print("       python3 bin/validate-ascii.py diagrams/*.txt")
+        print("       python3 bin/amw-validate-ascii.py diagrams/*.txt")
         return 1
 
     print()

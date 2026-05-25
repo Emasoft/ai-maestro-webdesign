@@ -1,5 +1,5 @@
 #!/bin/sh
-# mermaid-lint.sh — lint a Mermaid source file via mmdc dry-render.
+# amw-mermaid-lint.sh — lint a Mermaid source file via mmdc dry-render.
 # mmdc has no standalone "lint" command; the canonical idiom is to render to a
 # throwaway SVG and read stderr. Exit 0 = valid grammar; non-zero = parse error.
 #

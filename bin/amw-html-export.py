@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-html-export.py — shared HTML → PNG / PDF / SVG exporter for ai-maestro-webdesign.
+amw-html-export.py — shared HTML → PNG / PDF / SVG exporter for ai-maestro-webdesign.
 
 Extracted and generalized from
   SKILLS-TO-INTEGRATE/image-generation/create-infographics/scripts/export.py.
@@ -10,14 +10,14 @@ and any skill that needs to rasterize a finished HTML artifact.
 
 This is an OUTPUT pipeline — not a substitute for dev-browser. For interactive
 page inspection, DOM capture, or user-flow screenshots, use
-  bin/dev-browser-wrapper.sh instead.
+  bin/amw-dev-browser-wrapper.sh instead.
 
 Usage
 -----
-  html-export.py -i file.html -o out/name -f png
-  html-export.py -i file.html -o out/name -f pdf
-  html-export.py -i file.html -o out/name -f all
-  html-export.py -i file.html -o out/name -f all --width 1080 --scale 2
+  amw-html-export.py -i file.html -o out/name -f png
+  amw-html-export.py -i file.html -o out/name -f pdf
+  amw-html-export.py -i file.html -o out/name -f all
+  amw-html-export.py -i file.html -o out/name -f all --width 1080 --scale 2
 
 By default the script spins up a local HTTP server on port 8765 so that CDN
 references (Google Fonts, Phosphor Icons, Chart.js, etc.) resolve cleanly in
@@ -97,7 +97,7 @@ def start_local_server(directory: str, port: int = 8765):
     server = socketserver.TCPServer(("127.0.0.1", port), handler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
-    return server, f"http://127.0.0.1:{port}"  # noqa: skillaudit-fp loopback-by-design
+    return server, f"http://127.0.0.1:{port}"
 
 
 def wait_for_render(page, extra_ms: int = 300):

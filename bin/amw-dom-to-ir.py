@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""dom-to-ir.py — Full-page DOM (URL or local HTML file) -> diagram-ir/1.0 JSON.
+"""amw-dom-to-ir.py — Full-page DOM (URL or local HTML file) -> diagram-ir/1.0 JSON.
 
-This is a specialization of `bin/parse-html-diagram.py` for the webpage round-trip
-skills. Where `parse-html-diagram.py` focuses on inline `<svg>` diagrams inside
+This is a specialization of `bin/amw-parse-html-diagram.py` for the webpage round-trip
+skills. Where `amw-parse-html-diagram.py` focuses on inline `<svg>` diagrams inside
 an HTML document, this tool focuses on the **page as a structural graph** —
 every top-level HTML5 landmark becomes an IR node, and internal anchor links
 become IR edges.
 
 CLI
 ---
-    dom-to-ir.py --url <URL>          [--out <ir.json>] [--target-kind <k>]
-    dom-to-ir.py --in  <html-path>    [--out <ir.json>] [--target-kind <k>]
+    amw-dom-to-ir.py --url <URL>          [--out <ir.json>] [--target-kind <k>]
+    amw-dom-to-ir.py --in  <html-path>    [--out <ir.json>] [--target-kind <k>]
 
-    --url          Fetch a live page via bin/dev-browser-wrapper.sh (dom subcmd).
+    --url          Fetch a live page via bin/amw-dev-browser-wrapper.sh (dom subcmd).
                    Saves the rendered HTML to a temp file, then parses it.
     --in           Parse a local HTML file directly. Must exist and be readable.
     --out          Output JSON path. Default: stdout.
@@ -26,18 +26,18 @@ Exit codes
     2  PNG-refusal (input is a PNG file or URL returns image/* Content-Type)
        OR CLI misuse.
 
-Extraction strategy
--------------------
+Extraction strategy overview (reference documentation)
+------------------------------------------------------
 1. **PNG refusal gate.** If `--in` path extension is `.png` or the file starts
    with PNG magic bytes (0x89 50 4E 47), exit 2 with the hardcoded refusal
    message. For `--url`, the dev-browser wrapper is only called after a
    curl `-I` HEAD check confirms `Content-Type: text/html*` (or similar).
    An `image/*` Content-Type triggers the same refusal.
-2. **Fetch (URL mode).** Call `bin/dev-browser-wrapper.sh` on a temp path to
+2. **Fetch (URL mode).** Call `bin/amw-dev-browser-wrapper.sh` on a temp path to
    get the post-JS rendered HTML. Fall back to a plain urllib fetch if the
    wrapper is unavailable (documented — produces pre-JS HTML only).
-3. **Landmark extraction.** Walk the HTML with `html.parser` (opportunistically
-   lxml/bs4 when present). Emit every `<header>`, `<nav>`, `<main>`,
+3. **Landmark extraction.** Walk the HTML with the stdlib `html.parser`.
+   Emit every `<header>`, `<nav>`, `<main>`,
    `<section>`, `<article>`, `<footer>`, `<aside>` as an IR node with:
        - id       : from `data-diagram-id`, else `id`, else `<tag>-<i>`
        - label    : from `data-diagram-label`, else first heading inside the
@@ -46,7 +46,7 @@ Extraction strategy
        - style    : {"shape": "rect"}
        - annotations: [tag-name]  (e.g. ["nav"], ["main"], ["section"])
 4. **Inline SVG diagrams.** For every `<svg>` that is a child of one of those
-   landmarks, re-parse it via `bin/parse-html-diagram.py` (subprocess) and
+   landmarks, re-parse it via `bin/amw-parse-html-diagram.py` (subprocess) and
    attach its nodes+edges as CHILDREN of the containing landmark node. The
    landmark node keeps its own identity; the SVG-derived nodes become
    additional IR nodes with an `annotations: ["from-inline-svg"]` marker.
@@ -65,12 +65,10 @@ Extraction strategy
 
 Dependencies
 ------------
-- Python stdlib (html.parser, urllib, argparse, subprocess, re, pathlib).
-- Optional: lxml and beautifulsoup4 are used when available for more reliable
-  nested-element handling. NOT required — stdlib works.
-- Optional: `bin/dev-browser-wrapper.sh` for --url. Fallback: urllib fetch
+- Python stdlib only (html.parser, urllib, argparse, subprocess, re, pathlib).
+- Optional: `bin/amw-dev-browser-wrapper.sh` for --url. Fallback: urllib fetch
   (pre-JS HTML only).
-- Optional: `bin/parse-html-diagram.py` for nested-SVG extraction.
+- Optional: `bin/amw-parse-html-diagram.py` for nested-SVG extraction.
 
 Fail-fast policy: no broad except. Each documented error path is raised
 explicitly and mapped to a specific exit code.
@@ -89,22 +87,6 @@ from html.parser import HTMLParser
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.error import HTTPError, URLError
 
-# Optional dependencies — detected at import time, never required.
-try:
-    from bs4 import BeautifulSoup  # type: ignore  # noqa: F401
-
-    _HAS_BS4 = True
-except ImportError:
-    _HAS_BS4 = False
-
-try:
-    import lxml.etree  # type: ignore  # noqa: F401
-
-    _HAS_LXML = True
-except ImportError:
-    _HAS_LXML = False
-
-
 IR_VERSION = "diagram-ir/1.0"
 SOURCE_FORMAT = "html"
 SEMANTIC_TAGS = {"header", "nav", "main", "section", "article", "footer", "aside"}
@@ -117,16 +99,18 @@ PNG_REFUSAL = (
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 
 BIN_DIR = pathlib.Path(__file__).resolve().parent
-DEV_BROWSER_WRAPPER = BIN_DIR / "dev-browser-wrapper.sh"
-PARSE_HTML_DIAGRAM = BIN_DIR / "parse-html-diagram.py"
+DEV_BROWSER_WRAPPER = BIN_DIR / "amw-dev-browser-wrapper.sh"
+PARSE_HTML_DIAGRAM = BIN_DIR / "amw-parse-html-diagram.py"
 
 
 # ---------------------------------------------------------------------------
-# IR validation (mirrors the invariants in parse-html-diagram.py and schema.json)
+# IR validation (mirrors the invariants in amw-parse-html-diagram.py and schema.json)
 # ---------------------------------------------------------------------------
 
 
-def _validate_ir(ir: Dict[str, Any]) -> List[str]:
+def _validate_ir(ir: Any) -> List[str]:
+    # Accepts arbitrary input (it mirrors schema.json) so the top-level
+    # object-type check below is a real guard, not a no-op.
     errors: List[str] = []
     if not isinstance(ir, dict):
         return ["top-level IR is not an object"]
@@ -260,7 +244,7 @@ class _LandmarkCollector(HTMLParser):
                 self.meta_description = attrs.get("content") or None
             return
         if self._svg_depth > 0:
-            # Accumulate SVG source for later parse-html-diagram.py call.
+            # Accumulate SVG source for later amw-parse-html-diagram.py call.
             self._svg_parts.append(self._reconstruct_opentag(tag, attrs, self_closing))
             if t == "svg":
                 self._svg_depth += 1
@@ -353,20 +337,20 @@ class _LandmarkCollector(HTMLParser):
 
 
 def _inline_svg_children(svg_source: str, parent_node_id: str) -> List[Dict[str, Any]]:
-    """Parse an inline SVG string via parse-html-diagram.py and return IR nodes.
+    """Parse an inline SVG string via amw-parse-html-diagram.py and return IR nodes.
 
     Returns nodes (NOT edges — cross-landmark edges are landmark-level only in
     this specialization). Annotations mark every node as `from-inline-svg`
     so downstream emitters can distinguish them from the landmark skeleton.
 
     Failure is non-fatal — an unparseable SVG yields an empty list. We do NOT
-    swallow errors silently when `parse-html-diagram.py` is missing; that
+    swallow errors silently when `amw-parse-html-diagram.py` is missing; that
     would hide a misconfigured install. If the script is missing from disk,
     we just return [] (no subprocess attempted).
     """
     if not PARSE_HTML_DIAGRAM.is_file():
         return []
-    # Wrap the SVG so parse-html-diagram.py's inline-SVG branch fires.
+    # Wrap the SVG so amw-parse-html-diagram.py's inline-SVG branch fires.
     wrapped = f"<!DOCTYPE html><html><body>{svg_source}</body></html>"
     result = subprocess.run(
         [sys.executable, str(PARSE_HTML_DIAGRAM), "--in", "-"],
@@ -504,7 +488,7 @@ def _fetch_via_dev_browser(url: str, out_html_path: pathlib.Path) -> None:
             f"dev-browser wrapper not found at {DEV_BROWSER_WRAPPER}; "
             "run /amw-init to install it."
         )
-    # dev-browser-wrapper.sh has no "html" subcommand — we use the raw
+    # amw-dev-browser-wrapper.sh has no "html" subcommand — we use the raw
     # pass-through with eval and return document.documentElement.outerHTML.
     script = (
         "(() => document.documentElement.outerHTML)();"
@@ -631,7 +615,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         ),
     )
     src = parser.add_mutually_exclusive_group(required=True)
-    src.add_argument("--url", help="Fetch this URL via bin/dev-browser-wrapper.sh.")
+    src.add_argument("--url", help="Fetch this URL via bin/amw-dev-browser-wrapper.sh.")
     src.add_argument("--in", dest="in_path", help="Parse this local HTML file.")
     parser.add_argument("--out", dest="out_path", default=None, help="Output JSON path.")
     parser.add_argument(

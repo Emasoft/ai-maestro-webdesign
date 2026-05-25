@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""html-diff.py — structural diff between two HTML files.
+"""amw-html-diff.py — structural diff between two HTML files.
 
 CLI
 ---
-    html-diff.py --before <html> --after <html> [--out <patch.json>]
+    amw-html-diff.py --before <html> --after <html> [--out <patch.json>]
 
 Produces a JSON patch array describing **structural** (diagram-level) changes
 between two HTML pages. Does NOT perform word-level text diff — structure
@@ -33,15 +33,14 @@ Exit codes
 
 Implementation notes
 --------------------
-- Primary parser: `html.parser.HTMLParser` (stdlib). Opportunistic lxml/bs4
-  when available, same as `dom-to-ir.py` and `parse-html-diagram.py`.
+- Parser: `html.parser.HTMLParser` (stdlib only).
 - The tool extracts a "structure signature" from each document — an ordered
   list of `(tag, id, heading)` triples for every HTML5 landmark and every
   heading `<h1>`..`<h6>`. The diff is computed over these lists using
   longest-common-subsequence matching plus an add/remove complement.
 - We intentionally do NOT diff inline SVG diagrams at this MVP stage — that
-  work is handled by `bin/diagram-ir-diff.py` on the landmark-level
-  extracted IRs. `html-diff.py` reports "SVG present in both" or "SVG added /
+  work is handled by `bin/amw-diagram-ir.py diff` on the landmark-level
+  extracted IRs. `amw-html-diff.py` reports "SVG present in both" or "SVG added /
   removed" only at the landmark level.
 - Fail-fast: no try/except that swallows parse errors silently.
 """
@@ -53,21 +52,6 @@ import pathlib
 import sys
 from html.parser import HTMLParser
 from typing import Any, Dict, List, Optional, Tuple
-
-try:
-    from bs4 import BeautifulSoup  # type: ignore  # noqa: F401
-
-    _HAS_BS4 = True
-except ImportError:
-    _HAS_BS4 = False
-
-try:
-    import lxml.etree  # type: ignore  # noqa: F401
-
-    _HAS_LXML = True
-except ImportError:
-    _HAS_LXML = False
-
 
 LANDMARK_TAGS = {"header", "nav", "main", "section", "article", "footer", "aside"}
 HEADING_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6"}

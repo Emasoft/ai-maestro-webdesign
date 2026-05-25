@@ -1,5 +1,5 @@
 #!/bin/sh
-# validate-html-diagram.sh — HTML validator for diagrams (editorial / infographic
+# amw-validate-html-diagram.sh — HTML validator for diagrams (editorial / infographic
 # HTML+SVG output). Wraps:
 #   1. xmllint --html --noout --nonet  (XML-ish well-formedness for HTML5)
 #   2. tidy -e -q -errors              (HTML-specific linting; optional)
