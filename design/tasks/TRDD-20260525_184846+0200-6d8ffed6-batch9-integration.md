@@ -3,7 +3,7 @@ trdd-id: 6d8ffed6-e51f-4be4-a4ff-cc86278b6e2d
 title: Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
 status: in-progress
 created: 2026-05-25T18:48:46+0200
-updated: 2026-05-25T18:48:46+0200
+updated: 2026-05-25T18:59:32+0200
 ---
 
 # TRDD-6d8ffed6 — Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
@@ -107,3 +107,18 @@ before Wave 2.
 - 2026-05-25T18:48 — TRDD created; plan approved; Zig 0.16.0 confirmed
   present; fcvvdp clone+build kicked off into `libs_dev/fcvvdp/`. Wave 0 in
   progress.
+- 2026-05-25T18:55 — **Wave 0 COMPLETE** (commit 9009a16). fcvvdp 0.3.0 built
+  into `libs_dev/fcvvdp/`. Harness verified end-to-end: `bin/amw-screenshot-
+  compare.sh` (fcvvdp JOD gate) + `bin/amw-verify-parity.sh` (dev-browser fixed-
+  viewport render → compare). Identical→JOD 10.0 PASS, different→7.6/3.2 FAIL.
+  Tests: `test_screenshot_compare.py` (5, fcvvdp-only, self-skip) +
+  `test_verify_parity.py` (2, opt-in AMW_VERIFY). fcvvdp `-j` JSON → stderr;
+  errors on dim-mismatch (⇒ fixed-viewport renders). Full suite green.
+- 2026-05-25T18:58 — **dev-browser wrapper FIXED** (commit 839acc6, task #83).
+  Discovered pre-existing bug: installed dev-browser dropped the
+  `screenshot --url`/`eval --script` subcommands the wrapper used → shot/mobile/
+  dom all broken (also blocked Wave 1 Track D). Rewrote onto the QuickJS script
+  API (Playwright pages + saveScreenshot/writeFile). Verified: shot deterministic
+  (JOD 10), mobile 375×812 PNG, dom valid JSON. Opt-in regression test added.
+  Original backed up to `docs_dev/backups/20260525_185759+0200-batch9/`.
+- Next: Wave 1 Track A (anti-slop refs — browser-free) onward, track by track.
