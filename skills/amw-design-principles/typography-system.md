@@ -9,6 +9,7 @@
 - [V. Font-pairing rules](#v-font-pairing-rules)
 - [VI. Recommended font stacks (avoiding AI slop)](#vi-recommended-font-stacks-avoiding-ai-slop)
 - [VII. Fallback-stack syntax](#vii-fallback-stack-syntax)
+- [VIII. Forbidden AI-giveaway fonts (T-043)](#viii-forbidden-ai-giveaway-fonts-t-043)
 
 > Font size, weight, line-height, and letter-spacing are all numbers — there is no "aesthetic debate," only **scale selection**.
 
@@ -144,3 +145,32 @@ font-family:
 ```
 
 Rule: **paid font → free font → system font → generic sans/serif.**
+
+---
+
+## VIII. Forbidden AI-giveaway fonts (T-043)
+
+> Ledger T-043. Source: atelier-main (MIT). Complements the "Banned list" in Section VI above — do not duplicate entries, this section extends it with the full consolidated list and the detection heuristic.
+
+The following fonts are banned as the **primary or display typeface** in any AI Maestro output. They appear on every AI-generated page from 2023–2025 and immediately signal machine-made work to a trained eye:
+
+| Font | Reason |
+|---|---|
+| Inter | Overused; zero brand identity |
+| Roboto | Android system default |
+| Arial / Helvetica | Featureless fallback |
+| Fraunces | AI "editorial" cliché |
+| system-ui | Acceptable as fallback only; using it as a deliberate brand choice is a non-choice |
+| Space Grotesk | Frequent "safe + creative" trap; ubiquitous in AI pages |
+| Syne | Overused AI display cliché |
+| Clash Display | AI landing-page default |
+| Manrope | AI dashboard and SaaS default |
+| Geist | Vercel/AI-tooling default; signals no typographic intent |
+| Plus Jakarta Sans | Saturated in AI-generated interfaces |
+| DM Sans | Saturated in AI-generated interfaces |
+
+**Detection heuristic:** Ask yourself — "Did this font appear on a significant proportion of AI-generated pages last year?" If yes, it signals AI-slop unless the brand explicitly specifies it in a committed design system.
+
+**This is not a closed list.** Any font that accumulates high AI-page frequency and lacks strong character qualifies for addition. After selecting a typeface, run the heuristic once. Never return repeatedly to the same "safe-but-creative" options — each project needs its own typographic voice.
+
+**Exceptions:** A banned font may appear as a monospace accent, a code block family, or in a fallback stack position — just not as the primary brand or display face.

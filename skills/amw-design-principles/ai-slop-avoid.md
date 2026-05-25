@@ -10,6 +10,8 @@
 - [VI. Color](#vi-color)
 - [Self-check workflow](#self-check-workflow)
 - [VII. Content density principle (positive stance)](#vii-content-density-principle-positive-stance)
+- [VIII. Content anti-patterns (T-042)](#viii-content-anti-patterns-t-042)
+- [IX. Anti-AI-cliché visual checklist (T-044)](#ix-anti-ai-cliché-visual-checklist-t-044)
 
 > **A thousand no's for one yes.** Each item below is an instant tell for AI-generated work.
 > Each entry names: ❌ the anti-pattern → ✅ a better alternative → 📝 the reason.
@@ -246,3 +248,62 @@ A section that "looks empty" is not a defect — it is rhythm. The correct respo
 If you think "a customer-logo wall would add credibility" — first ask the user if they have real customer logos. If not, don't add one.
 
 AI-invented "trust signals" are fake, and readers see through them instantly.
+
+---
+
+## VIII. Content anti-patterns (T-042)
+
+> Ledger T-042. Source: tasteful-ui-skill-master (MIT). Complements rules 15–19.
+
+Content-layer bans — each item is an instant AI-slop tell in copy or labelling:
+
+| Anti-pattern | Example | Better alternative |
+|---|---|---|
+| **Fake personas as demo data** | "Sarah J. — CEO at TechCorp" | Leave `[customer TK]` or use clearly fictional placeholders |
+| **`//`-kickers** | `// SOLUTION` above a section heading | Use a plain label, eyebrow, or no prefix |
+| **Mono-caps filler subtitles** | `POWERFUL. FAST. RELIABLE.` | Write copy that states a real benefit |
+| **Unicode-glyph decoration** | `→` or `✦` used as section decoration instead of text | Remove or replace with a real design element |
+| **Robotic CTA copy** | "Authenticate Session", "Proceed to Checkout Finalization" | "Sign in", "Pay now" — the shortest action verb that works |
+| **Genericized benefit headers** | "Empowering Teams", "Driving Growth" | Name the exact outcome: "Ship faster", "Cut churn" |
+
+### Preserve — do NOT strip when refactoring existing UI
+
+When you are editing or improving an existing product, keep these intact:
+
+- **The identity cue** — the element (logo treatment, accent color, typeface) that makes the product recognizable.
+- **The primary task** — whatever the user most needs to accomplish on this screen.
+- **The real data shape** — if a component shows "Product A / $12.00 / Qty: 3", keep that shape; don't simplify to a placeholder.
+- **Existing domain terminology** — if users call it an "Opportunity" not a "Lead", keep "Opportunity".
+
+Taste guardrail: if a refactor would look more impressive in a portfolio screenshot but make the product less clear to its actual users, reject it.
+
+---
+
+## IX. Anti-AI-cliché visual checklist (T-044)
+
+> Ledger T-044. Sources: atelier-main (MIT), tasteful-ui-skill-master (MIT), Bexa (MIT), 21st-frontend-design (MIT). See also `component-taste.md` and `visual-direction-tokens.md`.
+
+Run this checklist before shipping any visual output. Each item is an immediate tell that the work is AI-generated:
+
+### Color and gradient
+- [ ] **Purple→blue gradient on white** — `linear-gradient(135deg, #667eea, #764ba2)` or any variation. (Note: atmospheric background blooms and gradient meshes as texture are OK when purposeful.)
+- [ ] **Gradients on buttons, text, or small controls** — gradient fills on interactive elements read cheap. Atmospheric background blooms are the exception.
+- [ ] **Rainbow gradients** as accent or text treatment.
+
+### Layout and components
+- [ ] **Equal-spacing card grids with no hierarchy** — 3×3 or 4×4 identical tiles; averaging = no focal point.
+- [ ] **Colored left-border callouts on rounded containers** — `border-left: 4px solid accent; border-radius: 8px`. This is Notion/Linear knock-off that stopped differentiating anything.
+- [ ] **Heavy borders on everything** — "boxy" designs where every element has a visible enclosure.
+
+### Decoration
+- [ ] **Emoji as decoration** — ✨, 🚀, 📊 as section icons or headline accents unless the brand explicitly uses them.
+- [ ] **Self-drawn SVG illustrations / mascots** — stiff lines, wrong proportions. Use a sized placeholder box and ask for real assets.
+- [ ] **Animate everything** — every element fading and translating in simultaneously on load.
+
+### Hero patterns (the 3 AI hero archetypes — avoid all three by default)
+- [ ] **Centered H1 + subtitle + single CTA** on a solid or gradient background — the universal AI landing-page template.
+- [ ] **Stock photo + dark overlay + white text** hero.
+- [ ] **Name + tagline hero with no visible benefit** — "Acme. Built for teams." with nothing concrete underneath.
+
+### Typography
+- [ ] Main font is on the forbidden list — see Section VIII in `typography-system.md` (Inter, Roboto, Space Grotesk, etc.).
