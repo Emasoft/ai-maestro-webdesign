@@ -19,6 +19,18 @@ Detected rules:
     7. Rule 1 specialization (mauve-teal / purple-cyan duo)  severity=high
     8. Rule 3 (AI-drawn SVG faces / eyes pair)               severity=medium
 
+Content-layer rules (T-030 — run on a code-masked copy so CSS/JS do not
+false-positive; see mask_code_blocks):
+    9.  em-dash density (3+ as prose punctuation)            severity=low
+    10. "not just X but Y" construction                      severity=medium
+    11. corporate filler (leverage/utilize/seamless/robust)  severity=low
+    12. "In <year>," opener                                  severity=low
+    13. fake persona / testimonial byline                    severity=medium
+    14. "//"-kicker eyebrow label                            severity=medium
+    15. mono-caps filler subtitle (heuristic)                severity=low
+    16. unicode-glyph used as decoration                     severity=low
+    17. passive voice >=25% of sentences (document-level)    severity=low
+
 Usage:
     python3 bin/amw-ai-slop-check.py <html-or-svg-file> [--severity-threshold high|medium|low]
 
@@ -29,11 +41,13 @@ Exit codes:
 
 Output: JSON to stdout. See `--help` for the full schema.
 
-Rationale: `ai-slop-avoid.md` documents 26 rules with examples and rationale.
-This script enforces the eight rules that are reliably mechanical (regex on
-raw HTML or pure-Python HSL math). The other 18 rules (e.g. "trust-marker
-carpet", "filler paragraphs", "weight soup") require semantic judgment and
-remain in the reference file as documentation for human + LLM review.
+Rationale: `ai-slop-avoid.md` documents the visual + content rules with examples
+and rationale. This script enforces the subset that is reliably mechanical:
+the eight visual rules (regex on raw HTML or pure-Python HSL math) plus nine
+content-layer rules (T-030, regex on code-masked prose). The content rules are
+mostly low/medium severity, so they surface for review without failing the
+default `high` gate. Rules that require semantic judgment (e.g. "trust-marker
+carpet", "weight soup") remain in the reference file for human + LLM review.
 """
 from __future__ import annotations
 
@@ -100,6 +114,56 @@ SVG_CIRCLE_RE = re.compile(
     r"<circle\b[^>]*\bcx\s*=\s*[\"']?([-\d.]+)[\"']?[^>]*\br\s*=\s*[\"']?([-\d.]+)",
     re.IGNORECASE,
 )
+
+# --- Content-layer anti-slop (T-030) -----------------------------------------
+# These scan the PROSE, not the CSS/JS. To keep line numbers accurate while
+# avoiding false positives inside <script>/<style>, collect_violations runs them
+# against a "masked" copy of the file where those blocks are blanked with spaces
+# of equal length (offsets and newlines preserved). See mask_code_blocks().
+CODE_BLOCK_RE = re.compile(r"(<(script|style)\b[^>]*>)(.*?)(</\2>)", re.IGNORECASE | re.DOTALL)
+TAG_RE = re.compile(r"<[^>]+>")
+
+# Em-dash used as prose punctuation. Three or more in a document is an AI tell.
+EM_DASH_RE = re.compile("—")
+# "not just X but Y" rhetorical construction.
+NOT_JUST_BUT_RE = re.compile(r"\bnot\s+just\b[^.?!<]{1,60}?\bbut\b", re.IGNORECASE)
+# Corporate filler verbs/adjectives.
+FILLER_WORD_RE = re.compile(
+    r"\b(leverage|leveraging|utilize|utilizing|seamless|seamlessly|robust)\b", re.IGNORECASE
+)
+# "In <year>, ..." sentence opener (start of line, after sentence punctuation, or after a tag).
+YEAR_OPENER_RE = re.compile(r"(?:^|[.!?]\s+|>\s*)In\s+20\d{2}\b\s*,", re.MULTILINE)
+# Fake persona / testimonial byline: "Sarah J. — CEO at TechCorp" etc.
+FAKE_PERSONA_RE = re.compile(
+    r"[A-Z][a-z]+(?:\s+[A-Z]\.?)?\s*[—,\-]\s*"
+    r"(?:CEO|CTO|CFO|COO|Founder|Co-?founder|Director|VP|Head\s+of|Manager|Lead)\b"
+)
+# "//"-kicker eyebrow label: `// SOLUTION` (not part of a URL).
+SLASH_KICKER_RE = re.compile(r"(?<![:/\w])//\s+[A-Z][A-Za-z]{2,}")
+# Mono-caps filler: 3+ all-caps words (>=3 letters) chained by punctuation/space.
+MONOCAPS_FILLER_RE = re.compile(r"\b[A-Z]{3,}\b(?:[\s.·•|]+\b[A-Z]{3,}\b){2,}")
+# Decorative arrow/diamond glyph used as a lead-in (bullet/eyebrow), not inline.
+GLYPH_DECOR_RE = re.compile(
+    "(?:^|>)\\s*[→➡➜➔⟶⇒✦✧◆◇▸]\\s+\\S",
+    re.MULTILINE,
+)
+# Passive-voice approximation: be-verb + past participle.
+PASSIVE_RE = re.compile(
+    r"\b(?:is|are|was|were|be|been|being)\s+(?:\w+ed|written|made|done|built|given|taken|"
+    r"seen|known|shown|held|kept|sent|chosen|driven|grown|found|told|left|brought)\b",
+    re.IGNORECASE,
+)
+SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
+
+
+def mask_code_blocks(text: str) -> str:
+    """Blank <script>/<style> contents with equal-length spaces (offsets + newlines kept)."""
+
+    def repl(m: re.Match[str]) -> str:
+        masked_inner = re.sub(r"[^\n]", " ", m.group(3))
+        return m.group(1) + masked_inner + m.group(4)
+
+    return CODE_BLOCK_RE.sub(repl, text)
 
 
 def hex_to_hsl(hex_color: str) -> tuple[float, float, float]:
@@ -303,6 +367,92 @@ def check_svg_eye_pair(text: str) -> list[dict]:
     return out
 
 
+def _content_hits(masked: str, regex: re.Pattern[str], rule: str, severity: str) -> list[dict]:
+    """Emit one violation per regex match in code-masked prose."""
+    return [
+        {
+            "rule": rule,
+            "severity": severity,
+            "line": line_of_offset(masked, m.start()),
+            "snippet": snippet(masked, m.start()),
+        }
+        for m in regex.finditer(masked)
+    ]
+
+
+def check_em_dash_density(masked: str) -> list[dict]:
+    """T-030: 3+ em-dashes used as prose punctuation is an AI tell (one finding, document-level)."""
+    hits = list(EM_DASH_RE.finditer(masked))
+    if len(hits) < 3:
+        return []
+    first = hits[0]
+    return [
+        {
+            "rule": f"T-030 content: {len(hits)} em-dashes as punctuation (use commas/parens/periods)",
+            "severity": "low",
+            "line": line_of_offset(masked, first.start()),
+            "snippet": snippet(masked, first.start()),
+        }
+    ]
+
+
+def check_not_just_but(masked: str) -> list[dict]:
+    """T-030: the 'not just X but Y' rhetorical construction."""
+    return _content_hits(masked, NOT_JUST_BUT_RE, "T-030 content: 'not just X but Y' AI construction", "medium")
+
+
+def check_filler_words(masked: str) -> list[dict]:
+    """T-030: corporate filler (leverage / utilize / seamless / robust)."""
+    return _content_hits(masked, FILLER_WORD_RE, "T-030 content: corporate filler word", "low")
+
+
+def check_year_opener(masked: str) -> list[dict]:
+    """T-030: 'In <year>, ...' sentence opener."""
+    return _content_hits(masked, YEAR_OPENER_RE, "T-030 content: 'In <year>,' opener", "low")
+
+
+def check_fake_persona(masked: str) -> list[dict]:
+    """T-030: fake persona / testimonial byline as demo data."""
+    return _content_hits(masked, FAKE_PERSONA_RE, "T-030 content: fake persona byline (use real or clearly-placeholder data)", "medium")
+
+
+def check_slash_kicker(masked: str) -> list[dict]:
+    """T-030: '//'-kicker eyebrow label."""
+    return _content_hits(masked, SLASH_KICKER_RE, "T-030 content: '//'-kicker eyebrow label", "medium")
+
+
+def check_monocaps_filler(masked: str) -> list[dict]:
+    """T-030: mono-caps filler subtitle (heuristic: 3+ all-caps words chained)."""
+    return _content_hits(masked, MONOCAPS_FILLER_RE, "T-030 content: mono-caps filler subtitle (heuristic)", "low")
+
+
+def check_glyph_decoration(masked: str) -> list[dict]:
+    """T-030: decorative arrow/diamond glyph used as a lead-in bullet."""
+    return _content_hits(masked, GLYPH_DECOR_RE, "T-030 content: unicode-glyph used as decoration", "low")
+
+
+def check_passive_voice(masked: str) -> list[dict]:
+    """T-030: passive-voice density >=25% of sentences (document-level heuristic)."""
+    prose = TAG_RE.sub(" ", masked)
+    sentences = [s for s in SENTENCE_SPLIT_RE.split(prose) if s.strip()]
+    passives = PASSIVE_RE.findall(prose)
+    if len(sentences) < 4 or not passives:
+        return []
+    if len(passives) / len(sentences) < 0.25:
+        return []
+    loc = PASSIVE_RE.search(masked)
+    start = loc.start() if loc else 0
+    pct = round(100 * len(passives) / len(sentences))
+    return [
+        {
+            "rule": f"T-030 content: passive voice ~{pct}% of sentences (prefer active voice)",
+            "severity": "low",
+            "line": line_of_offset(masked, start),
+            "snippet": snippet(masked, start),
+        }
+    ]
+
+
 def collect_violations(text: str) -> list[dict]:
     """Run every rule against the file text. Order is stable for deterministic output."""
     violations: list[dict] = []
@@ -313,6 +463,18 @@ def collect_violations(text: str) -> list[dict]:
     violations.extend(check_raw_primaries(text))
     violations.extend(check_scroll_into_view(text))
     violations.extend(check_svg_eye_pair(text))
+    # Content-layer checks (T-030) run on a code-masked copy so CSS/JS never
+    # false-positive while line numbers stay accurate.
+    masked = mask_code_blocks(text)
+    violations.extend(check_em_dash_density(masked))
+    violations.extend(check_not_just_but(masked))
+    violations.extend(check_filler_words(masked))
+    violations.extend(check_year_opener(masked))
+    violations.extend(check_fake_persona(masked))
+    violations.extend(check_slash_kicker(masked))
+    violations.extend(check_monocaps_filler(masked))
+    violations.extend(check_glyph_decoration(masked))
+    violations.extend(check_passive_voice(masked))
     return violations
 
 
