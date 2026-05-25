@@ -3,7 +3,7 @@ trdd-id: 6d8ffed6-e51f-4be4-a4ff-cc86278b6e2d
 title: Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
 status: in-progress
 created: 2026-05-25T18:48:46+0200
-updated: 2026-05-25T18:59:32+0200
+updated: 2026-05-26T01:20:44+0200
 ---
 
 # TRDD-6d8ffed6 — Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
@@ -121,4 +121,14 @@ before Wave 2.
   API (Playwright pages + saveScreenshot/writeFile). Verified: shot deterministic
   (JOD 10), mobile 375×812 PNG, dom valid JSON. Opt-in regression test added.
   Original backed up to `docs_dev/backups/20260525_185759+0200-batch9/`.
-- Next: Wave 1 Track A (anti-slop refs — browser-free) onward, track by track.
+- 2026-05-26T01:20 — **Wave 1 Track A COMPLETE** (3 commits). A1 58c8e42:
+  references/component-taste.md (T-041), pre-output-checklist.md (T-045),
+  visual-direction-tokens.md (T-046, 8 anchors w/ token blocks + breaks-if).
+  A2 ffb2f10 (additive, 154 ins / 0 del): ai-slop-avoid.md §VIII content
+  anti-patterns + Preserve (T-042) + §IX anti-AI-cliché checklist (T-044);
+  typography-system.md §VIII forbidden fonts (T-043); design-heuristics.md §X
+  Refactoring-UI rules (T-054, Wathan/Schoger attrib). A3 35b6740:
+  amw-ai-slop-check.py +9 content checks (T-030) on code-masked prose + 5
+  real tests. Verified: faithful transcription, zero CJK, Swiss token render
+  sane, full suite 92 passed / 6 skipped, ruff clean.
+- Next: Wave 1 Track B (slop-verifier agent + self-review screenshot — browser).
