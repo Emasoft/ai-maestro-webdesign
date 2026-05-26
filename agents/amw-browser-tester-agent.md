@@ -121,6 +121,7 @@ I do NOT activate on: "design the test plan" (that's main-agent), "debug this te
   "viewport_sizes": ["desktop", "mobile"] | null,
   "locale": "en" | "fr" | "..." | null,
   "include_ux_eval": true | false,
+  "ux_scorecard_required": true,                          // optional; default true when include_ux_eval=true. When true, the evaluator MUST emit a YAML scorecard sidecar (T-097); main-agent will gate on overall.verdict != BLOCKED.
   "project_root": "<absolute path>"
 }
 ```
@@ -220,6 +221,8 @@ In priority order:
    - **f. Record verdict.** PASS / FAIL / INCONCLUSIVE with per-assertion breakdown (returned to me for synthesis when running as a fan-out Task).
 
 5. **Optional UX eval.** If `include_ux_eval=true`, `Read skills/amw-ux-evaluator/SKILL.md` + `Read skills/amw-ux-evaluator/references/TECH-uxeval-3-dimension-framework.md`. Apply the 3-dimension scoring (Position / Visual Weight / Spacing) to the primary interactive elements (CTA, nav, hero). Emit qualitative findings alongside binary test results.
+
+   After the evaluator returns, ALSO read its sidecar YAML scorecard at `<eval-report>.scorecard.yaml` (per [TECH-uxeval-scorecard](../skills/amw-ux-evaluator/references/TECH-uxeval-scorecard.md)). Parse with `yaml.safe_load()`. Store the parsed object under `ux_scorecards[<component_slug>]` in my internal state. The scorecard's `overall.verdict` is what I surface in my §13 return contract; the human Markdown report is auxiliary and only referenced via `artifact_paths`.
 
    **Core Web Vitals measurement (when scenario `core-web-vitals` is in the battery).** Inject the `web-vitals` UMD bundle (https://unpkg.com/web-vitals/dist/web-vitals.iife.js) into the page via dev-browser's `pass-through` evaluate-script mode. Subscribe to `onLCP`, `onINP`, `onCLS`, `onTBT` callbacks. Trigger a forced INP event via a synthetic click on the primary CTA. Capture the metric values, write them to `console-logs/<ts>-cwv-<scenario>.json`, and assert against budgets:
    - LCP ≤ 2500ms → PASS; > 2500ms ≤ 4000ms → WARN (Needs Improvement); > 4000ms → FAIL.
@@ -343,6 +346,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | "Broken link / 404 / dead anchor check" | `skills/amw-dev-browser/` — `dom` subcommand for extraction + `shot` for verification | Internal links only; external links reported as count to avoid leaking session. |
 | "WCAG 2.1 AA full audit" | **OUT OF SCOPE** — route to `amw-accessibility-auditor-agent` | I do a functional keyboard-nav check only. |
 | Visual-pixel slop audit (after each scenario) | `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) + `bin/amw-self-review-screenshot.sh` | input: final-state screenshot from scenario + project brief · output: `✅ pass` or `❌ slop detected:` verdict folded as one row into the test report's Slop audit section |
+| UX scorecard format spec | [TECH-uxeval-scorecard](../skills/amw-ux-evaluator/references/TECH-uxeval-scorecard.md) | T-097 — YAML sidecar schema, severity tiers (blocker/high/medium/low), aggregation rule for `overall.verdict`; parse with `yaml.safe_load()` after `amw-ux-evaluator` runs |
 | "on-page SEO audit" | **OUT OF SCOPE** — route to `amw-seo-strategist-agent` | Different authority. |
 | "fix the broken layout" | **OUT OF SCOPE** — route back to main-agent for re-authoring | I surface; others re-author. |
 | Any browser automation that dev-browser can't do | **INCONCLUSIVE** + document gap | Never fall back to Playwright / DevTools MCP / Puppeteer. |
@@ -475,6 +479,21 @@ slop_audits:
     verdict: "pass"
     high_rules_fired: []
 next_action: proceed
+ux_scorecards:
+  - component: "hero-cta-stack"
+    scorecard_path: "/Users/emanuele/project/design/eval/hero-cta-stack.scorecard.yaml"
+    overall_verdict: "NEEDS_CHANGES"
+    blocking_count: 0
+    high_count: 1
+    medium_count: 0
+    low_count: 2
+  - component: "pricing-card-row"
+    scorecard_path: "/Users/emanuele/project/design/eval/pricing-card-row.scorecard.yaml"
+    overall_verdict: "PASS"
+    blocking_count: 0
+    high_count: 0
+    medium_count: 0
+    low_count: 0
 report_path: "/Users/demo/reports/webdesigner/20260424_170115+0200-amw-browser-tester-landing-page-b2c4e1f0.md"
 ---
 
@@ -540,6 +559,15 @@ Parallel-safe scenarios ran concurrently (5 Tasks); `interactive-spot-checks` ra
 | Position (primary CTA) | Pass | CTA positioned right of hero headline, follows Balsamiq #4 |
 | Visual Weight (primary CTA) | Warn (P2) | `.cta-primary` computed-style `background: #0b5fff` + same-size `.cta-secondary` at `#e2e8f0` — weight delta feels light; consider increasing CTA padding or making secondary ghost-style |
 | Spacing | Pass | 32px gap between CTA stack and hero text — within rhythm |
+
+## UX scorecards (T-097, machine-parseable)
+
+| Component | Verdict | Blocker | High | Medium | Low | Scorecard sidecar |
+|---|---|---|---|---|---|---|
+| hero-cta-stack | NEEDS_CHANGES | 0 | 1 | 0 | 2 | `hero-cta-stack.scorecard.yaml` |
+| pricing-card-row | PASS | 0 | 0 | 0 | 0 | `pricing-card-row.scorecard.yaml` |
+
+Main-agent gates Phase B delivery on `overall.verdict != BLOCKED` per scorecard. No BLOCKED rows above — Phase B can proceed; the 1 high finding in `hero-cta-stack` is surfaced to main-agent as a deferred recommendation.
 
 ## Limitations
 
@@ -617,6 +645,8 @@ I have **no veto power**. Per [authority-hierarchy](../skills/amw-design-princip
 11. **Scenario input is authoritative.** I execute exactly what main-agent provided. I do not "improve" a scenario, skip a step that looks redundant, or combine scenarios that look related. The author chose the scenarios.
 
 12. **UX eval is optional, not default.** I run `ux-evaluator` only when `include_ux_eval=true`. Otherwise I stick to functional binary tests.
+
+13. **Never report an incomplete UX evaluation.** When `include_ux_eval=true` (or default-true), the YAML scorecard sidecar must exist and parse for every evaluated component. A missing or unparseable scorecard is `status=partial` with the missing component listed in `blocking_issues`. The Markdown report alone is insufficient — main-agent gates on the YAML.
 
 ---
 
