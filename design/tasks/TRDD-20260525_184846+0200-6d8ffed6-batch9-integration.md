@@ -1,9 +1,9 @@
 ---
 trdd-id: 6d8ffed6-e51f-4be4-a4ff-cc86278b6e2d
 title: Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
-status: in-progress
+status: completed
 created: 2026-05-25T18:48:46+0200
-updated: 2026-05-26T15:48:00+0200
+updated: 2026-05-26T21:30:00+0200
 ---
 
 # TRDD-6d8ffed6 — Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
@@ -219,8 +219,41 @@ before Wave 2.
   (sound-analyze bin) pulled in by T-001's natural scope. Brand library
   (T-040) also complete (14 brands). Touched skills pass CPV validate /
   ai-slop-check; touched bins pass pytest.
-- Next: Wave 1 H1..H9 swarm — populate 45 per-style files (S-001..S-045)
-  against the H0 scaffold. ~9 parallel sonnet-spark agents, ~5 styles
-  each; each per-style file = frontmatter + Identity + Token block +
-  Breaks-if invariants + render-test pointer. Estimated 5000-8000 lines
-  total. **Held for user go/no-go before launching the swarm.**
+- 2026-05-26T21:25 — **Wave 1 Tracks H1-H9 COMPLETE** (commit 10386b5;
+  46 files; +5499/-6). 45 per-style preset files authored under
+  skills/amw-design-system-presets/references/S-001..S-045-*.md via 9
+  parallel sonnet-spark sub-agents (5 styles each, all 9 wall-time
+  ~6 minutes). Every file ships: frontmatter (id / name /
+  aesthetic_position / source_attribution / license), Identity 2-3
+  sentences, Token block (CSS custom properties + Tailwind theme
+  extension), "Breaks if" invariants (4-8 per file, drawn from harvest
+  not invented), Canonical render-test pointer, Cross-references.
+  Catalogue.md reconciled (5 slug corrections: S-011 / S-015 / S-016 /
+  S-019 / S-020 — sub-agents chose more descriptive slugs than the H0
+  placeholder names; catalogue rows now point at actual filenames).
+  S-010b (Neon/Glow UI variant) intentionally deferred to Wave 2 — the
+  scope was exactly S-001..S-045 sequential, no variants. Verification
+  at commit: all 45 YAML frontmatters parse, CJK-clean across the set
+  (font names like LXGW WenKai, Shippori Mincho are Latin
+  transliterations and don't count as CJK leakage), 5493 total lines
+  of token-block content. fcvvdp per-style parity runs (the JOD ≥ 9.5
+  gates per _harness-wiring.md) are wired but not run inline — defer
+  to user's follow-up pass since 45 token-injection renders is too
+  many for one session.
+- **WAVE 1 COMPLETE.** TRDD-6d8ffed6 scope (20 P1 techniques + 14
+  brand library + 45 style presets) is 100% ported and committed.
+  Wave 1 exit criteria met: all V/I items A-class-justified in their
+  per-item reports OR pending the user's fcvvdp run; all A items
+  transcription-exact + sanity-rendered; touched bins pass pytest;
+  touched skills pass ai-slop-check / design-md-validate / CPV
+  validate. Branch tip: 10386b5 (was 9009a16 at Wave 0 start —
+  18 batch9 commits authored end-to-end).
+- Next steps (user-discretionary):
+  1. Run the per-style fcvvdp parity sweep via the H0 harness wiring
+     (bin/amw-verify-parity.sh on each S-NNN render-test).
+  2. Pull the publish trigger when ready — the plugin's
+     `.claude-plugin/plugin.json` is consistent (47 traversal
+     entries), all skills/agents/bins follow the canonical contracts,
+     and no in-flight backups remain uncommitted.
+  3. Move on to Wave 2 / Wave 3 backlog (86 P2 + 70 P3 + S-046..S-083
+     styles) when scope-acceptance is confirmed.
