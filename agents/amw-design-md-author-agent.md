@@ -166,6 +166,29 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
    - `competitor_reference` → pass to `bin/amw-design-md-from-url.sh` if it is a URL; otherwise note in `## Overview`.
 2. Assemble DESIGN.md. Run lint gate.
 
+### Design Decision Rules drafting (mandatory after §1 prose, all paths)
+
+After drafting the `## Overview` (§1) prose for any path (A, B, C, or D):
+
+1. Draft 6–10 Design Decision Rules per the format and dimension checklist in `skills/amw-design-md/references/design-decision-rules.md`. Each rule must: name a dimension, state the brand's default bias, and explain why that bias connects to the brand identity.
+2. Apply the genericness test from §VII of that reference: mentally swap the brand's palette and verify each rule would sound wrong or inapplicable for the swapped palette. If any rule passes the genericness test (still sounds correct with a different palette), rewrite it until it fails.
+3. The rules are inserted as the last sub-section of `## Overview` under the heading `### Design Decision Rules`, immediately after the Key Characteristics bullet list.
+4. Minimum 6 rules. If the input source is sparse (brief with fewer than 3 populated categories), document the gap in `warnings` and produce the maximum rules the source supports.
+
+### Writing-voice quality check (mandatory after all prose sections are drafted)
+
+After all prose sections are drafted (Overview, Colors, Typography, Layout, Shapes, Components, Do's and Don'ts, Agent Prompt Guide), run a 7-point quality check against `skills/amw-design-md/references/writing-voice.md`:
+
+1. **Specificity** — every color description and typography rule names a specific token value AND distinguishes it from a generic variant of the same choice.
+2. **Peer comparison** — at least 2 comparative claims position the brand against category defaults or named peers.
+3. **Scarcity rules** — every accent or signature color has a scarcity sentence naming where it is permitted, appearing in both Overview prose and Do's/Don'ts.
+4. **Don'ts quality** — every Don't is concrete, anti-default, and carries a reason (not generic advice like "don't be inconsistent").
+5. **Semantic role names** — no literal color names ("the white color") in prose; semantic roles used throughout.
+6. **Token cross-references** — Variant 1 prose mentions of color and spacing values use `{token.name}` references, not raw hex.
+7. **Known Gaps documented** — anything not extractable from the source is listed in the `warnings` block (Variant 1) or Known Gaps section (Variant 2).
+
+Fix any principle that is not satisfied before proceeding to the lint gate. If the input source is too sparse to satisfy a principle, document the gap in `warnings`.
+
 ### Lint gate (mandatory precondition for all paths)
 
 ```bash
@@ -230,6 +253,8 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 | Contrast verification needed | `bin/amw-design-md-contrast.py` | WCAG contrast check on every color pair before delivery |
 | Auditing an HTML mockup against the produced DESIGN.md | `bin/amw-html-section-count.py` | Counts top-level sections, derives word-count + reading-time, flags heading-hierarchy violations (`h2` without `h1`, `h3` without `h2`, etc.); used when main-agent attaches a reference HTML and asks me to verify the section-and-heading structure aligns with the DESIGN.md `## Layout` and component specs |
+| Design Decision Rules required format and genericness test | [design-decision-rules](../skills/amw-design-md/references/design-decision-rules.md) | Mandatory §1 sub-section authoring: 6–10 per-dimension behavioral rules, three worked examples (Stripe / Linear / Notion), genericness test — read before drafting §1 prose |
+| Writing-voice quality check (7 principles) | [writing-voice](../skills/amw-design-md/references/writing-voice.md) | Post-draft quality gate: specificity, peer comparison, scarcity rules, Don't quality, semantic names, token cross-refs, Known Gaps — run after all prose sections are drafted, before lint gate |
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-auditor-agent` (peer — routes through main-agent).
 
