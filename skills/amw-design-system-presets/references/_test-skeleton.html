@@ -1,0 +1,411 @@
+<!doctype html>
+<!--
+  _test-skeleton.html -- Canonical render-test skeleton (T-004 / Wave 1 Track H0)
+
+  This HTML is the SAME content scaffold for every style preset. Per-style
+  render-tests inject the style's tokens by substituting these markers:
+
+      {{PRIMARY}}      -- primary brand hex
+      {{ACCENT}}       -- accent hex
+      {{BG}}           -- page background hex
+      {{SURFACE}}      -- card/elevated surface hex
+      {{TEXT}}         -- primary text color hex
+      {{TEXT_MUTED}}   -- secondary/muted text hex
+      {{BORDER}}       -- border color hex
+      {{FONT_DISPLAY}} -- display font family (with fallbacks)
+      {{FONT_BODY}}    -- body font family (with fallbacks)
+      {{FONT_MONO}}    -- monospace font family (with fallbacks)
+      {{RADIUS}}       -- corner radius in px or rem
+      {{SHADOW}}       -- box-shadow value (full)
+      {{SPACING}}      -- base spacing unit in px
+
+  The skeleton covers 8 standard UI primitives so every style is tested
+  against the same content (control for fcvvdp parity):
+    1. Header with logo + nav
+    2. Hero with headline + sub + primary CTA
+    3. 3-card feature row
+    4. Quote / testimonial block
+    5. Pricing table (3 tiers)
+    6. Form (email + submit)
+    7. Footer with mini-nav + copyright
+    8. Modal / dialog (off-canvas for variation testing)
+
+  Light/dark variants: swap BG/TEXT/SURFACE tokens -- same skeleton, different injection.
+  Mobile variant: render at 375x812 when style ships mobile-specific tokens.
+
+  IMPORTANT: No hard-coded colors, font names, radii, or shadows anywhere
+  in this file. Every value MUST be a var(--token) reference.
+-->
+
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style preset render-test -- {{STYLE_NAME}}</title>
+  <style>
+    :root {
+      --primary:      {{PRIMARY}};
+      --accent:       {{ACCENT}};
+      --bg:           {{BG}};
+      --surface:      {{SURFACE}};
+      --text:         {{TEXT}};
+      --text-muted:   {{TEXT_MUTED}};
+      --border:       {{BORDER}};
+      --font-display: {{FONT_DISPLAY}};
+      --font-body:    {{FONT_BODY}};
+      --font-mono:    {{FONT_MONO}};
+      --radius:       {{RADIUS}};
+      --shadow:       {{SHADOW}};
+      --spacing:      {{SPACING}};
+    }
+
+    /* ---- Reset / base ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    /* ---- 1. Header ---- */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing) calc(var(--spacing) * 2);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .site-nav { display: flex; gap: calc(var(--spacing) * 1.5); }
+    .site-nav a { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ---- 2. Hero ---- */
+    .hero {
+      padding: calc(var(--spacing) * 5) calc(var(--spacing) * 2);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: calc(var(--spacing) * 1.5);
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 60ch;
+      margin-bottom: calc(var(--spacing) * 2.5);
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--bg);
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary);
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: calc(var(--spacing) * 0.75);
+    }
+
+    /* ---- 3. Feature row (3 cards) ---- */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(var(--spacing) * 1.5);
+      padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: calc(var(--spacing) * 1.5);
+    }
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: calc(var(--spacing) * 0.5);
+    }
+    .card p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ---- 4. Quote / testimonial ---- */
+    .testimonial {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: calc(var(--spacing) * 2);
+      margin: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .testimonial blockquote {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: calc(var(--spacing) * 0.75);
+    }
+    .testimonial cite {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ---- 5. Pricing (3 tiers) ---- */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(var(--spacing) * 1.5);
+      padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .tier {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: calc(var(--spacing) * 2);
+      text-align: center;
+    }
+    .tier.featured { border-color: var(--accent); }
+    .tier h3 {
+      font-family: var(--font-display);
+      color: var(--text);
+      margin-bottom: calc(var(--spacing) * 0.5);
+    }
+    .tier .price {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: calc(var(--spacing) * 0.5);
+    }
+    .tier .price-sub { color: var(--text-muted); font-size: 0.85rem; }
+    .tier .btn-primary { margin-top: var(--spacing); }
+
+    /* ---- 6. Form ---- */
+    .signup-section {
+      padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .signup-section h2 {
+      font-family: var(--font-display);
+      color: var(--text);
+      margin-bottom: var(--spacing);
+    }
+    .signup-form {
+      display: flex;
+      gap: calc(var(--spacing) * 0.75);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .signup-form input[type="email"] {
+      flex: 1 1 200px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.6rem 1rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+    }
+    .signup-form input[type="email"]::placeholder { color: var(--text-muted); }
+    .signup-form button[type="submit"] {
+      background: var(--primary);
+      color: var(--bg);
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.6rem 1.4rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ---- 7. Footer ---- */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: calc(var(--spacing) * 2) calc(var(--spacing) * 2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--spacing);
+    }
+    .footer-nav { display: flex; gap: calc(var(--spacing) * 1.5); }
+    .footer-nav a { color: var(--text-muted); font-size: 0.85rem; }
+    .site-footer .copy { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* ---- 8. Modal ---- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+    dialog.modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: calc(var(--spacing) * 2);
+      max-width: 480px;
+      width: 90%;
+      color: var(--text);
+    }
+    dialog.modal h2 {
+      font-family: var(--font-display);
+      color: var(--primary);
+      margin-bottom: var(--spacing);
+    }
+    dialog.modal p { color: var(--text-muted); margin-bottom: var(--spacing); }
+    dialog.modal button {
+      background: var(--primary);
+      color: var(--bg);
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.5rem 1.25rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header -->
+  <header class="site-header">
+    <span class="logo">{{STYLE_NAME}}</span>
+    <nav class="site-nav">
+      <a href="#">Products</a>
+      <a href="#">Pricing</a>
+      <a href="#">Docs</a>
+      <a href="#">Sign in</a>
+    </nav>
+  </header>
+
+  <!-- 2. Hero -->
+  <section class="hero">
+    <h1>Headline that demonstrates {{STYLE_NAME}}</h1>
+    <p>One-sentence subhead in muted color, sitting comfortably below the headline at this style's spacing rhythm.</p>
+    <button class="btn-primary">Primary CTA</button>
+    <button class="btn-secondary">Secondary CTA</button>
+  </section>
+
+  <main>
+
+    <!-- 3. Feature row -->
+    <section class="features">
+      <article class="card">
+        <h3>Feature One</h3>
+        <p>Short description of what this feature does and why it matters to the user.</p>
+      </article>
+      <article class="card">
+        <h3>Feature Two</h3>
+        <p>Short description of what this feature does and why it matters to the user.</p>
+      </article>
+      <article class="card">
+        <h3>Feature Three</h3>
+        <p>Short description of what this feature does and why it matters to the user.</p>
+      </article>
+    </section>
+
+    <!-- 4. Testimonial -->
+    <section class="testimonial">
+      <blockquote>"A short testimonial in this style's body font and tone — exactly one sentence."</blockquote>
+      <cite>Jane Smith, Head of Design at Example Co.</cite>
+    </section>
+
+    <!-- 5. Pricing -->
+    <section class="pricing">
+      <article class="tier">
+        <h3>Starter</h3>
+        <p class="price">$9</p>
+        <p class="price-sub">per month</p>
+        <button class="btn-primary">Get started</button>
+      </article>
+      <article class="tier featured">
+        <h3>Pro</h3>
+        <p class="price">$29</p>
+        <p class="price-sub">per month</p>
+        <button class="btn-primary">Get started</button>
+      </article>
+      <article class="tier">
+        <h3>Team</h3>
+        <p class="price">$99</p>
+        <p class="price-sub">per month</p>
+        <button class="btn-primary">Get started</button>
+      </article>
+    </section>
+
+    <!-- 6. Form -->
+    <section class="signup-section">
+      <h2>Stay in the loop</h2>
+      <form class="signup-form">
+        <input type="email" placeholder="your@email.com">
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- 7. Footer -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="copy">2026 -- {{STYLE_NAME}} render-test</p>
+  </footer>
+
+  <!-- 8. Modal (visible for screenshot; hidden in interactive use) -->
+  <dialog open class="modal">
+    <h2>Modal in {{STYLE_NAME}}</h2>
+    <p>Sample dialog content -- same skeleton across all styles so the modal appearance is directly comparable.</p>
+    <button>Close</button>
+  </dialog>
+
+</body>
+</html>

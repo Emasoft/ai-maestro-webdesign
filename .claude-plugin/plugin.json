@@ -33,6 +33,7 @@
     },
     "allow_orchestrator_traversal": [
       "skills/amw-design-principles",
+      "skills/amw-design-system-presets",
       "skills/amw-pretext",
       "skills/amw-mermaid-render",
       "skills/amw-ascii-diagrams-reference",
