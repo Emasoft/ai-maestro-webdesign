@@ -3,7 +3,7 @@ trdd-id: 6d8ffed6-e51f-4be4-a4ff-cc86278b6e2d
 title: Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
 status: in-progress
 created: 2026-05-25T18:48:46+0200
-updated: 2026-05-26T01:20:44+0200
+updated: 2026-05-26T15:48:00+0200
 ---
 
 # TRDD-6d8ffed6 — Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
@@ -131,4 +131,96 @@ before Wave 2.
   amw-ai-slop-check.py +9 content checks (T-030) on code-masked prose + 5
   real tests. Verified: faithful transcription, zero CJK, Swiss token render
   sane, full suite 92 passed / 6 skipped, ruff clean.
-- Next: Wave 1 Track B (slop-verifier agent + self-review screenshot — browser).
+- 2026-05-26T03:15 — **Wave 1 Track B COMPLETE** (2 commits). B1 3b96020:
+  agents/amw-slop-verifier-agent.md (T-025, Tier-4 vision-based agent,
+  14-section template, 445L; first line must be `✅ pass` or `❌ slop
+  detected:`) + bin/amw-self-review-screenshot.sh (T-029) writing under
+  reports/batch9-slop-review/<ts>/<label>/. B2 a1f46c7: wires slop-verifier
+  gate into agents/amw-wireframe-builder-agent.md (§7 step 17, matrix row,
+  Pattern 6) and agents/amw-browser-tester-agent.md (§7 post-scenario,
+  matrix, slop_audits[]). End-to-end verified: sloppy HTML → `❌`, clean
+  HTML → `✅`; brief-override suppression works.
+- 2026-05-26T05:00 — **Wave 1 Track C COMPLETE** (2 commits). C1 169a478:
+  skills/amw-design-md/references/writing-voice.md (T-064, 222L, Apache-2.0
+  attrib) + design-decision-rules.md (T-063, 165L, MIT attrib) + edit
+  agents/amw-design-md-author-agent.md (+25 ins, 0 del; §7 mandatory
+  decision-rules + writing-voice steps). C2 2cb5373: 14 brand DESIGN.md
+  exemplars under skills/amw-design-md/references/brand-library/ (Stripe,
+  Linear, Notion, Vercel, Mintlify, Resend, Cursor, Raycast, Warp, SpaceX,
+  Webflow, Claude, ElevenLabs, Mistral) + catalog.md (85L original meta-
+  content) routing by 5 aesthetic positions. Each brand file has 2-line
+  MIT-attribution header + 1-line footer pointing to VoltAgent/awesome-
+  design-md. Built via 3-agent parallel swarm (5+5+4). Total brand payload
+  4041 lines + 85-line catalog. Author-agent loads at most 3 per request.
+- 2026-05-26T15:00 — **Wave 1 Track D COMPLETE** (commit aec54ba; 3 files;
+  +451/-28). bin/amw-design-md-from-url.sh +T-088 3-tier cascade (curl →
+  dev-browser → manual), --mode auto|curl|dev-browser|manual,
+  --wait-for-selector, --screenshot OUT.png, --from-snapshot PATH;
+  shellcheck-clean; one dead `primary_hex` line removed. agents/amw-design-
+  md-extractor-agent.md +T-084 screenshot-override + T-085 re-screenshot-on-
+  load (3 new input fields, criterion 7, steps 1.5 + 4.5, §8.9, 3 matrix
+  rows, Pattern 7). agents/amw-wireframe-builder-agent.md +T-085 load-
+  contract step 16.5 (PNG size + HTML parse + body content gate) before
+  slop-verifier. End-to-end: extractor's --screenshot output is what the
+  wireframe-builder step 16.5 checks; the override-sha mismatch warning
+  in extractor surfaces the same divergence Pattern 7 names downstream.
+- 2026-05-26T15:10 — **Wave 1 Track E COMPLETE** (commit 60ab3e6; 3 files;
+  +365/-2). NEW skills/amw-ux-evaluator/references/TECH-uxeval-scorecard.md
+  (T-097, 329L, schema spec for YAML sidecar; 2 yaml.safe_load-validated
+  examples; severity tiers blocker/high/medium/low; aggregation rule
+  BLOCKER→BLOCKED, FAIL→NEEDS_CHANGES, else PASS). Edit skills/amw-ux-
+  evaluator/SKILL.md +4 (catalog row, Output item 2, non-negotiable,
+  Instructions step 4). Edit agents/amw-browser-tester-agent.md +30 (§5
+  ux_scorecard_required, §7 yaml.safe_load step, §9 matrix row, §13 YAML
+  ux_scorecards[] block + Markdown summary table, §14 rule 11). Markdown
+  report stays canonical human output; YAML is sidecar for agent gating.
+- 2026-05-26T15:25 — **Wave 1 Track F COMPLETE** (commit 4cd81ba; 8 files;
+  +3906). NEW skills/amw-ui-sound-design/ (T-001, 5 files: SKILL.md 213L
+  + sound-recipes.md 688L + web-audio-safety.md 318L + web-audio-building-
+  blocks.md 696L + audio-file-references.md 162L — MIT direct-port from
+  dannyjpwilliams/ui-sound-design-skill © 2026 Danny Williams; 16-row
+  vocabulary bridge + 10-row sound categories + 9 recipes + 6 critical
+  rules + 5 output formats; orchestrator header, narrow audio-only
+  triggers, attribution header+footer on every reference file). NEW
+  agents/amw-sound-designer-agent.md (T-026, 466L, Tier-4 paired with
+  motion-designer). NEW bin/amw-sound-analyze.mjs (T-028, 1362L, verbatim
+  port + 10-line MIT header, shebang on line 1). plugin.json +1 traversal
+  entry. 4 pre-existing upstream TypeScript "unused variable" diagnostics
+  on the bin script preserved per the verbatim-port discipline.
+- 2026-05-26T15:40 — **Wave 1 Track G COMPLETE** (commit f5fcc91; 4 files;
+  +1112/-2). Correction: ledger called T-139 "no LICENSE / clean-room";
+  upstream has proper MIT (© 2026 Yusuke Hanaue 花上雄介) so switched to
+  attributed direct-port. NEW skills/amw-pretext/references/TECH-80-ja-
+  typography.md (961L; all 22 rules + CSS recipes verbatim, including the
+  #1 JP mobile bug suppression of text-align:justify on cards, BudouX
+  `<wbr>` engine matrix, `font-feature-settings:"palt"`, quoted-phrase
+  `「…」` protection, Coverage Tiers, phrase-break × alignment matrix).
+  NEW TECH-81-zh-typography.md (143L, stub w/ scope + forward-refs to
+  TECH-80). Edit SKILL.md ("80 technique files" + new catalog row).
+  Edit _index.md ("(80 entries)" + new CJK section). CJK exception
+  documented for TECH-80/81 only; other CJK-containing files in plugin
+  pre-existing and intentional.
+- 2026-05-26T15:48 — **Wave 1 Track H0 COMPLETE** (commit 3cd0952; 5 files;
+  +882). NEW skills/amw-design-system-presets/ (T-004 — final P1 item):
+  SKILL.md 146L (catalog-first router, per-style file contract,
+  non-negotiables including catalog-first load + brand-tokens-override),
+  references/catalogue.md 143L (45 S-NNN rows across 8 aesthetic positions
+  + 10 quick-decision rules; placeholder positions marked for swarm to
+  populate verbatim from upstream), references/_test-skeleton.html 411L
+  (8 UI primitives — header/hero/3-card/quote/pricing/form/footer/modal —
+  using ONLY var(--token) refs, no hard-coded hex/rgb/hsl), references/
+  _harness-wiring.md 181L (5-step per-style parity pipeline: token-inject
+  → render-mine → render-source → fcvvdp ≥ 9.5 → record verdict). EDIT
+  .claude-plugin/plugin.json (traversal +1, now 47 entries).
+- **Wave 1 P1 INVENTORY 100% COMPLETE** — 20 of 20 techniques landed
+  (T-001 + T-004 + T-025 + T-029 + T-030 + T-040 + T-041 + T-042 + T-043
+  + T-044 + T-045 + T-046 + T-054 + T-063 + T-064 + T-084 + T-085 + T-088
+  + T-097 + T-139), plus the T-026 (sound-designer agent) + T-028
+  (sound-analyze bin) pulled in by T-001's natural scope. Brand library
+  (T-040) also complete (14 brands). Touched skills pass CPV validate /
+  ai-slop-check; touched bins pass pytest.
+- Next: Wave 1 H1..H9 swarm — populate 45 per-style files (S-001..S-045)
+  against the H0 scaffold. ~9 parallel sonnet-spark agents, ~5 styles
+  each; each per-style file = frontmatter + Identity + Token block +
+  Breaks-if invariants + render-test pointer. Estimated 5000-8000 lines
+  total. **Held for user go/no-go before launching the swarm.**
