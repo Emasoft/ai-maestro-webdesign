@@ -55,8 +55,8 @@ pointer; per-file attribution preserves the upstream source.
 |---|---|---|
 | S-009 | [Aurora UI / Aurora Maximalism](S-009-aurora.md) | Near-black bg, violet-to-pink-to-blue gradient as brand, glow boxes (not drop-shadow), huge type, spring physics. |
 | S-010 | [Cyberpunk / Dark Neo-Noir](S-010-cyberpunk.md) | #0a0a12, neon cyan/magenta/toxic-green, multi-layer neon glow, Orbitron/Rajdhani, all-caps, 0 radius, glitch/scanlines. |
-| S-010b | [Neon / Glow UI](S-010b-neon.md) | Near-black, 2 neon colors, multi-layer `0 0 5/20/40px` glow, Space Grotesk, glow-intensity dim/standard/vivid. |
-| S-011 | [Retro-Futuristic / Synthwave](S-011-synthwave.md) | Deep space bg, VT323/Orbitron, CRT scanlines repeating-linear-gradient, magenta+cyan OR phosphor+amber, neon glow. |
+| S-010b | [Neon / Glow UI](S-010b-neon.md) | Near-black, 2 neon colors, multi-layer `0 0 5/20/40px` glow, Space Grotesk, glow-intensity dim/standard/vivid. *(backlog — Wave 1 swarm covered S-001..S-045; S-010b deferred to Wave 2)* |
+| S-011 | [Retro-Futuristic / Synthwave](S-011-retro-futuristic.md) | Deep space bg, VT323/Orbitron, CRT scanlines repeating-linear-gradient, magenta+cyan OR phosphor+amber, neon glow. |
 | S-012 | [Retro Terminal / Green-on-Black](S-012-retro-terminal.md) | #00FF41 on #0D0208, Fira Code mono only, green glow, typing/cursor anim, 0 radius. |
 | S-036 | [Cinematic Dark / Immersive](S-036-cinematic-dark.md) | Near-black #06060A, film color-grade, large serif titles, fullscreen hero, sticky-scroll parallax, 700-1000ms transitions. |
 
@@ -66,11 +66,11 @@ pointer; per-file attribution preserves the upstream source.
 |---|---|---|
 | S-013 | [Industrial / Utilitarian](S-013-industrial.md) | Black-on-black + 1 signal color green/amber, IBM-Plex/JetBrains mono only, extreme density, 0 radius, no shadow. |
 | S-014 | [Editorial Serif / Content-First](S-014-editorial-serif.md) | #111 on #F9F9F7, Playfair+Lora/Georgia, 18px/1.8 body, 720px column, deep-red accent, 0 radius, no shadow, rule dividers. |
-| S-015 | [Fashion / Luxury Editorial](S-015-fashion-luxury.md) | Near-white/black, Didot/Bodoni/Cormorant 80-120px, gold accent, museum-frame gallery, 750ms transitions, no borders/radius/shadow. |
-| S-016 | [Luxury Dark Warm](S-016-luxury-dark.md) | Gold #D4AF37 on #12100E, Cinzel+Montserrat, 2px radius, deep shadow, beige text. |
+| S-015 | [Fashion / Luxury Editorial](S-015-fashion-luxury-editorial.md) | Near-white/black, Didot/Bodoni/Cormorant 80-120px, gold accent, museum-frame gallery, 750ms transitions, no borders/radius/shadow. |
+| S-016 | [Luxury Dark Warm](S-016-luxury-dark-warm.md) | Gold #D4AF37 on #12100E, Cinzel+Montserrat, 2px radius, deep shadow, beige text. |
 | S-018 | [Understated Elegance / Warm Premium](S-018-understated-elegance.md) | Sage + terracotta on warm cream, Cormorant+Lato, 8px radius, ultra-soft shadow. |
-| S-019 | [Heritage / Warm Editorial](S-019-heritage.md) | Cream/sand/tan, Playfair+Dancing-Script, terracotta accent, organic oval masks, 0-4px radius. |
-| S-020 | [Organic / Earthy / Blob](S-020-organic.md) | Sage/clay/terracotta/ochre/moss, Fraunces/Epilogue, 16-32px radius, blob border-radius, grain 1-3%, warm shadow. |
+| S-019 | [Heritage / Warm Editorial](S-019-heritage-warm-editorial.md) | Cream/sand/tan, Playfair+Dancing-Script, terracotta accent, organic oval masks, 0-4px radius. |
+| S-020 | [Organic / Earthy / Blob](S-020-organic-earthy.md) | Sage/clay/terracotta/ochre/moss, Fraunces/Epilogue, 16-32px radius, blob border-radius, grain 1-3%, warm shadow. |
 | S-030 | [Lo-Fi / Paper / Zine](S-030-lo-fi-paper.md) | Paper-yellow #E8E0C0, mixed system fonts, 2-8deg rotation, halftone/Riso misregistration, hard ink borders, no smooth motion. |
 | S-031 | [Paper Collage / Handcraft](S-031-paper-collage.md) | Cream paper stock, hand-lettered, torn edges SVG/clip-path, polaroid/tape, scrapbook density, physical-feel motion. |
 | S-037 | [Cream Editorial](S-037-cream-editorial.md) | #FAF8F4, Cormorant Garamond, 0px radius, serif-everywhere. |
