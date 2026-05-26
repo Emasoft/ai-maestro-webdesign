@@ -3,7 +3,7 @@ name: pretext-tech-index
 purpose: Full per-technique catalog for amw-pretext. Read this when you need the explicit one-line description of every TECH-NN file. SKILL.md links here directly.
 ---
 
-# Pretext — Full Technique Catalog (78 entries)
+# Pretext — Full Technique Catalog (80 entries)
 
 > **Routing back:** [SKILL](../SKILL.md) · [Decision guide TECH-72](TECH-72-use-pretext-decision-guide.md)
 
@@ -132,6 +132,11 @@ All TECH files share the same TOC structure unless noted:
 - [TECH-76-postext-mobile-port.md](TECH-76-postext-mobile-port.md) — postext — pretext port for React Native / mobile runtimes (TOC adds: Suggested font pairings by mood)
 - [TECH-77-font-strategy.md](TECH-77-font-strategy.md) — Font strategy for pretext (named families, load order, fallbacks)
 - [TECH-78-style-profiles.md](TECH-78-style-profiles.md) — Style profiles (pick ONE aesthetic per pretext output)
+
+## CJK typography (TECH-80 — TECH-81)
+
+- [TECH-80-ja-typography.md](TECH-80-ja-typography.md) — Japanese web typography: kinsoku, BudouX `<wbr>` insertion, `word-break:auto-phrase` engine matrix, `font-feature-settings:"palt"`, `text-align:justify` suppression on mobile cards (the #1 JP mobile bug), card-density budget formula, quoted-phrase `「…」` protection. MIT-attributed direct-port from yusuke-hanaue/ja-webtypo-skill.
+- [TECH-81-zh-typography.md](TECH-81-zh-typography.md) — Chinese web typography (placeholder stub). BudouX `loadDefaultSimplifiedChineseParser()` / `loadDefaultTraditionalChineseParser()`, Simplified vs Traditional font stacks, shared kinsoku and justify-suppression rules. Forward-references TECH-80 for shared CJK behaviours.
 
 ## Cross-references
 

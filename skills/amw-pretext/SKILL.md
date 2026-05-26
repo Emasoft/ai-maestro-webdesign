@@ -10,7 +10,7 @@ version: 0.1.0
 
 ## Overview
 
-Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou/pretext` — a headless, DOM-free text measurement library — across 78 technique files covering API functions, measurement prerequisites, layout patterns, obstacle-aware flow, kinetic typography, virtualized tables, 3D/motion text, integration patterns, and workflow assemblies. Routes each narrow trigger (shrink-wrap, text-on-path, balanced headline, virtualized list, etc.) to the matching TECH file. Output reuses existing project typography tokens; pretext never introduces new fonts or motion systems.
+Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou/pretext` — a headless, DOM-free text measurement library — across 80 technique files covering API functions, measurement prerequisites, layout patterns, obstacle-aware flow, kinetic typography, virtualized tables, 3D/motion text, integration patterns, workflow assemblies, and CJK typography. Routes each narrow trigger (shrink-wrap, text-on-path, balanced headline, virtualized list, etc.) to the matching TECH file. Output reuses existing project typography tokens; pretext never introduces new fonts or motion systems.
 
 ## Instructions
 
@@ -50,6 +50,7 @@ Then route by category (every technique below is one TECH file in `references/`;
 | Integration patterns | TECH-59 — TECH-66 | React hooks, Svelte/Astro islands, vanilla TS, SSR/Node-canvas, progressive enhancement, wrapper module, single-file ESM, ResizeObserver |
 | Workflow assemblies | TECH-67 — TECH-71 | Masonry, virtualized list, SmartPage A4 auto-fit, streaming AI chat, auto-height textarea |
 | Consult / route / mobile | TECH-73 — TECH-78 | design-pipeline consult, dragon-text reflow, rich-note atomic pills, postext (RN), font strategy, style profiles |
+| CJK typography (JA + ZH stub) | TECH-80 — TECH-81 | Japanese web typography (kinsoku, BudouX `<wbr>`, `word-break:auto-phrase` engine matrix, `text-align:justify` suppression on mobile cards, `font-feature-settings:"palt"`, quoted-phrase protection) + Chinese-typography placeholder |
 
 ## Output
 
