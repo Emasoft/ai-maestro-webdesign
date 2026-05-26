@@ -101,6 +101,9 @@ output_variant: 1                                   # optional; default 1 (canon
 companion_targets: ["css", "json", "inventory"]     # optional; runs bin/amw-design-md-emit-companions.py
 strict_lint: true                                   # optional; default true. When true, P0/P1 lint failures halt delivery.
 contrast_check: true                                # optional; default true. Runs bin/amw-design-md-contrast.py.
+extraction_mode: "auto"                              # optional; default "auto". auto | curl | dev-browser | manual. Passes through to --mode in bin/amw-design-md-from-url.sh.
+screenshot_override_path: "/abs/path/to/page.png"    # optional; when present, the user has pre-captured a frozen screenshot of the source URL. The extractor treats it as the canonical visual state and skips the dev-browser smoke-probe; the extraction still happens but the screenshot is the visual ground truth for prose-generation cross-reference.
+wait_for_selector: "main, [role=main], .hero"        # optional; CSS selector. When extraction_mode is "dev-browser" or "auto", passes through to --wait-for-selector. Use when the URL is a JS-heavy SPA and the snapshot must wait for the main content to mount.
 ```
 
 A missing required field for the chosen `input_type` is `status=failed` / `next_action=escalate_to_user`.
@@ -131,6 +134,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 6. **Never re-emit broad design vocabulary in tool calls.** Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md), I never use phrases like "design a landing page" or "build a UI" in my tool-call text — that re-triggers the orchestrator.
   > The problem · The protocol · DO · DON'T · Examples · Correct: agent produces an HTML mockup from approved ASCII · Incorrect: agent tries to delegate back through commands · Correct: agent needs to produce a diagram in Mermaid format · Incorrect: agent uses Skill tool with a vague English prompt · Enforcement
 
+7. **Tier cascade is preferred over single-tier extraction.** When `extraction_mode` is `auto` (the default), the underlying script attempts curl tier first (cheap, works for SSR sites — 80% of marketing/docs), then dev-browser if curl returns <3 colors or empty meta-description, then prints manual instructions if dev-browser also fails. I never assume a single tier is sufficient; I let the cascade decide. When `extraction_mode` is set explicitly (`curl` / `dev-browser` / `manual`), I honor the override AND log in `warnings` if the chosen tier returned poor results so the user can re-run with `auto`.
+
 ---
 
 ## 7. Operations (nominal workflow)
@@ -138,6 +143,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 ### Path A — `input_type=url`
 
 1. Run `/amw-doctor` checks inline (or trust main-agent's pre-flight). Confirm `dev-browser` and `node` are on PATH.
+
+1.5. **Screenshot-override gate (T-084).** If the input contract supplies `screenshot_override_path`, read its sha256 and store as `override_sha256`. The override is the canonical visual ground truth for this extraction — the cascade still runs, but the screenshot from the override is the one referenced in the report. Skip the smoke probe (step 2) and proceed to step 3 with the override path passed through as context. If `screenshot_override_path` is supplied but the file is missing or unreadable, return `status=failed` with `blocking_issues: ["screenshot_override_path file not readable: <path>"]` and `next_action=escalate_to_user`. The override is NOT consulted by the extraction script — it is metadata the agent carries through to the return contract and the prose-generation step.
 
 2. **Pre-extraction smoke probe.** Before committing to a full DESIGN.md write, run:
    ```bash
@@ -160,7 +167,24 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
    ```
    The wrapper handles dev-browser invocation, computed-style extraction, and emits a draft Variant 1 DESIGN.md.
 
+   When `extraction_mode` is set, pass it through:
+   ```bash
+   bash bin/amw-design-md-from-url.sh "<url>" -o "<output_path>" \
+     --mode "<extraction_mode>" \
+     ${wait_for_selector:+--wait-for-selector "$wait_for_selector"} \
+     --screenshot "<output_path>.load-verified.png"
+   ```
+   The `--screenshot` always-on flag captures a re-screenshot-on-load PNG (T-085) — used by step 4.5 below as the load-verification artifact.
+
 4. Read the draft. Read the sidecar `<output_path>.extraction-notes.md` if present.
+
+4.5. **Re-screenshot-on-load verification (T-085).** Inspect `<output_path>.load-verified.png`:
+- File present and >5 KB → page rendered SOMETHING.
+- File missing OR <5 KB → page failed to render (likely network error, login wall, or robots block). Set `status=partial`, log `blocking_issues: ["Load-verified screenshot at <path> missing or near-empty — page may not have rendered. Re-run with --mode dev-browser --wait-for-selector <SEL> or inspect manually."]`, and skip step 5.
+
+If `screenshot_override_path` was supplied and `<override_sha256>` differs from the sha256 of the just-captured `<output_path>.load-verified.png`, log a `warnings` entry: `"Page state at extraction-time differs from screenshot_override_path (sha mismatch). The override is the visual ground truth in the report; subsequent renders may behave differently."`. Do NOT fail — the override is the authority.
+
+The screenshot is listed in `artifact_paths` with `purpose: "load-verified screenshot captured at extraction time (T-085)"`.
 
 5. Augment the prose `## Overview` from the page meta-description / `<title>` / first `<h1>` if extraction-notes did not populate it.
 
@@ -270,6 +294,11 @@ Action: skip companion generation. The companions would derive from a broken DES
 
 Action: this is likely a brand-by-design choice (e.g., a low-contrast luxury aesthetic). Surface every failing pair in `warnings`, set `confidence=medium` (not low — extraction itself was faithful), and recommend `amw-accessibility-auditor-agent` for a full audit. Do not modify the source's intentional contrast choices.
 
+### 8.9 Auto cascade exhausted all tiers
+Symptom: `extraction_mode=auto` invoked curl tier → poor result → escalated to dev-browser → also returned near-empty (<2 colors). The script prints manual-tier instructions before exiting non-zero.
+
+Action: `status=partial`, `confidence=low`, `blocking_issues=["Auto cascade exhausted all tiers for <url>. Manual-tier instructions printed; user must run the DevTools snippet and re-invoke with --from-snapshot <path>."]`, `next_action=retry_with:manual_snapshot`. Surface the printed DevTools snippet path in `recommendations` for easy access.
+
 ### Iteration cap
 Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), my lint mechanical-fix loop has a hard cap of **2 attempts**. Each attempt consists of: run `bin/amw-design-md-lint.sh` → on P0/P1 errors apply programmatic fixes → re-run lint. After 2 attempts I emit `status=failed`, `next_action=escalate_to_user`, and `attempts_log[]` showing each attempt's failure reason. I never deliver a DESIGN.md with unresolved P0 lint errors.
 > [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
@@ -287,6 +316,9 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | Companions requested | `bin/amw-design-md-emit-companions.py` | Emit `tokens.css`, `tokens.json`, `component-inventory.md`, `usage-prompt.md` |
 | Lint gate (all paths) | `bin/amw-design-md-lint.sh` | Structural + semantic validation (P0/P1/P2) |
 | Contrast check (all paths) | `bin/amw-design-md-contrast.py` | WCAG 2.1 AA pair-level contrast verification |
+| `extraction_mode=curl` or auto-cascade curl tier | `bin/amw-design-md-from-url.sh ... --mode curl` | Tier-1 SSR fetch (no JS); fast path for marketing/docs sites |
+| `extraction_mode=manual` or auto-cascade exhausted | `bin/amw-design-md-from-url.sh ... --mode manual` | Tier-3 — emit DevTools snippet for user-driven extraction; consume via `--from-snapshot <path>` |
+| `screenshot_override_path` supplied | bypass smoke-probe; carry override sha256 to load-verification step | T-084 frozen visual ground truth (user already pre-captured) |
 | Always — DESIGN.md format spec | [SKILL](../skills/amw-design-md/SKILL.md) | Canonical Variant 1 structure and token contracts |
 | Variant 1 spec details | [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) | Field-level spec for every YAML key |
 > [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
@@ -348,6 +380,9 @@ Action: emit them under the closest canonical key. If no canonical key fits, doc
 ### Pattern 6: User wants Variant 2 (community 9-section) output
 Action: extract to Variant 1 first (canonical). Note in `recommendations` that V1→V2 conversion is not yet implemented in `bin/`; the user can manually re-format the prose sections per [community-9-section-template](../skills/amw-design-md/references/community-9-section-template.md).
 > [community-9-section-template.md] Optional extension sections · Validation · Cross-references
+
+### Pattern 7: `screenshot_override_path` supplied but page changed by the time extraction ran
+Action: trust the override — it is the user's frozen visual state and the canonical reference for the extraction. The load-verified screenshot (from §7 step 4.5) is captured for record-keeping but does NOT override the user's screenshot. Log a `warnings` entry naming both paths and the sha256 mismatch. The DESIGN.md is emitted from the live extraction (which is current) but the report explicitly references the override as the visual cross-reference.
 
 ---
 
@@ -417,6 +452,9 @@ artifact_paths:
   - path: "/Users/emanuele/project/tokens.css"
     type: css
     purpose: ":root CSS custom properties derived from DESIGN.md (companion)"
+  - path: "/Users/emanuele/project/DESIGN.md.load-verified.png"
+    type: png
+    purpose: "load-verified screenshot captured at extraction time (T-085)"
 recommendations:
   - "Smoke probe result: Found 6 colors, 2 fonts, 4 spacing steps. Color preview: ['#7c3aed', '#ffffff', '#1f2937']. No warnings from probe — page appears clean."
   - "Run amw-design-md-auditor-agent in Mode A (spot-check) to verify DESIGN.md against the live page."
@@ -558,3 +596,4 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `../bin/amw-design-md-emit-companions.py` — companion file generator
 - `../bin/amw-design-md-lint.sh` — lint gate
 - `../bin/amw-design-md-contrast.py` — WCAG contrast checker
+- `../bin/amw-self-review-screenshot.sh` — invoked indirectly via `bin/amw-design-md-from-url.sh --screenshot` to capture the T-085 load-verified PNG

@@ -263,6 +263,30 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
     - `mkdir -p` the destination, then `cp` the staging file(s) to `<output_dir>/<slug>.<locale>.html` and the optional preview PNG to `<output_dir>/<slug>.preview.png`. Optional CSS file (if externalized), optional tokens.json (for downstream verification) follow the same staging→promote pattern.
     - On any promotion error (permission denied, disk full), keep the staging path intact, set `status=partial`, log the error in `blocking_issues`, and list the staging path under `artifact_paths` with `purpose: "did not promote to output_dir; staged at /tmp/..."`.
 
+16.5. **Load-verified screenshot (T-085 contract).**
+
+    This step is a precondition for the slop-verifier in step 17. Run:
+
+    ```bash
+    bash bin/amw-self-review-screenshot.sh "<output_html_path>" \
+      --out "<output_dir>" \
+      --label "<slug>.load-verified"
+    ```
+
+    The script writes `<output_dir>/<slug>.load-verified-desktop.png` and emits the absolute path on stdout. Capture it as `LOAD_VERIFIED_PNG`.
+
+    Run three mechanical load-verification checks:
+
+    1. **PNG produced and >5 KB.** `[[ -f "$LOAD_VERIFIED_PNG" && $(stat -f%z "$LOAD_VERIFIED_PNG" 2>/dev/null || stat -c%s "$LOAD_VERIFIED_PNG") -gt 5120 ]]`. A <5 KB PNG is almost certainly a blank or `about:blank` capture. Fail → `status=partial`, `blocking_issues: ["Load-verified screenshot at <path> is missing or <5 KB — page likely failed to render. Inspect <output_html_path> and re-invoke."]`, skip step 17.
+
+    2. **Promoted HTML is parseable.** `python3 -c "import html.parser as p; p.HTMLParser().feed(open('<output_html_path>').read())"`. Fail → `status=partial`, `blocking_issues: ["Promoted HTML at <path> is not parseable HTML (HTMLParser error: ...)."]`, skip step 17.
+
+    3. **Body has content.** Grep the HTML body for at least 50 non-whitespace characters between `<body>` and `</body>` (excluding `<script>` / `<style>` blocks). Fail → `warnings: ["Promoted HTML body has <50 chars of non-script content — page may render mostly empty."]`. Do NOT fail-fast on this — just warn.
+
+    Append `LOAD_VERIFIED_PNG` to `artifact_paths` with `purpose: "Load-verified screenshot taken immediately after promotion (T-085); slop-verifier in step 17 uses its own re-screenshot in reports/"`.
+
+    Pass `LOAD_VERIFIED_PNG` through to step 17 as `<load_verified_png>` — the slop-verifier MAY consult it (e.g., to compare against its own screenshot for visual stability) but is not required to. The slop-verifier produces its own canonical screenshot under `reports/batch9-slop-review/<ts>/<slug>/`.
+
 17. **Run slop-verifier gate (always — last step before delivery).**
 
     This gate runs on the canonical output path produced in step 16 (the promoted HTML file, not the staging path), so any earlier AI-slop check or syntax fix is already baked in.
@@ -353,6 +377,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
 > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 | Structure summary + heading-hierarchy audit on rendered output | `bin/amw-html-section-count.py` (run on the staging path before promotion) | counts top-level sections, computes word-count + reading-time, flags `h2 without h1`, `h3 without h2`, etc. — output goes into the return contract's `structure_summary` block |
+| Load-verified screenshot (post-promotion, pre-slop-verifier) | `bin/amw-self-review-screenshot.sh <output_html> --out <output_dir> --label <slug>.load-verified` | T-085 — capture PNG immediately after promotion to confirm the HTML actually renders; mechanical checks on PNG size + HTML parseability + body content; precondition gate for step 17 |
 | Post-render slop gate (always) | `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) + `bin/amw-self-review-screenshot.sh` | input: promoted HTML path + project brief · output: `✅ pass` or `❌ slop detected:` verdict; on `❌`, revise HTML and re-run the gate once; if `❌` persists, set `status=partial` with HIGH rules in `blocking_issues` |
 | Locale direction (RTL) | [typography-system](../skills/amw-design-principles/typography-system.md) (reading-direction section) | RTL layout rules |
 > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
@@ -415,6 +440,9 @@ Example: diagram-producer handed back a PNG without a source SVG/Mermaid. Action
 
 ### Pattern 6: slop-verifier returns ❌ on a HIGH rule that the brief should have suppressed
 Example: the brand legitimately uses a gradient as its primary identity element, but the brief passed to me was silent on this — so the verifier fires rule-1 (purple-blue gradient) at HIGH severity with no suppression. Action: do NOT silently add the rule to `brief_overrides` and re-invoke the verifier to manufacture a `✅ pass`. Instead, surface the ambiguity to main-agent via `blocking_issues`: `"slop-verifier fired rule-1 (gradient) at HIGH — brief does not contain explicit suppression; if the brand uses this gradient by design, main-agent should confirm and re-invoke with brief_overrides: ['rule-1']"`. Set `status=partial` and `next_action=escalate_to_user`. This keeps the override decision with the user, not silently in the agent.
+
+### Pattern 7: load-verified screenshot is healthy but slop-verifier reports a HIGH violation that only shows in its (later) re-screenshot
+Example: at step 16.5 the page renders cleanly (>5 KB PNG, body has content). At step 17 the slop-verifier captures its own screenshot ~3 seconds later and a delayed JS-driven gradient hero has bloomed on top, triggering rule-1. Action: this is NOT a load failure — the load-verified shot was honest at its capture time. Treat the slop violation per Pattern 6 (surface to main-agent; do NOT auto-suppress). Note in `warnings` that the load-verified shot and slop-review shot diverge — this is a useful diagnostic signal for the user.
 
 ---
 
@@ -490,6 +518,9 @@ artifact_paths:
   - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.preview.png"
     type: png
     purpose: "1440px reference screenshot (preview only, not production asset)"
+  - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.load-verified-desktop.png"
+    type: png
+    purpose: "Load-verified screenshot taken immediately after promotion (T-085); slop-verifier in step 17 uses its own re-screenshot in reports/"
 structure_summary:
   section_count: 8
   word_count: 1240
@@ -617,6 +648,8 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 9. **Never claim `status=ok` when the AI-slop gate produced a warning that violates a brand token.** Example: if brand tokens say `fonts.display=Bebas Neue` and my output uses Inter somewhere, that is not a warning — it is a bug. Return `status=partial` and flag it.
 
 10. **Never produce a file and not list it in `artifact_paths`.** Every file I write to disk appears in the return contract. Silent side-files break main-agent's artifact inventory.
+
+11. **Never skip the load-verified screenshot (step 16.5).** It is the precondition gate for the slop-verifier. A slop audit on a half-loaded page is meaningless; the load-verification catches the broken-render case before the slop verifier wastes time on a blank canvas. Even if `output_mode` says "no preview", the load-verified PNG is mandatory — it is not a preview, it is a verification artifact.
 
 ---
 

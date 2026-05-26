@@ -17,33 +17,54 @@ set -euo pipefail
 usage() {
   cat <<USAGE
 Usage: bash bin/amw-design-md-from-url.sh <URL> [-o OUT] [-n NAME] [--summary-only]
+       [--mode <dev-browser|curl|auto|manual>]
+       [--wait-for-selector SEL] [--screenshot OUT.png] [--from-snapshot PATH]
 
 Extract a Variant 1 DESIGN.md from a live URL.
 
 Options:
-  -o OUT          Output path. Default: ./DESIGN.md
-  -n NAME         Design system name. Default: from <title> or domain
-  --summary-only  Probe the page and emit a JSON summary to stdout instead of
-                  writing a full DESIGN.md. Useful for detecting gradient-heavy
-                  heroes and noisy pages before committing to full extraction.
-                  Always exits 0 (the summary is informational).
+  -o OUT                   Output path. Default: ./DESIGN.md
+  -n NAME                  Design system name. Default: from <title> or domain
+  --summary-only           Probe the page and emit a JSON summary to stdout instead of
+                           writing a full DESIGN.md. Useful for detecting gradient-heavy
+                           heroes and noisy pages before committing to full extraction.
+                           Always exits 0 (the summary is informational).
+  --mode <tier>            Extraction tier. Default: dev-browser (backward-compatible).
+                             dev-browser  Use the dev-browser wrapper (default).
+                             curl         Fast curl + stdlib HTML parse (SSR sites).
+                                          Exits 3 if result is too sparse.
+                             auto         Try curl first; escalate to dev-browser on
+                                          poor result; print manual instructions if
+                                          both fail.
+                             manual       Print a browser DevTools console snippet and
+                                          exit 0. No DESIGN.md is written.
+  --wait-for-selector SEL  CSS selector to wait for after page.goto() before extracting.
+                           Passed to dev-browser tier only; ignored by curl tier.
+  --screenshot OUT.png     Also capture a desktop screenshot to OUT.png.
+                           Uses bin/amw-self-review-screenshot.sh when present.
+                           Independent of --mode.
+  --from-snapshot PATH     Skip dev-browser invocation and feed PATH (JSON) directly to
+                           the post-processor. Closes the --mode manual loop.
+  -h, --help               Show this help and exit.
 
-Pipeline (full extraction):
+Pipeline (full extraction, dev-browser mode):
   1. dev-browser eval <URL> — captures DOM landmarks + computed styles + CSS vars
   2. post-process JSON → cluster colors, infer typography, spacing, radius
   3. emit Variant 1 DESIGN.md
   4. validate via amw-design-md-lint.sh + amw-design-md-contrast.py
 
 Pipeline (--summary-only):
-  1. dev-browser eval <URL> — captures DOM landmarks + computed styles + CSS vars
+  1. tier extraction <URL> — captures DOM landmarks + computed styles + CSS vars
   2. post-process JSON → count colors, fonts, radii, spacing steps
   3. emit JSON summary to stdout with warnings for problematic extraction signals
 
 Exit codes:
   0  DESIGN.md written and passes lint  (full mode)
   0  JSON summary emitted                (--summary-only mode)
+  0  Manual instructions emitted         (--mode manual)
   1  validation failed (DESIGN.md still written; see warnings)  (full mode)
   2  invocation / network error
+  3  curl tier returned poor result (auto mode: triggers escalation)
 USAGE
   exit 2
 }
@@ -54,12 +75,20 @@ URL=""
 OUT="./DESIGN.md"
 NAME=""
 SUMMARY_ONLY=0
+MODE="dev-browser"
+WAIT_FOR_SELECTOR=""
+SCREENSHOT_OUT=""
+FROM_SNAPSHOT=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
     -o) OUT="$2"; shift 2 ;;
     -n) NAME="$2"; shift 2 ;;
     --summary-only) SUMMARY_ONLY=1; shift ;;
+    --mode) MODE="$2"; shift 2 ;;
+    --wait-for-selector) WAIT_FOR_SELECTOR="$2"; shift 2 ;;
+    --screenshot) SCREENSHOT_OUT="$2"; shift 2 ;;
+    --from-snapshot) FROM_SNAPSHOT="$2"; shift 2 ;;
     -h|--help) usage ;;
     *)
       if [ -z "$URL" ]; then URL="$1"; shift
@@ -73,14 +102,17 @@ if [ -z "$URL" ]; then
   usage
 fi
 
+# Validate --mode
+case "$MODE" in
+  dev-browser|curl|auto|manual) ;;
+  *)
+    echo "Error: invalid --mode value '${MODE}'. Accepted: dev-browser, curl, auto, manual." >&2
+    exit 2
+    ;;
+esac
+
 PLUGIN_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WRAPPER="$PLUGIN_ROOT/bin/amw-dev-browser-wrapper.sh"
-
-if [ ! -x "$WRAPPER" ]; then
-  echo "Error: dev-browser wrapper not found or not executable: $WRAPPER" >&2
-  echo "       Run /amw-init or check the plugin install." >&2
-  exit 2
-fi
 
 if ! command -v python3 >/dev/null 2>&1; then
   echo "Error: python3 not found on PATH." >&2
@@ -135,18 +167,41 @@ EXTRACT_JS='
 })()
 '
 
-# Try to capture via wrapper. If wrapper does not yet expose a generic eval,
-# fall back to a documented stub that the user runs manually.
-if "$WRAPPER" --help 2>&1 | grep -q "eval"; then
-  "$WRAPPER" eval "$URL" --expr "$EXTRACT_JS" > "$TMP_JSON" || {
-    echo "Error: dev-browser eval failed for URL: $URL" >&2
-    exit 2
-  }
-else
-  echo "Note: dev-browser wrapper does not yet expose 'eval'. Running stub extractor." >&2
-  # Stub: write minimal placeholder JSON so the post-processor can still emit a draft DESIGN.md
-  # The user is expected to fill in the missing pieces.
-  cat > "$TMP_JSON" <<JSONSTUB
+# ── Tier helpers ──────────────────────────────────────────────────────────────
+
+# run_dev_browser_tier: invoke dev-browser and write JSON to TMP_JSON.
+# Returns 0 on success, 2 on failure.
+run_dev_browser_tier() {
+  if [ ! -x "$WRAPPER" ]; then
+    echo "Error: dev-browser wrapper not found or not executable: $WRAPPER" >&2
+    echo "       Run /amw-init or check the plugin install." >&2
+    return 2
+  fi
+
+  # Build wait-selector prefix if requested
+  local WAIT_PREFIX=""
+  if [ -n "$WAIT_FOR_SELECTOR" ]; then
+    WAIT_PREFIX="await page.waitForSelector(\"${WAIT_FOR_SELECTOR}\", { timeout: 10000 });"
+  fi
+
+  if "$WRAPPER" --help 2>&1 | grep -q "eval"; then
+    if [ -n "$WAIT_FOR_SELECTOR" ]; then
+      # Inject wait-selector into a wrapper async expression
+      local FULL_JS="(async () => { ${WAIT_PREFIX} return ${EXTRACT_JS} })()"
+      "$WRAPPER" eval "$URL" --expr "$FULL_JS" > "$TMP_JSON" || {
+        echo "Error: dev-browser eval failed for URL: $URL" >&2
+        return 2
+      }
+    else
+      "$WRAPPER" eval "$URL" --expr "$EXTRACT_JS" > "$TMP_JSON" || {
+        echo "Error: dev-browser eval failed for URL: $URL" >&2
+        return 2
+      }
+    fi
+  else
+    echo "Note: dev-browser wrapper does not yet expose 'eval'. Running stub extractor." >&2
+    # Stub: write minimal placeholder JSON so the post-processor can still emit a draft DESIGN.md
+    cat > "$TMP_JSON" <<JSONSTUB
 {
   "title": "$URL",
   "h1": [], "h2": [], "body": [], "button": [], "input": [], "link": [],
@@ -156,10 +211,307 @@ else
   "ogTitle": ""
 }
 JSONSTUB
+  fi
+  return 0
+}
+
+# run_curl_tier: fetch URL with curl, parse with stdlib html.parser, write JSON to TMP_JSON.
+# Returns 0 on usable result, 3 on poor result (few colors, empty meta, bare domain title).
+run_curl_tier() {
+  local HTML_TMP
+  HTML_TMP="$(mktemp -t amw-curl-html-XXXXXX.html)"
+  # shellcheck disable=SC2064
+  trap "rm -f '${HTML_TMP}'; rm -f '$TMP_JSON'" EXIT
+
+  if ! command -v curl >/dev/null 2>&1; then
+    echo "Error: curl not found on PATH — cannot use curl tier." >&2
+    return 2
+  fi
+
+  curl -sSL --max-time 15 -A "Mozilla/5.0 (compatible; amw-design-md/0.1)" \
+    "$URL" -o "$HTML_TMP" 2>/dev/null || {
+    echo "Error: curl fetch failed for URL: $URL" >&2
+    return 2
+  }
+
+  python3 - "$HTML_TMP" "$TMP_JSON" "$URL" <<'PYCURL'
+import sys
+import json
+import re
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlparse
+
+html_path = sys.argv[1]
+out_path  = sys.argv[2]
+src_url   = sys.argv[3]
+
+html_text = Path(html_path).read_text(errors="replace")
+
+class DesignExtractor(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.title = ""
+        self.meta_description = ""
+        self.og_title = ""
+        self._in_title = False
+        self._in_style = False
+        self._style_buf = []
+        self.inline_colors = []
+        self.inline_fonts = []
+        self.inline_radii = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs_d = dict(attrs)
+        if tag == "title":
+            self._in_title = True
+        elif tag == "style":
+            self._in_style = True
+            self._style_buf = []
+        elif tag == "meta":
+            name = (attrs_d.get("name") or "").lower()
+            prop = (attrs_d.get("property") or "").lower()
+            content = attrs_d.get("content") or ""
+            if name == "description":
+                self.meta_description = content
+            elif prop == "og:title":
+                self.og_title = content
+        # Parse inline style attribute
+        style = attrs_d.get("style") or ""
+        if style:
+            for m in re.finditer(
+                r"(?:background(?:-color)?|color)\s*:\s*(#[0-9a-fA-F]{3,6}|rgb\([^)]+\))",
+                style, re.I
+            ):
+                self.inline_colors.append(m.group(1))
+            for m in re.finditer(r"font-family\s*:\s*([^;\"']+)", style, re.I):
+                ff = m.group(1).strip().split(",")[0].strip().strip("\"'")
+                if ff:
+                    self.inline_fonts.append(ff)
+            for m in re.finditer(r"border-radius\s*:\s*(\d+(?:\.\d+)?)px", style, re.I):
+                self.inline_radii.append(float(m.group(1)))
+
+    def handle_endtag(self, tag):
+        if tag == "title":
+            self._in_title = False
+        elif tag == "style":
+            self._in_style = False
+            self._style_buf = []
+
+    def handle_data(self, data):
+        if self._in_title:
+            self.title += data
+        if self._in_style:
+            self._style_buf.append(data)
+
+extractor = DesignExtractor()
+extractor.feed(html_text)
+
+# Collect CSS-block colors from <style> blocks via regex (minimal, no external deps)
+css_colors = []
+for m in re.finditer(
+    r"(?:background(?:-color)?|color)\s*:\s*(#[0-9a-fA-F]{3,6})",
+    html_text, re.I
+):
+    css_colors.append(m.group(1))
+
+all_colors = extractor.inline_colors + css_colors
+
+# Deduplicate colors (case-insensitive), keep order of first occurrence
+seen_colors = {}
+for c in all_colors:
+    cl = c.lower()
+    if cl not in seen_colors:
+        seen_colors[cl] = c
+
+unique_colors = list(seen_colors.values())[:20]
+
+# Build cssVars-compatible dict from CSS variables in <style> blocks
+css_vars = {}
+for m in re.finditer(r"(-{2}[\w-]+)\s*:\s*(#[0-9a-fA-F]{3,6})", html_text):
+    css_vars[m.group(1)] = m.group(2)
+
+# Assess quality
+title_clean = extractor.title.strip()
+domain = urlparse(src_url).netloc or ""
+title_is_bare_domain = title_clean.lower() in ("", domain.lower(), domain.lower().lstrip("www."))
+meta_empty = extractor.meta_description.strip() == ""
+color_count = len(unique_colors)
+
+poor_result = (color_count < 3) and meta_empty and title_is_bare_domain
+
+# Build a JSON snapshot in the same shape that the dev-browser tier emits.
+# curl cannot capture computed styles, so element-role arrays contain None entries.
+snapshot = {
+    "title": title_clean or src_url,
+    "h1": [],
+    "h2": [],
+    "body": [],
+    "button": [],
+    "input": [],
+    "link": [],
+    "nav": None,
+    "header": None,
+    "footer": None,
+    "cssVars": css_vars,
+    "metaDescription": extractor.meta_description,
+    "ogTitle": extractor.og_title,
+    # Extra keys used by the quality check only — post-processor ignores them.
+    "_curl_colors": unique_colors,
+    "_curl_fonts": list(dict.fromkeys(extractor.inline_fonts)),
+    "_curl_radii": sorted(set(extractor.inline_radii)),
+    "_curl_poor_result": poor_result,
+}
+
+# Inject inline colors into cssVars so the post-processor picks them up.
+for i, c in enumerate(unique_colors[:8]):
+    key = f"--amw-curl-color-{i}"
+    snapshot["cssVars"][key] = c
+
+Path(out_path).write_text(json.dumps(snapshot, indent=2))
+
+if poor_result:
+    sys.exit(3)
+sys.exit(0)
+PYCURL
+
+  local PYEXIT=$?
+  rm -f "$HTML_TMP"
+  return $PYEXIT
+}
+
+# emit_manual_instructions: print browser DevTools console snippet and exit 0.
+emit_manual_instructions() {
+  cat <<MANUAL
+MANUAL_TIER_INSTRUCTIONS_EMITTED
+Open ${URL} in any browser, open DevTools (F12) → Console, and paste:
+
+${EXTRACT_JS}
+
+Copy the printed JSON, save to a file (e.g., /tmp/extract.json), then re-run:
+
+  bash bin/amw-design-md-from-url.sh ${URL} --from-snapshot /tmp/extract.json -o ${OUT}
+
+(The --from-snapshot flag skips the dev-browser invocation and reads the
+snapshot from disk directly, feeding it straight to the post-processor.)
+MANUAL
+  exit 0
+}
+
+# ── Tier dispatch ─────────────────────────────────────────────────────────────
+
+if [ -n "$FROM_SNAPSHOT" ]; then
+  # --from-snapshot: skip all tier invocation, feed snapshot directly to post-processor
+  if [ ! -f "$FROM_SNAPSHOT" ]; then
+    echo "Error: --from-snapshot path not found: $FROM_SNAPSHOT" >&2
+    exit 2
+  fi
+  cp "$FROM_SNAPSHOT" "$TMP_JSON"
+else
+  case "$MODE" in
+    manual)
+      emit_manual_instructions
+      ;;
+
+    curl)
+      run_curl_tier
+      CURL_EXIT=$?
+      if [ "$CURL_EXIT" -eq 3 ]; then
+        echo "Note: curl tier returned poor result (CURL_TIER_POOR_RESULT)." >&2
+        echo "CURL_TIER_POOR_RESULT" >&2
+        exit 3
+      elif [ "$CURL_EXIT" -ne 0 ]; then
+        exit "$CURL_EXIT"
+      fi
+      ;;
+
+    dev-browser)
+      run_dev_browser_tier || exit $?
+      ;;
+
+    auto)
+      # Stage 1: curl tier
+      CURL_POOR=0
+      if run_curl_tier; then
+        CURL_POOR=0
+      else
+        CURL_EXIT_CODE=$?
+        if [ "$CURL_EXIT_CODE" -eq 3 ] || [ -n "$WAIT_FOR_SELECTOR" ]; then
+          CURL_POOR=1
+        else
+          exit "$CURL_EXIT_CODE"
+        fi
+      fi
+
+      if [ "$CURL_POOR" -eq 1 ]; then
+        echo "Note: curl tier poor result — escalating to dev-browser tier." >&2
+        # Stage 2: dev-browser tier
+        if ! run_dev_browser_tier; then
+          # dev-browser failed — check if result is near-empty
+          emit_manual_instructions
+        fi
+        # Verify dev-browser result is not near-empty (< 2 colors post-processing)
+        DEV_COLOR_COUNT="$(python3 - "$TMP_JSON" <<'PYCOUNT'
+import json, re, sys
+from pathlib import Path
+snap = json.loads(Path(sys.argv[1]).read_text())
+def hex_re(s):
+    if not s: return None
+    s = str(s).strip()
+    m = re.match(r"^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$", s)
+    if m: return "#" + m.group(1).lower()
+    m = re.match(r"^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)", s)
+    if m:
+        r,g,b = int(m.group(1)),int(m.group(2)),int(m.group(3))
+        return "#%02x%02x%02x" % (r,g,b)
+    return None
+colors = set()
+for key in ("h1","h2","body","button","input","link"):
+    for s in snap.get(key,[]) or []:
+        if not s: continue
+        for f in ("color","backgroundColor"):
+            h = hex_re(s.get(f))
+            if h: colors.add(h)
+for lk in ("nav","header","footer"):
+    s = snap.get(lk)
+    if s:
+        for f in ("color","backgroundColor"):
+            h = hex_re(s.get(f))
+            if h: colors.add(h)
+for v in (snap.get("cssVars") or {}).values():
+    h = hex_re(str(v))
+    if h: colors.add(h)
+print(len(colors))
+PYCOUNT
+)"
+        if [ "${DEV_COLOR_COUNT:-0}" -lt 2 ]; then
+          echo "Note: dev-browser tier near-empty result — falling back to manual instructions." >&2
+          emit_manual_instructions
+        fi
+      fi
+      ;;
+  esac
+fi
+
+# ── Optional screenshot ────────────────────────────────────────────────────────
+if [ -n "$SCREENSHOT_OUT" ]; then
+  SCREENSHOT_SCRIPT="$PLUGIN_ROOT/bin/amw-self-review-screenshot.sh"
+  if [ -x "$SCREENSHOT_SCRIPT" ]; then
+    SCREENSHOT_DIR="$(dirname "$SCREENSHOT_OUT")"
+    SCREENSHOT_LABEL="$(basename "$SCREENSHOT_OUT" .png)"
+    bash "$SCREENSHOT_SCRIPT" "$URL" --out "$SCREENSHOT_DIR" --label "$SCREENSHOT_LABEL" || \
+      echo "Warning: screenshot capture failed (non-fatal)." >&2
+  else
+    echo "Warning: amw-self-review-screenshot.sh not found or not executable — skipping screenshot." >&2
+  fi
 fi
 
 # --summary-only: probe page and emit JSON summary, then exit 0
 if [ "$SUMMARY_ONLY" = "1" ]; then
+  if [ "$MODE" = "manual" ]; then
+    echo '{"mode":"manual","summary":"manual tier — no automated snapshot"}'
+    exit 0
+  fi
   python3 - "$TMP_JSON" "$URL" <<'PYSUMMARY'
 import json
 import re
@@ -419,7 +771,6 @@ lines.append("")
 
 # Components — derive button-primary if a primary color was extracted
 if top_colors:
-    primary_hex = top_colors[0][0]
     lines.append("components:")
     lines.append("  button-primary:")
     lines.append('    backgroundColor: "{colors.primary}"')
