@@ -263,7 +263,24 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
     - `mkdir -p` the destination, then `cp` the staging file(s) to `<output_dir>/<slug>.<locale>.html` and the optional preview PNG to `<output_dir>/<slug>.preview.png`. Optional CSS file (if externalized), optional tokens.json (for downstream verification) follow the same staging→promote pattern.
     - On any promotion error (permission denied, disk full), keep the staging path intact, set `status=partial`, log the error in `blocking_issues`, and list the staging path under `artifact_paths` with `purpose: "did not promote to output_dir; staged at /tmp/..."`.
 
-17. **Assemble return contract.**
+17. **Run slop-verifier gate (always — last step before delivery).**
+
+    This gate runs on the canonical output path produced in step 16 (the promoted HTML file, not the staging path), so any earlier AI-slop check or syntax fix is already baked in.
+
+    1. Run `bash bin/amw-self-review-screenshot.sh <output_html_path> --label <slug>` → the script emits the desktop screenshot path on stdout and writes it under `$MAIN_ROOT/reports/batch9-slop-review/<ts>/<slug>/`.
+    2. Capture the screenshot path from stdout as `SLOP_SCREENSHOT`.
+    3. Dispatch `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) with:
+       - `screenshot_path: <SLOP_SCREENSHOT>`
+       - `html_path: <output_html_path>` (optional; passed for content/copy audit)
+       - `brief: <project brief from input contract>`
+       - `project_root: <MAIN_ROOT>`
+       - `label: <slug>`
+    4. Parse the verifier's verdict line (its first line):
+       - `✅ pass` → proceed to step 18.
+       - `❌ slop detected:` → read the cited rule-ids from the verifier's bullet list; revise the HTML to address every HIGH-severity rule; re-run this step once (one revision pass). If the verifier returns `❌` again after the revision, set `status=partial`, populate `blocking_issues` with the verifier's fired HIGH rules, and halt — do NOT loop further.
+    5. Record the verifier's `report_path` under `artifact_paths` in the return contract.
+
+18. **Assemble return contract.**
     - Populate YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md).
       > Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `max_iterations` — required, int · `attempts_count` — required, int · `attempts_log` — required, list of objects · `blocking_issues` — required (empty list ok), list of strings · `warnings` — required (empty list ok), list of strings · `artifact_paths` — required (empty list ok), list of objects · `recommendations` — required (empty list ok), list of strings · `next_action` — required, string (free-form but see conventions) · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
     - Include the `structure_summary` block from step 14 in the YAML header.
@@ -336,6 +353,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | AI-slop final gate (mechanical) | `bin/amw-ai-slop-check.py` (script) — fallback documentation [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | mechanical regex + HSL gate for rules 1, 2, 4, 7, 23, 26 + mauve-teal + SVG eye-pair |
 > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 | Structure summary + heading-hierarchy audit on rendered output | `bin/amw-html-section-count.py` (run on the staging path before promotion) | counts top-level sections, computes word-count + reading-time, flags `h2 without h1`, `h3 without h2`, etc. — output goes into the return contract's `structure_summary` block |
+| Post-render slop gate (always) | `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) + `bin/amw-self-review-screenshot.sh` | input: promoted HTML path + project brief · output: `✅ pass` or `❌ slop detected:` verdict; on `❌`, revise HTML and re-run the gate once; if `❌` persists, set `status=partial` with HIGH rules in `blocking_issues` |
 | Locale direction (RTL) | [typography-system](../skills/amw-design-principles/typography-system.md) (reading-direction section) | RTL layout rules |
 > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
 | ASCII contains an empty-state slot (`[ no items yet ]`, `[ search results: 0 ]`, etc.) | `<../skills/amw-design-principles/starter-components/empty-state.html>` if present, else use the inline empty-state pattern: heroicon → headline → 1-line context → primary action → optional secondary action | render an empty state that has clear next-action guidance, NOT just a sad face |
@@ -394,6 +412,9 @@ Example: French copy locale but no cookie banner in legal elements. Action: I do
 
 ### Pattern 5: `embedded_diagrams` references a PNG-only asset
 Example: diagram-producer handed back a PNG without a source SVG/Mermaid. Action: embed via `<img src=... alt="...">`. I do not accept the inline-SVG path for a PNG. Document in `warnings` that the diagram cannot be CSS-themed or color-customized downstream. Recommend: "consider re-invoking diagram-producer with --keep-source for editability."
+
+### Pattern 6: slop-verifier returns ❌ on a HIGH rule that the brief should have suppressed
+Example: the brand legitimately uses a gradient as its primary identity element, but the brief passed to me was silent on this — so the verifier fires rule-1 (purple-blue gradient) at HIGH severity with no suppression. Action: do NOT silently add the rule to `brief_overrides` and re-invoke the verifier to manufacture a `✅ pass`. Instead, surface the ambiguity to main-agent via `blocking_issues`: `"slop-verifier fired rule-1 (gradient) at HIGH — brief does not contain explicit suppression; if the brand uses this gradient by design, main-agent should confirm and re-invoke with brief_overrides: ['rule-1']"`. Set `status=partial` and `next_action=escalate_to_user`. This keeps the override decision with the user, not silently in the agent.
 
 ---
 

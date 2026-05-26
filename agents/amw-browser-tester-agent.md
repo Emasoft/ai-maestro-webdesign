@@ -239,6 +239,20 @@ In priority order:
    - Blocking issues / warnings.
    - Recommendations.
 
+6.5. **Post-scenario slop audit (after the full scenario battery, before writing the report).**
+
+   For each completed scenario that produced a final-state screenshot (i.e., not INCONCLUSIVE due to navigation failure), run a visual-pixel slop audit:
+
+   1. Run `bash bin/amw-self-review-screenshot.sh <artifact_url> --label <scenario-slug>` → emits the desktop screenshot path on stdout under `$MAIN_ROOT/reports/batch9-slop-review/<ts>/<scenario-slug>/`. Reuse the already-captured screenshot from step 4.c when the scenario produced one (avoids a redundant render); invoke `amw-self-review-screenshot.sh` only when no usable screenshot exists for that scenario.
+   2. Dispatch `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) with `screenshot_path`, the project `brief` from the input contract, and `severity_gate: high`.
+   3. Record the verdict as one row in the scenario-test report's **Slop audit** section:
+
+      | Scenario | Screenshot path | Verdict | HIGH rules fired |
+      |---|---|---|---|
+      | `<scenario-slug>` | `<path>` | `✅ pass` / `❌ slop detected:` | `[rule-ids]` or none |
+
+   4. A `❌ slop detected:` verdict for a scenario does NOT fail the scenario's own PASS/FAIL assertion — it is a separate advisory finding. Surface it in `recommendations` pointing main-agent to re-invoke `amw-wireframe-builder-agent` for a revision if any HIGH rule fired. Record the verifier's report path under `artifact_paths` with `purpose: "slop audit report for scenario <slug>"`.
+
 7. **Close session.** `Bash: bash bin/amw-dev-browser-wrapper.sh pass-through close` (or equivalent). Persistent sessions hold memory — always clean up.
 
 8. **Return.** YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md), with `status=ok` if all scenarios PASS, `status=partial` if some FAIL or INCONCLUSIVE, `status=failed` if the artifact was unreachable or dev-browser itself crashed.
@@ -328,6 +342,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | "Core Web Vitals / LCP / INP / CLS / TBT / performance budget" | `skills/amw-dev-browser/` + `web-vitals` UMD injection | RUM-style measurement on a single page-load. Not a Lighthouse trace (no opportunities, no treemap). For full Lighthouse, user runs PageSpeed Insights manually. |
 | "Broken link / 404 / dead anchor check" | `skills/amw-dev-browser/` — `dom` subcommand for extraction + `shot` for verification | Internal links only; external links reported as count to avoid leaking session. |
 | "WCAG 2.1 AA full audit" | **OUT OF SCOPE** — route to `amw-accessibility-auditor-agent` | I do a functional keyboard-nav check only. |
+| Visual-pixel slop audit (after each scenario) | `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) + `bin/amw-self-review-screenshot.sh` | input: final-state screenshot from scenario + project brief · output: `✅ pass` or `❌ slop detected:` verdict folded as one row into the test report's Slop audit section |
 | "on-page SEO audit" | **OUT OF SCOPE** — route to `amw-seo-strategist-agent` | Different authority. |
 | "fix the broken layout" | **OUT OF SCOPE** — route back to main-agent for re-authoring | I surface; others re-author. |
 | Any browser automation that dev-browser can't do | **INCONCLUSIVE** + document gap | Never fall back to Playwright / DevTools MCP / Puppeteer. |
@@ -450,6 +465,15 @@ recommendations:
   - "Third-party CDN 404 is non-blocking but appears in every visitor's console — either self-host analytics.js or remove the reference"
   - "Mobile CTA visibility is borderline — designer may want to move it up 60px to clear the above-fold threshold with margin"
   - "For full WCAG AA audit (beyond functional keyboard-nav), invoke amw-accessibility-auditor-agent via main-agent"
+slop_audits:
+  - scenario: "default-desktop"
+    screenshot_path: "/Users/demo/reports/batch9-slop-review/20260424_170115+0200/landing-page/landing-page-desktop.png"
+    verdict: "pass"
+    high_rules_fired: []
+  - scenario: "default-mobile"
+    screenshot_path: "/Users/demo/reports/batch9-slop-review/20260424_170115+0200/landing-page-mobile/landing-page-mobile-desktop.png"
+    verdict: "pass"
+    high_rules_fired: []
 next_action: proceed
 report_path: "/Users/demo/reports/webdesigner/20260424_170115+0200-amw-browser-tester-landing-page-b2c4e1f0.md"
 ---
