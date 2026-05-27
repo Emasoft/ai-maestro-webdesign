@@ -40,7 +40,7 @@ Does NOT fire on generic "design a landing page" / "extract design tokens from <
 The skill ships:
 
 - **Two canonical specs** — [canonical-spec-google-alpha](references/canonical-spec-google-alpha.md) (Variant 1, official `<@google/design.md>`, primary) and [community-9-section-spec](references/community-9-section-spec.md) (Variant 2, VoltAgent community 9-section, accepted-with-mapping).
-- **16 TECH-NN reference files** under `references/TECH-*.md` covering frontmatter, color tokens, typography tokens, component tokens, token references, do/don'ts authoring, URL extraction, codebase extraction, multi-page extraction, Tailwind conversion, validation/lint, companion files, V2→V1 conversion, validation failure recovery, DESIGN.md as input, and CJK localization ([TECH-cjk-localization](references/TECH-cjk-localization.md)).
+- **TECH-NN reference files** under `references/TECH-*.md` covering frontmatter, color tokens, typography tokens, component tokens, token references, do/don'ts authoring, URL extraction, codebase extraction, multi-page extraction, Tailwind conversion, validation/lint, companion files, V2→V1 conversion, validation failure recovery, DESIGN.md as input, Figma tokens bridge, DTCG export, Figma input path ([TECH-18](references/TECH-18-figma-input-path.md)), apply / token-enforcement ([TECH-19](references/TECH-19-design-md-apply.md)), cross-project design library ([TECH-20](references/TECH-20-design-library.md)), and CJK localization ([TECH-cjk-localization](references/TECH-cjk-localization.md)).
 - **Three templates** under `references/` — Variant 1 skeleton, Variant 2 skeleton, and a CLAUDE.md snippet for projects that adopt DESIGN.md.
 - **Two audit/quality docs** — [review-rubric](references/review-rubric.md) (DESIGN.md quality scoring) and [audit-passes](references/audit-passes.md) (5-pass audit: structural / drift / a11y / completeness / consistency).
 - **Ten bin scripts** under `<plugin-root>/bin/amw-design-md-*` — pure-local Python and TypeScript ports plus thin shell wrappers around the official `npx @google/design.md` CLI.
@@ -129,8 +129,19 @@ See worked examples in references/.
 - [claude-md-snippet](./references/claude-md-snippet.md) — CLAUDE.md addition for projects using DESIGN.md
 - [review-rubric](./references/review-rubric.md) — quality-scoring rubric
 - [audit-passes](./references/audit-passes.md) — 5-pass audit
-- [TECH-01-yaml-frontmatter](./references/TECH-01-yaml-frontmatter.md) through `TECH-15-design-md-as-input.md` — 16 per-technique reference files
+- [TECH-01-yaml-frontmatter](./references/TECH-01-yaml-frontmatter.md) through [TECH-17-dtcg-export](./references/TECH-17-dtcg-export.md) — per-technique reference files (frontmatter, tokens, extraction, validation, companions, V2→V1, DESIGN.md-as-input, Figma bridge, DTCG export)
+- [TECH-18-figma-input-path](./references/TECH-18-figma-input-path.md) — user-facing instructions for the Figma → DESIGN.md path (Tokens Studio export + pre-flight checklist)
+- [TECH-19-design-md-apply](./references/TECH-19-design-md-apply.md) — apply / token-enforcement pipeline (raw-hex sweep, raw-px sweep, typography sweep, WCAG pair-check, Do's/Don'ts enforcement) used at code-gen time
+- [TECH-20-design-library](./references/TECH-20-design-library.md) — proposed cross-project DESIGN.md library at `~/.config/ai-maestro/design-library/` with CLI verbs list / use / show / remove / diff / preview / add
 - [TECH-cjk-localization](./references/TECH-cjk-localization.md) — CJK localization (JP/KO/ZH)
+- [TECH-21-style-references-companion](./references/TECH-21-style-references-companion.md) — STYLE-REFERENCES.md 6-section companion (Design Lineage / Peer / Anti / Component Gallery / Style Vocabulary / Cross-Medium)
+- [TECH-22-section-10-11-extended](./references/TECH-22-section-10-11-extended.md) — optional §10 Iteration Guide (numbered) + §11 Known Gaps
+- [TECH-23-section-9-agent-prompt-guide](./references/TECH-23-section-9-agent-prompt-guide.md) — optional §9 Agent Prompt Guide (CSS snippets / authoring sentence / "do not use" / voice descriptor)
+- [TECH-24-authoring-rules-spec](./references/TECH-24-authoring-rules-spec.md) — DESIGN_MD_SPEC 13 authoring rules (section order, heading format, backticks, elevation columns, etc.)
+- [TECH-25-brand-archetypes](./references/TECH-25-brand-archetypes.md) — 5-archetype pre-fill library (Dark Technical / Luxury Automotive / Fintech / Developer Platform / AI ML)
+- [TECH-26-extended-sections-7-8](./references/TECH-26-extended-sections-7-8.md) — optional §7-ext Motion + §8-ext Accessibility for motion-heavy / a11y-heavy brands
+- [TECH-27-token-interpolation](./references/TECH-27-token-interpolation.md) — {token.ref} interpolation + dead-reference detection (P1 lint)
+- [TECH-28-three-path-routing](./references/TECH-28-three-path-routing.md) — Path A (existing DESIGN.md) / Path B (4-item interview → variants → write) / Path C (one-off + mention DESIGN.md once)
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator (this skill is downstream)
 - [SKILL](../amw-dev-browser/SKILL.md) — browser primitive used by URL extraction
 - [SKILL](../amw-design-extract/SKILL.md) — sibling URL-extraction skill (looser format; this skill is the strict-format counterpart)
