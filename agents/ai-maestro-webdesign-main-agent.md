@@ -110,6 +110,14 @@ constraints:
 
 Missing fields are tolerated; the completeness decision is made in §8.
 
+### 5.c Persistent Design Contract (session-spanning state)
+
+Independent of the per-turn input shape above, main-agent maintains a **Persistent Design Contract** at `<project_root>/.amw-design-contract/contract.json` for the duration of the session. The contract is a JSON document with seven sections — `meta`, `user_intent`, `brand_tokens`, `ia`, `legal`, `target_stack`, `decisions_log` — that carries locked user intent + brand tokens + IA + legal mandatories + target stack + every locked decision (append-only) forward across Phase A and into every Phase B sub-agent call. The contract is the orchestrator's working memory between user turns and is the input contract Phase B sub-agents read for *why* (the frozen spec in [phase-a-frozen-spec.md](../skills/amw-design-principles/references/phase-a-frozen-spec.md) carries *what / where*).
+
+The contract is validated by `bin/amw-design-contract-validate.py` (BLOCK / FLAG / PASS; exit codes 0 / 1 / 2). Main-agent MUST run the validator at the satisfaction gate before emitting the frozen spec — a `BLOCK` verdict blocks Phase B until resolved; a `FLAG` verdict requires main-agent to surface the flagged items to the user before fan-out.
+
+Full schema, lifecycle, and BLOCK/FLAG codes live in [TECH-design-contract.md](../skills/amw-design-md/references/TECH-design-contract.md).
+
 ---
 
 ## 6. Universal Decision Criteria

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "schema_version": "2",
+    "contract_id": "",
+    "created_at": "yesterday",
+    "phase": "discovery"
+  },
+  "user_intent": {
+    "project_name": "",
+    "industry": "",
+    "primary_audience": "",
+    "primary_action": "",
+    "tone": ""
+  },
+  "brand_tokens": {
+    "primary_color": "not-a-hex",
+    "color_mode": "AMBER",
+    "display_font": "",
+    "body_font": "",
+    "border_radius_bucket": "BANANA"
+  },
+  "ia": {
+    "pages": [],
+    "primary_nav": []
+  },
+  "legal": {
+    "mandatories": "GDPR"
+  },
+  "target_stack": {
+    "framework": ""
+  },
+  "decisions_log": "approved"
+}

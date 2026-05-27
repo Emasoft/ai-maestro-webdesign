@@ -84,6 +84,9 @@ Run `bin/amw-design-md-convert-v2-to-v1.py <variant2.md> <variant1.md>`. Maps th
 ### Emit companion files
 Run `bin/amw-design-md-emit-companions.py <DESIGN.md> <output-dir>`. Emits `tokens.css` (CSS custom properties), `tokens.json` (W3C Design Tokens), `component-inventory.md`, and `usage-prompt.md`.
 
+### Generate a visual showcase HTML
+Run `bin/amw-design-md-showcase.py <DESIGN.md> -o <out.html>`. Emits a self-contained single-file HTML showcase that renders every color token (swatches + WCAG-AA contrast badges for `X` / `on-X` pairs), every typography role (live specimens at the declared size / weight / line-height), every spacing / rounded / elevation step (visual demos), and every declared component (rendered button / input / card / chip examples with resolved token references). Author-side QA aid used before delivery. Pure stdlib (pyyaml optional). Output is fully offline-safe — no remote fonts, no remote stylesheets, no JS.
+
 ### Diff two DESIGN.md revisions
 Run `bin/amw-design-md-diff.sh <a.md> <b.md>`. Wrapper around `npx @google/design.md diff`.
 
@@ -131,4 +134,5 @@ See worked examples in references/.
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator (this skill is downstream)
 - [SKILL](../amw-dev-browser/SKILL.md) — browser primitive used by URL extraction
 - [SKILL](../amw-design-extract/SKILL.md) — sibling URL-extraction skill (looser format; this skill is the strict-format counterpart)
-- `<plugin-root>/bin/amw-design-md-*.{sh,py,ts}` — ten bin scripts
+- `<plugin-root>/bin/amw-design-md-showcase.py` — DESIGN.md → self-contained HTML visual-QA showcase (color swatches + WCAG-AA badges, type specimens, spacing / rounded / elevation demos, rendered component examples). Pure stdlib (pyyaml optional). Author-side QA before delivery.
+- `<plugin-root>/bin/amw-design-md-*.{sh,py,ts}` — eleven bin scripts (lint, validate, contrast, emit-companions, showcase, from-url, from-tailwind, from-codebase, convert-v2-to-v1, diff, plus the official `@google/design.md` lint wrapper)

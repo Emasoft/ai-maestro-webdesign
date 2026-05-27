@@ -1,0 +1,48 @@
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "value": "#1a1c1e",
+        "type": "color",
+        "description": "Primary brand color"
+      },
+      "secondary": {
+        "value": "#6c7278",
+        "type": "color"
+      }
+    },
+    "surface": {
+      "default": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "subtle": {
+        "value": "{color.brand.secondary}",
+        "type": "color"
+      }
+    }
+  },
+  "spacing": {
+    "xs": { "value": "4px", "type": "dimension" },
+    "sm": { "value": "8px", "type": "dimension" },
+    "md": { "value": "16px", "type": "dimension" },
+    "lg": { "value": "{spacing.md}", "type": "dimension" }
+  },
+  "typography": {
+    "headline-lg": {
+      "value": {
+        "fontFamily": "Inter",
+        "fontSize": "36px",
+        "fontWeight": 600,
+        "lineHeight": 1.2
+      },
+      "type": "typography",
+      "description": "Large headline composite token"
+    }
+  },
+  "untyped": {
+    "guess-color": { "value": "#abcdef" },
+    "guess-dim": { "value": "12px" },
+    "guess-number": { "value": 0.5 }
+  }
+}

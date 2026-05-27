@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "schema_version": "1",
+    "contract_id": "20260527-orbital-saas-mvp",
+    "created_at": "2026-05-27T14:00:00+02:00",
+    "updated_at": "2026-05-27T14:30:00+02:00",
+    "phase": "phase_a_lowfi"
+  },
+  "user_intent": {
+    "project_name": "Orbital SaaS MVP landing",
+    "industry": "b2b SaaS / devtools",
+    "primary_audience": "senior backend engineers evaluating logging tools",
+    "primary_action": "start a 14-day free trial",
+    "tone": "technical, precise, no-nonsense",
+    "reference_urls": [],
+    "success_metrics": []
+  },
+  "brand_tokens": {
+    "primary_color": "#3B82F6",
+    "color_mode": "DARK",
+    "display_font": "Inter",
+    "body_font": "Inter",
+    "border_radius_bucket": "ROUND_FOUR",
+    "neutral_palette": [],
+    "preset_fingerprint": ""
+  },
+  "ia": {
+    "pages": [
+      {"name": "Home", "slug": "/", "purpose": "convert"}
+    ],
+    "primary_nav": ["Home", "Pricing", "Docs"]
+  },
+  "legal": {
+    "jurisdictions": ["US", "EU"],
+    "mandatories": []
+  },
+  "target_stack": {
+    "framework": "vanilla-html",
+    "css_strategy": ""
+  },
+  "decisions_log": []
+}
