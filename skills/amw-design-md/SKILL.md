@@ -142,6 +142,9 @@ See worked examples in references/.
 - [TECH-26-extended-sections-7-8](./references/TECH-26-extended-sections-7-8.md) — optional §7-ext Motion + §8-ext Accessibility for motion-heavy / a11y-heavy brands
 - [TECH-27-token-interpolation](./references/TECH-27-token-interpolation.md) — {token.ref} interpolation + dead-reference detection (P1 lint)
 - [TECH-28-three-path-routing](./references/TECH-28-three-path-routing.md) — Path A (existing DESIGN.md) / Path B (4-item interview → variants → write) / Path C (one-off + mention DESIGN.md once)
+- [TECH-extractor-component-detection](./references/TECH-extractor-component-detection.md) — component detection (T-091) + state detection (T-094): five codebase patterns (cva/union/interface/switch/object-map) + URL DOM-landmark + ARIA-role table + boolean-prop / pseudo-class / variant-enum state cascade
+- [TECH-extractor-icon-asset-export](./references/TECH-extractor-icon-asset-export.md) — inline SVG icon export with role assignment (T-093) + raster asset export with alt-text inference (T-095) + `DESIGN.assets.json` manifest
+- [TECH-extractor-fingerprinting](./references/TECH-extractor-fingerprinting.md) — deterministic SHA-256 fingerprint of the canonical token block (T-096): canonicalization recipe + interpretation guide + cross-project library lookup
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator (this skill is downstream)
 - [SKILL](../amw-dev-browser/SKILL.md) — browser primitive used by URL extraction
 - [SKILL](../amw-design-extract/SKILL.md) — sibling URL-extraction skill (looser format; this skill is the strict-format counterpart)

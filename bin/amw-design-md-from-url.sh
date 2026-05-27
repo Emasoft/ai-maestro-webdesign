@@ -19,6 +19,7 @@ usage() {
 Usage: bash bin/amw-design-md-from-url.sh <URL> [-o OUT] [-n NAME] [--summary-only]
        [--mode <dev-browser|curl|auto|manual>]
        [--wait-for-selector SEL] [--screenshot OUT.png] [--from-snapshot PATH]
+       [--extract-states]
 
 Extract a Variant 1 DESIGN.md from a live URL.
 
@@ -45,6 +46,13 @@ Options:
                            Independent of --mode.
   --from-snapshot PATH     Skip dev-browser invocation and feed PATH (JSON) directly to
                            the post-processor. Closes the --mode manual loop.
+  --extract-states         After the resting-state extraction, run a second pass that
+                           probes pseudo-element styles (:hover / :focus / :active /
+                           :disabled) for each landmark via dev-browser CDP input
+                           events. Writes the captured state deltas to
+                           extensions.states in the DESIGN.md frontmatter. Requires
+                           --mode dev-browser (default) or --mode auto. Adds ~2-4s
+                           per extraction. See TECH-extractor-pseudo-element-extraction.
   -h, --help               Show this help and exit.
 
 Pipeline (full extraction, dev-browser mode):
@@ -79,6 +87,7 @@ MODE="dev-browser"
 WAIT_FOR_SELECTOR=""
 SCREENSHOT_OUT=""
 FROM_SNAPSHOT=""
+EXTRACT_STATES=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -89,6 +98,7 @@ while [ $# -gt 0 ]; do
     --wait-for-selector) WAIT_FOR_SELECTOR="$2"; shift 2 ;;
     --screenshot) SCREENSHOT_OUT="$2"; shift 2 ;;
     --from-snapshot) FROM_SNAPSHOT="$2"; shift 2 ;;
+    --extract-states) EXTRACT_STATES=1; shift ;;
     -h|--help) usage ;;
     *)
       if [ -z "$URL" ]; then URL="$1"; shift
@@ -110,6 +120,23 @@ case "$MODE" in
     exit 2
     ;;
 esac
+
+# Validate --extract-states is compatible with the chosen mode.
+# State probing requires CDP input events, which only the dev-browser tier
+# exposes. curl and manual tiers cannot drive interaction state.
+if [ "$EXTRACT_STATES" = "1" ]; then
+  case "$MODE" in
+    curl|manual)
+      echo "Error: --extract-states requires --mode dev-browser or --mode auto." >&2
+      echo "       The curl and manual tiers cannot drive pseudo-element states." >&2
+      exit 2
+      ;;
+  esac
+  if [ "$SUMMARY_ONLY" = "1" ]; then
+    echo "Note: --extract-states has no effect with --summary-only (no DESIGN.md is emitted)." >&2
+    EXTRACT_STATES=0
+  fi
+fi
 
 PLUGIN_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WRAPPER="$PLUGIN_ROOT/bin/amw-dev-browser-wrapper.sh"
@@ -493,6 +520,120 @@ PYCOUNT
   esac
 fi
 
+# ── Optional state-probe pass (--extract-states) ──────────────────────────────
+# Runs a second dev-browser eval that walks the candidate landmarks
+# (button / link / input / nav-a) and samples their computed style at rest
+# plus under :hover / :focus / :active / :disabled. The state-delta map is
+# merged back into TMP_JSON under the "_states" key, which the Python
+# post-processor consumes to emit the extensions.states block.
+# See: skills/amw-design-md/references/TECH-extractor-pseudo-element-extraction.md
+if [ "$EXTRACT_STATES" = "1" ] && [ -z "$FROM_SNAPSHOT" ]; then
+  if [ ! -x "$WRAPPER" ]; then
+    echo "Warning: dev-browser wrapper unavailable — skipping state extraction." >&2
+  elif ! "$WRAPPER" --help 2>&1 | grep -q "eval"; then
+    echo "Warning: dev-browser wrapper does not expose 'eval' — skipping state extraction." >&2
+  else
+    STATE_PROBE_JS='
+(async () => {
+  const FIELDS = ["color","backgroundColor","borderColor","borderWidth",
+                  "borderStyle","boxShadow","outline","outlineColor",
+                  "outlineOffset","textDecoration","transform","opacity","cursor"];
+  const pick = (el) => {
+    const cs = getComputedStyle(el);
+    const o = {};
+    for (const f of FIELDS) o[f] = cs[f];
+    return o;
+  };
+  const diff = (a, b) => {
+    const d = {};
+    for (const k of Object.keys(b)) if (a[k] !== b[k]) d[k] = b[k];
+    return d;
+  };
+  const rafWait = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const candidates = [
+    { role: "button-primary", sel: "button, a[role=button], [type=button], [type=submit]" },
+    { role: "link",           sel: "a:not([role=button])" },
+    { role: "input-default",  sel: "input:not([type=hidden]), textarea, select" },
+    { role: "nav-link",       sel: "nav a, nav button" },
+  ];
+  const out = {};
+  for (const { role, sel } of candidates) {
+    const el = document.querySelector(sel);
+    if (!el) continue;
+    const resting = pick(el);
+    const states = {};
+    el.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
+    el.dispatchEvent(new MouseEvent("mouseenter", { bubbles: false }));
+    await rafWait();
+    states.hover = diff(resting, pick(el));
+    el.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
+    el.dispatchEvent(new MouseEvent("mouseleave", { bubbles: false }));
+    await rafWait();
+    if (typeof el.focus === "function") {
+      el.focus();
+      await rafWait();
+      states.focus = diff(resting, pick(el));
+      if (typeof el.blur === "function") el.blur();
+      await rafWait();
+    }
+    el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, button: 0 }));
+    await rafWait();
+    states.active = diff(resting, pick(el));
+    el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, button: 0 }));
+    await rafWait();
+    const hadDisabled = el.hasAttribute("disabled");
+    if (!hadDisabled) {
+      el.setAttribute("disabled", "");
+      await rafWait();
+      states.disabled = diff(resting, pick(el));
+      el.removeAttribute("disabled");
+      await rafWait();
+    }
+    out[role] = { resting, states };
+  }
+  return JSON.stringify(out);
+})()
+'
+    STATE_JSON="$(mktemp -t amw-design-md-states-XXXXXX.json)"
+    if "$WRAPPER" eval "$URL" --expr "$STATE_PROBE_JS" > "$STATE_JSON" 2>/dev/null; then
+      python3 - "$TMP_JSON" "$STATE_JSON" <<'PYMERGE'
+import json
+import sys
+from pathlib import Path
+
+snap_path = sys.argv[1]
+state_path = sys.argv[2]
+try:
+    snap = json.loads(Path(snap_path).read_text())
+    states_raw = Path(state_path).read_text().strip()
+    try:
+        parsed = json.loads(states_raw)
+    except json.JSONDecodeError:
+        parsed = {}
+    if isinstance(parsed, str):
+        try:
+            parsed = json.loads(parsed)
+        except json.JSONDecodeError:
+            parsed = {}
+    snap["_states"] = parsed if isinstance(parsed, dict) else {}
+    Path(snap_path).write_text(json.dumps(snap, indent=2))
+except Exception as exc:
+    print(f"Warning: state-merge failed: {exc}", file=sys.stderr)
+PYMERGE
+      STATE_COUNT="$(python3 -c "
+import json, sys
+from pathlib import Path
+s = json.loads(Path('${TMP_JSON}').read_text())
+print(len(s.get('_states') or {}))
+")"
+      echo "State extraction: probed ${STATE_COUNT} landmark(s)."
+    else
+      echo "Warning: state-probe eval failed — proceeding without states." >&2
+    fi
+    rm -f "$STATE_JSON"
+  fi
+fi
+
 # ── Optional screenshot ────────────────────────────────────────────────────────
 if [ -n "$SCREENSHOT_OUT" ]; then
   SCREENSHOT_SCRIPT="$PLUGIN_ROOT/bin/amw-self-review-screenshot.sh"
@@ -780,6 +921,35 @@ if top_colors:
     if top_radii:
         lines.append('    rounded: "{rounded.md}"')
     lines.append('    padding: "12px"')
+    lines.append("")
+
+# Extensions — interaction-state deltas (emitted only when --extract-states ran)
+states_map = snap.get("_states") or {}
+if states_map:
+    lines.append("extensions:")
+    lines.append("  states:")
+    for role_name in sorted(states_map.keys()):
+        entry = states_map.get(role_name) or {}
+        if not isinstance(entry, dict):
+            continue
+        lines.append(f"    {role_name}:")
+        resting = entry.get("resting") or {}
+        if resting:
+            lines.append("      resting:")
+            for prop, val in sorted(resting.items()):
+                if val:
+                    val_str = str(val).replace('"', '\\"')
+                    lines.append(f'        {prop}: "{val_str}"')
+        states_block = entry.get("states") or {}
+        for state_name in ("hover", "focus", "active", "disabled"):
+            delta = states_block.get(state_name) or {}
+            if not delta:
+                continue
+            lines.append(f"      {state_name}:")
+            for prop, val in sorted(delta.items()):
+                if val:
+                    val_str = str(val).replace('"', '\\"')
+                    lines.append(f'        {prop}: "{val_str}"')
     lines.append("")
 
 lines.append("---")

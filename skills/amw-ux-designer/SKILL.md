@@ -120,6 +120,7 @@ Two outputs per invocation:
 - [SKILL](../amw-ux-evaluator/SKILL.md) — end-of-process validation
 - [question-templates](../amw-design-principles/question-templates.md) — patterns for user research
 - [design-heuristics](../amw-design-principles/design-heuristics.md) — Gestalt/Fitts/Hick laws
+- [TECH-ux-laws-encyclopedia](../amw-design-principles/references/TECH-ux-laws-encyclopedia.md) — 31 laws (Fitts, Hick, Miller, Doherty, Goal-Gradient, Peak-End, Cognitive Load, all Gestalt, Norman's affordance/signifier/mapping/constraints/feedback, Fogg, Jakob, Pareto, etc.) — cite by name when justifying persona, journey-map, or usability-test design choices.
 - `../amw-design-principles/starter-components/design-canvas.html` — 8pt-grid canvas for handoff
 
 ## Non-negotiables

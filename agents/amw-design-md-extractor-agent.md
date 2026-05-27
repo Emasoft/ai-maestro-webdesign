@@ -104,6 +104,10 @@ contrast_check: true                                # optional; default true. Ru
 extraction_mode: "auto"                              # optional; default "auto". auto | curl | dev-browser | manual. Passes through to --mode in bin/amw-design-md-from-url.sh.
 screenshot_override_path: "/abs/path/to/page.png"    # optional; when present, the user has pre-captured a frozen screenshot of the source URL. The extractor treats it as the canonical visual state and skips the dev-browser smoke-probe; the extraction still happens but the screenshot is the visual ground truth for prose-generation cross-reference.
 wait_for_selector: "main, [role=main], .hero"        # optional; CSS selector. When extraction_mode is "dev-browser" or "auto", passes through to --wait-for-selector. Use when the URL is a JS-heavy SPA and the snapshot must wait for the main content to mount.
+extract_components: true                              # optional; default false. When true, run the five-pattern component scanner (cva/union/interface/switch/object-map) on codebase mode OR the DOM-landmark + ARIA-role detector on URL mode. Populates DESIGN.md `## 4. Component Stylings` and emits component state variants (hover / focus / disabled / loading / error). See TECH-extractor-component-detection.
+extract_icons: true                                   # optional; default false. When true, traverse every reachable `<svg>` (URL) or every *.svg + inline-SVG export (codebase), assign roles via aria-label / class / file-name / size+chrome heuristics, and write to `DESIGN.assets/icons/`. See TECH-extractor-icon-asset-export.
+extract_assets: true                                  # optional; default false. When true, discover raster assets (logos, hero images, illustrations, background patterns), infer alt-text when missing, and write to `DESIGN.assets/raster/`. See TECH-extractor-icon-asset-export.
+fingerprint: true                                     # optional; default false (true automatically when any of the three flags above are set). Compute a deterministic SHA-256 over the canonical token block and write it to DESIGN.md `_meta.fingerprint` + `DESIGN.assets.json#fingerprint_hash`. See TECH-extractor-fingerprinting.
 ```
 
 A missing required field for the chosen `input_type` is `status=failed` / `next_action=escalate_to_user`.
@@ -221,6 +225,20 @@ The screenshot is listed in `artifact_paths` with `purpose: "load-verified scree
 6. Run lint gate.
 7. Run contrast check.
 
+### Enrichment passes (all paths, when `extract_components` / `extract_icons` / `extract_assets` / `fingerprint` are set)
+
+Run AFTER the primary path (A/B/C) produces a draft DESIGN.md, BEFORE the lint gate.
+
+1. **Component detection (`extract_components: true`)** — populates `## 4. Component Stylings`. Codebase mode: the codebase scanner already invokes the five-pattern detector internally; verify that variant + state lists are non-empty for each emitted component. URL mode: re-invoke `amw-dev-browser` with the component-detection eval snippet documented in [TECH-extractor-component-detection](../skills/amw-design-md/references/TECH-extractor-component-detection.md). On no signal at all, leave `# TODO: component-spec` placeholders — do not fabricate.
+
+2. **Icon export (`extract_icons: true`)** — traverses every reachable `<svg>` (URL) or every `*.svg` + inline-SVG export (codebase), assigns roles by aria-label / class / file-name / chrome-position cascade, writes them to `<output_dir>/DESIGN.assets/icons/`. Adds one manifest entry per icon to `<output_dir>/DESIGN.assets.json`. License hints are recorded but never guessed. See [TECH-extractor-icon-asset-export](../skills/amw-design-md/references/TECH-extractor-icon-asset-export.md).
+
+3. **Raster asset export (`extract_assets: true`)** — discovers `<img>`, `<picture><source>`, and CSS `background-image: url(...)` references, downloads (URL) or copies (codebase) to `<output_dir>/DESIGN.assets/raster/`, infers `alt_suggested` text only via deterministic rules (no LLM inference for alt-text), and respects `aria-hidden` / `role="presentation"` / explicit `alt=""` for decorative assets. Same robots.txt / X-Robots-Tag posture as the parent extraction.
+
+4. **Fingerprint (`fingerprint: true`, automatic when any of the three flags above is set)** — computes SHA-256 over the canonicalized token block (colors / typography / spacing / rounded / borders / shadows / breakpoints / components / iconSystem) per [TECH-extractor-fingerprinting](../skills/amw-design-md/references/TECH-extractor-fingerprinting.md). Writes to DESIGN.md `_meta.fingerprint` and `DESIGN.assets.json#fingerprint_hash`. Round-trip verification: re-parse the produced DESIGN.md, re-compute the hash, MUST match — mismatch is `status=failed` with `blocking_issues=["fingerprint round-trip mismatch — writer bug"]`.
+
+If a cross-project library entry at `~/.config/ai-maestro/design-library/` matches the fingerprint, surface the match in `recommendations[]` so main-agent can choose to reuse the library entry's prose / brand-archetype labels instead of authoring fresh.
+
 ### Companion generation (all paths, when `companion_targets` provided)
 
 After the DESIGN.md passes lint:
@@ -319,6 +337,11 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | `extraction_mode=curl` or auto-cascade curl tier | `bin/amw-design-md-from-url.sh ... --mode curl` | Tier-1 SSR fetch (no JS); fast path for marketing/docs sites |
 | `extraction_mode=manual` or auto-cascade exhausted | `bin/amw-design-md-from-url.sh ... --mode manual` | Tier-3 — emit DevTools snippet for user-driven extraction; consume via `--from-snapshot <path>` |
 | `screenshot_override_path` supplied | bypass smoke-probe; carry override sha256 to load-verification step | T-084 frozen visual ground truth (user already pre-captured) |
+| `extract_components: true` (codebase mode) | run five-pattern scanner; see [TECH-extractor-component-detection](../skills/amw-design-md/references/TECH-extractor-component-detection.md) | T-091/T-094 — populate `## 4. Component Stylings` with variants + states from `cva()` / TS unions / prop interfaces / switch / object maps |
+| `extract_components: true` (URL mode) | run DOM-landmark + ARIA-role detector via `amw-dev-browser` | T-091/T-094 — populate `## 4. Component Stylings` from `<button>` / `[role=dialog]` / `[role=tablist]` etc. + state from `[aria-disabled]` / `[aria-busy]` / `[aria-invalid]` / `[aria-selected]` |
+| `extract_icons: true` | enumerate every reachable SVG, assign roles by aria-label / class / file-name / chrome-position, write `DESIGN.assets/icons/` + manifest in `DESIGN.assets.json`; see [TECH-extractor-icon-asset-export](../skills/amw-design-md/references/TECH-extractor-icon-asset-export.md) | T-093 — inline-SVG icon export with role-based naming (icon-search / logo-primary / etc.) |
+| `extract_assets: true` | enumerate `<img>` / `<picture>` / CSS `background-image`, infer alt-text from `<figcaption>` / `<h*>` / filename, write `DESIGN.assets/raster/` + manifest; see [TECH-extractor-icon-asset-export](../skills/amw-design-md/references/TECH-extractor-icon-asset-export.md) | T-095 — raster asset export with `alt_suggested` inference and `decorative: true` recognition for `role=presentation` / `aria-hidden` / `alt=""` |
+| `fingerprint: true` (or any of `extract_*` flags) | compute SHA-256 over canonicalized token block; write to `_meta.fingerprint` + `DESIGN.assets.json#fingerprint_hash`; see [TECH-extractor-fingerprinting](../skills/amw-design-md/references/TECH-extractor-fingerprinting.md) | T-096 — content-identity hash for cross-project DESIGN.md library, drift detection, "same design system, different content" recognition |
 | Always — DESIGN.md format spec | [SKILL](../skills/amw-design-md/SKILL.md) | Canonical Variant 1 structure and token contracts |
 | Variant 1 spec details | [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) | Field-level spec for every YAML key |
 > [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references

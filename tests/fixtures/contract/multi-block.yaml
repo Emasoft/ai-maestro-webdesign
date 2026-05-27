@@ -1,0 +1,36 @@
+{
+  "_about": "Multi-block fixture: every section is present so the top-level shape check passes, but the section-internal checks raise multiple BLOCK findings (bad hex, bad color_mode, bad radius bucket, missing display_font + body_font, empty user_intent fields, empty ia.pages, empty target_stack.framework). Used to verify that BLOCK aggregates correctly when several B0xx findings co-occur.",
+  "meta": {
+    "schema_version": "1",
+    "contract_id": "20260527-multi-block",
+    "created_at": "2026-05-27T10:00:00+02:00",
+    "updated_at": "2026-05-27T10:00:00+02:00",
+    "phase": "phase_a_locked"
+  },
+  "user_intent": {
+    "project_name": "Multi Block Contract",
+    "industry": "",
+    "primary_audience": "",
+    "primary_action": "",
+    "tone": ""
+  },
+  "brand_tokens": {
+    "primary_color": "not-a-hex",
+    "color_mode": "AMBER",
+    "display_font": "",
+    "body_font": "",
+    "border_radius_bucket": "WEIRD"
+  },
+  "ia": {
+    "pages": [],
+    "primary_nav": []
+  },
+  "legal": {
+    "jurisdictions": [],
+    "mandatories": []
+  },
+  "target_stack": {
+    "framework": ""
+  },
+  "decisions_log": []
+}

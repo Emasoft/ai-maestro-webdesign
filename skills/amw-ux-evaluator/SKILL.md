@@ -140,6 +140,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Ever
 - Inputs: [amw-dev-browser](../amw-dev-browser/SKILL.md) (live-page DOM + computed-style capture).
 - Related: [amw-ascii-to-html](../amw-ascii-to-html/SKILL.md) (upstream producer), [amw-ui-ux-reasoning](../amw-ui-ux-reasoning/SKILL.md) (industry-specific anti-pattern taxonomy).
 - References: [balsamiq-button-principles](references/balsamiq-button-principles.md) — full button-design corpus.
+- UX-law citations: [TECH-ux-laws-encyclopedia](../amw-design-principles/references/TECH-ux-laws-encyclopedia.md) — 31-law reference; the evaluator cites laws by name in P1/P2/P3 findings (Fitts for hit-target sizing, Hick for choice overload, Von Restorff for primary-CTA isolation, Banner Blindness for CTA tone, Feedback Loop for action affordance) — see also [quick-reference table](../amw-design-principles/references/TECH-ux-laws-quick-reference-table.md).
 - Command: `/amw-eval`.
 
 ## Non-negotiables

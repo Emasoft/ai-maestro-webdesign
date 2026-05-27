@@ -73,6 +73,22 @@ Activated when the user or an upstream orchestrator emits **broad design vocabul
 - "design a portfolio site", "build a marketing page", "design a landing experience"
 - Any domain-specific framing that still implies a full design workflow ("landing page for a Bora Bora resort, French and English")
 
+### Resume from `.design-contract.yaml`
+
+When a chat starts (or resumes) in a project where `<project_root>/.amw-design-contract/contract.json` exists, OR when the user emits any of:
+
+- "resume the design workflow"
+- "pick up where we left off"
+- "continue from `.design-contract.yaml`" / "continue from the persistent contract"
+- "restore the design session"
+- "where did we stop"
+- "rehydrate the design contract"
+- "resume Phase A iteration"
+- "resume Phase B fan-out"
+
+I do NOT silently start a fresh Phase A. Instead I spawn `amw-design-resume-agent` first with the contract path. The agent runs `bin/amw-design-contract-validate.py --check-resumable` and returns a structured `resume-plan` JSON telling me which phase to resume at, which sub-agents already completed, and which are pending. I then continue from that point without re-eliciting decisions already recorded in the contract. The full protocol lives in [TECH-design-resume](../skills/amw-design-principles/references/TECH-design-resume.md).
+> [TECH-design-resume.md] What it does · Where the resume artifact lives · Mandatory contract keys for a resumable session · The resume protocol (load → diff → resume) · Conflict-resolution rules when the contract drifts from the codebase · The recommendation schema returned by `amw-design-resume-agent` · Hard invariants · Cross-references
+
 NOT activated by:
 
 - Direct `/amw-*` command invocations (those go through command-mode, not main-agent-mode)
@@ -311,6 +327,8 @@ Main-agent mostly delegates to sub-agents in Phase B. In Phase A, it invokes ski
 
 | Signal / intent | Sub-agent |
 |---|---|
+| Resume an interrupted session from `.amw-design-contract/contract.json` | `amw-design-resume-agent` (Tier-3 diagnosis-only; reads contract + on-disk artifacts; emits a structured `resume-plan` JSON pointing to the next pending step) |
+| Validate the persistent contract for fan-out readiness (before Phase A → Phase B transition) | `amw-design-contract-validator-agent` (Tier-4 validator; binding BLOCK/FLAG/PASS verdict on the contract JSON) |
 | Legal / compliance questions | `amw-legal-expert-agent` |
 | Competitor analysis / brand landscape extraction | `amw-brand-researcher-agent` |
 | User persona / research synthesis | `amw-user-research-analyst-agent` |
@@ -681,6 +699,24 @@ When the user asks "where do I deploy this?" or when the final job-completion re
 
 Main-agent surfaces a 2-3 platform shortlist with trade-offs (per the decision tree in TECH-deployment-targets.md). Main-agent does NOT pick one platform unilaterally and does NOT execute deployment commands on the user's behalf — deployment requires credentials and explicit authorization, both out-of-scope for this plugin. Pointers to global Claude Code skills (`vercel-development`, `netlify-development`, `cloudflare-development`) are surfaced when the user wants platform-specific deep dives.
 
+### Orchestration sub-protocols (the four binding TECH refs)
+
+The doctrine above describes the broad shape of orchestration. Four narrower TECH refs tighten the procedural details for the most common decision classes. Each is binding on main-agent the same way `authority-hierarchy.md` is — when the situation matches the ref's scope, main-agent applies the ref's procedure rather than improvising.
+
+1. **[TECH-orchestration-conflict-resolution](../skills/amw-design-principles/references/TECH-orchestration-conflict-resolution.md)** — the ordered six-rule tiebreak hierarchy main-agent walks when two sub-agents return contradictory recommendations on the same decision. Rule 1 (legal-expert veto), Rule 2 (accessibility-auditor veto), Rule 3 (user direction), Rule 4 (domain authority per `authority-hierarchy.md`), Rule 5 (sub-agent confidence score), Rule 6 (main-agent best-judgment + user surfacing). The hierarchy is ordinal: the first rule to fire resolves the conflict.
+   > [TECH-orchestration-conflict-resolution.md] What it does · The tiebreak hierarchy · Decision tree · Confidence-score interpretation · Worked examples (good + bad) · Recording the decision
+
+2. **[TECH-orchestration-parallel-dispatch](../skills/amw-design-principles/references/TECH-orchestration-parallel-dispatch.md)** — the parallel-vs-sequential decision when fanning out two or more sub-agents. The three-question algorithm: (a) does B's input depend on A's output? (b) does A's output change the user-facing direction such that B's work would be premature? (c) is A a veto-holder whose blocking_issues would invalidate B's work? Any "yes" → sequential. All "no" → parallel. Default bias: parallel-first. Soft cap: 5 sub-agents per parallel wave.
+   > [TECH-orchestration-parallel-dispatch.md] The dispatch decision · Three-question algorithm · Parallel-eligible patterns · Sequential-required patterns · Worked examples (good + bad) · Concurrency budget · Failure handling in parallel batches
+
+3. **[TECH-orchestration-checkpoint-protocol](../skills/amw-design-principles/references/TECH-orchestration-checkpoint-protocol.md)** — the four mandatory triggers that force main-agent to pause Phase B and check in with the user: (1) veto fired, (2) sub-agent reports BLOCK, (3) budget threshold breached (>20% scope change), (4) unrecoverable error. The fixed three-part message format: WHAT HAPPENED / OPTIONS / DEFAULT IF NO RESPONSE. Default is keep running; checkpoints are the explicit exception.
+   > [TECH-orchestration-checkpoint-protocol.md] Checkpoint vs satisfaction gate · The four mandatory checkpoint triggers · Checkpoint message format · Decision tree · Worked examples (good + bad) · Recording the checkpoint
+
+4. **[TECH-orchestration-recovery-from-veto](../skills/amw-design-principles/references/TECH-orchestration-recovery-from-veto.md)** — the three recovery options when a veto-holder (legal-expert, accessibility-auditor) blocks Phase B: (A) user override + log to user-accepted-risk, (B) re-author the offending element via Tier-3 producer with augmented input contract, (C) drop the offending element if non-essential. The decision tree determines which options are structurally available; the user picks among the available options. Sub-agent rounds budget: option B is capped at 2 fix iterations before a NEW checkpoint forces a re-choice.
+   > [TECH-orchestration-recovery-from-veto.md] The three recovery options · Decision tree · Recovery option A — user override · Recovery option B — re-author · Recovery option C — drop · Worked examples (good + bad) · Recording the recovery
+
+These four refs interlock with `authority-hierarchy.md` (who has authority) and `agent-interaction-patterns.md` (how data flows) to form the complete orchestration ruleset. When in doubt during Phase B mid-flight, main-agent reads the relevant TECH ref BEFORE acting — improvising past the ref's procedure is the failure mode the refs exist to prevent.
+
 ### The non-deterministic core
 
 The recipe tells the main-agent **what order** to do things. The doctrine tells it **how to decide** when the order doesn't fit — when a new kind of conflict appears, when a user's request falls outside the skill-decision matrix, when two valid sub-agents disagree. In those cases the main-agent's answer is not "follow the recipe". The answer is:
@@ -688,7 +724,8 @@ The recipe tells the main-agent **what order** to do things. The doctrine tells 
 1. Check §6 Universal Decision Criteria.
 2. Check §11 Conflict Patterns for the nearest analog.
 3. Apply the authority hierarchy to identify who owns the decision.
-4. Present options to the user rather than guess.
+4. Check the four orchestration sub-protocols above for procedural detail.
+5. Present options to the user rather than guess.
 
 The judgment layer is this section. It is what makes the main-agent a professional orchestrator instead of a flowchart.
 
@@ -697,6 +734,12 @@ The judgment layer is this section. It is what makes the main-agent a profession
 ## Cross-references
 
 **Governing contracts:** [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md), [two-mode-workflow](../skills/amw-design-principles/references/two-mode-workflow.md), [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md), [skill-invocation-protocol](../skills/amw-design-principles/references/skill-invocation-protocol.md), [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md), [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md), [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md), [project-output-routing](../skills/amw-design-principles/references/project-output-routing.md), [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md).
+
+**Orchestration sub-protocols (binding when scope matches):** [TECH-orchestration-conflict-resolution](../skills/amw-design-principles/references/TECH-orchestration-conflict-resolution.md), [TECH-orchestration-parallel-dispatch](../skills/amw-design-principles/references/TECH-orchestration-parallel-dispatch.md), [TECH-orchestration-checkpoint-protocol](../skills/amw-design-principles/references/TECH-orchestration-checkpoint-protocol.md), [TECH-orchestration-recovery-from-veto](../skills/amw-design-principles/references/TECH-orchestration-recovery-from-veto.md).
+> [TECH-orchestration-conflict-resolution.md] What it does · The tiebreak hierarchy · Decision tree · Confidence-score interpretation · Worked examples (good + bad) · Recording the decision
+> [TECH-orchestration-parallel-dispatch.md] The dispatch decision · Three-question algorithm · Parallel-eligible patterns · Sequential-required patterns · Worked examples (good + bad) · Concurrency budget · Failure handling in parallel batches
+> [TECH-orchestration-checkpoint-protocol.md] Checkpoint vs satisfaction gate · The four mandatory checkpoint triggers · Checkpoint message format · Decision tree · Worked examples (good + bad) · Recording the checkpoint
+> [TECH-orchestration-recovery-from-veto.md] The three recovery options · Decision tree · Recovery option A — user override · Recovery option B — re-author · Recovery option C — drop · Worked examples (good + bad) · Recording the recovery
 > [agent-authoring-philosophy.md] Skills and agents are not the same kind of thing · What an agent actually needs · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
 > [two-mode-workflow.md] Sub-agent delegation (Main-agent mode only) · Mode Detection · Phase A — Iterative Low-Fi Loop · Phase B — Implementation and Spawning · Scenario Testing via dev-browser (mandatory in Phase B) · Anti-Patterns
 > [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
@@ -707,6 +750,6 @@ The judgment layer is this section. It is what makes the main-agent a profession
 > [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
 
-**Sub-agent roster (one-way tree, rooted here):** `amw-legal-expert-agent` (veto), `amw-accessibility-auditor-agent` (veto), `amw-multilanguage-copywriter-agent`, `amw-brand-researcher-agent`, `amw-seo-strategist-agent`, `amw-user-research-analyst-agent`, `amw-wireframe-builder-agent`, `amw-diagram-producer-agent`, `amw-infographic-builder-agent`, `amw-asset-generator-agent`, `amw-video-producer-agent`, `amw-browser-tester-agent`, `amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, `amw-component-library-architect-agent`, `amw-design-md-author-agent`, `amw-design-md-extractor-agent`, `amw-design-md-auditor-agent`.
+**Sub-agent roster (one-way tree, rooted here):** `amw-legal-expert-agent` (veto), `amw-accessibility-auditor-agent` (veto), `amw-multilanguage-copywriter-agent`, `amw-brand-researcher-agent`, `amw-seo-strategist-agent`, `amw-user-research-analyst-agent`, `amw-wireframe-builder-agent`, `amw-diagram-producer-agent`, `amw-infographic-builder-agent`, `amw-asset-generator-agent`, `amw-video-producer-agent`, `amw-browser-tester-agent`, `amw-form-designer-agent`, `amw-email-designer-agent`, `amw-motion-designer-agent`, `amw-component-library-architect-agent`, `amw-design-md-author-agent`, `amw-design-md-extractor-agent`, `amw-design-md-auditor-agent`, `amw-design-contract-validator-agent`, `amw-design-resume-agent`.
 
 **Plugin context:** [CLAUDE](../CLAUDE.md).

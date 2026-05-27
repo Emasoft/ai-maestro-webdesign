@@ -29,6 +29,18 @@ Usage
     python3 bin/amw-design-contract-validate.py <CONTRACT.json>
     python3 bin/amw-design-contract-validate.py <CONTRACT.json> --json
     python3 bin/amw-design-contract-validate.py <CONTRACT.json> --strict-flags
+    python3 bin/amw-design-contract-validate.py <CONTRACT.json> --check-resumable
+
+`--check-resumable` is the resume-agent's binary signal. It exits 0
+when the contract has enough state for `amw-design-resume-agent` to
+skip Phase A resource discovery (every mandatory key per
+`skills/amw-design-principles/references/TECH-design-resume.md` is
+populated AND `decisions_log` is non-empty). It exits 1 when the
+contract is sparse but valid — the agent should treat it as a Phase A
+seed and re-elicit only the missing fields. It exits 2 when the
+contract is BLOCK-malformed — repair before retrying resume. The
+`--json` flag composes with `--check-resumable` and adds a top-level
+`"resumable": true|false` boolean to the payload.
 
 Exit codes
 ----------
@@ -38,6 +50,12 @@ Exit codes
     2  BLOCK — Phase B MUST NOT proceed. Contract is malformed,
        missing required fields, or self-contradictory.
    64  Invocation error (bad CLI arguments, file not found).
+
+With `--check-resumable`:
+    0  Contract has enough state to resume without re-elicitation.
+    1  Contract is sparse (treat as Phase A seed); not a BLOCK.
+    2  Contract is BLOCK-malformed; repair before resume.
+   64  Invocation error.
 
 Stdlib only. No PyYAML, no requests, no third-party dependencies.
 """
@@ -580,6 +598,75 @@ def check_cross_section_consistency(contract: dict[str, Any]) -> list[Finding]:
 
 
 # ---------------------------------------------------------------------
+# Resumability check (used by amw-design-resume-agent)
+# ---------------------------------------------------------------------
+
+# The mandatory keys that MUST be present + non-empty for the contract to be
+# resumable without re-elicitation. This is a STRICTER subset of the regular
+# validator's PASS rule: a contract can PASS validation (e.g. fresh
+# phase_a_discovery with empty decisions_log is legitimate) yet not be
+# resumable (the discovery hasn't accumulated any locked decisions).
+#
+# Per skills/amw-design-principles/references/TECH-design-resume.md.
+RESUMABLE_MANDATORY_KEYS: tuple[tuple[str, str], ...] = (
+    ("meta", "schema_version"),
+    ("meta", "contract_id"),
+    ("meta", "created_at"),
+    ("meta", "updated_at"),
+    ("meta", "phase"),
+    ("user_intent", "project_name"),
+    ("user_intent", "industry"),
+    ("user_intent", "primary_audience"),
+    ("user_intent", "primary_action"),
+    ("user_intent", "tone"),
+    ("brand_tokens", "primary_color"),
+    ("brand_tokens", "color_mode"),
+    ("brand_tokens", "display_font"),
+    ("brand_tokens", "body_font"),
+    ("brand_tokens", "border_radius_bucket"),
+    ("target_stack", "framework"),
+)
+
+
+def check_resumability(contract: dict[str, Any]) -> tuple[bool, list[str]]:
+    """Return (resumable, sparse_keys).
+
+    `resumable=True` means every key in RESUMABLE_MANDATORY_KEYS is present
+    and non-empty AND `decisions_log` is a non-empty list — i.e. at least
+    one decision has been locked. The resume-agent reads this signal to
+    decide whether to skip Phase A resource discovery.
+
+    `sparse_keys` is the list of dotted paths that are missing/empty; the
+    resume-agent surfaces them when recommending "treat as Phase A seed
+    and re-elicit only these".
+
+    NOTE: this function does NOT check JSON well-formedness or
+    schema-version validity. Those are BLOCK conditions detected by the
+    regular validator pipeline. `check_resumability` runs AFTER
+    `validate()` has produced a non-BLOCK verdict; callers must handle
+    the BLOCK case (exit 2) separately.
+    """
+    sparse: list[str] = []
+    for section, field in RESUMABLE_MANDATORY_KEYS:
+        section_obj = contract.get(section)
+        if not isinstance(section_obj, dict):
+            sparse.append(f"{section}.{field}")
+            continue
+        val = section_obj.get(field)
+        if val is None or (isinstance(val, str) and not val.strip()):
+            sparse.append(f"{section}.{field}")
+
+    # decisions_log must be a non-empty list. The regular validator FLAGs
+    # an empty log; resumability promotes that to a hard non-resumable
+    # signal (no decisions = nothing to resume from).
+    decisions_log = contract.get("decisions_log")
+    if not isinstance(decisions_log, list) or not decisions_log:
+        sparse.append("decisions_log")
+
+    return (len(sparse) == 0, sparse)
+
+
+# ---------------------------------------------------------------------
 # Orchestrator
 # ---------------------------------------------------------------------
 
@@ -642,13 +729,30 @@ def emit_human(verdict: str, findings: list[Finding], contract_path: Path) -> No
         print("\nAll checks PASS.")
 
 
-def emit_json(verdict: str, findings: list[Finding], contract_path: Path) -> None:
-    """Emit a machine-readable JSON summary."""
-    payload = {
+def emit_json(
+    verdict: str,
+    findings: list[Finding],
+    contract_path: Path,
+    *,
+    resumable: bool | None = None,
+    sparse_keys: list[str] | None = None,
+) -> None:
+    """Emit a machine-readable JSON summary.
+
+    When `resumable` is not None (i.e. `--check-resumable` was passed),
+    the payload includes a top-level `resumable` boolean AND a
+    `sparse_keys` array listing the dotted paths that are missing /
+    empty (empty list when `resumable=True`). The resume-agent reads
+    both fields.
+    """
+    payload: dict[str, Any] = {
         "contract": str(contract_path),
         "verdict": verdict,
         "findings": [f.to_dict() for f in findings],
     }
+    if resumable is not None:
+        payload["resumable"] = resumable
+        payload["sparse_keys"] = sparse_keys or []
     print(json.dumps(payload, indent=2))
 
 
@@ -678,6 +782,16 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Treat FLAG as BLOCK (exit 2 instead of 1).",
     )
+    parser.add_argument(
+        "--check-resumable",
+        dest="check_resumable",
+        action="store_true",
+        help=(
+            "Resume-agent mode: exit 0 if the contract has enough state "
+            "to resume an interrupted workflow without re-elicitation, "
+            "exit 1 if sparse (treat as Phase A seed), exit 2 if BLOCK."
+        ),
+    )
     args = parser.parse_args(argv)
 
     if not args.contract.exists():
@@ -687,13 +801,61 @@ def main(argv: list[str] | None = None) -> int:
         return 64
 
     verdict, findings = validate(args.contract)
+
+    # --check-resumable changes the exit-code semantics but does NOT
+    # bypass the BLOCK detection. A BLOCK contract is always exit 2 — the
+    # resume-agent must repair it before retrying. A non-BLOCK contract
+    # gets the resumability check.
+    resumable: bool | None = None
+    sparse_keys: list[str] | None = None
+    if args.check_resumable:
+        if verdict == "BLOCK":
+            # Contract is malformed; resumability is meaningless. Surface
+            # exit 2 and the BLOCK findings just like the regular path.
+            resumable = False
+            sparse_keys = []
+        else:
+            # Re-read the contract (we already know it parses cleanly,
+            # because validate() returned non-BLOCK; load_contract cannot
+            # fail here).
+            contract, _ = load_contract(args.contract)
+            assert contract is not None, "non-BLOCK verdict implies parseable contract"
+            ok, sparse = check_resumability(contract)
+            resumable = ok
+            sparse_keys = sparse
+
     if args.emit_json:
-        emit_json(verdict, findings, args.contract)
+        emit_json(
+            verdict,
+            findings,
+            args.contract,
+            resumable=resumable,
+            sparse_keys=sparse_keys,
+        )
     else:
         emit_human(verdict, findings, args.contract)
+        if args.check_resumable:
+            print()  # blank line separator
+            if resumable:
+                print(f"Resumable: YES — every mandatory key present.")
+            elif sparse_keys is not None and sparse_keys:
+                print(f"Resumable: NO — sparse contract.")
+                print("Sparse keys (treat as Phase A seed; re-elicit only these):")
+                for key in sparse_keys:
+                    print(f"  - {key}")
+            else:
+                # BLOCK case; verdict already printed by emit_human.
+                print("Resumable: NO — contract is BLOCK-malformed.")
 
+    # Exit-code aggregation. --check-resumable changes only the FLAG/PASS
+    # split: a PASS-but-sparse contract is exit 1 (not 0), and a
+    # FLAG-but-resumable contract is still exit 0 (advisory flags do not
+    # block resume).
     if verdict == "BLOCK":
         return 2
+    if args.check_resumable:
+        # In resume mode: resumable → 0, sparse → 1 regardless of FLAG.
+        return 0 if resumable else 1
     if verdict == "FLAG":
         return 2 if args.strict_flags else 1
     return 0

@@ -63,3 +63,100 @@ git clone --depth 1 --branch 0.3.0 https://github.com/halidecx/fcvvdp.git libs_d
 
 Both are excluded from the fast CI gate (CI has neither tool / leaves
 `AMW_VERIFY` unset).
+
+## Validator quality tests (batch9 Wave 2 Round 3, T-065)
+
+Two test files cover the two structural validators that gate every
+DESIGN.md and Persistent Design Contract in the pipeline. They are
+fast (each individual test under 1 second; no test marked 🐌), pure
+stdlib, and use REAL subprocess invocations of the bin/ scripts plus
+direct-module imports for helper-level checks. No mocks of the
+validator itself.
+
+### `test_amw_design_md_validate.py` — 34 tests
+
+Drives `bin/amw-design-md-validate.py` against the 6 fixtures under
+`tests/fixtures/design-md/`:
+
+| Fixture | Purpose | Expected verdict |
+|---|---|---|
+| `good.md` | Clean V1 DESIGN.md with every required section, valid tokens, resolved references | PASS / exit 0 |
+| `bad-frontmatter.md` | Unclosed `---` frontmatter | FAIL / `[P0/S1.V1]` |
+| `bad-tokens.md` | Components reference primitives that do not exist | FAIL / `[P0/R1]` × 4 |
+| `malformed-color.md` | 4 invalid hex values + 1 valid one | FAIL / `[P1/T1]` × 4 |
+| `missing-brand.md` | Frontmatter missing required `name` field | FAIL / `[P1/T8.V1]` |
+| `oversize-section.md` | Sections out of canonical order + one duplicate `## Colors` | FAIL / `[P0/S4.V1]` + `[P0/S5.V1]` |
+
+Test coverage:
+
+- **Fixture-driven subprocess tests** (1 per fixture, +1 parameterised
+  consistency check across all 6) verifying exit codes, verdict strings,
+  and finding codes.
+- **Variant 2 (community 9-section) tests** built in-line in
+  `tmp_path` fixtures: complete V2 PASS, incomplete-V2 missing-section
+  reports, P2-only findings still PASS.
+- **JSON output mode** round-trips: machine-readable payload structure
+  is identical for PASS and FAIL cases.
+- **Direct-module helper tests** (8 tests): `detect_variant`,
+  `split_frontmatter`, `collect_token_paths`, `validate_references`,
+  `validate_v1_tokens`, `Finding.to_dict` / `__str__`, and regex shape
+  for `HEX_RE` / `DIMENSION_RE`.
+
+### `test_amw_design_contract_validate.py` — 29 tests
+
+Drives `bin/amw-design-contract-validate.py` against both the legacy
+fixtures (`tests/fixtures/contract-{pass,flag,block}.json`) AND the
+three new edge-case fixtures under `tests/fixtures/contract/`:
+
+| Fixture | Purpose | Expected verdict |
+|---|---|---|
+| `warning-only.yaml` | Every required field present, one empty advisory (reference_urls) | FLAG / exit 1, `[F030]` only |
+| `multi-block.yaml` | All sections present but BLOCK-level violations + FLAGs in same run | BLOCK / exit 2, `[B030]` + `[B041]` + … + FLAGs |
+| `empty-contract.yaml` | Literal `{}` — every required section missing | BLOCK / exit 2, `[B010]` × 7 |
+
+Note on `.yaml` extension: JSON is a strict subset of YAML 1.2 so the
+files are valid for both parsers. The validator always calls
+`json.loads` on the raw text — the extension is descriptive only.
+
+Test coverage:
+
+- **PASS / FLAG / BLOCK trichotomy** — one canonical test per verdict
+  exercising the exit-code contract (0 / 1 / 2) AND the verdict-string
+  reported in stdout.
+- **`--strict-flags`** escalation: FLAG → exit 2 while preserving the
+  verdict string `FLAG` in stdout.
+- **JSON-mode round-trips** on a YAML-extension fixture: payload
+  shape is identical to JSON-extension inputs.
+- **Aggregation rule**: any BLOCK ⇒ verdict BLOCK regardless of how
+  many FLAG findings co-occur.
+- **Cross-section consistency**: cookie-banner + email-stack is a
+  hard BLOCK; luxury-tone + LIGHT-mode is a FLAG.
+- **Direct-module helper tests** for `load_contract` (B001 vs B003),
+  `check_top_level_shape` (B010 × N), `check_legal` (B061 / F060),
+  `check_decisions_log` (B080), `check_meta` (F020 only on bad
+  timestamps), and `check_ia` (B051).
+
+### How to run
+
+```bash
+# Both validator-test files at once:
+uv run pytest tests/test_amw_design_md_validate.py tests/test_amw_design_contract_validate.py -v
+
+# Just the design-md validator tests:
+uv run pytest tests/test_amw_design_md_validate.py -v
+
+# Just the contract validator tests:
+uv run pytest tests/test_amw_design_contract_validate.py -v
+
+# Run with markers off (no slow tests in this suite, but for consistency):
+uv run pytest tests/test_amw_design_md_validate.py -v -m "not slow"
+```
+
+### Slow-test markers (🐌)
+
+**None of the 63 tests in these two files are slow.** Every test
+completes in well under 1 second (the full 63-test run is ~1 second).
+The 🐌 marker is reserved for `test_verify_parity.py` and any future
+fcvvdp / dev-browser / Chromium-driven tests. If a future validator
+test grows beyond 1 second wall-time, decorate it `@pytest.mark.slow`
+and add a 🐌 row above.

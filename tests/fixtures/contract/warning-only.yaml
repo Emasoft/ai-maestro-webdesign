@@ -1,0 +1,47 @@
+{
+  "_about": "Warning-only fixture for batch9 r3 validator tests. JSON inside a .yaml extension is intentional: JSON is a strict subset of YAML 1.2, so the file is parseable by both `json.loads` (the validator's loader) and any YAML loader. The validator's loader DOES NOT use file extension — it always calls `json.loads` on the raw text. This top-level `_about` key is ignored by every check because no required check reads it.",
+  "meta": {
+    "schema_version": "1",
+    "contract_id": "20260527-warning-only",
+    "created_at": "2026-05-27T10:00:00+02:00",
+    "updated_at": "2026-05-27T10:00:00+02:00",
+    "phase": "phase_a_locked"
+  },
+  "user_intent": {
+    "project_name": "Warning Only Contract",
+    "industry": "design tooling",
+    "primary_audience": "AMW orchestrators running r3 validator tests",
+    "primary_action": "exercise the FLAG verdict path",
+    "tone": "neutral / test-fixture",
+    "reference_urls": [],
+    "success_metrics": ["validator emits exactly one FLAG finding"]
+  },
+  "brand_tokens": {
+    "primary_color": "#FF0000",
+    "color_mode": "LIGHT",
+    "display_font": "Inter",
+    "body_font": "Inter",
+    "border_radius_bucket": "ROUND_FOUR",
+    "neutral_palette": ["#000000", "#444444", "#888888", "#cccccc", "#ffffff"],
+    "preset_fingerprint": "test-warning-only-light"
+  },
+  "ia": {
+    "pages": [{"name": "Home", "slug": "/", "purpose": "test"}],
+    "primary_nav": ["Home"]
+  },
+  "legal": {
+    "jurisdictions": [],
+    "mandatories": []
+  },
+  "target_stack": {
+    "framework": "vanilla-html",
+    "css_strategy": "tailwind v4"
+  },
+  "decisions_log": [
+    {
+      "timestamp": "2026-05-27T10:00:00+02:00",
+      "decision": "Test fixture: reference_urls intentionally empty to trigger F030 FLAG.",
+      "actor": "test"
+    }
+  ]
+}

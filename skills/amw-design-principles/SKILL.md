@@ -143,6 +143,25 @@ See the worked examples in the per-mode sub-sections above and in references/.
 - [question-templates](question-templates.md) — universal must-ask + task-specific question checklists.
 - [typography-system](typography-system.md), [color-system](color-system.md), [spacing-rhythm](spacing-rhythm.md) — canonical token references.
 - [design-heuristics](design-heuristics.md) — Gestalt / Fitts / Hick principles for "something feels off" diagnosis.
+- [TECH-ux-laws-encyclopedia](./references/TECH-ux-laws-encyclopedia.md) — full 31-law reference (Fitts, Hick, Miller, Doherty, Goal-Gradient, Von Restorff, Tesler, Jakob, Pareto, Zeigarnik, Peak-End, Aesthetic-Usability, Cognitive Load, Information Foraging, 7 Gestalt principles, Banner Blindness, Serial Position, Chunking, Fogg, Sigmoid, Norman's vocabulary, Postel, Conway, Hofstadter); [quick-reference table](./references/TECH-ux-laws-quick-reference-table.md).
+
+## Token systems
+
+The plugin's design-token contract spans four mandatory families. Every DESIGN.md, every preset, every wireframe-builder emission resolves through these. Load the relevant file when authoring or auditing tokens:
+
+- [TECH-token-system-color-roles](./references/TECH-token-system-color-roles.md) — 14 mandatory semantic color roles (primary/secondary/tertiary/surface/background/error + on-* pairs) with WCAG-AA pair-contrast invariants.
+- [TECH-token-system-spacing-and-grid](./references/TECH-token-system-spacing-and-grid.md) — 4/8pt baseline, 10-step spacing scale, 12-col / 16-col grid + 6 breakpoints.
+- [TECH-token-system-elevation-and-radius](./references/TECH-token-system-elevation-and-radius.md) — 8-layer z-index table, 7-tier elevation/shadow scale, 7-step radius scale with role-mapped defaults.
+- [TECH-token-system-density-modes](./references/TECH-token-system-density-modes.md) — compact / comfortable / spacious as a multiplier over the spacing scale; responsive vs user-toggle decision matrix.
+
+## Process and craft references
+
+Load when the relevant trigger applies — not blanket-required on every project.
+
+- [TECH-influence-and-persuasion](./references/TECH-influence-and-persuasion.md) — Cialdini's 7 principles mapped to UI patterns + 8-category friction audit + conversion-impact data; gate for landing / pricing / checkout / signup flows.
+- [TECH-cross-cultural-design](./references/TECH-cross-cultural-design.md) — Wu-Xing 5-phase palette + Fibonacci spacing + 0.75× typographic waterfall + Swiss 12/16-col grid; load when audience is East Asian or aesthetic is Swiss-modernist.
+- [TECH-enterprise-system-overrides](./references/TECH-enterprise-system-overrides.md) — IBM Carbon / Shopify Polaris / Trimble Modus / Adobe Spectrum override table + 3-tier (Global / Semantic / Component) token architecture + agentic UX patterns (Tool → Copilot → Agent + intent modeling + audit trails).
+- [TECH-css-modern-syntax](./references/TECH-css-modern-syntax.md) — `oklch()` / `color-mix()` / `light-dark()` / `@container` / `@layer` / `@scope` / native nesting / `:has()` / `@starting-style` / View Transitions / anchor positioning / Tailwind v4 native-CSS features + fallback strategies.
 
 ## Closing note
 
