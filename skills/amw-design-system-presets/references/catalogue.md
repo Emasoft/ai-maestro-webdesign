@@ -141,3 +141,108 @@ extraction with per-file MIT/Apache attribution. Catalog descriptors
 are original summaries written for routing purposes. The first 45
 styles (S-001..S-045) ship in Wave 1; the remaining S-046..S-083 are
 Wave 2-3 backlog.*
+
+---
+
+## Wave 2 — Round 4 additions (S-010b, S-046..S-083)
+
+Round 4 of the batch9 swarm shipped 34 additional preset files plus
+S-010b (Neon / Glow UI, deferred from Wave 1). The table below
+APPENDS to the index above — file paths verified at append time.
+Where a Wave 2-3 row was missing (S-049, S-050, S-070, S-074, S-075)
+the cluster was reassigned or deferred; absent rows are intentional,
+not pending.
+
+S-010b now ships as a real file (`S-010b-neon.md`); the line 58
+parenthetical "deferred to Wave 2" is historical context that
+remains accurate as a status timestamp.
+
+### Round 4 — Industry / theme presets (light & dark)
+
+| ID | Style | One-line position |
+|---|---|---|
+| S-046 | [Industrial / Trust Authority](S-046-industrial-trust-authority.md) | Dark authority-signal palette, deep gunmetal/steel surfaces, single signal-orange or signal-amber accent, IBM Plex / Inter, 4px radius, hairline border. |
+| S-047 | [Electric Blue Modern](S-047-electric-blue-modern.md) | Light-mode energetic-tech, white canvas, electric `#3B82F6`-class blue accent, Inter, 8px radius, soft blue-tinted shadow. |
+| S-048 | [Healthcare / Medical](S-048-healthcare-medical.md) | Light calm-trust palette, ice-blue or sage-green accent, generous spacing, Source Sans 3 / Inter, 6-8px radius, near-imperceptible shadow. |
+| S-051 | [Beauty / Spa (Dusty Rose)](S-051-beauty-spa.md) | Industry-themed oklch dusty rose + warm cream, serif display, generous radius (12-16px), soft pink-tinted shadow. |
+| S-052 | [Real Estate / Stable Growth (Deep Emerald)](S-052-real-estate-emerald.md) | Industry-themed oklch deep emerald + cream, trust-focused, Source Serif 4 + Inter, 4-6px radius. |
+| S-053 | [Restaurant / Food (Warm Orange)](S-053-restaurant-food.md) | Industry-themed oklch warm-orange + cream, appetite-warm, generous spacing, 8-12px radius, soft shadow. |
+
+### Round 4 — Single-hue Bexa accent palettes
+
+| ID | Style | One-line position |
+|---|---|---|
+| S-054 | [Cobalt (Bexa)](S-054-cobalt.md) | Technical SaaS blue, white canvas, single cobalt accent, neutral greys, Inter, 6px radius. |
+| S-055 | [Verdant (Bexa)](S-055-verdant.md) | Growth/sustainability green, white canvas, single verdant accent, Inter, 6px radius. |
+| S-056 | [Ember (Bexa)](S-056-ember.md) | Warm energetic CTA orange-red, white canvas, single ember accent, Inter, 6px radius. |
+| S-057 | [Plum (Bexa)](S-057-plum.md) | Creative intelligent purple, white canvas, single plum accent, Inter, 6px radius. |
+| S-058 | [Rose Smoke (Bexa)](S-058-rose-smoke.md) | Fashion/beauty editorial rose, near-white canvas, muted rose accent, Inter / serif optional, 6px radius. |
+| S-059 | [Sable (Bexa)](S-059-sable.md) | Luxury editorial dark-first, near-black canvas, warm sable accent, Inter / serif optional, 6px radius. |
+
+### Round 4 — Stitch / Beam / Kinetic / Luxury / Motion / Hand-draw presets
+
+| ID | Style | One-line position |
+|---|---|---|
+| S-060 | [Beam "The Stripe"](S-060-beam-the-stripe.md) | Precision-instrument SaaS, white canvas, deep-navy ink, single Stripe-purple accent, ultra-light display weight, multi-layer brand-tinted shadow. |
+| S-061 | [Kinetic](S-061-kinetic.md) | Avant-garde motion-driven, deep-violet/black canvas, kinetic typography, accent neon, generous radius, motion is the primary brand element. |
+| S-062 | [Luxury (The Luxury)](S-062-luxury.md) | Gallery-opening cinematic, near-black or cream canvas, Cinzel / Cormorant display, gold/champagne accent, 0-2px radius, no shadow. |
+| S-063 | [Motion (The Builder)](S-063-motion-builder.md) | Animation-centric magician, gradient or dark canvas, magic-themed motion (sparkles/beams), Inter, 8-12px radius, glow-based elevation. |
+| S-064 | [Hand-draw](S-064-hand-draw.md) | Organic sketch / illustrative, cream paper canvas, hand-lettered fonts, irregular borders (SVG strokes), warm ink, tilted/rotated elements. |
+| S-065 | [Newsprint / Warm Editorial](S-065-newsprint-warm-editorial.md) | Print-editorial library-reading-room aesthetic, cream paper, Newsreader / IBM Plex Sans, hairline rules, claret/gold/forest-green accents, 0px radius. |
+| S-066 | [Uber Builder](S-066-uber-builder.md) | Technical product systematic, white canvas, Uber Move-style tight type, single black accent, 4px radius, dense data grids. |
+
+### Round 4 — Motion-defined / Card / Cinematic presets
+
+| ID | Style | One-line position |
+|---|---|---|
+| S-067 | [Card Constellation](S-067-card-constellation.md) | Motion-defined 3D cards, dark or gradient canvas, perspective-tilt card grid, atmospheric depth, Inter, 12-16px radius. |
+| S-068 | [Cinematic Scroll](S-068-cinematic-scroll.md) | Motion-defined scroll-film-reel, near-black canvas, sticky-scroll narrative, fullscreen typography, 700-1000ms transitions, no chrome. |
+| S-069 | [Abstract Gradient Art](S-069-abstract-gradient-art.md) | Motion-defined gradient blob industrial, dark canvas with organic blob gradients, geometric mono type, glow-based depth. |
+| S-071 | [Ghost Title](S-071-ghost-title.md) | Micro-aesthetic typographic-depth pseudo-element, large hero title with ghost outline behind it, single accent, monochrome neutral canvas. |
+| S-072 | [Grid Beam](S-072-grid-beam.md) | Micro-aesthetic ambient-motion hero background, sweeping beam-of-light animation over grid, dark or light canvas, single accent. |
+| S-073 | [Shader Wallpapers / Ambient Interactive](S-073-shader-wallpapers.md) | Micro-aesthetic interactive-background generative-ambient, WebGL/GLSL shader wallpaper, near-black canvas, single accent overlay, motion is interaction. |
+
+### Round 4 — Classical / Editorial / Warm / Dark-tech (cosmic, aurora, crayon, foundry, tempo)
+
+| ID | Style | One-line position |
+|---|---|---|
+| S-076 | [Cosmic Scale Animation](S-076-cosmic-scale.md) | Classical-modernist monochrome, white canvas, animated scale/zoom hero, single accent, geometric sans, 0px radius. |
+| S-077 | [Aurora (Greyscale Wireframe)](S-077-aurora-greyscale.md) | Classical-modernist monochrome, white canvas, greyscale wireframe-aurora gradient (no chroma), Inter, 0-4px radius. |
+| S-078 | [Crayon (Warm Beige + Handwritten)](S-078-crayon-warm-beige.md) | Editorial warm-paper, beige canvas (`#F5EFE6`), handwritten/Crayon display font, hand-drawn ornament, 4-8px radius. |
+| S-079 | [Foundry (Hard-bordered SaaS)](S-079-foundry-saas.md) | Developer-terminal monospace, near-white canvas, hard 1-2px borders, JetBrains Mono / Geist Mono, 0-2px radius, sharp data density. |
+| S-080 | [Tempo (Dark Tech App Landing)](S-080-tempo-dark-tech.md) | Dark-cinematic cyber, `#0A0A0A` canvas, Space Grotesk + JetBrains Mono, single vivid accent, gradient borders, glow-based depth. |
+
+### Round 4 — Neon (the deferred Wave 1 entry) + Brand reference corpora
+
+| ID | Style | One-line position |
+|---|---|---|
+| S-010b | [Neon / Glow UI](S-010b-neon.md) | Near-black `#0A0A0F` canvas, 2 neon colours, multi-layer `0 0 5/20/40px` glow as sole elevation, Space Grotesk, 8-12px radius (NOT 0 — distinguishes from S-010 Cyberpunk), parametric `--glow-dim/standard/vivid` ladder. |
+| S-081 | [Brand Catalogue (design-for-beauty, ~50 DESIGN.md)](S-081-brand-catalogue-design-for-beauty.md) | Descriptive voice-reference corpus — 50 brand DESIGN.md entries from Airbnb / Apple / BMW / Cal.com / Claude / Coinbase / Cursor / ElevenLabs / Ferrari / Figma / Framer / IBM / Linear / Notion / NVIDIA / Pinterest / PostHog / Raycast / Stripe / Supabase / Vercel / Webflow / xAI / Zapier + ~26 more. Use as voice reference, NOT paste-in tokens. |
+| S-082 | [Eight Hand-Extracted Brand Token Sets](S-082-eight-hand-extracted-brand-tokens.md) | Prescriptive complement to S-081 — 8 paste-ready CSS token blocks: A24 Editorial Film Brutalism, Arc Browser Cream-Paper Mesh, Raycast macOS Dark Native, Stripe Premium Fintech, Aceternity Aurora Motion-First, WIRED Newsstand Editorial, Poolsuite Retro Pastel, Polestar Luxury EV Minimalism. |
+| S-083 | [Design-Swatches 183-Brand DESIGN.md Corpus](S-083-design-swatches-183-brand-corpus.md) | Descriptive voice-reference SUPERSET of S-081 — 183 (186 with extras) DESIGN.md files, all Google format. Companion: `dembrandt` CLI for new extractions. Use as voice reference at scale; NEVER as paste-in tokens. |
+
+### Round 4 — Routing additions to the quick decision rules
+
+- **Brief: "industrial / authority / dark-mode trust"** — S-046 Industrial Trust Authority.
+- **Brief: "electric blue / SaaS / modern energetic"** — S-047 Electric Blue Modern, S-054 Cobalt.
+- **Brief: "healthcare / medical / clinical-clean"** — S-048 Healthcare/Medical.
+- **Brief: "beauty / spa / wellness"** — S-051 Beauty/Spa.
+- **Brief: "real estate / stable / emerald"** — S-052 Real Estate Emerald.
+- **Brief: "restaurant / food / appetite-warm"** — S-053 Restaurant/Food.
+- **Brief: "single-hue accent / Bexa-style"** — S-054..S-059 (Cobalt / Verdant / Ember / Plum / Rose Smoke / Sable).
+- **Brief: "Stripe-like fintech precision"** — S-060 Beam "The Stripe" or S-082 Brand #4 Stripe block.
+- **Brief: "motion-driven / kinetic / cinematic-scroll / shader-wallpaper"** — S-061 Kinetic, S-063 Motion (Builder), S-068 Cinematic Scroll, S-073 Shader Wallpapers.
+- **Brief: "luxury / gallery / champagne"** — S-062 Luxury, or S-082 Brand #8 Polestar block.
+- **Brief: "hand-drawn / sketch / crayon / warm-beige"** — S-064 Hand-draw, S-078 Crayon.
+- **Brief: "newsprint / library / warm editorial"** — S-065 Newsprint/Warm Editorial.
+- **Brief: "Uber-style technical product"** — S-066 Uber Builder.
+- **Brief: "ghost-title / pseudo-element hero typography"** — S-071 Ghost Title.
+- **Brief: "grid-beam ambient hero"** — S-072 Grid Beam.
+- **Brief: "cosmic-scale / scale-animation hero"** — S-076 Cosmic Scale.
+- **Brief: "aurora greyscale (no chroma)"** — S-077 Aurora Greyscale.
+- **Brief: "foundry / hard-bordered SaaS / mono dense"** — S-079 Foundry.
+- **Brief: "tempo / dark-tech app landing"** — S-080 Tempo, or S-038 Dark Tech.
+- **Brief: "neon / glow (NOT cyberpunk theatre)"** — S-010b Neon (8-12px radius, no scanline/glitch).
+- **Brief: "Stripe / Notion / Apple / specific brand voice reference"** — S-081 (50 brands) or S-083 (183 brands). For paste-ready Stripe / A24 / Arc / Raycast / Aceternity / WIRED / Poolsuite / Polestar tokens specifically, S-082.
+
+*Round 4 appended 2026-05-27. S-049, S-050, S-070, S-074, S-075 reassigned or deferred (gap rows are intentional — see MASTER-LEDGER `reports/batch9-analysis/MASTER-LEDGER.md`).*

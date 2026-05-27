@@ -354,6 +354,10 @@ Main-agent mostly delegates to sub-agents in Phase B. In Phase A, it invokes ski
 | Legal mandatory-element verification | `amw-legal-expert-agent` (Phase B mode) |
 | Browser scenario tests | `amw-browser-tester-agent` |
 
+| Design-system extraction | Skill |
+|---|---|
+| Pull / push design tokens, components, layouts, or flows via the Stitch MCP server (GATED — activates only when the Stitch MCP is reachable; otherwise emits a fallback line and routes to `amw-design-extract` or `amw-design-md-extractor-agent` per `TECH-stitch-fallback-strategy.md`) | [SKILL](../skills/amw-stitch-mcp-integration/SKILL.md) |
+
 Main-agent does not invoke [SKILL](../skills/amw-design-principles/SKILL.md) itself — that skill is the upstream orchestrator. Main-agent may read specific reference files (`ai-slop-avoid.md`, `color-system.md`, etc.) for its own check passes but never re-invokes the orchestrator.
 
 ---

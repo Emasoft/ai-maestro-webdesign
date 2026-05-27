@@ -90,7 +90,8 @@
       "skills/amw-liquid-glass",
       "skills/amw-evangelion-design",
       "skills/amw-generative-backgrounds",
-      "skills/amw-mobile-design"
+      "skills/amw-mobile-design",
+      "skills/amw-stitch-mcp-integration"
     ],
     "skill_size_severity": "warning",
     "max_chars": 12000,
