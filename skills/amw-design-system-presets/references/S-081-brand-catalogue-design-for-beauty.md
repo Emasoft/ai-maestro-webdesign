@@ -98,7 +98,8 @@ Parity threshold: A-class justified (descriptive reference corpus, not a prescri
 
 ## Render-test verdict
 
-JOD: N/A (descriptive corpus — render-test does not apply at catalogue level)
+JOD: A-class (brand-corpus) — 2026-05-29
+Reason: descriptive brand-token corpus — no single injectable 13-slot preset; each entry references its own brand source. Not skeleton-render-testable.
 
 ## Cross-references
 

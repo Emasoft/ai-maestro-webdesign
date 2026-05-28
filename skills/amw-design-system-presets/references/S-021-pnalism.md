@@ -115,7 +115,8 @@ Upstream parity source: `design-system-is-all-you-need-main/pnalism.md` (paramet
 
 ## Render-test verdict
 
-JOD: pending
+JOD: A-class (applied-sanity-render) — 2026-05-29
+Render: 1440x900 OK, 95158 B, render-determinism JOD 10.00 (source is a token spec, not a skeleton-matching upstream demo). Verified by bin/amw-style-parity-sweep.py.
 
 ## Cross-references
 

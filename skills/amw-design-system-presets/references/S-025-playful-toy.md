@@ -131,7 +131,8 @@ Upstream parity source: `atelier-main/SKILL.md` (tone B1 #6 — Playful/Consumer
 
 ## Render-test verdict
 
-JOD: pending
+JOD: A-class (applied-sanity-render) — 2026-05-29
+Render: 1440x900 OK, 109348 B, render-determinism JOD 10.00 (source is a token spec, not a skeleton-matching upstream demo). Verified by bin/amw-style-parity-sweep.py.
 
 ## Cross-references
 

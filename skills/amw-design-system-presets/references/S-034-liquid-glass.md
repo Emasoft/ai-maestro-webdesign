@@ -122,7 +122,8 @@ Upstream source: https://github.com/dashersw/liquid-glass-js (MIT) + Apple visio
 
 ## Render-test verdict
 
-JOD: pending
+JOD: A-class (effects-dependent) — 2026-05-29
+Reason: renders sparse (5850 B) on the plain skeleton because the style's character relies on WebGL / shader / backdrop layers absent in this environment; see the pointer for the canonical effects render. det-JOD 10.00, dims 1440x900.
 
 ## Cross-references
 

@@ -117,7 +117,8 @@ Upstream parity source: Notion.so (live, as of 2026) — clean-room derivation, 
 
 ## Render-test verdict
 
-JOD: pending
+JOD: A-class (applied-sanity-render) — 2026-05-29
+Render: 1440x900 OK, 115869 B, render-determinism JOD 10.00 (source is a token spec, not a skeleton-matching upstream demo). Verified by bin/amw-style-parity-sweep.py.
 
 ## Cross-references
 

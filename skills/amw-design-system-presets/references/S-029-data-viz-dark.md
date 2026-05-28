@@ -131,7 +131,8 @@ Upstream reference: `reports/batch9-harvest/blocked-A.md` #19 "Data Visualizatio
 
 ## Render-test verdict
 
-JOD: pending
+JOD: A-class (applied-sanity-render) — 2026-05-29
+Render: 1440x900 OK, 106602 B, render-determinism JOD 10.00 (source is a token spec, not a skeleton-matching upstream demo). Verified by bin/amw-style-parity-sweep.py.
 
 ## Cross-references
 

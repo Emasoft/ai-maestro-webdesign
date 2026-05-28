@@ -122,7 +122,8 @@ Upstream parity source: no single proprietary upstream — the technique is a re
 
 ## Render-test verdict
 
-JOD: pending
+JOD: A-class (specialized-tokens) — 2026-05-29
+Reason: effect / layout / multi-brand token block — defines effect or scene parameters, not the 13-slot landing-page palette (absent slots: accent,border,font-body,font-display,font-mono,primary,radius,shadow,spacing,surface,text-muted). Canonical render uses the effect element/file named in the pointer, not the bare skeleton. Render OK 1440x900, det-JOD 10.00.
 
 ## Cross-references
 

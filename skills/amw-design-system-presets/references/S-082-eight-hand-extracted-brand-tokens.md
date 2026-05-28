@@ -203,7 +203,8 @@ Parity threshold: A-class (token-level direct-port; brand sites evolve continuou
 
 ## Render-test verdict
 
-JOD: pending per-brand block
+JOD: A-class (specialized-tokens) — 2026-05-29
+Reason: effect / layout / multi-brand token block — defines effect or scene parameters, not the 13-slot landing-page palette (absent slots: accent,bg,font-body,font-mono,primary,radius,shadow,spacing,surface,text). Canonical render uses the effect element/file named in the pointer, not the bare skeleton. Render OK 1440x900, det-JOD 10.00.
 
 ## Cross-references
 
