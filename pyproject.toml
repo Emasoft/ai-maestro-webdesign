@@ -11,7 +11,13 @@ requires-python = ">=3.12"
 
 # CI runs `uv sync --extra dev` then `uv run pytest tests/ -v` (see
 # .github/workflows/ci.yml). Without this extra that sync fails with
-# "Extra `dev` is not defined". Pin pytest exactly for reproducible runs.
+# "Extra `dev` is not defined". Pin exactly for reproducible runs.
+#
+# pyyaml is a test dependency: seven shipped bin scripts import yaml
+# (amw-design-md-{validate,contrast,emit-companions,showcase}.py,
+# amw-figma-tokens-{import,export}.py, amw-dtcg-export.py) and their tests
+# invoke those scripts, so the suite needs PyYAML to run them. At end-user
+# runtime those scripts fail-fast with an install hint if PyYAML is absent.
 #
 # The batch9 screenshot-parity verification harness (bin/amw-verify-parity.sh,
 # bin/amw-screenshot-compare.sh) depends on two EXTERNAL, non-Python tools that
@@ -24,6 +30,7 @@ requires-python = ">=3.12"
 [project.optional-dependencies]
 dev = [
     "pytest==9.0.3",
+    "pyyaml==6.0.3",
 ]
 
 [project.urls]
