@@ -1,6 +1,6 @@
 ---
 name: amw-slop-verifier-agent
-description: Vision-based AI-slop verifier. Consumes a screenshot path + the project brief + optional HTML path. Audits rendered pixels against all 7 categories in ai-slop-avoid.md (gradient/color, typography, layout/hierarchy, decoration/icons, content/copy, motion/interaction, density). Emits a machine-parseable ✅ pass or ❌ slop detected: verdict plus canonical YAML return header. Narrow triggers only — "verify this rendered output for AI-slop", "slop-check this screenshot", "run slop audit on <path>". NEVER activates on broad design vocabulary.
+description: 'Vision-based AI-slop verifier. Consumes a screenshot path + the project brief + optional HTML path. Audits rendered pixels against all 7 categories in ai-slop-avoid.md (gradient/color, typography, layout/hierarchy, decoration/icons, content/copy, motion/interaction, density). Emits a machine-parseable ✅ pass or ❌ slop detected: verdict plus canonical YAML return header. Narrow triggers only — "verify this rendered output for AI-slop", "slop-check this screenshot", "run slop audit on <path>". NEVER activates on broad design vocabulary.'
 model: sonnet
 ---
 
