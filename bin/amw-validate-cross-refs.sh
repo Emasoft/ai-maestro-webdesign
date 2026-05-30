@@ -127,6 +127,14 @@ emit_check() {
     /amw-*) return ;;
   esac
 
+  # Skip template-placeholder paths — refs containing `{…}` (or `<…>`) are
+  # documentation templates (e.g. `.infographic/{project}.json`,
+  # `out/{slug}.svg`), not concrete on-disk paths, so a literal existence
+  # check is meaningless and always reports a false "MISSING".
+  case "$ref" in
+    *'{'*|*'}'*|*'<'*|*'>'*) return ;;
+  esac
+
   # Skip refs that look like inline-code language tokens or shell flags
   # (`bash`, `python3`, `--strict`, etc.). Heuristic: must contain '/' or '.' or
   # start with '~'.
@@ -140,11 +148,26 @@ emit_check() {
   esac
 
   # Resolve. Allow leading `./`, `../`, or absolute.
+  #
+  # Relative refs may be written EITHER relative to the source file's own
+  # directory OR relative to the plugin root. The plugin-root convention is
+  # the dominant one in this repo for citing `bin/…`, `tests/…`, `skills/…`,
+  # and `agents/…` paths from deeply-nested reference files (≈1083 root-
+  # relative refs vs ≈43 `../`-style). Accept either: try the source dir
+  # first, then fall back to the plugin root before declaring a ref MISSING.
+  # Without this, every root-relative `bin/…` ref cited from a nested file is
+  # a false positive (it resolves at the root but not beside its citing file).
   local resolved
   case "$ref" in
     /*) resolved="$ref" ;;
     ~/*) resolved="$HOME/${ref#~/}" ;;
-    *) resolved="$source_dir/$ref" ;;
+    *)
+      if [ -e "$source_dir/$ref" ]; then
+        resolved="$source_dir/$ref"
+      else
+        resolved="$PLUGIN_ROOT/$ref"
+      fi
+      ;;
   esac
 
   if [ ! -e "$resolved" ]; then
