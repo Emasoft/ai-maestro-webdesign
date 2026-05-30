@@ -21,10 +21,8 @@ from __future__ import annotations
 
 import importlib.util
 import json
-import os
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 import pytest
@@ -408,7 +406,6 @@ def _walk_assert_value(node, path=""):
     if not isinstance(node, dict):
         return
     has_value = "$value" in node
-    has_type = "$type" in node
     has_desc = "$description" in node
     looks_like_leaf = has_value or (has_desc and not any(
         isinstance(v, dict) and ("$value" in v or _is_groupy(v)) for v in node.values()

@@ -21,8 +21,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-import pytest
-
 PLUGIN_ROOT = Path(__file__).resolve().parent.parent
 BIN_DIR = PLUGIN_ROOT / "bin"
 IMPORT_SCRIPT = BIN_DIR / "amw-figma-tokens-import.py"

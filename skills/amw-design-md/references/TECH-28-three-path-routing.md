@@ -3,7 +3,7 @@ name: TECH-28-three-path-routing
 category: workflow
 source: awesome-design-md three-path routing pattern (MIT)
 license: MIT
-also-in: TECH-15-design-md-as-input.md, TECH-24-authoring-rules-spec.md, TECH-21-style-references-companion.md, ../amw-design-principles/SKILL.md
+also-in: TECH-15-design-md-as-input.md, TECH-24-authoring-rules-spec.md, TECH-21-style-references-companion.md, ../../amw-design-principles/SKILL.md
 status: stable
 ---
 
@@ -218,5 +218,5 @@ Three paths is the minimum that:
 - [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — Path A and Path B writing rules
 - [TECH-25-brand-archetypes](TECH-25-brand-archetypes.md) — Path B variant generation uses archetype defaults
 - [TECH-27-token-interpolation](TECH-27-token-interpolation.md) — Path A token enforcement detail
-- [../amw-design-principles/SKILL.md](../amw-design-principles/SKILL.md) — orchestrator that applies this routing
-- [../amw-design-principles/references/two-mode-workflow.md](../amw-design-principles/references/two-mode-workflow.md) — Command-mode vs main-agent-mode (orthogonal to this 3-path routing)
+- [../../amw-design-principles/SKILL.md](../../amw-design-principles/SKILL.md) — orchestrator that applies this routing
+- [../../amw-design-principles/references/two-mode-workflow.md](../../amw-design-principles/references/two-mode-workflow.md) — Command-mode vs main-agent-mode (orthogonal to this 3-path routing)
