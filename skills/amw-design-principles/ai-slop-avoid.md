@@ -12,6 +12,7 @@
 - [VII. Content density principle (positive stance)](#vii-content-density-principle-positive-stance)
 - [VIII. Content anti-patterns (T-042)](#viii-content-anti-patterns-t-042)
 - [IX. Anti-AI-cliché visual checklist (T-044)](#ix-anti-ai-cliché-visual-checklist-t-044)
+- [X. Production-test tells (taste-skill, MIT)](#x-production-test-tells-taste-skill-mit)
 
 > **A thousand no's for one yes.** Each item below is an instant tell for AI-generated work.
 > Each entry names: ❌ the anti-pattern → ✅ a better alternative → 📝 the reason.
@@ -307,3 +308,67 @@ Run this checklist before shipping any visual output. Each item is an immediate 
 
 ### Typography
 - [ ] Main font is on the forbidden list — see Section VIII in `typography-system.md` (Inter, Roboto, Space Grotesk, etc.).
+
+---
+
+## X. Production-test tells (taste-skill, MIT)
+
+> Source: `taste-skill` (Leonxlnx, MIT) §9.F/§9.G — "Production-Test Tells"
+> distilled from real LLM landing-page generations, adapted to plugin idiom.
+> These are the signatures the model reaches for when it tries to "look
+> designed." Treat each as a hard ban **in generated user-facing output**
+> (HTML markup and on-page copy) unless the brief explicitly calls for it.
+> Scope note: this section governs the artifacts we generate, NOT this
+> plugin's own documentation prose.
+
+### Hero & eyebrows
+- ❌ Version labels in the hero (`V0.6`, `v2.0`, `BETA`, `ALPHA`, `EARLY ACCESS`, `INVITE-ONLY PREVIEW`). ✅ Only when the brief is literally about a launch/preview status. 📝 Default eyebrow slop.
+- ❌ "Brand · No. 01" sub-eyebrows ("Marrow · No. 01 · The 6-quart"). ✅ Drop them.
+- ❌ Section-number eyebrows (`00 / INDEX`, `001 · Capabilities`, `06 · how it works`) and `01 / 4` pagination on tiles. ✅ Name the topic in plain language; never enumerate. 📝 If the reader can count, the number adds nothing.
+- ❌ Micro-meta sentences floating under an eyebrow ("Each of these is a feature we ship today, not a roadmap promise."). ✅ Eyebrow + headline + body is enough.
+
+### Separators, dots, dashes
+- ❌ Middle-dot (`·`) as the default separator ("foo · bar · baz · qux"). ✅ Max one per metadata line; prefer line breaks, hairlines, or columns.
+- ❌ Decorative colored status dots before every nav item / list row / badge. ✅ Only when the dot conveys real semantic state (live server status, an availability flag), used sparingly.
+- ❌ Em-dash (`—`) or en-dash (`–`) used as a separator ANYWHERE in generated output: headlines, eyebrows, pills, body copy, button text, captions, alt text, quote attribution. ✅ Use a period, comma, parentheses, colon, line break, or a spaced hyphen (` - `); ranges use a plain hyphen (`2018-2026`, `€40-80k`). 📝 The single most-violated production tell. (Applies to the generated artifact only, not to this plugin's docs.)
+
+### Typography flourishes
+- ❌ `<br>`-broken-and-italicized headlines ("for thirty`<br>`*years.*") as a default move. ✅ Headlines read naturally first; get clever only when the brief demands it.
+- ❌ Vertical / 90°-rotated text ("INDEX OF WORK, 2018-2026" rotated). ✅ Agency/Awwwards briefs only, when it serves real composition.
+- ❌ Oversized H1s that just scream. ✅ Control hierarchy with weight + color, not raw scale.
+
+### Fake UI, footers, decoration strips
+- ❌ Div-based fake product UI in the hero (fake task list / terminal / dashboard built from styled `<div>`s). ✅ Real screenshot, generated image, real component preview, or nothing. 📝 The biggest "looks designed" tell.
+- ❌ Fake version footers inside fake screenshots ("v0.6.2-rc.1", "last sync 4s ago · main") and version footers on marketing pages (`v1.4.2`, `Build 0048`). ✅ Those are devtool fixtures, not page content.
+- ❌ Crosshair / hairline grid lines drawn purely as decoration. ✅ Only when they organize real content.
+- ❌ Decoration text strip across the hero bottom ("BRAND. MOTION. SPATIAL.", "DESIGN · BUILD · SHIP", "ESTD. 2018 · LISBON"). ✅ Only if it carries real navigable links or real status.
+- ❌ Floating top-right sub-text in a section header (a tiny corner paragraph aligned to nothing). ✅ Put the sub-text under the headline, or build a clean 2-column header.
+
+### Marketing-copy tells
+- ❌ "Quietly in use at" / "Quietly trusted by" social-proof headers. ✅ "Trusted by", "Used at", or skip if the logos speak.
+- ❌ Poetic section labels ("From the field", "Field notes", "Currently on the bench", "On our desks"). ✅ Plain functional labels ("Testimonials", "Latest writing", "Now working on") or none.
+- ❌ Generic step labels ("Stage 1/2/3", "Phase 01/02/03", "Pass One/Two/Three"). ✅ The step's verb-noun IS the label ("Install", "Configure", "Ship").
+- ❌ Filler verbs ("Elevate", "Seamless", "Unleash", "Next-Gen", "Revolutionize"). ✅ Concrete verbs. (Complements §VIII genericized-benefit-headers.)
+- ❌ Fake-perfect / round numbers (`99.99%`, `50%`, `1,234,567`). ✅ Organic, specific values (`47.2%`, `+1 (312) 847-1928`). (Sharpens rule 16.)
+- ❌ Startup-slop brand names ("Acme", "Nexus", "SmartFlow", "Cloudly"). ✅ Invent a contextual, real-sounding name.
+- ❌ Atmospheric weather / locale / time strips ("LIS 14:23 · 18°C", "Lisbon, working with founders"). ✅ Banned for ~99% of briefs; a single footer address is fine, an atmospheric strip is not.
+
+### Pills, captions, lists
+- ❌ Pills/labels/tags overlaid on images (`<span>` "Brand · 02" / "PLATE · BRAND" on a photo). ✅ Let the image speak, or caption directly below it (outside the image).
+- ❌ Photo-credit captions as decoration ("Frame XII · 35mm", "Plate 03 · House archive") under stock/picsum images. ✅ Credit only a real photographer of a real photo (with permission); else skip.
+- ❌ "Reservation 412 of 800"-style live-stock counters as decoration. ✅ Only with real limited-run data.
+- ❌ `border-t` AND `border-b` on every row of a long list / spec table. ✅ Pick one, used sparsely.
+- ❌ Scoring / progress bars with filled background tracks as landing-page comparison visuals. ✅ A number + small icon, or a track-less inline bar.
+
+### Scroll cues & resource hygiene
+- ❌ Scroll cues ("Scroll", "↓ scroll", "Scroll to explore", animated mouse-wheel icons). ✅ The reader knows what scroll is; the hero does not need a label.
+- ❌ Custom mouse cursors. 📝 Outdated, accessibility- and perf-hostile.
+- ❌ Pure black `#000000`. ✅ Off-black / zinc-950 / charcoal. (Complements §VI saturation rules.)
+- ❌ Neon / outer glows by default. ✅ Inner borders or subtle tinted shadows.
+- ❌ Hand-rolled SVG icons. ✅ Phosphor / Radix / Tabler / HugeIcons (Lucide on explicit request). (Complements rule 3 / §IX self-drawn-SVG.)
+- ❌ Broken Unsplash links. ✅ `https://picsum.photos/seed/{descriptive-string}/{w}/{h}`, generated photo placeholders, or real assets.
+- ❌ shadcn/ui in its default state. ✅ Customize radii, colors, shadows, typography to the project aesthetic (see `amw-shadcn-ui`).
+
+### Forbidden scroll/animation wiring (complements §V and rule 26)
+- ❌ `window.addEventListener("scroll", ...)` and `window.scrollY`-driven React state. ✅ `IntersectionObserver`, CSS scroll-driven animations (`animation-timeline: view()`), or the framework's scroll primitives. 📝 A raw scroll listener fires every frame (jank-prone, no batching) — same family as the `scrollIntoView` ban in rule 26.
+- ❌ `requestAnimationFrame` loops that touch React state. ✅ Motion values (`useMotionValue` + `useTransform`).
