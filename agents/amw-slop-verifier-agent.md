@@ -341,14 +341,14 @@ blocking_issues: []
 warnings:
   - "Brief did not include explicit opt-in suppression for any category; all rules applied"
 artifact_paths:
-  - path: "/Users/demo/reports/webdesigner/20260526_143000+0200-amw-slop-verifier-landing.md"
+  - path: "/path/to/reports/webdesigner/20260526_143000+0200-amw-slop-verifier-landing.md"
     type: report
     purpose: "Full 7-category slop audit with per-rule findings"
 recommendations:
   - "Rule 21 (scale+shadow hover uniformity) is a low-severity advisory — consider differentiating hover feedback on secondary vs primary CTAs"
   - "Brief mentions Inter as the existing typeface; if confirmed, re-invoke with brief_overrides: ['rule-7'] to suppress the Inter finding"
 next_action: proceed
-report_path: "/Users/demo/reports/webdesigner/20260526_143000+0200-amw-slop-verifier-landing.md"
+report_path: "/path/to/reports/webdesigner/20260526_143000+0200-amw-slop-verifier-landing.md"
 ---
 
 ✅ pass
@@ -375,14 +375,14 @@ blocking_issues:
 warnings:
   - "Category 6 (motion/interaction) is INCONCLUSIVE — static screenshot cannot confirm animation behavior; HTML path not provided"
 artifact_paths:
-  - path: "/Users/demo/reports/webdesigner/20260526_150000+0200-amw-slop-verifier-hero.md"
+  - path: "/path/to/reports/webdesigner/20260526_150000+0200-amw-slop-verifier-hero.md"
     type: report
     purpose: "Full 7-category slop audit — 1 HIGH failure, 2 MEDIUM advisories, 1 INCONCLUSIVE"
 recommendations:
   - "Route to amw-wireframe-builder-agent to revise the hero background: replace linear-gradient(135deg, #667eea, #764ba2) with a solid low-saturation background or a narrow-hue oklch gradient"
   - "Pass html_path on re-invocation to resolve Category 6 INCONCLUSIVE"
 next_action: retry_with:revised_artifact
-report_path: "/Users/demo/reports/webdesigner/20260526_150000+0200-amw-slop-verifier-hero.md"
+report_path: "/path/to/reports/webdesigner/20260526_150000+0200-amw-slop-verifier-hero.md"
 ---
 
 ❌ slop detected:

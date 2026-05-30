@@ -469,13 +469,13 @@ blocking_issues: []
 warnings:
   - "WCAG contrast for `primary` (#7c3aed) / `surface` (#ffffff) measures 5.2:1 — passes WCAG AA normal-text. No action required."
 artifact_paths:
-  - path: "/Users/emanuele/project/DESIGN.md"
+  - path: "/path/to/project/DESIGN.md"
     type: markdown
     purpose: "Variant 1 DESIGN.md extracted from https://example.com"
-  - path: "/Users/emanuele/project/tokens.css"
+  - path: "/path/to/project/tokens.css"
     type: css
     purpose: ":root CSS custom properties derived from DESIGN.md (companion)"
-  - path: "/Users/emanuele/project/DESIGN.md.load-verified.png"
+  - path: "/path/to/project/DESIGN.md.load-verified.png"
     type: png
     purpose: "load-verified screenshot captured at extraction time (T-085)"
 recommendations:
@@ -483,7 +483,7 @@ recommendations:
   - "Run amw-design-md-auditor-agent in Mode A (spot-check) to verify DESIGN.md against the live page."
   - "Pass DESIGN.md to amw-wireframe-builder-agent as canonical token source for Phase B HTML rendering."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-url.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-url.md"
 ---
 
 # AMW DESIGN.md Extractor — Phase B summary
@@ -511,20 +511,20 @@ warnings:
   - "WCAG contrast for `secondary` (#5b8def) / `secondary-foreground` (#ffffff) measures 3.86:1 — below 4.5:1 normal-text threshold. Source's design choice; flag for amw-accessibility-auditor-agent."
   - "Multiple style systems detected (Tailwind + styled-components). Output reflects Tailwind (primary stack); styled-components tokens were ignored."
 artifact_paths:
-  - path: "/Users/emanuele/project/DESIGN.md"
+  - path: "/path/to/project/DESIGN.md"
     type: markdown
     purpose: "Variant 1 DESIGN.md extracted from codebase"
-  - path: "/Users/emanuele/project/DESIGN.md.extraction-notes.md"
+  - path: "/path/to/project/DESIGN.md.extraction-notes.md"
     type: markdown
     purpose: "Sidecar — primary-stack detection, class-frequency table, Tailwind config evaluation log"
-  - path: "/Users/emanuele/project/tokens.css"
+  - path: "/path/to/project/tokens.css"
     type: css
     purpose: ":root CSS custom properties derived from DESIGN.md (companion)"
 recommendations:
   - "Run amw-design-md-auditor-agent in Mode B (file + codebase) to verify extracted DESIGN.md matches actual codebase usage."
   - "Pass DESIGN.md to amw-wireframe-builder-agent as canonical token source for Phase B HTML rendering."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-codebase.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-codebase.md"
 ---
 
 # AMW DESIGN.md Extractor — Phase B summary
@@ -551,12 +551,12 @@ blocking_issues:
   - "URL extraction caught a JS-heavy SPA — only 2 colors, 1 typography entry extracted. Re-run with --wait-for-selector <hero-selector> or provide a server-rendered URL."
 warnings: []
 artifact_paths:
-  - path: "/Users/emanuele/project/DESIGN.md.draft"
+  - path: "/path/to/project/DESIGN.md.draft"
     type: markdown
     purpose: "Partial extraction draft — DO NOT promote to canonical without re-extraction"
 recommendations: []
 next_action: retry_with:wait_or_alternative_url
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-spa-failure.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260427_104530+0200-amw-design-md-extractor-spa-failure.md"
 ---
 
 # AMW DESIGN.md Extractor — Phase B summary

@@ -311,14 +311,14 @@ blocking_issues: []
 warnings:
   - "Frozen spec timestamp (2026-05-27T10:18:42+02:00) precedes contract.meta.updated_at (2026-05-27T11:42:18+02:00) by ~84 min — main-agent may want to re-freeze before fan-out if Phase A locks changed."
 artifact_paths:
-  - path: "/Users/emanuele/project/reports/webdesigner/contract-resume-20260527_213042+0200.json"
+  - path: "/path/to/project/reports/webdesigner/contract-resume-20260527_213042+0200.json"
     type: json
     purpose: "Full resume diagnosis: recommended_phase=phase_b, pending=[accessibility-auditor, seo-strategist, browser-tester]"
 recommendations:
   - "Resume Phase B fan-out at the three pending sub-agents in sequencing order: accessibility-auditor → seo-strategist → browser-tester."
   - "No user re-elicitation needed — every locked decision is present in decisions_log[]."
 next_action: proceed
-report_path: "/Users/emanuele/project/reports/webdesigner/20260527_213045+0200-amw-design-resume-aurora-spa-resume-into-phase-b.md"
+report_path: "/path/to/project/reports/webdesigner/20260527_213045+0200-amw-design-resume-aurora-spa-resume-into-phase-b.md"
 ---
 
 # AMW Design Resume — Aurora Spa, resume into Phase B
@@ -344,13 +344,13 @@ blocking_issues:
   - "Drift: report from amw-diagram-producer-agent exists on disk (timestamp 2026-05-27T15:30) but no decisions_log entry references its invocation. Cannot determine whether to trust the report or discard it."
 warnings: []
 artifact_paths:
-  - path: "/Users/emanuele/project/reports/webdesigner/contract-resume-20260527_220000+0200.json"
+  - path: "/path/to/project/reports/webdesigner/contract-resume-20260527_220000+0200.json"
     type: json
     purpose: "Resume diagnosis with drift findings"
 recommendations:
   - "Escalate to user: ask whether the diagram-producer output was intended (back-date a decisions_log entry) or accidental (discard the report)."
 next_action: escalate_to_user
-report_path: "/Users/emanuele/project/reports/webdesigner/20260527_220003+0200-amw-design-resume-drift-escalation.md"
+report_path: "/path/to/project/reports/webdesigner/20260527_220003+0200-amw-design-resume-drift-escalation.md"
 ---
 
 # AMW Design Resume — drift escalation

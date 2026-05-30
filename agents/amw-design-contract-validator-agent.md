@@ -286,13 +286,13 @@ attempts_log: []
 blocking_issues: []
 warnings: []
 artifact_paths:
-  - path: "/Users/emanuele/project/.amw/contract-validation-end-of-phase-a-20260512_173000+0200.json"
+  - path: "/path/to/project/.amw/contract-validation-end-of-phase-a-20260512_173000+0200.json"
     type: json
     purpose: "Full mechanical + semantic findings; verdict PASS"
 recommendations:
   - "Contract is ready for Phase B fan-out. Proceed with amw-freeze-phase-a.sh to emit the frozen spec."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260512_173002+0200-amw-design-contract-validator-end-of-phase-a.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260512_173002+0200-amw-design-contract-validator-end-of-phase-a.md"
 ---
 
 # AMW Design Contract Validator — verdict PASS
@@ -320,14 +320,14 @@ blocking_issues:
   - "decisions_log[5] locks brand_tokens.colors.primary='#0a2540' but decisions_log[12] locks the same field to '#1f4068' without a superseded_by link. Audit trail is broken."
 warnings: []
 artifact_paths:
-  - path: "/Users/emanuele/project/.amw/contract-validation-pre-fan-out-20260512_180000+0200.json"
+  - path: "/path/to/project/.amw/contract-validation-pre-fan-out-20260512_180000+0200.json"
     type: json
     purpose: "Full mechanical + semantic findings; verdict BLOCK"
 recommendations:
   - "Re-invoke amw-legal-expert-agent to resolve jurisdictions vs IA contradiction."
   - "Inspect decisions_log timestamps to identify which primary-color lock is canonical; add superseded_by reference."
 next_action: retry_with:corrected_contract
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260512_180003+0200-amw-design-contract-validator-pre-fan-out-BLOCK.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260512_180003+0200-amw-design-contract-validator-pre-fan-out-BLOCK.md"
 ---
 
 # AMW Design Contract Validator — verdict BLOCK

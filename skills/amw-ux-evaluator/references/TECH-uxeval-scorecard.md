@@ -77,7 +77,7 @@ scorecard_id: "a3f2b1c4-9d8e-4f7a-b5c6-1e2d3f4a5b6c"
 component: "Pricing Page CTA"
 input:
   type: "html"
-  source: "/Users/demo/project/design/mockups/Pricing Page.html"
+  source: "/path/to/project/design/mockups/Pricing Page.html"
   viewport: "1440x900"
   captured_at: "2026-05-26T14:32:00+0200"
 dimensions:
@@ -240,7 +240,7 @@ scorecard_id: "f7e2a9b3-4c1d-4e8f-a2b6-3d5e7f9a0b1c"
 component: "Pricing Page CTA"
 input:
   type: "html"
-  source: "/Users/demo/project/design/mockups/Pricing Page.html"
+  source: "/path/to/project/design/mockups/Pricing Page.html"
   viewport: "1440x900"
   captured_at: "2026-05-26T14:32:00+0200"
 dimensions:

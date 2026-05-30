@@ -474,13 +474,13 @@ warnings:
   - "Brief had 7 content blocks; design-DNA target is 8-15 for portrait-medium. Rendered output reads compact but not sparse."
   - "PDF variant uses 14pt body (print-safe); HTML variant uses 12px body (poster-dense). Intentional two-variant divergence."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/infographics/acme-tokenomics.html"
+  - path: "/path/to/project/design/infographics/acme-tokenomics.html"
     type: html
     purpose: "Self-contained dense editorial infographic, CDN fonts + Phosphor Icons, portrait-medium 1080×1440 (promoted from /tmp/amw-infographic-acme-tokenomics-build.html after lint + density PASS)"
-  - path: "/Users/emanuele/project/design/infographics/acme-tokenomics.png"
+  - path: "/path/to/project/design/infographics/acme-tokenomics.png"
     type: png
     purpose: "2× retina PNG render via bin/amw-html-export.py, 2160×2880 physical"
-  - path: "/Users/emanuele/project/design/infographics/acme-tokenomics.pdf"
+  - path: "/path/to/project/design/infographics/acme-tokenomics.pdf"
     type: pdf
     purpose: "Print-ready PDF, 14pt body floor, motion stripped"
 structure_summary:
@@ -493,7 +493,7 @@ recommendations:
   - "For social distribution consider re-rendering at twitter-x (1200×675) — may require section pruning; I can re-invoke with target_dimensions.canvas=twitter-x."
   - "Brief was 7 blocks; padding to 10-12 via team section + protocol mechanics detail would hit the design-DNA sweet spot."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_151820+0200-amw-infographic-builder-acme-tokenomics.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_151820+0200-amw-infographic-builder-acme-tokenomics.md"
 ---
 
 # AMW Infographic Builder — Phase B summary
@@ -574,7 +574,7 @@ artifact_paths: []
 recommendations:
   - "Pick one of the 24 available template slugs, or set template_preference=null to let me auto-pick based on data_brief content type."
 next_action: escalate_to_user
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_152015+0200-amw-infographic-builder-unknown-template.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_152015+0200-amw-infographic-builder-unknown-template.md"
 ---
 
 # AMW Infographic Builder — Phase B summary

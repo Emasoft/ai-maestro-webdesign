@@ -403,13 +403,13 @@ warnings:
   - "Preheader derived from subject line (distinct preheader not provided in copy_blocks); recommend providing custom preheader."
   - "Dark mode bg_dark token not provided; derived #1a1a2e from primary #0a2540 — documented in report."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/emails/order-confirmation.mjml"
+  - path: "/path/to/project/design/emails/order-confirmation.mjml"
     type: html
     purpose: "MJML source — order confirmation email with dark mode CSS and Outlook VML fallbacks (promoted from /tmp/amw-email-order-confirmation-build.mjml after MJML compile + AI-slop PASS)"
-  - path: "/Users/emanuele/project/design/emails/order-confirmation.html"
+  - path: "/path/to/project/design/emails/order-confirmation.html"
     type: html
     purpose: "Compiled HTML — ready for ESP upload (compiled from staged MJML source, validated, promoted)"
-  - path: "/Users/emanuele/project/design/emails/order-confirmation.txt"
+  - path: "/path/to/project/design/emails/order-confirmation.txt"
     type: report
     purpose: "Plain-text fallback — full email content in readable plain text"
 recommendations:
@@ -417,7 +417,7 @@ recommendations:
   - "Invoke amw-legal-expert-agent to review transactional footer text — currently using placeholder address."
   - "Invoke amw-multilanguage-copywriter-agent if French/German locale variants are needed."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_103012+0200-amw-email-designer-order-confirmation.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_103012+0200-amw-email-designer-order-confirmation.md"
 ---
 
 # AMW Email Designer — Phase B summary
@@ -476,7 +476,7 @@ recommendations:
   - "Invoke amw-legal-expert-agent with jurisdiction=US,CA to produce compliant footer_legal block and unsubscribe_url."
   - "Re-invoke amw-email-designer-agent after legal-expert returns."
 next_action: escalate_to_user
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_103802+0200-amw-email-designer-newsletter-FAIL.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_103802+0200-amw-email-designer-newsletter-FAIL.md"
 ---
 
 # AMW Email Designer — Phase B summary

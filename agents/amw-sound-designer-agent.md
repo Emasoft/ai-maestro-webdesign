@@ -353,13 +353,13 @@ warnings:
   - "Tone.js output requested — adds ~100KB to bundle. Confirm addition to project dependencies before Phase B render."
   - "HTML preview requires a user gesture to activate AudioContext — documented inline in preview page."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/sounds/landing-sounds-sound-preview.html"
+  - path: "/path/to/project/design/sounds/landing-sounds-sound-preview.html"
     type: html
     purpose: "Self-contained preview page with play buttons for all 4 sounds — listen immediately in browser"
-  - path: "/Users/emanuele/project/design/sounds/landing-sounds-sounds.js"
+  - path: "/path/to/project/design/sounds/landing-sounds-sounds.js"
     type: js
     purpose: "ES module: exports playClick(), playHover(), playSuccess(), playError()"
-  - path: "/Users/emanuele/project/design/sounds/landing-sounds-sound-hook.jsx"
+  - path: "/path/to/project/design/sounds/landing-sounds-sound-hook.jsx"
     type: jsx
     purpose: "React hook: useSoundFeedback() returning { playClick, playHover, playSuccess, playError }"
 recommendations:
@@ -369,7 +369,7 @@ recommendations:
   - "Wire playError() to form validation error state."
   - "Consider pairing click and success sounds with amw-motion-designer-agent microinteraction timing."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260526_143012+0200-amw-sound-designer-landing-sounds.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260526_143012+0200-amw-sound-designer-landing-sounds.md"
 ---
 
 # AMW Sound Designer — Phase B summary
@@ -406,16 +406,16 @@ blocking_issues:
 warnings:
   - "click sound generated from recipe defaults (not from reference audio) — may not match brand reference. Re-run with ffmpeg installed for recipe override."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/sounds/landing-sounds-sound-preview.html"
+  - path: "/path/to/project/design/sounds/landing-sounds-sound-preview.html"
     type: html
     purpose: "Self-contained preview page — uses recipe defaults for click (reference audio unavailable)"
-  - path: "/Users/emanuele/project/design/sounds/landing-sounds-sounds.js"
+  - path: "/path/to/project/design/sounds/landing-sounds-sounds.js"
     type: js
     purpose: "ES module: exports playClick() using recipe defaults"
 recommendations:
   - "Install ffmpeg and re-invoke with reference_audio_path to match brand reference sound."
 next_action: escalate_to_user
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260526_143812+0200-amw-sound-designer-landing-sounds-partial.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260526_143812+0200-amw-sound-designer-landing-sounds-partial.md"
 ---
 
 # AMW Sound Designer — Phase B summary (partial)

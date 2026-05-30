@@ -328,7 +328,7 @@ warnings:
   - "1.4.3 AAA — heading contrast 6.2:1; passes AA but below AAA 7:1 threshold (non-blocking under AA target)"
   - "1.4.12 MANUAL-REVIEW — could not simulate all text-spacing combinations; sample showed no clipping"
 artifact_paths:
-  - path: "/Users/u/project/reports/webdesigner/20260424_143012+0200-amw-accessibility-auditor-bora-bora-hero.md"
+  - path: "/path/to/project/reports/webdesigner/20260424_143012+0200-amw-accessibility-auditor-bora-bora-hero.md"
     type: report
     purpose: "Full WCAG 2.1 AA audit with per-criterion PASS/FAIL matrix and line-level remediation"
 recommendations:
@@ -336,7 +336,7 @@ recommendations:
   - "Re-engage amw-wireframe-builder-agent to rewire the date picker as native <input type=date> or add ARIA combobox pattern"
   - "Add @media (prefers-reduced-motion: reduce) { .hero-parallax { animation: none; } } to the stylesheet"
 next_action: retry_with:fixes_applied
-report_path: "/Users/u/project/reports/webdesigner/20260424_143012+0200-amw-accessibility-auditor-bora-bora-hero.md"
+report_path: "/path/to/project/reports/webdesigner/20260424_143012+0200-amw-accessibility-auditor-bora-bora-hero.md"
 ---
 
 # amw-accessibility-auditor-agent — Phase B summary

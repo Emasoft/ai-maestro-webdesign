@@ -366,19 +366,19 @@ warnings:
   - "brand_tokens.typography.body was absent — used design-principles default 'Inter'; flag if the brand uses a different body font"
   - "Kinetic headline used pretext TECH-33 — consumer must call ensureFontsReady() before mount or first frame will jump"
 artifact_paths:
-  - path: "/Users/demo/project/design/icons/Search Icon.svg"
+  - path: "/path/to/project/design/icons/Search Icon.svg"
     type: svg
     purpose: "24×24 stroke search icon, 2px stroke, brand primary"
-  - path: "/Users/demo/project/design/icons/Filter Icon.svg"
+  - path: "/path/to/project/design/icons/Filter Icon.svg"
     type: svg
     purpose: "24×24 stroke filter icon, 2px stroke, brand primary"
-  - path: "/Users/demo/project/design/typography/Kinetic Headline Demo.html"
+  - path: "/path/to/project/design/typography/Kinetic Headline Demo.html"
     type: html
     purpose: "Kinetic headline demo — text reflows as container width animates (pretext TECH-33)"
-  - path: "/Users/demo/project/design/illustrations/Microservices Concept.png"
+  - path: "/path/to/project/design/illustrations/Microservices Concept.png"
     type: png
     purpose: "Hand-drawn Excalidraw-style illustration — WARNING: text 'Architecture' misspelled to 'Architecutre'"
-  - path: "/Users/demo/reports/webdesigner/20260424_161245+0200-amw-asset-generator-q4-assets-a1b2c3d4.md"
+  - path: "/path/to/reports/webdesigner/20260424_161245+0200-amw-asset-generator-q4-assets-a1b2c3d4.md"
     type: report
     purpose: "Full asset production report (brief-by-brief breakdown + TECH references consulted)"
 recommendations:
@@ -386,7 +386,7 @@ recommendations:
   - "Consider pairing the kinetic headline with ensureFontsReady() wrapper — see pretext TECH-17 / TECH-64 for the mount-time sync pattern"
   - "Icon set is 2 icons — if a full nav-bar set is needed, provide the list of nav actions and re-invoke"
 next_action: escalate_to_user
-report_path: "/Users/demo/reports/webdesigner/20260424_161245+0200-amw-asset-generator-q4-assets-a1b2c3d4.md"
+report_path: "/path/to/reports/webdesigner/20260424_161245+0200-amw-asset-generator-q4-assets-a1b2c3d4.md"
 ---
 
 # AMW Asset Generator — Phase B summary
@@ -398,17 +398,17 @@ Produced 3 of 4 briefs cleanly; 1 Excalidraw output needs user decision due to G
 ### 1. Search Icon (icon, 24×24) — OK
 - Authoring skill: `skills/amw-svg-creator/` — TECH-icon-construction
 - Render-verify iterations: 2
-- Path: `/Users/demo/project/design/icons/Search Icon.svg`
+- Path: `/path/to/project/design/icons/Search Icon.svg`
 - Notes: brand primary `#0B5FFF`, 2px stroke, stroke-linecap round
 
 ### 2. Filter Icon (icon, 24×24) — OK
 - Authoring skill: `skills/amw-svg-creator/` — TECH-icon-construction
 - Render-verify iterations: 1
-- Path: `/Users/demo/project/design/icons/Filter Icon.svg`
+- Path: `/path/to/project/design/icons/Filter Icon.svg`
 
 ### 3. Kinetic Headline Demo (kinetic-typography) — OK
 - Authoring skill: `skills/amw-pretext/` — TECH-33-kinetic-width-animation, TECH-17, TECH-64, TECH-77
-- Path: `/Users/demo/project/design/typography/Kinetic Headline Demo.html`
+- Path: `/path/to/project/design/typography/Kinetic Headline Demo.html`
 - Notes: uses `@chenglou/pretext` via npm; consumer must add `<script type="module" src="./Kinetic Headline Demo.html">` AND ensure fonts are loaded before mount. The demo includes the wrapper module (TECH-64) and font-loading sync (TECH-17).
 
 ### 4. Microservices Concept Illustration (excalidraw) — PARTIAL
@@ -416,7 +416,7 @@ Produced 3 of 4 briefs cleanly; 1 Excalidraw output needs user decision due to G
 - Aspect: 16:9 (user-requested)
 - Gate state: allow=true, key=true, consent=true → all gates passed
 - Gemini call: 1 (succeeded; image returned)
-- Path: `/Users/demo/project/design/illustrations/Microservices Concept.png`
+- Path: `/path/to/project/design/illustrations/Microservices Concept.png`
 - Issue: central label reads "Architecutre" instead of "Architecture"
 - Recovery options:
   1. Regenerate — another billable Gemini call (user explicit consent required again)

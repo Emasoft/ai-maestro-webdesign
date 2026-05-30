@@ -395,13 +395,13 @@ warnings:
   - "Parallax motion intent uses transform-based Intersection Observer approach — not CSS background-attachment:fixed. Confirmed no layout-triggering on scroll."
   - "anime.js added as new dependency (not detected in project) — ~14KB minified. Confirm addition before Phase B HTML render."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/motion/landing-motion-spec.json"
+  - path: "/path/to/project/design/motion/landing-motion-spec.json"
     type: json
     purpose: "Complete animation spec: 6 motion intents, timing tables, reduced-motion variants, performance annotations"
-  - path: "/Users/emanuele/project/design/motion/landing-motion.css"
+  - path: "/path/to/project/design/motion/landing-motion.css"
     type: html
     purpose: "CSS file: @keyframes declarations, animation/transition classes, prefers-reduced-motion media query overrides"
-  - path: "/Users/emanuele/project/design/motion/landing-motion.js"
+  - path: "/path/to/project/design/motion/landing-motion.js"
     type: html
     purpose: "JS module: Intersection Observer setup, event listeners for microinteractions"
 recommendations:
@@ -409,7 +409,7 @@ recommendations:
   - "Invoke amw-browser-tester-agent after render to verify INP and CLS scores — scroll-triggered animations can affect CLS if not properly contained."
   - "Invoke amw-accessibility-auditor-agent to verify prefers-reduced-motion guard fires correctly in the rendered HTML."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_113012+0200-amw-motion-designer-landing-motion.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_113012+0200-amw-motion-designer-landing-motion.md"
 ---
 
 # AMW Motion Designer — Phase B summary
@@ -465,7 +465,7 @@ artifact_paths: []
 recommendations:
   - "Add prefers_reduced_motion block to input contract and re-invoke."
 next_action: escalate_to_user
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_113645+0200-amw-motion-designer-landing-FAIL.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_113645+0200-amw-motion-designer-landing-FAIL.md"
 ---
 
 # AMW Motion Designer — Phase B summary

@@ -72,7 +72,7 @@ $ npx hyperframes doctor
 ✓ Environment     Native terminal
 ✓ FFmpeg          ffmpeg version 6.1.1
 ✓ FFprobe         ffprobe version 6.1.1
-✓ Chrome          bundled: /Users/you/.cache/hyperframes/chrome/...
+✓ Chrome          bundled: ~/.cache/hyperframes/chrome/...
 ✓ Docker          Docker version 24.0.7
 ✓ Docker running  Running
 

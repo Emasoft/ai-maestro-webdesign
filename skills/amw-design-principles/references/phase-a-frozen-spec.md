@@ -167,7 +167,7 @@ bash bin/amw-freeze-phase-a.sh \
   --locales        "en,fr" \
   --output-dir     "${CLAUDE_PROJECT_DIR}/design/mockups" \
   --wcag-target    "AA" \
-  --out            "/Users/c/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/phase-a-frozen/20260430_183012+0200-frozen-spec.json"
+  --out            "/path/to/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/phase-a-frozen/20260430_183012+0200-frozen-spec.json"
 ```
 
 **Resulting spec** (abbreviated):
@@ -192,7 +192,7 @@ bash bin/amw-freeze-phase-a.sh \
 }
 ```
 
-**Main-agent then fans out Phase B**, passing only `frozen_spec_path: "/Users/c/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/phase-a-frozen/20260430_183012+0200-frozen-spec.json"` to every sub-agent's input contract. `amw-wireframe-builder-agent` reads the spec and resolves the keys it needs; `amw-diagram-producer-agent` reads only `design_md_path` and `output_dir`; `amw-accessibility-auditor-agent` (B) reads `wcag_target` and `design_md_path`. None of them re-derives token decisions, copy decisions, or IA decisions — those are already on disk and pinned via the sha256.
+**Main-agent then fans out Phase B**, passing only `frozen_spec_path: "/path/to/Code/AI-MAESTRO-WEBDESIGN-AGENT/reports/webdesigner/phase-a-frozen/20260430_183012+0200-frozen-spec.json"` to every sub-agent's input contract. `amw-wireframe-builder-agent` reads the spec and resolves the keys it needs; `amw-diagram-producer-agent` reads only `design_md_path` and `output_dir`; `amw-accessibility-auditor-agent` (B) reads `wcag_target` and `design_md_path`. None of them re-derives token decisions, copy decisions, or IA decisions — those are already on disk and pinned via the sha256.
 
 ## Cross-references
 

@@ -506,19 +506,19 @@ warnings:
   - "French hero headline is 68 chars (ASCII slot is 40); confirmed line-wrap at 1440px is clean but check at 1024px."
   - "5-col feature grid at 1440px collapses to 2+scroll on 375px; 'scroll' strategy applied per Decision Criterion 4."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.en.html"
+  - path: "/path/to/project/design/mockups/bora-bora-landing.en.html"
     type: html
     purpose: "Production HTML — English locale, shadcn+next component surface (promoted from /tmp/amw-wireframe-bora-bora-landing-build.html after lint PASS)"
-  - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.fr.html"
+  - path: "/path/to/project/design/mockups/bora-bora-landing.fr.html"
     type: html
     purpose: "Production HTML — French locale"
-  - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.tokens.json"
+  - path: "/path/to/project/design/mockups/bora-bora-landing.tokens.json"
     type: json
     purpose: "Resolved brand tokens manifest for downstream audit reference"
-  - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.preview.png"
+  - path: "/path/to/project/design/mockups/bora-bora-landing.preview.png"
     type: png
     purpose: "1440px reference screenshot (preview only, not production asset)"
-  - path: "/Users/emanuele/project/design/mockups/bora-bora-landing.load-verified-desktop.png"
+  - path: "/path/to/project/design/mockups/bora-bora-landing.load-verified-desktop.png"
     type: png
     purpose: "Load-verified screenshot taken immediately after promotion (T-085); slop-verifier in step 17 uses its own re-screenshot in reports/"
 structure_summary:
@@ -531,7 +531,7 @@ recommendations:
   - "Run amw-seo-strategist-agent (B mode) on both locales for on-page SEO; meta-description was injected from input but not audited."
   - "Consider re-invoking amw-multilanguage-copywriter-agent for a shorter French hero headline (~50 chars) if the current wrap is undesired."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_143012+0200-amw-wireframe-builder-bora-bora-landing.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_143012+0200-amw-wireframe-builder-bora-bora-landing.md"
 ---
 
 # AMW Wireframe Builder — Phase B summary
@@ -607,7 +607,7 @@ recommendations:
   - "Re-run ascii-sketch satisfaction loop on the variant; upstream producer shipped non-validator-PASS ASCII."
   - "If the ASCII was hand-edited by the user post-approval, reset to the canonical /tmp/amw-sketch-<slug>-final.txt and re-verify."
 next_action: retry_with:re_run_validator_upstream
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_143528+0200-amw-wireframe-builder-bora-bora-landing-FAIL.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_143528+0200-amw-wireframe-builder-bora-bora-landing-FAIL.md"
 ---
 
 # AMW Wireframe Builder — Phase B summary

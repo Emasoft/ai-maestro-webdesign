@@ -94,7 +94,7 @@ Prints the absolute path to the named DESIGN.md. Used by the agent or by `bin/` 
 
 ```
 $ amw-design-library use linear
-/Users/<user>/.config/ai-maestro/design-library/linear/DESIGN.md
+~/.config/ai-maestro/design-library/linear/DESIGN.md
 ```
 
 Exit code 1 if the name does not exist. No side effects.
@@ -171,7 +171,7 @@ User: "Build a landing page for my product, in the Linear style."
 Main-agent:
   1. Parse "Linear style" → library lookup
   2. amw-design-library use linear
-     → /Users/.../design-library/linear/DESIGN.md
+     → /path/to/design-library/linear/DESIGN.md
   3. Read DESIGN.md → resolve brand_tokens (see TECH-15)
   4. Phase A: ASCII sketch + 3 variants
   5. User approves variant

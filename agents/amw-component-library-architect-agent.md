@@ -365,22 +365,22 @@ warnings:
   - "Dark mode palette derived algorithmically (no dark seed provided) — recommend visual review of dark token values before production use."
   - "Type scale ratio 1.25 produces 8 steps (xs=10px clamped to 12px, sm=12.8px, md=16px, lg=20px, xl=25px, 2xl=31.25px, 3xl=39.06px, 4xl=48.83px) — xs clamped per minimum legibility floor."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1.tokens.json"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1.tokens.json"
     type: json
     purpose: "W3C DTCG tokens.json — archival source of truth (nested, typed)"
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1.css"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1.css"
     type: html
     purpose: "CSS custom properties — :root variables + dark mode @media block"
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1-tailwind.css"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1-tailwind.css"
     type: html
     purpose: "Tailwind v4 @theme block — import alongside @import 'tailwindcss'"
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1-figma.json"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1-figma.json"
     type: json
     purpose: "Tokens Studio for Figma — $type/$value schema with light/dark $themes"
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1-flat.json"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1-flat.json"
     type: json
     purpose: "Flat brand_tokens JSON — shaped for amw-wireframe-builder-agent input contract"
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1-button-matrix.json"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1-button-matrix.json"
     type: json
     purpose: "Button variant matrix — size(5) × color(6) × state(7) = 210 variant entries with token mappings and cva() config"
 recommendations:
@@ -388,7 +388,7 @@ recommendations:
   - "Verify dark mode palette visually — derived algorithmically; may need manual adjustment on brand-specific hues."
   - "Invoke amw-accessibility-auditor-agent on any rendered page to confirm runtime contrast compliance (token audit ≠ rendering audit)."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_123012+0200-amw-component-library-architect-brand-tokens-v1.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_123012+0200-amw-component-library-architect-brand-tokens-v1.md"
 ---
 
 # AMW Component Library Architect — Phase B summary
@@ -438,14 +438,14 @@ blocking_issues:
 warnings:
   - "Fix applied in all export artifacts — muted-foreground uses neutral-700 (#374151) not #6b7280. Document the override for design team."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/tokens/brand-tokens-v1.tokens.json"
+  - path: "/path/to/project/design/tokens/brand-tokens-v1.tokens.json"
     type: json
     purpose: "DTCG tokens.json — muted-foreground adjusted to neutral-700 for WCAG AA compliance"
 recommendations:
   - "Review muted-foreground adjustment with brand-researcher — visual appearance may differ from original neutral intent."
   - "Re-invoke this agent with an explicit neutrals_seed at a lower lightness if the brand team prefers a different neutral base."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_124012+0200-amw-component-library-architect-brand-tokens-v1-PARTIAL.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_124012+0200-amw-component-library-architect-brand-tokens-v1-PARTIAL.md"
 ---
 
 # AMW Component Library Architect — Phase B summary

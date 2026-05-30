@@ -358,10 +358,10 @@ warnings:
   - "Locale variants are hypotheses; commission native French SEO review for fr locale"
   - "H1 recommendation may conflict with user-research emotion-optimized version — main-agent to arbitrate"
 artifact_paths:
-  - path: "/Users/u/project/reports/webdesigner/20260424_143012+0200-amw-seo-strategist-bora-bora-phaseA.md"
+  - path: "/path/to/project/reports/webdesigner/20260424_143012+0200-amw-seo-strategist-bora-bora-phaseA.md"
     type: report
     purpose: "Phase A SEO strategy: keyword cluster, IA recommendation, structured-data plan, hreflang plan"
-  - path: "/Users/u/project/design/diagrams/bora-bora-ia.mmd"
+  - path: "/path/to/project/design/diagrams/bora-bora-ia.mmd"
     type: mermaid
     purpose: "Mermaid IA diagram for the bora-bora landing page"
 recommendations:
@@ -369,7 +369,7 @@ recommendations:
   - "Engage amw-multilanguage-copywriter-agent to polish locale keyword variants with native-speaker checks"
   - "Proceed to Phase A ASCII synthesis with the IA recommendation below"
 next_action: proceed
-report_path: "/Users/u/project/reports/webdesigner/20260424_143012+0200-amw-seo-strategist-bora-bora-phaseA.md"
+report_path: "/path/to/project/reports/webdesigner/20260424_143012+0200-amw-seo-strategist-bora-bora-phaseA.md"
 ---
 
 # amw-seo-strategist-agent — Phase A summary

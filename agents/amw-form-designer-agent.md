@@ -376,10 +376,10 @@ warnings:
   - "brand_tokens.colors.danger (#ff9f43) gives 2.9:1 contrast on white; darkened to #c0392b for error text. Accessibility-auditor should confirm."
   - "Locale 'ar' requires RTL flip on label alignment and progress-indicator directionality; flagged in ARIA annotation sheet."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/forms/booking-form-spec.json"
+  - path: "/path/to/project/design/forms/booking-form-spec.json"
     type: json
     purpose: "Complete form spec: field descriptors, state machine, validation rules, ARIA annotations, error copy per locale"
-  - path: "/Users/emanuele/project/design/forms/booking-form.txt"
+  - path: "/path/to/project/design/forms/booking-form.txt"
     type: ascii
     purpose: "ASCII structural sketch of form layout for wireframe-builder"
 recommendations:
@@ -387,7 +387,7 @@ recommendations:
   - "Invoke amw-multilanguage-copywriter-agent to review Arabic error message copy before Phase B completes."
   - "Invoke amw-accessibility-auditor-agent (B mode) after wireframe-builder renders HTML to confirm ARIA live-region behavior."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_093012+0200-amw-form-designer-booking-form.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_093012+0200-amw-form-designer-booking-form.md"
 ---
 
 # AMW Form Designer — Phase B summary
@@ -428,13 +428,13 @@ blocking_issues:
   - "multi_step step 'payment' references field IDs ['card_holder'] not declared in fields list. Cannot produce ARIA annotations or validation rules for undeclared fields."
 warnings: []
 artifact_paths:
-  - path: "/Users/emanuele/project/design/forms/checkout-form-spec-partial.json"
+  - path: "/path/to/project/design/forms/checkout-form-spec-partial.json"
     type: json
     purpose: "Partial form spec — steps 1 and 2 complete; step 3 incomplete pending field list fix"
 recommendations:
   - "Add field descriptor for 'card_holder' (type: text, autocomplete: cc-name, label: 'Cardholder name') and re-invoke."
 next_action: retry_with:complete_field_list
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_093544+0200-amw-form-designer-checkout-form-PARTIAL.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_093544+0200-amw-form-designer-checkout-form-PARTIAL.md"
 ---
 
 # AMW Form Designer — Phase B summary

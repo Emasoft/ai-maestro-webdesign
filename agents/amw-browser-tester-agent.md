@@ -284,7 +284,7 @@ Offer both recovery paths; main-agent decides.
 ```yaml
 status: failed
 blocking_issues:
-  - "artifact_url 'file:///Users/demo/project/design/mockups/landing.html' not found on disk — cannot test"
+  - "artifact_url 'file:///path/to/project/design/mockups/landing.html' not found on disk — cannot test"
 next_action: stop
 ```
 
@@ -429,7 +429,7 @@ Per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-a
 
 ### Worked example
 
-Input: test `file:///Users/demo/project/design/mockups/Landing Page.html` against the default battery at desktop + mobile, with `include_ux_eval=true`.
+Input: test `file:///path/to/project/design/mockups/Landing Page.html` against the default battery at desktop + mobile, with `include_ux_eval=true`.
 
 Screenshot count with the default policy (after-only, except click/fill steps): ~6 shots for a standard battery (1 desktop after-state per non-click scenario + 1 mobile after-state per mobile scenario + 1 before + 1 after for the CTA click step) — down from ~14 when every step captured before+after.
 
@@ -447,22 +447,22 @@ warnings:
   - "Console emits 1 third-party CDN 404 (https://cdn.example.com/analytics.js) — non-blocking for artifact function but will appear in dev-console for all visitors"
   - "At mobile 375×812 the primary CTA is 40% visible above fold (top 60% visible) — borderline renders-above-fold PASS"
 artifact_paths:
-  - path: "/Users/demo/reports/webdesigner/screenshots/20260424_170115+0200-default-desktop-loaded.png"
+  - path: "/path/to/reports/webdesigner/screenshots/20260424_170115+0200-default-desktop-loaded.png"
     type: png
     purpose: "Desktop 1440×900 initial render — renders-above-fold PASS evidence"
-  - path: "/Users/demo/reports/webdesigner/screenshots/20260424_170115+0200-default-mobile-loaded.png"
+  - path: "/path/to/reports/webdesigner/screenshots/20260424_170115+0200-default-mobile-loaded.png"
     type: png
     purpose: "Mobile 375×812 initial render — mobile-viewport-layout PASS evidence (no horizontal scroll)"
-  - path: "/Users/demo/reports/webdesigner/screenshots/20260424_170115+0200-default-keyboard-nav-tab-3.png"
+  - path: "/path/to/reports/webdesigner/screenshots/20260424_170115+0200-default-keyboard-nav-tab-3.png"
     type: png
     purpose: "Keyboard nav — Tab step 3 focuses .cta-primary with visible outline PASS evidence"
-  - path: "/Users/demo/reports/webdesigner/screenshots/20260424_170115+0200-default-cta-click-after.png"
+  - path: "/path/to/reports/webdesigner/screenshots/20260424_170115+0200-default-cta-click-after.png"
     type: png
     purpose: "After clicking primary CTA — modal opens, interactive-spot-check PASS evidence"
-  - path: "/Users/demo/reports/webdesigner/console-logs/20260424_170115+0200-default-console.log"
+  - path: "/path/to/reports/webdesigner/console-logs/20260424_170115+0200-default-console.log"
     type: report
     purpose: "Full browser console log (captured across all scenarios)"
-  - path: "/Users/demo/reports/webdesigner/20260424_170115+0200-amw-browser-tester-landing-page-b2c4e1f0.md"
+  - path: "/path/to/reports/webdesigner/20260424_170115+0200-amw-browser-tester-landing-page-b2c4e1f0.md"
     type: report
     purpose: "Full test report (5 scenarios, per-assertion verdicts, UX eval section, recommendations)"
 recommendations:
@@ -471,30 +471,30 @@ recommendations:
   - "For full WCAG AA audit (beyond functional keyboard-nav), invoke amw-accessibility-auditor-agent via main-agent"
 slop_audits:
   - scenario: "default-desktop"
-    screenshot_path: "/Users/demo/reports/batch9-slop-review/20260424_170115+0200/landing-page/landing-page-desktop.png"
+    screenshot_path: "/path/to/reports/batch9-slop-review/20260424_170115+0200/landing-page/landing-page-desktop.png"
     verdict: "pass"
     high_rules_fired: []
   - scenario: "default-mobile"
-    screenshot_path: "/Users/demo/reports/batch9-slop-review/20260424_170115+0200/landing-page-mobile/landing-page-mobile-desktop.png"
+    screenshot_path: "/path/to/reports/batch9-slop-review/20260424_170115+0200/landing-page-mobile/landing-page-mobile-desktop.png"
     verdict: "pass"
     high_rules_fired: []
 next_action: proceed
 ux_scorecards:
   - component: "hero-cta-stack"
-    scorecard_path: "/Users/emanuele/project/design/eval/hero-cta-stack.scorecard.yaml"
+    scorecard_path: "/path/to/project/design/eval/hero-cta-stack.scorecard.yaml"
     overall_verdict: "NEEDS_CHANGES"
     blocking_count: 0
     high_count: 1
     medium_count: 0
     low_count: 2
   - component: "pricing-card-row"
-    scorecard_path: "/Users/emanuele/project/design/eval/pricing-card-row.scorecard.yaml"
+    scorecard_path: "/path/to/project/design/eval/pricing-card-row.scorecard.yaml"
     overall_verdict: "PASS"
     blocking_count: 0
     high_count: 0
     medium_count: 0
     low_count: 0
-report_path: "/Users/demo/reports/webdesigner/20260424_170115+0200-amw-browser-tester-landing-page-b2c4e1f0.md"
+report_path: "/path/to/reports/webdesigner/20260424_170115+0200-amw-browser-tester-landing-page-b2c4e1f0.md"
 ---
 
 # AMW Browser Tester — Phase B summary
@@ -596,22 +596,22 @@ status: failed
 confidence: high
 execution_time_ms: 1200
 blocking_issues:
-  - "artifact_url 'file:///Users/demo/project/mockup.html' not reachable — dev-browser shot returned 'Cannot navigate to file that does not exist'"
+  - "artifact_url 'file:///path/to/project/mockup.html' not reachable — dev-browser shot returned 'Cannot navigate to file that does not exist'"
 warnings: []
 artifact_paths:
-  - path: "/Users/demo/reports/webdesigner/20260424_170115+0200-amw-browser-tester-failed-unreachable-d3e4f5a6.md"
+  - path: "/path/to/reports/webdesigner/20260424_170115+0200-amw-browser-tester-failed-unreachable-d3e4f5a6.md"
     type: report
     purpose: "Failure report — reachability check stderr"
 recommendations:
   - "Verify the artifact exists at the path before re-invoking"
   - "If the path was from a production agent's artifact_paths, that agent's output may have been truncated or failed silently; re-check the upstream agent's report"
 next_action: escalate_to_user
-report_path: "/Users/demo/reports/webdesigner/20260424_170115+0200-amw-browser-tester-failed-unreachable-d3e4f5a6.md"
+report_path: "/path/to/reports/webdesigner/20260424_170115+0200-amw-browser-tester-failed-unreachable-d3e4f5a6.md"
 ---
 
 # AMW Browser Tester — Phase B FAILED
 
-Cannot test: artifact at file:///Users/demo/project/mockup.html not found on disk. Reachability check failed before any scenario ran.
+Cannot test: artifact at file:///path/to/project/mockup.html not found on disk. Reachability check failed before any scenario ran.
 ```
 
 ---

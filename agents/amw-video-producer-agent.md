@@ -453,22 +453,22 @@ execution_time_ms: 284500
 blocking_issues: []
 warnings: []
 artifact_paths:
-  - path: "/Users/demo/project/out/product-tour.mp4"
+  - path: "/path/to/project/out/product-tour.mp4"
     type: mp4
     purpose: "Vertical 1080×1920 product-tour MP4, 45s @ 30fps, H.264/AAC, 7.2 MB"
-  - path: "/Users/demo/project/out/product-tour.mp4.smoke.png"
+  - path: "/path/to/project/out/product-tour.mp4.smoke.png"
     type: png
     purpose: "spot-check before full encode"
-  - path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-producer-product-tour-f1e2d3c4.md"
+  - path: "/path/to/reports/webdesigner/20260424_164830+0200-amw-video-producer-product-tour-f1e2d3c4.md"
     type: report
     purpose: "Full render report (inputs, monorepo verification, gate sequence, render command, ffprobe summary, timing)"
 inspect_findings_count: 0
 recommendations:
-  - "Smoke frame at /Users/demo/project/out/product-tour.mp4.smoke.png — eyeball before committing to the full ~4.7-minute encode."
+  - "Smoke frame at /path/to/project/out/product-tour.mp4.smoke.png — eyeball before committing to the full ~4.7-minute encode."
   - "If an MP4 with captions is needed, generate an SRT separately and mux post-render (out of this agent's scope)"
   - "For platform-specific versions (TikTok vertical, Instagram square), re-invoke with each target resolution"
 next_action: proceed
-report_path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-producer-product-tour-f1e2d3c4.md"
+report_path: "/path/to/reports/webdesigner/20260424_164830+0200-amw-video-producer-product-tour-f1e2d3c4.md"
 ---
 
 # AMW Video Producer — Phase B summary
@@ -476,11 +476,11 @@ report_path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-pro
 Rendered 45-second vertical product tour to MP4 in 4m 44s. Output is 7.2 MB H.264/AAC at 1080×1920 @ 30fps. ffprobe validates duration 44.97s, fps 29.97 (H.264 drop-frame normal). Gate sequence: lint clean, validate clean, inspect 0 issues, smoke render frame 675 (mid-point) produced a clean PNG. No warnings.
 
 ## Inputs
-- project_dir: /Users/demo/project/scenes/product-tour/ (pre-existing hyperframes project)
+- project_dir: /path/to/project/scenes/product-tour/ (pre-existing hyperframes project)
 - fps: 30
 - resolution: 1080×1920 (vertical, from data-width/data-height on stage root)
 - duration_seconds: 45 (from composition tl.duration())
-- output_path: /Users/demo/project/out/product-tour.mp4
+- output_path: /path/to/project/out/product-tour.mp4
 
 ## Monorepo verification
 - external/hyperframes/package.json: PRESENT
@@ -497,9 +497,9 @@ Rendered 45-second vertical product tour to MP4 in 4m 44s. Output is 7.2 MB H.26
 
 ## Render command
 ```
-cd /Users/demo/project/scenes/product-tour
+cd /path/to/project/scenes/product-tour
 npx hyperframes render \
-  --output /Users/demo/project/out/product-tour.mp4 \
+  --output /path/to/project/out/product-tour.mp4 \
   --fps 30
 ```
 Exit code: 0. Wall time: 284s.
@@ -537,7 +537,7 @@ blocking_issues:
   - "external/hyperframes/package.json not found — Hyperframes monorepo not cloned. Render cannot proceed."
 warnings: []
 artifact_paths:
-  - path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-producer-failed-monorepo-missing-a1b2c3d4.md"
+  - path: "/path/to/reports/webdesigner/20260424_164830+0200-amw-video-producer-failed-monorepo-missing-a1b2c3d4.md"
     type: report
     purpose: "Failure report with exact commands the user must run"
 recommendations:
@@ -546,7 +546,7 @@ recommendations:
   - "Then: re-invoke this agent with the same inputs"
   - "Alternatively, run /amw-init and opt in when prompted about Hyperframes"
 next_action: escalate_to_user
-report_path: "/Users/demo/reports/webdesigner/20260424_164830+0200-amw-video-producer-failed-monorepo-missing-a1b2c3d4.md"
+report_path: "/path/to/reports/webdesigner/20260424_164830+0200-amw-video-producer-failed-monorepo-missing-a1b2c3d4.md"
 ---
 
 # AMW Video Producer — Phase B FAILED

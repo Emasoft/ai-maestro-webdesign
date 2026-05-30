@@ -357,17 +357,17 @@ warnings:
   - "Color 'midnight blue' resolved to #191970 (CSS named-color approximation) — replace with brand-exact hex."
   - "Contrast for `primary` (#0a2540) / `primary-foreground` (#ffffff) not verified — run bin/amw-design-md-contrast.py to confirm."
 artifact_paths:
-  - path: "/Users/emanuele/project/DESIGN.md"
+  - path: "/path/to/project/DESIGN.md"
     type: markdown
     purpose: "Variant 1 DESIGN.md — canonical YAML frontmatter + 8 prose sections"
-  - path: "/Users/emanuele/project/tokens.css"
+  - path: "/path/to/project/tokens.css"
     type: css
     purpose: ":root CSS custom properties derived from DESIGN.md (companion)"
 recommendations:
   - "Run amw-design-md-auditor-agent in audit mode to verify structural completeness."
   - "Pass DESIGN.md to amw-wireframe-builder-agent as canonical token source for Phase B HTML."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_093012+0200-amw-design-md-author-my-project.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_093012+0200-amw-design-md-author-my-project.md"
 ---
 
 # AMW DESIGN.md Author — Phase B summary

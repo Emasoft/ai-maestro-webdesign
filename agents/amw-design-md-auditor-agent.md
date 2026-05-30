@@ -299,14 +299,14 @@ findings_summary:
   NIT: 1
   verdict: PARTIAL
 artifact_paths:
-  - path: "/Users/emanuele/code/project/reports/webdesigner/20260426_093012+0200-amw-design-md-auditor-my-project.md"
+  - path: "/path/to/code/project/reports/webdesigner/20260426_093012+0200-amw-design-md-auditor-my-project.md"
     type: markdown
     purpose: "Full 5-pass audit findings report"
 recommendations:
   - "Fix MAJOR: muted/background contrast failure — darken muted from #8a8a8a to #767676 (4.54:1) or #595959 (7:1 AAA). Invoke amw-design-md-author-agent to apply the fix."
   - "Fix MINOR: Complete ## Agent Prompt Guide section with usage guidance."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260426_093012+0200-amw-design-md-auditor-my-project.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260426_093012+0200-amw-design-md-auditor-my-project.md"
 ---
 
 # AMW DESIGN.md Auditor — 5-Pass Audit Summary

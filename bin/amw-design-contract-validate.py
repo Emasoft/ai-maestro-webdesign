@@ -837,9 +837,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.check_resumable:
             print()  # blank line separator
             if resumable:
-                print(f"Resumable: YES — every mandatory key present.")
+                print("Resumable: YES — every mandatory key present.")
             elif sparse_keys is not None and sparse_keys:
-                print(f"Resumable: NO — sparse contract.")
+                print("Resumable: NO — sparse contract.")
                 print("Sparse keys (treat as Phase A seed; re-elicit only these):")
                 for key in sparse_keys:
                     print(f"  - {key}")

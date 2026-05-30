@@ -311,10 +311,10 @@ warnings:
   - "Mobile/desktop split differs between survey and analytics; flagged for main-agent arbitration"
   - "No locale-specific research for fr locale; French persona inherits en assumptions, labeled ASSUMED"
 artifact_paths:
-  - path: "/Users/u/project/reports/webdesigner/20260424_143012+0200-amw-user-research-analyst-bora-bora.md"
+  - path: "/path/to/project/reports/webdesigner/20260424_143012+0200-amw-user-research-analyst-bora-bora.md"
     type: report
     purpose: "Full personas + journey map + design implications for Bora Bora landing"
-  - path: "/Users/u/project/design/diagrams/bora-bora-journey.mmd"
+  - path: "/path/to/project/design/diagrams/bora-bora-journey.mmd"
     type: mermaid
     purpose: "Journey map for primary persona (Honeymoon Hana)"
 recommendations:
@@ -322,7 +322,7 @@ recommendations:
   - "Engage amw-seo-strategist-agent with persona intent signals for fr-locale keyword variants"
   - "Flag the survey/analytics device-split conflict to the user for arbitration before locking mobile-first layout"
 next_action: proceed
-report_path: "/Users/u/project/reports/webdesigner/20260424_143012+0200-amw-user-research-analyst-bora-bora.md"
+report_path: "/path/to/project/reports/webdesigner/20260424_143012+0200-amw-user-research-analyst-bora-bora.md"
 ---
 
 # amw-user-research-analyst-agent — Phase A summary

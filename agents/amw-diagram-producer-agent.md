@@ -432,23 +432,23 @@ warnings:
   - "brand_tokens supplied but Mermaid emit uses stock theme 'default'; exact token match requires SVG. SVG variant provided."
   - "Mermaid ASCII rendering (via mermaid-render --format ascii) is 82 cols wide; exceeds plugin's 78-col floor. Consider upgrading README to a fenced-code block with horizontal scroll."
 artifact_paths:
-  - path: "/Users/emanuele/project/design/diagrams/checkout-flow.mmd"
+  - path: "/path/to/project/design/diagrams/checkout-flow.mmd"
     type: mermaid
     purpose: "Canonical Mermaid source — flowchart grammar, 8 nodes, 3 branches"
-  - path: "/Users/emanuele/project/design/diagrams/checkout-flow.svg"
+  - path: "/path/to/project/design/diagrams/checkout-flow.svg"
     type: svg
     purpose: "Themed SVG render for blog-post embedding, brand tokens applied"
-  - path: "/Users/emanuele/project/design/diagrams/checkout-flow.ascii.txt"
+  - path: "/path/to/project/design/diagrams/checkout-flow.ascii.txt"
     type: ascii
     purpose: "ASCII fallback for README code-fence embedding"
-  - path: "/Users/emanuele/project/design/diagrams/checkout-flow.png"
+  - path: "/path/to/project/design/diagrams/checkout-flow.png"
     type: png
     purpose: "1200×675 Twitter-card render via bin/amw-mermaid-render.sh --format png"
 recommendations:
   - "Canonical source is the .mmd file; version it in git. The .svg and .png are generated outputs — rebuild via bin/amw-mermaid-render.sh on each brand token update."
   - "For blog embedding, use the .svg (brand tokens applied). For README, use the .ascii.txt inside a code fence."
 next_action: proceed
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_150220+0200-amw-diagram-producer-checkout-flow.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_150220+0200-amw-diagram-producer-checkout-flow.md"
 ---
 
 # AMW Diagram Producer — Phase B summary
@@ -517,7 +517,7 @@ recommendations:
   - "Complex brief detected (~15 nodes, 4 layers). ASCII preview at /tmp/amw-diagram-pre-validation-backend-arch.txt. Surface to user before committing to full SVG render (~50K tokens)."
   - "After user confirms topology, re-invoke with approved brief; pre-validation gate will be skipped on second pass."
 next_action: await_main_agent_approval
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_150850+0200-amw-diagram-producer-backend-arch-prevalidation.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_150850+0200-amw-diagram-producer-backend-arch-prevalidation.md"
 ---
 
 # AMW Diagram Producer — Phase B summary (pre-validation gate)
@@ -548,7 +548,7 @@ artifact_paths: []
 recommendations:
   - "Request the source Mermaid, SVG, HTML, or ASCII file instead. If only the PNG exists, consider hand-authoring the diagram from the brief."
 next_action: escalate_to_user
-report_path: "/Users/emanuele/code/project/reports/webdesigner/20260424_150620+0200-amw-diagram-producer-refused-png.md"
+report_path: "/path/to/code/project/reports/webdesigner/20260424_150620+0200-amw-diagram-producer-refused-png.md"
 ---
 
 # AMW Diagram Producer — Phase B summary
