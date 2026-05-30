@@ -7,7 +7,7 @@ version: 0.1.0
 # Diagram Formats — shared reference library
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
-> **Consumer scope:** every other diagram skill and every `wd-*-diagram*` command pulls its format / IR / conversion / validation rules from this meta-skill. Do NOT re-author these specs inside the consumer skills — they cross-reference this library.
+> **Consumer scope:** every other diagram skill and every `amw-*-diagram*` command pulls its format / IR / conversion / validation rules from this meta-skill. Do NOT re-author these specs inside the consumer skills — they cross-reference this library.
 
 ## Overview
 
@@ -15,7 +15,7 @@ Shared reference library for all diagram format specifications in the plugin. Ow
 
 ## Activation
 
-No dedicated slash command — this skill has no matching `/amw-*` shortcut. It is a **reference-only meta-skill** that is never invoked directly by users. Every other diagram skill and every `wd-*-diagram*` command reads its format specs, IR schema, and conversion rules from here. The `design-principles` orchestrator routes here only when a user explicitly asks about format internals (`"what's the IR schema"`, `"conversion matrix"`).
+No dedicated slash command — this skill has no matching `/amw-*` shortcut. It is a **reference-only meta-skill** that is never invoked directly by users. Every other diagram skill and every `amw-*-diagram*` command reads its format specs, IR schema, and conversion rules from here. The `design-principles` orchestrator routes here only when a user explicitly asks about format internals (`"what's the IR schema"`, `"conversion matrix"`).
 
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
@@ -41,7 +41,7 @@ REFERENCE ONLY. This skill owns the canonical prose + machine-readable schema fo
 - Format-specific specs (syntax, validation rules, emit pipelines).
 - The plugin's IR (Intermediate Representation) — the pivot format for cross-format conversion.
 - The N×N conversion matrix across `ascii | html | svg | mermaid | png`.
-- The shared detect → parse → IR-patch → re-render → re-validate pipeline used by every `wd-create-or-modify-*-diagram` command.
+- The shared detect → parse → IR-patch → re-render → re-validate pipeline used by every `amw-create-or-modify-*-diagram` command.
 - The IR-level structural diff algorithm used by `/amw-compare-diagrams`.
 - The unified validator output contract: `PASS | FAIL: <line>: <message> [FIX: <hint>]`.
 

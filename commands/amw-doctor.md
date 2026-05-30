@@ -27,7 +27,7 @@ Run the following checks in parallel where possible, collect the results, and pr
 | ffmpeg | `ffmpeg -version` | Used by hyperframes-bridge |
 | dev-browser CLI | `dev-browser --version` | The plugin's only browser-automation primitive |
 | dev-browser Chromium | `dev-browser --help 2>&1 \| grep -q install && echo present \|\| echo unknown` | Installed via `dev-browser install` |
-| Playwright | `python3 -c "import playwright; print(playwright.__version__)"` | Used by infographics (`infographics/scripts/export.py`) only — NOT used by hyperframes |
+| Playwright | `python3 -c "import playwright; print(playwright.__version__)"` | Used by infographics (`bin/amw-html-export.py`) only — NOT used by hyperframes |
 | Playwright Chromium | `python3 -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); b.close(); p.stop(); print('ok')" 2>&1 \| tail -1` | For infographics only |
 | Hyperframes Chrome | `(cd external/hyperframes && npx hyperframes browser ensure) 2>&1 \| tail -3` | Hyperframes uses Puppeteer + `@puppeteer/browsers` (NOT Playwright) to manage its own Chrome binary. Run `(cd external/hyperframes && npx hyperframes browser ensure)` to provision. |
 | CairoSVG | `python3 -c "import cairosvg; print(cairosvg.__version__)"` | Used by svg-creator, ascii-to-svg |

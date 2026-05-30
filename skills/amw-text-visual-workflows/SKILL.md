@@ -125,8 +125,8 @@ Two outputs per invocation:
 
 ## Prerequisites
 
-- **runtime_binaries:** `perl >= 5.10` (for the validator)
-- **python_packages:** none (optional `python3` if using `bin/amw-ascii-render.py`)
+- **runtime_binaries:** `python3 >= 3.8` (for the validator and ascii-render)
+- **python_packages:** none
 - **npm_packages:** none
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py` (optional, for JSON-driven flowcharts)

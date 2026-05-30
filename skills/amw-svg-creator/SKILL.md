@@ -19,7 +19,7 @@ Produces polished technical SVG (icons, logos, badges, patterns, data-vis primit
 1. Confirm the request falls within scope (icons, logos, badges, patterns, data-vis primitives, SVG animations) — if it requests a character, scene, mascot, avatar, or "draw me X", stop immediately and cite `ai-slop-avoid.md` item 3; offer a placeholder box instead.
 2. Write the SVG source (primitives only: `<rect>`, `<circle>`, `<ellipse>`, `<polygon>`, `<path>`, `<line>`, `<g>`, `<defs>`, `<filter>`, `<animate>`); for icons use 24×24 viewBox, 2px stroke, `fill="none"`, `stroke="currentColor"`.
 3. Call `bin/amw-svg-render.py render <file.svg>` to rasterize — this is non-negotiable; `finish` aborts if `render` was never called.
-4. View the output PNG (`bin/amw-svg-render.py view <file.png>`) and assess for alignment, legibility at 64px, contrast, and animation correctness.
+4. View the output PNG (path printed by the render step) and assess for alignment, legibility at 64px, contrast, and animation correctness.
 5. Fix any issues in the SVG source and re-render until the PNG assessment passes.
 6. Call `bin/amw-svg-render.py finish <file.svg>` to deliver the final artifact with an optimized copy.
 
@@ -79,7 +79,7 @@ WRITE SVG → RENDER → VIEW PNG → ASSESS → FIX → RENDER → VIEW → ...
 
 1. **Write** SVG to a working file (e.g. `draft.svg`).
 2. **Render** via `python3 ../../bin/amw-svg-render.py render <draft.svg>`
-   — writes `svg_preview.png` and increments the iteration counter.
+   — writes `svg-preview.png` (in the state dir) and increments the iteration counter.
 3. **View** the PNG (what the renderer produced, not the XML).
 4. **Assess** positioning, proportions, gradient stops, filter bleed,
    text legibility, reduced-motion behaviour.
@@ -90,7 +90,7 @@ WRITE SVG → RENDER → VIEW PNG → ASSESS → FIX → RENDER → VIEW → ...
 
 ## Prerequisites
 
-- `python3` (system); `cairosvg` auto-pip-installed by the render script.
+- `python3` (system); `cairosvg` must be installed manually (`uv pip install cairosvg` or `python3 -m pip install --user cairosvg`) — the render script does NOT auto-install it.
 - No npm / MCP dependencies.
 
 ## Visual-quality techniques

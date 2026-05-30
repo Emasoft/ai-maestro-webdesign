@@ -134,8 +134,8 @@ Two outputs per invocation:
 
 ## Prerequisites
 
-- **runtime_binaries:** `perl >= 5.10`
-- **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
+- **runtime_binaries:** `python3 >= 3.8`
+- **python_packages:** none
 - **npm_packages:** none
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py layers` (optional)

@@ -22,7 +22,7 @@ Thin dispatcher for HTML-rendered diagrams and infographic-style pages. Accepts 
 2. For create path: dispatch to `../amw-diagram-editorial/` (editorial diagrams, default) or `../amw-infographics/` (dense infographics) based on `--style editorial|infographic` or brief cues.
 3. For modify path: parse the existing file to IR with `bin/amw-parse-html-diagram.py`, apply the requested edit to the IR, and re-render via `bin/amw-diagram-ir.py emit --format html`.
 4. Validate the output with `bin/amw-validate-html-diagram.sh`; a FAIL aborts and leaves the original file untouched (retry budget = 3).
-5. See the `## Pipeline (5 steps — matches shared modify-flow)` section below for the authoritative execution sequence.
+5. See the `## Pipeline (6 steps — matches shared modify-flow)` section below for the authoritative execution sequence.
 
 ## Activation
 
@@ -60,7 +60,7 @@ Full table + technique-level citations live in [html](../amw-diagram-formats/ref
 | `<article role="alert" aria-live="polite">` | `node{kind:alert, annotations:["alert"]}` | ref TECH-75 + TECH-47 |
 | `<fieldset><legend>` | `node{kind:group-container}` (child nodes inside) | ref TECH-89 |
 
-## Pipeline (5 steps — matches shared modify-flow)
+## Pipeline (6 steps — matches shared modify-flow)
 
 1. **Detect** source shape. If `$ARGUMENTS` is a path to an existing `.html` → **modify path**. If it's a brief → **create path** (further dispatch by `--style editorial|infographic` or by brief cues; editorial is default).
 2. **Parse** (modify path only) via `bin/amw-parse-html-diagram.py` → IR (schema: [ir-schema](../amw-diagram-formats/references/ir-schema.md)). Create path skips this step.

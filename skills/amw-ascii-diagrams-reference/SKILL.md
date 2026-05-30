@@ -395,7 +395,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'` (main
 
 ## Prerequisites
 
-- **runtime_binaries:** `perl >= 5.10` (pre-installed on macOS and most Linux distros — `/amw-doctor` checks), `python3 >= 3.8`
+- **runtime_binaries:** `python3 >= 3.8` (runs `bin/amw-validate-ascii.py` — pure stdlib, no Perl required)
 - **python_packages:** none (pure stdlib)
 - **cpan / npm:** none
 

@@ -10,7 +10,7 @@ version: 0.1.0
 
 ## Overview
 
-Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou/pretext` — a headless, DOM-free text measurement library — across 80 technique files covering API functions, measurement prerequisites, layout patterns, obstacle-aware flow, kinetic typography, virtualized tables, 3D/motion text, integration patterns, workflow assemblies, and CJK typography. Routes each narrow trigger (shrink-wrap, text-on-path, balanced headline, virtualized list, etc.) to the matching TECH file. Output reuses existing project typography tokens; pretext never introduces new fonts or motion systems.
+Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou/pretext` — a headless, DOM-free text measurement library — across 81 technique files covering API functions, measurement prerequisites, layout patterns, obstacle-aware flow, kinetic typography, virtualized tables, 3D/motion text, integration patterns, workflow assemblies, and CJK typography. Routes each narrow trigger (shrink-wrap, text-on-path, balanced headline, virtualized list, etc.) to the matching TECH file. Output reuses existing project typography tokens; pretext never introduces new fonts or motion systems.
 
 ## Instructions
 

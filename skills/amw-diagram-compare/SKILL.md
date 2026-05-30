@@ -40,7 +40,7 @@ ANALYSIS (terminal). Accepts two diagram paths in any supported format (formats 
 Do NOT activate on:
 - Converting format (`/amw-convert-any-diagram-format`).
 - Validating a single diagram (`/amw-validate-any-diagram-format`).
-- Creating or editing diagrams (`wd-create-or-modify-*`).
+- Creating or editing diagrams (`amw-create-or-modify-*`).
 
 ## PNG hard rule
 

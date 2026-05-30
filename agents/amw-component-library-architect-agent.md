@@ -324,7 +324,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
   ```
 - **Run bin scripts directly for mechanical operations** via Bash:
   ```
-  Bash: python3 bin/amw-svg-render.py --validate tokens.json   # structural validation if applicable
+  Bash: python3 bin/amw-svg-render.py status   # check render state; token files are JSON/CSS, not SVG — no svg-render call needed for them
   ```
 - **Spawn `Task(subagent_type="general-purpose", ...)` for bounded internal sub-work** — per §10 Delegation Rules.
 - **Reference other amw-* agents by name in documentation** without attempting to call them.

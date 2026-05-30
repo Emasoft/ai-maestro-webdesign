@@ -76,7 +76,7 @@ After the agent returns, show:
 - [amw-design-md-author-agent](agents/amw-design-md-author-agent.md)
 - [SKILL](skills/amw-design-md/SKILL.md)
 - [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
-- `skills/amw-design-md/references/templates/canonical-template.md`
+- `skills/amw-design-md/references/canonical-template.md`
 - `bin/amw-design-md-lint.sh` (lint gate)
 - `bin/amw-design-md-contrast.py` (WCAG check)
 - `bin/amw-design-md-emit-companions.py` (companions)

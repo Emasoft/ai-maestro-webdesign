@@ -47,7 +47,7 @@ Do NOT re-run this check on iteration turns of the same loop. If the user has no
 
 Every variant MUST pass `../../bin/amw-validate-ascii.py` before being shown to the user. LLMs cannot count characters reliably — the validator is how the plugin compensates.
 
-- **Mode A flow:** author JSON → `python3 ../../bin/amw-ascii-render.py --mode <m> --in /tmp/spec.json --out /tmp/amw-sketch-<slug>-<variant>.txt` → `python3 ../../bin/amw-validate-ascii.py <out>`. PASS on first attempt in nearly all cases. On rare FAIL: fix the JSON spec and re-render; do NOT hand-edit the rendered output.
+- **Mode A flow:** author JSON → `python3 ../../bin/amw-ascii-render.py < /tmp/spec.json > /tmp/amw-sketch-<slug>-<variant>.txt` → `python3 ../../bin/amw-validate-ascii.py /tmp/amw-sketch-<slug>-<variant>.txt`. PASS on first attempt in nearly all cases. On rare FAIL: fix the JSON spec and re-render; do NOT hand-edit the rendered output.
 - **Mode B flow:** hand-author → write to `/tmp/amw-sketch-<slug>-<variant>.txt` → validate → on FAIL apply every `FIX:` hint, re-validate; loop until PASS. Never present an un-validated variant.
 
 See [SKILL](../amw-ascii-validator/SKILL.md) for the JSON schema (Mode A) and validation output contract. Before generation, substitute banned chars (variable-width triangles, long/double arrows, emoji) with safe equivalents — the validator flags them as forbidden.

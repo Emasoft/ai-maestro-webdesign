@@ -209,7 +209,7 @@ In priority order:
 
 7. **Validate the output MP4.**
    - `test -f "$output_path"` — file exists.
-   - `test "$(stat -f%z "$output_path")" -gt 10000` — file size > 10 KB.
+   - `test "$(stat -f%z "$output_path" 2>/dev/null || stat -c%s "$output_path")" -gt 10000` — file size > 10 KB.
    - `ffprobe -v error -show_format -show_streams "$output_path"` — returns exit 0 and reports at least one video stream.
    - Duration reported by `ffprobe` matches `duration_seconds` (if provided) within ±0.1s.
    - Reported fps matches requested fps.

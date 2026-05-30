@@ -76,7 +76,7 @@ The flow:
 
 1. Draft the panel.
 2. Write it to `/tmp/amw-tvc-<slug>.txt`.
-3. Run `perl ../../bin/amw-validate-ascii.py /tmp/amw-tvc-<slug>.txt`.
+3. Run `python3 ../../bin/amw-validate-ascii.py /tmp/amw-tvc-<slug>.txt`.
 4. If PASS → present in a fenced code block.
 5. If FAIL → apply every `FIX:` hint, re-run. Loop until PASS.
 6. Never present an un-validated panel.
@@ -133,8 +133,8 @@ Every artifact MUST be linked from the report.
 
 ## Prerequisites
 
-- **runtime_binaries:** `perl >= 5.10`
-- **python_packages:** none (optional `python3` for `bin/amw-ascii-render.py`)
+- **runtime_binaries:** `python3 >= 3.8`
+- **python_packages:** none
 - **npm_packages:** none
 - **mcp_servers:** none
 - **scripts:** `../../bin/amw-validate-ascii.py` (mandatory), `../../bin/amw-ascii-render.py table` (strongly recommended for >5 columns or >10 rows)

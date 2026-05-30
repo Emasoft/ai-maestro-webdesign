@@ -85,7 +85,7 @@ Do NOT activate on:
 ```yaml
 runtime_binaries:
   - python3   # >= 3.8
-  - perl      # for bin/amw-validate-ascii.py (intermediate validation)
+  - python3   # for bin/amw-validate-ascii.py (intermediate validation)
 
 python_packages:
   - lxml              # OPTIONAL

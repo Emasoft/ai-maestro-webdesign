@@ -100,7 +100,7 @@ A validator-PASS Unicode box diagram (rounded corners `╭╮╰╯`, rules `─
 
 ## Prerequisites
 
-- **runtime_binaries:** `perl >= 5.10` (pre-installed on macOS and most Linux distros — `/amw-doctor` checks) **OR** `python3 >= 3.8` (Windows-friendly fallback — `bin/amw-validate-ascii.py` has identical behavior)
+- **runtime_binaries:** `python3 >= 3.8` (runs `bin/amw-validate-ascii.py` — pure stdlib, no Perl required)
 - **python_packages:** none (pure stdlib)
 - **cpan / npm:** none
 

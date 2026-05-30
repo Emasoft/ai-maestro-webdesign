@@ -101,7 +101,7 @@ output_variant: 1                                   # optional; default 1 (canon
 companion_targets: ["css", "json", "inventory"]     # optional; runs bin/amw-design-md-emit-companions.py
 strict_lint: true                                   # optional; default true. When true, P0/P1 lint failures halt delivery.
 contrast_check: true                                # optional; default true. Runs bin/amw-design-md-contrast.py.
-extraction_mode: "auto"                              # optional; default "auto". auto | curl | dev-browser | manual. Passes through to --mode in bin/amw-design-md-from-url.sh.
+extraction_mode: "dev-browser"                        # optional; default "dev-browser". dev-browser | curl | auto | manual. Passes through to --mode in bin/amw-design-md-from-url.sh.
 screenshot_override_path: "/abs/path/to/page.png"    # optional; when present, the user has pre-captured a frozen screenshot of the source URL. The extractor treats it as the canonical visual state and skips the dev-browser smoke-probe; the extraction still happens but the screenshot is the visual ground truth for prose-generation cross-reference.
 wait_for_selector: "main, [role=main], .hero"        # optional; CSS selector. When extraction_mode is "dev-browser" or "auto", passes through to --wait-for-selector. Use when the URL is a JS-heavy SPA and the snapshot must wait for the main content to mount.
 extract_components: true                              # optional; default false. When true, run the five-pattern component scanner (cva/union/interface/switch/object-map) on codebase mode OR the DOM-landmark + ARIA-role detector on URL mode. Populates DESIGN.md `## 4. Component Stylings` and emits component state variants (hover / focus / disabled / loading / error). See TECH-extractor-component-detection.
@@ -427,7 +427,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
   ```
 - **Run bin scripts directly for mechanical operations:**
   ```bash
-  bash bin/amw-design-md-from-url.sh "<url>" "<out>"
+  bash bin/amw-design-md-from-url.sh "<url>" -o "<out>"
   node bin/amw-design-md-from-tailwind.mjs --config <cfg> --css <css> --out <out>
   python3 bin/amw-design-md-from-codebase.py "<root>" --out "<out>"
   bash bin/amw-design-md-lint.sh "<out>"

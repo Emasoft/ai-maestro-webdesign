@@ -39,7 +39,7 @@ OUTPUT (terminal). Emits exactly one standalone `.svg` file. Downstream of `desi
 - "create an SVG diagram" / "build an SVG diagram of <subject>"
 - "render this structure as SVG"
 - "SVG architecture diagram / flowchart of <subject>"
-- "modify this SVG diagram" / "edit the SVG at `<path>`" / "update `<something>.svg>`"
+- "modify this SVG diagram" / "edit the SVG at `<path>`" / "update `<something>.svg`"
 - "/amw-create-or-modify-svg-diagram <brief-or-path>"
 
 Do NOT activate on:

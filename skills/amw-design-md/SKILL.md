@@ -67,7 +67,7 @@ Read [canonical-template](references/canonical-template.md). Fill from a brief /
 Run `bin/amw-design-md-lint.sh <path>` for the official linter. Run `bin/amw-design-md-validate.py <path>` for offline pure-Python validation (frontmatter + section order + token-reference resolution).
 
 ### Extract a DESIGN.md from a live URL
-Invoke `bin/amw-design-md-from-url.sh <url> <output-path>` which delegates DOM and computed-style extraction to the plugin's existing `amw-dev-browser` skill, then emits Variant 1 frontmatter.
+Invoke `bin/amw-design-md-from-url.sh <url> -o <output-path>` which delegates DOM and computed-style extraction to the plugin's existing `amw-dev-browser` skill, then emits Variant 1 frontmatter.
 
 ### Extract a DESIGN.md from a Tailwind config
 Run `node bin/amw-design-md-from-tailwind.mjs --config <tailwind.config.ts> --css <globals.css> --out <DESIGN.md>`. Pure-local Node.js port of the upstream tool. Resolves CSS-var references and annotates color pairs with WCAG-AA contrast.
@@ -82,7 +82,7 @@ Spawn `amw-design-md-auditor-agent`. The auditor runs the 5-pass audit per [audi
 Run `bin/amw-design-md-convert-v2-to-v1.py <variant2.md> <variant1.md>`. Maps the 9-section community format to the canonical 8-section + YAML frontmatter format.
 
 ### Emit companion files
-Run `bin/amw-design-md-emit-companions.py <DESIGN.md> <output-dir>`. Emits `tokens.css` (CSS custom properties), `tokens.json` (W3C Design Tokens), `component-inventory.md`, and `usage-prompt.md`.
+Run `bin/amw-design-md-emit-companions.py <DESIGN.md> --out-dir <output-dir>`. Emits `tokens.css` (CSS custom properties), `tokens.json` (W3C Design Tokens), `component-inventory.md`, and `usage-prompt.md`.
 
 ### Generate a visual showcase HTML
 Run `bin/amw-design-md-showcase.py <DESIGN.md> -o <out.html>`. Emits a self-contained single-file HTML showcase that renders every color token (swatches + WCAG-AA contrast badges for `X` / `on-X` pairs), every typography role (live specimens at the declared size / weight / line-height), every spacing / rounded / elevation step (visual demos), and every declared component (rendered button / input / card / chip examples with resolved token references). Author-side QA aid used before delivery. Pure stdlib (pyyaml optional). Output is fully offline-safe — no remote fonts, no remote stylesheets, no JS.
@@ -149,4 +149,4 @@ See worked examples in references/.
 - [SKILL](../amw-dev-browser/SKILL.md) — browser primitive used by URL extraction
 - [SKILL](../amw-design-extract/SKILL.md) — sibling URL-extraction skill (looser format; this skill is the strict-format counterpart)
 - `<plugin-root>/bin/amw-design-md-showcase.py` — DESIGN.md → self-contained HTML visual-QA showcase (color swatches + WCAG-AA badges, type specimens, spacing / rounded / elevation demos, rendered component examples). Pure stdlib (pyyaml optional). Author-side QA before delivery.
-- `<plugin-root>/bin/amw-design-md-*.{sh,py,ts}` — eleven bin scripts (lint, validate, contrast, emit-companions, showcase, from-url, from-tailwind, from-codebase, convert-v2-to-v1, diff, plus the official `@google/design.md` lint wrapper)
+- `<plugin-root>/bin/amw-design-md-*.{sh,py,mjs}` — ten bin scripts (lint, validate, contrast, emit-companions, showcase, from-url, from-tailwind, from-codebase, convert-v2-to-v1, diff)

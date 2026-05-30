@@ -255,8 +255,8 @@ Priority-ordered.
     This replaces the previous LLM-based density count — `amw-html-section-count.py` is faster and deterministic. Heading-hierarchy violations (e.g., infographic uses h3 without h2) are mirrored into `warnings` directly from the script's output.
 
 12. **Render PNG / PDF outputs (on staging path).**
-    - PNG: run `python3 bin/amw-html-export.py /tmp/amw-infographic-<slug>-build.html --format png --retina --out /tmp/amw-infographic-<slug>-build.png` if `output_formats` includes png.
-    - PDF: run `python3 bin/amw-html-export.py /tmp/amw-infographic-<slug>-build.html --format pdf --print-safe --out /tmp/amw-infographic-<slug>-build.pdf` if `output_formats` includes pdf. Enforces 14pt body floor.
+    - PNG: run `python3 bin/amw-html-export.py -i /tmp/amw-infographic-<slug>-build.html -f png -s 2 -o /tmp/amw-infographic-<slug>-build` if `output_formats` includes png.
+    - PDF: run `python3 bin/amw-html-export.py -i /tmp/amw-infographic-<slug>-build.html -f pdf -o /tmp/amw-infographic-<slug>-build` if `output_formats` includes pdf. Enforces 14pt body floor.
 
 13. **Validate staged outputs.**
     - HTML: well-formed check, CSS validation via built-in parser, font-face load verification.
@@ -426,8 +426,8 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
   ```
 - **Run bin scripts directly.**
   ```
-  Bash: python3 bin/amw-html-export.py design/infographics/acme.html --format png --retina --out design/infographics/acme.png
-  Bash: python3 bin/amw-html-export.py design/infographics/acme.html --format pdf --print-safe --out design/infographics/acme.pdf
+  Bash: python3 bin/amw-html-export.py -i design/infographics/acme.html -f png -s 2 -o design/infographics/acme
+  Bash: python3 bin/amw-html-export.py -i design/infographics/acme.html -f pdf -o design/infographics/acme
   Bash: bash bin/amw-mermaid-render.sh design/diagrams/flow.mmd --theme dark --format svg --out /tmp/flow-embed.svg  # when embedding a Mermaid source as SVG
   ```
 - **Spawn `Task(subagent_type="general-purpose", ...)` for bounded sub-work** per §10.

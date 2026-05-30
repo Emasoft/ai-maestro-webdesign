@@ -35,7 +35,7 @@ Label text inside boxes is preserved verbatim. Edge labels between arrows are pr
 
 ### 2. Parse to graph JSON
 
-Invoke `bin/amw-ascii-parse.py --format <detected> --out /tmp/amw-ascii-<slug>-graph.json` (once Phase B2 lands). Until then, perform the parse in-skill following the `ascii-to-svg` SKILL.md instructions.
+Invoke `bin/amw-ascii-parse.py --mode <detected> --out /tmp/amw-ascii-<slug>-graph.json` (once Phase B2 lands). Until then, perform the parse in-skill following the `ascii-to-svg` SKILL.md instructions.
 
 Graph JSON schema:
 
@@ -62,7 +62,7 @@ Hand the graph JSON + chosen skill a concise instruction:
 
 > "Render this graph as a clean SVG. Preserve every node label and edge label verbatim. Use oklch colors per skills/amw-design-principles/color-system.md. Output only the SVG, no wrapper prose."
 
-Save the SVG to `/tmp/amw-ascii-<slug>-out.svg`. If the user asked for PNG or PDF, also run `bin/amw-svg-render.py <svg> --out <png>` (Phase B1).
+Save the SVG to `/tmp/amw-ascii-<slug>-out.svg`. If the user asked for PNG or PDF, also run `bin/amw-svg-render.py render <svg>` (Phase B1).
 
 ### 5. Visual verify loop
 

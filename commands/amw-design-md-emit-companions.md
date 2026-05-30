@@ -41,7 +41,7 @@ python3 bin/amw-design-md-emit-companions.py "<input>" \
 The script emits the requested files:
 
 - **`tokens.css`** — `:root { --primary: #...; --primary-foreground: #...; ... }` block. Pulls every color, typography, rounded, and spacing token from the YAML frontmatter.
-- **`tokens.json`** — W3C Design Tokens spec format. One file per token category (colors / typography / rounded / spacing) or a single combined file, controlled by `--single-json` flag (default: combined).
+- **`tokens.json`** — W3C Design Tokens spec format. Single combined file covering all token categories (colors, typography, rounded, spacing).
 - **`component-inventory.md`** — per-component variant table. Reads `components:` frontmatter and emits a markdown table of `Component | Variant | Properties | Notes`.
 - **`usage-prompt.md`** — a copy-paste-ready agent prompt: "You are building a UI that uses this design system. The tokens are: ... Always reference tokens by name; never hard-code values." Useful for non-AI-MAESTRO contexts (Cursor, Codex, plain Claude API).
 

@@ -48,7 +48,7 @@ For pixel-perfect retention of SVG/Mermaid styling, **do not use this chain** �
 
 `/amw-ascii-to-html` enforces the satisfaction-token gate at the final step (`yes`, `ship it`, `convert it`, `that's the one`, `perfect`, `done`). This command inherits that gate — if the intermediate ASCII is not approved, the HTML is NOT written.
 
-When running non-interactively (batch mode), pass `--ascii-approved` to `/amw-ascii-to-html` via the handoff (the user MUST have already inspected the diagram and confirmed).
+When running non-interactively (batch mode), invoke `/amw-ascii-to-html` directly with the ASCII path as the sole argument — the command treats a directly-supplied ASCII path as pre-approved (the user MUST have already inspected the diagram and confirmed).
 
 ## Exit codes
 

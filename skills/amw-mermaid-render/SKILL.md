@@ -158,7 +158,7 @@ Templates for all 5 types live under `../../external/mermaid-render/examples/`. 
 
 ## Runtime dependencies
 
-- Node.js ≥ 18 — checked by `bin/amw-mermaid-render.sh` and by `/amw-doctor`.
+- Node.js ≥ 22 — checked by `bin/amw-mermaid-render.sh` and by `/amw-doctor`.
 - `external/mermaid-render/` directory present with `package.json` and `scripts/`.
 - On first render, the wrapper calls `npm install` inside
   `external/mermaid-render/` to fetch `beautiful-mermaid@^0.1.3`. The
@@ -180,7 +180,7 @@ On `MODULE_NOT_FOUND`, the wrapper silently runs `npm install` in `external/merm
 ## Error Handling
 
 - `exit 2` — `external/mermaid-render/` missing. Run `/amw-init`.
-- `exit 3` — `node` not on PATH. Install Node.js ≥ 18.
+- `exit 3` — `node` not on PATH. Install Node.js ≥ 22.
 - `exit 1 + "Parse error on line N"` — invalid Mermaid syntax. Test it at https://mermaid.live first.
 - `exit 1 + "Unknown theme"` — theme name typo. Run `bin/amw-mermaid-render.sh --list-themes`.
 - `validate-ascii.py` warnings on stderr — the ASCII output has variable-width glyphs. Fix the input labels (shorten, remove CJK/emoji) and re-render.

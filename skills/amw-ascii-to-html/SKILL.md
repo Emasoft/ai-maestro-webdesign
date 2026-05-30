@@ -47,7 +47,7 @@ Every ASCII pattern maps to an HTML element, a canonical starter-component sourc
 
 ## Instructions
 
-1. **Validate** with `bin/amw-validate-ascii.py --in <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
+1. **Validate** with `bin/amw-validate-ascii.py <source>`. FAIL → stop and return the validator report verbatim. (TECH-99)
 2. **Parse** with `bin/amw-ascii-parse.py --in <source> --mode wireframe --out /tmp/amw-ascii-html-<slug>-layout.json`. This runs `detect_format`, `to_grid`, `find_boxes`, `find_arrows`, `find_wireframe_components`. (TECH-91..TECH-97)
 3. **Pattern-match** each box/line against the component detection table above. Unknown shapes become literal text inside a `<div>` with a comment listing the glyphs that did not match — so the user can extend the parser if needed.
 4. **Emit** semantic HTML:
@@ -90,8 +90,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 ```yaml
 runtime_binaries:
-  - python3   # runs bin/amw-ascii-parse.py
-  - perl      # runs bin/amw-validate-ascii.py
+  - python3   # runs bin/amw-ascii-parse.py and bin/amw-validate-ascii.py
 
 python_packages: []   # ascii-parse.py is stdlib-only
 

@@ -27,7 +27,7 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 
 ## Position in flow
 
-TRANSFORM (terminal). Accepts one diagram file in any supported format and emits one file in the requested target format. Downstream of every `wd-create-or-modify-*-diagram` command (which may normalize an incoming diagram via this skill) and upstream of `/amw-preview` or further editing.
+TRANSFORM (terminal). Accepts one diagram file in any supported format and emits one file in the requested target format. Downstream of every `amw-create-or-modify-*-diagram` command (which may normalize an incoming diagram via this skill) and upstream of `/amw-preview` or further editing.
 
 ## Trigger conditions
 
@@ -153,7 +153,6 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ```yaml
 runtime_binaries:
   - python3 >= 3.8   # bin/amw-diagram-ir.py, bin/amw-ascii-parse.py, bin/amw-ascii-render.py
-  - perl >= 5.10     # bin/amw-validate-ascii.py (post-convert gate for ASCII targets)
   - xmllint          # bin/amw-validate-svg-diagram.sh, bin/amw-validate-html-diagram.sh
   - mmdc             # bin/amw-mermaid-render.sh, mermaid-lint.sh (Mermaid targets)
   - cairosvg         # bin/amw-svg-render.py --png (SVG→PNG and ASCII→PNG)
@@ -164,7 +163,7 @@ python_packages:
   - lxml       # for bin/amw-parse-html-diagram.py (Phase 1)
 
 installed_via_wd_init: [xmllint, mmdc, playwright, cairosvg]
-checked_by_wd_doctor:  [xmllint, mmdc, playwright, cairosvg, python3, perl]
+checked_by_wd_doctor:  [xmllint, mmdc, playwright, cairosvg, python3]
 ```
 
 ## Resources

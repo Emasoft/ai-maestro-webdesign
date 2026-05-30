@@ -19,9 +19,9 @@ author: ai-maestro-webdesign (curated catalogue; per-style attributions live in 
 
 ## Overview
 
-`amw-design-system-presets` is the style-preset catalogue for the ai-maestro-webdesign plugin. It ships 45 named graphic-style presets organized across 8 aesthetic positions: each preset is a complete, self-contained token bundle (colors, typography, spacing, radius, shadow, motion) plus a set of "breaks-if" invariants and a canonical render-test pointer.
+`amw-design-system-presets` is the style-preset catalogue for the ai-maestro-webdesign plugin. It ships 84 named graphic-style presets organized across 8 aesthetic positions: each preset is a complete, self-contained token bundle (colors, typography, spacing, radius, shadow, motion) plus a set of "breaks-if" invariants and a canonical render-test pointer.
 
-**Catalog-first load protocol.** This skill is NOT a bulk-loader. The full catalogue has 45 styles across multiple reference files; loading all of them simultaneously would waste tokens and produce a cluttered decision surface. The canonical protocol is:
+**Catalog-first load protocol.** This skill is NOT a bulk-loader. The full catalogue has 84 styles across multiple reference files; loading all of them simultaneously would waste tokens and produce a cluttered decision surface. The canonical protocol is:
 
 1. Read `references/catalogue.md` to shortlist 1-3 styles matching the user's brief.
 2. Load ONLY those S-NNN files.
@@ -30,7 +30,7 @@ author: ai-maestro-webdesign (curated catalogue; per-style attributions live in 
 
 Each `S-NNN-<slug>.md` file is a self-contained contract: it defines every token the style requires, lists every invariant that must not be violated, and points to a canonical render-test. No style relies on another style's tokens.
 
-**Wave 1 scope.** This skill ships S-001..S-045 (Wave 1). Styles S-046..S-083 are Wave 2–3 backlog, not yet ported.
+**Full catalogue scope.** This skill ships S-001..S-083 (84 styles total across Waves 1–3).
 
 ## How the catalog is used
 
@@ -38,7 +38,7 @@ The 4-step recipe:
 
 **(a) Read the user brief.** Identify: industry, audience, tone, any explicit style name, any reference URLs the user provided. Note keywords: "minimal", "brutalist", "glassmorphism", "editorial", "cyberpunk", "warm", "playful", "corporate", etc.
 
-**(b) Shortlist 1-3 styles from `references/catalogue.md`.** The catalogue has one-line aesthetic-position descriptors for all 45 styles plus a "quick decision rules" section. Use it. Do NOT rely on recall — always read the catalogue file to shortlist. If the user named a specific style explicitly (e.g., "I want Glassmorphism"), load that style directly; still read the catalogue to confirm the S-NNN file path.
+**(b) Shortlist 1-3 styles from `references/catalogue.md`.** The catalogue has one-line aesthetic-position descriptors for all 84 styles plus a "quick decision rules" section. Use it. Do NOT rely on recall — always read the catalogue file to shortlist. If the user named a specific style explicitly (e.g., "I want Glassmorphism"), load that style directly; still read the catalogue to confirm the S-NNN file path.
 
 **(c) Load only those S-NNN files.** Each is in `references/S-NNN-<slug>.md`. Read the `## Token block` section and the `## "Breaks if" invariants` section.
 
@@ -112,9 +112,9 @@ Light/dark variants: inject dark vs light token bundles into the same skeleton. 
 
 See `references/_harness-wiring.md` for the full pipeline (token injection → render mine → render source → fcvvdp parity check).
 
-## Wave 1 scope (S-001..S-045)
+## Catalogue scope (S-001..S-083)
 
-This skill ships 45 prescriptive styles across 8 aesthetic positions:
+This skill ships 84 prescriptive styles across 8 aesthetic positions (Wave 1: S-001..S-045; Waves 2–3: S-046..S-083):
 
 | Position | IDs |
 |---|---|
@@ -127,7 +127,7 @@ This skill ships 45 prescriptive styles across 8 aesthetic positions:
 | Developer / Terminal | S-032 Retro Device, S-033 Win98, S-038 Dark Tech |
 | Specialized | S-029 Data Viz Dark, S-035 21st.dev/Aceternity |
 
-S-046..S-083 (Wave 2–3 backlog) are NOT yet ported. Do not reference them in delivered artifacts.
+S-046..S-083 are ported and available. See `references/catalogue.md` for the full listing.
 
 ## Resources
 
@@ -138,7 +138,7 @@ S-046..S-083 (Wave 2–3 backlog) are NOT yet ported. Do not reference them in d
 
 ## Non-negotiables
 
-1. **Catalog-first load.** Always read `references/catalogue.md` before loading any S-NNN file. Never bulk-load all 45.
+1. **Catalog-first load.** Always read `references/catalogue.md` before loading any S-NNN file. Never bulk-load all 84.
 2. **Token block is the contract.** Apply the style's CSS custom properties verbatim. Do not partially apply a preset — all tokens or none.
 3. **"Breaks-if" invariants are non-negotiable.** Violating a "breaks-if" rule produces a style that is no longer the named preset. If the user requests a change that would break an invariant, warn them: "this change would exit the [Swiss] preset; I can make it a custom variant, but it will no longer be labeled Swiss."
 4. **Source attribution preserved.** Every S-NNN file carries its `source_attribution` in frontmatter. Do not strip it from delivered artifacts that directly port upstream token values.

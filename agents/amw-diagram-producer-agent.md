@@ -59,7 +59,7 @@ The matrix in §9 encodes the default choices. I deviate from the default when t
   - [SKILL](../skills/amw-diagram-compare/SKILL.md) — IR-level structural diff
   - [SKILL](../skills/amw-webpage-to-diagram/SKILL.md) — HTML/URL → IR → diagram
   - [SKILL](../skills/amw-diagram-webpage-sync/SKILL.md) — diagram edit → re-emit webpage
-- Shared bin scripts: `bin/amw-validate-diagram.sh` (dispatch), `bin/amw-diagram-ir.py` (IR parse/emit/diff), `bin/amw-diagram-detect-format.sh` (sniff), `bin/amw-mermaid-render.sh`, `bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`, `bin/parse-{html,svg,mermaid}-diagram.py`, `bin/amw-mermaid-lint.sh`.
+- Shared bin scripts: `bin/amw-validate-diagram.sh` (dispatch), `bin/amw-diagram-ir.py` (IR parse/emit/diff), `bin/amw-diagram-detect-format.sh` (sniff), `bin/amw-mermaid-render.sh`, `bin/amw-ascii-render.py`, `bin/amw-validate-ascii.py`, `bin/amw-parse-{html,svg,mermaid}-diagram.py`, `bin/amw-mermaid-lint.sh`.
 
 ### What I do NOT know / what I am NOT responsible for
 
@@ -196,7 +196,7 @@ Priority-ordered.
 1. **Verify `source_path` exists and is non-empty.**
 2. **Verify `source_format` is not PNG** — refuse PNG input per §3 / Decision Criterion 3.
 3. **Detect format of source** via `bin/amw-diagram-detect-format.sh` and verify it matches `source_format`. Mismatch → `warnings` and proceed with detected format.
-4. **Parse source into IR** via `bin/amw-diagram-ir.py` or the format-specific parser (`bin/parse-{html,svg,mermaid}-diagram.py`).
+4. **Parse source into IR** via `bin/amw-diagram-ir.py` or the format-specific parser (`bin/amw-parse-{html,svg,mermaid}-diagram.py`).
 5. **Emit target format from IR** via `bin/amw-diagram-ir.py` in emit mode.
 6. **Validate target** via `bin/amw-validate-diagram.sh`.
 7. **Write, return.**
@@ -383,7 +383,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
   Bash: bash bin/amw-mermaid-lint.sh design/diagrams/flow.mmd
   Bash: python3 bin/amw-diagram-ir.py --emit svg < ir.json > out.svg
   Bash: bash bin/amw-diagram-detect-format.sh design/diagrams/unknown.file
-  Bash: python3 bin/amw-html-export.py design/diagrams/flow.html --format png --out design/diagrams/flow.png
+  Bash: python3 bin/amw-html-export.py -i design/diagrams/flow.html -f png -o design/diagrams/flow
   ```
 - **Spawn `Task(subagent_type="general-purpose", ...)` for bounded sub-work** per §10 Delegation Rules.
 - **Reference other amw-* agents by name in warnings/recommendations** without calling them.

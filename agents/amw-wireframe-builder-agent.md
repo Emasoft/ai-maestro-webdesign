@@ -345,7 +345,7 @@ Example: ASCII declares a 5-column grid with fixed 240px columns (1200px minimum
 Example: `colors.bg = #fafafa` (light) + `colors.text = #f5f5f5` (near-white) → contrast ratio < 4.5:1. Action: emit HTML with tokens as given (user's choice is authoritative), but add a `warnings` entry with the calculated ratio and a suggested fix. Accessibility-auditor will catch this downstream; my job is to flag it early.
 
 ### 8.10 ASCII uses a component pattern not in the detection table
-Action: read `<../skills/amw-ascii-to-html/references/TECH-99.md>` fallback rules. If still unmatched, emit a generic `<section><div>` shell with a TODO comment (`<!-- unmatched ASCII pattern at lines N-M: <excerpt> -->`), document in `warnings`, `status=partial`, `next_action=escalate_to_user` for a design-principles update.
+Action: read `<../skills/amw-ascii-to-html/references/techniques.md>` for the redirect to `<../skills/amw-diagram-formats/references/html.md>` (TECH-99 validate-alignment-pre-parse and the full 100-technique catalog live there after the 2026-04-22 migration). If still unmatched, emit a generic `<section><div>` shell with a TODO comment (`<!-- unmatched ASCII pattern at lines N-M: <excerpt> -->`), document in `warnings`, `status=partial`, `next_action=escalate_to_user` for a design-principles update.
 
 ### Iteration cap (one-shot)
 Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot conversion agent — I have no internal fix/retry/regenerate loop. ASCII validation is a precondition gate (I fail fast on invalid input, I do not fix-and-retry); HTML lint is a one-pass advisory pass at the end. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.

@@ -125,6 +125,6 @@ The JSON shape is canonical for downstream consumers (e.g. `amw-design-battle` r
 ## Resources
 
 - [`references/TECH-rubric.md`](references/TECH-rubric.md) — canonical 8-dimension scoring rubric (read before every audit)
-- Companion skills: [`amw-design-battle`](../amw-design-battle/SKILL.md) (two-site comparison), [`amw-design-remix`](../amw-design-remix/SKILL.md) (reskin extracted designs), [`amw-design-drift-audit`](../amw-design-drift-audit/) (spec-fidelity audit)
+- Companion skills: [`amw-design-battle`](../amw-design-battle/SKILL.md) (two-site comparison), [`amw-design-remix`](../amw-design-remix/SKILL.md) (reskin extracted designs), [`amw-design-drift-audit`](../amw-design-drift-audit/SKILL.md) (spec-fidelity audit)
 - Input pipelines: [`amw-dev-browser`](../amw-dev-browser/SKILL.md), [`amw-design-extract`](../amw-design-extract/SKILL.md), [`amw-design-md`](../amw-design-md/SKILL.md)
 - Style vocabulary: [`amw-design-system-presets`](../amw-design-system-presets/references/catalogue.md)
