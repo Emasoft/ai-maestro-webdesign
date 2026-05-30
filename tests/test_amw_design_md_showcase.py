@@ -73,8 +73,8 @@ def test_colors_have_aria_labels_and_swatches(tmp_path: Path) -> None:
         ), f"missing swatch background for {hx}"
 
     # The swatch must carry a role=img with aria-label naming the token.
-    assert "aria-label=\"Color token primary hex" in html.lower() or \
-           "aria-label=\"color token primary hex" in html.lower(), \
+    # Case-insensitive check: compare against the lowercased HTML.
+    assert "aria-label=\"color token primary hex" in html.lower(), \
            "swatch aria-label missing for primary token"
 
     # WCAG badge for the primary / on-primary pair must appear.

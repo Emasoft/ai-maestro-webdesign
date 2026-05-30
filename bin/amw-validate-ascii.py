@@ -453,7 +453,9 @@ def check_box_border_integrity(lines: list[str]) -> list[Issue]:
         positions = [j for j, c in enumerate(line) if c in CORNERS]
         if len(positions) < 2:
             continue
-        # Pair adjacent corners
+        # Check every consecutive adjacent corner pair on the line.
+        # k+=1 ensures all segments are checked (e.g. +----+----+ checks
+        # both the first and second segments, not only the first).
         k = 0
         while k < len(positions) - 1:
             start, end = positions[k], positions[k + 1]
@@ -472,7 +474,7 @@ def check_box_border_integrity(lines: list[str]) -> list[Issue]:
                         ),
                     )
                 )
-            k += 2
+            k += 1
     return issues
 
 

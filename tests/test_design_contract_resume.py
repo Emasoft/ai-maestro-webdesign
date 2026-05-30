@@ -36,6 +36,7 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = REPO_ROOT / "bin" / "amw-design-contract-validate.py"
+TIMEOUT = 30
 
 
 # ---------------------------------------------------------------------
@@ -45,7 +46,7 @@ SCRIPT = REPO_ROOT / "bin" / "amw-design-contract-validate.py"
 def _run(*args: str) -> subprocess.CompletedProcess[str]:
     """Run the validator with the given args and return the result."""
     cmd = [sys.executable, str(SCRIPT), *args]
-    return subprocess.run(cmd, capture_output=True, text=True, check=False)
+    return subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=TIMEOUT)
 
 
 def _make_contract(**overrides: Any) -> dict[str, Any]:

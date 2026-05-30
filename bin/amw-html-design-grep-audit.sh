@@ -92,8 +92,19 @@ should_run() {
 }
 
 # Helper: record a violation (called from inside subshell loops).
+# When STRICT=1, also writes a 'B' bail marker so the outer loop can detect
+# the request and exit the main script (inner subshells cannot do that directly).
 record() {
   printf '1\n' >> "$COUNTER_FILE"
+  if [ "$STRICT" -eq 1 ]; then printf 'B\n' >> "$COUNTER_FILE"; fi
+}
+
+# Helper: exit the main script when --strict is set and a bail marker is present.
+# Called from the outer file-iteration loop, after each inner pipeline completes.
+_strict_bail_if_needed() {
+  if [ "$STRICT" -eq 1 ] && grep -q '^B$' "$COUNTER_FILE" 2>/dev/null; then
+    exit 1
+  fi
 }
 
 # Find all candidate files first.
@@ -119,8 +130,8 @@ if should_run "DSP-001"; then
           if echo "$rest" | grep -qE '^\s*--[a-z]'; then continue; fi
           printf '%s:%s — [DSP-001] hardcoded color literal: %s\n' "$file" "$ln" "$(echo "$rest" | sed 's/^[[:space:]]*//' | cut -c1-80)"
           record
-          if [ "$STRICT" -eq 1 ]; then exit 1; fi
         done
+    _strict_bail_if_needed
   done < "$FILES_TMP"
 fi
 
@@ -132,8 +143,8 @@ if should_run "DSP-002"; then
       | while IFS=: read -r ln rest; do
           printf '%s:%s — [DSP-002] naked px spacing (not a token): %s\n' "$file" "$ln" "$(echo "$rest" | sed 's/^[[:space:]]*//' | cut -c1-80)"
           record
-          if [ "$STRICT" -eq 1 ]; then exit 1; fi
         done
+    _strict_bail_if_needed
   done < "$FILES_TMP"
 fi
 
@@ -146,9 +157,9 @@ if should_run "DSP-003"; then
           if [ -n "$val" ] && [ "$val" -gt 100 ]; then
             printf '%s:%s — [DSP-003] z-index > 100 (=%s): re-root the stacking context\n' "$file" "$ln" "$val"
             record
-            if [ "$STRICT" -eq 1 ]; then exit 1; fi
           fi
         done
+    _strict_bail_if_needed
   done < "$FILES_TMP"
 fi
 
@@ -161,9 +172,9 @@ if should_run "A11Y-001"; then
           if ! echo "$rest" | grep -qiE '\balt[[:space:]]*='; then
             printf '%s:%s — [A11Y-001] <img> without alt attribute: %s\n' "$file" "$ln" "$(echo "$rest" | sed 's/^[[:space:]]*//' | cut -c1-80)"
             record
-            if [ "$STRICT" -eq 1 ]; then exit 1; fi
           fi
         done
+    _strict_bail_if_needed
   done < "$FILES_TMP"
 fi
 
@@ -179,8 +190,8 @@ if should_run "A11Y-002"; then
           if echo "$rest" | grep -qiE 'onKey(Down|Press|Up)'; then continue; fi
           printf '%s:%s — [A11Y-002] onClick on non-button without keyboard handler: %s\n' "$file" "$ln" "$(echo "$rest" | sed 's/^[[:space:]]*//' | cut -c1-80)"
           record
-          if [ "$STRICT" -eq 1 ]; then exit 1; fi
         done
+    _strict_bail_if_needed
   done < "$FILES_TMP"
 fi
 
@@ -201,15 +212,16 @@ if should_run "MOTION-001"; then
         if [ -z "$ln" ]; then ln=1; fi
         printf '%s:%s — [MOTION-001] motion primitives but no @media (prefers-reduced-motion: reduce) block\n' "$file" "$ln"
         record
-        if [ "$STRICT" -eq 1 ]; then exit 1; fi
       fi
     fi
+    _strict_bail_if_needed
   done < "$FILES_TMP"
 fi
 
 VIOLATIONS=0
 if [ -s "$COUNTER_FILE" ]; then
-  VIOLATIONS="$(wc -l < "$COUNTER_FILE" | tr -d ' ')"
+  # Count only '1' lines (violation markers); 'B' lines are internal bail markers.
+  VIOLATIONS="$(grep -c '^1$' "$COUNTER_FILE" 2>/dev/null || echo 0)"
 fi
 if [ "$VIOLATIONS" -gt 0 ]; then
   printf '\n%d design/a11y violation(s) found.\n' "$VIOLATIONS" >&2

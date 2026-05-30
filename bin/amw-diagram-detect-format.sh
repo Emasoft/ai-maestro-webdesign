@@ -93,7 +93,7 @@ esac
 if [ "$input" != "-" ] && [ -r "$input" ]; then
   magic="$(od -An -c -N 8 "$input" 2>/dev/null | tr -s ' ' ' ' | sed 's/^ //')"
   case "$magic" in
-    "211   P   N   G"*|*"P   N   G"*)
+    "211 P N G"*|*"P N G"*)
       # Verified PNG magic — this is a real PNG
       echo "png"
       exit 0

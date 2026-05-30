@@ -218,9 +218,15 @@ def main():
         with open(args.output, "wb") as f:
             f.write(image_bytes)
         print(f"Saved (visual-only): {args.output} ({len(image_bytes) // 1024} KB)")
+    elif args.model == "pro" and not args.labels:
+        # Primary path: pro model generates text-correct integrated output directly.
+        # No overlay phase needed; write the image as-is.
+        with open(args.output, "wb") as f:
+            f.write(image_bytes)
+        print(f"Saved: {args.output} ({len(image_bytes) // 1024} KB)")
     else:
         if not args.labels:
-            sys.exit("--labels is required unless --visual-only is set")
+            sys.exit("--labels is required for --model flash unless --visual-only is set")
         labels = json.loads(args.labels)
         overlay_text(image_bytes, labels, args.output)
 

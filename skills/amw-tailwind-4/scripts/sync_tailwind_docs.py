@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Sync Tailwind CSS docs snapshot into this skill.
 
 Clones the tailwindcss.com repo (or uses an existing local clone) and copies

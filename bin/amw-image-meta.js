@@ -141,7 +141,7 @@ function parseJpeg(buf) {
       //   byte 0: precision
       //   bytes 1..2: height BE
       //   bytes 3..4: width BE
-      if (i + 7 >= buf.length) return null;
+      if (i + 6 >= buf.length) return null;
       const height = buf.readUInt16BE(i + 3);
       const width = buf.readUInt16BE(i + 5);
       return { width, height, format: "jpeg" };

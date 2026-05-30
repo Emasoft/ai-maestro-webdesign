@@ -233,6 +233,8 @@ def find_arrows(text: str) -> list[dict]:
                 "<-": "left",
                 "<--": "left",
                 "<=": "left",
+                "^^": "up",
+                "vv": "down",
             }.get(sym, "unknown")
             arrows.append({"row": y, "col": m.start(), "symbol": sym, "direction": direction})
     return arrows

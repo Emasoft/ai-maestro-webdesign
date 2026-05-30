@@ -82,9 +82,9 @@ def main_root() -> Path:
 
 
 def _section(text: str, heading: str) -> str:
-    """Body of a `## <heading>` section, up to the next `## ` heading."""
+    """Body of a `## <heading>` section, up to the next `## ` heading or EOF."""
     m = re.search(
-        rf"^##\s+{re.escape(heading)}\b(.*?)(?=^##\s)",
+        rf"^##\s+{re.escape(heading)}\b(.*?)(?=^##\s|\Z)",
         text, re.MULTILINE | re.DOTALL,
     )
     return m.group(1) if m else ""

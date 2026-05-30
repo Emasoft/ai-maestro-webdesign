@@ -419,8 +419,14 @@ def main() -> int:
         fm = validate_v1_structure(content, findings)
         if fm is not None:
             validate_v1_tokens(fm, findings)
-            if args.check_references or True:
-                validate_references(fm, findings)
+            # Reference validation ALWAYS runs. The original guard was
+            # `if args.check_references or True:` — the `or True` deliberately
+            # forced this check on regardless of the flag, so dangling
+            # {path.to.token} references are caught by default. --check-references
+            # is retained for back-compat but does not gate this (see
+            # test_bad_tokens_fixture_fails_with_r1_per_reference). Calling
+            # unconditionally preserves that behavior without the tautology.
+            validate_references(fm, findings)
     else:
         validate_v2(content, findings)
 

@@ -67,8 +67,8 @@ case "$cmd" in
     # Use the documented flag surface. Fail loudly if it doesn't work so the
     # user knows to pin designlang in /amw-init instead of silently getting a
     # reduced-output fallback (fail-fast rule — no silent workarounds).
-    if ! npx designlang "$url" --out "$out_dir" --format all >/dev/null 2>&1; then
-      echo "ERROR: 'npx designlang \"$url\" --out \"$out_dir\" --format all' failed." >&2
+    if ! npx designlang "$url" --out "$out_dir" --format all 2>&1; then
+      echo "ERROR: 'npx designlang \"$url\" --out \"$out_dir\" --format all' failed (see output above)." >&2
       echo "       Run 'npx designlang --help' to verify the current flag surface." >&2
       echo "       If it has changed, pin a known-good version in /amw-init." >&2
       exit 1

@@ -154,7 +154,7 @@ def cmd_render(svg_file: str, width: int, sd: Path):
     cairosvg = importlib.import_module("cairosvg")
 
     if not os.path.exists(svg_file):
-        print(f"ERROR: File not found: {svg_file}")
+        print(f"ERROR: File not found: {svg_file}", file=sys.stderr)
         sys.exit(1)
 
     # MIN-C1: explicit utf-8-sig encoding. Default platform encoding
@@ -169,7 +169,7 @@ def cmd_render(svg_file: str, width: int, sd: Path):
     # namespace-prefixed roots (<ns0:svg ...>) that a naive `"<svg" in`
     # substring check would reject.
     if not _SVG_ROOT_RE.search(svg_content):
-        print("ERROR: File does not contain a valid <svg> root element.")
+        print("ERROR: File does not contain a valid <svg> root element.", file=sys.stderr)
         sys.exit(1)
 
     out_png = preview_png(sd)
@@ -197,13 +197,14 @@ def cmd_render(svg_file: str, width: int, sd: Path):
             or "ExpatError" in exc_name
             or "ElementFailure" in exc_name
         ):
-            print(f"RENDER ERROR: SVG is malformed ({exc_name}): {e}")
-            print("Fix the SVG markup (check unclosed tags, invalid attributes).")
+            print(f"RENDER ERROR: SVG is malformed ({exc_name}): {e}", file=sys.stderr)
+            print("Fix the SVG markup (check unclosed tags, invalid attributes).", file=sys.stderr)
         else:
-            print(f"RENDER ERROR: cairosvg runtime failure ({exc_name}): {e}")
+            print(f"RENDER ERROR: cairosvg runtime failure ({exc_name}): {e}", file=sys.stderr)
             print(
                 "Check that libcairo is installed and cairosvg can find it "
-                "(brew install cairo pango on macOS)."
+                "(brew install cairo pango on macOS).",
+                file=sys.stderr,
             )
         sys.exit(1)
 

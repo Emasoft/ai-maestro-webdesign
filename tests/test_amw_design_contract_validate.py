@@ -192,19 +192,15 @@ def test_empty_required_user_intent_field_blocks() -> None:
     assert "B030" in block_codes
 
 
-def test_validate_returns_block_for_top_level_array() -> None:
+def test_validate_returns_block_for_top_level_array(tmp_path: Path) -> None:
     """JSON that parses to a list (not object) is BLOCK at load time."""
     mod = _load_validator_module()
-    tmp = REPO_ROOT / "tests" / "fixtures" / "__tmp_array.json"
-    try:
-        tmp.write_text("[1, 2, 3]", encoding="utf-8")
-        verdict, findings = mod.validate(tmp)
-        assert verdict == "BLOCK"
-        codes = [f.code for f in findings]
-        assert "B004" in codes
-    finally:
-        if tmp.exists():
-            tmp.unlink()
+    tmp = tmp_path / "array.json"
+    tmp.write_text("[1, 2, 3]", encoding="utf-8")
+    verdict, findings = mod.validate(tmp)
+    assert verdict == "BLOCK"
+    codes = [f.code for f in findings]
+    assert "B004" in codes
 
 
 # =====================================================================

@@ -511,10 +511,13 @@ def _render_ir_as_html(ir: Dict[str, Any]) -> str:
         .replace(">", "&gt;")
     )
     title = (ir.get("metadata") or {}).get("title", "diagram")
+    title_escaped = (
+        str(title).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    )
     return (
         "<!DOCTYPE html>\n"
         "<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
-        f"<title>{title}</title>\n</head>\n<body>\n"
+        f"<title>{title_escaped}</title>\n</head>\n<body>\n"
         "<pre style=\"font-family:ui-monospace,monospace;\">"
         f"{escaped}"
         "</pre>\n</body>\n</html>\n"

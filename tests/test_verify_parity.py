@@ -45,6 +45,9 @@ body{margin:0;font-family:Arial,sans-serif;background:#0a0a12;color:#00ff41}
 </style></head><body><div class="hero"><h1>NEON</h1><p>Cyberpunk sample.</p><a class="cta">CLICK</a></div></body></html>"""
 
 
+TIMEOUT = 300
+
+
 def _run(source: Path, mine: Path, out: Path, threshold: str = "9.0") -> subprocess.CompletedProcess:
     return subprocess.run(
         [
@@ -53,13 +56,14 @@ def _run(source: Path, mine: Path, out: Path, threshold: str = "9.0") -> subproc
             "--viewports", "1024x768", "--threshold", threshold, "--out", str(out),
         ],
         capture_output=True, text=True,
+        timeout=TIMEOUT,
     )
 
 
 def test_identical_pages_pass_parity(tmp_path):
     """Rendering the same page as source and mine scores JOD ≈ 10 and PASSes (exit 0)."""
     page = tmp_path / "warm.html"
-    page.write_text(_WARM)
+    page.write_text(_WARM, encoding="utf-8")
     r = _run(page, page, tmp_path / "out-same", threshold="9.5")
     assert r.returncode == 0, r.stdout + r.stderr
     assert "PASS" in (tmp_path / "out-same" / "verdict.md").read_text()
@@ -69,8 +73,8 @@ def test_different_pages_fail_parity(tmp_path):
     """A warm-editorial page vs a neon-cyberpunk page falls below the 9.0 bar and FAILs (exit 1)."""
     warm = tmp_path / "warm.html"
     neon = tmp_path / "neon.html"
-    warm.write_text(_WARM)
-    neon.write_text(_NEON)
+    warm.write_text(_WARM, encoding="utf-8")
+    neon.write_text(_NEON, encoding="utf-8")
     r = _run(warm, neon, tmp_path / "out-diff", threshold="9.0")
     assert r.returncode == 1, r.stdout + r.stderr
     assert "FAIL" in (tmp_path / "out-diff" / "verdict.md").read_text()

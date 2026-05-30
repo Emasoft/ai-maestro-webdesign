@@ -39,12 +39,16 @@ def fixtures(tmp_path_factory) -> dict[str, Path]:
     return gen.generate(out)
 
 
+TIMEOUT = 120
+
+
 def _run(*args: str | Path) -> subprocess.CompletedProcess:
     """Invoke the compare wrapper, returning the completed process."""
     return subprocess.run(
         ["bash", str(COMPARE), *map(str, args)],
         capture_output=True,
         text=True,
+        timeout=TIMEOUT,
     )
 
 

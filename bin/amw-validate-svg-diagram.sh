@@ -62,7 +62,7 @@ if ! xmllint --noout --nonet "$input" 2>"$tmp_err"; then
 fi
 
 # 2) SVG namespace check — first 500 bytes must contain xmlns="http://www.w3.org/2000/svg"
-head_bytes="$(dd if="$input" bs=1 count=500 2>/dev/null || true)"
+head_bytes="$(dd if="$input" bs=1 count=500 2>/dev/null)"
 case "$head_bytes" in
   *'xmlns="http://www.w3.org/2000/svg"'*|*"xmlns='http://www.w3.org/2000/svg'"*)
     : # OK

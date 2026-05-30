@@ -108,7 +108,11 @@ scan_inline_px() {
             # Use a regex sub-loop via match() with a saved index.
             line = $0
             while (match(line, /(width|height)[[:space:]]*:[[:space:]]*([0-9]+)px/)) {
-              dim = substr(line, RSTART, RLENGTH)
+              # Save outer match bounds BEFORE calling inner match() which would clobber
+              # RSTART and RLENGTH.
+              outer_rstart = RSTART
+              outer_rlen   = RLENGTH
+              dim = substr(line, outer_rstart, outer_rlen)
               # Parse the numeric value out of the matched substring.
               numstart = match(dim, /[0-9]+/)
               if (numstart > 0) {
@@ -122,8 +126,8 @@ scan_inline_px() {
                   }
                 }
               }
-              # Advance past this match.
-              line = substr(line, RSTART + RLENGTH)
+              # Advance past this match using the saved outer bounds.
+              line = substr(line, outer_rstart + outer_rlen)
             }
           }
         '

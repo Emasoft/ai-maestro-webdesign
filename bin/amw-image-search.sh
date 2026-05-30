@@ -122,7 +122,7 @@ if [ -n "$LUMINANCE" ];   then URL+="&luminance=${LUMINANCE}"; fi
 
 # Make the request.
 TMP="$(mktemp -t amw-image-search-XXXXXX)"
-trap 'rm -f "$TMP"' EXIT
+trap 'rm -f "$TMP" "${TMP}.code"' EXIT
 
 CURL_OPTS=(--silent --show-error --max-time 30 --user-agent "amw-image-search/1.0")
 if [ -n "$API_KEY" ]; then
@@ -154,7 +154,7 @@ case "$FORMAT" in
       ( .data // .results // .images // .photos // [] ) as $arr
       | $arr[]
       | ( .urls.regular // .urls.full // .url // .src // empty )
-    ' "$TMP" 2>/dev/null || true)"
+    ' "$TMP")"
     if [ -z "$EXTRACTED" ]; then
       printf 'ERROR: zero results extracted from API response (use --json to inspect)\n' >&2
       exit 1

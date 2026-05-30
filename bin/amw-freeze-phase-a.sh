@@ -171,8 +171,13 @@ PERSONAS_ABS="$(abs "$PERSONAS")"
 OUTPUT_DIR_ABS="$(abs "$OUTPUT_DIR")"
 OUT_ABS="$(abs "$OUT")"
 
-# Compute sha256 of approved ASCII file
-ASCII_SHA="$(shasum -a 256 "$APPROVED_ASCII_ABS" | awk '{print $1}')"
+# Compute sha256 of approved ASCII file using python3 for macOS + Linux portability
+# (shasum is macOS-only; sha256sum is Linux coreutils; python3 is required by this script)
+ASCII_SHA="$(python3 -c '
+import hashlib, sys
+with open(sys.argv[1], "rb") as f:
+    print(hashlib.sha256(f.read()).hexdigest())
+' "$APPROVED_ASCII_ABS")"
 
 # Format ISO-8601 timestamp with offset (e.g. 2026-04-30T18:30:12+0200)
 FROZEN_AT="$(date "+%Y-%m-%dT%H:%M:%S%z")"
@@ -186,33 +191,55 @@ print(json.dumps(parts))
 ' "$LOCALES")"
 
 # Compose the JSON via python3 to ensure correct quoting / null handling.
+# All path values are passed as sys.argv arguments (not interpolated into Python source)
+# to avoid corruption from paths containing double quotes, backslashes, or dollar signs.
 # Optional fields become JSON null when not provided; required are strings.
 mkdir -p "$(dirname "$OUT_ABS")"
 
-python3 - "$OUT_ABS" <<PYEOF
+python3 - \
+  "$OUT_ABS" \
+  "$FROZEN_AT" \
+  "$APPROVED_ASCII_ABS" \
+  "$ASCII_SHA" \
+  "$BRAND_TOKENS_ABS" \
+  "$DESIGN_MD_ABS" \
+  "$IA_ABS" \
+  "$COPY_ABS" \
+  "$LEGAL_ABS" \
+  "$SEO_HEAD_ABS" \
+  "$PERSONAS_ABS" \
+  "$TARGET_STACK" \
+  "$LOCALES_JSON" \
+  "$OUTPUT_DIR_ABS" \
+  "$WCAG_TARGET" \
+<<'PYEOF'
 import json, sys
 
-out_path = sys.argv[1]
+(out_path, frozen_at, approved_ascii_path, approved_ascii_sha256,
+ brand_tokens_path, design_md_path, ia_structure_path,
+ copy_blocks_path, legal_mandatory_elements_path, seo_head_path,
+ personas_path, target_stack, locales_json, output_dir,
+ wcag_target) = sys.argv[1:16]
 
 def opt(s):
     return s if s else None
 
 spec = {
-    "frozen_at": "${FROZEN_AT}",
+    "frozen_at": frozen_at,
     "frozen_spec_version": "1",
-    "approved_ascii_path": "${APPROVED_ASCII_ABS}",
-    "approved_ascii_sha256": "${ASCII_SHA}",
-    "brand_tokens_path": "${BRAND_TOKENS_ABS}",
-    "design_md_path": "${DESIGN_MD_ABS}",
-    "ia_structure_path": "${IA_ABS}",
-    "copy_blocks_path": opt("${COPY_ABS}"),
-    "legal_mandatory_elements_path": opt("${LEGAL_ABS}"),
-    "seo_head_path": opt("${SEO_HEAD_ABS}"),
-    "personas_path": opt("${PERSONAS_ABS}"),
-    "target_stack": "${TARGET_STACK}",
-    "locales": ${LOCALES_JSON},
-    "output_dir": "${OUTPUT_DIR_ABS}",
-    "wcag_target": "${WCAG_TARGET}",
+    "approved_ascii_path": approved_ascii_path,
+    "approved_ascii_sha256": approved_ascii_sha256,
+    "brand_tokens_path": brand_tokens_path,
+    "design_md_path": design_md_path,
+    "ia_structure_path": ia_structure_path,
+    "copy_blocks_path": opt(copy_blocks_path),
+    "legal_mandatory_elements_path": opt(legal_mandatory_elements_path),
+    "seo_head_path": opt(seo_head_path),
+    "personas_path": opt(personas_path),
+    "target_stack": target_stack,
+    "locales": json.loads(locales_json),
+    "output_dir": output_dir,
+    "wcag_target": wcag_target,
 }
 
 with open(out_path, "w", encoding="utf-8") as f:

@@ -1089,7 +1089,7 @@ function formatOutput(fileName, analysis) {
     synthesisSuggestion,
   } = analysis;
 
-  if (process.argv.includes("--json")) {
+  if (jsonFlag) {
     console.log(JSON.stringify(analysis, null, 2));
     return;
   }

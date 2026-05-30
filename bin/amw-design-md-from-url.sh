@@ -1009,10 +1009,12 @@ print(f"Wrote {out_path}")
 PYEOF
 
 # Step 4 — validate (best-effort)
+LINT_EXIT=0
 echo "Validating $OUT ..."
 if bash "$PLUGIN_ROOT/bin/amw-design-md-lint.sh" "$OUT" 2>/dev/null; then
   echo "Lint: PASS"
 else
+  LINT_EXIT=1
   echo "Lint: warnings or errors (see output above)" >&2
 fi
 
@@ -1021,3 +1023,4 @@ if [ -x "$PLUGIN_ROOT/bin/amw-design-md-contrast.py" ]; then
 fi
 
 echo "Done. Review and edit: $OUT"
+exit "$LINT_EXIT"

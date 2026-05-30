@@ -33,7 +33,7 @@ command -v mmdc >/dev/null 2>&1 || {
   exit 2
 }
 
-tmp_svg=$(mktemp -t wd-mmdlint.XXXXXX).svg
+tmp_svg=$(mktemp -t wd-mmdlint.XXXXXX.svg)
 tmp_err=$(mktemp -t wd-mmdlint.XXXXXX)
 trap 'rm -f "$tmp_svg" "$tmp_err"' EXIT INT TERM
 

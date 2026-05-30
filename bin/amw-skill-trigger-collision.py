@@ -207,9 +207,11 @@ def is_legitimate_delegation(agent_file: Path, skill_file: Path) -> bool:
         body = agent_file.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return False
-    # Normalize the skill path relative to the agent file's directory.
+    # Check whether the agent body references the skill by its plugin-root-relative
+    # path (e.g. "skills/amw-foo/SKILL.md").  Agents always use plugin-root paths,
+    # not paths relative to the agents/ directory, so no "../" prefix is needed.
     try:
-        rel = Path("..") / skill_file.relative_to(agent_file.parent.parent)
+        rel = skill_file.relative_to(agent_file.parent.parent)
     except ValueError:
         return False
     return str(rel) in body

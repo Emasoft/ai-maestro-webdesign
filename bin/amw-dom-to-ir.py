@@ -362,7 +362,11 @@ def _inline_svg_children(svg_source: str, parent_node_id: str) -> List[Dict[str,
     )
     if result.returncode != 0 or not result.stdout.strip():
         return []
-    ir = json.loads(result.stdout)
+    try:
+        ir = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        # amw-parse-html-diagram.py exited 0 but emitted non-JSON; treat as no SVG children.
+        return []
     children: List[Dict[str, Any]] = []
     for n in ir.get("nodes", []):
         new = dict(n)
@@ -522,7 +526,13 @@ def _fetch_via_dev_browser(url: str, out_html_path: pathlib.Path) -> None:
         )
     payload = result.stdout.strip()
     if payload.startswith('"') and payload.endswith('"'):
-        payload = json.loads(payload)
+        try:
+            payload = json.loads(payload)
+        except json.JSONDecodeError:
+            # dev-browser returned a string starting/ending with '"' but it is not valid JSON;
+            # treat the raw string as HTML — this can happen when the page source itself starts
+            # with a double-quote character.
+            pass
     out_html_path.write_text(payload, encoding="utf-8")
 
 

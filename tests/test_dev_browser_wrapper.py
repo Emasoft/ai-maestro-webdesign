@@ -35,9 +35,11 @@ h1{font-size:40px}</style></head><body><h1>Heading Sample</h1>
 <p>Body paragraph for DOM capture.</p><a href="#">A link</a></body></html>"""
 
 
+TIMEOUT = 60
+
 def _page(tmp_path: Path) -> str:
     p = tmp_path / "page.html"
-    p.write_text(_HTML)
+    p.write_text(_HTML, encoding="utf-8")
     return f"file://{p}"
 
 
@@ -46,7 +48,7 @@ def test_shot_produces_a_png(tmp_path):
     out = tmp_path / "shot.png"
     r = subprocess.run(
         ["bash", str(WRAPPER), "shot", _page(tmp_path), str(out)],
-        capture_output=True, text=True,
+        capture_output=True, text=True, timeout=TIMEOUT,
     )
     assert r.returncode == 0, r.stdout + r.stderr
     assert out.exists() and out.stat().st_size > 0
@@ -58,10 +60,10 @@ def test_dom_returns_expected_json_shape(tmp_path):
     out = tmp_path / "dom.json"
     r = subprocess.run(
         ["bash", str(WRAPPER), "dom", _page(tmp_path), str(out)],
-        capture_output=True, text=True,
+        capture_output=True, text=True, timeout=TIMEOUT,
     )
     assert r.returncode == 0, r.stdout + r.stderr
-    data = json.loads(out.read_text())
+    data = json.loads(out.read_text(encoding="utf-8"))
     for key in ("title", "url", "viewport", "scroll", "bodyBg", "bodyFont", "samples"):
         assert key in data, f"missing key {key}"
     assert data["title"] == "Wrapper Test"
