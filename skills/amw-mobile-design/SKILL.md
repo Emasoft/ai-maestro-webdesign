@@ -2,18 +2,14 @@
 name: amw-mobile-design
 description: >-
   Mobile-native UI / UX reference: iOS HIG vs Android Material 3 platform
-  differences (touch targets 44pt / 48dp, navigation patterns, gestures,
-  typography scales), thumb-zone reachability, hitSlop / accessibility-area
-  patterns, per-industry mobile design languages (fitness, finance, social,
-  productivity, health, crypto), and the Peak-End workflow. Activates on
-  narrow triggers only: "mobile app design", "iOS HIG", "android material 3
-  app", "touch target size", "thumb zone", "hitSlop", "react native ui",
-  "swiftui mobile design", "jetpack compose ui", "mobile a11y", "mobile
-  screen design". Does NOT activate on generic "design a page",
-  "responsive design", "small screen" — those route to amw-design-principles
-  (responsive-design rule). Cross-references amw-material-3 for the
-  Material side and the platform-differences / touch-targets references for
-  the mechanical breakdown.
+  differences (touch targets, navigation, gestures, type scales), thumb-zone
+  reachability, hitSlop / accessibility-area patterns, per-industry mobile
+  design languages, and the Peak-End workflow. Activates on narrow triggers
+  only: "mobile app design", "iOS HIG", "android material 3 app", "touch
+  target size", "thumb zone", "hitSlop", "react native ui", "swiftui mobile
+  design", "jetpack compose ui", "mobile a11y", "mobile screen design". Does
+  NOT activate on generic "design a page", "responsive design", "small
+  screen" — those route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (mixed-source — clean-room mobile-app-design + MIT mobile-app-ui-design / industry-conventions)
 ---

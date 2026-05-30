@@ -1,15 +1,13 @@
 ---
 name: amw-design-grade
 description: >-
-  Quantitative A-F design audit of a single artifact (URL, local HTML, or extracted DESIGN.md).
-  Scores 8 dimensions — palette, typography, rhythm, hierarchy, motion, accessibility,
-  consistency, signature — each 0-10 with evidence excerpt and letter grade
-  (A=9-10, B=7-8, C=5-6, D=3-4, F=0-2). Emits an HTML report-card plus a downloadable
-  SVG badge summarising the overall grade. Activates on narrow audit triggers — "grade this
-  design", "design report card", "audit design quality", "design A-F score", "design badge",
-  "rate this site's design". Does NOT activate on broad design vocabulary ("design a page",
-  "build a UI") — those route to amw-design-principles. Clean-room reimplementation; no
-  upstream sources copied.
+  Quantitative A-F design audit of a single artifact (URL, local HTML, or
+  extracted DESIGN.md). Scores 8 dimensions 0-10, each with an evidence
+  excerpt and letter grade, then emits an HTML report-card plus an SVG grade
+  badge. Activates on narrow audit triggers — "grade this design", "design
+  report card", "audit design quality", "design A-F score", "design badge",
+  "rate this site's design". Does NOT activate on broad design vocabulary
+  ("design a page", "build a UI") — those route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (clean-room)
 ---

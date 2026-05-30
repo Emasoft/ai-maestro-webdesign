@@ -2,16 +2,13 @@
 name: amw-evangelion-design
 description: >-
   Evangelion / NERV-HUD aesthetic skill — original Eva-inspired interface
-  language for web and mobile (command-center, sync-monitor, breach-warning,
-  psychograph, reactor-diagnostic, title-card screen roles). Severe geometry,
-  amber / red / signal-green palette discipline, condensed sans + tabular
-  numerals, mechanical state-driven motion. Activates on narrow triggers
-  only: "evangelion ui", "NERV hud", "anime control room", "tactical
-  diagnostic overlay", "sync monitor", "breach warning ui", "reactor
-  diagnostic screen", "psychograph", "title card sci-fi". Does NOT activate
-  on generic "sci-fi", "cyberpunk", "dark mode", "tactical dashboard" —
-  those route to amw-design-principles. Demonstrates encoding a
-  culturally-grounded aesthetic without copying franchise assets.
+  language for web and mobile. Severe geometry, amber / red / signal-green
+  palette discipline, condensed sans + tabular numerals, mechanical
+  state-driven motion. Activates on narrow triggers only: "evangelion ui",
+  "NERV hud", "anime control room", "tactical diagnostic overlay", "sync
+  monitor", "breach warning ui", "reactor diagnostic screen", "psychograph",
+  "title card sci-fi". Does NOT activate on generic "sci-fi", "cyberpunk",
+  "dark mode", "tactical dashboard" — those route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (direct-port from ckorhonen/claude-skills/evangelion-design, MIT, Chris Korhonen)
 ---

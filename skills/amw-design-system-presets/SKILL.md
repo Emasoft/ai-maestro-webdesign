@@ -1,14 +1,15 @@
 ---
 name: amw-design-system-presets
 description: >-
-  Catalog of ~45 named graphic-style presets (Swiss, Brutalist, Glassmorphism, Neumorphism,
-  Material 3, Aurora, Cyberpunk, etc.) each shipped as a complete token block — colors, type,
-  spacing, radius, shadow, motion — plus breaks-if invariants and a canonical render-test pointer.
-  Activates on narrow style-name triggers — "use Brutalist style", "apply Glassmorphism preset",
-  "Aurora style tokens", "Swiss minimal layout", "Material 3 tokens", or "show available style
-  presets". Does NOT activate on broad design vocabulary ("design a page", "build a UI") — those
-  route to amw-design-principles. Catalog-first protocol: read references/catalogue.md to
-  shortlist 1-3 matching styles before loading any individual style file.
+  Catalog of ~45 named graphic-style presets (Swiss, Brutalist,
+  Glassmorphism, Material 3, Aurora, Cyberpunk, etc.), each shipped as a
+  complete token block plus breaks-if invariants and a canonical render-test
+  pointer. Activates on narrow style-name triggers — "use Brutalist style",
+  "apply Glassmorphism preset", "Aurora style tokens", "Swiss minimal
+  layout", "Material 3 tokens", or "show available style presets". Does NOT
+  activate on broad design vocabulary ("design a page", "build a UI") — those
+  route to amw-design-principles. Read references/catalogue.md first to
+  shortlist matching styles.
 version: 0.1.0
 author: ai-maestro-webdesign (curated catalogue; per-style attributions live in each S-NNN file)
 ---

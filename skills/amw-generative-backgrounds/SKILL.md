@@ -2,17 +2,13 @@
 name: amw-generative-backgrounds
 description: >-
   GPU shader background catalog for the web — 11 generative background types
-  (mesh-gradient, voronoi, liquid-metal, chrome, pulsar, black-hole, glass,
-  spiral, particles, fireworks, plasma) plus 17 image-overlay effects
-  (ASCII, dither, halftone, glitch, art-filters, scan-lines, noise, etc.).
-  Activates on narrow triggers only: "generative background", "shader
-  background", "WebGL background", "mesh gradient background", "voronoi
-  hero", "liquid metal background", "fragment-shader hero", "GLSL
-  background", "background effect catalog". Does NOT activate on generic
-  "background", "gradient", "hero section", "wallpaper" — those route to
-  amw-design-principles. Documents each type's parameters, performance
-  envelope, and primary use case; does NOT embed shader source (use
-  upstream libraries or write the shaders separately).
+  (mesh-gradient, voronoi, liquid-metal, plasma, etc.) plus 17 image-overlay
+  effects (ASCII, dither, halftone, glitch, etc.). Activates on narrow
+  triggers only: "generative background", "shader background", "WebGL
+  background", "mesh gradient background", "voronoi hero", "liquid metal
+  background", "fragment-shader hero", "GLSL background", "background effect
+  catalog". Does NOT activate on generic "background", "gradient", "hero
+  section", "wallpaper" — those route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (clean-room, no upstream license)
 ---

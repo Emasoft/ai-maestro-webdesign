@@ -1,15 +1,13 @@
 ---
 name: amw-material-3
 description: >-
-  Material Design 3 (Material You) token reference: HCT tonal palette
-  (seed -> 5 palettes -> 16 tonal stops), role-based color tokens (primary /
-  surface / outline / on-* pairs), state layers (8% hover, 10% focus, 16%
-  pressed), 5 tonal elevation levels (surface-tint overlays, not shadows),
-  7-step shape scale, 15 type styles, 4dp spatial grid. Activates on narrow
-  triggers only: "material 3", "material design 3", "M3 tokens", "HCT
-  palette", "tonal elevation", "state layer", "md-sys color", "MaterialTheme
-  colors". Does NOT activate on generic "material design" or broad design
-  vocabulary - those route to amw-design-principles.
+  Material Design 3 (Material You) token reference: HCT tonal palettes,
+  role-based color tokens, state layers, tonal elevation, shape scale, type
+  styles, and the 4dp spatial grid. Activates on narrow triggers only:
+  "material 3", "material design 3", "M3 tokens", "HCT palette", "tonal
+  elevation", "state layer", "md-sys color", "MaterialTheme colors". Does NOT
+  activate on generic "material design" or broad design vocabulary - those
+  route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (direct-port from material-3-skill, MIT, CWTI Ltd 2026)
 ---

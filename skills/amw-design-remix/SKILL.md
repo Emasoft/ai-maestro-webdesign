@@ -1,16 +1,13 @@
 ---
 name: amw-design-remix
 description: >-
-  Reskin an extracted design in a named graphic vocabulary (Brutalist, Swiss, Art Deco,
-  Cyberpunk, Soft UI, Editorial, etc. — from amw-design-system-presets catalogue) OR
-  rotate OKLCH hue around a new brand primary while preserving chroma/lightness ramps.
-  Inputs are an existing design's token bundle (DESIGN.md, designlang JSON, or extracted
-  CSS variables); outputs are a new token bundle plus a render-test page rendered in the
-  target vocabulary. Activates on narrow remix triggers — "remix this in <style>",
-  "reskin in brutalist", "rotate hue to <new primary>", "convert palette to OKLCH around
-  <color>", "swap theme to swiss", "art-deco variant of this site". Does NOT activate on
-  broad design vocabulary ("design a page", "build a UI") — those route to
-  amw-design-principles. Clean-room reimplementation; no upstream sources copied.
+  Reskin an extracted design in a named graphic vocabulary (from the
+  amw-design-system-presets catalogue) OR rotate OKLCH hue around a new brand
+  primary while preserving chroma/lightness ramps. Activates on narrow remix triggers — "remix this in
+  <style>", "reskin in brutalist", "rotate hue to <new primary>", "convert
+  palette to OKLCH around <color>", "swap theme to swiss", "art-deco variant
+  of this site". Does NOT activate on broad design vocabulary ("design a
+  page", "build a UI") — those route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (clean-room)
 ---

@@ -1,18 +1,15 @@
 ---
 name: amw-liquid-glass
 description: >-
-  liquid-glass-js implementation skill — WebGL 2.0-powered Apple
-  visionOS-style frosted-glass UI (Container / Button classes with real-time
-  refraction, blur, rim lighting, warp distortion). Activates on narrow
-  triggers only: "liquid-glass-js", "liquid-glass library", "dashersw liquid
-  glass", "visionOS glass component", "glass refraction WebGL", "glass
-  container.js / button.js", "tintOpacity / blurRadius / edgeIntensity /
-  rimIntensity / warp" used together. Does NOT activate on generic
-  "glassmorphism", "frosted glass", "backdrop-filter blur", "transparent
-  card" — those route to amw-design-principles or amw-design-system-presets
-  (S-034 Liquid Glass preset). Companion to S-018 Understated Elegance and
-  S-034 Liquid Glass presets, which surface the AESTHETIC; this skill ships
-  the IMPLEMENTATION.
+  liquid-glass-js implementation skill — WebGL 2.0 Apple visionOS-style
+  frosted-glass UI (real-time refraction, blur, rim lighting, warp
+  distortion). Activates on narrow triggers only: "liquid-glass-js",
+  "liquid-glass library", "dashersw liquid glass", "visionOS glass
+  component", "glass refraction WebGL", "glass container.js / button.js",
+  "tintOpacity / blurRadius / edgeIntensity / rimIntensity / warp" used
+  together. Does NOT activate on generic "glassmorphism", "frosted glass",
+  "backdrop-filter blur", "transparent card" — those route to
+  amw-design-principles or the S-034 Liquid Glass preset.
 version: 0.1.0
 author: ai-maestro-webdesign (direct-port from liquid-glass-js, MIT, Arman Dashar 2024)
 ---

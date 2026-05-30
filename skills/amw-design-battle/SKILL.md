@@ -1,15 +1,14 @@
 ---
 name: amw-design-battle
 description: >-
-  Head-to-head two-site design comparison. Audits two artifacts on the same 8-dimension
-  rubric used by amw-design-grade (palette / typography / rhythm / hierarchy / motion /
-  accessibility / consistency / signature), then emits a battle card with per-dimension
-  bars, per-dimension winner, and an overall verdict. Outputs battle.html (visual card),
-  battle.md (markdown summary), and battle.json (machine-readable record). Activates on
-  narrow comparison triggers — "compare two sites' design", "design battle", "head to
-  head design audit", "which site has better design", "design comparison card". Does
-  NOT activate on broad design vocabulary ("design a page", "build a UI") — those route
-  to amw-design-principles. Clean-room reimplementation; no upstream sources copied.
+  Head-to-head two-site design comparison. Audits two artifacts on the same
+  8-dimension rubric as amw-design-grade, then emits a battle card with
+  per-dimension bars, per-dimension winner, and an overall verdict. Outputs
+  battle.html / battle.md / battle.json. Activates on narrow comparison
+  triggers — "compare two sites' design", "design battle", "head to head
+  design audit", "which site has better design", "design comparison card".
+  Does NOT activate on broad design vocabulary ("design a page", "build a
+  UI") — those route to amw-design-principles.
 version: 0.1.0
 author: ai-maestro-webdesign (clean-room)
 ---
