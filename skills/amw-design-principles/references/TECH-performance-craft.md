@@ -207,5 +207,5 @@ The 20% rule is a starting point; for some markets (e.g., mobile-first in develo
 - `agents/amw-motion-designer-agent.md` — motion choices have INP cost; reads this file to know the 200 ms INP budget caps complex interaction animations.
 - `agents/amw-brand-researcher-agent.md` — captures competitor median CWV during competitive research so the 20%-rule budget can be set.
 - `skills/amw-design-principles/SKILL.md` — performance is rule 0 in the implicit hierarchy: a beautiful page that fails CWV is not a deliverable.
-- `references/TECH-dial-configuration.md` — high MOTION_DRAMA and high INTERACTION_DEPTH push INP toward the cap; the dial config implicitly governs perf budget allocation.
-- `references/runtime-conventions.md` — bundling, code-splitting, and asset-pipeline conventions that make these caps achievable.
+- `TECH-dial-configuration.md` — high MOTION_DRAMA and high INTERACTION_DEPTH push INP toward the cap; the dial config implicitly governs perf budget allocation.
+- `runtime-conventions.md` — bundling, code-splitting, and asset-pipeline conventions that make these caps achievable.

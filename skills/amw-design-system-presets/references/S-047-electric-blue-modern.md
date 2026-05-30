@@ -129,4 +129,4 @@ Render: 1440x900 OK, 109278 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-017 Corporate Bold / Enterprise Solid (cooler navy + muted purple — corporate, not energetic), S-038 Dark Tech (dark canvas + electric blue accent — developer tools rather than consumer prosumer), S-023 Vibrant Friendly / Playful SaaS (multi-color rather than one-chromatic, playful rather than energetic-modern), S-049 Plumbing / Trades (deeper water-blue + service-trust framing, not high-energy)
 - Differentiators: S-047 is light-mode energetic-modern with one electric-blue primary calibrated for residential tech / smart-home / IoT; S-017 is dim-corporate B2B; S-038 is dark developer-tool; S-049 is service-utility trust-blue (lower chroma, different hue band)
-- Source: `blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #14)
+- Source: `reports/batch9-harvest/blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #14)

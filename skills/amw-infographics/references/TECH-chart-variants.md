@@ -136,4 +136,4 @@ The chart's job is to show the data. Every pixel of ink that does not represent 
 - `TECH-data-viz-templates.md` — reusable data-viz panel templates (this file is per-chart; that one is per-section)
 - `TECH-dashboard-archetypes.md` — chart density by dashboard archetype
 - `TECH-annotated-bar-chart.md` — annotation idioms
-- `../skills/amw-design-principles/ai-slop-avoid.md` — VI Color (saturation ceiling, palette discipline)
+- `skills/amw-design-principles/ai-slop-avoid.md` — VI Color (saturation ceiling, palette discipline)

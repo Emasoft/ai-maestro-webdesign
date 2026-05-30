@@ -241,5 +241,5 @@ The conversion is **lossy** in one direction (V2 → V1 drops some content into 
 - [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component tokens in V1
   > What it does · Hard rules · Property whitelist (per spec.md L312-L319) · Variant naming convention · Composite token references allowed inside `components.*` · Common component patterns · Button (primary/secondary/ghost) · Input · Card · Chip / Badge · Hover-state derivation strategies · Anti-patterns · Cross-references
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — emit companions from the converted V1
-  > What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
+  > What it does · The four companions · tokens.css — CSS custom properties · tokens.json — W3C Design Tokens format · component-inventory.md — human-readable component list · usage-prompt.md — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
 - `../../../bin/amw-design-md-convert-v2-to-v1.py`

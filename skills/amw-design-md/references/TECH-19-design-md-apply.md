@@ -225,8 +225,8 @@ warnings:
 
 - [TECH-05-token-references](./TECH-05-token-references.md) — the `{path}` alias syntax used in DESIGN.md component specs; apply resolves these eagerly before Pass 1
 - [TECH-06-do-donts](./TECH-06-do-donts.md) — what `## Do's and Don'ts` looks like; Pass 5 reads from this section
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — `amw-design-md-contrast.py` is re-used in Pass 4
-- [TECH-12-companion-files](./TECH-12-companion-files.md) — the `tokens.css` companion declares the `var()` names that apply rewrites literals to
+- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — `bin/amw-design-md-contrast.py` is re-used in Pass 4
+- [TECH-12-companion-files](./TECH-12-companion-files.md) — the tokens.css companion declares the `var()` names that apply rewrites literals to
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — the symmetric inverse: how DESIGN.md is read at the START of Phase B
 - [TECH-18-figma-input-path](./TECH-18-figma-input-path.md) — Figma → DESIGN.md (upstream); apply runs on the artifact built from the imported tokens
 - [TECH-20-design-library](./TECH-20-design-library.md) — cross-project DESIGN.md library; apply consumes the same DESIGN.md regardless of source

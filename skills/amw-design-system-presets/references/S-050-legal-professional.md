@@ -138,4 +138,4 @@ Render: 1440x900 OK, 109940 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-039 Warm Professional (warm-paper bg + muted navy — warmer and less judicial), S-017 Corporate Bold (light navy + purple — corporate-SaaS rather than legal-services), S-028 Art Deco / Geometric (dark + gold + cream — decorative-geometric rather than restrained-judicial), S-014 Editorial Serif (serif-everywhere editorial — long-form publication rather than professional services)
 - Differentiators: S-050 is light-mode conservative-authority with the traditional purple-blue + warm gold pair, calibrated for law / accounting / advisory; S-039 is warm-paper professional-services; S-017 is corporate B2B SaaS; S-028 is decorative-deco; S-014 is editorial publication
-- Source: `blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #26)
+- Source: `reports/batch9-harvest/blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #26)

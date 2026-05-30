@@ -180,13 +180,13 @@ The anti-reference board is as important as the reference board. Many designs fa
 
 ## Cross-references
 
-- `../agents/amw-brand-researcher-agent.md` — judgment-layer agent that runs this playbook
-- `color-system.md` — palette classification, WCAG contrast rules
-- `typography-system.md` — type pairing, font-stack rules
-- `spacing-rhythm.md` — spacing classification (tight / standard / airy)
-- `ai-slop-avoid.md` — anti-patterns to flag during scoring
+- `agents/amw-brand-researcher-agent.md` — judgment-layer agent that runs this playbook
+- `../color-system.md` — palette classification, WCAG contrast rules
+- `../typography-system.md` — type pairing, font-stack rules
+- `../spacing-rhythm.md` — spacing classification (tight / standard / airy)
+- `../ai-slop-avoid.md` — anti-patterns to flag during scoring
 - `authority-hierarchy.md` — brand-researcher's (non-veto) visual-direction authority
-- `../skills/amw-design-extract/SKILL.md` — token extraction skill
-- `../skills/amw-dev-browser/SKILL.md` — only browser primitive
-- `../skills/amw-design-md/SKILL.md` — DESIGN.md authoring / lint / contrast / convert
-- `../skills/amw-design-md/references/canonical-spec-google-alpha.md` — Variant 1 DESIGN.md schema
+- `skills/amw-design-extract/SKILL.md` — token extraction skill
+- `skills/amw-dev-browser/SKILL.md` — only browser primitive
+- `skills/amw-design-md/SKILL.md` — DESIGN.md authoring / lint / contrast / convert
+- `skills/amw-design-md/references/canonical-spec-google-alpha.md` — Variant 1 DESIGN.md schema

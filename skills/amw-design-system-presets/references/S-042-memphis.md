@@ -110,4 +110,4 @@ Render: 1440x900 OK, 116886 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - **Sibling styles:** S-041 Bauhaus (geometric-primary on white, disciplined), S-027 Maximalism (5+ colors, chaos aesthetic), S-024 Candy (hot pink/candy-purple, pill radius, bouncy)
-- **Source:** `atelier-main/examples/04-landing-memphis.html` (MIT, inferred); token block derived from embedded CSS in that example
+- **Source:** `reports_dev/batch9/extracted/atelier-main/examples/04-landing-memphis.html` (MIT, inferred); token block derived from embedded CSS in that example

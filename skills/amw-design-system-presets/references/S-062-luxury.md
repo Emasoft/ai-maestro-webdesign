@@ -131,7 +131,7 @@ Render: 1440x900 OK, 51137 B, render-determinism JOD 10.00 (source is a token sp
 - **SKILL:** [../SKILL.md](../SKILL.md) — preset skill orchestrator
 - **Catalogue:** [./catalogue.md](./catalogue.md) — routing index
 - **Skeleton:** [./_test-skeleton.html](./_test-skeleton.html) — render-test skeleton
-- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Luxury (Stitch Preset); `design-forge-main/references/discovery-framework.md`. License MIT (inferred from source repo).
+- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Luxury (Stitch Preset); `reports_dev/batch9/extracted/design-forge-main/references/discovery-framework.md`. License MIT (inferred from source repo).
 
 ## Attribution
 

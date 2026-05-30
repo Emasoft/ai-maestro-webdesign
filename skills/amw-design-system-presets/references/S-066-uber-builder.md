@@ -145,4 +145,4 @@ Render: 1440x900 OK, 84477 B, render-determinism JOD 10.00 (source is a token sp
 
 - **Sibling styles:** S-001 Swiss (Inter-only, electric blue, ultra-strict grid), S-017 Corporate Bold (high-density product UI with warmer palette), S-029 Data Viz Dark (chart-first dashboard), S-044 Dashboard Magazine (FT-style data with cream paper)
 - **Differentiators:** S-066 is product-system (operational console), not marketing-clean (S-001) nor data-as-decoration (S-029); the Space Grotesk display / Inter body split is structural and distinguishes it from S-001's Inter-only stack
-- **Source:** styles-A.md "Stitch Uber Design System Preset — The Builder" (`design-forge-main/references/discovery-framework.md`, MIT inferred)
+- **Source:** styles-A.md "Stitch Uber Design System Preset — The Builder" (`reports_dev/batch9/extracted/design-forge-main/references/discovery-framework.md`, MIT inferred)

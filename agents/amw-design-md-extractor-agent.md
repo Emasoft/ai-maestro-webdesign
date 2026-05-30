@@ -619,4 +619,4 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - `../bin/amw-design-md-emit-companions.py` — companion file generator
 - `../bin/amw-design-md-lint.sh` — lint gate
 - `../bin/amw-design-md-contrast.py` — WCAG contrast checker
-- `../bin/amw-self-review-screenshot.sh` — invoked indirectly via `bin/amw-design-md-from-url.sh --screenshot` to capture the T-085 load-verified PNG
+- `../bin/amw-self-review-screenshot.sh` — invoked indirectly via bin/amw-design-md-from-url.sh --screenshot to capture the T-085 load-verified PNG

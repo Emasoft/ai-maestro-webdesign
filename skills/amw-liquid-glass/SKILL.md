@@ -170,8 +170,8 @@ Skills that produce pages using this library MUST run this checklist before deli
 ## Cross-references
 
 - **Aesthetic presets that USE this skill:**
-  - [`amw-design-system-presets/references/S-018-understated-elegance.md`](../amw-design-system-presets/references/S-018-understated-elegance.md) — soft / light variant.
-  - [`amw-design-system-presets/references/S-034-liquid-glass.md`](../amw-design-system-presets/references/S-034-liquid-glass.md) — full visionOS variant.
+  - [`skills/amw-design-system-presets/references/S-018-understated-elegance.md`](../amw-design-system-presets/references/S-018-understated-elegance.md) — soft / light variant.
+  - [`skills/amw-design-system-presets/references/S-034-liquid-glass.md`](../amw-design-system-presets/references/S-034-liquid-glass.md) — full visionOS variant.
 - **Sibling aesthetic skills:**
-  - [`amw-evangelion-design/SKILL.md`](../amw-evangelion-design/SKILL.md) — the polar-opposite aesthetic (severe geometry, no glass, restrained color).
-- **Orchestrator:** [`amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
+  - [`skills/amw-evangelion-design/SKILL.md`](../amw-evangelion-design/SKILL.md) — the polar-opposite aesthetic (severe geometry, no glass, restrained color).
+- **Orchestrator:** [`skills/amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).

@@ -118,7 +118,7 @@ Render: 1440x900 OK, 104883 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-004 Glassmorphism (also surface-depth-first, but translucent vs. opaque), S-005 Neumorphism (monochromatic extrusion instead of material texture), S-007 Claymorphism (pastel inflated 3D, not realistic material)
-- Source: `design-system-is-all-you-need-main/skeuomorphism.md` (full parametric token system + realism levels). `styles-B "Skeuomorphism"` section in `reports/batch9-harvest/styles-B.md`.
+- Source: `reports_dev/batch9/extracted/design-system-is-all-you-need-main/design-system-is-all-you-need/references/skeuomorphism.md` (full parametric token system + realism levels). `styles-B "Skeuomorphism"` section in `reports/batch9-harvest/styles-B.md`.
 
 ## Attribution
 

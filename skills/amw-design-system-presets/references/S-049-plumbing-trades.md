@@ -138,4 +138,4 @@ Render: 1440x900 OK, 102445 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-047 Electric Blue Modern (higher-chroma electric blue, residential-tech rather than service-trades), S-048 Healthcare / Medical (lower-chroma teal, clinical-calm rather than service-utility), S-046 Industrial / Trust Authority (dark-mode B2B rather than light-mode local-services), S-017 Corporate Bold (corporate B2B SaaS rather than local-services)
 - Differentiators: S-049 is light-mode water-blue with a deliberate warm CTA contrast pair calibrated for phone-call conversion in residential service trades; S-047 is energetic-prosumer; S-048 is clinical-calm; S-046 is dark-mode B2B industrial; S-017 is corporate SaaS
-- Source: `blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #16)
+- Source: `reports/batch9-harvest/blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #16)

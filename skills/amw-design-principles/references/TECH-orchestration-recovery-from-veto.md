@@ -269,10 +269,10 @@ The entries are structured; format examples appear in the relevant subsections a
 
 ## Cross-references
 
-- `references/authority-hierarchy.md` — defines veto power and the veto-holder list.
-- `references/TECH-orchestration-checkpoint-protocol.md` — Trigger 1 is the entry point into this protocol.
-- `references/TECH-orchestration-conflict-resolution.md` — vetoes are the top of the conflict tiebreak hierarchy.
-- `references/TECH-orchestration-parallel-dispatch.md` — veto-holders are dispatched in priority waves to surface their blocking_issues early.
-- `references/agent-interaction-patterns.md` — failure propagation rules for non-veto failures.
-- `references/sub-agent-return-contract.md` — the `blocking_issues` and `next_action` fields that signal a veto.
+- `authority-hierarchy.md` — defines veto power and the veto-holder list.
+- `TECH-orchestration-checkpoint-protocol.md` — Trigger 1 is the entry point into this protocol.
+- `TECH-orchestration-conflict-resolution.md` — vetoes are the top of the conflict tiebreak hierarchy.
+- `TECH-orchestration-parallel-dispatch.md` — veto-holders are dispatched in priority waves to surface their blocking_issues early.
+- `agent-interaction-patterns.md` — failure propagation rules for non-veto failures.
+- `sub-agent-return-contract.md` — the `blocking_issues` and `next_action` fields that signal a veto.
 - `agents/ai-maestro-webdesign-main-agent.md` §15 Orchestration Doctrine — the binding consumer of this recovery protocol.

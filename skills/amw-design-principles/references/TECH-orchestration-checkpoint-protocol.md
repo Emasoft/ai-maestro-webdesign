@@ -270,11 +270,11 @@ The structured form lets the user trace the build's mid-flight pivots after the 
 
 ## Cross-references
 
-- `references/two-mode-workflow.md` — Phase A satisfaction gate (the sibling protocol that ends Phase A).
-- `references/sub-agent-return-contract.md` — the `status` / `blocking_issues` / `next_action` fields that drive the trigger conditions.
-- `references/authority-hierarchy.md` — the veto-holder list (the source for Trigger 1).
-- `references/agent-interaction-patterns.md` — error propagation rules (what main-agent does after Trigger 2 or 4 returns).
-- `references/TECH-orchestration-conflict-resolution.md` — sibling doc on how conflicts between sub-agents are resolved (orthogonal to checkpoints, but Trigger 1 commonly follows a conflict).
-- `references/TECH-orchestration-parallel-dispatch.md` — sibling doc on how parallel batches feed into checkpoint evaluation.
-- `references/TECH-orchestration-recovery-from-veto.md` — sibling doc on the recovery options after a Trigger 1 checkpoint.
+- `two-mode-workflow.md` — Phase A satisfaction gate (the sibling protocol that ends Phase A).
+- `sub-agent-return-contract.md` — the `status` / `blocking_issues` / `next_action` fields that drive the trigger conditions.
+- `authority-hierarchy.md` — the veto-holder list (the source for Trigger 1).
+- `agent-interaction-patterns.md` — error propagation rules (what main-agent does after Trigger 2 or 4 returns).
+- `TECH-orchestration-conflict-resolution.md` — sibling doc on how conflicts between sub-agents are resolved (orthogonal to checkpoints, but Trigger 1 commonly follows a conflict).
+- `TECH-orchestration-parallel-dispatch.md` — sibling doc on how parallel batches feed into checkpoint evaluation.
+- `TECH-orchestration-recovery-from-veto.md` — sibling doc on the recovery options after a Trigger 1 checkpoint.
 - `agents/ai-maestro-webdesign-main-agent.md` §15 Orchestration Doctrine — the binding consumer of this checkpoint protocol.

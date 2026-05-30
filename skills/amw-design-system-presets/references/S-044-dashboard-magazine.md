@@ -115,4 +115,4 @@ Render: 1440x900 OK, 112425 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - **Sibling styles:** S-014 Editorial Serif (Playfair+Lora, deep-red accent, 720px column), S-037 Cream Editorial (Cormorant Garamond, 0px radius, serif-everywhere), S-039 Warm Professional (Source Serif 4, moderate radius)
-- **Source:** `atelier-main/examples/05-dashboard-magazine.html` (MIT, inferred); `atelier-main/SKILL.md` tone B1 #7 "Editorial / Magazine"; `reports/batch9-harvest/styles-A.md` Dashboard Magazine entry
+- **Source:** `reports_dev/batch9/extracted/atelier-main/examples/05-dashboard-magazine.html` (MIT, inferred); `reports_dev/batch9/extracted/atelier-main/SKILL.md` tone B1 #7 "Editorial / Magazine"; `reports/batch9-harvest/styles-A.md` Dashboard Magazine entry

@@ -255,6 +255,6 @@ Exit codes:
 - `TECH-01-yaml-frontmatter.md` — the source format for DESIGN.md.
 - `TECH-04-component-tokens.md` — components-section structure.
 - `TECH-05-token-references.md` — the `{path}` alias syntax and resolution rules.
-- `TECH-12-companion-files.md` — the four-companion emitter (`amw-design-md-emit-companions.py`).
+- `TECH-12-companion-files.md` — the four-companion emitter (`bin/amw-design-md-emit-companions.py`).
 - `TECH-15-design-md-as-input.md` — how downstream tools consume DESIGN.md and its derivatives.
 - DTCG Format Module: <https://design-tokens.github.io/community-group/format/>

@@ -167,7 +167,7 @@ The artifact-level log lets a future session (or a code-review pass) understand 
 
 ## Cross-references
 
-- `references/three-hard-rules.md` — the foundational MUST rules.
-- `references/authority-hierarchy.md` — sub-agent veto power (which overrides are refusable).
-- `references/TECH-pushback-protocol.md` — sister doc covering the "I'd recommend X over Y, but..." advisory pattern.
-- `references/sub-agent-return-contract.md` — the YAML header field `requires_override`.
+- `three-hard-rules.md` — the foundational MUST rules.
+- `authority-hierarchy.md` — sub-agent veto power (which overrides are refusable).
+- `TECH-pushback-protocol.md` — sister doc covering the "I'd recommend X over Y, but..." advisory pattern.
+- `sub-agent-return-contract.md` — the YAML header field `requires_override`.

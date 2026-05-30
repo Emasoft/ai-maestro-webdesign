@@ -113,4 +113,4 @@ Render: 1440x900 OK, 105040 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - **Sibling styles:** S-036 Cinematic Dark (film color-grade, large serif, fullscreen hero), S-016 Luxury Dark Warm (gold on near-black, Cinzel+Montserrat), S-015 Fashion Luxury (Didot/Bodoni, museum-frame gallery)
-- **Source:** `atelier-main/examples/01-resume-zutomayo.html` (MIT, inferred); token block derived from embedded CSS and the harvest entry in `reports/batch9-harvest/styles-A.md`
+- **Source:** `reports_dev/batch9/extracted/atelier-main/examples/01-resume-zutomayo.html` (MIT, inferred); token block derived from embedded CSS and the harvest entry in `reports/batch9-harvest/styles-A.md`

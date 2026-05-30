@@ -287,4 +287,4 @@ When the story is regional, prefer a small symbol map or a ranked horizontal bar
 - `TECH-chart-variants.md` — choose the chart type before picking a template
 - `TECH-dashboard-archetypes.md` — pick the dashboard archetype before composing templates
 - `TECH-annotated-bar-chart.md`, `TECH-bar-chart-css.md` — sibling per-chart templates
-- `../skills/amw-design-principles/starter-components/` — page chrome that wraps these panels
+- `skills/amw-design-principles/starter-components/` — page chrome that wraps these panels

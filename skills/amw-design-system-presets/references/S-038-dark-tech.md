@@ -119,4 +119,4 @@ Render: 1440x900 OK, 81632 B, render-determinism JOD 10.00 (source is a token sp
 
 - Siblings: S-012 Retro Terminal (scanlines + green-on-black retro), S-032 Retro Device (vintage hardware chrome), S-033 Win98 (95/98 UI nostalgia), S-029 Data Viz Dark (chart-first data canvas)
 - Differentiators: S-038 is contemporary dark developer with NO retro elements; S-012 is deliberately CRT/terminal retro; S-032 emulates physical hardware; S-033 is Win9x nostalgia; S-029 is data-primary not dev-tool
-- Source: `blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)
+- Source: `reports/batch9-harvest/blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)

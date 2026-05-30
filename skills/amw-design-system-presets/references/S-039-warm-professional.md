@@ -117,4 +117,4 @@ Render: 1440x900 OK, 112703 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-017 Corporate Bold (cooler, bolder, blue-dominant), S-018 Understated Elegance (minimal, colder), S-037 Cream Editorial (serif-everywhere, 0px radius), S-020 Organic (earth-tones, rounded, nature-focused)
 - Differentiators: S-039 is warm + human + moderate-radius with a serif/sans pairing; S-017 is corporate-cold dominant blue; S-018 is cooler minimal; S-037 uses a single serif font everywhere at 0px radius; S-020 is earthy/organic not professional-services
-- Source: `blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)
+- Source: `reports/batch9-harvest/blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)

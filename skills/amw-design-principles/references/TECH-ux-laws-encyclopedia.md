@@ -1064,13 +1064,13 @@ A design team estimates 2 weeks to redesign the settings page. Hofstadter-aware:
 
 ## Cross-references
 
-- `design-heuristics.md` — atomic-audit version of Gestalt, Fitts, Hick (subset of this encyclopedia).
+- `../design-heuristics.md` — atomic-audit version of Gestalt, Fitts, Hick (subset of this encyclopedia).
 - `TECH-ux-laws-quick-reference-table.md` — one-page lookup table for the most-used laws.
 - `TECH-microcopy-patterns.md` — application of Information Foraging, Affordance, Signifier in copy.
 - `TECH-form-validation-patterns.md` — Constraints, Feedback Loop, Postel's Law in form UX.
 - `TECH-form-multi-step.md` — Goal-Gradient, Zeigarnik Effect, Serial Position in wizards.
 - `TECH-motion-budgets.md` — Doherty Threshold, Common Fate in animation timing.
-- `spacing-rhythm.md`, `typography-system.md`, `color-system.md` — token systems that implement Gestalt and figure-ground.
-- `ai-slop-avoid.md` — many AI-slop patterns are violations of these laws (Banner Blindness, Von Restorff dilution, weak information scent).
+- `../spacing-rhythm.md`, `../typography-system.md`, `../color-system.md` — token systems that implement Gestalt and figure-ground.
+- `../ai-slop-avoid.md` — many AI-slop patterns are violations of these laws (Banner Blindness, Von Restorff dilution, weak information scent).
 
 **End of encyclopedia.** Cross-link from any TECH-*.md or SKILL.md when a UX decision requires citing the underlying law.

@@ -189,11 +189,11 @@ Apply on top of a raster (photo / illustration / screenshot) to convert it into 
 
 ## Cross-references
 
-- **Orchestrator:** [`amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
+- **Orchestrator:** [amw-design-principles](../amw-design-principles/SKILL.md).
 - **Aesthetic presets that select among these backgrounds:**
-  [`amw-design-system-presets/SKILL.md`](../amw-design-system-presets/SKILL.md).
+  [amw-design-system-presets](../amw-design-system-presets/SKILL.md).
 - **Glass component skill (for spatial-UI use cases):**
-  [`amw-liquid-glass/SKILL.md`](../amw-liquid-glass/SKILL.md).
+  [amw-liquid-glass](../amw-liquid-glass/SKILL.md).
 - **Image-overlay implementation primitives (when ready to ship):** the
-  [`amw-hypercomp/SKILL.md`](../amw-hypercomp/SKILL.md) skill ships a TS / SVG-filter compiler for image effects; it is the recommended runtime for the 17 overlays catalogued here.
+  [amw-hypercomp](../amw-hypercomp/SKILL.md) skill ships a TS / SVG-filter compiler for image effects; it is the recommended runtime for the 17 overlays catalogued here.
 - **Shader-type-specific deep dive:** see `references/TECH-shader-types.md`.

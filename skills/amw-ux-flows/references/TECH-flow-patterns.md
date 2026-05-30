@@ -339,5 +339,5 @@ These apply to every flow above:
 - `TECH-mermaid-flowchart-screen-map.md` — diagramming flows as Mermaid screen-maps
 - `TECH-split-large-flows-subflow-linking.md` — when a flow is too big for one diagram
 - `TECH-wireframe-html-mobile-first.md` — wireframing the screens in each pattern
-- `../skills/amw-design-principles/ai-slop-avoid.md` — V Interaction and motion (form transitions, validation patterns)
-- `../skills/amw-infographics/references/TECH-data-viz-templates.md` — `Template 4` conversion funnel visualizes drop-off in these patterns
+- `../../amw-design-principles/ai-slop-avoid.md` — V Interaction and motion (form transitions, validation patterns)
+- `../../amw-infographics/references/TECH-data-viz-templates.md` — `Template 4` conversion funnel visualizes drop-off in these patterns

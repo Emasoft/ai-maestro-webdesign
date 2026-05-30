@@ -146,7 +146,7 @@ Render: 1440x900 OK, 122011 B, render-determinism JOD 10.00 (source is a token s
 
 - **Sibling Bexa single-hue presets:** S-054 Cobalt (`hsl(221 70% 52%)` — technical SaaS blue), S-056 Ember (`hsl(22 90% 50%)` — energy/CTA orange), S-057 Plum (`hsl(276 60% 50%)` — creative/ML purple), S-058 Rose Smoke (`hsl(348 62% 46%)` — fashion/beauty rose), S-059 Sable (`hsl(220 12% 22%)` — luxury editorial dark-first) — same single-hue contract, different industry targeting
 - **Adjacent green presets:** S-052 Real Estate / Stable Growth (oklch deep emerald `oklch(0.45 0.15 145)` — darker, narrower industry targeting, paper-warm surface); S-048 Healthcare/Medical (oklch teal `oklch(0.55 0.13 195)` — adjacent hue zone but cooler, medical context)
-- **Source attribution:** `Bexa-professional-frontend-design-skills-for-ai-agents-main/skills/bexa/SKILL.md` (MIT, Bexa contributors); `reports/batch9-harvest/styles-A.md` §Verdant (Bexa Accent); `reports/batch9-analysis/MASTER-LEDGER.md` row S-055
+- **Source attribution:** `reports_dev/batch9/extracted/Bexa-professional-frontend-design-skills-for-ai-agents-main/skills/bexa/SKILL.md` (MIT, Bexa contributors); `reports/batch9-harvest/styles-A.md` §Verdant (Bexa Accent); `reports/batch9-analysis/MASTER-LEDGER.md` row S-055
 
 ## Attribution
 

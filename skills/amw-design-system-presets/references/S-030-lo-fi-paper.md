@@ -130,7 +130,7 @@ Render: 1440x900 OK, 105488 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-031 Paper Collage (handcraft + torn edges + polaroid, more three-dimensional materiality), S-002 Brutalism (also system fonts + 0 radius + hard shadow, but structured grid and no rotation/misregistration), S-019 Heritage / Warm Editorial (warm cream/sand but smooth motion + organic oval masks), S-014 Editorial Serif (serif-first but precision layout and no rotation)
-- Source: `frontend-design-main/SKILL.md` Anchor 8 (MIT); `reports/batch9-harvest/styles-B.md` "Lo-Fi / Paper / Zine" token block.
+- Source: `reports_dev/batch9/extracted/frontend-design-main/SKILL.md` Anchor 8 (MIT); `reports/batch9-harvest/styles-B.md` "Lo-Fi / Paper / Zine" token block.
 
 ## Attribution
 

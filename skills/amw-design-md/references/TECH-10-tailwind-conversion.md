@@ -223,5 +223,5 @@ If the project has shadcn's standard pairs (`primary` + `primary-foreground`, et
 - [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — heuristic regex-based codebase extraction (fallback when jiti not available)
   > What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — emit `<tokens.css>` from the resulting DESIGN.md
-  > What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
+  > What it does · The four companions · tokens.css — CSS custom properties · tokens.json — W3C Design Tokens format · component-inventory.md — human-readable component list · usage-prompt.md — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
 - `../../../bin/amw-design-md-from-tailwind.mjs` — the bin script

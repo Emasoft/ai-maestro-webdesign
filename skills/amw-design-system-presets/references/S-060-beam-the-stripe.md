@@ -130,4 +130,4 @@ Render: 1440x900 OK, 111147 B, render-determinism JOD 10.00 (source is a token s
 
 - **Sibling Stitch presets:** S-061 Kinetic (Cabinet Grotesk + Satoshi, motion-driven), S-062 Luxury "The Luxury" (Cormorant + Tenor Sans, dark + gold)
 - **Adjacent styles:** S-017 Corporate Bold (deep-navy SaaS cousin), S-051 Stitch "The Builder" (Space Grotesk + Inter, technical sibling)
-- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Beam (Stitch Preset) — "The Stripe"; upstream `design-forge-main/references/discovery-framework.md` (MIT inferred)
+- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Beam (Stitch Preset) — "The Stripe"; upstream `reports_dev/batch9/extracted/design-forge-main/references/discovery-framework.md` (MIT inferred)

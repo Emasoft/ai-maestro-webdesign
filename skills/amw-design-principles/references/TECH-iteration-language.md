@@ -123,8 +123,8 @@ This is cheaper than blending (which usually fails) and gives the user the actua
 
 - `agents/ai-maestro-webdesign-main-agent.md` — runs the Phase A iteration loop; reads this file to translate vague feedback before iterating.
 - `skills/amw-ascii-sketch/SKILL.md` — Phase A iteration tooling; each iteration round expects already-translated input from the orchestrator.
-- `references/TECH-dial-configuration.md` — many translations adjust dials (MOTION_DRAMA, VISUAL_COMPLEXITY, etc.) rather than freeform edits; iteration becomes a dial-change in those cases.
-- `references/TECH-landing-anatomy.md` — Hero copy formula and banned CTA list are referenced from several translations.
+- `TECH-dial-configuration.md` — many translations adjust dials (MOTION_DRAMA, VISUAL_COMPLEXITY, etc.) rather than freeform edits; iteration becomes a dial-change in those cases.
+- `TECH-landing-anatomy.md` — Hero copy formula and banned CTA list are referenced from several translations.
 - `skills/amw-design-principles/ai-slop-avoid.md` — "looks AI-generated" translation audits against this file.
-- `references/component-taste.md` — "more polished" translation includes audits this file's per-component standards.
-- `references/iteration-budget.md` — caps total iteration rounds per Phase A; translation reduces rounds-per-feedback to ~1.
+- `component-taste.md` — "more polished" translation includes audits this file's per-component standards.
+- `iteration-budget.md` — caps total iteration rounds per Phase A; translation reduces rounds-per-feedback to ~1.

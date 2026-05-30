@@ -323,7 +323,7 @@ no asset download is attempted.
 - [TECH-07-url-extraction](TECH-07-url-extraction.md) — URL → DESIGN.md
   pipeline (icon discovery is the SVG-traversal pass of the same extraction)
 - [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) — codebase
-  scan that discovers `assets/`, `public/`, and inline SVGs
+  scan that discovers assets/, public/, and inline SVGs
 - [SKILL](../../amw-dev-browser/SKILL.md) — browser primitive used by URL
   asset discovery
 - [SKILL](../../amw-svg-creator/SKILL.md) — downstream consumer for icon

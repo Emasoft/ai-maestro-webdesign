@@ -158,7 +158,7 @@ Render: 1440x900 OK, 79450 B, render-determinism JOD 10.00 (source is a token sp
 - **SKILL:** [../SKILL.md](../SKILL.md) — preset skill orchestrator
 - **Catalogue:** [./catalogue.md](./catalogue.md) — routing index
 - **Skeleton:** [./_test-skeleton.html](./_test-skeleton.html) — render-test skeleton
-- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Newsprint / Warm Editorial (Stitch Preset); `design-forge-main/references/discovery-framework.md`; `atelier-main/examples/05-dashboard-magazine.html`. License MIT (inferred from source repos).
+- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Newsprint / Warm Editorial (Stitch Preset); `reports_dev/batch9/extracted/design-forge-main/references/discovery-framework.md`; `reports_dev/batch9/extracted/atelier-main/examples/05-dashboard-magazine.html`. License MIT (inferred from source repos).
 
 ## Attribution
 

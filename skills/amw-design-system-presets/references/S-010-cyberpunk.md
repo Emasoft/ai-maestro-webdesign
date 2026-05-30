@@ -139,7 +139,7 @@ Render: 1440x900 OK, 110491 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-009 Aurora (atmospheric gradient vs. neon point-sources), S-010b Neon (2-color glow subset, no scanlines/angular), S-011 Synthwave (CRT aesthetic with warm retro palette vs. cold cyberpunk neon)
-- Source: `blocked-A.md` section 16 "Dark Neo-Noir/Cyberpunk"; `styles-B.md` "Neon / Glow UI"; `blocked-B.md` "Cyberpunk seed" — all in `reports/batch9-harvest/`.
+- Source: `reports/batch9-harvest/blocked-A.md` section 16 "Dark Neo-Noir/Cyberpunk"; `reports/batch9-harvest/styles-B.md` "Neon / Glow UI"; `reports/batch9-harvest/blocked-B.md` "Cyberpunk seed".
 
 ## Attribution
 

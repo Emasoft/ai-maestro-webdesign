@@ -136,4 +136,4 @@ Render: 1440x900 OK, 105025 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-047 Electric Blue Modern (higher chroma, energetic prosumer rather than clinical-calm), S-049 Plumbing / Trades (deeper service-blue, trust-utility rather than clinical), S-051 Beauty / Spa (warm wellness rather than cool clinical), S-039 Warm Professional (warm-paper professional-services, not healthcare-specific)
 - Differentiators: S-048 is light-mode cool-clinical-teal calibrated for calm-trust patient-facing healthcare; S-047 is energetic-residential-tech; S-049 is utility-blue for service businesses; S-051 is warm wellness-spa; S-039 is warm professional-services
-- Source: `blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #15)
+- Source: `reports/batch9-harvest/blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #15)

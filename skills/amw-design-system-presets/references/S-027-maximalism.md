@@ -150,7 +150,7 @@ Render: 1440x900 OK, 110702 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-025 Playful Toy-Like (high-chroma but controlled grid, single typeface), S-024 Candy (controlled chaos with pill radius + bouncy physics), S-028 Art Deco (structured opulent, NOT chaotic), S-042 Memphis (maximalist but with a grid and consistent border convention)
-- Source: `frontend-design-main/SKILL.md` Anchor 5 (MIT); `atelier-main/SKILL.md` tone B1 #2 (MIT); `blocked-A.md` #17 token block.
+- Source: `reports_dev/batch9/extracted/frontend-design-main/SKILL.md` Anchor 5 (MIT); `reports_dev/batch9/extracted/atelier-main/SKILL.md` tone B1 #2 (MIT); `reports/batch9-harvest/blocked-A.md` #17 token block.
 
 ## Attribution
 

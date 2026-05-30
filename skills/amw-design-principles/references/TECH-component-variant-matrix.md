@@ -584,8 +584,8 @@ Three densities × three elevations = nine combinations, all valid, all derived 
 - DESIGN.md authoring + lint: `skills/amw-design-md/SKILL.md` + `bin/amw-design-md-lint.sh`.
 - DESIGN.md → tokens emission: `bin/amw-design-md-emit-companions.py`.
 - WCAG contrast verification: `bin/amw-design-md-contrast.py`.
-- Color token doctrine: `amw-design-principles/color-system.md`.
-- Spacing scale + hit-target floor: `amw-design-principles/spacing-rhythm.md`.
-- Typography scale: `amw-design-principles/typography-system.md`.
+- Color token doctrine: `skills/amw-design-principles/color-system.md`.
+- Spacing scale + hit-target floor: `skills/amw-design-principles/spacing-rhythm.md`.
+- Typography scale: `skills/amw-design-principles/typography-system.md`.
 - Microinteractions consumed by component variants: `TECH-microinteractions-catalog.md`.
-- Component reuse manifest: lives in `.planning/used-components.json` per-project.
+- Component reuse manifest: lives in .planning/used-components.json per-project.

@@ -136,7 +136,7 @@ Render: 1440x900 OK, 139020 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-010 Cyberpunk (neon-hard-cyber vs. atmospheric-gradient-soft), S-010b Neon (2-color glow vs. 3-color aurora gradient), S-035 21st.dev/Aceternity (bento/shimmer vs. full-bleed gradient brand)
-- Source: `blocked-A.md` section 12; `styles-B.md` "Aurora Maximalism"; `frontend-design-main/SKILL.md` Anchor 4.
+- Source: `reports/batch9-harvest/blocked-A.md` section 12; `reports/batch9-harvest/styles-B.md` "Aurora Maximalism"; `reports_dev/batch9/extracted/frontend-design-main/SKILL.md` Anchor 4.
 
 ## Attribution
 

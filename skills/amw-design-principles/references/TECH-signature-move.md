@@ -189,10 +189,10 @@ The orchestrator then asks: "Are we copying this signature, inverting it, or fin
 
 ## Cross-references
 
-- `references/three-hard-rules.md` — the variant rule (q6 proposes 3, user picks 1).
-- `references/component-taste.md` — taste catalog that informs each of the 6 questions.
-- `references/TECH-named-color-shadow-techniques.md` — the technical foundation for PALETTE and TYPE answers.
-- `references/TECH-motion-taxonomy.md` and `TECH-motion-density.md` — the MOTION q5 references.
+- `three-hard-rules.md` — the variant rule (q6 proposes 3, user picks 1).
+- `component-taste.md` — taste catalog that informs each of the 6 questions.
+- `TECH-named-color-shadow-techniques.md` — the technical foundation for PALETTE and TYPE answers.
+- `TECH-motion-taxonomy.md` and `TECH-motion-density.md` — the MOTION q5 references.
 - `agents/amw-design-md-author-agent.md` — the agent that surfaces the 6 answers as DESIGN.md sections.
 - `agents/amw-brand-researcher-agent.md` — the agent that surfaces competitor signatures for the SIGNATURE q6 input.
 - `agents/amw-component-library-architect-agent.md` — uses q2-q5 to drive token authoring.

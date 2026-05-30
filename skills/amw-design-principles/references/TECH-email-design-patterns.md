@@ -347,9 +347,9 @@ MJML compiles this to ~400 lines of nested-table HTML with the Outlook condition
 
 ## Cross-references
 
-- Color contrast (light + dark): `amw-design-principles/color-system.md` § II — WCAG AA on both background variants.
+- Color contrast (light + dark): `skills/amw-design-principles/color-system.md` § II — WCAG AA on both background variants.
 - Form-error patterns in email contexts (e.g., feedback email with reply CTA): `TECH-form-error-recovery.md` — applies only to the destination web page, not the email itself (email has no JS).
 - Microinteractions in email: NONE — email has no JS and animations are unreliable across clients. The `TECH-microinteractions-catalog.md` set is web-only.
-- AI-slop email rules: `amw-design-principles/ai-slop-avoid.md` § IV (content and copy) — avoid corporate marketing-speak; § V (interaction and motion) — no animated GIF except where genuinely informative.
+- AI-slop email rules: `skills/amw-design-principles/ai-slop-avoid.md` § IV (content and copy) — avoid corporate marketing-speak; § V (interaction and motion) — no animated GIF except where genuinely informative.
 - MJML compile path: `bin/amw-mjml-render.sh`.
 - The agent's full conflict resolution patterns: `agents/amw-email-designer-agent.md` § 11.

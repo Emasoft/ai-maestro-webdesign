@@ -119,4 +119,4 @@ Render: 1440x900 OK, 116361 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-009 Aurora (gradient-heavy dark), S-010 Cyberpunk (neon-glow dark), S-016 Luxury Dark Warm (gold accent dark)
 - Differentiators: S-036 is film-grade warm-shadow dark with serif titles and slow transitions; S-009 has gradient brand colour; S-010 has neon glow + all-caps + 0px radius; S-016 uses gold not violet
-- Source: `styles-B.md` "Cinematic Dark" + `styles-A.md` "Cinematic / Product Dark" (atelier MIT)
+- Source: `reports/batch9-harvest/styles-B.md` "Cinematic Dark" + `reports/batch9-harvest/styles-A.md` "Cinematic / Product Dark" (atelier MIT)

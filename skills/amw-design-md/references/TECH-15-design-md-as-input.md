@@ -228,7 +228,7 @@ In all 6 cases, the wireframe-builder's `brand_tokens` input contract is the sam
 
 - [amw-wireframe-builder-agent](../../../agents/amw-wireframe-builder-agent.md) — the agent that consumes
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — alternative consumption via tokens.css
-  > What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
+  > What it does · The four companions · tokens.css — CSS custom properties · tokens.json — W3C Design Tokens format · component-inventory.md — human-readable component list · usage-prompt.md — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — the lint gate
   > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
 - [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 input handling

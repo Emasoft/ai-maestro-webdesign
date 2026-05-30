@@ -109,4 +109,4 @@ Render: 1440x900 OK, 106173 B, render-determinism JOD 10.00 (source is a token s
 - S-019 Heritage / Warm Editorial — close sibling; Heritage uses cream/sand/tan backgrounds and script accents; Understated Elegance uses sage as primary; use S-019 when warmth must feel antique, S-018 when warmth must feel contemporary
 - S-016 Luxury Dark Warm — tonal sibling (both premium, both warm); differs in dark background and gold palette vs light surface and sage palette
 - S-039 Warm Professional — adjacent in warm territory but more utilitarian (Source Serif + Source Sans, moderate radius); S-018 is more editorial
-- Source: `frontend-design-engineer-skill-main/.../visual-directions.md` (#5 Understated Elegance); `swiftui-design-skill-main/SKILL.md` (Warm Minimal school)
+- Source: `reports_dev/batch9/extracted/frontend-design-engineer-skill-main/frontend-design-engineer/references/visual-directions.md` (#5 Understated Elegance); `reports_dev/batch9/extracted/swiftui-design-skill-main/SKILL.md` (Warm Minimal school)

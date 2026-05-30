@@ -122,7 +122,7 @@ Render: 1440x900 OK, 103420 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-016 Luxury Dark Warm (gold on near-black but with soft 2px radius and subtle shadow — warmer, less geometric), S-015 Fashion Luxury Editorial (museum-frame gallery, Didot/Bodoni, near-white bg), S-001 Swiss (strict geometry but monochrome, no gold), S-041 Bauhaus (geometric shapes but primary palette, no gold)
-- Source: `atelier-main/SKILL.md` tone B1 #9 (MIT); `reports/batch9-harvest/styles-A.md` "Art Deco / Geometric"; `reports/batch9-harvest/styles-B.md` "Art Deco".
+- Source: `reports_dev/batch9/extracted/atelier-main/SKILL.md` tone B1 #9 (MIT); `reports/batch9-harvest/styles-A.md` "Art Deco / Geometric"; `reports/batch9-harvest/styles-B.md` "Art Deco".
 
 ## Attribution
 

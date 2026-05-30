@@ -144,6 +144,6 @@ The following surface-treatment patterns are forbidden — every one violates ei
 - `skills/amw-design-principles/ai-slop-avoid.md` — anti-pattern list overlaps with the table above; this file gives the *why* (physical origin), that file gives the bare *what*.
 - `agents/amw-wireframe-builder-agent.md` — enforces the 1–2 material moment budget at HTML emit time; counts moments per page before delivery.
 - `agents/amw-slop-verifier-agent.md` — verifies the four-beat rhythm and the 1–2 material rule as part of pre-delivery slop check.
-- `references/component-taste.md` — per-component surface treatments; defers to this file for the *which primitive when* decision.
-- `references/TECH-motion-density.md` — companion ruleset; motion has the same restraint principle (per-tier caps).
-- `references/TECH-dial-configuration.md` — VISUAL_COMPLEXITY dial caps material-moment count; VISUAL_COMPLEXITY=1 forces 0 moments, VISUAL_COMPLEXITY=10 allows 2.
+- `component-taste.md` — per-component surface treatments; defers to this file for the *which primitive when* decision.
+- `TECH-motion-density.md` — companion ruleset; motion has the same restraint principle (per-tier caps).
+- `TECH-dial-configuration.md` — VISUAL_COMPLEXITY dial caps material-moment count; VISUAL_COMPLEXITY=1 forces 0 moments, VISUAL_COMPLEXITY=10 allows 2.

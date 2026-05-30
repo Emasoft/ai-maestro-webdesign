@@ -199,8 +199,8 @@ This is the ONLY case where the same issue gets two flags. In every other case, 
 
 ## Cross-references
 
-- `references/TECH-override-policy.md` — sister doc for numbered MUST rules.
-- `references/three-hard-rules.md` — the orchestrator's three foundational rules.
-- `references/component-taste.md` — broader catalog of taste rules referenced here.
+- `TECH-override-policy.md` — sister doc for numbered MUST rules.
+- `three-hard-rules.md` — the orchestrator's three foundational rules.
+- `component-taste.md` — broader catalog of taste rules referenced here.
 - `skills/amw-design-principles/ai-slop-avoid.md` — full slop catalog the agent draws from.
-- `references/TECH-named-color-shadow-techniques.md` — specific pushback contexts for shadows/colors.
+- `TECH-named-color-shadow-techniques.md` — specific pushback contexts for shadows/colors.

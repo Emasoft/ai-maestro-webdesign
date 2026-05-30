@@ -215,6 +215,6 @@ The agent never re-extracts from the live Linear site. The DESIGN.md is the sing
 - [TECH-19-design-md-apply](./TECH-19-design-md-apply.md) — apply pass enforces the library DESIGN.md's tokens at code-gen time
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — every `add` runs this chain before accepting the entry
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — `--with-companions` emits these alongside the library DESIGN.md
-- [TECH-17-dtcg-export](./TECH-17-dtcg-export.md) — optional `tokens.dtcg.json` in the library entry
-- `references/brand-library/` — ships-with-plugin reference systems (read-only, distinct from the user-local library at `~/.config/ai-maestro/design-library/`)
-- `~/.claude/rules/use-safe-delete.md` — the `remove` verb uses safe-delete, not `rm`
+- [TECH-17-dtcg-export](./TECH-17-dtcg-export.md) — optional tokens.dtcg.json in the library entry
+- `brand-library/` — ships-with-plugin reference systems (read-only, distinct from the user-local library at ~/.config/ai-maestro/design-library/)
+- ~/.claude/rules/use-safe-delete.md — the `remove` verb uses safe-delete, not `rm`

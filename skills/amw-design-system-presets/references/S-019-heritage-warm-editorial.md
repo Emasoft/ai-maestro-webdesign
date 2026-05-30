@@ -118,4 +118,4 @@ Render: 1440x900 OK, 108469 B, render-determinism JOD 10.00 (source is a token s
 - S-018 Understated Elegance — sibling; uses sage green primary rather than warm brown primary; lighter surface; more contemporary; S-019 is more antique
 - S-014 Editorial Serif — related editorial register but colder palette (near-black/white with red accent); use S-014 for publications and journalism, S-019 for artisan brands
 - S-020 Organic / Earthy — adjacent earthy palette but no cream backgrounds (organic uses sage/moss/ochre); S-019 is more historical, S-020 is more botanical-contemporary
-- Source: `design-system-is-all-you-need-main/.../heritage.md`; `tasteful-ui-skill-master/.../catalog.md` (Warm/Editorial routing category)
+- Source: `reports_dev/batch9/extracted/design-system-is-all-you-need-main/design-system-is-all-you-need/references/heritage.md`; `reports_dev/batch9/extracted/tasteful-ui-skill-master/tasteful-ui/references/catalog.md` (Warm/Editorial routing category)

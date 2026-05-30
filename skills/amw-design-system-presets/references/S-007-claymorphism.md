@@ -114,7 +114,7 @@ Render: 1440x900 OK, 113398 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-006 Skeuomorphism (realistic material vs. inflated clay), S-005 Neumorphism (monochromatic extrusion vs. colorful clay), S-025 Playful Toy-Like (bright primaries vs. soft pastels), S-026 Soft Pastel (flat pastel vs. 3D-inflated pastel)
-- Source: `blocked-A.md` section 11 "Claymorphism"; `styles-B.md` section 11.
+- Source: `reports/batch9-harvest/blocked-A.md` section 11 "Claymorphism"; `reports/batch9-harvest/styles-B.md` section 11.
 
 ## Attribution
 

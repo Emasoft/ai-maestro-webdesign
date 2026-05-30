@@ -192,10 +192,10 @@ The structured form makes the decision auditable. A user reading the report can 
 
 ## Cross-references
 
-- `references/authority-hierarchy.md` — broad domain → authority table (the source for rule 4).
-- `references/sub-agent-return-contract.md` — confidence field semantics (the source for rule 5).
-- `references/TECH-orchestration-parallel-dispatch.md` — sibling doc on when to dispatch sub-agents in parallel vs sequentially.
-- `references/TECH-orchestration-checkpoint-protocol.md` — sibling doc on when main-agent must pause and check in with the user.
-- `references/TECH-orchestration-recovery-from-veto.md` — sibling doc on how to recover when a veto fires (the downstream of rules 1-2 of this hierarchy).
-- `references/two-mode-workflow.md` — Phase A/B context for when conflicts arise.
+- `authority-hierarchy.md` — broad domain → authority table (the source for rule 4).
+- `sub-agent-return-contract.md` — confidence field semantics (the source for rule 5).
+- `TECH-orchestration-parallel-dispatch.md` — sibling doc on when to dispatch sub-agents in parallel vs sequentially.
+- `TECH-orchestration-checkpoint-protocol.md` — sibling doc on when main-agent must pause and check in with the user.
+- `TECH-orchestration-recovery-from-veto.md` — sibling doc on how to recover when a veto fires (the downstream of rules 1-2 of this hierarchy).
+- `two-mode-workflow.md` — Phase A/B context for when conflicts arise.
 - `agents/ai-maestro-webdesign-main-agent.md` §15 Orchestration Doctrine — the binding consumer of this hierarchy.

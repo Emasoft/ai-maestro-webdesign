@@ -234,7 +234,7 @@ The check does not parse the full Markdown AST; it uses a regex `\{[a-z][a-z0-9_
 ## Cross-references
 
 - [TECH-05-token-references](TECH-05-token-references.md) — broader token-reference patterns
-- [TECH-11-validation-and-lint](TECH-11-validation-and-lint.md) — `amw-design-md-validate.py` usage
+- [TECH-11-validation-and-lint](TECH-11-validation-and-lint.md) — `bin/amw-design-md-validate.py` usage
 - [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — Rule 12 (components must cite tokens, not raw values)
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — §10/§11 dead-reference enforcement
 - [TECH-23-section-9-agent-prompt-guide](TECH-23-section-9-agent-prompt-guide.md) — §9 CSS snippets dead-reference enforcement

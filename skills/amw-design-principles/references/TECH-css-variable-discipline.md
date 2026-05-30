@@ -232,8 +232,8 @@ Cross-reference: `agents/amw-wireframe-builder-agent.md` step 6 — final HTML e
 ## Cross-references
 
 - `agents/amw-wireframe-builder-agent.md` — step 6 enforces this discipline.
-- `references/TECH-override-policy.md` — `[RULE-CSS-VARS]` is the numbered MUST rule.
-- `references/TECH-named-color-shadow-techniques.md` — the techniques that consume these tokens.
+- `TECH-override-policy.md` — `[RULE-CSS-VARS]` is the numbered MUST rule.
+- `TECH-named-color-shadow-techniques.md` — the techniques that consume these tokens.
 - `bin/amw-design-md-emit-companions.py` — generates `:root` tokens.css from DESIGN.md.
 - `bin/amw-ai-slop-check.py` — mechanical enforcement check.
 - `skills/amw-design-md/` — the source of truth for the token vocabulary.

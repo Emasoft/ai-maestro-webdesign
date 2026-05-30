@@ -124,7 +124,7 @@ Render: 1440x900 OK, 116520 B, render-determinism JOD 10.00 (source is a token s
 
 - **Sibling Bexa single-hue presets:** S-055 Verdant (`hsl(158 58% 40%)` — growth/sustainability green), S-056 Ember (`hsl(22 90% 50%)` — energy/CTA orange), S-057 Plum (`hsl(276 60% 50%)` — creative/ML purple), S-058 Rose Smoke (`hsl(348 62% 46%)` — fashion/beauty rose), S-059 Sable (`hsl(220 12% 22%)` — luxury editorial dark-first) — same single-hue contract, different industry targeting
 - **Adjacent blue presets:** S-017 Corporate Bold (deep navy `#0A2540` + Stripe purple accent — heavier, B2B fintech, multi-chromatic); S-047 Electric Blue Modern (`oklch(0.55 0.22 255)` — modern industry-themed sibling using oklch rather than hsl)
-- **Source attribution:** `Bexa-professional-frontend-design-skills-for-ai-agents-main/skills/bexa/SKILL.md` (MIT, Bexa contributors); `reports/batch9-harvest/styles-A.md` §Cobalt (Bexa Accent); `reports/batch9-analysis/MASTER-LEDGER.md` row S-054
+- **Source attribution:** `reports_dev/batch9/extracted/Bexa-professional-frontend-design-skills-for-ai-agents-main/skills/bexa/SKILL.md` (MIT, Bexa contributors); `reports/batch9-harvest/styles-A.md` §Cobalt (Bexa Accent); `reports/batch9-analysis/MASTER-LEDGER.md` row S-054
 
 ## Attribution
 

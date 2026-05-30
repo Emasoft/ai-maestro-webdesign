@@ -160,7 +160,7 @@ Render: 1440x900 OK, 123929 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-017 Corporate Bold (commercial enterprise, not HCT), S-021 Pnalism (ultra-minimal two-tone), S-035 21st.dev/Aceternity (dark-first, glow-based elevation)
-- Source: `styles-B.md` "Material Design 3" in `reports/batch9-harvest/`; `design-system-is-all-you-need-main/references/material-design.md`; `material-3-skill-master/`.
+- Source: `reports/batch9-harvest/styles-B.md` "Material Design 3"; `reports_dev/batch9/extracted/design-system-is-all-you-need-main/design-system-is-all-you-need/references/material-design.md`; `reports_dev/batch9/extracted/material-3-skill-master/`.
 
 ## Attribution
 

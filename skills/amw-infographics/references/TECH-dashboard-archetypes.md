@@ -143,5 +143,5 @@ If the answers conflict, the dashboard is doing too much — split it into two d
 - `TECH-data-viz-templates.md` — the panel templates that compose each archetype
 - `TECH-chart-variants.md` — chart type selection per data shape
 - `TECH-chart-selection-guide.md` — CSS-vs-Chart.js render method per chart type
-- `../skills/amw-design-principles/starter-components/` — page chrome
-- `../skills/amw-ux-flows/references/TECH-flow-patterns.md` — drill-down flow patterns for Analytical archetype
+- `skills/amw-design-principles/starter-components/` — page chrome
+- `skills/amw-ux-flows/references/TECH-flow-patterns.md` — drill-down flow patterns for Analytical archetype

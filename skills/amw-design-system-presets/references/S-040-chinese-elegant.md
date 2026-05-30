@@ -120,4 +120,4 @@ Render: 1440x900 OK, 123349 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-043 Japanese Dark (dark mode CJK editorial with Noto Serif JP), S-014 Editorial Serif (Western editorial serif), S-037 Cream Editorial (cream Western book-publisher serif)
 - Differentiators: S-040 is warm-light CJK-first editorial with LXGW WenKai and 2em indent; S-043 is dark-mode Japanese editorial; S-014 is Western editorial with mixed sans/serif; S-037 is Western-only serif at 0px radius
-- Source: `blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)
+- Source: `reports/batch9-harvest/blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)

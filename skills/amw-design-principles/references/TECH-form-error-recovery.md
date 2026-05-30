@@ -265,6 +265,6 @@ Drafts persist after every field blur; refreshing the page reloads the user at t
 - Blur-validation timing: `TECH-validate-on-blur.md` (R1 / T-131).
 - ARIA wiring minimum: `TECH-aria-invalid-describedby.md` (R1 / T-132).
 - Microinteractions used (success-pulse on field-fix, error-shake on submit-fail): `TECH-microinteractions-catalog.md` entries 4 and 5.
-- Color tokens: `amw-design-principles/color-system.md` § II (WCAG contrast).
-- Hit-target floor for form controls: `amw-design-principles/spacing-rhythm.md` § IV (44 × 44 px minimum tap target).
-- AI-slop form gotchas: `amw-design-principles/ai-slop-avoid.md` § IV (content and copy) — error messages must be specific, not "Invalid input."
+- Color tokens: `skills/amw-design-principles/color-system.md` § II (WCAG contrast).
+- Hit-target floor for form controls: `skills/amw-design-principles/spacing-rhythm.md` § IV (44 × 44 px minimum tap target).
+- AI-slop form gotchas: `skills/amw-design-principles/ai-slop-avoid.md` § IV (content and copy) — error messages must be specific, not "Invalid input."

@@ -175,7 +175,7 @@ The checker emits warnings only — the agent decides whether to suppress (rare;
 
 ## Cross-references
 
-- `references/component-taste.md` — broader taste catalog this file extends.
-- `references/TECH-css-variable-discipline.md` — colors used here must come from DESIGN.md tokens, not raw hex literals in markup.
+- `component-taste.md` — broader taste catalog this file extends.
+- `TECH-css-variable-discipline.md` — colors used here must come from DESIGN.md tokens, not raw hex literals in markup.
 - `bin/amw-ai-slop-check.py` — mechanical enforcement entry point.
 - `skills/amw-design-principles/ai-slop-avoid.md` — full slop catalog (this file is the visual-foundation subset).

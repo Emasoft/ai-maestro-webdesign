@@ -129,4 +129,4 @@ Render: 1440x900 OK, 105781 B, render-determinism JOD 10.00 (source is a token s
 
 - Siblings: S-013 Industrial / Utilitarian (mono-only, 0-radius, no shadow — Industrial Trust is the polished B2B counterpart), S-017 Corporate Bold (light navy + purple — corporate-cold rather than industrial-warm), S-038 Dark Tech (dark with electric-blue accent — developer-focused rather than B2B-services)
 - Differentiators: S-046 is dark-mode-first navy with a single high-luminance gold signal calibrated for security / industrial / premium-home-services trust; S-017 is light-mode B2B SaaS; S-038 is dark developer-tool; S-013 is uncompromised utilitarian without polish
-- Source: `blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #9)
+- Source: `reports/batch9-harvest/blocked-B.md` harvest entry #12; `landing-page-builder-skill-main` (industry x theme matrix, theme #9)

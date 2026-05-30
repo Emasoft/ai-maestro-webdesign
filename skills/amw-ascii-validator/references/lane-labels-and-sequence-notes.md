@@ -64,4 +64,4 @@ The note appears as a small boxed block between the Frontend and API lifelines r
 
 - [SKILL](../SKILL.md) — the parent validator + renderer skill.
 - [SKILL](../../amw-ascii-sketch/SKILL.md) — the most common consumer of the lane-labeled feature (dashboard variants with named regions).
-- `../../bin/amw-ascii-render.py` — renderer (the `render_ascii` docstring at the top of the file has the canonical JSON schema).
+- `../../../bin/amw-ascii-render.py` — renderer (the `render_ascii` docstring at the top of the file has the canonical JSON schema).

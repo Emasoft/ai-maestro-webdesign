@@ -113,5 +113,5 @@ Render: 1440x900 OK, 84124 B, render-determinism JOD 10.00 (source is a token sp
 ## Cross-references
 
 - **Sibling styles:** S-001 Swiss (strict modernist, Helvetica-first), S-002 Brutalism (raw system fonts), S-003 Neo-Brutalism (single scream color)
-- **Source:** `design-forge-main/SKILL.md` + `design-forge-main/references/discovery-framework.md` (MIT, inferred); Google Stitch "Bauhaus" preset documentation
+- **Source:** `reports_dev/batch9/extracted/design-forge-main/SKILL.md` + `reports_dev/batch9/extracted/design-forge-main/references/discovery-framework.md` (MIT, inferred); Google Stitch "Bauhaus" preset documentation
 - **Note:** Cabinet Grotesk and Satoshi are available on Google Fonts and Fontshare respectively; both are free for commercial use

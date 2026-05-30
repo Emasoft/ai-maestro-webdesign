@@ -123,4 +123,4 @@ Render: 1440x900 OK, 115869 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - **Sibling styles:** S-037 Cream Editorial (Cormorant Garamond, all-serif, 0px radius), S-039 Warm Professional (Source Serif 4 + Source Sans 3, business-trust), S-020 Organic (blob radius, grain 1–3%, warm shadow)
-- **Source attribution:** Notion.so design language (visual reference, clean-room); `atelier-main/SKILL.md` tone B1 #4 Organic/Natural (MIT, inferred); `frontend-design-engineer-skill-main/references/visual-directions.md` Understated Elegance entry
+- **Source attribution:** Notion.so design language (visual reference, clean-room); `reports_dev/batch9/extracted/atelier-main/SKILL.md` tone B1 #4 Organic/Natural (MIT, inferred); `reports_dev/batch9/extracted/frontend-design-engineer-skill-main/frontend-design-engineer/references/visual-directions.md` Understated Elegance entry

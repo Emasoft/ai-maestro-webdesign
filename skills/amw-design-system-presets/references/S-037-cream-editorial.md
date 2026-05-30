@@ -117,4 +117,4 @@ Render: 1440x900 OK, 91973 B, render-determinism JOD 10.00 (source is a token sp
 
 - Siblings: S-014 Editorial Serif (cooler paper), S-018 Understated Elegance (minimal sans body), S-030 Lo-Fi Paper (rougher texture), S-031 Paper Collage (cut-and-paste layered)
 - Differentiators: S-037 is serif-only zero-radius cream; S-014 allows sans body font; S-018 uses sans-serif body; S-030 has hand-drawn scan texture; S-031 is layered collage not clean editorial
-- Source: `blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)
+- Source: `reports/batch9-harvest/blocked-B.md` seed table Wave 1 Track H8 + `tasteful-ui-skill-master` catalog (MIT)

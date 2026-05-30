@@ -213,7 +213,7 @@ Three paths is the minimum that:
 ## Cross-references
 
 - [TECH-15-design-md-as-input](TECH-15-design-md-as-input.md) — Path A token-consumption details
-- [TECH-21-style-references-companion](TECH-21-style-references-companion.md) — Path B `STYLE-REFERENCES.md` emission
+- [TECH-21-style-references-companion](TECH-21-style-references-companion.md) — Path B STYLE-REFERENCES.md emission
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — Path B may emit §10/§11 from interview answers
 - [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — Path A and Path B writing rules
 - [TECH-25-brand-archetypes](TECH-25-brand-archetypes.md) — Path B variant generation uses archetype defaults

@@ -226,7 +226,7 @@ with no manual fixup.
 - `TECH-07-url-extraction.md` — alternative extraction path (live URL → DESIGN.md)
 - `TECH-08-codebase-extraction.md` — alternative extraction path (codebase scan)
 - `TECH-11-validation-and-lint.md` — full lint chain
-- `TECH-12-companion-files.md` — emit `tokens.css` / `tokens.json` from DESIGN.md
+- `TECH-12-companion-files.md` — emit tokens.css / tokens.json from DESIGN.md
 - `canonical-template.md` — the Variant 1 schema this bridge targets
 
 ## Test coverage

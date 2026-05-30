@@ -170,5 +170,5 @@ The bundles are starting points, not requirements. The user can override any dia
 - `agents/amw-wireframe-builder-agent.md` — reads dials at HTML emit time to pick component variants, surface treatments, and spacing rhythms.
 - `agents/amw-motion-designer-agent.md` — reads MOTION_DRAMA + INTERACTION_DEPTH to pick timing curves, amplitudes, and which interactions get motion feedback.
 - `agents/amw-asset-generator-agent.md` — reads VISUAL_COMPLEXITY + BRAND_INTENSITY to decide ornamentation, icon weight, and pretext typography intensity.
-- `references/TECH-motion-density.md` — companion ruleset; MOTION_DRAMA caps amplitude, the density tier caps motion count.
-- `references/TECH-landing-anatomy.md` — variant spread rule applies to the 9 canonical sections.
+- `TECH-motion-density.md` — companion ruleset; MOTION_DRAMA caps amplitude, the density tier caps motion count.
+- `TECH-landing-anatomy.md` — variant spread rule applies to the 9 canonical sections.

@@ -117,7 +117,7 @@ Render: 1440x900 OK, 103577 B, render-determinism JOD 10.00 (source is a token s
 ## Cross-references
 
 - Sibling styles: S-024 Candy (higher saturation, pill radius, bounce physics), S-025 Playful Toy-Like (high-chroma primaries, bold weight), S-007 Claymorphism (3D inflate + inner highlight), S-005 Neumorphism (monochromatic extrusion)
-- Source: `atelier-main/SKILL.md` (MIT); `reports/batch9-harvest/styles-A.md` "Soft / Pastel" entry; `frontend-design-main/SKILL.md` Anchor 6 (MIT).
+- Source: `reports_dev/batch9/extracted/atelier-main/SKILL.md` (MIT); `reports/batch9-harvest/styles-A.md` "Soft / Pastel" entry; `reports_dev/batch9/extracted/frontend-design-main/SKILL.md` Anchor 6 (MIT).
 
 ## Attribution
 

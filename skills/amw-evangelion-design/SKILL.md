@@ -263,6 +263,6 @@ See `references/TECH-pitfalls.md` for the five common failure modes (too literal
 
 ## Cross-references
 
-- **Sibling aesthetic skill:** [`amw-liquid-glass/SKILL.md`](../amw-liquid-glass/SKILL.md) — the polar-opposite aesthetic (soft / translucent / spatial).
-- **Generic colour / type / layout reference:** [`amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
-- **Design-system encoding companion:** [`amw-design-system-presets/SKILL.md`](../amw-design-system-presets/SKILL.md) — if a one-shot preset is needed instead of the full encoded aesthetic.
+- **Sibling aesthetic skill:** [amw-liquid-glass](../amw-liquid-glass/SKILL.md) — the polar-opposite aesthetic (soft / translucent / spatial).
+- **Generic colour / type / layout reference:** [amw-design-principles](../amw-design-principles/SKILL.md).
+- **Design-system encoding companion:** [amw-design-system-presets](../amw-design-system-presets/SKILL.md) — if a one-shot preset is needed instead of the full encoded aesthetic.

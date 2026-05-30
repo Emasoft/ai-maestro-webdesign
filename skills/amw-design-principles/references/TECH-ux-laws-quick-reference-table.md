@@ -102,5 +102,5 @@ The tables below split the 31 laws into 5 thematic groups so each table is narro
 ## Cross-references
 
 - `TECH-ux-laws-encyclopedia.md` — full encyclopedia with source citations and edge cases.
-- `design-heuristics.md` — atomic-audit subset (Gestalt, Fitts, Hick) used in detailed visual reviews.
-- `ai-slop-avoid.md` — many AI-slop patterns are violations of these laws.
+- `../design-heuristics.md` — atomic-audit subset (Gestalt, Fitts, Hick) used in detailed visual reviews.
+- `../ai-slop-avoid.md` — many AI-slop patterns are violations of these laws.

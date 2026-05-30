@@ -392,7 +392,7 @@ I have **NO veto power** over design content. My output is a recommendation; mai
 - [TECH-design-contract](../skills/amw-design-md/references/TECH-design-contract.md) — canonical schema reference
   > What it does · How it relates to phase-a-frozen-spec.md · JSON schema (version 1) · `meta` · `user_intent` · `brand_tokens` · `ia` · `legal` · `target_stack` · `decisions_log` · Lifecycle · Validator (BLOCK / FLAG / PASS) · Storage and versioning · Hard invariants · Cross-references
 - [TECH-design-resume](../skills/amw-design-principles/references/TECH-design-resume.md) — the resume protocol and recommendation schema I emit
-  > What it does · The `.design-contract.yaml` resume schema · The resume protocol (load → diff → resume) · Conflict-resolution rules · Cross-references
+  > What it does · The .design-contract.yaml resume schema · The resume protocol (load → diff → resume) · Conflict-resolution rules · Cross-references
 - [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) — the freeze artifact I diff the contract against
   > Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 - [agent-authoring-philosophy](../skills/amw-design-principles/references/agent-authoring-philosophy.md)

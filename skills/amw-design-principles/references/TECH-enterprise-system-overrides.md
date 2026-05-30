@@ -280,4 +280,4 @@ In practice, the audit trail is a **chronological list** at `/account/agent-hist
 - [TECH-css-modern-syntax.md](TECH-css-modern-syntax.md) — `light-dark()`, `color-mix()`, `oklch()` for clean per-tier theming.
 - [agent-authoring-philosophy.md](agent-authoring-philosophy.md) — the Tool → Copilot → Agent gradient applied to the plugin's own amw-* agents.
 - [authority-hierarchy.md](authority-hierarchy.md) — `amw-legal-expert-agent` reviews audit-trail and compliance UI; `amw-accessibility-auditor-agent` reviews agent-progress and intent-confirmation a11y.
-- `skills/amw-component-library-architect-agent/...` — the agent that produces the actual token files (Style Dictionary, Figma tokens, etc.) from the 3-tier architecture above.
+- `agents/amw-component-library-architect-agent.md` — the agent that produces the actual token files (Style Dictionary, Figma tokens, etc.) from the 3-tier architecture above.

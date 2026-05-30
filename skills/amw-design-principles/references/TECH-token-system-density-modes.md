@@ -344,7 +344,7 @@ If the product exposes a user-toggle, adding `<html data-density="comfortable">`
 - `TECH-token-system-elevation-and-radius.md` — elevation + radius scales are NOT density-scoped; same values across all densities.
 - `TECH-motion-density.md` — the **kinetic** density companion: 3-tier motion density (subtle / moderate / lively) is the motion-system twin of this static-spacing density. Pair them when authoring (e.g., a "compact + subtle" dashboard vs a "spacious + moderate" landing page).
 - `TECH-dial-configuration.md` — VISUAL_COMPLEXITY dial may co-vary with density (a complexity-1 page tends toward spacious; complexity-10 tends toward compact), but the two are independent and can be set separately.
-- `typography-system.md` — type scale is unaffected by density; never scale fonts to match density mode.
+- `../typography-system.md` — type scale is unaffected by density; never scale fonts to match density mode.
 - `skills/amw-design-md/SKILL.md` — DESIGN.md declares the active density mode via `density: comfortable | compact | spacious` in frontmatter; the wireframe builder reads this.
 - `skills/amw-design-system-presets/SKILL.md` — each preset picks its default density (e.g., the linear preset defaults to comfortable, the design-tool preset defaults to compact); users can still toggle at runtime.
 - `bin/amw-design-md-validate.py` — checks that the density mode (if specified in DESIGN.md) is one of {compact, comfortable, spacious}.

@@ -241,9 +241,9 @@ The exception: when the failed sub-agent's output was a hard prerequisite for a 
 
 ## Cross-references
 
-- `references/agent-interaction-patterns.md` — Phase B sequencing rules (the source for the wave structures above).
-- `references/phase-a-frozen-spec.md` — the data hand-off mechanism that makes Phase B parallelism cheap (one path, N readers).
-- `references/sub-agent-return-contract.md` — what main-agent reads from each returned YAML header to aggregate parallel batches.
-- `references/TECH-orchestration-conflict-resolution.md` — what main-agent does when parallel returns conflict.
-- `references/TECH-orchestration-checkpoint-protocol.md` — when a parallel-batch return triggers a user check-in.
+- `agent-interaction-patterns.md` — Phase B sequencing rules (the source for the wave structures above).
+- `phase-a-frozen-spec.md` — the data hand-off mechanism that makes Phase B parallelism cheap (one path, N readers).
+- `sub-agent-return-contract.md` — what main-agent reads from each returned YAML header to aggregate parallel batches.
+- `TECH-orchestration-conflict-resolution.md` — what main-agent does when parallel returns conflict.
+- `TECH-orchestration-checkpoint-protocol.md` — when a parallel-batch return triggers a user check-in.
 - `agents/ai-maestro-webdesign-main-agent.md` §15 Orchestration Doctrine — the binding consumer of this dispatch protocol.

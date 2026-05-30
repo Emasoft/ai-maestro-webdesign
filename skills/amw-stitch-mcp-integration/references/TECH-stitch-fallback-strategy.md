@@ -130,6 +130,6 @@ Scenario: a user says "design a landing page for a new startup, ideally importin
 - [TECH-stitch-design-language](./TECH-stitch-design-language.md) — The Stitch surface this fallback replaces.
 - [SKILL](../../amw-design-extract/SKILL.md) — Node A executor.
 - `bin/amw-design-md-from-codebase.py` — Node B executor.
-- `bin/amw-design-md-from-tailwind.ts` — Node B higher-fidelity helper.
+- `bin/amw-design-md-from-tailwind.mjs` — Node B higher-fidelity helper.
 - [SKILL](../../amw-ui-ux-reasoning/SKILL.md) — Node C executor.
 - [SKILL](../../amw-design-md/SKILL.md) — Common downstream consumer regardless of which node won.

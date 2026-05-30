@@ -314,7 +314,7 @@ Vertical rhythm: 32 (form padding) → 16 (field-to-field) → 8 (label-to-input
 ## Cross-references
 
 - `skills/amw-design-md/SKILL.md` — DESIGN.md spacing block declares this 10-step scale; the linter at `bin/amw-design-md-lint.sh` checks scale presence + step values.
-- `skills/amw-design-system-presets/SKILL.md` — every preset ships the same 10-step scale (the values are universal — only the density mode varies); see `TECH-token-system-density-modes.md` for how `compact/comfortable/spacious` multiply the scale.
+- `skills/amw-design-system-presets/SKILL.md` — every preset ships the same 10-step scale (the values are universal — only the density mode varies); see `TECH-token-system-density-modes.md` for how the compact/comfortable/spacious modes multiply the scale.
 - `TECH-token-system-density-modes.md` — density-mode multiplier table (the spacing scale here is the "comfortable" baseline; compact = ×0.75, spacious = ×1.25).
 - `TECH-token-system-color-roles.md` — the color roles that paint surfaces sized by this spacing.
 - `TECH-landing-anatomy.md` — section-rhythm budget per landing-page archetype; uses `--space-7` to `--space-10` for between-section gaps.

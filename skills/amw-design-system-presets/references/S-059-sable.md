@@ -121,4 +121,4 @@ Render: 1440x900 OK, 79417 B, render-determinism JOD 10.00 (source is a token sp
 
 - **Sibling Bexa accents:** S-056 Ember (warm energy CTA), S-057 Plum (creative purple), S-058 Rose Smoke (fashion/beauty rose-red)
 - **Adjacent styles:** S-015 Fashion Luxury Editorial (light-mode editorial cousin), S-016 Luxury Dark Warm (warm dark sibling), S-043 Japanese Dark Editorial (atmospheric dark cousin)
-- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Sable (Bexa Accent / Dark-First Style); upstream `Bexa-professional-frontend-design-skills-for-ai-agents-main/skills/bexa/SKILL.md` (MIT)
+- **Source attribution:** `reports/batch9-harvest/styles-A.md` §Sable (Bexa Accent / Dark-First Style); upstream `reports_dev/batch9/extracted/Bexa-professional-frontend-design-skills-for-ai-agents-main/skills/bexa/SKILL.md` (MIT)

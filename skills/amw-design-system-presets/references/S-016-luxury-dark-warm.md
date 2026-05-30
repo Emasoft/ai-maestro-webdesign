@@ -107,4 +107,4 @@ Render: 1440x900 OK, 107184 B, render-determinism JOD 10.00 (source is a token s
 - S-015 Fashion Luxury Editorial — sibling; lighter background, Didot/Bodoni, museum-frame; use when the aesthetic is contemporary luxury, not heritage warmth
 - S-028 Art Deco / Geometric — related gold palette; differs in structured symmetry and geometric ornament rather than warm warmth; use for events and identity brands
 - S-013 Industrial — opposing anchor; same dark bg but cold, utilitarian; use to understand the warm/cold axis for dark UI
-- Source: `frontend-design-engineer-skill-main/.../visual-directions.md` (#3 Luxury Dark Warm); `claude-website-design-skills-main/skills/claude-remix/SKILL.md` (art-deco vocabulary cross-reference)
+- Source: `reports_dev/batch9/extracted/frontend-design-engineer-skill-main/frontend-design-engineer/references/visual-directions.md` (#3 Luxury Dark Warm); `reports_dev/batch9/extracted/claude-website-design-skills-main/skills/claude-remix/SKILL.md` (art-deco vocabulary cross-reference)

@@ -231,7 +231,7 @@ RHF's `trigger(fieldNames)` validates only the current step's fields before adva
 
 ## Cross-references
 
-- `amw-form-designer-agent.md` §9 — invoked when the form-designer agent's YAML return contains a `multi_step` block.
+- `agents/amw-form-designer-agent.md` §9 — invoked when the form-designer agent's YAML return contains a `multi_step` block.
 - `TECH-form-validation-patterns.md` — defines the per-step validation rules referenced from §5 above.
 - `TECH-form-async-submit.md` — defines submit-state UX referenced from the final step's submit button.
 - `skills/amw-design-principles/spacing-rhythm.md` — 8pt rhythm for step-pill spacing.

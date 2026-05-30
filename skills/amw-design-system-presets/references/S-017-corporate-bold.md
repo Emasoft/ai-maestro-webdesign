@@ -111,4 +111,4 @@ Render: 1440x900 OK, 107472 B, render-determinism JOD 10.00 (source is a token s
 - S-008 Material Design 3 — sibling in material-systems position; uses HCT tonal palette and state layers rather than flat navy+accent; use for Google-adjacent products
 - S-021 Pnalism / Two-Tone Minimal — adjacent minimal corporate; stricter (zero shadows, only 2 chromatic values); use when information density must drop further
 - S-022 Minimal Pure — opposing anchor; pure black/white, zero radius; use for ultra-premium utility
-- Source: `frontend-design-engineer-skill-main/.../visual-directions.md` (#4 Corporate Bold); `tasteful-ui-skill-master/.../catalog.md` (Stripe reference)
+- Source: `reports_dev/batch9/extracted/frontend-design-engineer-skill-main/frontend-design-engineer/references/visual-directions.md` (#4 Corporate Bold); `reports_dev/batch9/extracted/tasteful-ui-skill-master/tasteful-ui/references/catalog.md` (Stripe reference)

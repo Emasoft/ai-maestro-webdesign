@@ -111,7 +111,7 @@ Render: 1440x900 OK, 58673 B, render-determinism JOD 10.00 (source is a token sp
 - [catalogue](./catalogue.md) — routing index
 - [_test-skeleton.html](./_test-skeleton.html) — render-test skeleton
 - [_harness-wiring.md](./_harness-wiring.md) — parity verification pipeline
-- Source attribution: `reports/batch9-harvest/styles-A.md §Cosmic Scale Animation (Claude Gallery)` — upstream `claude-design-aesthetic-workflow-skill-main/references/gallery-cases.md` case #1.
+- Source attribution: reports/batch9-harvest/styles-A.md §Cosmic Scale Animation (Claude Gallery) — upstream claude-design-aesthetic-workflow-skill-main/references/gallery-cases.md case #1.
 
 ## Attribution
 

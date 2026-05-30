@@ -245,9 +245,9 @@ When building these designs as React artifacts, HTML mockups, or React Native:
 
 ## Cross-references
 
-- **Material 3 token reference (Android side):** [`amw-material-3/SKILL.md`](../amw-material-3/SKILL.md).
+- **Material 3 token reference (Android side):** [`skills/amw-material-3/SKILL.md`](../amw-material-3/SKILL.md).
 - **Component skill — liquid-glass for visionOS / spatial mobile mockups:**
-  [`amw-liquid-glass/SKILL.md`](../amw-liquid-glass/SKILL.md).
-- **Sister aesthetic skill:** [`amw-evangelion-design/SKILL.md`](../amw-evangelion-design/SKILL.md) — has a dedicated mobile-adaptation section.
-- **Orchestrator:** [`amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
-- **UX-flow / wireframe work:** [`amw-ux-flows/SKILL.md`](../amw-ux-flows/SKILL.md).
+  [`skills/amw-liquid-glass/SKILL.md`](../amw-liquid-glass/SKILL.md).
+- **Sister aesthetic skill:** [`skills/amw-evangelion-design/SKILL.md`](../amw-evangelion-design/SKILL.md) — has a dedicated mobile-adaptation section.
+- **Orchestrator:** [`skills/amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
+- **UX-flow / wireframe work:** [`skills/amw-ux-flows/SKILL.md`](../amw-ux-flows/SKILL.md).
