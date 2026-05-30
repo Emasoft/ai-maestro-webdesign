@@ -3,7 +3,7 @@ name: TECH-dial-configuration
 category: design-principles-workflow
 source: clean-room reimplementation (T-053 batch9 Wave 2; the 1-10 dial idea derives from open knobs/sliders patterns common in image-gen prompting and parametric design — common-knowledge concept, no verbatim copy)
 license: this file = MIT (plugin license); NO verbatim copy from any GPL-2.0 source — designed fresh for amw-design-principles
-also-in: `amw-ascii-sketch` (reads dials to steer Variant 1/2/3 spread); `amw-wireframe-builder-agent` (reads dials at HTML emit time); `amw-motion-designer-agent` (reads MOTION_DRAMA); `agents/ai-maestro-webdesign-main-agent.md` (writes dial values during Phase A interview)
+also-in: "`amw-ascii-sketch` (reads dials to steer Variant 1/2/3 spread); `amw-wireframe-builder-agent` (reads dials at HTML emit time); `amw-motion-designer-agent` (reads MOTION_DRAMA); `agents/ai-maestro-webdesign-main-agent.md` (writes dial values during Phase A interview)"
 ---
 
 # DIAL CONFIGURATION — six numeric knobs that steer every variant

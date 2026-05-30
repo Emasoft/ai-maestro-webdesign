@@ -3,7 +3,7 @@ name: TECH-variant-hard-constraints
 category: design-principles-process
 source: Bexa design-principles cluster (direct port, batch9 Wave 2 Round 2, T-051)
 license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see ../../../LICENSE)
-also-in: TECH-brand-color-by-product.md (the hue table that seeds variant primaries); TECH-tone-archetypes.md (the 11 visual archetypes that map to preset clusters); three-hard-rules.md (rule 2: always 3 variants)
+also-in: "TECH-brand-color-by-product.md (the hue table that seeds variant primaries); TECH-tone-archetypes.md (the 11 visual archetypes that map to preset clusters); three-hard-rules.md (rule 2: always 3 variants)"
 ---
 
 # Variant hard constraints

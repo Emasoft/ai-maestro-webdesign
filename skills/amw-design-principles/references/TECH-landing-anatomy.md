@@ -3,7 +3,7 @@ name: TECH-landing-anatomy
 category: design-principles-workflow
 source: clean-room reimplementation (T-052 batch9 Wave 2; canonical 9-section landing-page anatomy is common knowledge in conversion-focused web design — see common UX/CRO references such as Cialdini, Halligan & Shah, Casey Winters)
 license: this file = MIT (plugin license); NO verbatim copy from any GPL-2.0 source — described as standard CRO/SaaS landing patterns and 2024–2026 conventions
-also-in: `amw-ascii-sketch` (uses this anatomy as default scaffold for new pages); `amw-wireframe-builder-agent` (renders each section per its conversion job); `amw-seo-strategist-agent` (validates H1/H2 maps onto Hero+Problem+Solution)
+also-in: "`amw-ascii-sketch` (uses this anatomy as default scaffold for new pages); `amw-wireframe-builder-agent` (renders each section per its conversion job); `amw-seo-strategist-agent` (validates H1/H2 maps onto Hero+Problem+Solution)"
 ---
 
 # Landing-page anatomy — the canonical 9 sections

@@ -3,7 +3,7 @@ name: TECH-iteration-language
 category: design-principles-workflow
 source: clean-room reimplementation (T-056 batch9 Wave 2; the vague → concrete translation pattern is standard product/design coaching — common knowledge from design-review pedagogy and design-critique conventions)
 license: this file = MIT (plugin license); NO verbatim copy from any GPL-2.0 source — written fresh in plugin idiom
-also-in: `amw-ascii-sketch` (Phase A iteration loop reads this); `agents/ai-maestro-webdesign-main-agent.md` (translates user feedback during Phase A); `references/TECH-dial-configuration.md` (some translations adjust dials rather than freeform edits)
+also-in: "`amw-ascii-sketch` (Phase A iteration loop reads this); `agents/ai-maestro-webdesign-main-agent.md` (translates user feedback during Phase A); `references/TECH-dial-configuration.md` (some translations adjust dials rather than freeform edits)"
 ---
 
 # Iteration language — vague feedback → concrete edits

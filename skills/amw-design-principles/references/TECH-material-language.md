@@ -3,7 +3,7 @@ name: TECH-material-language
 category: design-principles-philosophy
 source: clean-room reimplementation (T-055 batch9 Wave 2; the principle that material effects need physical justification is common knowledge in motion/visual-design pedagogy — e.g. Apple HIG materials, Material 3 elevation, Refactoring UI)
 license: this file = MIT (plugin license); NO verbatim copy from any GPL-2.0 source — written fresh in plugin idiom
-also-in: `amw-design-principles/SKILL.md` (rule 3 cites this for AI-slop rejection); `amw-wireframe-builder-agent` (enforces 1–2 material moments per page at HTML emit time); `references/component-taste.md` (per-component surface treatments)
+also-in: "`amw-design-principles/SKILL.md` (rule 3 cites this for AI-slop rejection); `amw-wireframe-builder-agent` (enforces 1–2 material moments per page at HTML emit time); `references/component-taste.md` (per-component surface treatments)"
 ---
 
 # Material language — physical origin, restraint, and information rhythm

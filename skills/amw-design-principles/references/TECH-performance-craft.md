@@ -3,7 +3,7 @@ name: TECH-performance-craft
 category: design-principles-quality-gate
 source: clean-room reimplementation (T-057 batch9 Wave 2; Core Web Vitals thresholds are published by Google web.dev (CC-BY-4.0 documentation); image-format guidance is common knowledge in modern web-perf practice — no verbatim copy)
 license: this file = MIT (plugin license); NO verbatim copy from any GPL-2.0 source — thresholds cite the Google web.dev public spec
-also-in: `agents/amw-browser-tester-agent.md` (runs Lighthouse / scenario tests against these targets); `agents/amw-wireframe-builder-agent.md` (validates page budget at HTML emit time); `agents/amw-asset-generator-agent.md` (image format decision tree)
+also-in: "`agents/amw-browser-tester-agent.md` (runs Lighthouse / scenario tests against these targets); `agents/amw-wireframe-builder-agent.md` (validates page budget at HTML emit time); `agents/amw-asset-generator-agent.md` (image format decision tree)"
 ---
 
 # Performance craft — hard limits, budgets, and the format decision tree

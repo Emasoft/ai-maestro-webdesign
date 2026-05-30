@@ -2,7 +2,7 @@
 name: TECH-21-multi-column-handoff
 category: layout
 source: pretext-skills/SKILL-15.md
-also-in: pretext-frontend-motion-main (demo-family-map: Editorial Engine, Dynamic Layout), pretext-skill-main/patterns.md
+also-in: "pretext-frontend-motion-main (demo-family-map: Editorial Engine, Dynamic Layout), pretext-skill-main/patterns.md"
 ---
 
 # Multi-column text handoff
