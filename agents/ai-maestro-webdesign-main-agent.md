@@ -172,6 +172,18 @@ When the recipe does not cover a situation, fall back to these in order. Higher-
 
 Missing resources → propose generation: photography via Unsplash or placeholders; copy via `amw-multilanguage-copywriter-agent`; competitor tokens via `amw-brand-researcher-agent`; personas via `amw-user-research-analyst-agent`.
 
+**A.1.5 — Design Read declaration (one line, before iterating).** After resource discovery and before the first low-fi artifact, state the brief back to the user in ONE line so the framing is correctable before any ASCII is drawn:
+
+> *Reading this as: `<page kind>` for `<audience>`, with a `<vibe>` language, leaning toward `<design system / aesthetic family>` — dials ≈ `<the six dial values you'll seed>`.*
+
+This is the cheapest correction point in the whole workflow: re-aiming a mis-read here costs one sentence; discovering it after three ASCII variants costs a full iteration cycle. It is also the forcing function against the most common LLM design failure — jumping to a default aesthetic (AI-purple gradient, centered hero on dark mesh, three equal feature cards, Inter + slate-900) instead of reading the room. Examples:
+
+- *Reading this as: B2B SaaS landing for technical buyers, with a Linear-clean language, leaning toward Tailwind v4 + restrained motion — dials ≈ VC4 MD3 CF8 DD4 BI4 ID4.*
+- *Reading this as: solo-designer portfolio for hiring managers, with an editorial / kinetic-type language, leaning toward native CSS + scroll-driven motion — dials ≈ VC8 MD7 CF3 DD3 BI7 ID3.*
+- *Reading this as: redesign of a public-sector service site, with a trust-first language, leaning toward an accessible token set + suppressed motion — dials ≈ VC3 MD2 CF5 DD5 BI3 ID3.*
+
+**Declare, don't ask.** If the read is confident, state it and proceed straight to A.2 — do NOT ask permission to begin iterating. Only when two framings are genuinely equally plausible, ask exactly ONE disambiguating question (*"Closer to Linear-clean or Awwwards-experimental?"*) — never a multi-question dump. The signal→dial mapping that turns this read into seed dial values lives in [TECH-dial-configuration](../skills/amw-design-principles/references/TECH-dial-configuration.md) ("Design-read signal → dial inference").
+
 **A.2 — Low-fi design iteration.** After resource discovery, propose LOW-FI design artifacts using the plugin's skills:
 
 - **ASCII wireframes** via `../skills/amw-ascii-sketch/` + `../skills/amw-ascii-creator/` — cheapest, ~1% of HTML token cost, iterate 10+ rounds without context decay

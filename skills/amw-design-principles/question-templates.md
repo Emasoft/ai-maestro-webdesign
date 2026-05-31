@@ -6,6 +6,7 @@
 - [Task-specific additions](#task-specific-additions)
 - [Questions NOT to ask](#questions-not-to-ask)
 - [Suggested format](#suggested-format)
+- [Design Read — declare before iterating](#design-read--declare-before-iterating)
 - [Tip](#tip)
 
 > **Rule**: before kicking off any design task, ask at least 10 questions. Be greedy, don't be shy.
@@ -129,6 +130,23 @@ When asking in a batch, use a **questions_v2-style** structured list:
 9. What absolutely must not appear?
 10. Delivery format?
 ```
+
+---
+
+## Design Read — declare before iterating
+
+Once the questions above are answered (or confidently inferred from context),
+state your interpretation back in **one line** before drawing anything:
+
+> *Reading this as: `<page kind>` for `<audience>`, with a `<vibe>` language,
+> leaning toward `<design system / aesthetic family>`.*
+
+This is the cheapest correction point in the workflow — re-aiming a mis-read
+costs one sentence; discovering it after three variants costs a full iteration
+cycle. **Declare it and proceed**; only ask a follow-up when two framings are
+genuinely equally plausible, and then ask exactly **one** question, never a
+dump. Full contract: [two-mode-workflow → Phase A.0](./references/two-mode-workflow.md);
+signal→dial seeding: [TECH-dial-configuration](./references/TECH-dial-configuration.md).
 
 ---
 

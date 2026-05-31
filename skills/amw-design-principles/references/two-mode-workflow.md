@@ -164,6 +164,39 @@ re-run of every sub-agent.
 - The question checklist from `question-templates.md` (run ≥ 10 questions if
   context is thin).
 
+### Phase A.0 — Open with a one-line Design Read
+
+Before the first low-fi artifact, the orchestrator states its interpretation of
+the brief in ONE line, so the user can correct the *framing* before any ASCII is
+drawn:
+
+> *Reading this as: `<page kind>` for `<audience>`, with a `<vibe>` language,
+> leaning toward `<design system / aesthetic family>`.*
+
+The Design Read is a forcing function against the most common LLM design
+failure: jumping to a default aesthetic (AI-purple gradient, centered hero on
+dark mesh, three equal feature cards, Inter + slate-900) instead of reading the
+room. Declaring the read out loud surfaces a mis-aimed interpretation at its
+cheapest possible moment — one sentence to re-aim, versus a full ASCII-variant
+cycle to discover it later.
+
+Rules:
+
+- **Declare, don't ask.** If the read is confident, state it and proceed
+  straight to iteration. Do not ask the user for permission to begin.
+- **One question maximum, only on genuine divergence.** When two framings are
+  equally plausible, ask exactly one disambiguating question (*"Closer to
+  Linear-clean or Awwwards-experimental?"*) — never a multi-question dump.
+- **Seed the dials from the read.** The vibe + audience + page-kind map to seed
+  values for the six dials; the mapping table is in
+  [TECH-dial-configuration](./TECH-dial-configuration.md) ("Design-read signal →
+  dial inference"). Surface the seed dial values in the read so the user can
+  adjust by integer.
+
+(The full pre-iteration question checklist is in
+[question-templates](../question-templates.md); the Design Read is what you
+declare *from* those answers, not a substitute for them.)
+
 ### Low-fi artifact types (pick the cheapest that fits)
 
 | Situation | Phase A artifact |

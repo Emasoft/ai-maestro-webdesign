@@ -1,7 +1,7 @@
 ---
 name: TECH-dial-configuration
 category: design-principles-workflow
-source: clean-room reimplementation (T-053 batch9 Wave 2; the 1-10 dial idea derives from open knobs/sliders patterns common in image-gen prompting and parametric design — common-knowledge concept, no verbatim copy)
+source: clean-room reimplementation (T-053 batch9 Wave 2; the 1-10 dial idea derives from open knobs/sliders patterns common in image-gen prompting and parametric design — common-knowledge concept, no verbatim copy); the design-read-signal→dial-inference section + redesign-delta handling are adapted into this file's 6-dial vocabulary (no verbatim copy) from taste-skill §1.A/§1.B (Leonxlnx, MIT)
 license: this file = MIT (plugin license); NO verbatim copy from any GPL-2.0 source — designed fresh for amw-design-principles
 also-in: "`amw-ascii-sketch` (reads dials to steer Variant 1/2/3 spread); `amw-wireframe-builder-agent` (reads dials at HTML emit time); `amw-motion-designer-agent` (reads MOTION_DRAMA); `agents/ai-maestro-webdesign-main-agent.md` (writes dial values during Phase A interview)"
 ---
@@ -14,6 +14,7 @@ also-in: "`amw-ascii-sketch` (reads dials to steer Variant 1/2/3 spread); `amw-w
 - [Why dials, not adjectives](#why-dials-not-adjectives)
 - [The six dials](#the-six-dials)
 - [Natural-language → dial mapping](#natural-language--dial-mapping)
+- [Design-read signal → dial inference](#design-read-signal--dial-inference)
 - [Variant spread rule](#variant-spread-rule)
 - [Dial conflicts](#dial-conflicts)
 - [Default dial bundles by archetype](#default-dial-bundles-by-archetype)
@@ -119,6 +120,40 @@ When the user speaks in adjectives, the orchestrator translates to dial deltas b
 | "Be subtler about selling" | CONVERSION_FOCUS → 3 |
 
 The orchestrator MUST surface the dial change in the response when interpreting an adjective. Example: *"Setting MOTION_DRAMA → 9 (turn up the drama). Keeping the other five dials unchanged."* This makes the translation visible and the user can correct it before Phase A iteration burns tokens.
+
+## Design-read signal → dial inference
+
+The Phase A.0 "Design Read" (see [two-mode-workflow → Phase A.0](two-mode-workflow.md)) names a **vibe family** — "minimalist", "premium consumer", "playful/experimental", "trust-first", etc. That vibe family seeds the six dials before the first ASCII variant. Values below are in THIS file's dial semantics (VC1 = flat/minimal, VC10 = ornamented; not taste-skill's symmetry→chaos axis), so read them as our scale, not a numeric port. A `—` means "leave at the archetype-bundle or user value — this signal does not strongly imply that dial."
+
+| Design-read signal (vibe family) | VC | MD | CF | DD | BI | ID |
+|---|---|---|---|---|---|---|
+| minimalist / clean / calm / editorial / Linear-style | 3 | 3 | — | 3 | 4 | — |
+| premium consumer / Apple-y / luxury / brand-forward | 6 | 5 | 4 | 3 | 6 | 3 |
+| playful / wild / Dribbble / Awwwards / experimental / agency | 8 | 8 | 5 | 4 | 7 | 6 |
+| marketing / landing / portfolio (no strong vibe stated) | 5 | 6 | 7 | 4 | 6 | 4 |
+| trust-first / public-sector / regulated / accessibility-critical | 3 | 2 | 5 | 5 | 3 | 3 |
+| dark-tech / hacker / developer-tool | 5 | 4 | 7 | 7 | 5 | 8 |
+
+Legend: VC=VISUAL_COMPLEXITY, MD=MOTION_DRAMA, CF=CONVERSION_FOCUS, DD=DATA_DENSITY, BI=BRAND_INTENSITY, ID=INTERACTION_DEPTH.
+
+### Redesign reads set dials as DELTAS, not absolutes
+
+A redesign brief is anchored to an existing site, so its dials are derived relative to that site's current values — extract them first (read the live page via `amw-design-extract` or `amw-webpage-to-diagram`), then apply the delta:
+
+| Redesign signal | How to set the dials |
+|---|---|
+| **redesign — preserve** (evolve, don't reinvent) | Keep VC / DD / BI at the extracted values; bump MOTION_DRAMA by **at most +1** (modernize the motion without changing the feel). The point is continuity — a returning user should not feel relocated. |
+| **redesign — overhaul** (same brand, new look) | Hold BRAND_INTENSITY at the extracted value (brand identity is the one constant); raise VISUAL_COMPLEXITY and MOTION_DRAMA by **+2 each** from the extracted baseline; re-derive CONVERSION_FOCUS and DATA_DENSITY from the *new* goal, not the old site. |
+
+### Three lenses, one precedence order
+
+This table is the FIRST of three lenses that set dial values. They compose in this order:
+
+1. **Design-read signal → dials (this section)** — keyed on the *vibe family* named in the Phase A.0 Design Read. Seeds the dials from how the brief *reads*.
+2. **[Default dial bundles by archetype](#default-dial-bundles-by-archetype)** (below) — keyed on the *business archetype* (SaaS dashboard, fintech, …). Use when the brief names a product category more clearly than a vibe.
+3. **[Natural-language → dial mapping](#natural-language--dial-mapping)** (above) — keyed on the *imperative adjectives the user says during iteration* ("turn up the drama", "more premium"). Adjusts already-seeded dials mid-loop.
+
+When two lenses disagree, the more specific signal wins, and the orchestrator surfaces the resulting dial values in the Design Read so the user can correct by integer. This is why we keep three small keyed tables instead of one giant matrix — each answers a different question asked at a different moment in Phase A.
 
 ## Variant spread rule
 
