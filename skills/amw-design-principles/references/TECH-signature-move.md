@@ -89,6 +89,7 @@ The ONE thing that makes this artifact memorable. Almost always one of:
 - An unexpected element (e.g. a single hand-drawn doodle in an otherwise photographic page).
 - An unexpected ratio or rhythm (e.g. one section is intentionally 1.5× taller than the rest).
 - An unexpected microcopy (e.g. the loading indicator says "Calibrating gravity..." not "Loading...").
+- An inline-image-typography headline — small contextual photos set *inline at type-height*, rounded, acting as punctuation between words (e.g. "We build `[hands typing]` digital `[screen]` products"). Constraints, our way: use it ONCE, in the hero only; the images never overlap the text (each word/image keeps its own spatial zone — see the no-overlap layout rule); on mobile the inline images stack *below* the headline rather than sitting inline. (Pattern named in [TECH-pattern-vocabulary](TECH-pattern-vocabulary.md) under Hero paradigms.)
 
 Hard rule: **one signature move per artifact.** Two signature moves cancel each other out — neither registers as distinctive.
 

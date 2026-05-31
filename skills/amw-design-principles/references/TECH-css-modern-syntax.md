@@ -33,6 +33,9 @@ also-in: TECH-css-variable-discipline.md (how tokens layer with these features);
   - [View Transitions API](#view-transitions-api)
 - [Anchor positioning](#anchor-positioning)
 - [Tailwind v4 native-CSS features](#tailwind-v4-native-css-features)
+- [Layout & viewport correctness](#layout--viewport-correctness)
+  - [Dynamic viewport units — `100dvh`, never `100vh`](#dynamic-viewport-units--100dvh-never-100vh)
+  - [CSS Grid for structure — not flexbox percentage math](#css-grid-for-structure--not-flexbox-percentage-math)
 - [Fallback strategies](#fallback-strategies)
 - [Breaks if](#breaks-if)
 - [Cross-references](#cross-references)
@@ -390,6 +393,34 @@ When the project uses Tailwind v4, prefer the utility syntax for legibility; rea
 ```
 
 `text-balance` is the most impactful per character of code — every heading on a marketing page benefits, costs nothing.
+
+## Layout & viewport correctness
+
+Two construction defaults that prevent a recurring class of layout bugs. Both are "Widely available" — no `@supports` gate needed.
+
+### Dynamic viewport units — `100dvh`, never `100vh`
+
+For full-height heroes and sections, use `min-height: 100dvh`, not `height: 100vh`. On mobile Safari (and Chrome Android) the URL bar collapses and expands as the user scrolls, which changes what `100vh` resolves to *mid-scroll* — the layout jumps and the bottom of a `100vh` hero is clipped behind the address bar on first paint. `dvh` tracks the **dynamic** viewport, so the box stays stable across the bar's collapse/expand. Use `svh` / `lvh` only when you specifically want the small / large extreme locked. Pair with `min-height` (not `height`) so content taller than the viewport can still grow.
+
+```css
+.hero { min-height: 100dvh; }   /* stable across the iOS address-bar collapse */
+```
+
+This is why every starter-component in `starter-components/` already uses `100dvh`; fresh HTML must match.
+
+### CSS Grid for structure — not flexbox percentage math
+
+Build multi-column page structure with CSS Grid, not flexbox + percentage widths. `calc(33% - 1rem)` column math drifts: the per-item gap subtraction is approximate, the last item wraps or overflows at certain widths, and changing the gap means editing every width. Let the grid own the gaps:
+
+```css
+/* Don't: flexbox percentage math */
+.features > * { flex: 0 0 calc(33% - 1rem); }
+
+/* Do: grid owns the columns and the gaps */
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+```
+
+Flexbox is the right tool for *one-dimensional* content flow (a toolbar, a tag row, a wrapping button cluster) — not for the page's column skeleton. (The "three equal cards" layout itself is separately constrained by [ai-slop-avoid](../ai-slop-avoid.md) § III — Grid is *how* you build whatever asymmetric layout you choose, not a license for the 3-equal-card cliché.)
 
 ## Fallback strategies
 
