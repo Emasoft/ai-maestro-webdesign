@@ -159,7 +159,7 @@ This plugin is MIT-licensed and contains no proprietary or commercial code. It b
 
 **Other vendored / adapted material** retains its upstream license:
 
-- `external/hyperframes/` — vendored as a git submodule; see its own LICENSE (the bridge skill treats it as read-only upstream).
+- `external/hyperframes/` — vendored as a git submodule under the **Apache License 2.0** (see `external/hyperframes/LICENSE`); the HTML→MP4 bridge skill treats it as read-only upstream.
 - `skills/amw-shadcn-ui/docs/` — shadcn/ui reference docs imported verbatim from <https://ui.shadcn.com/>.
 - Per-skill originals preserved under `skills/amw-<name>/LICENSE`.
 

@@ -46,7 +46,7 @@ Read this file when any of:
 - The project is **multi-tenant** (SaaS that serves multiple customer brands from one codebase), requiring per-tenant token overrides.
 - The product itself is **agentic** — has an AI assistant that takes actions (writes data, sends messages, books resources, runs code).
 
-Do NOT use this file for greenfield projects with no existing system (use the plugin defaults: `color-system.md`, `spacing-rhythm.md`, `typography-system.md`).
+Do NOT use this file for greenfield projects with no existing system (use the plugin defaults: `color-system.md`, `spacing-rhythm.md`, `typography-system.md`) — **with one exception:** a greenfield **public-sector / trust-first** brief should still reach for the official government system (GOV.UK Frontend / USWDS), covered in the *Public-sector / government systems* subsection below, because using it is regulatorily expected rather than optional.
 
 ---
 
