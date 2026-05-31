@@ -78,18 +78,29 @@ process_file() {
   ' "$file" | while IFS=$'\t' read -r lineno content; do
     [ -z "$content" ] && continue
 
-    # Extract backtick-quoted paths.
-    # Use a Python-free scan: portable grep -oE.
-    # First the backtick paths.
-    # The single-quoted regex / sed scripts contain LITERAL backticks; SC2016
-    # would only matter if we wanted variable expansion here, which we do not.
-    # shellcheck disable=SC2016
-    printf '%s\n' "$content" | \
-      grep -oE '`[^`]+`' 2>/dev/null | \
-      sed 's/^`//; s/`$//' | \
-      while IFS= read -r ref; do
-        emit_check "$file" "$lineno" "$source_dir" "$ref"
-      done
+    # Blockquote annotation lines (`>`-prefixed) are auto-generated doc-TOC
+    # mirrors (e.g. "> What it does · … · Paths (configurable in
+    # `hyperframes.json`) · …"), NOT the authoritative cross-reference list. A
+    # backtick-wrapped word inside one is prose (often a runtime filename like
+    # `hyperframes.json`), not a repo ref — extracting it produces a false
+    # MISSING. Real refs live in the `-` / `[label](target)` bullets, so skip
+    # ONLY the backtick scan on `>` lines; the markdown-link scan below still
+    # runs on every line and would still catch a genuine broken link there.
+    stripped_lead="$(printf '%s' "$content" | sed -E 's/^[[:space:]]+//')"
+    case "$stripped_lead" in
+      '>'*) ;;  # blockquote annotation — skip backtick extraction
+      *)
+        # Extract backtick-quoted paths (Python-free, portable grep -oE).
+        # The single-quoted regex / sed scripts contain LITERAL backticks;
+        # shellcheck disable=SC2016
+        printf '%s\n' "$content" | \
+          grep -oE '`[^`]+`' 2>/dev/null | \
+          sed 's/^`//; s/`$//' | \
+          while IFS= read -r ref; do
+            emit_check "$file" "$lineno" "$source_dir" "$ref"
+          done
+        ;;
+    esac
 
     # Then the markdown link targets [label](target).
     printf '%s\n' "$content" | \
