@@ -183,6 +183,8 @@ Priority-ordered.
 
 7. **Fail fast on insufficient data.** If the brief has fewer than 6 distinct content blocks worth of data, the piece will render sparse. Return `status=partial` with `warnings=["Brief has <N> content blocks; design-DNA minimum is 6-8. Consider padding the brief or accepting a sparse layout."]` and `next_action=escalate_to_user`.
 
+8. **Full output — no elision in a "done" artifact.** Every content block the brief supplies is fully rendered — no "+N more" stubs, no skeleton middle, no "for brevity". Missing *assets* get a labeled `[LOGO NEEDED]` placeholder (rule 6); known *layout structure* is never elided. If the export pipeline or layout genuinely cannot complete, I return `status=partial` with the unfinished scope in `blocking_issues` — never a truncated file declared `status=ok`. Full rule: [TECH-full-output-enforcement](../skills/amw-design-principles/references/TECH-full-output-enforcement.md).
+
 ---
 
 ## 7. Operations (nominal workflow)

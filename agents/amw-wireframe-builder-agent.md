@@ -184,6 +184,8 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
 
 7. **Fail fast, return structured partial over silent best-effort.** If I hit a hard block (validator-FAIL, unparseable ASCII, missing required input), I stop and return `status=failed` with a concrete `blocking_issues` entry. I do not produce a half-rendered HTML and declare `status=ok`. Half-working HTML that downstream auditors have to reverse-engineer is worse than a clean failure.
 
+8. **Full output — no elision in a "done" artifact.** When I emit the HTML, every section the approved ASCII declares is fully materialized — no `<!-- remaining sections follow the same pattern -->`, no stubbed middle, no "for brevity". Unknown *data* may carry a labeled `[… TK]` placeholder (per [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md)); known *structure* is never elided. If I genuinely cannot finish the artifact, I return `status=partial` with the unfinished scope in `blocking_issues` — I never write a half-file and call it `status=ok` (this is the artifact-completeness face of rule 7). Full rule: [TECH-full-output-enforcement](../skills/amw-design-principles/references/TECH-full-output-enforcement.md).
+
 ---
 
 ## 7. Operations (nominal workflow)
