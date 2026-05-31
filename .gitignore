@@ -94,16 +94,12 @@ yarn-error.log*
 # .gitmodules is unaffected — git still tracks the gitlink.
 external/hyperframes/**
 
-# Mermaid-render vendored wrapper (external/mermaid-render/) — beautiful-mermaid
-# backend imported verbatim from upstream. The wrapper scripts (render.mjs,
-# batch.mjs) read process.argv / process.env for their own CLI config, which
-# CPV's skillaudit flags as ENV_RECON — a false positive on benign config
-# reads in code this plugin does not own (RULE 0 forbids editing vendored
-# upstream sources). Listing the tree here tells CPV's gitignore-aware
-# scanners to skip it, while git continues to track the already-committed
-# files (gitignore only affects untracked files — tracked files remain
-# tracked, so the wrapper still ships with the plugin).
-external/mermaid-render/**
+# NOTE: external/mermaid-render/ is now OWNED first-party code (MIT, wrapping
+# the MIT beautiful-mermaid backend — see Acknowledgments in README.md). It is
+# git-tracked and improvable; it is NOT skipped here. Its `node_modules/` /
+# `dist/` / `build/` artifacts are still ignored by the `external/*/…` rules
+# above. CPV scanners now lint it like any first-party code; the wrapper
+# scripts' benign process.argv / process.env CLI reads are expected.
 
 # Vendored shadcn-ui upstream docs (skills/amw-shadcn-ui/docs/) — 201 MDX files
 # imported verbatim from https://ui.shadcn.com/. These are reference material

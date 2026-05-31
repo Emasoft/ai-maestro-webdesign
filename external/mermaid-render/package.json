@@ -2,6 +2,7 @@
   "name": "ai-maestro-webdesign-mermaid-render",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "description": "Vendored wrapper scripts around the beautiful-mermaid npm package. Consolidates three upstream skills (beautiful-mermaid, pretty-mermaid, agent-skill-diagramming-flows) into one backend for the ai-maestro-webdesign plugin.",
   "bin": {

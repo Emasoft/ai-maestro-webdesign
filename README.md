@@ -146,3 +146,21 @@ This plugin is being built in small, verified phases. Current state is recorded 
 ## License
 
 MIT. Each integrated skill preserves its original LICENSE file under `skills/amw-<name>/LICENSE`.
+
+## Acknowledgments
+
+This plugin is MIT-licensed and contains no proprietary or commercial code. It builds on the following open-source work:
+
+**Vendored rendering backend** — `external/mermaid-render/` is owned first-party MIT code that wraps:
+
+- [beautiful-mermaid](https://www.npmjs.com/package/beautiful-mermaid) (MIT) — the Mermaid → themed-SVG / ASCII rendering engine.
+- [@dagrejs/dagre](https://github.com/dagrejs/dagre) (MIT) — directed-graph layout (transitive dependency of beautiful-mermaid).
+- Its wrapper scripts derive from three upstream MIT-licensed Claude-skill repositories (beautiful-mermaid, pretty-mermaid, agent-skill-diagramming-flows); see `external/mermaid-render/LICENSE`.
+
+**Other vendored / adapted material** retains its upstream license:
+
+- `external/hyperframes/` — vendored as a git submodule; see its own LICENSE (the bridge skill treats it as read-only upstream).
+- `skills/amw-shadcn-ui/docs/` — shadcn/ui reference docs imported verbatim from <https://ui.shadcn.com/>.
+- Per-skill originals preserved under `skills/amw-<name>/LICENSE`.
+
+> A complete license inventory and full attribution roll-up is a pre-publish task (tracked separately); this section is the verified core, not the final compilation.
