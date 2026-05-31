@@ -140,5 +140,6 @@ Never kill sections 1 (Hero), 2 (Social proof), 7 (Pricing), or 9 (Final CTA). T
 - `agents/amw-wireframe-builder-agent.md` — renders each section to HTML per its conversion job; refuses to ship if Hero CTA is in the banned list.
 - `agents/amw-seo-strategist-agent.md` — validates that H1 follows the Hero formula and that the section H2s map cleanly to keyword intent.
 - `TECH-microcopy-patterns.md` — button labels and microcopy for the CTAs, empty states, and FAQ entries.
+- [TECH-layout-discipline](TECH-layout-discipline.md) — the mechanical hard-rules (hero-fit, hero-stack ≤ 4, nav single-line, bento exact-cell-count, eyebrow ≤ ceil(sections/3), zig-zag ≤ 2, layout-family ≥ 4 per 8 sections) that keep this scaffold from collapsing into a templated AI-slop layout. This anatomy is the *what* (sections + copy); layout-discipline is the *how-not-to-break-it*.
 - `TECH-dial-configuration.md` — the dial settings steer which Variant (baseline / advanced / experimental) is the user's actual preference.
 - `component-taste.md` — visual treatment for each section (Hero card, pricing tier highlighting, FAQ accordion).

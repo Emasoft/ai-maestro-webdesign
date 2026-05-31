@@ -76,6 +76,17 @@ This table is the cheat sheet the orchestrator consults before emitting any toke
 
 When in doubt, link to the system's published Storybook / docs and copy patterns directly. None of these systems publish patterns that would conflict with the plugin's three hard rules, but they have *strong* internal conventions you must honor.
 
+### Public-sector / government systems (the one greenfield exception)
+
+When the [Phase A.0 Design Read](TECH-dial-configuration.md#design-read-signal--dial-inference) reads **trust-first / public-sector / regulated**, there IS a right official system to reach for even on a greenfield build — using it is legally/regulatorily expected, not optional, and hand-rolling its look is the wrong call:
+
+| Brief reads as… | Reach for | Why |
+|---|---|---|
+| UK public-sector service | `govuk-frontend` (GOV.UK Frontend) | Legally/regulatorily expected; accessibility + content patterns done to GDS standard |
+| US public-sector / federal / trust-first | `uswds` (U.S. Web Design System) | Section 508 compliance + established gov trust patterns |
+
+**Honesty rule (applies to every system in this file):** install and use the **official package** — do not recreate its CSS by hand, and do not import its tokens then override 90% of them. For these two, the low-variance / low-motion dial seeding from the trust-first signal (see [TECH-dial-configuration](TECH-dial-configuration.md)) already aligns with the system's restraint, so the dials and the system agree by construction.
+
 ---
 
 ## Section 2 — 3-tier design-token architecture
