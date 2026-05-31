@@ -344,3 +344,4 @@ The 90–99% bucket gets the reinforcement glow; below 90% the progress bar is s
 - AI-slop motion rules: `skills/amw-design-principles/ai-slop-avoid.md` § V (interaction and motion) — parallax overuse, infinite spinning logos, scroll-jacking are banned.
 - Kinetic typography exceptions: `skills/amw-pretext/references/TECH-33-kinetic-width-animation.md`, TECH-23, TECH-48 — these animate layout properties on purpose; they are not exceptions to the perf rule, they are a distinct category of work owned by `amw-pretext`.
 - Form-error microinteractions: `TECH-form-error-recovery.md` (this references catalog uses the `error-shake` and `success-pulse` entries above; form-error-recovery owns the accessibility wiring).
+- Named pattern vocabulary: `TECH-pattern-vocabulary.md` — shared names for ~50 hero / layout / scroll / card / typography / micro-interaction patterns; its status column points back here for the interaction families and flags the slop-adjacent ones.
