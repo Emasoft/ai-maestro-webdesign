@@ -239,6 +239,8 @@ Run AFTER the primary path (A/B/C) produces a draft DESIGN.md, BEFORE the lint g
 
 If a cross-project library entry at `~/.config/ai-maestro/design-library/` matches the fingerprint, surface the match in `recommendations[]` so main-agent can choose to reuse the library entry's prose / brand-archetype labels instead of authoring fresh.
 
+5. **Art-direction QA pass (always, after the draft is assembled, before lint)** — walk the diagnostic checklist in [TECH-art-direction-tells](../skills/amw-design-principles/references/TECH-art-direction-tells.md). It catches the subtle patterns a token-by-token extraction misses — pill-scale coexistence, alpha-overlay scale, color-voltage allocation, weight ceilings, polarity-flipped bands, atmospheric-gradient scoping, elevation discipline. For each *present* tell, ensure it lands in the right DESIGN.md section AND, where it's a deliberate discipline, is captured as a brand rule. My faithful-transcription posture holds: record only tells I actually observed; an *absent* tell is noted only when its absence is itself diagnostic; ambiguous tells become Open Questions, never guesses.
+
 ### Companion generation (all paths, when `companion_targets` provided)
 
 After the DESIGN.md passes lint:

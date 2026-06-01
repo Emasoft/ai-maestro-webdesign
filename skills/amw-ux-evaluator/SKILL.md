@@ -141,6 +141,7 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Ever
 - Related: [amw-ascii-to-html](../amw-ascii-to-html/SKILL.md) (upstream producer), [amw-ui-ux-reasoning](../amw-ui-ux-reasoning/SKILL.md) (industry-specific anti-pattern taxonomy).
 - References: [balsamiq-button-principles](references/balsamiq-button-principles.md) — full button-design corpus.
 - UX-law citations: [TECH-ux-laws-encyclopedia](../amw-design-principles/references/TECH-ux-laws-encyclopedia.md) — 31-law reference; the evaluator cites laws by name in P1/P2/P3 findings (Fitts for hit-target sizing, Hick for choice overload, Von Restorff for primary-CTA isolation, Banner Blindness for CTA tone, Feedback Loop for action affordance) — see also [quick-reference table](../amw-design-principles/references/TECH-ux-laws-quick-reference-table.md).
+- Art-direction diagnostic lens: [TECH-art-direction-tells](../amw-design-principles/references/TECH-art-direction-tells.md) — a QA-pass checklist of ~16 subtle art-direction tells (pill-scale coexistence, color voltage, weight ceiling, polarity-flipped bands, alpha-overlay scale, elevation discipline, …). Apply it when the evaluation is diagnosing *why* a design reads as deliberate vs sloppy, not just whether components pass.
 - Command: `/amw-eval`.
 
 ## Non-negotiables
