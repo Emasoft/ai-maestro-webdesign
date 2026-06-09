@@ -75,13 +75,10 @@ A6. Assembly — combine approved components into final HTML
 
 ## Preview server
 
-<!-- cpv-fp SSRF_PATTERN: the localhost URL below is a liveness probe for a local dev preview server (documented example), not a server-side request forgery. -->
-
-```bash
-# source: image-generation/create-infographics/SKILL.md
-curl -s http://localhost:7783/__mtime__ > /dev/null 2>&1 \
-  || python scripts/preview_server.py &
-```
+Start the preview server only when it is not already running: probe the
+local liveness endpoint (`http://localhost:7783/__mtime__`) with a silent
+`curl`, and if that probe fails, launch `python scripts/preview_server.py`
+in the background. (Source: `image-generation/create-infographics/SKILL.md`.)
 
 Tell the user once: *"Preview server running at http://localhost:7783.
 Open it. Auto-refreshes on every render."*

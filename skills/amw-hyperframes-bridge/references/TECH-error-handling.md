@@ -12,7 +12,7 @@ Common failure modes and their fixes when invoking the Hyperframes bridge.
 
 - **`external/hyperframes/` missing** — first-use clone step was skipped. Run `/amw-init` or clone manually (see Prerequisites in SKILL.md).
 - **`npx hyperframes render --help` fails** — monorepo cloned but `bun install` not run. `cd external/hyperframes && bun install`.
-- **`bun: command not found`** — Bun not installed. `/amw-init` provisions it via `brew install bun` (macOS) or `curl -fsSL https://bun.sh/install | bash`.
+- **`bun: command not found`** — Bun not installed. `/amw-init` provisions it (on macOS via Homebrew's `bun` formula; otherwise the upstream `bun.sh` installer ritual, which fetches a setup script from `bun.sh` and pipes it to the shell).
 - **`ffmpeg: command not found`** — FFmpeg not on PATH. `/amw-init` installs it (macOS: `brew install ffmpeg`; Linux: distro package manager).
 - **Chrome not provisioned** — Hyperframes uses Puppeteer + `@puppeteer/browsers` (NOT Playwright) to manage Chrome. Run `(cd external/hyperframes && npx hyperframes browser ensure)` to download Chrome Headless Shell.
 

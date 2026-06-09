@@ -2,7 +2,7 @@
 id: S-044
 name: Dashboard Magazine / FT-style
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/atelier-main/examples/05-dashboard-magazine.html (MIT, inferred)
+source_attribution: batch9 harvest corpus `atelier` (examples/05-dashboard-magazine.html; MIT, inferred; no public upstream URL recorded)
 license: MIT (inferred)
 ---
 

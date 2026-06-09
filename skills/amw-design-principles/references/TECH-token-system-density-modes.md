@@ -1,5 +1,5 @@
 <!--
-Sources: Material 3 density (Apache-2.0, https://m3.material.io/foundations/layout/applying-layout/window-size-classes) — direct-port of compact/comfortable/spacious naming; Carbon Design density tokens (Apache-2.0, IBM) — direct-port of multiplier-over-baseline approach.
+Sources: Material 3 density (Apache-2.0, https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes) — direct-port of compact/comfortable/spacious naming; Carbon Design density tokens (Apache-2.0, IBM) — direct-port of multiplier-over-baseline approach.
 Synthesis novel to this plugin: 3-mode multiplier table over the plugin's 10-step spacing scale, breakpoint-driven vs user-toggle decision tree, density's interaction with type-scale, breaks-if invariants. Clean-room beyond the cited sources.
 -->
 

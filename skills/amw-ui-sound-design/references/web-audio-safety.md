@@ -315,4 +315,4 @@ For each failing rule, provide the corrected code inline. Group fixes by file wh
 
 ---
 
-*Source: dannyjpwilliams/ui-sound-design-skill, MIT (© 2026 Danny Williams). Original at https://github.com/dannyjpwilliams/ui-sound-design-skill.*
+*Source: dannyjpwilliams/ui-sound-design-skill, MIT (© 2026 Danny Williams). Original at <https://github.com/dannyjpwilliams/ui-sound-design-skill>.*

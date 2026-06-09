@@ -161,7 +161,7 @@ mkdir -p "$REPORT_DIR"
 ## What this is NOT
 
 - NOT a substitute for the broader Wave 1 verification. Technique and
-  brand-library tests run separately via their own harness invocations.
+  brand-exemplar (`brand-*.md`) tests run separately via their own harness invocations.
 - NOT a license to render upstream demos that require host-side builds.
   A-class exemptions are documented skips, not passes.
 - NOT a replacement for the slop-verifier gate. The slop check

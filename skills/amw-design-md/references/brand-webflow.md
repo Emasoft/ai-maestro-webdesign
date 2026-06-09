@@ -93,4 +93,4 @@ Webflow's website is a visually rich, tool-forward platform that communicates "d
 - Border: `#d8d8d8`
 - Secondary: Purple `#7a3dff`, Pink `#ed52cb`, Green `#00d722`
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

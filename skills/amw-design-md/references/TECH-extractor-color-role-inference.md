@@ -137,7 +137,7 @@ The `ROLE_SCORERS` dict maps each role to a small lambda over `(palette_entry, p
 
 ## Heuristic constants
 
-Empirically tuned on the 60-brand corpus in `skills/amw-design-principles/brand-library/`. Do NOT change these without re-running the brand-corpus regression suite.
+Empirically tuned on the upstream 60-brand extraction corpus; the ships-with-plugin snapshot of that corpus is `skills/amw-design-md/references/brand-*.md` (see `brand-catalog.md`). Do NOT change these without re-running the brand-corpus regression suite.
 
 | Constant | Value | What it controls |
 |---|---|---|

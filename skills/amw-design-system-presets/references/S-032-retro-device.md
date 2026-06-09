@@ -2,7 +2,7 @@
 id: S-032
 name: Retro Device
 aesthetic_position: developer terminal physical-ui monospace
-source_attribution: https://github.com/web-designer-plugin (MIT)
+source_attribution: https://github.com/MickeyAlton33/web-designer-plugin (MIT)
 license: MIT
 ---
 
@@ -119,4 +119,4 @@ Render: 1440x900 OK, 52656 B, render-determinism JOD 10.00 (source is a token sp
 - S-033 Win98 — window-chrome OS metaphor, same era but screen-UI not device-shell
 - S-012 Retro Terminal — terminal green-on-black, no physical device metaphor
 - S-038 Dark Tech — dark futuristic tech, no retro physicality
-- Source: web-designer-plugin (MIT) — https://github.com/web-designer-plugin
+- Source: web-designer-plugin (MIT) — https://github.com/MickeyAlton33/web-designer-plugin

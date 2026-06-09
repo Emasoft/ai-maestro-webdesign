@@ -2,7 +2,7 @@
 id: S-013
 name: Industrial / Utilitarian
 aesthetic_position: developer-terminal-monospace
-source_attribution: https://github.com/Emasoft/ai-maestro-webdesign (batch9 harvest, styles-B "Industrial"; styles-A "Industrial/Utilitarian"; frontend-design Anchor 2)
+source_attribution: batch9 harvest corpus — `styles-B` "Industrial", `styles-A` "Industrial/Utilitarian", `frontend-design` Anchor 2 (no public upstream URL recorded)
 license: original summary; color and typography values in the public domain
 ---
 

@@ -2,7 +2,7 @@
 id: S-025
 name: Playful / Toy-Like
 aesthetic_position: playful-consumer-bold toy-atelier
-source_attribution: https://github.com/atelier-main (SKILL.md — tone B1 #6); Bexa landing archetype "Playful/Consumer"
+source_attribution: batch9 harvest corpus `atelier` (SKILL.md — tone B1 #6; no public upstream URL recorded); Bexa landing archetype "Playful/Consumer"
 license: MIT (inferred)
 ---
 

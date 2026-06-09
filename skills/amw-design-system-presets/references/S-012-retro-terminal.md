@@ -2,7 +2,7 @@
 id: S-012
 name: Retro Terminal / Green-on-Black
 aesthetic_position: developer-terminal-monospace
-source_attribution: https://github.com/Emasoft/ai-maestro-webdesign (batch9 harvest, styles-A "Retro Terminal"; styles-B "Developer Native"; frontend-design-engineer #8)
+source_attribution: batch9 harvest corpus — `styles-A` "Retro Terminal", `styles-B` "Developer Native", `frontend-design-engineer` #8 (no public upstream URL recorded)
 license: original summary; color values and typography choices in the public domain
 ---
 

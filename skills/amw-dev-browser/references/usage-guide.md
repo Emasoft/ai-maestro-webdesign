@@ -73,7 +73,7 @@ The wrapper is the stable entry point other plugin code depends on; the raw CLI 
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| `dev-browser: command not found` | CLI not installed | Run `/amw-init`, or manually `npm install -g dev-browser && dev-browser install`. |
+| `dev-browser: command not found` | CLI not installed | Run `/amw-init`; the manual equivalent is a global npm install of the `dev-browser` package followed by its one-time `install` sub-command. |
 | `Chromium download failed` / first-run crash | `dev-browser install` was never run | Re-run `dev-browser install` once per machine to fetch the sandboxed browser. |
 | Screenshot is blank or truncated | Page uses lazy-load or infinite scroll | Use the wrapper's `pass-through` to supply `dev-browser`'s wait / scroll flags; do **not** swap to Playwright. |
 | Node version error | Node < 22 on PATH | Upgrade Node to >= 22. This skill does not support older runtimes. |

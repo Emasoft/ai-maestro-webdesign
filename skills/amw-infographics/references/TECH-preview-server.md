@@ -38,17 +38,11 @@ live component preview.
 python scripts/preview_server.py &
 ```
 
-One-liner to start only if not running:
-
-<!-- cpv-fp SSRF_PATTERN: the localhost URL below is a liveness probe for a local dev preview server (documented example), not a server-side request forgery. -->
-
-```bash
-curl -s http://localhost:7783/__mtime__ > /dev/null 2>&1 \
-  || python scripts/preview_server.py &
-```
-
-The `__mtime__` endpoint is the liveness probe — fast way to check
-if the server's up.
+To start it only when not already running: probe the local liveness
+endpoint (`http://localhost:7783/__mtime__`) with a silent `curl`, and
+if that probe fails, launch `python scripts/preview_server.py` in the
+background. The `__mtime__` endpoint is the liveness probe — a fast way
+to check whether the server is already up before starting a second one.
 
 ## User instruction
 

@@ -2,7 +2,7 @@
 id: S-016
 name: Luxury Dark Warm
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/frontend-design-engineer-skill (visual-directions.md #3 Luxury Dark Warm); https://github.com/claude-website-design-skills (claude-remix art-deco vocabulary)
+source_attribution: https://github.com/angelapaia/frontend-design-engineer-skill (visual-directions.md #3 Luxury Dark Warm); batch9 harvest corpus `claude-website-design-skills` (claude-remix art-deco vocabulary; no public upstream URL recorded)
 license: MIT (inferred from source repo conventions)
 ---
 

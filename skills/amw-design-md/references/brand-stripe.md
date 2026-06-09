@@ -324,4 +324,4 @@ What truly distinguishes Stripe is its shadow system. Rather than the flat or si
 7. Dark sections use `#1c1e54` -- not black, not gray, but a deep branded indigo
 8. SourceCodePro for code at 12px/500 with 2.00 line-height (very generous for readability)
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

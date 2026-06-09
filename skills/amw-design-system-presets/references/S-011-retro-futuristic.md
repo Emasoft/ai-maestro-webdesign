@@ -2,7 +2,7 @@
 id: S-011
 name: Retro-Futuristic / Synthwave
 aesthetic_position: dark-cinematic-cyber
-source_attribution: https://github.com/Emasoft/ai-maestro-webdesign (batch9 harvest, styles-B "Retro-Futuristic"; styles-A "Retro-Futuristic"; frontend-design Anchor 6)
+source_attribution: batch9 harvest corpus — `styles-B` "Retro-Futuristic", `styles-A` "Retro-Futuristic", `frontend-design` Anchor 6 (no public upstream URL recorded)
 license: original summary; upstream token values MIT where applicable
 ---
 

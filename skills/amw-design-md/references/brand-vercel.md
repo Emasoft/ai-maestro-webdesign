@@ -312,4 +312,4 @@ What distinguishes Vercel from other monochrome design systems is its shadow-as-
 5. The inner `#fafafa` ring in card shadows is what gives Vercel cards their subtle inner glow
 6. Geist Mono uppercase for technical labels, Geist Sans for everything else
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

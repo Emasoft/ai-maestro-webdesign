@@ -2,7 +2,7 @@
 id: S-043
 name: Japanese Dark Editorial (Zutomayo)
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/atelier-main/examples/01-resume-zutomayo.html — "FUJITA KURO" resume example (MIT, inferred)
+source_attribution: batch9 harvest corpus `atelier` (examples/01-resume-zutomayo.html — "FUJITA KURO" resume example; MIT, inferred; no public upstream URL recorded)
 license: MIT (inferred)
 ---
 

@@ -2,7 +2,7 @@
 id: S-041
 name: Bauhaus
 aesthetic_position: classical-modernist geometric
-source_attribution: https://github.com/design-forge-main/SKILL.md + references/discovery-framework.md (MIT, inferred); Google Stitch "Bauhaus" preset
+source_attribution: batch9 harvest corpus `design-forge` (SKILL.md + references/discovery-framework.md; MIT, inferred; no public upstream URL recorded); Google Stitch "Bauhaus" preset
 license: MIT (inferred)
 ---
 

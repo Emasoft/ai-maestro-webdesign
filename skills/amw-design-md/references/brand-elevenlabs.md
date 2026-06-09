@@ -267,4 +267,4 @@ What makes ElevenLabs distinctive is its multi-layered shadow system. Rather tha
 5. Warm stone CTA is the signature — `rgba(245,242,239,0.8)` with `rgba(78,50,23,0.04)` shadow
 6. Pill (9999px) for buttons, generous radius (16px–24px) for cards
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

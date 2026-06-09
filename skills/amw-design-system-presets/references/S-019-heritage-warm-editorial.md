@@ -2,7 +2,7 @@
 id: S-019
 name: Heritage / Warm Editorial
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/design-system-is-all-you-need (heritage.md full parametric token system + warmth levels); https://github.com/tasteful-ui-skill (catalog.md Warm/Editorial routing)
+source_attribution: https://github.com/devPnal/design-system-is-all-you-need (heritage.md full parametric token system + warmth levels); https://github.com/DonkeyKing01/tasteful-ui-skill (catalog.md Warm/Editorial routing)
 license: MIT (inferred from source repo conventions)
 ---
 

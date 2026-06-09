@@ -304,4 +304,4 @@ What makes Resend distinctive is its icy, blue-tinted border system. Instead of 
 6. Pill shape (9999px) for CTAs and badges, standard radius (4px–16px) for containers
 7. No shadows — use frost borders for depth against the void
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

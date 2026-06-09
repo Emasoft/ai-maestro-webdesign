@@ -263,4 +263,4 @@ What makes Mistral distinctive is the complete commitment to a warm color temper
 4. Shadows are always warm: "golden shadow with amber tones"
 5. Font weight is always 400 — describe emphasis through size and color
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

@@ -26,7 +26,7 @@ status: stable
 
 ## What it does
 
-Documents the OPTIONAL Variant 1 §9 "Agent Prompt Guide" — a copy-paste-ready block the human author writes for direct insertion into a coding-agent system prompt. It is NOT a duplicate of `usage-prompt.md` (the auto-emitted companion); it is the human-authored counterpart that lives INSIDE DESIGN.md and reflects judgments the author wants surfaced to every agent that reads the file.
+Documents the OPTIONAL Variant 1 §9 "Agent Prompt Guide" — a copy-paste-ready block the human author writes as a high-density design brief that a coding agent reads as guidance. It is NOT a duplicate of `usage-prompt.md` (the auto-emitted companion); it is the human-authored counterpart that lives INSIDE DESIGN.md and reflects judgments the author wants surfaced to every agent that reads the file.
 
 Mixed-license origin: the four-subsection structure is a clean-room re-derivation of the GPL-licensed `design-extractor` agent-prompt convention; the specific subsection content patterns and the voice-descriptor format are direct-ported from the MIT-licensed `design-swatches` §9 template.
 

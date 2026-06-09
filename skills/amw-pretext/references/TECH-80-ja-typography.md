@@ -830,7 +830,7 @@ const fromText = parser.parse(text).map(escapeHtml).join("<wbr>");
 // (b) Content that already contains HTML — e.g. a heading with <br> or
 //     inline <span>. parse() would mangle the tags; use the HTML-aware
 //     translateHTMLString(), then swap its U+200B separators for <wbr>.
-const fromHtml = parser.translateHTMLString(inner).replaceAll("​", "<wbr>");
+const fromHtml = parser.translateHTMLString(inner).replaceAll("\u200B", "<wbr>");
 ```
 
 Render the result via the framework's HTML injection (`set:html` / `dangerouslySetInnerHTML`).
@@ -883,7 +883,7 @@ function protectQuotedPhrases(html) {
 
 // Then run BudouX on the protected HTML via translateHTMLString.
 const protected = protectQuotedPhrases(rawHtml);
-const wrapped = parser.translateHTMLString(protected).replaceAll("​", "<wbr>");
+const wrapped = parser.translateHTMLString(protected).replaceAll("\u200B", "<wbr>");
 ```
 
 > **After applying BudouX inside cards, always re-check the layout.** Inserting `<wbr>` (and `translateHTMLString`'s `keep-all` wrapper) changes where lines break — a card's line count and height can shift, text reflows, a card can grow taller, or a card grid can end up uneven. BudouX on card text is **not "apply and forget"**: after applying, view every affected card at mobile and desktop widths and adjust each one individually where needed — font-size, padding, copy length, or explicit `titleLines`. Budget time for this per-card pass; treat it as part of the BudouX work, not optional polish.

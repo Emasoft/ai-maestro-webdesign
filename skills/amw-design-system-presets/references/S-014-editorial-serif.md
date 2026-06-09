@@ -2,7 +2,7 @@
 id: S-014
 name: Editorial Serif / Content-First
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/Emasoft/ai-maestro-webdesign (batch9 harvest, styles-A/B "Editorial Serif"; frontend-design-engineer #1; generate-design-md editorial-minimal; blocked-A #6 WIRED)
+source_attribution: batch9 harvest corpus — `styles-A`/`styles-B` "Editorial Serif", `frontend-design-engineer` #1, `generate-design-md` editorial-minimal, `blocked-A` #6 WIRED (no public upstream URL recorded)
 license: original summary; typography and color values in the public domain
 ---
 

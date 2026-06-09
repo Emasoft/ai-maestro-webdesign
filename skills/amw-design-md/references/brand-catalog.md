@@ -25,40 +25,40 @@ The exemplars are direct-ported (verbatim, with attribution) from
 
 | Brand | File | One-line position |
 |---|---|---|
-| Stripe | [`stripe.md`](stripe.md) | The premium-fintech reference: blue/violet brand color with deep grayscale neutrals, dense data layout, restrained motion, near-platonic geometric clarity. Benchmark for "trustworthy commercial SaaS". |
-| Linear | [`linear.md`](linear.md) | Devtool minimalism: near-black UI with a single chromatic accent, IBM Plex pairings, tight grid, performance-as-aesthetic. The canonical "Linear style" reference for productivity tools. |
-| Notion | [`notion.md`](notion.md) | Warm-minimal content-first: off-white surfaces, serif headings against geometric sans body, generous whitespace, soft greys, single-column reading width — restraint over decoration. |
-| Vercel | [`vercel.md`](vercel.md) | Geist-driven near-neutral dark-first surface with a single emerald-like signal. Documentation as artifact: high typographic hierarchy, low chroma elsewhere. |
+| Stripe | [`brand-stripe.md`](brand-stripe.md) | The premium-fintech reference: blue/violet brand color with deep grayscale neutrals, dense data layout, restrained motion, near-platonic geometric clarity. Benchmark for "trustworthy commercial SaaS". |
+| Linear | [`brand-linear.md`](brand-linear.md) | Devtool minimalism: near-black UI with a single chromatic accent, IBM Plex pairings, tight grid, performance-as-aesthetic. The canonical "Linear style" reference for productivity tools. |
+| Notion | [`brand-notion.md`](brand-notion.md) | Warm-minimal content-first: off-white surfaces, serif headings against geometric sans body, generous whitespace, soft greys, single-column reading width — restraint over decoration. |
+| Vercel | [`brand-vercel.md`](brand-vercel.md) | Geist-driven near-neutral dark-first surface with a single emerald-like signal. Documentation as artifact: high typographic hierarchy, low chroma elsewhere. |
 
 ### Editorial / warm
 
 | Brand | File | One-line position |
 |---|---|---|
-| Mintlify | [`mintlify.md`](mintlify.md) | Warm editorial for technical docs: cream/sand surfaces, soft accents, serif accents on a sans body, documentation that reads like a quarterly journal. |
-| Resend | [`resend.md`](resend.md) | Warm minimal SaaS: paper-toned surface, restrained black-on-cream, hairline rules, transactional but not cold. |
+| Mintlify | [`brand-mintlify.md`](brand-mintlify.md) | Warm editorial for technical docs: cream/sand surfaces, soft accents, serif accents on a sans body, documentation that reads like a quarterly journal. |
+| Resend | [`brand-resend.md`](brand-resend.md) | Warm minimal SaaS: paper-toned surface, restrained black-on-cream, hairline rules, transactional but not cold. |
 
 ### Dark devtool / terminal-adjacent
 
 | Brand | File | One-line position |
 |---|---|---|
-| Cursor | [`cursor.md`](cursor.md) | Dark IDE-native: deep-blue/black canvas, monospaced accent type, code-block-first information density, electric accent color. |
-| Raycast | [`raycast.md`](raycast.md) | macOS-native dark: vibrant brand reds against deep grays, native-feeling controls, command-palette emphasis, animations tied to gesture. |
-| Warp | [`warp.md`](warp.md) | Terminal modernized: phosphor-derived accents on warm-dark backgrounds, monospaced display type, depth via gradient rather than borders. |
+| Cursor | [`brand-cursor.md`](brand-cursor.md) | Dark IDE-native: deep-blue/black canvas, monospaced accent type, code-block-first information density, electric accent color. |
+| Raycast | [`brand-raycast.md`](brand-raycast.md) | macOS-native dark: vibrant brand reds against deep grays, native-feeling controls, command-palette emphasis, animations tied to gesture. |
+| Warp | [`brand-warp.md`](brand-warp.md) | Terminal modernized: phosphor-derived accents on warm-dark backgrounds, monospaced display type, depth via gradient rather than borders. |
 
 ### Bold / mission-driven / consumer
 
 | Brand | File | One-line position |
 |---|---|---|
-| SpaceX | [`spacex.md`](spacex.md) | Engineering-grand: oversized display type on near-black, hairline data labels, mission-payload information density, zero ornament. |
-| Webflow | [`webflow.md`](webflow.md) | Colorful prosumer creative: brand blue against warm whites, accessible component palette, motion-as-feedback, designer-facing voice. |
+| SpaceX | [`brand-spacex.md`](brand-spacex.md) | Engineering-grand: oversized display type on near-black, hairline data labels, mission-payload information density, zero ornament. |
+| Webflow | [`brand-webflow.md`](brand-webflow.md) | Colorful prosumer creative: brand blue against warm whites, accessible component palette, motion-as-feedback, designer-facing voice. |
 
 ### AI products
 
 | Brand | File | One-line position |
 |---|---|---|
-| Claude (Anthropic) | [`claude.md`](claude.md) | Quiet luminous: warm cream surfaces, terracotta accents, conversational restraint, serif/sans pairings tuned for long reading. |
-| ElevenLabs | [`elevenlabs.md`](elevenlabs.md) | Voice-first consumer AI: dark canvas with vivid accent, generous display sizes for "your voice on the page", interactive demos foregrounded. |
-| Mistral | [`mistral.md`](mistral.md) | French-AI editorial: tricolor-informed accents on white, geometric sans, paper-feeling whitespace, restraint over neon. |
+| Claude (Anthropic) | [`brand-claude.md`](brand-claude.md) | Quiet luminous: warm cream surfaces, terracotta accents, conversational restraint, serif/sans pairings tuned for long reading. |
+| ElevenLabs | [`brand-elevenlabs.md`](brand-elevenlabs.md) | Voice-first consumer AI: dark canvas with vivid accent, generous display sizes for "your voice on the page", interactive demos foregrounded. |
+| Mistral | [`brand-mistral.md`](brand-mistral.md) | French-AI editorial: tricolor-informed accents on white, geometric sans, paper-feeling whitespace, restraint over neon. |
 
 ## Selecting exemplars — quick decision rules
 

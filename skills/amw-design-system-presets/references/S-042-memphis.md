@@ -2,7 +2,7 @@
 id: S-042
 name: Memphis / Neo-Memphis
 aesthetic_position: playful-consumer-bold
-source_attribution: https://github.com/atelier-main/examples/04-landing-memphis.html — "BLOB!" example (MIT, inferred)
+source_attribution: batch9 harvest corpus `atelier` (examples/04-landing-memphis.html — "BLOB!" example; MIT, inferred; no public upstream URL recorded)
 license: MIT (inferred)
 ---
 

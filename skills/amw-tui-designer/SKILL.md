@@ -109,7 +109,7 @@ Cross-skill:
 Upstream:
 
 - Tuimorphic React library: `https://github.com/douglance/tuimorphic` (MIT) — pinned at the upstream HEAD when this skill was authored.
-- CRTFilter.js WebGL backend: `https://github.com/nicholashamilton/crtfilter` (use only when CSS recipes are insufficient).
+- CRTFilter.js WebGL backend: nicholashamilton's `crtfilter` (repo no longer public; use only when CSS recipes are insufficient).
 
 <!--
 Original sources adapted under MIT License:

@@ -2,7 +2,7 @@
 id: S-021
 name: Pnalism / Two-Tone Minimal
 aesthetic_position: classical-modernist two-tone
-source_attribution: https://github.com/design-system-is-all-you-need-main (pnalism.md — full parametric token system + density levels)
+source_attribution: https://github.com/devPnal/design-system-is-all-you-need (pnalism.md — full parametric token system + density levels)
 license: MIT (inferred)
 ---
 

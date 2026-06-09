@@ -2,7 +2,7 @@
 id: S-020
 name: Organic / Earthy / Blob
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/frontend-design (SKILL.md Anchor 7 Organic, full breaks-if invariants); https://github.com/frontend-design-engineer-skill (visual-directions.md Organic direction); https://github.com/design-system-is-all-you-need (organic token system)
+source_attribution: batch9 harvest corpus `frontend-design` (SKILL.md Anchor 7 Organic, full breaks-if invariants; no public upstream URL recorded); https://github.com/angelapaia/frontend-design-engineer-skill (visual-directions.md Organic direction); https://github.com/devPnal/design-system-is-all-you-need (organic token system)
 license: MIT (inferred from source repo conventions)
 ---
 

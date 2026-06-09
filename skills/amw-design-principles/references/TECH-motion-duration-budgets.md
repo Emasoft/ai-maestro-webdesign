@@ -138,5 +138,5 @@ async function fetchAndRenderList() {
 - `TECH-motion-orchestration.md` — how to sequence multiple durations
 - `TECH-motion-perceptual-budgets.md` — concurrent-motion budget per viewport
 - `TECH-reduced-motion.md` — what every duration collapses to under reduced-motion
-- Doherty Threshold reference: https://en.wikipedia.org/wiki/Doherty_threshold
+- Doherty Threshold reference: https://lawsofux.com/doherty-threshold/
 - RAIL performance model: https://web.dev/articles/rail (Apache-2.0)

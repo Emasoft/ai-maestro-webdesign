@@ -2,7 +2,7 @@
 id: S-015
 name: Fashion / Luxury Editorial
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/Emasoft/ai-maestro-webdesign (batch9 harvest, styles-B; web-designer-plugin Fashion Editorial)
+source_attribution: batch9 harvest corpus — `styles-B`, `web-designer-plugin` Fashion Editorial (no public upstream URL recorded)
 license: original summary; color, typography, and timing values in the public domain
 ---
 

@@ -2,7 +2,7 @@
 id: S-017
 name: Corporate Bold / Enterprise Solid
 aesthetic_position: material-systems
-source_attribution: https://github.com/frontend-design-engineer-skill (visual-directions.md #4 Corporate Bold); https://github.com/tasteful-ui-skill (catalog.md Stripe reference)
+source_attribution: https://github.com/angelapaia/frontend-design-engineer-skill (visual-directions.md #4 Corporate Bold); https://github.com/DonkeyKing01/tasteful-ui-skill (catalog.md Stripe reference)
 license: MIT (inferred from source repo conventions)
 ---
 

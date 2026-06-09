@@ -196,4 +196,4 @@ What makes SpaceX distinctive is its radical minimalism: no shadows, no borders 
 5. Zero shadows, zero cards, zero decorative elements
 6. Every section is full-viewport (100vh) — cinematic pacing
 
-*Source: VoltAgent/awesome-design-md (MIT). Original at https://github.com/VoltAgent/awesome-design-md.*
+*Source: VoltAgent/awesome-design-md (MIT). Original at <https://github.com/VoltAgent/awesome-design-md>.*

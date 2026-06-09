@@ -2,7 +2,7 @@
 id: S-072
 name: Grid Beam
 aesthetic_position: micro-aesthetic ambient-motion hero-background
-source_attribution: https://github.com/viernes-ui-starter (MIT) — `grid-beam` component (animated luminous grid lines behind hero)
+source_attribution: https://github.com/iziagency/viernes-ui-starter (MIT) — `grid-beam` component (animated luminous grid lines behind hero)
 license: MIT (viernes-ui-starter)
 ---
 

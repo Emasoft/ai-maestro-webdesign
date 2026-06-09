@@ -2,7 +2,7 @@
 id: S-035
 name: 21st.dev / Aceternity
 aesthetic_position: dark-cinematic-cyber premium-saas bento-landing
-source_attribution: https://github.com/21st-frontend-design (MIT) + https://ui.aceternity.com
+source_attribution: https://github.com/sants2001/21st-frontend-design (MIT) + https://ui.aceternity.com
 license: MIT (21st-frontend-design); Aceternity UI components MIT
 ---
 
@@ -123,7 +123,7 @@ export default {
 ## Canonical render-test pointer
 
 Render-test file: `references/render-tests/S-035-21st-aceternity-test.html` (generated from `references/_test-skeleton.html` + this file's `{{TOKEN}}` block; wash gradients injected as background-image layers on `<body>`).
-Upstream source: https://github.com/21st-frontend-design (MIT) + https://ui.aceternity.com (MIT).
+Upstream source: https://github.com/sants2001/21st-frontend-design (MIT) + https://ui.aceternity.com (MIT).
 
 ## Render-test verdict
 
@@ -135,5 +135,5 @@ Render: 1440x900 OK, 110052 B, render-determinism JOD 10.00 (source is a token s
 - S-009 Aurora — dark aurora gradient, no bento grid, different accent language
 - S-010 Cyberpunk — neon-hard cyber palette, no zinc-neutral base
 - S-029 Data Viz Dark — data-dense dark surface, no landing-page bento structure
-- Source: 21st-frontend-design (MIT) — https://github.com/21st-frontend-design
+- Source: 21st-frontend-design (MIT) — https://github.com/sants2001/21st-frontend-design
 - Source: Aceternity UI (MIT) — https://ui.aceternity.com

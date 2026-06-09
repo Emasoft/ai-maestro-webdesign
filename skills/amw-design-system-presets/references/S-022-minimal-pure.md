@@ -2,7 +2,7 @@
 id: S-022
 name: Minimal Pure / Ultra-Minimal Precision
 aesthetic_position: classical-modernist monochrome
-source_attribution: https://github.com/tasteful-ui-skill-master (catalog.md — Monochrome category); https://github.com/frontend-design-main (SKILL.md — Industrial + Swiss zero-decoration invariants)
+source_attribution: https://github.com/DonkeyKing01/tasteful-ui-skill (catalog.md — Monochrome category); batch9 harvest corpus `frontend-design` (SKILL.md — Industrial + Swiss zero-decoration invariants; no public upstream URL recorded)
 license: MIT (inferred)
 ---
 

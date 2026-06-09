@@ -2,7 +2,7 @@
 id: S-024
 name: Candy / Playful Consumer App
 aesthetic_position: playful-consumer-bold candy-neon
-source_attribution: https://github.com/generate-design-md-main/references/examples/consumer-app-playful.design.md; https://github.com/web-designer-plugin-main (README.md — Candy App archetype); https://github.com/frontend-design-engineer-skill-main (visual-directions.md — Playful Gradient direction)
+source_attribution: batch9 harvest corpus `generate-design-md` (references/examples/consumer-app-playful.design.md; no public upstream URL recorded); https://github.com/MickeyAlton33/web-designer-plugin (README.md — Candy App archetype); https://github.com/angelapaia/frontend-design-engineer-skill (visual-directions.md — Playful Gradient direction)
 license: MIT (inferred)
 ---
 

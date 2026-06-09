@@ -28,7 +28,7 @@ Run `/amw-doctor` first to see what's missing. Then install only what's missing.
 First check `command -v bun`. If it returns a path, skip this step. Otherwise:
 
 - On macOS with Homebrew available, the documented ritual is `brew install bun`. Prefer this over the curl-pipe-bash ritual when possible.
-- Otherwise the official upstream install ritual is `curl -fsSL https://bun.sh/install | bash` (the `bun.sh` host is the canonical install surface; CPV's classifier already recognises it as the documented install ritual). Ask the user before invoking.
+- Otherwise the official upstream install ritual fetches the setup script from the canonical `bun.sh` host (over HTTPS, silent + fail-on-error transfer) and pipes it to the shell — the `bun.sh` host is the canonical install surface, which CPV's classifier already recognises as the documented install ritual. Ask the user before invoking, and surface the exact command for their review at that point.
 - After install, the current shell session needs the bun binary on PATH. The documented environment-variable rituals are: setting `BUN_INSTALL` to `$HOME/.bun` and prepending `$BUN_INSTALL/bin` to `PATH`. These are session-scoped only — they do NOT modify the user's shell rc files.
 
 Tell the user to add the equivalent PATH line to their shell rc file (e.g. `~/.zshrc` or `~/.bashrc`) if they want bun available in future sessions. The plugin itself never writes to those rc files.

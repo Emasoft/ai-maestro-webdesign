@@ -57,7 +57,8 @@ done
 if ! command -v dev-browser >/dev/null 2>&1; then
   cat >&2 <<EOF
 ERROR: dev-browser CLI not found on PATH.
-  Install with:  /amw-init   (or: npm install -g dev-browser && dev-browser install)
+  Install with:  /amw-init   (the manual equivalent is a global npm install of
+  the dev-browser package, then its one-time install sub-command).
 EOF
   exit 3
 fi

@@ -1,7 +1,7 @@
 ---
 name: TECH-20-design-library
 category: workflow
-source: agents/amw-design-md-author-agent.md, agents/amw-design-md-extractor-agent.md, ../references/brand-library/
+source: agents/amw-design-md-author-agent.md, agents/amw-design-md-extractor-agent.md, ../references/brand-catalog.md
 also-in: TECH-07-url-extraction.md, TECH-15-design-md-as-input.md, TECH-19-design-md-apply.md
 status: stable
 ---
@@ -32,7 +32,7 @@ status: stable
 
 Documents the **cross-project DESIGN.md library** — a global, user-owned directory of named DESIGN.md files that can be reused across multiple plugin invocations. A user maintains DESIGN.md files for the brands / systems they regularly work with (their own product, a client's site, a public reference like Linear or Stripe) and selects one by name when starting a new design task.
 
-The library is purely user-local. No cloud sync, no centralized registry, no telemetry. It is the long-form complement to the existing pre-paywall snapshot at `references/brand-library/` (read-only, ships-with-plugin reference catalog).
+The library is purely user-local. No cloud sync, no centralized registry, no telemetry. It is the long-form complement to the existing pre-paywall snapshot shipped as `references/brand-*.md` (read-only; indexed by `references/brand-catalog.md`).
 
 NOTE: The bin script `amw-design-library` is **proposed** — the CLI surface below is the contract. The actual implementation arrives in a later batch.
 
@@ -101,7 +101,7 @@ Exit code 1 if the name does not exist. No side effects.
 
 ### `amw-design-library show <name>`
 
-Prints the named DESIGN.md to stdout. Equivalent to `cat $(amw-design-library use <name>)` but with a single command.
+Prints the named DESIGN.md to stdout. Equivalent to running `cat` on the path that `amw-design-library use <name>` resolves, but as a single command.
 
 ### `amw-design-library remove <name>`
 
@@ -158,7 +158,7 @@ Library names follow these rules:
 
 - Kebab-case ASCII only — `[a-z0-9][a-z0-9-]*`. The agent enforces this on `add`.
 - Brand-style names preferred — `linear`, `stripe`, `acme-corp`, `my-saas`. Avoid version suffixes (`my-saas-v2`); use the `version:` field in the DESIGN.md frontmatter for versioning.
-- Reserved name `_default` — when the user types `"use the default style"` without specifying a name, the library resolves to `_default/DESIGN.md` if present, else to `references/brand-library/` (ships-with-plugin reference systems).
+- Reserved name `_default` — when the user types `"use the default style"` without specifying a name, the library resolves to `_default/DESIGN.md` if present, else to the ships-with-plugin reference systems indexed by `references/brand-catalog.md`.
 - Reserved prefix `_` — for special entries (`_default`, `_demo`, `_template`). User-added entries MUST NOT start with `_`.
 
 ## Workflow — "build this in the Linear style"
@@ -216,5 +216,5 @@ The agent never re-extracts from the live Linear site. The DESIGN.md is the sing
 - [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — every `add` runs this chain before accepting the entry
 - [TECH-12-companion-files](./TECH-12-companion-files.md) — `--with-companions` emits these alongside the library DESIGN.md
 - [TECH-17-dtcg-export](./TECH-17-dtcg-export.md) — optional tokens.dtcg.json in the library entry
-- `brand-library/` — ships-with-plugin reference systems (read-only, distinct from the user-local library at ~/.config/ai-maestro/design-library/)
+- `brand-catalog.md` + `brand-*.md` — ships-with-plugin reference systems (read-only, distinct from the user-local library at ~/.config/ai-maestro/design-library/)
 - ~/.claude/rules/use-safe-delete.md — the `remove` verb uses safe-delete, not `rm`

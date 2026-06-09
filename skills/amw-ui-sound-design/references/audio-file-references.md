@@ -159,4 +159,4 @@ Use this table when the `synthesis_suggestion` doesn't feel right or when manual
 
 ---
 
-*Source: dannyjpwilliams/ui-sound-design-skill, MIT (© 2026 Danny Williams). Original at https://github.com/dannyjpwilliams/ui-sound-design-skill.*
+*Source: dannyjpwilliams/ui-sound-design-skill, MIT (© 2026 Danny Williams). Original at <https://github.com/dannyjpwilliams/ui-sound-design-skill>.*

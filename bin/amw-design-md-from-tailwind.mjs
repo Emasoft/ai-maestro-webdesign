@@ -128,7 +128,9 @@ function parseCssVariables(cssPath) {
 }
 
 function extractFromBlock(css, selector) {
-  const escaped = selector.replace(".", "\\.");
+  // Full regex-escape: escaping only the first "." would let any other
+  // metacharacter in a future selector argument reach the RegExp source.
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const blockRe = new RegExp(`${escaped}\\s*\\{([^}]+)\\}`, "s");
   const match = css.match(blockRe);
   if (!match) return {};

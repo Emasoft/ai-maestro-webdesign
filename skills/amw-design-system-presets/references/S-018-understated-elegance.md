@@ -2,7 +2,7 @@
 id: S-018
 name: Understated Elegance / Warm Premium
 aesthetic_position: editorial-warm-paper
-source_attribution: https://github.com/frontend-design-engineer-skill (visual-directions.md #5 Understated Elegance); https://github.com/swiftui-design-skill (Warm Minimal school)
+source_attribution: https://github.com/angelapaia/frontend-design-engineer-skill (visual-directions.md #5 Understated Elegance); https://github.com/Wholiver/swiftui-design-skill (Warm Minimal school)
 license: MIT (inferred from source repo conventions)
 ---
 

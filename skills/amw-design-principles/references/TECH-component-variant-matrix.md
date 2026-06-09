@@ -264,7 +264,7 @@ This spec is consumed by implementers in any framework. The token names match th
 
 ## Style Dictionary integration
 
-[Style Dictionary](https://amzn.github.io/style-dictionary/) (Apache 2.0) consumes the token JSON and emits per-platform output (CSS variables, Sass, JS objects, iOS plist, Android XML).
+[Style Dictionary](https://styledictionary.com/) (Apache 2.0) consumes the token JSON and emits per-platform output (CSS variables, Sass, JS objects, iOS plist, Android XML).
 
 Source layout:
 

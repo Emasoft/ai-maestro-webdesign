@@ -2,7 +2,7 @@
 id: S-031
 name: Paper Collage
 aesthetic_position: tactile handcraft editorial warm
-source_attribution: https://github.com/web-designer-plugin (MIT)
+source_attribution: https://github.com/MickeyAlton33/web-designer-plugin (MIT)
 license: MIT
 ---
 
@@ -111,4 +111,4 @@ Render: 1440x900 OK, 128129 B, render-determinism JOD 10.00 (source is a token s
 - S-030 Lo-Fi Paper — lighter paper grain, warmer palette, no torn edges
 - S-037 Cream Editorial — cleaner typographic system, no craft textures
 - S-019 Heritage — heritage brand warmth but refined serif typography, no physical collage elements
-- Source: web-designer-plugin (MIT) — https://github.com/web-designer-plugin
+- Source: web-designer-plugin (MIT) — https://github.com/MickeyAlton33/web-designer-plugin

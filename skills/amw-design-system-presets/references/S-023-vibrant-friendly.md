@@ -2,7 +2,7 @@
 id: S-023
 name: Vibrant Friendly / Playful SaaS
 aesthetic_position: playful-consumer-bold saas-energy
-source_attribution: https://github.com/tasteful-ui-skill-master (catalog.md — Lovable + Figma archetypes); https://github.com/swiftui-design-skill-main (SKILL.md — Expressive school)
+source_attribution: https://github.com/DonkeyKing01/tasteful-ui-skill (catalog.md — Lovable + Figma archetypes); https://github.com/Wholiver/swiftui-design-skill (SKILL.md — Expressive school)
 license: MIT (inferred)
 ---
 
