@@ -1,3 +1,5 @@
+# Mermaid — canonical format reference
+
 ## Table of Contents
 
 - [1. Format definition](#1-format-definition)
@@ -11,7 +13,7 @@
 - [9. Failure modes](#9-failure-modes)
 - [10. Anti-patterns](#10-anti-patterns)
 
-# Mermaid — canonical format reference
+## Overview
 
 This file is the single authoritative spec for Mermaid within the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts Mermaid pulls from this file. Supported grammars, themes, `mmdc` CLI flags, output paths (SVG / PNG / ASCII), validation, and the technique catalog are all below.
 

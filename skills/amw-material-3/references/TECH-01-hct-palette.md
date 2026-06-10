@@ -17,6 +17,8 @@
 - [Baseline static schemes (no dynamic color)](#baseline-static-schemes-no-dynamic-color)
 - [Verification](#verification)
 
+## Overview
+
 Material Design 3's color system is built on the HCT color space (Hue / Chroma / Tone) and a role-based token namespace. A single seed color generates 5 tonal palettes; each palette spans 16 tonal stops along 0..100; the 29+ color roles are *mapped* to specific stops in those palettes depending on light vs dark scheme.
 
 This file documents:

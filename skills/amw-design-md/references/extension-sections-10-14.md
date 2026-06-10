@@ -1,5 +1,8 @@
+# Extension sections 10-14 — optional Variant 2 enhancements
+
 ## Table of Contents
 
+- [Overview](#overview)
 - [Section 10 — Naming Convention (Page > Section > Block > Element)](#section-10-naming-convention-page-section-block-element)
 - [Section 11 — Page Specifications](#section-11-page-specifications)
 - [Section 12 — Composite Components](#section-12-composite-components)
@@ -8,7 +11,7 @@
 - [When to use these extensions](#when-to-use-these-extensions)
 - [Cross-references](#cross-references)
 
-# Extension sections 10-14 — optional Variant 2 enhancements
+## Overview
 
 **Source:** `docs_dev/extracted/google-labs/gen-design-spec-1-001-design-md-schema/`. Original docs are Korean-only; this file synthesizes the structural intent in English. The plugin treats these as **optional** extensions to Variant 2 (community 9-section) format. They are NOT part of Variant 1 (canonical Google `@google/design.md`); when converting to Variant 1 they are dropped or moved to prose.
 

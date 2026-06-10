@@ -15,6 +15,8 @@
 - [Accessibility gotchas](#accessibility-gotchas)
 - [Verification](#verification)
 
+## Overview
+
 In Material Design 3, every interactive surface — button, FAB, icon button, list item, navigation item, chip, switch, checkbox, radio — communicates its interaction state by overlaying a **translucent state layer** on top of its resting container color. The state layer is NOT a separate color; it is the appropriate "state-layer color" rendered at a specific opacity, composited over the container.
 
 This file documents:

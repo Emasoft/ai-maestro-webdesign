@@ -6,9 +6,7 @@
 - [Banned characters (severity-rated — enforced by validate-ascii.py)](#banned-characters-severity-rated-enforced-by-validate-asciipy)
 - [Cross-references](#cross-references)
 
-Source provenance:
-- Style presets: `SKILLS-TO-INTEGRATE/diagrams-skills/diagram-skill-main/ASCII-STYLES.md` lines 5-155.
-- Banned characters: `bin/amw-validate-ascii.py` lines 72-98 (`%forbidden_chars` table).
+Source provenance: style presets come from `SKILLS-TO-INTEGRATE/diagrams-skills/diagram-skill-main/ASCII-STYLES.md` lines 5-155; banned characters come from `bin/amw-validate-ascii.py` lines 72-98 (`%forbidden_chars` table).
 
 ## Style presets (orthogonal to mode selection)
 

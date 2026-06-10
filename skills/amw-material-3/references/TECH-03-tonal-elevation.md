@@ -15,6 +15,8 @@
 - [Surface-tint role](#surface-tint-role)
 - [Verification](#verification)
 
+## Overview
+
 In Material Design 3, elevation is communicated primarily through **tonal surface color**, not drop shadows. Higher elevation = a surface tinted with the primary color at a specific opacity. The result is that a "floating" card on a light background looks slightly more saturated/tinted than the page surface — this is the depth cue.
 
 Drop shadows are still available, but they are reserved for the case where an element floats over visually busy content (e.g., a FAB over an image) and tonal-only elevation would be insufficient to separate the element from the background.

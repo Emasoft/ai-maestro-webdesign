@@ -10,6 +10,8 @@
 - [Spacing: the 4dp grid](#spacing-the-4dp-grid)
 - [Verification](#verification)
 
+## Overview
+
 This file covers the three visual axes that anchor Material Design 3 layout:
 
 - **Shape** — the 7-step corner-radius scale (+ `none` + `full`), used for buttons, cards, dialogs, sheets.

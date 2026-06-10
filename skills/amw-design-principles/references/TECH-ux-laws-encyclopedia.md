@@ -9,15 +9,17 @@ license: MIT
 
 ## Table of Contents
 
-- Motor and perceptual laws — Fitts's Law, Hick-Hyman Law, Doherty Threshold
-- Memory and cognition — Miller's Law (7 plus-or-minus 2), Cognitive Load Theory, Information Foraging Theory, Chunking
-- Motivation and emotion — Goal-Gradient Effect, Von Restorff Effect, Zeigarnik Effect, Peak-End Rule, Aesthetic-Usability Effect, Jakob's Law, Pareto Principle (80/20)
-- Gestalt perception — Proximity, Similarity, Closure, Continuity, Common Region, Common Fate, Figure-Ground
-- Attention and habituation — Banner Blindness, Serial Position Effect
-- Behavioral models — Fogg Behavior Model (B = MAT), Sigmoid Adoption Curve
-- Norman's vocabulary — Mental Model, Affordance, Signifier, Mapping, Constraints, Feedback Loop
-- Meta-laws of software — Tesler's Law, Postel's Law, Conway's Law, Hofstadter's Law
+- Motor and perceptual laws (Fitts, Hick-Hyman, Doherty)
+- Memory and cognition (Miller, Cognitive Load, Information Foraging, Chunking)
+- Motivation and emotion (Goal-Gradient, Von Restorff, Zeigarnik, Peak-End, Aesthetic-Usability, Jakob, Pareto)
+- Gestalt perception (Proximity, Similarity, Closure, Continuity, Common Region, Common Fate, Figure-Ground)
+- Attention and habituation (Banner Blindness, Serial Position)
+- Behavioral models (Fogg B=MAT, Sigmoid Adoption)
+- Norman's vocabulary (Mental Model, Affordance, Signifier, Mapping, Constraints, Feedback)
+- Meta-laws of software (Tesler, Postel, Conway, Hofstadter)
 - [Cross-references](#cross-references)
+
+## About this encyclopedia
 
 > **Provenance:** source: clean-room compilation (T-149 batch9 Wave 2 Round 3); UX laws are general professional knowledge — original author/year cited per law. license: this file = MIT (plugin license); no verbatim copy from copyrighted sources; restatement of well-documented findings in original prose. also-in: see `design-heuristics.md` for shorter Gestalt/Fitts/Hick subset used in atomic audits; `TECH-ux-laws-quick-reference-table.md` for the one-page lookup table.
 

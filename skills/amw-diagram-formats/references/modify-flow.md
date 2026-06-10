@@ -1,3 +1,5 @@
+# Modify flow — shared pipeline for create-or-modify commands
+
 ## Table of Contents
 
 - [1. The pipeline](#1-the-pipeline)
@@ -9,7 +11,7 @@
 - [7. Composition with round-trip skills](#7-composition-with-round-trip-skills)
 - [8. Related references](#8-related-references)
 
-# Modify flow — shared pipeline for create-or-modify commands
+## Overview
 
 **Authoritative spec for the "modify" path** used by all 4 `wd-create-or-modify-*-diagram` commands:
 

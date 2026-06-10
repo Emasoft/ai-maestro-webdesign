@@ -1,3 +1,5 @@
+# ASCII — canonical format reference
+
 ## Table of Contents
 
 - [1. Format definition](#1-format-definition)
@@ -9,7 +11,7 @@
 - [7. Technique catalog](#7-technique-catalog)
 - [8. Migration note (2026-04-22)](#8-migration-note-2026-04-22)
 
-# ASCII — canonical format reference
+## Overview
 
 This file is the single authoritative spec for ASCII diagrams in the `ai-maestro-webdesign` plugin. Every skill that creates, modifies, validates, or converts ASCII pulls from this file. Format semantics, parsing rules, emission rules, validation rules, and the full technique catalog (95 techniques, migrated from `ascii-creator/` and `ascii-to-html/` into this canonical home) are all below.
 
