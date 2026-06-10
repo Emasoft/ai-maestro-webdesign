@@ -1,5 +1,17 @@
 # TECH-stitch-fallback-strategy
 
+## Table of Contents
+
+- [What it documents](#what-it-documents)
+- [When this file applies](#when-this-file-applies)
+- [Decision tree](#decision-tree)
+- [Choosing between Nodes A and B when both apply](#choosing-between-nodes-a-and-b-when-both-apply)
+- [Worked example — MCP absent, user has a URL](#worked-example-mcp-absent-user-has-a-url)
+- [Worked example — MCP absent, codebase only](#worked-example-mcp-absent-codebase-only)
+- [Worked example — MCP absent, no source at all](#worked-example-mcp-absent-no-source-at-all)
+- [Non-negotiables for the fallback path](#non-negotiables-for-the-fallback-path)
+- [Cross-references](#cross-references)
+
 ## What it documents
 
 The deterministic fallback decision tree the Stitch integration skill follows when the Stitch MCP server is unavailable. The fallback is selected by the caller (typically `amw-design-md-extractor-agent` or `amw-design-md-author-agent`) after the parent SKILL emits its fallback line. The decision tree below picks the next source in order of fidelity; the first source that can satisfy the user's intent wins.

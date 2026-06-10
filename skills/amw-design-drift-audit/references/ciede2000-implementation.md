@@ -1,5 +1,11 @@
 # CIEDE2000 ΔE — pure-Python reference implementation
 
+## Table of Contents
+
+- [Implementation](#implementation)
+- [Validation](#validation)
+- [Why CIEDE2000 instead of CIE76 / Lab Euclidean](#why-ciede2000-instead-of-cie76-lab-euclidean)
+
 A self-contained CIEDE2000 implementation for the color-drift detection in `references/audit-procedure.md` §Phase 1. No external dependencies — uses only the Python standard library (`math`).
 
 CIEDE2000 is the CIE-recommended successor to CIE76 and CIE94. It corrects perceptual non-uniformity in the L*a*b* space for blue colors and near-neutral grays. Threshold guide:

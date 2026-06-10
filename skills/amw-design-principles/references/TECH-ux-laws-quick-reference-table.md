@@ -8,6 +8,16 @@ also-in: see `TECH-ux-laws-encyclopedia.md` for the full entries with sources an
 
 # UX laws quick-reference table
 
+## Table of Contents
+
+- [Motor and perceptual laws](#motor-and-perceptual-laws)
+- [Memory and cognition laws](#memory-and-cognition-laws)
+- [Motivation and emotion laws](#motivation-and-emotion-laws)
+- [Gestalt grouping principles](#gestalt-grouping-principles)
+- [Attention, behavior, and system laws](#attention-behavior-and-system-laws)
+- [How to use this table](#how-to-use-this-table)
+- [Cross-references](#cross-references)
+
 One-page lookup. For each law: a short application area, and a concrete web-design example. For deeper coverage (source, when it does NOT apply, common misuse), see `TECH-ux-laws-encyclopedia.md`.
 
 The tables below split the 31 laws into 5 thematic groups so each table is narrow enough to read on a terminal or PR diff. The columns are: **Law** (short name), **Application** (one-line: when to apply it), **Example** (one-line: concrete web-design instance).

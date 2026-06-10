@@ -6,6 +6,19 @@ component-spec (MIT, SKILL.md anatomy/variants/states schema). 2026-05-27.
 
 # TECH — Extractor Component Detection (T-091, T-094)
 
+## Table of Contents
+
+- [When the extractor runs component detection](#when-the-extractor-runs-component-detection)
+- [Codebase detection — five patterns, in priority order](#codebase-detection-five-patterns-in-priority-order)
+- [URL detection — DOM landmarks + ARIA roles](#url-detection-dom-landmarks-aria-roles)
+- [State detection (T-094)](#state-detection-t-094)
+- [shadcn / Radix specific signals](#shadcn-radix-specific-signals)
+- [What the extractor skips](#what-the-extractor-skips)
+- [Confidence and fallbacks](#confidence-and-fallbacks)
+- [Output — what lands in DESIGN.md](#output-what-lands-in-designmd)
+- [Validation gate](#validation-gate)
+- [Cross-references](#cross-references)
+
 How the codebase extractor (`bin/amw-design-md-from-codebase.py`) and the URL extractor
 (`bin/amw-design-md-from-url.sh`) detect **component shapes** (buttons, cards, inputs,
 modals, navigation, badges) AND **state variants** (default, hover, focus, active,

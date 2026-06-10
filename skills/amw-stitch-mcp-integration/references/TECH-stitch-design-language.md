@@ -1,5 +1,14 @@
 # TECH-stitch-design-language
 
+## Table of Contents
+
+- [What it documents](#what-it-documents)
+- [Stitch vocabulary](#stitch-vocabulary)
+- [Canonical MCP tool surface](#canonical-mcp-tool-surface)
+- [Translation table: Stitch ↔ amw](#translation-table-stitch-amw)
+- [Worked example — pulling components into a DESIGN.md draft](#worked-example-pulling-components-into-a-designmd-draft)
+- [Cross-references](#cross-references)
+
 ## What it documents
 
 The Stitch domain vocabulary, the canonical Stitch MCP tool surface (`mcp__stitch__*`), and how amw-* canonical formats map onto Stitch concepts. This file is the single source of truth for the tool-name table — the parent SKILL.md describes the contract and leaves the literal names here so upstream changes do not require editing the SKILL.

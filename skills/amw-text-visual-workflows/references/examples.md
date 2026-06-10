@@ -1,5 +1,11 @@
 # amw-text-visual-workflows — Diagram archetype examples
 
+## Table of Contents
+
+- [1. Flowchart — branching logic](#1-flowchart-branching-logic)
+- [2. Timeline — linear sequence with calendar markers](#2-timeline-linear-sequence-with-calendar-markers)
+- [3. Swimlane timeline — parallel tracks](#3-swimlane-timeline-parallel-tracks)
+
 Three workflow archetypes — flowchart (branching logic), linear timeline with calendar markers, swimlane (parallel tracks). Pick one per artifact — do not merge them.
 
 ## 1. Flowchart — branching logic

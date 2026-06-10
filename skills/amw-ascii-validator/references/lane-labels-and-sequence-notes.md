@@ -1,5 +1,11 @@
 # Lane-labeled diagrams and sequence-mode inline notes
 
+## Table of Contents
+
+- [Lane-labeled diagrams (git graphs, CI pipelines)](#lane-labeled-diagrams-git-graphs-ci-pipelines)
+- [Sequence-mode inline notes](#sequence-mode-inline-notes)
+- [Cross-references](#cross-references)
+
 Companion reference for [SKILL](../SKILL.md). Two advanced renderer features of `bin/amw-ascii-render.py` that the orchestrator should consult only when needed.
 
 ## Lane-labeled diagrams (git graphs, CI pipelines)

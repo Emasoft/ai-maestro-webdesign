@@ -1,5 +1,14 @@
 # TECH-pitfalls — the five Evangelion-design failure modes
 
+## Table of Contents
+
+- [1. Too literal — copying frames instead of extracting principles](#1-too-literal-copying-frames-instead-of-extracting-principles)
+- [2. Information overload without hierarchy](#2-information-overload-without-hierarchy)
+- [3. Missing context cues — users get lost in complexity](#3-missing-context-cues-users-get-lost-in-complexity)
+- [4. Style over function — looks cool, but unusable](#4-style-over-function-looks-cool-but-unusable)
+- [5. Ignoring accessibility — colour and contrast issues](#5-ignoring-accessibility-colour-and-contrast-issues)
+- [Discipline comparison — NERV UI vs generic sci-fi](#discipline-comparison-nerv-ui-vs-generic-sci-fi)
+
 The Evangelion / NERV-HUD aesthetic is hard to apply because it is severe but DISCIPLINED. Every component below describes one common failure mode, why it fails, and what the disciplined version looks like.
 
 ## 1. Too literal — copying frames instead of extracting principles

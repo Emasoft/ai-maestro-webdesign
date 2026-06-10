@@ -3,6 +3,18 @@
 
 # TECH-02 — State layers (interaction states)
 
+## Table of Contents
+
+- [The 4 interaction states and their opacities](#the-4-interaction-states-and-their-opacities)
+- [State-layer color selection (what color the overlay is)](#state-layer-color-selection-what-color-the-overlay-is)
+- [CSS implementation (web, custom)](#css-implementation-web-custom)
+- [Outlined / text variant — transparent resting](#outlined-text-variant-transparent-resting)
+- [Jetpack Compose](#jetpack-compose)
+- [`@material/web` component overrides](#materialweb-component-overrides)
+- [Ripple](#ripple)
+- [Accessibility gotchas](#accessibility-gotchas)
+- [Verification](#verification)
+
 In Material Design 3, every interactive surface — button, FAB, icon button, list item, navigation item, chip, switch, checkbox, radio — communicates its interaction state by overlaying a **translucent state layer** on top of its resting container color. The state layer is NOT a separate color; it is the appropriate "state-layer color" rendered at a specific opacity, composited over the container.
 
 This file documents:

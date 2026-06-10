@@ -1,5 +1,14 @@
 # Audit procedure — amw-design-drift-audit
 
+## Table of Contents
+
+- [Phase 0 — Parse the token surface](#phase-0-parse-the-token-surface)
+- [Phase 1 — Color drift (CIEDE2000 ΔE<3)](#phase-1-color-drift-ciede2000-δe3)
+- [Phase 2 — Scale drift (off-step values)](#phase-2-scale-drift-off-step-values)
+- [Phase 3 — Magic numbers (single-use tokens)](#phase-3-magic-numbers-single-use-tokens)
+- [Phase 4 — Cross-surface conflicts](#phase-4-cross-surface-conflicts)
+- [Phase 5 — Emit report](#phase-5-emit-report)
+
 Detailed algorithm for the three drift categories. Read top-to-bottom; each phase depends on the previous.
 
 ## Phase 0 — Parse the token surface

@@ -1,5 +1,14 @@
 # Runtime conventions for HTML output
 
+## Table of Contents
+
+- [Tweaks live-tuning mode (recommended)](#tweaks-live-tuning-mode-recommended)
+- [Dimensional hard limits (no discussion)](#dimensional-hard-limits-no-discussion)
+- [Animation stack order](#animation-stack-order)
+- [Decision tree — which file to load when](#decision-tree-which-file-to-load-when)
+- [File-management rules](#file-management-rules)
+- [Workflow rhythm](#workflow-rhythm)
+
 Authoritative conventions every HTML/SVG emitter under this orchestrator MUST follow. Each rule is a hard invariant; downstream sub-skills MUST NOT override.
 
 ## Tweaks live-tuning mode (recommended)

@@ -3,6 +3,20 @@
 
 # TECH-01 — HCT tonal palette and role-based color tokens
 
+## Table of Contents
+
+- [HCT color space](#hct-color-space)
+- [The 5 tonal palettes](#the-5-tonal-palettes)
+- [Role-to-tone mapping](#role-to-tone-mapping)
+- [Color pairing rules](#color-pairing-rules)
+- [Fixed accent colors (Add-on)](#fixed-accent-colors-add-on)
+- [Dynamic color (user-generated)](#dynamic-color-user-generated)
+- [Generating a scheme from a seed (JavaScript)](#generating-a-scheme-from-a-seed-javascript)
+- [Color harmonization](#color-harmonization)
+- [User-controlled contrast (May 2025)](#user-controlled-contrast-may-2025)
+- [Baseline static schemes (no dynamic color)](#baseline-static-schemes-no-dynamic-color)
+- [Verification](#verification)
+
 Material Design 3's color system is built on the HCT color space (Hue / Chroma / Tone) and a role-based token namespace. A single seed color generates 5 tonal palettes; each palette spans 16 tonal stops along 0..100; the 29+ color roles are *mapped* to specific stops in those palettes depending on light vs dark scheme.
 
 This file documents:

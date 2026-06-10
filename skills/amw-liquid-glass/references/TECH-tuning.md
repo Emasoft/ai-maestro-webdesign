@@ -1,5 +1,13 @@
 # TECH-tuning — liquid-glass-js shader uniform tuning matrix
 
+## Table of Contents
+
+- [The four uniforms](#the-four-uniforms)
+- [Uniform conflicts](#uniform-conflicts)
+- [Suggested presets](#suggested-presets)
+- [When to NOT use this library](#when-to-not-use-this-library)
+- [Performance notes](#performance-notes)
+
 Each glass surface is parameterised by four shader uniforms exposed via `window.glassControls`. This file documents what each uniform does, when to push it up vs down, and which uniforms conflict.
 
 ## The four uniforms

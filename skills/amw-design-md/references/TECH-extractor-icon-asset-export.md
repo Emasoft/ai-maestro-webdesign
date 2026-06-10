@@ -6,6 +6,18 @@ intelligence/extract-design-md + design-systems/component-spec asset patterns). 
 
 # TECH — Extractor Icon and Raster Asset Export (T-093, T-095)
 
+## Table of Contents
+
+- [When this runs](#when-this-runs)
+- [Phase A — Discovery](#phase-a-discovery)
+- [Phase B — Role assignment (T-093 + T-095)](#phase-b-role-assignment-t-093-t-095)
+- [Phase C — Alt-text inference (T-095, raster only)](#phase-c-alt-text-inference-t-095-raster-only)
+- [Phase D — Export](#phase-d-export)
+- [License + provenance](#license-provenance)
+- [Privacy + robots compliance](#privacy-robots-compliance)
+- [What the extractor refuses to do](#what-the-extractor-refuses-to-do)
+- [Cross-references](#cross-references)
+
 How the URL extractor (`bin/amw-design-md-from-url.sh`) and the codebase
 extractor (`bin/amw-design-md-from-codebase.py`) discover, classify, and
 export **inline SVG icons** and **raster brand assets** (logos, hero images,

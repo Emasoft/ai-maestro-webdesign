@@ -1,5 +1,14 @@
 # TECH-theme-swap — Remix algorithms (named vocabulary + OKLCH hue rotation)
 
+## Table of Contents
+
+- [Mode 1 — Named-vocabulary remix](#mode-1-named-vocabulary-remix)
+- [Mode 2 — OKLCH hue rotation](#mode-2-oklch-hue-rotation)
+- [Combined Mode 1 + Mode 2](#combined-mode-1-mode-2)
+- [Render-test contract](#render-test-contract)
+- [Anti-patterns (do not do)](#anti-patterns-do-not-do)
+- [Versioning](#versioning)
+
 **Version:** 1.0
 **Status:** Canonical algorithms for `amw-design-remix`. Load this file before any remix run.
 

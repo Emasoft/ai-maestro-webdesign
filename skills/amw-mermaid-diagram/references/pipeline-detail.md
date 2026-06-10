@@ -1,5 +1,12 @@
 # Pipeline detail — the 5 steps that match shared modify-flow
 
+## Table of Contents
+
+- [The 5 steps](#the-5-steps)
+- [Component detection table (most common dispatch cues)](#component-detection-table-most-common-dispatch-cues)
+- [Output contract](#output-contract)
+- [Completion checklist](#completion-checklist)
+
 Authoritative execution sequence for the `amw-mermaid-diagram` skill. Matches the shared 6-step modify-flow at [../amw-diagram-formats/references/modify-flow.md](../../amw-diagram-formats/references/modify-flow.md) (step 4 — `(loop point)` — is collapsed in the per-skill sequence).
 
 ## The 5 steps

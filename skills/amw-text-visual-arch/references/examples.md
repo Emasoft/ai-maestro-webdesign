@@ -1,5 +1,11 @@
 # amw-text-visual-arch — Diagram framing examples
 
+## Table of Contents
+
+- [1. Context diagram](#1-context-diagram)
+- [2. Container diagram](#2-container-diagram)
+- [3. Component diagram](#3-component-diagram)
+
 This file holds the three full zoom-level examples (context, container, component) for layered ASCII architecture diagrams. The parent `SKILL.md` references this file when concrete examples are needed.
 
 ## 1. Context diagram

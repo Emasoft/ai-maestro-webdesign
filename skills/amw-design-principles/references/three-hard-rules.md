@@ -1,5 +1,11 @@
 # The three hard rules — full text
 
+## Table of Contents
+
+- [Rule 1: Gather design context before designing](#rule-1-gather-design-context-before-designing)
+- [Rule 2: Deliver at least three variants, baseline → advanced → experimental](#rule-2-deliver-at-least-three-variants-baseline-advanced-experimental)
+- [Rule 3: Reject every AI-slop pattern](#rule-3-reject-every-ai-slop-pattern)
+
 Violating any one of these is a failure. Summary in the orchestrator SKILL.md; full text and last-resort path here.
 
 ## Rule 1: Gather design context before designing

@@ -1,5 +1,21 @@
 # TECH-shader-types — deeper notes on each of the 11 background types
 
+## Table of Contents
+
+- [1. `mesh-gradient`](#1-mesh-gradient)
+- [2. `voronoi`](#2-voronoi)
+- [3. `liquid-metal`](#3-liquid-metal)
+- [4. `chrome`](#4-chrome)
+- [5. `pulsar`](#5-pulsar)
+- [6. `black-hole`](#6-black-hole)
+- [7. `glass`](#7-glass)
+- [8. `spiral`](#8-spiral)
+- [9. `particles`](#9-particles)
+- [10. `fireworks`](#10-fireworks)
+- [11. `plasma`](#11-plasma)
+- [Library / runtime choice](#library-runtime-choice)
+- [Accessibility checklist](#accessibility-checklist)
+
 For each of the 11 types catalogued in `SKILL.md`, this reference adds:
 
 - The mathematical / geometric primitive that drives the look.

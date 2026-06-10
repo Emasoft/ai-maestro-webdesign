@@ -3,6 +3,24 @@
 
 # TECH-05 — Per-component token mapping
 
+## Table of Contents
+
+- [Token override convention](#token-override-convention)
+- [Buttons](#buttons)
+- [FAB and extended FAB](#fab-and-extended-fab)
+- [Icon button](#icon-button)
+- [Card](#card)
+- [Text fields](#text-fields)
+- [Top app bar](#top-app-bar)
+- [Navigation](#navigation)
+- [Dialog](#dialog)
+- [Snackbar](#snackbar)
+- [Chips](#chips)
+- [Switch and checkbox](#switch-and-checkbox)
+- [Compose component mapping](#compose-component-mapping)
+- [Component import on the web](#component-import-on-the-web)
+- [Verification](#verification)
+
 Each MD3 component is defined by a set of **component-level tokens** (`--md-comp-{component}-{property}`) that resolve to system-level tokens (`--md-sys-color-*`, `--md-sys-shape-corner-*`, `--md-sys-typescale-*`). Overriding a component-level token only re-skins that one component without affecting the global theme.
 
 This file documents the canonical token overrides for the most common MD3 web components, the equivalent Compose composables, and the spec-aligned CSS pattern for components without a `@material/web` implementation.

@@ -8,6 +8,15 @@ license: MIT (inferred from source repo conventions)
 
 # S-018 — Understated Elegance / Warm Premium
 
+## Table of Contents
+
+- [Identity](#identity)
+- [Token block](#token-block)
+- ["Breaks if" invariants](#breaks-if-invariants)
+- [Canonical render-test pointer](#canonical-render-test-pointer)
+- [Render-test verdict](#render-test-verdict)
+- [Cross-references](#cross-references)
+
 **Filename:** `skills/amw-design-system-presets/references/S-018-understated-elegance.md`
 **Tracked in:** this repo (design/tasks/ is git-tracked)
 

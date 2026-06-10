@@ -7,6 +7,18 @@ Adaptation © 2026 Emasoft — MIT License.
 
 # TECH-pipeline — image-to-animated-ASCII pipeline
 
+## Table of Contents
+
+- [Step 1 — Load and resize](#step-1-load-and-resize)
+- [Step 2 — Build blurred background](#step-2-build-blurred-background)
+- [Step 3 — Subject detection (rembg)](#step-3-subject-detection-rembg)
+- [Step 4 — Pixel-grid overlay](#step-4-pixel-grid-overlay)
+- [Step 5 — Build the character grid](#step-5-build-the-character-grid)
+- [Step 6 — Composite three layers](#step-6-composite-three-layers)
+- [Step 7 — Animate (JavaScript on `<canvas id="chars">`)](#step-7-animate-javascript-on-canvas-idchars)
+- [Failure modes](#failure-modes)
+- [References](#references)
+
 The full 7-step pipeline that maps an input image to a self-contained animated-ASCII HTML file. Parameters in [SKILL § Parameters](../SKILL.md#parameters) are authoritative; this file describes *how each step uses them*.
 
 ## Step 1 — Load and resize

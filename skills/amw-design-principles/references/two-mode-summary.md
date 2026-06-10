@@ -1,5 +1,11 @@
 # Two operating modes — orchestrator summary
 
+## Table of Contents
+
+- [Command mode (fast path)](#command-mode-fast-path)
+- [Main-agent mode (requirements path)](#main-agent-mode-requirements-path)
+- [Approval gate invariant](#approval-gate-invariant)
+
 The orchestrator distinguishes two modes on every incoming request. Full spec at [two-mode-workflow](./two-mode-workflow.md); this file is the on-demand summary the orchestrator's SKILL.md links to.
 
 ## Command mode (fast path)

@@ -1,5 +1,17 @@
 # Drift detection procedure — amw-skill-drift-audit
 
+## Table of Contents
+
+- [Phase 0 — Resolve plugin root and inventory skills](#phase-0-resolve-plugin-root-and-inventory-skills)
+- [Phase 1 — Source-map resolution](#phase-1-source-map-resolution)
+- [Phase 2 — Per-upstream HEAD lookup](#phase-2-per-upstream-head-lookup)
+- [Phase 3 — Diff per pin](#phase-3-diff-per-pin)
+- [Phase 4 — Classification](#phase-4-classification)
+- [Phase 5 — Diff summary for STALE skills](#phase-5-diff-summary-for-stale-skills)
+- [Phase 6 — Emit the plan](#phase-6-emit-the-plan)
+- [Phase 7 — Self-test (optional, on demand)](#phase-7-self-test-optional-on-demand)
+- [Anti-patterns (don't do)](#anti-patterns-dont-do)
+
 Detailed algorithm. Read top-to-bottom; each phase depends on the previous. The audit is purely read-only — no git writes, no skill edits.
 
 ## Phase 0 — Resolve plugin root and inventory skills

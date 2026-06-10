@@ -1,5 +1,11 @@
 # amw-text-visual-state — Diagram format examples
 
+## Table of Contents
+
+- [Standard legend](#standard-legend)
+- [Skeleton](#skeleton)
+- [Annotated form with metrics and dashboards](#annotated-form-with-metrics-and-dashboards)
+
 This file holds the skeleton state machine and the annotated form with metrics. The parent `SKILL.md` references this file when concrete examples are needed.
 
 ## Standard legend

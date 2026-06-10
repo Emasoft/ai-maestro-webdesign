@@ -1,5 +1,19 @@
 # TECH-rubric — The 8-dimension design grading rubric
 
+## Table of Contents
+
+- [1. Palette](#1-palette)
+- [2. Typography](#2-typography)
+- [3. Rhythm](#3-rhythm)
+- [4. Hierarchy](#4-hierarchy)
+- [5. Motion](#5-motion)
+- [6. Accessibility](#6-accessibility)
+- [7. Consistency](#7-consistency)
+- [8. Signature](#8-signature)
+- [Cross-dimension calibration notes](#cross-dimension-calibration-notes)
+- [NULL handling](#null-handling)
+- [Versioning](#versioning)
+
 **Version:** 1.0
 **Status:** Canonical scoring criteria for `amw-design-grade`. Load this file in full before every audit. Cross-dimension calibration notes appear at the end.
 

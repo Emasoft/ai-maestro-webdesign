@@ -1,5 +1,16 @@
 # Render-test harness wiring (T-004 / Wave 1 Track H0)
 
+## Table of Contents
+
+- [The pipeline (per style)](#the-pipeline-per-style)
+- [Light + dark variants](#light-dark-variants)
+- [Mobile variant](#mobile-variant)
+- [Acceptance thresholds](#acceptance-thresholds)
+- [A-class exemptions](#a-class-exemptions)
+- [Report locations](#report-locations)
+- [What this is NOT](#what-this-is-not)
+- [Cross-references](#cross-references)
+
 Each per-style file at `references/S-NNN-<slug>.md` references its
 canonical render-test. This document describes HOW that test is composed
 from `_test-skeleton.html` + the style's tokens, and HOW the resulting

@@ -3,6 +3,17 @@
 
 # Audio File References
 
+## Table of Contents
+
+- [What Is a Sound Profile?](#what-is-a-sound-profile)
+- [How to Use a Sound Profile](#how-to-use-a-sound-profile)
+- [Field Reference](#field-reference)
+- [Analysis-to-Category Mapping](#analysis-to-category-mapping)
+- [Brightness Mapping (Spectral Centroid → Vocabulary Bridge)](#brightness-mapping-spectral-centroid-vocabulary-bridge)
+- [Envelope → Vocabulary Bridge](#envelope-vocabulary-bridge)
+- [Harmonic Content → Synthesis Approach](#harmonic-content-synthesis-approach)
+- [Limitations](#limitations)
+
 When a user provides a **sound profile** from the `amw-sound-analyze.mjs` CLI tool, use this guide to interpret the analysis and drive synthesis.
 
 ## What Is a Sound Profile?

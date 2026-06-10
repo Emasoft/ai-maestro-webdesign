@@ -1,5 +1,14 @@
 # Downstream executor sub-skills — full routing table
 
+## Table of Contents
+
+- [Input — gather context for Rule 1](#input-gather-context-for-rule-1)
+- [Plan phase — satisfy Rule 2 in ASCII](#plan-phase-satisfy-rule-2-in-ascii)
+- [Output — render the approved direction](#output-render-the-approved-direction)
+- [Text visualization — ASCII artifacts for PRs, ADRs, terminals, and chat](#text-visualization-ascii-artifacts-for-prs-adrs-terminals-and-chat)
+- [Validation + reference](#validation-reference)
+- [Tier-4 specialists (on-demand, Phase B only)](#tier-4-specialists-on-demand-phase-b-only)
+
 Authoritative routing reference for the `amw-design-principles` orchestrator. The orchestrator invokes one of these sub-skills only when its specific technical trigger applies. Each sub-skill is independent and self-contained; the orchestrator passes context but never re-derives sub-skill rules.
 
 ## Input — gather context for Rule 1

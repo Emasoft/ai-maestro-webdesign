@@ -1,5 +1,16 @@
 # TECH-platform-diff — iOS HIG vs Android Material 3 quick reference
 
+## Table of Contents
+
+- [Navigation patterns](#navigation-patterns)
+- [Visual design](#visual-design)
+- [Touch targets](#touch-targets)
+- [Typography](#typography)
+- [Components](#components)
+- [Gestures](#gestures)
+- [Dialogs and alerts](#dialogs-and-alerts)
+- [React Native cross-platform notes](#react-native-cross-platform-notes)
+
 When designing for both platforms (React Native / Flutter / cross-platform), respect each platform's conventions OR commit deliberately to a custom design language. Surface-level "iOS-ish on Android" looks awkward; the inverse, doubly so.
 
 ## Navigation patterns

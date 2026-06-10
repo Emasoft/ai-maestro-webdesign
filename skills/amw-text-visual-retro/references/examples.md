@@ -1,5 +1,11 @@
 # amw-text-visual-retro — Template archetype examples
 
+## Table of Contents
+
+- [1. Grid (categories side-by-side)](#1-grid-categories-side-by-side)
+- [2. Milestone timeline](#2-milestone-timeline)
+- [3. Heatmap](#3-heatmap)
+
 Three retro template archetypes — grid (categories side-by-side), milestone timeline (temporal story), heatmap (density readout). Pick one per artifact — do not merge them.
 
 ## 1. Grid (categories side-by-side)

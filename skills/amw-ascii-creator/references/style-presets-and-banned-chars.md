@@ -1,5 +1,11 @@
 # ASCII style presets and banned characters
 
+## Table of Contents
+
+- [Style presets (orthogonal to mode selection)](#style-presets-orthogonal-to-mode-selection)
+- [Banned characters (severity-rated — enforced by validate-ascii.py)](#banned-characters-severity-rated-enforced-by-validate-asciipy)
+- [Cross-references](#cross-references)
+
 Source provenance:
 - Style presets: `SKILLS-TO-INTEGRATE/diagrams-skills/diagram-skill-main/ASCII-STYLES.md` lines 5-155.
 - Banned characters: `bin/amw-validate-ascii.py` lines 72-98 (`%forbidden_chars` table).

@@ -7,6 +7,15 @@ Adaptation © 2026 Emasoft — MIT License.
 
 # TECH-palettes — palettes, typography, copy voice, Tuimorphic
 
+## Table of Contents
+
+- [Palette 1 — Phosphor Green (classic terminal)](#palette-1-phosphor-green-classic-terminal)
+- [Palette 2 — Cyberpunk Neon (cyan + magenta)](#palette-2-cyberpunk-neon-cyan-magenta)
+- [Palette 3 — Amber CRT (warm terminal)](#palette-3-amber-crt-warm-terminal)
+- [Typography](#typography)
+- [Copy voice](#copy-voice)
+- [Tuimorphic (React library)](#tuimorphic-react-library)
+
 Three signature palettes, monospace typography, terminal copy voice, and the Tuimorphic React-library component matrix. Pick **one** palette per page; mixing dilutes the aesthetic.
 
 ## Palette 1 — Phosphor Green (classic terminal)

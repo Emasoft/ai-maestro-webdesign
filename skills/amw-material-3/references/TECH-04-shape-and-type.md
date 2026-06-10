@@ -3,6 +3,13 @@
 
 # TECH-04 — Shape scale, type scale, and the 4dp spatial grid
 
+## Table of Contents
+
+- [Shape: corner-radius scale](#shape-corner-radius-scale)
+- [Type: the 15-style scale](#type-the-15-style-scale)
+- [Spacing: the 4dp grid](#spacing-the-4dp-grid)
+- [Verification](#verification)
+
 This file covers the three visual axes that anchor Material Design 3 layout:
 
 - **Shape** — the 7-step corner-radius scale (+ `none` + `full`), used for buttons, cards, dialogs, sheets.

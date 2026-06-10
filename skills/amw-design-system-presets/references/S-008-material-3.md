@@ -8,6 +8,16 @@ license: MIT
 
 # S-008 — Material Design 3
 
+## Table of Contents
+
+- [Identity](#identity)
+- [Token block](#token-block)
+- ["Breaks if" invariants](#breaks-if-invariants)
+- [Canonical render-test pointer](#canonical-render-test-pointer)
+- [Render-test verdict](#render-test-verdict)
+- [Cross-references](#cross-references)
+- [Attribution](#attribution)
+
 **Filename:** `references/S-008-material-3.md`
 **Tracked in:** this repo (skills/amw-design-system-presets/references/ is git-tracked)
 

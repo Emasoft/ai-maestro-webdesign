@@ -6,6 +6,17 @@ DESIGN.md token schema from this repo. 2026-05-27.
 
 # TECH — Extractor Design-System Fingerprinting (T-096)
 
+## Table of Contents
+
+- [Goal](#goal)
+- [Algorithm](#algorithm)
+- [Concrete recipe (pure-Python, no extra deps)](#concrete-recipe-pure-python-no-extra-deps)
+- [Interpretation guide](#interpretation-guide)
+- [Non-goals (what fingerprinting is NOT)](#non-goals-what-fingerprinting-is-not)
+- [Versioning the algorithm](#versioning-the-algorithm)
+- [Validation gate](#validation-gate)
+- [Cross-references](#cross-references)
+
 How the extractors compute a **deterministic content hash** of a DESIGN.md's
 canonical token set so that two pages, two codebases, or two captures of the
 same page over time can be flagged as "same design system, different content"

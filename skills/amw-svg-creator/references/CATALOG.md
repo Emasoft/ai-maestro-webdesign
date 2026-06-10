@@ -1,5 +1,11 @@
 # amw-svg-creator — Technique Catalog
 
+## Table of Contents
+
+- [Decision tree (top-down)](#decision-tree-top-down)
+- [Per-technique TOC index](#per-technique-toc-index)
+- [Cross-references](#cross-references)
+
 This is the full reference index for the GATED `amw-svg-creator` skill.
 The orchestrator should read only the technique file whose topic matches
 the current need; this catalog exists so the SKILL.md itself stays compact.

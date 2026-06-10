@@ -8,6 +8,15 @@ license: MIT (liquid-glass-js); Apple visionOS HIG tokens adapted as original su
 
 # S-034 — Liquid Glass
 
+## Table of Contents
+
+- [Identity](#identity)
+- [Token block](#token-block)
+- ["Breaks if" invariants](#breaks-if-invariants)
+- [Canonical render-test pointer](#canonical-render-test-pointer)
+- [Render-test verdict](#render-test-verdict)
+- [Cross-references](#cross-references)
+
 ## Identity
 
 Liquid Glass replicates Apple's visionOS material language: translucent panels floating in a luminous 3D scene, where surfaces refract and tint the content behind them via WebGL (liquid-glass-js) or CSS `backdrop-filter` as a fallback. Cards have no hard box-shadows — spatial depth is communicated entirely through translucency, blur, and tint opacity. Typography is system-UI only. Intended for immersive app interfaces, premium SaaS hero sections, and AR/spatial UI mockups on the web.

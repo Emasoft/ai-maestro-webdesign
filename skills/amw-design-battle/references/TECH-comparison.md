@@ -1,5 +1,13 @@
 # TECH-comparison — Battle card visual contract + summary template
 
+## Table of Contents
+
+- [1. `design-battle-card.html` — visual card](#1-design-battle-cardhtml-visual-card)
+- [2. `design-battle-summary.md` — markdown table](#2-design-battle-summarymd-markdown-table)
+- [3. Winner-determination algorithm (canonical)](#3-winner-determination-algorithm-canonical)
+- [4. Cross-category note (when to add it)](#4-cross-category-note-when-to-add-it)
+- [5. Verdict-note anti-patterns (do not emit)](#5-verdict-note-anti-patterns-do-not-emit)
+
 **Version:** 1.0
 **Status:** Canonical layout and phrasing rules for `amw-design-battle` deliverables. Load this file before emitting any battle card.
 

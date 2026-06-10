@@ -1,5 +1,13 @@
 # TECH-touch-targets — touch target sizing, hitSlop, thumb zones
 
+## Table of Contents
+
+- [The four mechanical constraints](#the-four-mechanical-constraints)
+- [Common-mistake catalogue](#common-mistake-catalogue)
+- [hitSlop patterns by component](#hitslop-patterns-by-component)
+- [Accessibility hookup](#accessibility-hookup)
+- [Validation tips](#validation-tips)
+
 The most common mobile UI failure is undersized touch targets. This reference codifies the four mechanical constraints (minimum visual size, minimum interactive area, minimum spacing, thumb-zone reachability) and the React Native patterns that satisfy them.
 
 ## The four mechanical constraints

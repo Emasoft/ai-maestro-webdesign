@@ -3,6 +3,17 @@
 
 # Audio Rules — Formal Validation Rulebook
 
+## Table of Contents
+
+- [Priority Levels](#priority-levels)
+- [Critical — Context Management](#critical-context-management)
+- [Critical — Envelope Safety](#critical-envelope-safety)
+- [High — Envelope & Scheduling](#high-envelope-scheduling)
+- [High — Sound Design](#high-sound-design)
+- [Medium — Parameters](#medium-parameters)
+- [Per-Sound-Type Parameter Bounds](#per-sound-type-parameter-bounds)
+- [Review Mode — Output Format](#review-mode-output-format)
+
 Rules for validating and reviewing Web Audio API UI sound code. Each rule has an ID, priority, description, and pass/fail examples. Use during code review or as a checklist when generating sounds.
 
 ## Priority Levels

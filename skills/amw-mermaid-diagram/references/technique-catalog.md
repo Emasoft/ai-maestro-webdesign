@@ -1,5 +1,10 @@
 # Mermaid diagram technique catalog
 
+## Table of Contents
+
+- [Technique decision tree](#technique-decision-tree)
+- [Per-technique TOC summary](#per-technique-toc-summary)
+
 Full per-technique reference catalog for `amw-mermaid-diagram`. The orchestrator should read only the file whose TOC matches its current need.
 
 ## Technique decision tree

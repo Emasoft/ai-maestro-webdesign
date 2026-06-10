@@ -8,6 +8,19 @@ SwiftUI / Metal-shader content removed — out of scope for ai-maestro-webdesign
 
 # TECH-crt-effects — CSS recipes for CRT, scanlines, neon glow, flicker
 
+## Table of Contents
+
+- [Scanlines overlay](#scanlines-overlay)
+- [Neon glow — text and borders](#neon-glow-text-and-borders)
+- [CRT curvature](#crt-curvature)
+- [Flicker animation](#flicker-animation)
+- [WebGL CRT (when CSS is insufficient)](#webgl-crt-when-css-is-insufficient)
+- [Effect-pattern reference](#effect-pattern-reference)
+- [Performance considerations](#performance-considerations)
+- [Accessibility — non-negotiable](#accessibility-non-negotiable)
+- [Pitfalls and prevention](#pitfalls-and-prevention)
+- [When CRT effects backfire](#when-crt-effects-backfire)
+
 All recipes are vanilla CSS; none requires a framework. Pair with [palettes](TECH-palettes.md) and apply via wrapper classes (e.g. `.crt-container`, `.neon-text`).
 
 ## Scanlines overlay

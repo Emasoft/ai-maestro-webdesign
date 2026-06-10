@@ -1,5 +1,12 @@
 # Style Preset Catalog — Routing Index (T-004)
 
+## Table of Contents
+
+- [How the author-agent uses this](#how-the-author-agent-uses-this)
+- [Index — 45 styles across 8 aesthetic positions](#index-45-styles-across-8-aesthetic-positions)
+- [Selecting styles — quick decision rules](#selecting-styles-quick-decision-rules)
+- [Wave 2 — Round 4 additions (S-010b, S-046..S-083)](#wave-2-round-4-additions-s-010b-s-046s-083)
+
 Loaded by `amw-design-system-presets` (the orchestrator's preset skill).
 **Catalog-first load**: read this index, shortlist 1-3 styles that match
 the user's brief, then load only those `S-NNN-<slug>.md` files. Never
