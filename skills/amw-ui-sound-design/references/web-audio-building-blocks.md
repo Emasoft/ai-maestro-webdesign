@@ -1,7 +1,23 @@
+# Web Audio API — Core Building Blocks
+
+## Table of Contents
+
+- [AudioContext Setup](#audiocontext-setup)
+- [Oscillator Types](#oscillator-types)
+- [Gain Envelopes (ADSR)](#gain-envelopes-adsr)
+- [White Noise Generation](#white-noise-generation)
+- [Filter Types (BiquadFilterNode)](#filter-types-biquadfilternode)
+- [Frequency Sweeps](#frequency-sweeps)
+- [Layering Oscillators](#layering-oscillators)
+- [FM Synthesis (Bell/Metallic Tones)](#fm-synthesis-bellmetallic-tones)
+- [Reusable Factory Pattern](#reusable-factory-pattern)
+- [Common Mistakes](#common-mistakes)
+- [Per-Sound-Type Parameter Bounds](#per-sound-type-parameter-bounds)
+- [Validation Checklist](#validation-checklist)
+- Appendix — Tone.js abstractions: Setup, Synth Types, Recipes, Effects, Volume in Tone.js, Converting Tone.js to Vanilla Web Audio, When to Use Tone.js vs Vanilla
+
 <!-- Direct-port from dannyjpwilliams/ui-sound-design-skill — MIT, © 2026 Danny Williams. -->
 <!-- Combines: web-audio-api.md (low-level building blocks) + tone-js.md (high-level abstractions appendix). -->
-
-# Web Audio API — Core Building Blocks
 
 Reference for programmatic UI sound synthesis. All examples use vanilla Web Audio API with no dependencies.
 

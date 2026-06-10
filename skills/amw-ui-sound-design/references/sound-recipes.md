@@ -1,7 +1,20 @@
+# UI Sound Recipes
+
+## Table of Contents
+
+- [Click](#click)
+- [Toggle](#toggle)
+- [Hover](#hover)
+- [Success](#success)
+- [Error](#error)
+- [Warning](#warning)
+- [Notification](#notification)
+- [Whoosh](#whoosh)
+- [Pop](#pop)
+- [Complete Sound Library](#complete-sound-library)
+
 <!-- Direct-port from dannyjpwilliams/ui-sound-design-skill — MIT, © 2026 Danny Williams. Verbatim except for paths. -->
 <!-- Adapted for ai-maestro-webdesign plugin: paths to `references/audio-rules.md` rewritten to `references/web-audio-safety.md`; paths to `references/web-audio-api.md` rewritten to `references/web-audio-building-blocks.md`. -->
-
-# UI Sound Recipes
 
 Complete, working implementations for common UI sounds. Each recipe is self-contained and uses the shared `getAudioContext()` singleton from `web-audio-building-blocks.md`.
 

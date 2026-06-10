@@ -85,7 +85,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 - [color-system](../amw-design-principles/color-system.md) — extracted palette maps to oklch structure
   > I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [typography-system](../amw-design-principles/typography-system.md) — extracted font stack maps to type rules
-  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — extracted spacing scale maps to rhythm rules
   > I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
 - [SKILL](../amw-ascii-to-html/SKILL.md) — consumes `css-vars.css` for HTML rendering
@@ -122,7 +122,7 @@ Verify every item before reporting complete. FAIL on any item should trigger a r
 - At least one `TECH-*.md` from `references/` was consulted and cited.
 - Output passes the skill's Non-negotiables section.
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Emitted HTML/SVG/ASCII validated via `bin/amw-validate-ascii.py`, `bin/amw-html-export.py`, `bin/amw-svg-render.py`.
 - Cross-skill hand-offs documented — name any consumed skill's SKILL.md + TECH file in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).

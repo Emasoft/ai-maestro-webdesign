@@ -1,12 +1,25 @@
 ---
 name: TECH-ux-laws-encyclopedia
 category: design-principles-ux-foundations
-source: clean-room compilation (T-149 batch9 Wave 2 Round 3); UX laws are general professional knowledge — original author/year cited per law
-license: this file = MIT (plugin license); no verbatim copy from copyrighted sources; restatement of well-documented findings in original prose
-also-in: see `design-heuristics.md` for shorter Gestalt/Fitts/Hick subset used in atomic audits; `TECH-ux-laws-quick-reference-table.md` for the one-page lookup table
+source: clean-room (provenance note below)
+license: MIT
 ---
 
 # UX laws encyclopedia
+
+## Table of Contents
+
+- Motor and perceptual laws — Fitts's Law, Hick-Hyman Law, Doherty Threshold
+- Memory and cognition — Miller's Law (7 plus-or-minus 2), Cognitive Load Theory, Information Foraging Theory, Chunking
+- Motivation and emotion — Goal-Gradient Effect, Von Restorff Effect, Zeigarnik Effect, Peak-End Rule, Aesthetic-Usability Effect, Jakob's Law, Pareto Principle (80/20)
+- Gestalt perception — Proximity, Similarity, Closure, Continuity, Common Region, Common Fate, Figure-Ground
+- Attention and habituation — Banner Blindness, Serial Position Effect
+- Behavioral models — Fogg Behavior Model (B = MAT), Sigmoid Adoption Curve
+- Norman's vocabulary — Mental Model, Affordance, Signifier, Mapping, Constraints, Feedback Loop
+- Meta-laws of software — Tesler's Law, Postel's Law, Conway's Law, Hofstadter's Law
+- [Cross-references](#cross-references)
+
+> **Provenance:** source: clean-room compilation (T-149 batch9 Wave 2 Round 3); UX laws are general professional knowledge — original author/year cited per law. license: this file = MIT (plugin license); no verbatim copy from copyrighted sources; restatement of well-documented findings in original prose. also-in: see `design-heuristics.md` for shorter Gestalt/Fitts/Hick subset used in atomic audits; `TECH-ux-laws-quick-reference-table.md` for the one-page lookup table.
 
 A working reference of the laws, principles, and effects that govern human-computer interaction. Each entry follows the same structure:
 
@@ -18,45 +31,6 @@ A working reference of the laws, principles, and effects that govern human-compu
 6. **Related references** — cross-links to other TECH-*.md files (when relevant).
 
 The laws are grouped roughly: motor/perceptual laws first (Fitts, Hick), memory/cognition laws next (Miller, Cognitive Load), motivational and emotional laws (Goal-Gradient, Peak-End), Gestalt perception, attention and habituation (Banner Blindness, Serial Position), behavioral models (Fogg, Sigmoid), Norman's foundational vocabulary (Mental Model, Affordance, Signifier, Mapping, Constraints, Feedback), and the meta-laws about software systems themselves (Tesler, Postel, Conway, Hofstadter).
-
-## Table of Contents
-
-- [Fitts's Law](#fittss-law)
-- [Hick-Hyman Law](#hick-hyman-law)
-- [Miller's Law (7 plus-or-minus 2)](#millers-law-7-plus-or-minus-2)
-- [Doherty Threshold](#doherty-threshold)
-- [Goal-Gradient Effect](#goal-gradient-effect)
-- [Von Restorff Effect (Isolation Effect)](#von-restorff-effect-isolation-effect)
-- [Tesler's Law (Conservation of Complexity)](#teslers-law-conservation-of-complexity)
-- [Jakob's Law](#jakobs-law)
-- [Pareto Principle (80/20)](#pareto-principle-8020)
-- [Zeigarnik Effect](#zeigarnik-effect)
-- [Peak-End Rule](#peak-end-rule)
-- [Aesthetic-Usability Effect](#aesthetic-usability-effect)
-- [Cognitive Load Theory](#cognitive-load-theory)
-- [Information Foraging Theory](#information-foraging-theory)
-- [Gestalt: Proximity](#gestalt-proximity)
-- [Gestalt: Similarity](#gestalt-similarity)
-- [Gestalt: Closure](#gestalt-closure)
-- [Gestalt: Continuity (Good Continuation)](#gestalt-continuity-good-continuation)
-- [Gestalt: Common Region](#gestalt-common-region)
-- [Gestalt: Common Fate](#gestalt-common-fate)
-- [Gestalt: Figure-Ground](#gestalt-figure-ground)
-- [Banner Blindness](#banner-blindness)
-- [Serial Position Effect](#serial-position-effect)
-- [Chunking](#chunking)
-- [Fogg Behavior Model (B = MAT)](#fogg-behavior-model-b--mat)
-- [Sigmoid Adoption Curve (Diffusion of Innovations)](#sigmoid-adoption-curve-diffusion-of-innovations)
-- [Mental Model](#mental-model)
-- [Affordance](#affordance)
-- [Signifier (Norman)](#signifier-norman)
-- [Mapping](#mapping)
-- [Constraints](#constraints)
-- [Feedback Loop](#feedback-loop)
-- [Postel's Law (Robustness Principle)](#postels-law-robustness-principle)
-- [Conway's Law](#conways-law)
-- [Hofstadter's Law](#hofstadters-law)
-- [Cross-references](#cross-references)
 
 ---
 

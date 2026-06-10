@@ -63,7 +63,7 @@ Common failure modes and remediation are listed in the extended usage guide (see
 - [color-system](../amw-design-principles/color-system.md) — oklch palette
   > I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [typography-system](../amw-design-principles/typography-system.md) — node-label type sizes
-  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+  > I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - [usage-guide](./references/usage-guide.md) — extended usage notes
   > Position in flow · Activation · Input formats accepted · Routing table · Prerequisites · Examples · Non-negotiables · Error handling
 - `/amw-ascii-to-svg` — user-facing command that invokes this skill

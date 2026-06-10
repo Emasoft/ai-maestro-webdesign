@@ -205,7 +205,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | Variant auto-detection | `python3 bin/amw-design-md-validate.py --variant auto` | Determine V1 vs V2 before applying pass rules |
 | Mode B drift | Direct file reads on codebase CSS/TS config files | Extract codebase-used tokens for comparison |
 | AI-slop final gate on prose sections | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Flag slop patterns in DESIGN.md prose |
-> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 I do NOT invoke: `<amw-design-principles/SKILL.md>` (orchestrator), `amw-ascii-sketch` (Phase A), `amw-wireframe-builder` (different domain), `amw-design-md-author-agent` (peer — routes through main-agent).
 

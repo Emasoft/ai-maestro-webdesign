@@ -1,25 +1,15 @@
-<!-- MIT — adapted from material-3-skill (Copyright (c) 2026 CWTI Ltd) -->
-<!-- See LICENSE / source: material-3-skill-master/skills/material-3/references/component-catalog.md. -->
-
 # TECH-05 — Per-component token mapping
 
 ## Table of Contents
 
 - [Token override convention](#token-override-convention)
-- [Buttons](#buttons)
-- [FAB and extended FAB](#fab-and-extended-fab)
-- [Icon button](#icon-button)
-- [Card](#card)
-- [Text fields](#text-fields)
-- [Top app bar](#top-app-bar)
-- [Navigation](#navigation)
-- [Dialog](#dialog)
-- [Snackbar](#snackbar)
-- [Chips](#chips)
-- [Switch and checkbox](#switch-and-checkbox)
+- Component token tables — Buttons, FAB and extended FAB, Icon button, Card, Text fields, Top app bar, Navigation, Dialog, Snackbar, Chips, Switch and checkbox
 - [Compose component mapping](#compose-component-mapping)
 - [Component import on the web](#component-import-on-the-web)
 - [Verification](#verification)
+
+<!-- MIT — adapted from material-3-skill (Copyright (c) 2026 CWTI Ltd) -->
+<!-- See LICENSE / source: material-3-skill-master/skills/material-3/references/component-catalog.md. -->
 
 Each MD3 component is defined by a set of **component-level tokens** (`--md-comp-{component}-{property}`) that resolve to system-level tokens (`--md-sys-color-*`, `--md-sys-shape-corner-*`, `--md-sys-typescale-*`). Overriding a component-level token only re-skins that one component without affecting the global theme.
 

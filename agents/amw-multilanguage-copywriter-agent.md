@@ -56,7 +56,7 @@ My confidence tiers drive my behavior: native-level locales I own outright; flue
 - **RTL layout implications** — which UI patterns mirror automatically (text direction) and which must be handled by the wireframe-builder (icon flow, progress indicators, directional arrows).
 - **Typography line-breaking rules** per script (Latin hyphenation, Japanese kinsoku shori, Chinese line-break positions, Arabic connecting-letter rules) — consulted via [SKILL](../skills/amw-pretext/SKILL.md).
 - **Minimum font size floors per script** — CJK and Arabic require larger floor sizes than Latin for readability; consulted via [typography-system](../skills/amw-design-principles/typography-system.md).
-  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 
 ### What I do NOT know
 
@@ -127,7 +127,7 @@ In priority order:
 1. **Parse the input contract.** Extract `source_content`, `target_locales`, `tone`, `brand_voice_notes`, `page_sections`, `character_limits`, `legal_constraints`, `phase`. Verify the target-locale list is non-empty.
 2. **Classify each target locale by confidence tier** (native / fluent / low). Log the classification in the output "Locale notes" section.
 3. **Read [SKILL](../skills/amw-pretext/SKILL.md)** and relevant technique references (line-breaking, hyphenation, soft-wrap hints, optical margin alignment) for every script I will touch. Read [typography-system](../skills/amw-design-principles/typography-system.md) for per-script font-size floors.
-  > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+  > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 4. **For each locale, for each section:**
     - Draft natural-register copy adapted to the target culture.
     - Respect pluralization / gender / RTL / register conventions.
@@ -226,7 +226,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 > [TECH-microcopy-patterns.md] What it does · When to apply · Button labels — verb + object · Empty-state copy — action-oriented · Error messages — specific and recoverable · Confirmation modals — destructive vs neutral · Loading and progress messages — truthful estimates · Success messages — brief celebration + next action · Cross-references
 | **Length / register adaptation across UI states** (default vs hover vs disabled vs error variants of the same control) | n/a — apply consistency rule: state-variants share the same root verb where possible; "Save" / "Saving…" / "Saved" stays in the same morphological family per locale | Flag for native review when the locale lacks the target morphology (e.g., progressive aspect not natural in some locales) |
 | **Voice / tone archetype selection** (brief's `tone` keyword → which of the 7 archetypes) | [TECH-voice-tone-archetypes](../skills/amw-design-principles/references/TECH-voice-tone-archetypes.md) (Crisp+Authoritative / Warm+Conversational / Playful+Confident / Technical+Precise / Aspirational+Inspiring / Quiet+Reverent / Direct+Functional, with do/don't lists and per-locale tone adjustments) | When the brief is silent on tone, infer from project type per archetype's "When to choose" section; when the chosen archetype conflicts with locale culture (e.g., Playful+Confident in ja-JP hospitality), adapt toward locale convention and document the adjustment in Locale notes |
-> [TECH-voice-tone-archetypes.md] What it does · When to choose an archetype · The 7 archetypes (Crisp+Authoritative, Warm+Conversational, Playful+Confident, Technical+Precise, Aspirational+Inspiring, Quiet+Reverent, Direct+Functional) · Conflict patterns between archetype and locale · Cross-references
+> [TECH-voice-tone-archetypes.md] What it does · When to choose an archetype · The 7 archetypes · Crisp + Authoritative · Warm + Conversational · Playful + Confident · Technical + Precise · Aspirational + Inspiring · Quiet + Reverent · Direct + Functional · Conflict patterns between archetype and locale · Cross-references
 
 Note: I read skill files for know-how only. I do NOT invoke `/amw-*` commands. See § 12 Skill Invocation Protocol.
 
@@ -296,7 +296,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
 ### DO
 
 - **Read skill files for know-how.** When I need line-breaking rules, I read [SKILL](../skills/amw-pretext/SKILL.md) and specific reference files. When I need per-script font-size floors, I read [typography-system](../skills/amw-design-principles/typography-system.md).
-  > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax
+  > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - **Reference other amw-* agents by name when documenting hand-offs.** E.g., "Pass the copy blocks to `amw-wireframe-builder-agent` via main-agent so the HTML skeleton is filled with locale-specific content."
 - **Run bin scripts directly if needed** (rare for this agent): mostly irrelevant to copywriting, occasionally `bin/amw-validate-ascii.py` if checking ASCII layout copy.
 
@@ -530,5 +530,5 @@ For Arabic, Hebrew, and other RTL locales:
   > Topology invariants · Phase A data flow · Phase A data hand-offs (carried by main-agent between sub-agent invocations) · Phase B data flow · Phase B data hand-offs · Phase B sequencing rules · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 - [SKILL](../skills/amw-pretext/SKILL.md) — typography line-breaking references, 78 TECH-NN-*.md files
 - [typography-system](../skills/amw-design-principles/typography-system.md) — per-locale font size floors
-  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax
+  > I. Modular type scale · Default recommendation (Perfect Fourth, base = 16px) · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · Successful combinations · Failure modes · VI. Recommended font stacks (avoiding AI slop) · Latin · CJK / other scripts · Banned list (AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - [CLAUDE](../CLAUDE.md) — plugin architecture overview

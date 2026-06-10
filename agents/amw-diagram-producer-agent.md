@@ -228,7 +228,7 @@ After the format-specific validate step (`bin/amw-validate-diagram.sh`) but BEFO
 - **Exit 2 → INCONCLUSIVE**: artifact unreadable (rare for diagram outputs); emit a `warnings` entry and continue.
 
 The script implements the third hard rule mechanically (rules 1, 2, 4, 7, 23, 26 + mauve-teal gradient + AI-drawn SVG eye-pair). It is faster, cheaper, and deterministic vs re-reading [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) every Phase B run. The reference file remains documentation for the rationale; the script is the gate.
-> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 **Diagram-specific judgments the script does NOT cover** (still authored / inspected by me):
 

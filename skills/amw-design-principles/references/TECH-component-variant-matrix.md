@@ -1,5 +1,26 @@
 # TECH — Component Variant Matrix
 
+## Table of Contents
+
+- [What is a variant matrix?](#what-is-a-variant-matrix)
+- [Tokens](#tokens)
+- [Wireframe-phase token swap (T-121)](#wireframe-phase-token-swap-t-121)
+- [Authoring the matrix](#authoring-the-matrix)
+- [Single-file multi-variant toggle output (T-120)](#single-file-multi-variant-toggle-output-t-120)
+- Implementation spec sheet (T-122) — purpose, component tree, interaction state table, token swatches, responsive, edge cases
+- [Style Dictionary integration](#style-dictionary-integration)
+- [Figma Tokens (Tokens Studio) integration](#figma-tokens-tokens-studio-integration)
+- [Cross-route component dedup (T-125)](#cross-route-component-dedup-t-125)
+- [Vertical-specific mandatory elements (T-127)](#vertical-specific-mandatory-elements-t-127)
+- [LLMO deliverable bundle (T-128)](#llmo-deliverable-bundle-t-128)
+- [Agent-accessibility attributes (T-129)](#agent-accessibility-attributes-t-129)
+- [Agentic UI affordances (T-130, EU EAA-required June 2025)](#agentic-ui-affordances-t-130-eu-eaa-required-june-2025)
+- [/tmp standalone preview checkpoint (T-117)](#tmp-standalone-preview-checkpoint-t-117)
+- [Component sourcing hierarchy (T-116)](#component-sourcing-hierarchy-t-116)
+- [Breaks-if](#breaks-if)
+- [Component examples](#component-examples)
+- [Cross-references](#cross-references)
+
 How to enumerate a component's variant axes, constrain orphan combinations, and feed the matrix into design-token export tools (Style Dictionary, Figma Tokens, the plugin's own `bin/amw-design-md-emit-companions.py`). Owned by `amw-component-library-architect-agent`; consumed by `amw-wireframe-builder-agent` for variant rendering and by `amw-form-designer-agent` for form-control variants.
 
 Provenance: composed from `atelier` single-file multi-variant toggle (T-120, MIT direct-port), `design-with-claude-code` SPEC_GUIDE (T-122, MIT direct-port), wireframe-token-swap (T-121, MIT direct-port), per-project token-scale generation (T-126, clean-room), and clean-room writeups of T-125 (cross-route component dedup), T-127 (vertical-specific mandatory elements), T-128 (LLMO bundle), T-129 (data-ai-* attributes), T-130 (Agentic UI affordances).

@@ -1,9 +1,4 @@
-<!-- Direct-port from yusuke-hanaue's ja-webtypo-skill (MIT, © 2026 Yusuke Hanaue / 花上雄介). Verbatim adaptation to the amw-pretext TECH file format. -->
-<!-- Adapted for ai-maestro-webdesign plugin: original frontmatter dropped (TECH files are not Claude Code skills — they are pretext sub-references); content layout reshaped per existing TECH-NN-*.md house style (## What it does / ## When to use / etc.). All Japanese characters, code blocks, recipes, decision matrices, and rules preserved verbatim. -->
-
 # TECH-80 — Japanese Web Typography
-
-> **CJK exception:** This TECH file contains Japanese text by design (examples, font-stack names, quoted-phrase protection patterns). The plugin-wide CJK-clean check exempts files whose path matches `references/TECH-(80|81)-(ja|zh)-typography.md`.
 
 ## Table of Contents
 
@@ -26,6 +21,11 @@
 - [Layout Checks](#layout-checks)
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
+
+<!-- Direct-port from yusuke-hanaue's ja-webtypo-skill (MIT, © 2026 Yusuke Hanaue / 花上雄介). Verbatim adaptation to the amw-pretext TECH file format. -->
+<!-- Adapted for ai-maestro-webdesign plugin: original frontmatter dropped (TECH files are not Claude Code skills — they are pretext sub-references); content layout reshaped per existing TECH-NN-*.md house style (## What it does / ## When to use / etc.). All Japanese characters, code blocks, recipes, decision matrices, and rules preserved verbatim. -->
+
+> **CJK exception:** This TECH file contains Japanese text by design (examples, font-stack names, quoted-phrase protection patterns). The plugin-wide CJK-clean check exempts files whose path matches `references/TECH-(80|81)-(ja|zh)-typography.md`.
 
 ## What it does
 

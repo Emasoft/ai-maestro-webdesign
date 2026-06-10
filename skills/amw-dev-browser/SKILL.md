@@ -57,7 +57,7 @@ Common failure modes and remediation are listed in the extended usage guide (see
 - [SKILL](../amw-design-extract/SKILL.md) — downstream consumer: combines `dev-browser` screenshots + DOM dumps with the `designlang` extractor to produce token sets.
 - [SKILL](../amw-design-principles/SKILL.md) — upstream orchestrator; route design intents through there, not directly to this skill.
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — apply after extracting any visual reference, before handing it to a design variant.
-  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance)
+  > I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - [usage-guide](./references/usage-guide.md) — extended usage notes
   > Position in flow · Activation · Trigger conditions · Prerequisites · Usage details · Non-negotiables · Error handling
 - Slash commands: `/amw-extract-style <url>` (uses this skill + design-extract), `/amw-preview` (local preview server; orthogonal to this skill but often used together), `/amw-init` (installs the CLI).
