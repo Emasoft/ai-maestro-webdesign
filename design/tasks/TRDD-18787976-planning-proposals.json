@@ -1,0 +1,577 @@
+[
+ {
+  "skill": "skills/amw-design-md/SKILL.md",
+  "body_tokens": 4999,
+  "body_lines": 153,
+  "ref_links": 31,
+  "embed_burden_tokens": 3840,
+  "is_orchestrator": false,
+  "domains": [
+   "spec/format (Variant1 official + Variant2 community + extension sections + templates + claude-md-snippet + frontmatter + 13 authoring rules)",
+   "authoring (brand archetypes, extended sections 7-11, agent-prompt guide, token interpolation, three-path routing, style-references companion, CJK localization)",
+   "extraction (URL via dev-browser, codebase scan, Tailwind config, component/state detection, icon/asset export, fingerprinting, Figma input path)",
+   "audit/validate (5-pass audit, quality review-rubric, validation-failure recovery, ai-slop-avoid anti-patterns, lint/contrast bin scripts)",
+   "convert/apply/export (V2->V1 conversion, token-enforcement apply pipeline, DTCG export, cross-project design library, DESIGN.md-as-input downstream consumption, companion-file emission)"
+  ],
+  "recommended_technique": "split",
+  "fits_via_prose_trim_only": false,
+  "prose_trim_plan": [],
+  "split_plan": [
+   {
+    "child_skill": "skills/amw-design-md-spec",
+    "child_description": "DESIGN.md format spec, templates, and authoring rules. Triggers on \"DESIGN.md spec\", \"DESIGN.md template/skeleton\", \"DESIGN.md frontmatter\", \"DESIGN.md section order / authoring rules\", \"adopt DESIGN.md in CLAUDE.md\". Variant 1 (official @google/design.md) + Variant 2 (community 9-section). Does NOT trigger on generic \"design system\". Use to look up the canonical format, fill a skeleton, or check the 13 authoring rules.",
+    "content_owned": [
+     "The two canonical specs (Variant 1 official, Variant 2 community) + extension sections 10-14",
+     "Variant 1 + Variant 2 templates/skeletons + the CLAUDE.md adoption snippet",
+     "YAML frontmatter schema (TECH-01) and the DESIGN_MD_SPEC 13 authoring rules (TECH-24)",
+     "Position-in-flow + What-this-skill-is-NOT shared preamble (light copy; canonical home for the format identity)"
+    ],
+    "refs_owned": [
+     "references/canonical-spec-google-alpha.md",
+     "references/community-9-section-spec.md",
+     "references/extension-sections-10-14.md",
+     "references/canonical-template.md",
+     "references/community-9-section-template.md",
+     "references/claude-md-snippet.md",
+     "references/TECH-01-yaml-frontmatter.md",
+     "references/TECH-24-authoring-rules-spec.md"
+    ]
+   },
+   {
+    "child_skill": "skills/amw-design-md-author",
+    "child_description": "Author a DESIGN.md from a brief, interview, archetype, or 5-question flow. Triggers on \"create/author/make a DESIGN.md\", \"DESIGN.md from brief\", \"brand archetype DESIGN.md\", \"DESIGN.md agent prompt guide\", \"DESIGN.md i18n/CJK\". Does NOT trigger on extraction-from-source or generic design. Use to write a new DESIGN.md with the lint+contrast gate.",
+    "content_owned": [
+     "Author operation: read template, fill from brief/interview/codebase/URL, lint gate (amw-design-md-lint.sh) + WCAG-AA contrast pre-flight (amw-design-md-contrast.py)",
+     "5 brand archetypes (TECH-25), extended sections 7-8 motion/a11y (TECH-26) and 9/10/11 (TECH-22, TECH-23)",
+     "{token.ref} interpolation + dead-reference detection (TECH-27), three-path routing A/B/C (TECH-28)",
+     "STYLE-REFERENCES.md companion (TECH-21), CJK localization JP/KO/ZH (TECH-cjk)"
+    ],
+    "refs_owned": [
+     "references/TECH-25-brand-archetypes.md",
+     "references/TECH-26-extended-sections-7-8.md",
+     "references/TECH-22-section-10-11-extended.md",
+     "references/TECH-23-section-9-agent-prompt-guide.md",
+     "references/TECH-27-token-interpolation.md",
+     "references/TECH-28-three-path-routing.md",
+     "references/TECH-21-style-references-companion.md",
+     "references/TECH-cjk-localization.md"
+    ]
+   },
+   {
+    "child_skill": "skills/amw-design-md-extract",
+    "child_description": "Extract a DESIGN.md from a live URL, Tailwind config, codebase scan, or Figma export. Triggers on \"extract DESIGN.md from URL/Tailwind/codebase/Figma\", \"DESIGN.md fingerprint\", \"detect components for DESIGN.md\". Does NOT trigger on generic \"extract design tokens\" (that routes to amw-design-extract). Use to faithfully transcribe an existing source into Variant 1.",
+    "content_owned": [
+     "Extraction operations: from-url.sh (delegates to amw-dev-browser), from-tailwind.mjs, from-codebase.py",
+     "Component + state detection: 5 codebase patterns + DOM-landmark + ARIA-role table (TECH-extractor-component-detection)",
+     "Inline SVG icon export + raster asset export + DESIGN.assets.json manifest (TECH-extractor-icon-asset-export)",
+     "Deterministic SHA-256 token-block fingerprint (TECH-extractor-fingerprinting), Figma input path / Tokens Studio (TECH-18)"
+    ],
+    "refs_owned": [
+     "references/TECH-extractor-component-detection.md",
+     "references/TECH-extractor-icon-asset-export.md",
+     "references/TECH-extractor-fingerprinting.md",
+     "references/TECH-18-figma-input-path.md"
+    ]
+   },
+   {
+    "child_skill": "skills/amw-design-md-audit",
+    "child_description": "Lint, validate, and audit a DESIGN.md for quality and consistency. Triggers on \"lint/validate my DESIGN.md\", \"audit/five-pass-audit DESIGN.md\", \"score DESIGN.md quality\", \"DESIGN.md anti-patterns\". Does NOT trigger on authoring or generic design. Use to gate a DESIGN.md before delivery or diagnose problems.",
+    "content_owned": [
+     "Lint/validate operations (amw-design-md-lint.sh official + amw-design-md-validate.py offline) + diff",
+     "5-pass audit: structural / drift / a11y / completeness / consistency (audit-passes); spawns amw-design-md-auditor-agent",
+     "Quality-scoring rubric (review-rubric), validation-failure recovery flows (TECH-14)",
+     "DESIGN.md-specific ai-slop anti-patterns (ai-slop-avoid.md) \u2014 the pre-delivery mechanical check"
+    ],
+    "refs_owned": [
+     "references/audit-passes.md",
+     "references/review-rubric.md",
+     "references/TECH-14-validation-failure-recovery.md",
+     "ai-slop-avoid.md"
+    ]
+   },
+   {
+    "child_skill": "skills/amw-design-md-convert",
+    "child_description": "Convert, apply, and export a DESIGN.md and its companions. Triggers on \"convert Variant 2 DESIGN.md to Variant 1\", \"emit DESIGN.md companions / tokens.css / tokens.json\", \"apply DESIGN.md tokens / enforce tokens\", \"DESIGN.md DTCG export\", \"cross-project DESIGN.md library\". Use to transform a DESIGN.md into downstream artifacts or enforce its tokens at code-gen.",
+    "content_owned": [
+     "V2->V1 converter (amw-design-md-convert-v2-to-v1.py), companion emission (amw-design-md-emit-companions.py: tokens.css/tokens.json/component-inventory/usage-prompt), showcase HTML (amw-design-md-showcase.py)",
+     "Apply / token-enforcement pipeline: raw-hex/raw-px/typography sweeps + WCAG pair-check + Do's-Don'ts enforcement (TECH-19)",
+     "DTCG / W3C Design Tokens export (TECH-17), cross-project design library at ~/.config/ai-maestro/design-library/ (TECH-20)",
+     "DESIGN.md-as-input downstream consumption by amw-wireframe-builder-agent (TECH-15)"
+    ],
+    "refs_owned": [
+     "references/TECH-19-design-md-apply.md",
+     "references/TECH-17-dtcg-export.md",
+     "references/TECH-20-design-library.md",
+     "references/TECH-15-design-md-as-input.md"
+    ]
+   }
+  ],
+  "rationale": "The body is already 4999 tokens / 153 lines \u2014 at the cap before embedding a single TOC \u2014 and the embed contract (one `> [file] Title \u00b7 Title \u00b7 \u2026` line per referenced file, embedding its complete TOC) costs ~3840 tokens across the 31 distinct referenced files (553 headings, ~3516 title tokens + separators/overhead), so any single-SKILL form lands near 5340-5640 tokens; prose-trim cannot close that gap because moving sections out only adds more embeds and the irreducible operational core (triggers + 9 operations + hard rules + instructions) still cannot share a body with 3840 tokens of embeds. The skill is genuinely multi-domain (spec, authoring, extraction, audit, convert/apply) and the 31 references partition cleanly into those 5 domains with small per-child embed burdens (440-1186 tokens), so each child's lean operational body (~1400-1600 tokens) plus its embeds totals 1840-2786 tokens \u2014 comfortably under the 4800 headroom and 500-line limits \u2014 with the 4 cross-skill refs shared so each child embeds only the 1-2 it actually links."
+ },
+ {
+  "skill": "skills/amw-design-principles/SKILL.md",
+  "body_tokens": 4887,
+  "body_lines": 187,
+  "ref_links": 29,
+  "embed_burden_tokens": 2451,
+  "is_orchestrator": true,
+  "domains": [
+   "orchestration/routing (mode detection, 7-step flow, executor routing table)",
+   "three-hard-rules enforcement (gather-context, 3-variants, anti-AI-slop)",
+   "ASCII-first plan-phase workflow (sketch->approval->html gate)",
+   "runtime conventions (Tweaks, dimensional limits, animation stack, file-mgmt)",
+   "token systems (color-roles/spacing/elevation/density)",
+   "process & craft references (influence, cross-cultural, enterprise overrides, modern CSS, UX laws)"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-design-principles/references/orchestrator-reference-index.md",
+    "sections_moved": [
+     "Resources (lines 135-162) \u2014 the verbose per-item annotation list; keep only a 1-line pointer + the bare TOC-embed lines in SKILL.md",
+     "Token systems (lines 164-171) \u2014 descriptive blurbs for the 4 TECH-token-system-* files; move prose into the index, keep links+embeds",
+     "Process and craft references (lines 173-180) \u2014 descriptive blurbs for TECH-influence/cross-cultural/enterprise/css; move prose into the index, keep links+embeds",
+     "Long inline UX-laws encyclopedia annotation (line 162, ~171 tok) \u2014 replace with a short link + its complete TOC embed"
+    ],
+    "est_tokens_moved": 1907
+   },
+   {
+    "new_ref_file": "(none \u2014 delete in place, no new file)",
+    "sections_moved": [
+     "ASCII flow diagram #1 (lines 74-95, 264 tok) \u2014 pure decoration that restates the 7-step list",
+     "ASCII flow diagram #2 (lines 103-111, 186 tok) \u2014 duplicate of the 7-step execution list immediately above it"
+    ],
+    "est_tokens_moved": 450
+   }
+  ],
+  "split_plan": [],
+  "rationale": "amw-design-principles is the plugin orchestrator (is_orchestrator=true): its description owns the broad design-vocabulary routing and MUST keep activating first on generic design intent, so splitting is forbidden \u2014 single functional domain (route + enforce 3 rules + gate the ASCII workflow). Measured headroom: lean non-embed prose drops from 3906 to ~1669 tok by deleting two redundant ASCII flow diagrams (\u2212450) and consolidating the verbose Resources/Token-systems/Process-craft annotation prose (\u22121907) into one new references/orchestrator-reference-index.md, leaving bare links + their TOC-embed lines in the body; with all 29 complete TOC embeds resident (2451 tok) plus the one new index embed (~40 tok) the body lands at ~4160 tok / well under 490 lines \u2014 under both caps via prose-trim alone."
+ },
+ {
+  "skill": "skills/amw-ux-evaluator/SKILL.md",
+  "body_tokens": 4901,
+  "body_lines": 176,
+  "ref_links": 8,
+  "embed_burden_tokens": 605,
+  "is_orchestrator": false,
+  "domains": [
+   "UX evaluation (single domain): 3-dimension scoring (Position/Visual-Weight/Spacing)",
+   "convention quick-lookup (buttons/nav/forms/industry)",
+   "report + YAML-scorecard output format",
+   "priority rubric P1/P2/P3",
+   "completion checklist + non-negotiables + error-handling"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-ux-evaluator/references/TECH-uxeval-scorecard.md (EXISTING \u2014 no new file; remove the duplicate scorecard TOC-embed at line 44 since the identical embed already exists at line 107 in the Technique catalog, and collapse the long step-4 scorecard prose into a one-line pointer to this ref, which already owns the full contract)",
+    "sections_moved": [
+     "Instructions step 4 scorecard paragraph + its duplicate > TOC embed (lines 43-44)"
+    ],
+    "est_tokens_moved": 120
+   },
+   {
+    "new_ref_file": "skills/amw-ux-evaluator/references/balsamiq-button-principles.md (EXISTING \u2014 no new file; the 'Quick-lookup conventions' bullets at lines 116-119 restate button/nav/form rules already fully documented in the TECH-uxeval-*-conventions refs and balsamiq ref; tighten to one summary line each)",
+    "sections_moved": [
+     "Quick-lookup conventions verbose bullets (lines 116-119)"
+    ],
+    "est_tokens_moved": 70
+   },
+   {
+    "new_ref_file": "skills/amw-ux-evaluator/references/TECH-ux-laws-encyclopedia.md (EXISTING in amw-design-principles \u2014 no new file; the Resources section UX-law and art-direction paragraphs at lines 152-153 are long prose that the linked refs already cover; reduce to bare link + half-line gloss)",
+    "sections_moved": [
+     "Resources UX-law-citations + art-direction-tells paragraphs (lines 152-153)"
+    ],
+    "est_tokens_moved": 60
+   }
+  ],
+  "split_plan": [],
+  "rationale": "amw-ux-evaluator is a SINGLE-domain skill (scored UX evaluation) so splitting is wrong; its 8 local references already carry their complete TOC embeds (605 tok, all baked into the current 4901). Lean body = 4901 - 605 = 4296, so lean_body + embed_burden = 4901, only ~101 tokens over the 4800 target and 99 under the 5000 hard cap \u2014 a pure prose-trim of ~120-250 redundant tokens (a duplicated scorecard TOC embed at line 44, plus quick-lookup bullets and Resources UX-law prose that merely restate content the linked refs already own) lands it comfortably under 4800 / 490 lines with NO new reference files and NO sections relocated."
+ },
+ {
+  "skill": "skills/amw-infographics/SKILL.md",
+  "body_tokens": 4908,
+  "body_lines": 150,
+  "ref_links": 18,
+  "embed_burden_tokens": 1722,
+  "is_orchestrator": false,
+  "domains": [
+   "infographic-production (single domain): execution-modes (Interactive Builder / One-Shot / Guided Creative)",
+   "design-DNA + 7 non-negotiable rules",
+   "24-template registry + selection",
+   "technique index (TECH-* files: charts, archetypes, playbooks, components)",
+   "design-system resources (style-details, layout-patterns, charts, palettes, fonts, copy)",
+   "multi-format export pipeline (HTML/PNG/PDF) + completion checklist + report schema"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-infographics/references/_pipeline-and-examples.md",
+    "sections_moved": [
+     "Examples (the full token-economics One-Shot walkthrough + the 4 TECH-* routing embeds currently inlined there)",
+     "Prerequisites (runtime_binaries / python_packages / CDN-assets detail \u2014 keep a 1-line pointer in body)",
+     "Output (the full job-completion report schema: Inputs/Method/Artifacts/Checklist/Deviations + $MAIN_ROOT resolution \u2014 keep the 2-bullet 'produces artifact + report' summary in body)"
+    ],
+    "est_tokens_moved": 880
+   }
+  ],
+  "split_plan": [],
+  "rationale": "Body is 4908 tok / 150 lines; the 4800 lean budget is already exceeded BEFORE completing embeds because 14 of 18 local TOC lines (~1356 tok) are baked into that count and 4 embeds (_error-handling, color-palettes, copy-guide, font-pairings \u2248 366 tok) are still missing \u2014 completing all 18 embeds (1722 tok) over lean prose (3552 tok) = 5274 tok, 474 over. This is a SINGLE-domain skill (one infographic-production pipeline), so splitting is wrong; instead move ~880 tok of detail-heavy prose (the Examples walkthrough, Prerequisites detail, and Output report schema) into ONE new private ref references/_pipeline-and-examples.md, which (after its own ~50-tok embed) yields 2672 lean + 1722 + 50 = ~4444 tok and ~115 lines \u2014 comfortably under both caps with the COMPLETE TOC of every linked .md embedded."
+ },
+ {
+  "skill": "skills/amw-stitch-mcp-integration/SKILL.md",
+  "body_tokens": 4875,
+  "body_lines": 203,
+  "ref_links": 2,
+  "embed_burden_tokens": 54,
+  "is_orchestrator": false,
+  "domains": [
+   "activation-and-triggers",
+   "prerequisites-and-mcp-probe",
+   "failure-mode-and-fallback",
+   "pull-push-instructions",
+   "worked-examples",
+   "error-handling",
+   "non-negotiables-contract"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-stitch-mcp-integration/references/TECH-stitch-worked-examples.md",
+    "sections_moved": [
+     "Examples (Scenario 1 \u2014 MCP reachable, pull tokens; Scenario 2 \u2014 MCP absent, fallback)",
+     "Usage (the pseudocode walkthrough + indirect-invocation narrative)"
+    ],
+    "est_tokens_moved": 480
+   },
+   {
+    "new_ref_file": "skills/amw-stitch-mcp-integration/references/TECH-stitch-error-contract.md",
+    "sections_moved": [
+     "Error Handling (5 enumerated cases: probe timeout / tool-not-found / workspace-not-bound / malformed-payload / multi-workspace)",
+     "Non-negotiables (the 7-bullet operating contract; collapse to a 3-line pointer in SKILL.md)"
+    ],
+    "est_tokens_moved": 430
+   }
+  ],
+  "split_plan": [],
+  "rationale": "Single-domain skill (one Stitch-MCP bridge) with only 2 owned references whose complete TOC embeds cost ~54 tokens combined \u2014 embed burden is trivial, so no split is warranted. The 4875-token body is bloated chiefly by (a) the same two TOCs being embedded 6 times inline (dedupe to one per reference in the References section reclaims ~90 tok) and (b) the probe\u2192fallback contract being restated across Examples/Usage/Error-Handling/Non-negotiables; moving the worked examples and the error/non-negotiables contract into two new private references (each adding only a ~30-60 tok embed back) drops the lean body to roughly 4000 tokens / ~150 lines, comfortably under 4800 tokens and 490 lines while every reference TOC is embedded exactly once."
+ },
+ {
+  "skill": "amw-html-diagram",
+  "body_tokens": 4909,
+  "body_lines": 144,
+  "ref_links": 5,
+  "embed_burden_tokens": 529,
+  "is_orchestrator": false,
+  "domains": [
+   "dispatch (create-path routing: editorial vs infographic)",
+   "modify-flow (parse to IR, patch, re-render, validate)",
+   "component-detection (HTML construct to IR mapping)",
+   "final gates (validation-dispatcher + AI-slop-avoid)",
+   "non-negotiables (Tweaks/React-pins/scrollIntoView invariants \u2014 all referenced, not redefined)"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "(none \u2014 no content moves out; this is pure embed de-duplication, not section relocation)",
+    "sections_moved": [
+     "Remove the 7 DUPLICATE `> [html.md] ...` complete-TOC embed lines (currently 8 copies at body lines 11/16/54/59-region/84/95/111/116). Keep exactly ONE complete html.md TOC embed, sited under the authoritative `> **Format spec (authoritative):** [html](...)` link near the top (line 10-11).",
+     "Remove the 1 DUPLICATE `> [modify-flow.md] ...` embed (2 copies at lines 13 and 76). Keep exactly ONE, sited under the `> **Modify pipeline (authoritative):** [modify-flow](...)` link (line 12-13).",
+     "Keep the single existing complete embeds for ir-schema.md (line 72) and validation-dispatcher.md (line 79) as-is \u2014 already one each.",
+     "Add ONE complete-TOC embed line for ai-slop-avoid.md (11 chapters, ~120 t) under its `## Resources` link (line 120) \u2014 it is referenced but currently has no embed."
+    ],
+    "est_tokens_moved": -700
+   }
+  ],
+  "split_plan": [],
+  "rationale": "amw-html-diagram is a single-domain thin dispatcher (4909 t / 144 lines) whose deep content already lives entirely in amw-diagram-formats/references/*.md \u2014 it is correctly externalized and must NOT be split (it explicitly disclaims broad design vocabulary and routes to design-principles, so is_orchestrator=false but split would fragment one cohesive routing recipe). The over-budget condition is self-inflicted duplication: the complete html.md TOC line is embedded 8 times (~1168 t) and modify-flow.md 2 times, when the TOC contract requires the COMPLETE TOC embedded once per UNIQUE referenced file. Prose-trim by de-duplication alone yields lean prose 3826 t + one complete embed per referenced file (529 t total for html/ir-schema/modify-flow/validation-dispatcher/ai-slop-avoid) = 4355 t / ~135 lines, a comfortable 445 t under the 4800 working cap and far under 490 lines."
+ },
+ {
+  "skill": "skills/amw-ui-ux-reasoning/SKILL.md",
+  "body_tokens": 4913,
+  "body_lines": 164,
+  "ref_links": 18,
+  "embed_burden_tokens": 1090,
+  "is_orchestrator": false,
+  "domains": [
+   "last-resort fallback shortlist (3 style + 3 palette + 3 font DNA candidates)",
+   "library inventory taxonomy (161 rules / 67 styles / 161 palettes / 57 fonts / 24 LP patterns)",
+   "technique catalog index (12 TECH-*.md references)",
+   "ai-slop + oklch + typography pre-emission filters",
+   "output routing + completion report"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "(NO new ref file needed \u2014 in-body dedupe + merge only)",
+    "sections_moved": [
+     "Dedupe the redundant TOC embeds: ai-slop-avoid.md embed currently appears 3x (Overview, Instructions step-3, Non-negotiables) and color-system.md embed 2x (Library inventory, Non-negotiables). Keep ONE canonical embed of each (under Overview) and delete the 4 duplicate embed lines; later mentions cite the link only. Saves ~295 tokens, ~5 lines.",
+     "Merge 'Usage' (198t) into 'Instructions' (380t): both enumerate the identical 5-step output contract (acknowledge fallback / 3 style / 3 palette / 3 font / ask-user-to-pick). Collapse to one 'Instructions' section. Saves ~180 tokens, ~9 lines.",
+     "Add the ONE genuinely-missing reference-doc embed: question-templates.md TOC (6 titles, +50t) under Resources, to satisfy the complete-TOC contract. Net cost +50t.",
+     "Optional light trim of 'Error Handling' (283t) and 'Examples' (247t) to 3 bullets each if extra headroom wanted (~120t) \u2014 not required to fit."
+    ],
+    "est_tokens_moved": 425
+   }
+  ],
+  "split_plan": [],
+  "rationale": "The body is already 4913 tokens / 164 lines (under both the 5000-token and 500-line hard caps) and already embeds the complete, verified-matching TOCs of 16 of its 18 referenced files; lean body without any embeds is ~3628 tokens. The only true gaps are (a) duplicate embeds \u2014 ai-slop-avoid is embedded 3x and color-system 2x, ~295 redundant tokens \u2014 and (b) one missing reference-doc embed, question-templates.md (~50t); the two unembedded SKILL.md links are sibling-skill pointers, not detail references, so they need no TOC per the file's existing convention. Deduping the embeds plus merging the duplicate Instructions/Usage sections lands the body at ~4490 tokens with all complete TOCs in place \u2014 comfortably under the 4800 working target with no split and no new private reference files (this single-domain last-resort fallback library has no second domain to split off)."
+ },
+ {
+  "skill": "skills/amw-svg-diagram/SKILL.md",
+  "body_tokens": 4907,
+  "body_lines": 148,
+  "ref_links": 6,
+  "embed_burden_tokens": 470,
+  "is_orchestrator": false,
+  "domains": [
+   "svg-diagram authoring (create path: dispatch freeform vs layered-arch)",
+   "svg-diagram modify path (parse -> IR -> patch -> re-render -> validate)",
+   "validation + render-verify gating"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "(none \u2014 no new reference file needed)",
+    "sections_moved": [
+     "De-duplicate repeated TOC embeds: the body embeds 6 distinct files' complete TOCs but repeats them 16x total (10 duplicate lines, 965 tok of embeds). svg.md is embedded 7x (lines 11,16,56,61,80,116,132); modify-flow.md 3x (13,78,118); ir-schema.md 2x (74,120); validation-dispatcher.md 2x (82,122). Keep EXACTLY ONE complete TOC embed per distinct file (place each once at its primary mention or in the Resources list) and delete the other 10 occurrences. This alone takes the body from 4907->4333 tokens / 143->133 body lines, well under the 4800/490 headroom, while STILL embedding all 6 complete TOCs once."
+    ],
+    "est_tokens_moved": 574
+   }
+  ],
+  "split_plan": [],
+  "rationale": "The skill is a thin single-domain SVG-diagram authoring+modify dispatcher (not the orchestrator, not one of the 3 heavy-body over-cap skills) whose only binding constraint is the 5000-token body cap (148 lines is far under the 500 limit). It already embeds the COMPLETE TOC of all 6 referenced files, but redundantly \u2014 16 embed lines (965 tok) where only 6 distinct files exist, with svg.md alone repeated 7 times. De-duplicating to one embed per file drops the body to ~4333 tokens / ~133 lines (under 4800/490) with zero content loss and no need to create new reference files or split into child skills."
+ },
+ {
+  "skill": "amw-diagram-editorial",
+  "body_tokens": 4905,
+  "body_lines": 170,
+  "ref_links": 13,
+  "embed_burden_tokens": 1173,
+  "is_orchestrator": false,
+  "domains": [
+   "editorial-diagram-authoring (13 fixed HTML+SVG diagram types)",
+   "editorial design-system enforcement (4px grid / 3-family typography / oklch WCAG-AA / density 4-of-10)",
+   "brand-URL onboarding (token extraction via dev-browser)",
+   "cross-cutting techniques catalog (TECH-*.md: grid-snap, focal-accent, bezier-annotation, sketchy-filter, contrast-validation)",
+   "validation/troubleshooting/output-routing"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "(none \u2014 no new reference file needed; this is a dedup-style trim, not a content relocation)",
+    "sections_moved": [
+     "Remove the 4 DUPLICATE TOC-embed lines that re-embed an already-embedded TOC: SKILL.md line 116 (2nd copy of color-system.md TOC; 1st copy at line 83), line 121 (2nd copy of design-system.md TOC; 1st at line 68), line 122 (2nd copy of type-rules.md TOC; 1st at line 63), line 133 (2nd copy of ai-slop-avoid.md TOC; 1st at line 113). Keep exactly one embed per linked reference file.",
+     "OPTIONAL for full TOC-contract compliance: add the currently-MISSING TOC embed for ../amw-design-principles/references/project-output-routing.md (linked at line 142 in the Output section but never embedded; 8 chapter titles, ~59 tokens, +1 line)."
+    ],
+    "est_tokens_moved": 366
+   }
+  ],
+  "split_plan": [],
+  "rationale": "The skill is single-domain (editorial HTML+SVG diagrams) and already embeds the complete TOC of all 10 linked reference .md files, so no split is warranted and the broad-vocabulary orchestrator concern does not apply. The body (4905 t / 170 lines) is already under CPV's hard cap but over the 4800 t comfort target purely because 4 TOC embeds are duplicated (366 t / 4 lines wasted: color-system, design-system, type-rules, ai-slop-avoid each embedded twice). Deduplicating to one embed per file yields 4537 t / 165 lines (verified by simulation), or 4596 t / 166 lines if the missing project-output-routing.md TOC is also embedded for full contract compliance \u2014 both comfortably below 4800 t and 490 lines with zero new reference files."
+ },
+ {
+  "skill": "skills/amw-ui-sound-design/SKILL.md",
+  "body_tokens": 4810,
+  "body_lines": 220,
+  "ref_links": 4,
+  "embed_burden_tokens": 334,
+  "is_orchestrator": false,
+  "domains": [
+   "sound-synthesis-recipes (9 categories)",
+   "vocabulary-bridge (subjective\u2192parameter translation)",
+   "web-audio-building-blocks (oscillators/envelopes/filters/FM/factory + Tone.js)",
+   "review-mode safety auditing",
+   "output-formats (HTML preview / ES module / React hook / library class)",
+   "audio-file-reference-profile interpretation"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "(none \u2014 no new ref file needed)",
+    "sections_moved": [
+     "Remove the 2 DUPLICATE `> [sound-recipes.md] Click \u00b7 Toggle \u00b7 ...` TOC embed lines at SKILL.md:73 and SKILL.md:198 \u2014 the same sound-recipes.md TOC is embedded 3 times (lines 62, 73, 198); keep only the first occurrence at line 62. The COMPLETE TOC of every referenced file already remains embedded (audio-file-references @58, sound-recipes @62, web-audio-building-blocks @76, web-audio-safety @102), so the embed contract stays satisfied."
+    ],
+    "est_tokens_moved": 76
+   },
+   {
+    "new_ref_file": "(optional secondary trim \u2014 only if more headroom wanted)",
+    "sections_moved": [
+     "Compact the 13-line ASCII double-wordmark banner (SKILL.md:11-27, ~588t) to a 3-line wordmark (~150t). Pure decoration, zero functional content \u2014 recovers ~400t. Not required to pass; do only if a larger safety margin is desired."
+    ],
+    "est_tokens_moved": 400
+   }
+  ],
+  "split_plan": [],
+  "rationale": "The skill ALREADY fits both hard caps (4810t < 5000, 220 lines < 500) and ALREADY embeds the complete Table-of-Contents of all 4 referenced .md files inline (lines 58/62/76/102), so the embed contract is met today. The only defect is the sound-recipes.md TOC is duplicated 3\u00d7 (76t of waste), leaving the body 10t over the 4800 headroom target; deleting the 2 redundant TOC lines yields 4734t with clean headroom (<4800) \u2014 no content lost, no new ref file, no split. A split is unwarranted: although the SKILL touches several functional domains, they form one cohesive sound-design workflow and the total embed burden (334t) is tiny, so prose-trim alone is both sufficient and correct (an optional banner-compaction recovers a further ~400t if a wider margin is desired)."
+ },
+ {
+  "skill": "skills/amw-pretext/SKILL.md",
+  "body_tokens": 4881,
+  "body_lines": 138,
+  "ref_links": 15,
+  "embed_burden_tokens": 34,
+  "is_orchestrator": false,
+  "domains": [
+   "pretext API functions (TECH-01..13)",
+   "measurement prerequisites (TECH-14..18)",
+   "layout/obstacle patterns (TECH-19..31)",
+   "typography techniques (TECH-32..44)",
+   "motion/interactive demos (TECH-45..55)",
+   "tables/virtualization (TECH-56..58)",
+   "integration patterns (TECH-59..66)",
+   "workflow assemblies (TECH-67..71)",
+   "consult/decision-routing (TECH-72..78)",
+   "output-contract (TECH-79)",
+   "CJK typography (TECH-80..81)"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-pretext/references/_how-to-use.md",
+    "sections_moved": [
+     "Instructions (verbose 6-step workflow, 502t)",
+     "How to use this skill (overlapping 6-step workflow, 702t)"
+    ],
+    "est_tokens_moved": 864
+   }
+  ],
+  "split_plan": [],
+  "rationale": "Body is 4881t/138 lines and ALREADY embeds accurate TOCs for 12 of its 15 links; the only missing embed is TECH-79-output-contract.md (+34t -> 4915t, just 115t over the 4800 target; line count is fine). The over-cap is caused entirely by 3x duplication of the same link+embed pairs (the 159-token _index.md embed appears 3x; the TECH-72 embed 3x) across three sections that all re-describe the identical 'decide -> pick technique -> follow API' workflow (Instructions 502t, Technique selection 947t, How to use this skill 702t). Prose-trim wins decisively: the SKILL.md is a thin router whose real content already lives in 81 references/TECH-NN-*.md files, and it is the plugin's single-trigger pretext skill routed by design-principles, so splitting would fragment routing for zero benefit; consolidating the triple-duplicated workflow into ONE lean body list plus a new private references/_how-to-use.md nets ~864t reduction (minus a ~40t new-ref embed) -> projected lean body ~4051t with a 749t margin and 139 lines."
+ },
+ {
+  "skill": "skills/amw-ascii-diagrams-reference/SKILL.md",
+  "body_tokens": 8389,
+  "body_lines": 435,
+  "ref_links": 25,
+  "embed_burden_tokens": 1995,
+  "is_orchestrator": false,
+  "domains": [
+   "technical-ASCII-diagram-authoring",
+   "character-vocabulary-cheatsheet",
+   "reference-pattern-library-(25 files: 18 TECH archetypes + 7 category indexes)",
+   "validation-gate-(amw-validate-ascii.py)",
+   "code-comment-embedding",
+   "completion-checklist-and-output-routing"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "references/authoring-cheatsheet.md",
+    "sections_moved": [
+     "Character cheat-sheet",
+     "Extended connection-type vocabulary",
+     "Common mistakes to avoid"
+    ],
+    "est_tokens_moved": 907
+   },
+   {
+    "new_ref_file": "references/completion-and-output.md",
+    "sections_moved": [
+     "Completion checklist",
+     "Output (artifact routing + job-completion report schema)"
+    ],
+    "est_tokens_moved": 1477
+   },
+   {
+    "new_ref_file": "(in-body trims, no new file)",
+    "sections_moved": [
+     "Fix 15 malformed [[x](y)](y) double-links -> single links",
+     "Collapse Position-in-flow + Overview overlap",
+     "Trim Core-principles 5 numbered items to a 1-line-each list",
+     "Compress Resources (drop duplicate flowcharts/trees links already in Reference-library table)",
+     "Trim Error-Handling prose"
+    ],
+    "est_tokens_moved": 1100
+   }
+  ],
+  "split_plan": [],
+  "rationale": "amw-ascii-diagrams-reference is a SINGLE-domain skill (technical ASCII diagram authoring) \u2014 its 25 child refs share a 6-chapter TOC and the complete-TOC embed burden is only ~1995t, well under the cap, so a split would fragment one coherent reference library for no benefit. The 8389t body is bloated by three detail-heavy sections that are NOT needed to make a routing decision (Character cheat-sheet/connection-vocab 907t, Completion-checklist 673t, Output-routing 804t) plus 15 token-wasting [[x](y)](y) double-links; externalizing ~2384t into two new private refs (each adding back only ~35t of embed) and tightening the remaining prose lands the lean body at roughly 3600-5000t WITH the complete embeds and ~250 lines \u2014 comfortably inside both the 4800-token headroom and the 490-line target via prose-trim alone."
+ },
+ {
+  "skill": "skills/amw-diagram-svg/SKILL.md",
+  "body_tokens": 7135,
+  "body_lines": 372,
+  "ref_links": 11,
+  "embed_burden_tokens": 1275,
+  "is_orchestrator": false,
+  "domains": [
+   "svg-canvas-and-structure",
+   "node-shape-vocabulary",
+   "connections-and-arrow-markers",
+   "layout-shapes",
+   "smil-animation",
+   "render-verify-loop",
+   "output-routing-and-reporting"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-diagram-svg/references/TECH-svg-animation-patterns.md",
+    "sections_moved": [
+     "Optional: Animation (the two SMIL XML primitives: data-flow pulse via animateMotion+mpath, blinking node via animate-on-opacity, plus the prefers-reduced-motion <style> guard) \u2014 leave an ~8-line pointer in the body"
+    ],
+    "est_tokens_moved": 560
+   }
+  ],
+  "split_plan": [],
+  "rationale": "The 7135-tok body is bloated by THREE overlapping reference apparatuses for the same 7 TECH files (Resources 520t + Technique-selection tree 479t + References multi-line TOC dump 836t) plus inline XML in Usage (Animation 640t) that merely restates the TECH reference bodies \u2014 not unique knowledge. Collapsing the triple listing to a single canonical one-line-per-ref TOC-embed set (\u22121665t), moving the Animation XML to one NEW ref (\u2212560t), and tightening Output/checklist/error-handling/Usage (\u22121087t) yields lean body ~3393t; +1275t embed burden (all 11 refs, ai-slop-avoid is the 619t dominant) +40t for the new ref = 4708t < 4800 and ~190 lines < 490. No split: this is a single-domain SVG-diagram emitter, so partitioning would fragment one coherent primitive vocabulary for zero benefit."
+ },
+ {
+  "skill": "skills/amw-mermaid-render/SKILL.md",
+  "body_tokens": 5301,
+  "body_lines": 247,
+  "ref_links": 9,
+  "embed_burden_tokens": 695,
+  "is_orchestrator": false,
+  "domains": [
+   "output-modes (svg vs ascii/unicode)",
+   "themes (15 built-in + mono-mode + shiki + live-switch)",
+   "cli-usage (flag surface + stdin + invocation patterns + batch)",
+   "supported-diagram-types (5 mermaid grammars)",
+   "house-rules (non-negotiables)",
+   "runtime-deps + auto-install",
+   "errors + troubleshooting",
+   "technique-selection map (navigation)"
+  ],
+  "recommended_technique": "prose-trim",
+  "fits_via_prose_trim_only": true,
+  "prose_trim_plan": [
+   {
+    "new_ref_file": "skills/amw-mermaid-render/references/TECH-cli-usage.md",
+    "sections_moved": [
+     "## Usage (full flag surface + stdin fallback/gotchas + common invocation patterns + batch render block)"
+    ],
+    "est_tokens_moved": 875
+   },
+   {
+    "new_ref_file": "skills/amw-mermaid-render/references/TECH-technique-map.md",
+    "sections_moved": [
+     "## Technique selection (the full intent->reference decision table)"
+    ],
+    "est_tokens_moved": 279
+   },
+   {
+    "new_ref_file": "skills/amw-mermaid-render/references/TECH-errors-troubleshooting.md",
+    "sections_moved": [
+     "## Error Handling",
+     "## Troubleshooting"
+    ],
+    "est_tokens_moved": 292
+   }
+  ],
+  "split_plan": [],
+  "rationale": "amw-mermaid-render is a single-domain executor (the plugin's SOLE Mermaid renderer that every Mermaid-producing skill delegates to), so splitting would fracture its required unified narrow-trigger SKILL.md \u2014 prose-trim is the right tool, and it is over-cap on TOKENS only (5301 > 5000; 247 lines is well under 490). Moving the three detail-heavy blocks (Usage 965t, Technique-selection table 314t, Error+Troubleshooting 327t) into three new private references and leaving ~3-line pointers reduces the lean body to ~3855t; adding the ~695t embed burden for all 14 referenced TECH TOCs plus ~135t for the three new-ref embeds yields ~4685t, clearing the 4800 headroom (the real single-`>`-line-per-file embed convention is lighter than this conservative estimate, widening the margin). No content is lost \u2014 every moved section becomes a discoverable reference still pointed at from the body."
+ }
+]
