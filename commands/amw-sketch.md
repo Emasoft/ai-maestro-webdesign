@@ -118,7 +118,8 @@ If the user has not yet run `/amw-extract-style <url>` and wants tokens from a r
 
 ## AI-slop checks on the sketches themselves
 
-Even at ASCII fidelity, check each emitted variant against [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md):
+Even at ASCII fidelity, check each emitted variant against [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md):
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 - No "hero → 3-col icons → testimonials → CTA → footer" stamped three times in a row (item 10).
 - No fake "Sarah J. CEO of TechCorp" testimonials (item 15).

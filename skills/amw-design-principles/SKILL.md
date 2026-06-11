@@ -36,14 +36,18 @@ The orchestrator distinguishes two modes on every incoming request:
 - **Main-agent mode (requirements path)** — user states goals or broad intent without a concrete format. Phase A (conversational, low-fi, low-token ASCII iteration) runs first via `ai-maestro-webdesign-main-agent`; Phase B (sub-agent spawning, real artifacts) starts ONLY after explicit satisfaction tokens are received.
 
 The Phase A → Phase B approval gate is a hard invariant: do NOT spawn sub-agents or produce real artifacts (HTML, SVG, PNG, MP4) until the user has confirmed the low-fi direction with `yes`, `ship it`, `approved`, `that's the one`, `perfect`, `done`, `go ahead`, or `let's do it`. Full spec: [two-mode-summary](./references/two-mode-summary.md); authoritative deep-dive: [two-mode-workflow](./references/two-mode-workflow.md).
+> [two-mode-workflow.md] Sub-agent delegation (Main-agent mode only) · Mode Detection · Phase A — Iterative Low-Fi Loop · Phase B — Implementation and Spawning · Scenario Testing via dev-browser (mandatory in Phase B) · Anti-Patterns
+> [two-mode-summary.md] Command mode (fast path) · Main-agent mode (requirements path) · Approval gate invariant
 
 ## The three hard rules (violating any one of these is a failure)
 
 1. **Gather context before designing.** Require design system, brand tokens, or reference examples. The `last resort` fallback is `amw-ui-ux-reasoning` — do not fall back to "let me guess."
 2. **Always produce at least three variants** (baseline → advanced → experimental). Single-answer output is a failure mode. Use `amw-ascii-sketch` when the user hasn't committed to HTML yet — it is cheap to iterate.
 3. **Reject AI-slop patterns.** The full list is in [ai-slop-avoid](ai-slop-avoid.md). Any HTML output runs a final check against that file before delivery.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 Full text, rationale, and last-resort path: [three-hard-rules](./references/three-hard-rules.md).
+> [three-hard-rules.md] Rule 1: Gather design context before designing · Rule 2: Deliver at least three variants, baseline → advanced → experimental · Rule 3: Reject every AI-slop pattern
 
 These rules apply to every skill in the plugin. Sub-skills inherit them via the orchestrator; they do not override them.
 
@@ -56,10 +60,12 @@ Standard plugin runtime — no skill-specific prerequisites beyond the global pl
 1. Read the brief and decide if this skill fires (broad design vocabulary: design, UI, mockup, landing page, wireframe, prototype, slide, deck, poster, website).
 2. Gather context: request UI kit, brand assets, or reference examples; use `amw-ui-ux-reasoning` as last resort if none are available.
 3. Run the question checklist from [question-templates](question-templates.md) (ask ≥ 10 questions), then declare the visual system (font + palette + spacing rhythm).
+> [question-templates.md] Universal must-ask (every design task) · Task-specific additions · Questions NOT to ask · Suggested format · Design Read — declare before iterating · Tip
 4. Run `/amw-sketch` to iterate ≥ 3 ASCII variants with the user; loop until an explicit satisfaction token is received.
 5. Apply the AI-slop-avoid.md gate over the approved direction before conversion.
 6. Convert to HTML via `/amw-ascii-to-html`, apply tokens, and deliver via `/amw-preview`.
 7. Route specialized requests (diagrams, infographics, video, SEO, forms) to the appropriate executor skill — see [downstream-executors](./references/downstream-executors.md) for the full routing table.
+> [downstream-executors.md] Input — gather context for Rule 1 · Plan phase — satisfy Rule 2 in ASCII · Output — render the approved direction · Text visualization — ASCII artifacts for PRs, ADRs, terminals, and chat · Validation + reference · Tier-4 specialists (on-demand, Phase B only)
 
 ## ASCII-first plan phase (the default workflow)
 
@@ -107,10 +113,12 @@ Skip the loop only when the user has already committed to a layout (e.g. they pa
 ## Runtime conventions
 
 Detailed conventions (Tweaks live-tuning protocol, dimensional hard limits, animation stack order, decision tree, file-management rules, workflow rhythm) live in [runtime-conventions](./references/runtime-conventions.md). Every HTML/SVG emitter under this orchestrator MUST follow them.
+> [runtime-conventions.md] Tweaks live-tuning mode (recommended) · Dimensional hard limits (no discussion) · Animation stack order · Decision tree — which file to load when · File-management rules · Workflow rhythm
 
 ## Downstream executor sub-skills
 
 Full per-skill routing table (40+ executors across input / plan / output / text-visualization / validation tiers, plus Tier-4 specialists) lives in [downstream-executors](./references/downstream-executors.md). Load that reference when picking a sub-skill for a specific task domain (diagram type, video, infographic, SEO, etc.).
+> [downstream-executors.md] Input — gather context for Rule 1 · Plan phase — satisfy Rule 2 in ASCII · Output — render the approved direction · Text visualization — ASCII artifacts for PRs, ADRs, terminals, and chat · Validation + reference · Tier-4 specialists (on-demand, Phase B only)
 
 ## Output
 
@@ -127,13 +135,21 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Resources
 
 - [two-mode-summary](./references/two-mode-summary.md) — quick summary of command vs main-agent mode.
+> [two-mode-summary.md] Command mode (fast path) · Main-agent mode (requirements path) · Approval gate invariant
 - [two-mode-workflow](./references/two-mode-workflow.md) — authoritative deep-dive on Phase A/B contract.
+> [two-mode-workflow.md] Sub-agent delegation (Main-agent mode only) · Mode Detection · Phase A — Iterative Low-Fi Loop · Phase B — Implementation and Spawning · Scenario Testing via dev-browser (mandatory in Phase B) · Anti-Patterns
 - [three-hard-rules](./references/three-hard-rules.md) — full text of the three hard rules + last-resort path.
+> [three-hard-rules.md] Rule 1: Gather design context before designing · Rule 2: Deliver at least three variants, baseline → advanced → experimental · Rule 3: Reject every AI-slop pattern
 - [agent-authoring-philosophy](./references/agent-authoring-philosophy.md) — judgment layer vs recipe layer; canonical 14-section sub-agent template.
+> [agent-authoring-philosophy.md] Skills and agents are not the same kind of thing · What an agent actually needs · Why the judgment layer matters in this plugin specifically · The 14-section canonical template · What this document is NOT · Cross-references
 - [agent-interaction-patterns](./references/agent-interaction-patterns.md) — cross-agent data hand-offs, one-way tree topology.
+> [agent-interaction-patterns.md] Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 - [authority-hierarchy](./references/authority-hierarchy.md) — veto power and conflict-resolution rules.
+> [authority-hierarchy.md] Domains and authority · Veto power — what it means · Resolution rules by conflict pattern · How main-agent applies the hierarchy · What the hierarchy does NOT do · Enforcement
 - [sub-agent-return-contract](./references/sub-agent-return-contract.md) — YAML return-contract schema every sub-agent emits.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
 - [skill-invocation-protocol](./references/skill-invocation-protocol.md) — DO/DON'T rules agents follow when invoking skills.
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 - [phase-a-frozen-spec](./references/phase-a-frozen-spec.md) — Phase A.5 frozen-spec format and producer contract.
 - [project-output-routing](./references/project-output-routing.md) — detection rules for project-inferred artifact output paths.
 - [pivot-formats](./references/pivot-formats.md) — ASCII / DESIGN.md / Diagram-IR pivot formats.

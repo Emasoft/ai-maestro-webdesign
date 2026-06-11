@@ -65,6 +65,7 @@ Extended connection-arrow vocabulary (`-->`, `==>`, `~~>`, `..>`, `<--`,
 to `../amw-text-visual-workflows/` instead.
 
 See [TECH-panel-format](references/TECH-panel-format.md) for the full
+> [TECH-panel-format.md] What it does · When to use · Standard layout · Column alignment · Highlighting critical / destructive commands · Categorizing into sections · Placeholders and context · Glyph and width standards · Extended connection types · Footer metadata · Cross-references
 authoring contract (layout / alignment / markers / placeholders / glyph
 standards / arrow vocabulary / footer).
 
@@ -101,12 +102,16 @@ Minimal example · Gotchas · Cross-references*. Read only the one whose
 topic matches.
 
 - [TECH-category-sections](./references/TECH-category-sections.md) —
+> [TECH-category-sections.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   split by workflow stage with section headers.
 - [TECH-destructive-command-marker](./references/TECH-destructive-command-marker.md)
+> [TECH-destructive-command-marker.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   — `*` prefix + footnote caveat.
 - [TECH-legend-and-placeholders](./references/TECH-legend-and-placeholders.md)
+> [TECH-legend-and-placeholders.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   — `<branch>` convention + legend caption.
 - [TECH-side-by-side-platforms](./references/TECH-side-by-side-platforms.md)
+> [TECH-side-by-side-platforms.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
   — macOS/Linux vs Windows columns.
 
 <!-- end of references -->
@@ -119,6 +124,7 @@ Before reporting complete (FAIL on any item triggers a remediation loop):
 - At least one `TECH-*.md` consulted and cited.
 - Output passes `## Non-negotiables`.
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Every panel passes `bin/amw-validate-ascii.py`.
 - Cross-skill hand-offs documented.
 - Filename is descriptive English (`gh-cheatsheet.md`, not `out.txt`).
@@ -128,6 +134,7 @@ Before reporting complete (FAIL on any item triggers a remediation loop):
 TWO outputs (ASCII panels + job-completion report). Full contract in
 [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md)
 and [project-output-routing](../amw-design-principles/references/project-output-routing.md).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 Report path: `$MAIN_ROOT/reports/webdesigner/<ts>_<slug>_<hash>.md`.
 Every artifact MUST be linked from the report.
 

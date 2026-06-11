@@ -9,11 +9,16 @@ version: 0.1.0
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Authoritative references** (read each when its content is needed):
 > - [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md) — N×N dispatch table.
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 > - [detect-format](../amw-diagram-formats/references/detect-format.md) — format sniffer spec.
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 > - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR shape + lossy-conversion table.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 > - [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md) — unified PASS/FAIL contract.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 This skill does not redefine format semantics — every conversion rule lives once in [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md). The skill's job is to execute the dispatch algorithm and run the post-conversion validation gate.
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 
 ## Overview
 
@@ -63,6 +68,7 @@ PNG remains a valid TARGET for every other source format (see §PNG-as-target be
 2. For conversions labeled "via IR" in the conversion matrix: parse the source to IR with `bin/amw-diagram-ir.py parse`; for "direct" cells, skip this step.
 3. Optionally apply IR-level mutations (label renames, structural edits) before emission if the caller requests a normalize-then-edit workflow.
 4. Emit to the target format using the dispatch table in [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md); for two-step paths chain two conversions.
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 5. Validate the output with `bin/amw-validate-diagram.sh`; a FAIL aborts the skill and surfaces FIX hints verbatim.
 6. Save the output artifact and report the file path; document the conversion path taken.
 
@@ -75,6 +81,7 @@ src_fmt=$(bin/amw-diagram-detect-format.sh "$SOURCE_PATH")
 ```
 
 Decision tree: see [detect-format](../amw-diagram-formats/references/detect-format.md) §2. Returns one of `ascii|html|svg|mermaid|png|unknown`. If `unknown`, ask the user to clarify the source format.
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 
 If `src_fmt == "png"` → emit refusal message above and stop.
 
@@ -110,6 +117,7 @@ Dispatch per the matrix cell `(src_fmt, target_fmt)`:
 | `impossible` | PNG-as-source — already refused at Step 1. |
 
 The full matrix with per-cell justifications lives at [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md). This skill does NOT redefine it.
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 
 ### Step 5 — Validate output
 
@@ -118,6 +126,7 @@ bin/amw-validate-diagram.sh "$OUT_PATH"
 ```
 
 Unified PASS/FAIL contract per [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md). If FAIL, the conversion is aborted and the original source file is left untouched. Surface the FAIL lines and their `FIX:` hints to the user. Do NOT silently deliver an invalid output.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 ### Step 6 — Write to output path
 
@@ -128,6 +137,8 @@ Log each intermediate file created during multi-step conversions so the user can
 ## Routing summary
 
 Full table in [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md) §1. PNG as source is **impossible** (refused at Step 1); PNG as target is supported from all four other formats. Other cells are either `direct` (single-step backend tool) or `via IR` (parse → emit through `bin/amw-diagram-ir.py`). See [png](../amw-diagram-formats/references/png.md) for DPI / background / padding options.
+> [png.md] PNG is OUTPUT-ONLY — why · Rasterization pipelines (per source format → PNG) · Refusal path implementation · Per-source technique catalog · PNG as INPUT is refused — the full story · Failure modes
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 
 ## Error Handling
 
@@ -136,6 +147,7 @@ Full table in [conversion-matrix](../amw-diagram-formats/references/conversion-m
 | `bin/amw-diagram-detect-format.sh` returns `unknown` | File has no decisive extension and no recognized content signature | Ask user to specify format explicitly with `--from <fmt>` |
 | Validation FAIL after conversion | Target format has structural errors (e.g. IR→ASCII produced misaligned boxes) | Surface all `FIX:` hints; do NOT deliver the invalid output; offer to retry |
 | IR parse returns empty nodes | Source diagram has no detectable graph structure (e.g. HTML page with no `<svg>`) | Warn user; offer the raw-source stub per [modify-flow](../amw-diagram-formats/references/modify-flow.md) §5.2 |
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 | PNG-as-source input detected | User mistakenly provided a `.png` instead of a source artifact | Emit the fixed refusal message verbatim and stop |
 | `cairosvg` missing for SVG→PNG | Dependency not installed | `exit 3`; direct user to `/amw-init` / `/amw-doctor` |
 | `playwright` missing for HTML→PNG | Dependency not installed | `exit 3`; direct user to `/amw-init` / `/amw-doctor` |
@@ -169,11 +181,17 @@ checked_by_wd_doctor:  [xmllint, mmdc, playwright, cairosvg, python3]
 ## Resources
 
 - [conversion-matrix](../amw-diagram-formats/references/conversion-matrix.md) — N×N conversion dispatch table.
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 - [detect-format](../amw-diagram-formats/references/detect-format.md) — format sniffer spec.
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR JSON schema + lossy table.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 - [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md) — unified PASS/FAIL contract.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 - [png](../amw-diagram-formats/references/png.md) — PNG rasterization pipeline options.
+> [png.md] PNG is OUTPUT-ONLY — why · Rasterization pipelines (per source format → PNG) · Refusal path implementation · Per-source technique catalog · PNG as INPUT is refused — the full story · Failure modes
 - [modify-flow](../amw-diagram-formats/references/modify-flow.md) — conversion is a degenerate modify-flow.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - [amw-ascii-to-html](../amw-ascii-to-html/SKILL.md) — ASCII → HTML direct producer.
 - [amw-ascii-to-svg](../amw-ascii-to-svg/SKILL.md) — ASCII → SVG direct producer.
 - [amw-mermaid-render](../amw-mermaid-render/SKILL.md) — Mermaid → SVG / ASCII / PNG renderer.

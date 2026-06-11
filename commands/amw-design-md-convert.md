@@ -69,8 +69,11 @@ If lint fails, surface the error list and recommend `/amw-design-md-audit <outpu
 
 ## Cross-references
 
-- [TECH-13-converting-variant2-to-1](skills/amw-design-md/references/TECH-13-converting-variant2-to-1.md)
-- [community-9-section-spec](skills/amw-design-md/references/community-9-section-spec.md)
-- [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
+- [TECH-13-converting-variant2-to-1](../skills/amw-design-md/references/TECH-13-converting-variant2-to-1.md)
+> [TECH-13-converting-variant2-to-1.md] What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references
+- [community-9-section-spec](../skills/amw-design-md/references/community-9-section-spec.md)
+> [community-9-section-spec.md] Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
+- [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md)
+> [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - `bin/amw-design-md-convert-v2-to-v1.py`
 - `bin/amw-design-md-lint.sh`

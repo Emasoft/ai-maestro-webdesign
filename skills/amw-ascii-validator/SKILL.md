@@ -67,6 +67,7 @@ Constraints: 78-col max, rectangular boxes only, labels under ~15 chars. Full JS
 ## Advanced renderer features
 
 Two opt-in `bin/amw-ascii-render.py` features with worked JSON examples live at [lane-labels-and-sequence-notes](./references/lane-labels-and-sequence-notes.md):
+> [lane-labels-and-sequence-notes.md] Lane-labeled diagrams (git graphs, CI pipelines) · Sequence-mode inline notes · Cross-references
 
 - **Lane-labeled diagrams** — top-level `lanes: [...]` array on `diagram` mode renders left-margin track labels (git-branch graphs, CI swimlanes, any multi-track flow).
 - **Sequence-mode inline notes** — `notes: [{between, text, after_message}, ...]` annotates timeouts / preconditions / side effects between lifelines.
@@ -112,9 +113,19 @@ Variable-width characters that render unreliably in most monospaced fonts: fille
 Every technique lives in `./references/` (same TOC: *What it does · When to use · How it works · Minimal example · Gotchas · Cross-references*):
 
 - [TECH-box-corner-alignment](./references/TECH-box-corner-alignment.md), [TECH-fix-hint-actionable-format](./references/TECH-fix-hint-actionable-format.md), [TECH-forbidden-chars-banlist](./references/TECH-forbidden-chars-banlist.md)
+> [TECH-forbidden-chars-banlist.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-fix-hint-actionable-format.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-box-corner-alignment.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-group-aware-width-detection](./references/TECH-group-aware-width-detection.md), [TECH-safe-char-palette](./references/TECH-safe-char-palette.md), [TECH-validate-before-emit](./references/TECH-validate-before-emit.md)
+> [TECH-validate-before-emit.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-safe-char-palette.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-group-aware-width-detection.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-vertical-line-continuity](./references/TECH-vertical-line-continuity.md), [TECH-wide-character-detection](./references/TECH-wide-character-detection.md), [TECH-width-mismatch-rule](./references/TECH-width-mismatch-rule.md)
+> [TECH-width-mismatch-rule.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-wide-character-detection.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-vertical-line-continuity.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [lane-labels-and-sequence-notes](./references/lane-labels-and-sequence-notes.md) — advanced renderer features
+> [lane-labels-and-sequence-notes.md] Lane-labeled diagrams (git graphs, CI pipelines) · Sequence-mode inline notes · Cross-references
 <!-- end of references -->
 
 ## Completion checklist + output
@@ -147,6 +158,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 - `../../bin/amw-ascii-render.py` — perfect-ascii renderer (Python, 78-col max, 4 modes)
 - `../../bin/amw-validate-ascii.py` — alignment validator (group-aware width detection, FIX hints)
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned ASCII is a form of slop
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Non-negotiables
 
@@ -158,6 +170,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Multi-format mode (shared)
 
 Entry point for ALL diagram formats via `bin/amw-validate-diagram.sh`. The dispatcher sniffs format (`bin/amw-diagram-detect-format.sh`) and routes: ASCII → `bin/amw-validate-ascii.py`; SVG → `bin/amw-validate-svg-diagram.sh` (`xmllint --noout` + namespace check); HTML → `bin/amw-validate-html-diagram.sh` (`xmllint --html` + optional `tidy -e -q`); Mermaid → `bin/amw-mermaid-lint.sh` (`mmdc` dry-run); PNG → **hardcoded refusal exit 2** (output-only per plugin directive). All per-format validators share the same output contract — `PASS: <path>` or `FAIL: <line>: <message> [FIX: <hint>]`. Full routing rules: [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md).
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 ## Error Handling
 
@@ -168,4 +181,5 @@ Entry point for ALL diagram formats via `bin/amw-validate-diagram.sh`. The dispa
 | `perfect-ascii` width-exceeds-78 | Shorten labels, split into sub-diagrams, or use `layers` mode |
 | Validator fails every iteration | Skill skipped the validate step — validation is non-skippable |
 | `bin/amw-validate-diagram.sh` exit 2 (non-PNG) | Unknown format — check extension / content signature ([detect-format](../amw-diagram-formats/references/detect-format.md)) |
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 | `bin/amw-validate-diagram.sh` exit 3 | `xmllint` / `tidy` / `mmdc` not installed — run `/amw-init` or `/amw-doctor` |

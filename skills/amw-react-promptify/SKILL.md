@@ -64,6 +64,7 @@ No dedicated slash command. Invoked by the `design-principles` orchestrator duri
 ## Examples
 
 Worked code — a stateful custom-modal host, a stateless confirm-style prompt, and a bring-your-own shadcn `Dialog` host — lives in [examples](references/examples.md), linked with its full TOC in the [Reference index](#reference-index) above.
+> [examples.md] Stateful prompt with a custom modal host · Stateless confirm-style prompt · Bring-your-own-modal (shadcn Dialog) host
 
 ## Output
 

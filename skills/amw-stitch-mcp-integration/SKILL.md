@@ -29,6 +29,8 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 INPUT and OUTPUT. As an input source it pulls design tokens, component manifests, layout grids, and user-flow graphs from a Stitch workspace and feeds them into [`amw-design-md`](../amw-design-md/SKILL.md), [`amw-design-extract`](../amw-design-extract/SKILL.md), and the wireframe builder. As an output sink it can push amw-* artifacts (a finalized DESIGN.md, a token bundle, a wireframe ASCII pack) back to a Stitch workspace via the MCP write surface.
 
 The full mapping between Stitch's vocabulary and amw-* concepts lives in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md). The complete fallback decision tree (what to do when the MCP is unavailable) lives in [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md).
+> [TECH-stitch-fallback-strategy.md] What it documents · When this file applies · Decision tree · Choosing between Nodes A and B when both apply · Worked example — MCP absent, user has a URL · Worked example — MCP absent, codebase only · Worked example — MCP absent, no source at all · Non-negotiables for the fallback path · Cross-references
+> [TECH-stitch-design-language.md] What it documents · Stitch vocabulary · Canonical MCP tool surface · Translation table: Stitch ↔ amw · Worked example — pulling components into a DESIGN.md draft · Cross-references
 
 ## Trigger conditions
 
@@ -54,6 +56,7 @@ This skill has ONE hard prerequisite and a documented fallback chain when the pr
 ### Required runtime
 
 - **`stitch-mcp-server` (an MCP server that exposes the `mcp__stitch__*` tool surface).** This server is NOT bundled with this plugin. The user installs and configures it independently. Refer to the upstream Stitch documentation for installation; the canonical URL is recorded in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md).
+> [TECH-stitch-design-language.md] What it documents · Stitch vocabulary · Canonical MCP tool surface · Translation table: Stitch ↔ amw · Worked example — pulling components into a DESIGN.md draft · Cross-references
 - **A bound Stitch workspace.** The MCP must be authenticated to at least one Stitch workspace before this skill can pull or push. The skill does NOT prompt for credentials — that lives in the MCP server's own configuration.
 
 ### Probe procedure (run first, before any other operation)
@@ -63,6 +66,7 @@ Probe whether the Stitch MCP is reachable by attempting one read-only tool call.
 1. STOP. Do NOT retry, do NOT fall back to scraping, do NOT silently mock.
 2. Emit the one-line fallback message from [Failure mode](#failure-mode).
 3. Return control to the caller and let it choose from [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md).
+> [TECH-stitch-fallback-strategy.md] What it documents · When this file applies · Decision tree · Choosing between Nodes A and B when both apply · Worked example — MCP absent, user has a URL · Worked example — MCP absent, codebase only · Worked example — MCP absent, no source at all · Non-negotiables for the fallback path · Cross-references
 
 ## Failure mode
 
@@ -82,6 +86,7 @@ The skill MUST NOT:
 The skill MAY (and is the recommended pattern):
 
 - Hand off to the fallback chain documented in [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md). The chain is: (a) `amw-design-extract` for token-only extraction from a URL, (b) `amw-design-md-from-url.sh` for a full DESIGN.md extraction, (c) `amw-ui-ux-reasoning` for last-resort design reasoning when no live source is available.
+> [TECH-stitch-fallback-strategy.md] What it documents · When this file applies · Decision tree · Choosing between Nodes A and B when both apply · Worked example — MCP absent, user has a URL · Worked example — MCP absent, codebase only · Worked example — MCP absent, no source at all · Non-negotiables for the fallback path · Cross-references
 
 The discovery layer is unaffected — the trigger description does NOT mention "requires Stitch MCP". The trigger fires on phrasing; the failure surface appears only inside the skill body.
 
@@ -91,6 +96,7 @@ The discovery layer is unaffected — the trigger description does NOT mention "
 2. **Branch.**
    - If probe succeeds, continue to step 3.
    - If probe fails, emit the fallback line and stop. The caller chooses a fallback per [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md).
+> [TECH-stitch-fallback-strategy.md] What it documents · When this file applies · Decision tree · Choosing between Nodes A and B when both apply · Worked example — MCP absent, user has a URL · Worked example — MCP absent, codebase only · Worked example — MCP absent, no source at all · Non-negotiables for the fallback path · Cross-references
 3. **Identify the user intent.** Map the trigger phrase to one of three operation classes documented in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md): pull-tokens, pull-components, pull-flow, push-tokens, push-components, push-flow.
 4. **Invoke the matching Stitch MCP tool call.** The canonical tool names live in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md). The skill does NOT hardcode tool names in this SKILL.md — the reference file is the single source of truth for the MCP surface so the skill stays portable when the upstream tool names evolve.
 5. **Translate.** Map the returned Stitch payload onto amw-* canonical formats. For tokens that is the W3C token JSON consumed by `amw-design-extract`. For components that is the component-inventory.md format used by `amw-design-md`. For flows that is the Mermaid source consumed by `amw-mermaid-render`.

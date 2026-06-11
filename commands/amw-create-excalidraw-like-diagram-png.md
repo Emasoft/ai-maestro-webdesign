@@ -36,7 +36,7 @@ Wait for the user reply. Accept only `yes` or `proceed` (case-insensitive). Any 
 ## Dispatch
 
 1. Read `$ARGUMENTS` as the concept description (natural-language prompt for the hand-drawn illustration).
-2. Invoke [SKILL](skills/amw-excalidraw-illustrations/SKILL.md) with that prompt. The skill handles model selection, reference-image conditioning, Gemini REST call, optional Pillow text-overlay fallback, PNG save, and descriptive-filename conventions.
+2. Invoke [SKILL](../skills/amw-excalidraw-illustrations/SKILL.md) with that prompt. The skill handles model selection, reference-image conditioning, Gemini REST call, optional Pillow text-overlay fallback, PNG save, and descriptive-filename conventions.
 3. On return, report the saved PNG's absolute path + the Gemini call's approximate cost.
 4. If the user asks to regenerate (because text is wrong or style is off), re-enter the cost-consent gate first — every retry is a new paid call.
 
@@ -51,7 +51,9 @@ Exactly one `.png` file at the user's working directory with a descriptive Title
 
 ## Cross-references
 
-- [SKILL](skills/amw-excalidraw-illustrations/SKILL.md) — the backing skill (does the actual work, documents cost, Gemini model choice, references, Pillow fallback).
-- [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md) — the generic "no AI-drawn illustrations" rule; this skill is the documented exception because of the hand-drawn-Excalidraw constraint. See the excalidraw-illustrations SKILL.md header note.
-- [png](skills/amw-diagram-formats/references/png.md) — PNG-as-output-only rule (user directive 2026-04-22): no re-entry, no OCR, no round-trip.
+- [SKILL](../skills/amw-excalidraw-illustrations/SKILL.md) — the backing skill (does the actual work, documents cost, Gemini model choice, references, Pillow fallback).
+- [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) — the generic "no AI-drawn illustrations" rule; this skill is the documented exception because of the hand-drawn-Excalidraw constraint. See the excalidraw-illustrations SKILL.md header note.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
+- [png](../skills/amw-diagram-formats/references/png.md) — PNG-as-output-only rule (user directive 2026-04-22): no re-entry, no OCR, no round-trip.
+> [png.md] PNG is OUTPUT-ONLY — why · Rasterization pipelines (per source format → PNG) · Refusal path implementation · Per-source technique catalog · PNG as INPUT is refused — the full story · Failure modes
 - `/amw-create-or-modify-{ascii,html,svg,mermaid}-diagram` — editable-format alternatives if the user needs iteration.

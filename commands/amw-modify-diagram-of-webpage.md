@@ -40,7 +40,7 @@ This MVP is **read-only** on phase 1 and a **full re-emit** on phase 2. No new b
    ```
    /amw-create-diagram-from-webpage <webpage> --to <target-format> --out <out-diagram>
    ```
-   This chains [SKILL](skills/amw-webpage-to-diagram/SKILL.md): detect mime → refuse PNG → fetch HTML via `bin/amw-dev-browser-wrapper.sh` → `bin/amw-dom-to-ir.py` → `bin/amw-diagram-ir.py emit --format <target>` → `bin/amw-validate-diagram.sh`.
+   This chains [SKILL](../skills/amw-webpage-to-diagram/SKILL.md): detect mime → refuse PNG → fetch HTML via `bin/amw-dev-browser-wrapper.sh` → `bin/amw-dom-to-ir.py` → `bin/amw-diagram-ir.py emit --format <target>` → `bin/amw-validate-diagram.sh`.
 3. **Save** to `<out-diagram>`. Announce the path and the IR summary (nodes + edges count).
 4. **PAUSE.** Surface:
    > *"Diagram saved to `<out-diagram>`. Edit it in your preferred tool (ASCII editor, Inkscape for SVG, or any Mermaid live editor). When you're done, say `apply` to re-emit the webpage from the edited diagram."*
@@ -68,9 +68,10 @@ This MVP is **read-only** on phase 1 and a **full re-emit** on phase 2. No new b
 
 ## Cross-references
 
-- [SKILL](skills/amw-webpage-to-diagram/SKILL.md) — Phase 1 backing skill.
-- [SKILL](skills/amw-diagram-webpage-sync/SKILL.md) — Phase 2 backing skill.
-- [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) — §7.2 documents this composition.
+- [SKILL](../skills/amw-webpage-to-diagram/SKILL.md) — Phase 1 backing skill.
+- [SKILL](../skills/amw-diagram-webpage-sync/SKILL.md) — Phase 2 backing skill.
+- [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md) — §7.2 documents this composition.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - `/amw-create-diagram-from-webpage` — Phase 1 command.
 - `/amw-modify-webpage-from-diagram` — Phase 2 command.
 - `bin/amw-dom-to-ir.py`, `bin/amw-diagram-ir.py`, `bin/amw-html-diff.py`, `bin/amw-validate-diagram.sh` — backing tools.

@@ -72,30 +72,48 @@ This skill answers *"what is the spec"* — the others DO things based on that s
 | Concern | Reference file |
 |---|---|
 | ASCII / HTML / SVG / Mermaid / PNG format specs | [ascii](./references/ascii.md), [html](./references/html.md), [svg](./references/svg.md), [mermaid](./references/mermaid.md), [png](./references/png.md) |
+> [png.md] PNG is OUTPUT-ONLY — why · Rasterization pipelines (per source format → PNG) · Refusal path implementation · Per-source technique catalog · PNG as INPUT is refused — the full story · Failure modes
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
+> [ascii.md] Format definition · Dimensional constraints · Parse rules · Emission rules · Validation rules · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 | IR JSON schema in prose + examples | [ir-schema](./references/ir-schema.md) |
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 | N×N conversion matrix (PNG-input = `impossible`) | [conversion-matrix](./references/conversion-matrix.md) |
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 | Shared modify pipeline (detect → parse → IR-patch → re-render → re-validate) | [modify-flow](./references/modify-flow.md) |
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 | IR-level structural diff algorithm | [diff-algorithm](./references/diff-algorithm.md) |
+> [diff-algorithm.md] Inputs · Output: ordered list of patch ops · Node / edge matching · Deep object equality for `change-*` · Markdown report format · Id normalization (caller preprocessing) · Exit codes (CLI) · Known limitations · Visual mode (optional, future) · Related references
 | Format detection decision tree | [detect-format](./references/detect-format.md) |
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 | Unified validator output contract | [validation-dispatcher](./references/validation-dispatcher.md) |
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 | Machine-readable JSON Schema (draft-07) for the IR | `./schema.json` |
 | Full consumer table + per-script TOCs + locked decisions | [skill-overview](./references/skill-overview.md) |
+> [skill-overview.md] Reference index — full table · Backing scripts (cross-reference only) · Locked decisions (do not re-litigate) · Consumer skill cross-reference · Non-negotiables
 
 **See [skill-overview](./references/skill-overview.md) for the full reference index with per-file scope, consumer skills, and backing-script descriptions.**
+> [skill-overview.md] Reference index — full table · Backing scripts (cross-reference only) · Locked decisions (do not re-litigate) · Consumer skill cross-reference · Non-negotiables
 
 ## Backing scripts (cross-reference only)
 
 These live in `bin/`, not in this skill. The skill documents them; it does not own them. See [skill-overview](./references/skill-overview.md) for the full per-script TOCs.
+> [skill-overview.md] Reference index — full table · Backing scripts (cross-reference only) · Locked decisions (do not re-litigate) · Consumer skill cross-reference · Non-negotiables
 
 - `bin/amw-diagram-ir.py` — parse / emit / validate / diff the IR (see [ir-schema](./references/ir-schema.md)).
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 - `bin/amw-diagram-detect-format.sh` — sniffs format; see [detect-format](./references/detect-format.md).
+> [detect-format.md] Contract · Decision tree (precedence top-down) · Content sniff window · Corner cases (by example) · 1 Mermaid-in-markdown · 2 HTML with inline `<svg>` · 3 SVG served as XHTML · 4 ASCII with a Mermaid-looking first line · 5 `.txt` wireframe without box-drawing · 6 PNG with a non-`.png` extension · 7 Empty file · Known limitations · Callers · When to extend this
 - `bin/amw-validate-diagram.sh` — top-level validator dispatcher; see [validation-dispatcher](./references/validation-dispatcher.md).
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 - `bin/amw-validate-html-diagram.sh`, `bin/amw-validate-svg-diagram.sh`, `bin/amw-mermaid-lint.sh` — per-format validator wrappers (see the corresponding references/*.md).
 - `bin/amw-validate-ascii.py` — ASCII validator; the contract lines up with the unified output format. See [SKILL](../amw-ascii-validator/SKILL.md).
 
 ## Locked decisions (do not re-litigate)
 
 Full list with rationale: [skill-overview](./references/skill-overview.md) § Locked decisions.
+> [skill-overview.md] Reference index — full table · Backing scripts (cross-reference only) · Locked decisions (do not re-litigate) · Consumer skill cross-reference · Non-negotiables
 
 Per user directive 2026-04-22 (summary):
 
@@ -112,7 +130,9 @@ Per user directive 2026-04-22 (summary):
 2. Locate the needed file using the Reference index table above: format spec, IR schema, conversion matrix, detect-format contract, validation dispatcher, modify-flow, or diff algorithm.
 3. Reference files via relative paths (`../amw-diagram-formats/references/<name>.md`); never copy the prose inline into other skills.
 4. Before performing any cross-format operation, check the conversion matrix at [conversion-matrix](references/conversion-matrix.md) for the correct cell type (`direct`, `via IR`, `via X`, `wrap`, or `impossible`).
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 5. Consult [skill-overview](./references/skill-overview.md) § Locked decisions for immutable rules established by user directive; do not override these decisions.
+> [skill-overview.md] Reference index — full table · Backing scripts (cross-reference only) · Locked decisions (do not re-litigate) · Consumer skill cross-reference · Non-negotiables
 
 Consumers reference this library via relative paths (`../amw-diagram-formats/references/<name>.md`). Never copy the prose inline.
 
@@ -137,6 +157,7 @@ On failure, the skill emits a non-zero exit code or returns a structured error i
 ## Resources
 
 For the full consumer table with cross-references, see [skill-overview](./references/skill-overview.md) § Consumer skill cross-reference.
+> [skill-overview.md] Reference index — full table · Backing scripts (cross-reference only) · Locked decisions (do not re-litigate) · Consumer skill cross-reference · Non-negotiables
 
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator; routes generic design intent to executor skills.
 - [SKILL](../amw-ascii-creator/SKILL.md) — primary ASCII authoring skill.

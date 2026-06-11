@@ -13,6 +13,7 @@ author: ai-maestro-webdesign
 ## Overview
 
 Last-resort fallback library consulted only when design-principles has exhausted Rule 1 context-gathering with no result. Collapses an infinite-choice space into a confirmable shortlist: 3 style + 3 palette + 3 font DNA candidates drawn from 67 UI styles, 161 color palettes, and 57 font pairings — all pre-filtered against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md). Produces named anchors only; the user picks, then `amw-ascii-sketch` resumes with those anchors.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Activation
 
@@ -59,12 +60,14 @@ Do NOT trigger on: "design a landing page", "make a nice site", "build a dashboa
 | Landing-page patterns | 24 | Conversion-optimized section structures, CTA placement, social-proof cadence |
 
 All outputs are descriptive anchors, not production tokens. Any palette chosen here must be re-expressed in oklch via [color-system](../amw-design-principles/color-system.md) before output.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 
 ## Instructions
 
 1. Confirm activation: only proceed if design-principles has already attempted Rule 1 context-gathering and found no anchors.
 2. Acknowledge the fallback in one sentence: "No anchors found — three visual-DNA candidates from 67 styles / 161 palettes / 57 font pairings, filtered against ai-slop."
 3. Present three style candidates (name, 3-5 keywords, best-for, one-sentence feel), pre-filtered against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 4. Present three palette candidates (mood tag, primary/secondary/CTA/background/text, one-sentence industry fit) and three font-pair candidates (heading + body, pairing rationale, tone).
 5. Ask the user to pick one from each column (or mix); do not emit HTML, ASCII wireframes, or CSS — those belong to `../amw-ascii-sketch/`.
 
@@ -84,9 +87,12 @@ Do not generate HTML, ASCII wireframes, or CSS. This skill's only job is to coll
 
 - **Never runs on the happy path.** If any anchor exists (reference URL, brand doc, existing component, screenshot), skip this skill entirely.
 - **Every candidate is screened against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) BEFORE emission.** Inter, Roboto, Arial, system-default stacks are never proposed. Purple-blue linear gradients, rounded-card + 4px accent bar, AI-illustrated mascots — all filtered out at source.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - **At least three candidates per dimension.** Never a single recommendation — matches design-principles Rule 2.
 - **Palettes must be oklch-convertible** per [color-system](../amw-design-principles/color-system.md). If a palette can't be cleanly re-expressed in oklch, drop it.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **Font pairings must satisfy [typography-system](../amw-design-principles/typography-system.md)** — two-family limit, full weight coverage, Google-Fonts-available.
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - **Does not emit HTML or code.** Output is named anchors. Handoff to `../amw-ascii-sketch/` is mandatory.
 - **Industry anti-patterns travel with every candidate.** If the rule for "finance" says avoid playful fonts and neon, the fallback output must annotate that constraint on fintech-leaning candidates.
 
@@ -95,13 +101,25 @@ Do not generate HTML, ASCII wireframes, or CSS. This skill's only job is to coll
 Every technique is in `./references/TECH-*.md`. Each contains: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
 - [TECH-uiux-design-system-generator](./references/TECH-uiux-design-system-generator.md) — end-to-end composition
+> [TECH-uiux-design-system-generator.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-rules-catalog](./references/TECH-uiux-rules-catalog.md) — 161 reasoning rules
+> [TECH-uiux-rules-catalog.md] What it does · When to use · How it works · Minimal example · Gotchas · Top 10 distinctive rules — broken out as individual TECH files · Cross-references
 - [TECH-uiux-styles-catalog](./references/TECH-uiux-styles-catalog.md) — 67 named visual languages
+> [TECH-uiux-styles-catalog.md] What it does · When to use · How it works · Representative styles (partial list — full 67 are in the upstream corpus) · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-palettes-catalog](./references/TECH-uiux-palettes-catalog.md) — 161 industry-matched palettes
+> [TECH-uiux-palettes-catalog.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-font-pairings-catalog](./references/TECH-uiux-font-pairings-catalog.md) — 57 heading+body combos
+> [TECH-uiux-font-pairings-catalog.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-lp-patterns-catalog](./references/TECH-uiux-lp-patterns-catalog.md) — 24 conversion-optimized structures
+> [TECH-uiux-lp-patterns-catalog.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uiux-pre-delivery-checklist](./references/TECH-uiux-pre-delivery-checklist.md) — universal pre-delivery checklist
+> [TECH-uiux-pre-delivery-checklist.md] What it does · When to use · How it works · Accessibility · Responsive · Performance · Interaction · Minimal example · Gotchas · Cross-references
 - Industry-specific rules: [TECH-uiux-rule-fintech](./references/TECH-uiux-rule-fintech.md), [TECH-uiux-rule-food-restaurant](./references/TECH-uiux-rule-food-restaurant.md), [TECH-uiux-rule-healthcare](./references/TECH-uiux-rule-healthcare.md), [TECH-uiux-rule-luxury-ecommerce](./references/TECH-uiux-rule-luxury-ecommerce.md), [TECH-uiux-rule-saas-dashboard](./references/TECH-uiux-rule-saas-dashboard.md)
+> [TECH-uiux-rule-saas-dashboard.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-uiux-rule-luxury-ecommerce.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-uiux-rule-healthcare.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-uiux-rule-food-restaurant.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-uiux-rule-fintech.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 ## Completion checklist
 
@@ -125,6 +143,7 @@ Verify every item before reporting complete. FAIL triggers a remediation loop.
 This skill produces TWO kinds of output:
 
 1. **Artifact(s)** — UI/UX reasoning notes (picked rules, palette, font pairing, pattern) as `.md`. Output path determined by **project inference** per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (priority: user-supplied → framework convention → `./design/<subtype>/` → generic fallback → `/tmp/amw-ui-ux-reasoning-<slug>/` scratch).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 2. **Job-completion report** at `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md` with sections: Inputs, Method, Artifacts (each `- <path> — <desc> — **How to use:** <tip> — **Next steps:** <followup>`), Checklist (PASS/FAIL/N/A), Deviations.
 
 Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Every artifact MUST be linked.

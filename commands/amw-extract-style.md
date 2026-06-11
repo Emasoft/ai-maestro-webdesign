@@ -19,7 +19,7 @@ Run `/amw-doctor` quickly (or inline the dev-browser and designlang checks). If 
 
 ### 2. Capture the page with dev-browser
 
-Use the `dev-browser` CLI (via [SKILL](skills/amw-dev-browser/SKILL.md)) to:
+Use the `dev-browser` CLI (via [SKILL](../skills/amw-dev-browser/SKILL.md)) to:
 
 - Open the URL with a realistic desktop viewport (1440×900).
 - Wait for `networkidle` or a 3-second settle, whichever is shorter.
@@ -55,7 +55,8 @@ Write one markdown file the user can read directly: `/tmp/amw-extract-<slug>-rep
 **Token drops (copy-paste ready)**
 - CSS custom properties block.
 - Tailwind v4 `@theme` block.
-- A `:root { ... }` oklch palette matching design-principles' [color-system](skills/amw-design-principles/color-system.md) structure (surface-0..2, text-1..3, border, primary, success/warning/danger).
+- A `:root { ... }` oklch palette matching design-principles' [color-system](../skills/amw-design-principles/color-system.md) structure (surface-0..2, text-1..3, border, primary, success/warning/danger).
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 
 **Compliance checks**
 - Body vs background contrast: pass/fail against WCAG AA (4.5:1).

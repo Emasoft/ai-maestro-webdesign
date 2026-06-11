@@ -15,6 +15,7 @@ Produces ASCII flowcharts and timelines for multi-step workflows — PR lifecycl
 ## Examples
 
 See [examples](./references/examples.md) for full rendered ASCII of flowchart, timeline, and swimlane.
+> [examples.md] Flowchart — branching logic · Timeline — linear sequence with calendar markers · Swimlane timeline — parallel tracks
 
 ## Activation
 
@@ -48,6 +49,7 @@ If any of the three is missing, ask one question to get it. Do not guess — a d
 ## Diagram archetypes
 
 Three shapes — pick one per block. See [examples](./references/examples.md) for full rendered ASCII of each.
+> [examples.md] Flowchart — branching logic · Timeline — linear sequence with calendar markers · Swimlane timeline — parallel tracks
 
 1. **Flowchart — branching logic.** Glyphs: `(start)` `(end)`, `[ action ]`, `{ condition? }`, `-->` / `==>` / `~~>`.
 2. **Timeline — linear sequence with calendar markers.** `|` anchors dates, `-` fills proportional gap, owner/label below each anchor.
@@ -95,11 +97,17 @@ Every diagram MUST pass `../../bin/amw-validate-ascii.py` before delivery. Flow:
 Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
 - [TECH-async-arrow-vocabulary](./references/TECH-async-arrow-vocabulary.md) — `-->` / `==>` / `~~>` / `..>` distinctions
+> [TECH-async-arrow-vocabulary.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-flowchart-paren-bracket-glyphs](./references/TECH-flowchart-paren-bracket-glyphs.md) — `(start)` `[action]` `{decision?}`
+> [TECH-flowchart-paren-bracket-glyphs.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-metadata-annotation-conventions](./references/TECH-metadata-annotation-conventions.md) — owners, SLAs, tools inline
+> [TECH-metadata-annotation-conventions.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-swimlane-parallel-tracks](./references/TECH-swimlane-parallel-tracks.md) — per-role lanes across one timeline
+> [TECH-swimlane-parallel-tracks.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-timeline-with-anchors](./references/TECH-timeline-with-anchors.md) — Day/Week markers + labels below
+> [TECH-timeline-with-anchors.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [examples](./references/examples.md) — rendered flowchart / timeline / swimlane
+> [examples.md] Flowchart — branching logic · Timeline — linear sequence with calendar markers · Swimlane timeline — parallel tracks
 
 <!-- end of references -->
 
@@ -111,6 +119,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 - At least one `TECH-*.md` consulted and cited in the report.
 - Output passes Non-negotiables (below).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Output validated by `bin/amw-validate-ascii.py`.
 - Cross-skill hand-offs documented.
 - User-facing filename is descriptive English.
@@ -120,6 +129,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 Two outputs per invocation:
 
 1. **Artifact(s)** — monospaced ASCII flowcharts / swimlanes / timelines. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-workflows-<slug>/`).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts · Checklist · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 

@@ -6,7 +6,7 @@ author: ai-maestro-webdesign (direct-port from dannyjpwilliams/ui-sound-design-s
 ---
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
-> Executor skill. Triggers are sound-specific only — `amw-design-principles` routes here when audio interaction is in scope. Pairs with `agents/amw-motion-designer-agent.md` and `agents/amw-sound-designer-agent.md` for holistic interaction design.
+> Executor skill. Triggers are sound-specific only — `amw-design-principles` routes here when audio interaction is in scope. Pairs with [amw-motion-designer-agent](../../agents/amw-motion-designer-agent.md) and [amw-sound-designer-agent](../../agents/amw-sound-designer-agent.md) for holistic interaction design.
 
 ```
   ▁ ▃ ▅ ▇ ▅ ▃ ▁     ▁ ▃ ▅ ▇ ▅ ▃ ▁     ▁ ▃ ▅ ▇ ▅ ▃ ▁
@@ -54,10 +54,12 @@ The user describes the sound in plain language. Ask clarifying questions using t
    ```
 
    Then paste the output back. When a sound profile is provided:
-   1. Load `references/audio-file-references.md` for interpretation guidance
+   1. Load [audio-file-references](references/audio-file-references.md) for interpretation guidance
+> [audio-file-references.md] What Is a Sound Profile? · How to Use a Sound Profile · Field Reference · Analysis-to-Category Mapping · Brightness Mapping (Spectral Centroid → Vocabulary Bridge) · Envelope → Vocabulary Bridge · Harmonic Content → Synthesis Approach · Limitations
    2. Read the `synthesis_suggestion` block for initial parameters
    3. Match to the closest **sound category** using `recipe_starting_point`
-   4. Load that recipe from `references/sound-recipes.md`
+   4. Load that recipe from [sound-recipes](references/sound-recipes.md)
+> [sound-recipes.md] Click · Toggle · Hover · Success · Error · Warning · Notification · Whoosh · Pop · Complete Sound Library
    5. Override recipe defaults with the profile's suggested parameters
    6. Apply any vocabulary bridge terms from the profile's `VOCABULARY MATCH` section
    7. Proceed to Generate as normal
@@ -67,9 +69,11 @@ If the user gives a vague request like "make a click sound", use sensible defaul
 ### 2. Generate
 
 1. Match the description to a **sound category** (see quick reference below)
-2. Load the recipe from `references/sound-recipes.md`
+2. Load the recipe from [sound-recipes](references/sound-recipes.md)
+> [sound-recipes.md] Click · Toggle · Hover · Success · Error · Warning · Notification · Whoosh · Pop · Complete Sound Library
 3. Apply the **vocabulary bridge** to translate adjectives into parameter changes
-4. For novel sounds not covered by recipes, compose from building blocks in `references/web-audio-building-blocks.md`
+4. For novel sounds not covered by recipes, compose from building blocks in [web-audio-building-blocks](references/web-audio-building-blocks.md)
+> [web-audio-building-blocks.md] AudioContext Setup · Oscillator Types · Gain Envelopes (ADSR) · White Noise Generation · Filter Types (BiquadFilterNode) · Frequency Sweeps · Layering Oscillators · FM Synthesis (Bell/Metallic Tones) · Reusable Factory Pattern · Common Mistakes · Per-Sound-Type Parameter Bounds · Validation Checklist · Appendix — Tone.js abstractions: Setup, Synth Types, Recipes, Effects, Volume in Tone.js, Converting Tone.js to Vanilla Web Audio, When to Use Tone.js vs Vanilla
 5. Output format: **HTML preview** by default (adapt `assets/sound-preview.html`), or ES module / React hook / class if requested
 
 > NOTE: The HTML preview template is not yet ported. Use the source path `reports_dev/batch9/extracted/ui-sound-design-skill-main/skills/ui-sound-design/assets/sound-preview.html` for now; T-001b will port it under `skills/amw-ui-sound-design/assets/` in a follow-up.
@@ -94,7 +98,8 @@ When the user gives feedback, translate it using the vocabulary bridge and adjus
 Enter review mode when the user says "review", "audit", or "check my sound code", or pastes existing Web Audio code for evaluation.
 
 **Steps:**
-1. Load rules from `references/web-audio-safety.md`
+1. Load rules from [web-audio-safety](references/web-audio-safety.md)
+> [web-audio-safety.md] Priority Levels · Critical — Context Management · Critical — Envelope Safety · High — Envelope & Scheduling · High — Sound Design · Medium — Parameters · Per-Sound-Type Parameter Bounds · Review Mode — Output Format
 2. Scan the code against each rule, starting with Critical priority
 3. Report findings using the format in `web-audio-safety.md` — one line per violation with `file:line — [rule-id] description`
 4. Provide a summary table (pass/fail counts by priority)
@@ -138,12 +143,12 @@ This is the core translation layer. When the user uses subjective language, map 
 | Notification | 200–800ms | `references/sound-recipes.md#notification` | New message, alert | Bell-like FM synthesis |
 | Whoosh | 100–400ms | `references/sound-recipes.md#whoosh` | Page transition, slide | Filtered noise sweep |
 | Pop | 30–80ms | `references/sound-recipes.md#pop` | Add item, bubble, appear | Sine with pitch drop |
-| Custom | varies | `references/web-audio-building-blocks.md` | Anything else | Compose from building blocks |
+| Custom | varies | [web-audio-building-blocks](references/web-audio-building-blocks.md) | Anything else | Compose from building blocks |
 
 ## Critical Implementation Rules
 
 ### AudioContext user-gesture requirement
-Browsers block audio until a user interaction (click, tap, keydown). Always initialize or resume the AudioContext inside an event handler. The singleton pattern in `references/web-audio-building-blocks.md` handles this.
+Browsers block audio until a user interaction (click, tap, keydown). Always initialize or resume the AudioContext inside an event handler. The singleton pattern in [web-audio-building-blocks](references/web-audio-building-blocks.md) handles this.
 
 ### Never ramp gain to zero
 `exponentialRampToValueAtTime(0, ...)` throws an error. Always ramp to `0.001` — it's inaudible but mathematically valid. This applies to every sound. No exceptions.
@@ -189,10 +194,11 @@ export function useUISound() {
 ```
 
 ### Sound Library Class
-Use the `UISoundLibrary` class from `references/sound-recipes.md`. Bundles all sounds with enable/disable and master volume control.
+Use the `UISoundLibrary` class from [sound-recipes](references/sound-recipes.md). Bundles all sounds with enable/disable and master volume control.
+> [sound-recipes.md] Click · Toggle · Hover · Success · Error · Warning · Notification · Whoosh · Pop · Complete Sound Library
 
 ### Tone.js abstractions
-For faster prototyping, Tone.js wraps the Web Audio API with higher-level synth types (`Tone.Synth`, `Tone.MetalSynth`, `Tone.NoiseSynth`, `Tone.MembraneSynth`). See the Tone.js appendix in `references/web-audio-building-blocks.md` for recipe equivalents and a conversion guide back to vanilla Web Audio.
+For faster prototyping, Tone.js wraps the Web Audio API with higher-level synth types (`Tone.Synth`, `Tone.MetalSynth`, `Tone.NoiseSynth`, `Tone.MembraneSynth`). See the Tone.js appendix in [web-audio-building-blocks](references/web-audio-building-blocks.md) for recipe equivalents and a conversion guide back to vanilla Web Audio.
 
 ## Resources
 
@@ -206,7 +212,7 @@ For faster prototyping, Tone.js wraps the Web Audio API with higher-level synth 
 - `../bin/amw-sound-analyze.mjs` — CLI audio analyzer (`node bin/amw-sound-analyze.mjs <file.wav>`)
 
 ### Companion agent
-- `agents/amw-sound-designer-agent.md` (Tier-4) — spawned by `ai-maestro-webdesign-main-agent` for sound-design jobs
+- [amw-sound-designer-agent](../../agents/amw-sound-designer-agent.md) (Tier-4) — spawned by `ai-maestro-webdesign-main-agent` for sound-design jobs
 
 ## Attribution
 

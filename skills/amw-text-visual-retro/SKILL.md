@@ -110,11 +110,17 @@ Every artifact MUST pass `../../bin/amw-validate-ascii.py` before delivery. Flow
 Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
 - [TECH-grid-side-by-side](./references/TECH-grid-side-by-side.md) — `Went Well` / `Needs Attention` 2-column grid
+> [TECH-grid-side-by-side.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-heatmap-intensity-markers](./references/TECH-heatmap-intensity-markers.md) — `[++] [+] [~] [!]` density cells
+> [TECH-heatmap-intensity-markers.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-metric-delta-inline](./references/TECH-metric-delta-inline.md) — `+12% DAU` / `-180ms p99` signed deltas
+> [TECH-metric-delta-inline.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-milestone-timeline](./references/TECH-milestone-timeline.md) — weekly timeline + highlights + actions
+> [TECH-milestone-timeline.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-owner-action-items](./references/TECH-owner-action-items.md) — `[ ] <action> (@owner, due YYYY-MM-DD)`
+> [TECH-owner-action-items.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [examples](./references/examples.md) — three rendered template archetypes
+> [examples.md] Grid (categories side-by-side) · Milestone timeline · Heatmap
 
 <!-- end of references -->
 
@@ -126,6 +132,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 - At least one `TECH-*.md` consulted and cited in the report.
 - Output passes Non-negotiables (below).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Output rendered/validated by `bin/amw-validate-ascii.py`.
 - Cross-skill hand-offs documented.
 - User-facing filename is descriptive English.
@@ -135,6 +142,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 Two outputs per invocation:
 
 1. **Artifact(s)** — monospaced ASCII retro grids / milestone timelines / heatmaps. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-retro-<slug>/`).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts · Checklist · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 

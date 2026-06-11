@@ -42,6 +42,7 @@ Before emitting the first variant set, confirm in ≤ 4 sentences: (1) **Context
 **Lane-labeled variants.** For dashboards / consoles with named regions, use the `lanes` field in `bin/amw-ascii-render.py` input — see [SKILL](../amw-ascii-validator/SKILL.md) for JSON shape. Fall back to freeform boxes for organic structures.
 
 Do NOT re-run this check on iteration turns of the same loop. If the user has not supplied enough context to answer 1-4, pull from [question-templates](../amw-design-principles/question-templates.md) and wait.
+> [question-templates.md] Universal must-ask (every design task) · Task-specific additions · Questions NOT to ask · Suggested format · Design Read — declare before iterating · Tip
 
 ## Validation gate (MANDATORY, between variant generation and presentation)
 
@@ -85,6 +86,7 @@ Before handoff, if the user has not extracted tokens or supplied a brand kit, OF
 ## AI-slop checks per variant
 
 Before emitting any variant, scan each one against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md). The skeleton is the first place slop leaks in. Highlights: no "hero → 3-col icons → testimonials → CTA → footer" stamped across all three variants (item 10); no fake testimonials (item 15); no fabricated statistics (item 16); every block must earn its place (§ VII). Rework before showing the user — do NOT ship slop and rely on the user to catch it.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Output
 
@@ -104,7 +106,9 @@ See the worked examples in the per-mode sub-sections above and in references/.
 
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator; three hard rules apply to every variant.
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — applied per variant before emission.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - [question-templates](../amw-design-principles/question-templates.md) — source of Step 1 questions when context is missing.
+> [question-templates.md] Universal must-ask (every design task) · Task-specific additions · Questions NOT to ask · Suggested format · Design Read — declare before iterating · Tip
 - [SKILL](../amw-ascii-to-html/SKILL.md) — terminal handoff (`/tmp/amw-sketch-<slug>-final.txt` is the input contract).
 - [SKILL](../amw-ascii-to-svg/SKILL.md) — adjacent skill for diagram-shaped sketches (route there for boxes-and-arrows, not wireframes).
 - [SKILL](../amw-ux-flows/SKILL.md) — upstream when the user already has a PRD (PRD → flow diagrams → then this skill).

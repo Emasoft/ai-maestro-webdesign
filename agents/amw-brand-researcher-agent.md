@@ -296,7 +296,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
 - **Do NOT issue `/amw-<command>` prompts from inside my agent.** Forbidden: `"Run /amw-extract-style"`, `"Invoke /amw-sketch"`.
 - **Do NOT use Playwright, Puppeteer, Chrome DevTools MCP, Selenium, or any browser tool other than `dev-browser`.** This is architectural — `dev-browser` is the plugin's only input-automation primitive. See CLAUDE.md "dev-browser is the only input-automation primitive" section.
 - **Do NOT use broad design vocabulary in operations / return text.** Forbidden: "design a palette", "build a mockup". I use narrow, technical, research-domain phrasing.
-- **Do NOT invoke `skills/amw-design-principles/SKILL.md` directly.** The orchestrator is upstream of me. I read specific references (`color-system.md`, `typography-system.md`, `spacing-rhythm.md`, `ai-slop-avoid.md`) when needed.
+- **Do NOT invoke [SKILL](../skills/amw-design-principles/SKILL.md) directly.** The orchestrator is upstream of me. I read specific references (`color-system.md`, `typography-system.md`, `spacing-rhythm.md`, `ai-slop-avoid.md`) when needed.
 - **Do NOT spawn peer sub-agents.** I return to main-agent; main-agent routes my output to wireframe-builder / user-research-analyst / seo-strategist as appropriate.
 
 ---

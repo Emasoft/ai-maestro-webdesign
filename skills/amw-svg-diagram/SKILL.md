@@ -8,9 +8,12 @@ version: 0.1.0
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Format spec (authoritative):** [svg](../amw-diagram-formats/references/svg.md).
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 > **Modify pipeline (authoritative):** [modify-flow](../amw-diagram-formats/references/modify-flow.md).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 This skill does not redefine SVG primitives / viewport rules / text centering / cairosvg rasterization / the 54-technique filter cookbook — every one of those lives once in [svg](../amw-diagram-formats/references/svg.md). The skill's job is to DISPATCH between `diagram-svg` (freeform node-and-edge) and `diagram-architecture` (layered tiered arch) for creation, and to run the shared modify-flow when the input is an existing `.svg`.
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 
 ## Overview
 
@@ -50,10 +53,12 @@ Do NOT activate on:
 ## Component detection table (excerpt)
 
 Full node-shape + edge + viewport + filter + animation catalog lives in [svg](../amw-diagram-formats/references/svg.md) §2 + §8 (54 techniques). The 8 rows below are the most common dispatch cues — consult the ref for the rest.
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 
 | SVG construct | IR node/edge kind | Ref |
 |---|---|---|
 | `<rect rx="20" ry="20">` | `node{shape:rect, kind:process, corner:rounded}` | [svg](../amw-diagram-formats/references/svg.md) TECH-SV-15 |
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 | `<ellipse> + <rect> + <ellipse>` (cylinder stack) | `node{kind:database}` | ref TECH-SV-16 |
 | `<circle>` | `node{kind:actor}` | ref TECH-SV-17 |
 | `<polygon>` 4-point diamond | `node{kind:decision}` | ref TECH-SV-18 |
@@ -66,15 +71,20 @@ Full node-shape + edge + viewport + filter + animation catalog lives in [svg](..
 
 1. **Detect** source shape. If `$ARGUMENTS` is a path to an existing `.svg` → **modify path**. If it's a brief → **create path** (further dispatch by `--kind`: `arch` → `../amw-diagram-architecture/`, default `freeform` → `../amw-diagram-svg/`).
 2. **Parse** (modify path only) via `bin/amw-parse-svg-diagram.py` → IR (schema: [ir-schema](../amw-diagram-formats/references/ir-schema.md)). Geometric interpretation: rects → nodes, lines/paths+markers → edges. Create path skips this step.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 3. **IR operation:**
    - Create path → generate IR from the brief, route to [SKILL](../amw-diagram-svg/SKILL.md) (freeform) or [SKILL](../amw-diagram-architecture/SKILL.md) (layered arch), let the producer emit.
    - Modify path → apply the user's requested edit to the IR (text substitution on `nodes[*].label` for MVP; structural operations once Phase 1 parsers land — see [modify-flow](../amw-diagram-formats/references/modify-flow.md) §5.3).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 4. **Re-render** via `bin/amw-diagram-ir.py emit --format svg` (wraps the chosen producer for create path; emits the patched IR back to SVG for modify path). The renderer reads from [svg](../amw-diagram-formats/references/svg.md) §1-§4 (primitives, viewport, text).
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 5. **Re-validate** via `bin/amw-validate-svg-diagram.sh` (wraps `xmllint --noout --nonet` + SVG-namespace check + no-remote-resource grep; unified PASS/FAIL contract per [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md)). Followed by **render-verify**: `bin/amw-svg-render.py render <file>` emits a PNG preview; Claude visually inspects before `bin/amw-svg-render.py finish` finalises. A FAIL aborts and leaves the original file untouched. Retry budget = 3.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 
 ## Output
 
 One standalone `.svg` file per invocation (well-formed XML, `xmlns="http://www.w3.org/2000/svg"`, no external resources). Accompanied by a PNG preview generated by `bin/amw-svg-render.py`. Output path follows project-inference rules from [project-output-routing](../amw-design-principles/references/project-output-routing.md).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 ## Prerequisites
 
@@ -89,6 +99,7 @@ One standalone `.svg` file per invocation (well-formed XML, `xmlns="http://www.w
 
 - **Input:** "Show the request flow between a browser, an API gateway, and three microservices, with arrows labeled by transport (HTTPS, gRPC)."
 - **Operation:** parse the brief to IR (nodes + edges + transport annotations) via `bin/amw-diagram-ir.py`. Emit standalone SVG with measured node boxes, oklch color tokens from the orchestrator's color-system reference (see [color-system](../amw-design-principles/color-system.md)), and aria-labels on every shape. Validate via `bin/amw-validate-svg-diagram.sh` (checks viewBox, font stack, no forbidden primitives). Render via `bin/amw-svg-render.py`.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **Output:** `request-flow.svg` (self-contained, no external deps, raster-friendly via cairosvg).
 
 **Concrete example — modify an existing layered architecture diagram:**
@@ -102,9 +113,13 @@ See [SKILL](../amw-diagram-svg/SKILL.md) for freeform node-and-edge examples and
 ## Resources
 
 - [svg](../amw-diagram-formats/references/svg.md) — authoritative SVG format spec + 54-technique catalog.
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 - [modify-flow](../amw-diagram-formats/references/modify-flow.md) — authoritative 6-step modify pipeline.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR schema consumed by `bin/amw-diagram-ir.py`.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 - [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md) — unified validator output contract.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 - [SKILL](../amw-svg-creator/SKILL.md) — GATED SVG producer (icons / logos / patterns / animations). NOT this skill's dispatch target — this skill is for structural diagrams only.
 - [SKILL](../amw-diagram-svg/SKILL.md) — create-path backend for `--kind freeform`.
 - [SKILL](../amw-diagram-architecture/SKILL.md) — create-path backend for `--kind arch` (layered).
@@ -114,6 +129,7 @@ See [SKILL](../amw-diagram-svg/SKILL.md) for freeform node-and-edge examples and
 ## Non-negotiables
 
 - Exactly one standalone `.svg` per invocation. Well-formed XML. `xmlns="http://www.w3.org/2000/svg"` on the root. ([svg](../amw-diagram-formats/references/svg.md) §1.1)
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 - No `<script>` in SVG output. No `<foreignObject>` with HTML. No remote `<image href="http...">`. ([svg](../amw-diagram-formats/references/svg.md) §1.3)
 - Every emitted `.svg` passes `bin/amw-validate-svg-diagram.sh` AND render-verify (`bin/amw-svg-render.py render → finish` guard). A FAIL aborts; the original file is untouched.
 - Minimum 120-unit spacing on the active axis, 40-unit margin reserve — labels > 20 chars truncate with `...`. ([svg](../amw-diagram-formats/references/svg.md) TECH-SV-21 + TECH-SV-22)

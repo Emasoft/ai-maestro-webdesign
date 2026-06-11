@@ -8,9 +8,12 @@ version: 0.1.0
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Format spec (authoritative):** [mermaid](../amw-diagram-formats/references/mermaid.md).
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
 > **Modify pipeline (authoritative):** [modify-flow](../amw-diagram-formats/references/modify-flow.md).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 This skill does not redefine Mermaid grammar / themes / mmdc flags / output paths / the 40-technique catalog — every one of those lives once in [mermaid](../amw-diagram-formats/references/mermaid.md). The skill's job is to AUTHOR Mermaid source text from a natural-language brief (for all 9 grammar types), and to run the shared modify-flow when the input is an existing `.mmd` / `.mermaid` file. Rendering is delegated to `../amw-mermaid-render/` — this skill produces and mutates the SOURCE; it does not emit SVG/PNG/ASCII directly.
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
 
 ## Overview
 
@@ -24,6 +27,7 @@ Thin authoring and modify skill for Mermaid diagram source text. Accepts a natur
 4. Re-render to Mermaid source text via `bin/amw-diagram-ir.py emit --format mermaid`.
 5. Validate with `bin/amw-mermaid-lint.sh` (mmdc dry-run); a FAIL aborts and leaves the original file untouched (retry budget = 3).
 6. See [pipeline-detail](./references/pipeline-detail.md) for the authoritative execution sequence + component detection table + output contract.
+> [pipeline-detail.md] The 5 steps · Component detection table (most common dispatch cues) · Output contract · Completion checklist
 
 ## Activation
 
@@ -50,6 +54,7 @@ Do NOT activate on:
 ## Pipeline (5 steps)
 
 Authoritative sequence + component detection table + output contract: [pipeline-detail](./references/pipeline-detail.md). Summary:
+> [pipeline-detail.md] The 5 steps · Component detection table (most common dispatch cues) · Output contract · Completion checklist
 
 1. **Detect** — modify path (existing `.mmd`/`.mermaid` or grammar header content) vs create path (natural-language brief).
 2. **Parse** (modify only) → IR via `bin/amw-parse-mermaid-diagram.py`.
@@ -66,6 +71,7 @@ bin/amw-mermaid-render.sh --input <file>.mmd --format svg --theme tokyo-night --
 ```
 
 See [SKILL](../amw-mermaid-render/SKILL.md) and [mermaid](../amw-diagram-formats/references/mermaid.md) §5 for the full output-path options (SVG default, PNG via cairosvg, ASCII via `--format ascii`, pure-ASCII via `--use-ascii`).
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
 
 ## Prerequisites
 
@@ -77,11 +83,17 @@ See [SKILL](../amw-mermaid-render/SKILL.md) and [mermaid](../amw-diagram-formats
 ## Resources
 
 - [pipeline-detail](./references/pipeline-detail.md) — 5-step execution sequence + component detection table + output contract + completion checklist.
+> [pipeline-detail.md] The 5 steps · Component detection table (most common dispatch cues) · Output contract · Completion checklist
 - [technique-catalog](./references/technique-catalog.md) — decision tree + per-TECH file TOC summary (14 TECH files across 9 grammar branches).
+> [technique-catalog.md] Technique decision tree · Per-technique TOC summary
 - [mermaid](../amw-diagram-formats/references/mermaid.md) — authoritative Mermaid format spec + 40-technique catalog.
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
 - [modify-flow](../amw-diagram-formats/references/modify-flow.md) — authoritative 6-step modify pipeline.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR schema consumed by `bin/amw-diagram-ir.py`.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 - [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md) — unified validator output contract.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 - [SKILL](../amw-mermaid-render/SKILL.md) — rendering skill (source → SVG/PNG/ASCII). This skill delegates rendering to that one.
 - [SKILL](../amw-diagram-architecture/SKILL.md) — upstream when architecture brief emits Mermaid.
 - [SKILL](../amw-ux-flows/SKILL.md) — upstream when PRD emits Mermaid wireframes.
@@ -95,6 +107,7 @@ See [SKILL](../amw-mermaid-render/SKILL.md) and [mermaid](../amw-diagram-formats
 - Multi-statement input uses `\n` separators, never `;` (shell-safe). (mermaid TECH-MM-34)
 - This skill does NOT render `.mmd` → SVG/PNG/ASCII — that is `../amw-mermaid-render/`'s role. The two skills are intentionally separated.
 - Do NOT re-author the Mermaid spec inside this skill — reference [mermaid](../amw-diagram-formats/references/mermaid.md). If a rule is wrong, fix it there.
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
 
 ## Error Handling
 
@@ -113,6 +126,7 @@ See the technique reference files under `./references/` for grammar examples (e.
 ## Technique selection
 
 Top-level branches (counts of techniques) — full decision tree + per-TECH TOC summary at [technique-catalog](./references/technique-catalog.md):
+> [technique-catalog.md] Technique decision tree · Per-technique TOC summary
 
 - **sequence** (3): activations · grammar · notes-and-loops
 - **edge** (2): best-practices · styles
@@ -127,3 +141,4 @@ Top-level branches (counts of techniques) — full decision tree + per-TECH TOC 
 ## Output
 
 Produces a `.mmd` source file at a project-inferred path + a job-completion report at `$MAIN_ROOT/reports/webdesigner/<ts>_<slug>_<hash>.md`. Full output contract + completion checklist: [pipeline-detail](./references/pipeline-detail.md) §"Output contract" and §"Completion checklist".
+> [pipeline-detail.md] The 5 steps · Component detection table (most common dispatch cues) · Output contract · Completion checklist

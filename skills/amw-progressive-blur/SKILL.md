@@ -50,6 +50,7 @@ Copy-paste JSX for both components is in the examples reference (see the Referen
 ## Examples
 
 Copy-paste JSX for both components — a `LinearBlur` sticky-top fade and a `RadialBlur` center-clear spotlight — lives in [examples](./references/examples.md), linked with its full TOC in the [Reference index](#reference-index) above.
+> [examples.md] LinearBlur — sticky top fade · RadialBlur — center-clear spotlight · Error handling
 
 ## Output
 

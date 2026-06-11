@@ -16,6 +16,7 @@ Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou
 
 1. Walk the `## Technique selection` decision tree below to identify the matching technique category (API function, measurement prerequisite, layout pattern, obstacle routing, kinetic typography, virtualized tables, 3D/motion, integration, workflow assembly).
 2. Open ONLY the relevant `references/TECH-NN-<slug>.md` file — do not load the whole catalog. The full per-tech index lives in [_index](references/_index.md).
+> [_index.md] API functions (TECH-01 — TECH-13) · Measurement prerequisites (TECH-14 — TECH-18) · Layout patterns / obstacle routing (TECH-19 — TECH-31) · Typography techniques (TECH-32 — TECH-44) · Motion / interactive demos (TECH-45 — TECH-55) · Tables (TECH-56 — TECH-58) · Integration patterns (TECH-59 — TECH-66) · Workflow assemblies (TECH-67 — TECH-71) · Consult / decision-routing (TECH-72 — TECH-78) · Cross-references
 3. Follow the TECH file's "How it works" section; call `prepare()` (or the appropriate pretext API function) exactly once before calling any layout function.
 4. Reuse the project's existing typography tokens — do not introduce new fonts or motion systems; pretext exposes per-line metrics but does not own typographic decisions.
 5. Handle the resize path explicitly: call `clearCache()` on font-change or after every `ResizeObserver` tick when measurement validity has changed.
@@ -36,8 +37,10 @@ OUTPUT. Pretext is the precision text-layout engine the plugin reaches for when 
 ## Technique selection
 
 **Always start with the decision guide** — if CSS already solves the problem (`line-clamp`, `text-overflow`, `text-wrap: balance`), skip pretext entirely. See [TECH-72-use-pretext-decision-guide](references/TECH-72-use-pretext-decision-guide.md).
+> [TECH-72-use-pretext-decision-guide.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 Then route by category (every technique below is one TECH file in `references/`; full one-line descriptions at [_index](references/_index.md)):
+> [_index.md] API functions (TECH-01 — TECH-13) · Measurement prerequisites (TECH-14 — TECH-18) · Layout patterns / obstacle routing (TECH-19 — TECH-31) · Typography techniques (TECH-32 — TECH-44) · Motion / interactive demos (TECH-45 — TECH-55) · Tables (TECH-56 — TECH-58) · Integration patterns (TECH-59 — TECH-66) · Workflow assemblies (TECH-67 — TECH-71) · Consult / decision-routing (TECH-72 — TECH-78) · Cross-references
 
 | Category | Range | Coverage |
 |---|---|---|
@@ -62,11 +65,16 @@ Full output contract (artifact-path inference rules, report shape, mandatory che
 ## How to use this skill
 
 1. **Decide first:** read [TECH-72-use-pretext-decision-guide](references/TECH-72-use-pretext-decision-guide.md) — if CSS solves it (`line-clamp`, `text-overflow`, `text-wrap: balance`) there's no reason to add pretext.
+> [TECH-72-use-pretext-decision-guide.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 2. **Pick the technique** from the decision tree above — one TECH file, not a monolithic dump. Use [_index](references/_index.md) for a flat lookup if you already know the slug.
+> [_index.md] API functions (TECH-01 — TECH-13) · Measurement prerequisites (TECH-14 — TECH-18) · Layout patterns / obstacle routing (TECH-19 — TECH-31) · Typography techniques (TECH-32 — TECH-44) · Motion / interactive demos (TECH-45 — TECH-55) · Tables (TECH-56 — TECH-58) · Integration patterns (TECH-59 — TECH-66) · Workflow assemblies (TECH-67 — TECH-71) · Consult / decision-routing (TECH-72 — TECH-78) · Cross-references
 3. **Follow the exact API path** documented in that TECH file. Do NOT improvise — pretext has sharp gotchas (lineHeight-in-px, font-string-parity, `system-ui` drift).
 4. **Build the wrapper module first** ([TECH-64](references/TECH-64-wrapper-module.md)) — this catches the #1 integration bug (lineHeight multiplier vs pixels).
+> [TECH-64-wrapper-module.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 5. **Handle resize** ([TECH-66](references/TECH-66-resize-observer-pattern.md)) — re-layout never re-prepare.
+> [TECH-66-resize-observer-pattern.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 6. **Validate against the font strategy** ([TECH-77](references/TECH-77-font-strategy.md)) — named fonts, `document.fonts.ready`, no `system-ui`.
+> [TECH-77-font-strategy.md] What it does · When to use · How it works · Minimal example · Suggested font pairings by mood (source: pretext-frontend-motion-main/references/font-strategy.md) · Gotchas · Cross-references
 
 ## Prerequisites
 
@@ -82,12 +90,18 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 
 - **Input:** "make this textarea auto-height as the user types"
 - **Routing:** Decision tree → "Workflow assembly" → [TECH-71](references/TECH-71-auto-height-textarea.md)
+> [TECH-71-auto-height-textarea.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - **Output:** ~80 LOC component using `prepare()` once at mount, `layout()` per keystroke, `whiteSpace: pre-wrap` parity per [TECH-15](references/TECH-15-textarea-prewrap.md), wrapper module per [TECH-64](references/TECH-64-wrapper-module.md). Saved to the project's component folder (Vite layout → *src/components/AutoTextarea.tsx*).
+> [TECH-64-wrapper-module.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-15-textarea-prewrap.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 **Concrete example — virtualized list with variable-height rows:**
 
 - **Input:** "render a 10k-row chat log with smooth scrolling"
 - **Routing:** Decision tree → "Workflow assembly" → [TECH-68](references/TECH-68-virtualized-list.md), companion measurement [TECH-14](references/TECH-14-dom-free-height.md) and [TECH-18](references/TECH-18-font-string-parity.md)
+> [TECH-18-font-string-parity.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-14-dom-free-height.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-68-virtualized-list.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - **Output:** virtualized-list component that pre-measures every row height in a single `prepare()` pass, stores them in a binary index for O(log n) scroll-to-row, and layouts only the visible window. No row reflow on resize — call `clearCache()` and re-measure (TECH-66).
 
 ## Error Handling
@@ -104,7 +118,9 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator; pretext must reuse the design-principles typography tokens, not introduce new fonts.
 - [typography-system](../amw-design-principles/typography-system.md) — type scale + families pretext extends (never replaces).
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — review every kinetic / calligram output against item 9 (over-cute effects).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - [`../amw-design-principles/starter-components/animations.html`](../amw-design-principles/starter-components/animations.html) — Stage + Sprite timeline; pretext kinetic work composes with this, not with Framer Motion / GSAP (banned plugin-wide).
 - [SKILL](../amw-mermaid-render/SKILL.md) — pretext is NOT a diagram skill. For diagrams, the plugin has dedicated ASCII / Mermaid / SVG paths.
 - [_index](references/_index.md) — flat catalog of every TECH-NN file.
@@ -112,6 +128,7 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 ## Non-negotiables
 
 - Never activate on "make the type nice" / "pick a font" — those belong to [typography-system](../amw-design-principles/typography-system.md).
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - No Framer Motion, no GSAP — plugin-wide ban. Pretext's frame-by-frame Canvas / SVG approach IS the approved kinetic-text alternative.
 - The font string passed to `prepare()` MUST be loaded and byte-identical to what the renderer uses.
 - `prepare()` MUST live outside animation / render loops. `layout()` is the hot path.

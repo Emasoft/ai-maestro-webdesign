@@ -59,5 +59,7 @@ The wrapper invokes `npx @google/design.md diff <a> <b>` for the structured diff
 
 - `bin/amw-design-md-diff.sh`
 - `bin/amw-design-md-validate.py` (used by Python fallback)
-- [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
-- [TECH-11-validation-and-lint](skills/amw-design-md/references/TECH-11-validation-and-lint.md)
+- [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md)
+> [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+- [TECH-11-validation-and-lint](../skills/amw-design-md/references/TECH-11-validation-and-lint.md)
+> [TECH-11-validation-and-lint.md] What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references

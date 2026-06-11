@@ -46,7 +46,7 @@ The user MAY supply a label per artifact ("Site A: Stripe", "Site B: Square") to
    - If both scores are non-NULL and the absolute delta is ≤0.5 → "tie".
    - If both scores are non-NULL and delta is >0.5 → the higher score wins. Record the delta.
 4. **Compute overall verdict.** Tally per-dimension wins (ignore "tie" and "n/a"). Whichever side has more dimension-wins is the overall winner. If equal, the verdict is "tie overall" and the report-card footer notes "no clear winner; consider which dimensions matter most for your context."
-5. **Emit `battle.html`.** Two-column visual card (responsive: stacks on narrow viewports) with the structure documented in `references/TECH-comparison.md`. Per-dimension paired bars in the same row so the gap is immediately visible.
+5. **Emit `battle.html`.** Two-column visual card (responsive: stacks on narrow viewports) with the structure documented in [TECH-comparison](references/TECH-comparison.md). Per-dimension paired bars in the same row so the gap is immediately visible.
 6. **Emit `battle.md`.** Markdown summary: overall verdict, per-dimension table (Dimension | A score | B score | Winner | Delta | Evidence A | Evidence B), and the explicit list of dimensions where each side wins.
 7. **Emit `battle.json`.** Machine-readable: the two source `design-grade-data.json` snapshots, the winner per dimension, the overall verdict, the rubric version. Downstream consumers (regression tests, dashboards) read this.
 8. **Cross-check.** Print the dimension table to the user. Sanity-test that the winner list lines up with the score deltas — if Site A wins on a dimension where the recorded delta favours Site B, the JSON was assembled wrong; rebuild.
@@ -59,7 +59,7 @@ Three files written to the user's working directory (or a path the user specifie
 - `design-battle-summary.md` — markdown table + verdict
 - `design-battle-data.json` — machine record
 
-The HTML card structure and visual rules are documented in detail in `references/TECH-comparison.md`. The MD summary contract is also there. The JSON schema:
+The HTML card structure and visual rules are documented in detail in [TECH-comparison](references/TECH-comparison.md). The MD summary contract is also there. The JSON schema:
 
 ```json
 {
@@ -102,7 +102,9 @@ The HTML card structure and visual rules are documented in detail in `references
 
 ## Resources
 
-- [`references/TECH-comparison.md`](references/TECH-comparison.md) — battle card layout, per-dimension bar visual contract, MD summary template, verdict-note phrasing rules
-- The scoring authority: [`amw-design-grade/references/TECH-rubric.md`](../amw-design-grade/references/TECH-rubric.md)
+- [TECH-comparison](references/TECH-comparison.md) — battle card layout, per-dimension bar visual contract, MD summary template, verdict-note phrasing rules
+> [TECH-comparison.md] `design-battle-card.html` — visual card · `design-battle-summary.md` — markdown table · Winner-determination algorithm (canonical) · Cross-category note (when to add it) · Verdict-note anti-patterns (do not emit)
+- The scoring authority: [TECH-rubric](../amw-design-grade/references/TECH-rubric.md)
+> [TECH-rubric.md] Palette · Typography · Rhythm · Hierarchy · Motion · Accessibility · Consistency · Signature · Cross-dimension calibration notes · NULL handling · Versioning
 - Companion: [`amw-design-grade`](../amw-design-grade/SKILL.md) (single-artifact audit), [`amw-design-remix`](../amw-design-remix/SKILL.md) (reskin)
 - Input pipelines: [`amw-dev-browser`](../amw-dev-browser/SKILL.md), [`amw-design-extract`](../amw-design-extract/SKILL.md)

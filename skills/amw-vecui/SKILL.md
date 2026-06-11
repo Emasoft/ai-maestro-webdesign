@@ -71,6 +71,7 @@ The full API tables and worked layout patterns live under `references/` — read
 ## Examples
 
 The canonical positioning patterns — "center, then align-to-side, then expand-on-hover" verbatim from the upstream demo, plus the rotation/coordinate-system worked example — live in [Layout recipes](references/layout-recipes.md), linked with its full TOC in the [Reference index](#reference-index) above.
+> [layout-recipes.md] Layout recipe · Worked example · Rotation and coordinate system
 
 ## Output
 

@@ -77,8 +77,10 @@ Any other text inside a box becomes literal content for the rendered element.
 
 - **Grid:** use CSS Grid with the detected column count at desktop and `1fr` at mobile (< 768px).
 - **Tokens:** inline the design-principles / extracted oklch palette as `:root { --space-*, --text-*, --surface-*, --primary, ... }`.
-- **Typography:** apply the Perfect Fourth scale from [typography-system](skills/amw-design-principles/typography-system.md) unless extracted tokens override.
-- **Spacing:** 8pt grid from [spacing-rhythm](skills/amw-design-principles/spacing-rhythm.md). Snap any in-between value to the nearest grid unit.
+- **Typography:** apply the Perfect Fourth scale from [typography-system](../skills/amw-design-principles/typography-system.md) unless extracted tokens override.
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
+- **Spacing:** 8pt grid from [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md). Snap any in-between value to the nearest grid unit.
+> [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
 - **Buttons / CTAs:** minimum 44×44px hit target (design-principles §Dimensional hard limits). Primary = accent; secondary = outlined.
 - **Inputs:** unstyled defaults from starter-components are fine; add 12px padding and focus outline.
 - **Typography fallback stack:** follow `typography-system.md §VII` fallback rules (paid → free → system).
@@ -110,7 +112,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 </script>
 ```
 
-**Protocol rules that must not be broken** (from [SKILL](skills/amw-design-principles/SKILL.md)):
+**Protocol rules that must not be broken** (from [SKILL](../skills/amw-design-principles/SKILL.md)):
 
 1. The message listener is registered BEFORE `__edit_mode_available` is posted.
 2. `__edit_mode_set_keys` carries partial updates, not the full object.
@@ -118,7 +120,8 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 ### 5. AI-slop self-check
 
-Before saving the file, scan the draft HTML against [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md):
+Before saving the file, scan the draft HTML against [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md):
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 - Body font family not in {Inter, Roboto, Arial, system-ui, Fraunces, Poppins}.
 - No `linear-gradient(135deg, #...` purple-blue hero.

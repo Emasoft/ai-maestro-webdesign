@@ -31,8 +31,10 @@ author: ai-maestro-webdesign (mixed-source — clean-room mobile-app-design + MI
 
 This skill ships the **mobile-native reference**: the platform conventions, ergonomic constants, and per-industry design languages that distinguish a native-feeling mobile app from a shrunken desktop site. It covers:
 
-- **Platform-difference matrix** (iOS HIG vs Android Material 3): navigation, components, gestures, typography, touch targets. → `references/TECH-platform-diff.md`.
-- **Touch-target ergonomics** (44pt / 48dp / hitSlop / thumb zones) and accessibility implications. → `references/TECH-touch-targets.md`.
+- **Platform-difference matrix** (iOS HIG vs Android Material 3): navigation, components, gestures, typography, touch targets. → [TECH-platform-diff](references/TECH-platform-diff.md).
+> [TECH-platform-diff.md] Navigation patterns · Visual design · Touch targets · Typography · Components · Gestures · Dialogs and alerts · React Native cross-platform notes
+- **Touch-target ergonomics** (44pt / 48dp / hitSlop / thumb zones) and accessibility implications. → [TECH-touch-targets](references/TECH-touch-targets.md).
+> [TECH-touch-targets.md] The four mechanical constraints · Common-mistake catalogue · hitSlop patterns by component · Accessibility hookup · Validation tips
 - **Per-industry mobile design languages** (fitness, finance, social, productivity, health, crypto).
 - **The Peak-End workflow** for mobile (peak moment + end moment design).
 - **Anti-patterns** specific to mobile.
@@ -210,8 +212,10 @@ When building these designs as React artifacts, HTML mockups, or React Native:
 
 ## Detailed references
 
-- **Platform differences (iOS vs Android quick table):** `references/TECH-platform-diff.md`.
-- **Touch targets / hitSlop / thumb zones:** `references/TECH-touch-targets.md`.
+- **Platform differences (iOS vs Android quick table):** [TECH-platform-diff](references/TECH-platform-diff.md).
+> [TECH-platform-diff.md] Navigation patterns · Visual design · Touch targets · Typography · Components · Gestures · Dialogs and alerts · React Native cross-platform notes
+- **Touch targets / hitSlop / thumb zones:** [TECH-touch-targets](references/TECH-touch-targets.md).
+> [TECH-touch-targets.md] The four mechanical constraints · Common-mistake catalogue · hitSlop patterns by component · Accessibility hookup · Validation tips
 
 ## Quick-reference card
 
@@ -245,9 +249,9 @@ When building these designs as React artifacts, HTML mockups, or React Native:
 
 ## Cross-references
 
-- **Material 3 token reference (Android side):** [`skills/amw-material-3/SKILL.md`](../amw-material-3/SKILL.md).
+- **Material 3 token reference (Android side):** [SKILL](../amw-material-3/SKILL.md).
 - **Component skill — liquid-glass for visionOS / spatial mobile mockups:**
-  [`skills/amw-liquid-glass/SKILL.md`](../amw-liquid-glass/SKILL.md).
-- **Sister aesthetic skill:** [`skills/amw-evangelion-design/SKILL.md`](../amw-evangelion-design/SKILL.md) — has a dedicated mobile-adaptation section.
-- **Orchestrator:** [`skills/amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
-- **UX-flow / wireframe work:** [`skills/amw-ux-flows/SKILL.md`](../amw-ux-flows/SKILL.md).
+  [SKILL](../amw-liquid-glass/SKILL.md).
+- **Sister aesthetic skill:** [SKILL](../amw-evangelion-design/SKILL.md) — has a dedicated mobile-adaptation section.
+- **Orchestrator:** [SKILL](../amw-design-principles/SKILL.md).
+- **UX-flow / wireframe work:** [SKILL](../amw-ux-flows/SKILL.md).

@@ -23,7 +23,7 @@ author: ai-maestro-webdesign (curated catalogue; per-style attributions live in 
 
 **Catalog-first load protocol.** This skill is NOT a bulk-loader. The full catalogue has 84 styles across multiple reference files; loading all of them simultaneously would waste tokens and produce a cluttered decision surface. The canonical protocol is:
 
-1. Read `references/catalogue.md` to shortlist 1-3 styles matching the user's brief.
+1. Read [catalogue](references/catalogue.md) to shortlist 1-3 styles matching the user's brief.
 2. Load ONLY those S-NNN files.
 3. Apply the token block to the artifact.
 4. Verify all "breaks-if" invariants before delivery.
@@ -38,7 +38,7 @@ The 4-step recipe:
 
 **(a) Read the user brief.** Identify: industry, audience, tone, any explicit style name, any reference URLs the user provided. Note keywords: "minimal", "brutalist", "glassmorphism", "editorial", "cyberpunk", "warm", "playful", "corporate", etc.
 
-**(b) Shortlist 1-3 styles from `references/catalogue.md`.** The catalogue has one-line aesthetic-position descriptors for all 84 styles plus a "quick decision rules" section. Use it. Do NOT rely on recall — always read the catalogue file to shortlist. If the user named a specific style explicitly (e.g., "I want Glassmorphism"), load that style directly; still read the catalogue to confirm the S-NNN file path.
+**(b) Shortlist 1-3 styles from [catalogue](references/catalogue.md).** The catalogue has one-line aesthetic-position descriptors for all 84 styles plus a "quick decision rules" section. Use it. Do NOT rely on recall — always read the catalogue file to shortlist. If the user named a specific style explicitly (e.g., "I want Glassmorphism"), load that style directly; still read the catalogue to confirm the S-NNN file path.
 
 **(c) Load only those S-NNN files.** Each is in `references/S-NNN-<slug>.md`. Read the `## Token block` section and the `## "Breaks if" invariants` section.
 
@@ -48,7 +48,8 @@ The 4-step recipe:
 
 The routing index with all 45 style descriptors lives at:
 
-- [`references/catalogue.md`](references/catalogue.md)
+- [catalogue](references/catalogue.md)
+> [catalogue.md] How the author-agent uses this · Index — 45 styles across 8 aesthetic positions · Selecting styles — quick decision rules · Wave 2 — Round 4 additions (S-010b, S-046..S-083)
 
 The SKILL.md does NOT duplicate per-style descriptors here. The catalogue is the authoritative routing surface; this file describes the machinery.
 
@@ -110,7 +111,7 @@ The skeleton uses ONLY CSS custom-property references (`var(--token-name)`) — 
 
 Light/dark variants: inject dark vs light token bundles into the same skeleton. Mobile variant: the skeleton is responsive; render at 375×812 when the style ships mobile-specific invariants.
 
-See `references/_harness-wiring.md` for the full pipeline (token injection → render mine → render source → fcvvdp parity check).
+See [_harness-wiring](references/_harness-wiring.md) for the full pipeline (token injection → render mine → render source → fcvvdp parity check).
 
 ## Catalogue scope (S-001..S-083)
 
@@ -127,21 +128,25 @@ This skill ships 84 prescriptive styles across 8 aesthetic positions (Wave 1: S-
 | Developer / Terminal | S-032 Retro Device, S-033 Win98, S-038 Dark Tech |
 | Specialized | S-029 Data Viz Dark, S-035 21st.dev/Aceternity |
 
-S-046..S-083 are ported and available. See `references/catalogue.md` for the full listing.
+S-046..S-083 are ported and available. See [catalogue](references/catalogue.md) for the full listing.
 
 ## Resources
 
-- [`references/catalogue.md`](references/catalogue.md) — canonical routing index (read this first, always)
+- [catalogue](references/catalogue.md) — canonical routing index (read this first, always)
+> [catalogue.md] How the author-agent uses this · Index — 45 styles across 8 aesthetic positions · Selecting styles — quick decision rules · Wave 2 — Round 4 additions (S-010b, S-046..S-083)
 - [`references/_test-skeleton.html`](references/_test-skeleton.html) — render-test scaffold (inject tokens here)
-- [`references/_harness-wiring.md`](references/_harness-wiring.md) — parity-check pipeline documentation
+- [_harness-wiring](references/_harness-wiring.md) — parity-check pipeline documentation
+> [_harness-wiring.md] The pipeline (per style) · Light + dark variants · Mobile variant · Acceptance thresholds · A-class exemptions · Report locations · What this is NOT · Cross-references
 - Per-style files: `references/S-NNN-<slug>.md` (Track H1..H9 swarm creates these)
 
 ## Non-negotiables
 
-1. **Catalog-first load.** Always read `references/catalogue.md` before loading any S-NNN file. Never bulk-load all 84.
+1. **Catalog-first load.** Always read [catalogue](references/catalogue.md) before loading any S-NNN file. Never bulk-load all 84.
+> [catalogue.md] How the author-agent uses this · Index — 45 styles across 8 aesthetic positions · Selecting styles — quick decision rules · Wave 2 — Round 4 additions (S-010b, S-046..S-083)
 2. **Token block is the contract.** Apply the style's CSS custom properties verbatim. Do not partially apply a preset — all tokens or none.
 3. **"Breaks-if" invariants are non-negotiable.** Violating a "breaks-if" rule produces a style that is no longer the named preset. If the user requests a change that would break an invariant, warn them: "this change would exit the [Swiss] preset; I can make it a custom variant, but it will no longer be labeled Swiss."
 4. **Source attribution preserved.** Every S-NNN file carries its `source_attribution` in frontmatter. Do not strip it from delivered artifacts that directly port upstream token values.
 5. **Brand tokens override preset tokens.** When the user supplies brand colors, fonts, or spacing, brand values take precedence over the preset's tokens in those specific properties. The preset provides the structural contract (radius, shadow, motion, layout density); brand tokens fill the identity slots (colors, typography).
-6. **No new styles without a catalogue slot.** Every new style added to `references/` must have a corresponding row in `references/catalogue.md`. An S-NNN file without a catalogue entry is invisible to the routing protocol.
+6. **No new styles without a catalogue slot.** Every new style added to `references/` must have a corresponding row in [catalogue](references/catalogue.md). An S-NNN file without a catalogue entry is invisible to the routing protocol.
+> [catalogue.md] How the author-agent uses this · Index — 45 styles across 8 aesthetic positions · Selecting styles — quick decision rules · Wave 2 — Round 4 additions (S-010b, S-046..S-083)
 7. **_test-skeleton.html stays var()-only.** Never introduce hard-coded hex, rgb, hsl, or font names into the test skeleton. The entire point of the skeleton is that it renders purely from injected tokens.

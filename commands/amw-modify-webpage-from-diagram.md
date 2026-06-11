@@ -24,7 +24,7 @@ Thin dispatcher over `skills/amw-diagram-webpage-sync/`. Takes an existing webpa
    - `bin/amw-diagram-detect-format.sh <new-diagram>` must be one of `ascii` / `svg` / `mermaid`. `html` → hint to use `/amw-ascii-to-html` directly; `png` → standard PNG refusal; `unknown` → ask the user for a recognized extension or a `--format` override.
    - `bin/amw-diagram-detect-format.sh <webpage.html>` must be `html`. Otherwise exit 2.
 3. **PNG-embedded detection.** Scan `<webpage.html>` for `<img src="*.png">` and `data:image/png;base64,...`. If either appears in what the parser considers the diagram region (primary inline SVG / primary landmark with `data-diagram-*` attrs), exit 2 with `REFUSE: PNG-embedded diagram cannot be modified — provide the source artifact (ASCII / HTML / SVG / Mermaid)`. No OCR, no best-effort recovery.
-4. **Route to skill.** Invoke [SKILL](skills/amw-diagram-webpage-sync/SKILL.md) pipeline steps 1–7:
+4. **Route to skill.** Invoke [SKILL](../skills/amw-diagram-webpage-sync/SKILL.md) pipeline steps 1–7:
    - parse old HTML to IR,
    - parse new diagram to IR,
    - compute IR-level diff,
@@ -51,9 +51,11 @@ If you rely on manual styling outside the diagram, consider using `/amw-sketch` 
 
 ## Cross-references
 
-- [SKILL](skills/amw-diagram-webpage-sync/SKILL.md) — primary backing skill.
-- [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline (§7.1 webpage-sync composition).
-- [html](skills/amw-diagram-formats/references/html.md) — HTML format spec (consumed at re-emission step).
+- [SKILL](../skills/amw-diagram-webpage-sync/SKILL.md) — primary backing skill.
+- [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline (§7.1 webpage-sync composition).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
+- [html](../skills/amw-diagram-formats/references/html.md) — HTML format spec (consumed at re-emission step).
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 - `bin/amw-html-diff.py`, `bin/amw-diagram-ir.py`, `bin/amw-parse-html-diagram.py`, `bin/amw-validate-diagram.sh` — backing tools.
 - `/amw-ascii-to-html` — terminal step of the re-emit pipeline.
 - `/amw-modify-diagram-of-webpage` — pair command for the two-half round-trip (extract → user-edit → apply).

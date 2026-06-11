@@ -17,9 +17,11 @@ Produces dense editorial infographics as self-contained HTML + retina PNG + prin
 ## Instructions
 
 1. Classify the invocation mode: Interactive Builder, One-Shot, or Guided Creative. Full step-by-step workflows in [_execution-modes](references/_execution-modes.md).
+> [_execution-modes.md] A. Interactive Builder · B. One-Shot · C. Guided Creative · Quality gate (before delivery) · Cross-references
 2. For One-Shot and Guided Creative: ask the three Design Brief questions (brand, platform, key insight); classify the content type, archetype, and dominant component.
 3. Build the infographic as a single self-contained HTML with required head includes (Google Fonts, Phosphor Icons, optional Chart.js); apply playbook colors/fonts; all CSS inline with `:root` custom properties.
 4. Run the Anti-Frontend Checklist and Reduction Pass per the Quality Gate (see [_execution-modes](references/_execution-modes.md)).
+> [_execution-modes.md] A. Interactive Builder · B. One-Shot · C. Guided Creative · Quality gate (before delivery) · Cross-references
 5. Export via `bin/amw-html-export.py -i {file}.html -o {name} -f all --width {W} --scale 2`.
 
 ## Activation
@@ -38,22 +40,28 @@ This skill is **autonomous and self-contained** — any agent can use it by read
 - **PNG** — retina (2x) via `../../bin/amw-html-export.py` (Playwright + Chromium).
 - **PDF** — print-ready via the same script.
 - **Canvas sizes** (7): portrait-medium 1080×1440 (default), Twitter/X 1200×675, Instagram 1080×1080, Instagram portrait 1080×1350, LinkedIn 1200×627, Pinterest 1000×1500, website 1100×auto. Full table in [platform-sizes](resources/platform-sizes.md).
+> [platform-sizes.md] Quick Reference · Layout & Font Adjustments Per Platform · Font Size Scaling by Platform · Watermark / Attribution Rule by Platform · export.py Commands by Platform
 
 ## Design DNA + non-negotiable rules
 
 Derived from 175 real designs. Density is the defining trait (8–15 content blocks), backgrounds are near-black, palette is warm+cool, display fonts are all-caps condensed (Bebas Neue default), Stacked Reference archetype is the default. Full rules in [_design-dna](references/_design-dna.md). Seven non-negotiable rules (no fabricated data, no generic display fonts, no emojis as icons, brand color first, dark default, real assets only, footer by default) in [_non-negotiables](references/_non-negotiables.md).
+> [_non-negotiables.md] Rules 1–7 · Cross-references
+> [_design-dna.md] Density is the defining trait · Backgrounds are near-black · Palette is warm + cool together · Display fonts are all-caps condensed · Stacked Reference is the default composition · Section variety is mandatory · Arrows are load-bearing · Visible borders, not ghost borders · Tight spacing inside sections · Content format hierarchy · Cross-references
 
 ## 24-template index
 
 24 fully-built reference templates ship in `templates/` (13 crypto/web3 + 11 generic). Each uses V4 CSS standards (12px dense tables, `▸` bullet panels, arrow connectors, stat strips). Full inventory + user-says-to-template selection table in [_template-registry](references/_template-registry.md).
+> [_template-registry.md] Crypto / Web3 (13 templates) · Generic (11 templates) · Template selection table · Cross-references
 
 ## Execution modes
 
 Three modes — Interactive Builder, One-Shot, Guided Creative. Full workflows + Quality Gate in [_execution-modes](references/_execution-modes.md).
+> [_execution-modes.md] A. Interactive Builder · B. One-Shot · C. Guided Creative · Quality gate (before delivery) · Cross-references
 
 ## Technique selection
 
 Pick a technique category, then look up the specific TECH file in [_index](references/_index.md). Every TECH file shares a TOC structure (What it does · When to use · How it works · CSS · HTML · Gotchas · Cross-references) plus 1–4 technique-specific subsections.
+> [_index.md] Modes (3) · Archetypes (5) · Playbooks (5 content-type playbooks) · Components (15) · Charts (10) · Color & typography (8) · Copy (3) · Aesthetic systems (3) · Pre-delivery / quality (2) · Pipeline / preview / export (3) · Cross-references
 
 Categories: Mode (3), Archetype (5), Playbook (5 content-type playbooks), Component (15), Chart (12), Color & typography (8), Copy (3), Aesthetic systems (3), Pre-delivery / quality (2), Pipeline / preview / export (4).
 
@@ -72,22 +80,34 @@ Categories: Mode (3), Archetype (5), Playbook (5 content-type playbooks), Compon
 `examples/` ships 15 rendered PNG reference outputs and `templates/` ships 24 fully-built reference HTML pieces with `{{PLACEHOLDER}}` variables.
 
 **Token-economics example (One-Shot mode):** Input: a tokenomics brief with allocation %, vesting schedule, and brand color. Routing: `token-economics.html` template, [TECH-token-economics-playbook](references/TECH-token-economics-playbook.md), [TECH-stacked-reference-archetype](references/TECH-stacked-reference-archetype.md), [TECH-svg-pie-chart](references/TECH-svg-pie-chart.md), [TECH-progress-bar-vesting](references/TECH-progress-bar-vesting.md). Output: HTML + retina PNG + PDF at 1080×1440 with 11 content blocks.
+> [TECH-progress-bar-vesting.md] What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
+> [TECH-svg-pie-chart.md] What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
+> [TECH-stacked-reference-archetype.md] What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
+> [TECH-token-economics-playbook.md] What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
 
 ## Resources
 
 - [SKILL](../amw-design-principles/SKILL.md) — upstream orchestrator.
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — final AI-slop scan every HTML output must pass.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - [color-system](../amw-design-principles/color-system.md) — brand-color / WCAG AA validation when a custom color is supplied.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [typography-system](../amw-design-principles/typography-system.md) — type-scale rules that compose with this skill's display-font hierarchy.
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - `../../bin/amw-html-export.py` — PNG / PDF / SVG export pipeline.
 - `../../bin/amw-preview-server.py` — Mode A live preview server, port 7883.
 - [design-brief](resources/design-brief.md) — 5-question intake framework + aesthetic decision table.
+> [design-brief.md] The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · From raw numbers: · From a topic brief: · Thesis formula: · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
 - [style-details](resources/style-details.md) — full design system with component CSS patterns, type playbooks, reduction-pass rules.
+> [style-details.md] The Big Picture · Visual Treatments (radius, borders, shadows, spacing, decorations) · Composition Components (logos, progress bars, dense tables) · Composition Rules and Atmospheric Depth · Annotation, Typography, Reduction Pass · Reference Image Patterns (Vision Analysis — 12 real pieces)
 - [layout-patterns](resources/layout-patterns.md) — full layout and archetype scaffold library.
+> [layout-patterns.md] Layout Statistics · Your Dominant Infographic Types · Layout Recipes by Type · Composition Archetype CSS Implementations · Stats Bar / KPI Strip (74/175 = 42%)
 - [charts](resources/charts.md) — chart rules (bar / line / pie / radar / stat callouts) with annotation-first placement.
+> [charts.md] When to Use What · SVG Pie Chart (Token Allocation — Your Most-Used) · CSS Horizontal Bar Chart (Vesting / Allocation Strips) · Chart.js — Complex Charts via CDN · Pure CSS Progress Bar (Vesting Timeline) · Waffle Chart (% of Total — Pure HTML/CSS) · Slope Chart (Before/After — Inline SVG) · Annotated Bar Chart (SVG — Hero Bar + Benchmark) · Proportional Circles (SVG — Area = Value) · Dot Plot (SVG — Distribution / Individual Points)
 - [color-palettes](resources/color-palettes.md) — full palette library by content type.
 - [font-pairings](resources/font-pairings.md) — display-font prevalence table and body-font pairings per type.
 - [platform-sizes](resources/platform-sizes.md) — 7 canvas sizes with per-platform adjustments and safe zones.
+> [platform-sizes.md] Quick Reference · Layout & Font Adjustments Per Platform · Font Size Scaling by Platform · Watermark / Attribution Rule by Platform · export.py Commands by Platform
 - [copy-guide](resources/copy-guide.md) — headline, callout, and label writing rules.
 - `templates/` — 24 reference templates (inventory in [_template-registry](references/_template-registry.md)).
 - `examples/` — 15 rendered PNG reference outputs.
@@ -97,6 +117,7 @@ Categories: Mode (3), Archetype (5), Playbook (5 content-type playbooks), Compon
 - [_execution-modes](references/_execution-modes.md) — three execution modes with quality gate.
 - [_design-dna](references/_design-dna.md) — non-negotiables derived from 175 real pieces.
 - [_non-negotiables](references/_non-negotiables.md) — seven enforcement rules.
+> [_non-negotiables.md] Rules 1–7 · Cross-references
 - [_error-handling](references/_error-handling.md) — symptom-to-fix table for delivery failures.
 
 ## Error Handling

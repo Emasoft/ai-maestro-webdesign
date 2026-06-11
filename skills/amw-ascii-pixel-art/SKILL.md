@@ -28,6 +28,7 @@ This skill is the **artistic-visualization** path. For layout wireframes use [SK
 2. Verify the input image is suitable: portrait, product photo, or distinct object on a clean background. Landscapes / abstract patterns / busy backgrounds detect poorly and waste runtime. State this gate to the user before processing.
 3. Confirm `pillow`, `rembg`, and `numpy` are installed (`pip install pillow rembg numpy`). The `rembg` model auto-downloads (~180 MB) on first run; warn the user about the one-time download.
 4. Run the 7-step pipeline (load+resize → blurred background → rembg mask → pixel grid → character grid → composite → JS animation). The full step-by-step parameters and formulas live in [pipeline](references/TECH-pipeline.md).
+> [TECH-pipeline.md] Step 1 — Load and resize · Step 2 — Build blurred background · Step 3 — Subject detection (rembg) · Step 4 — Pixel-grid overlay · Step 5 — Build the character grid · Step 6 — Composite three layers · Step 7 — Animate (JavaScript on `<canvas id="chars">`) · Failure modes · References
 5. The output is a single `.html` file. Open it directly in a browser; no server needed. File size is ~500 KB – 2 MB depending on the embedded base64 background.
 6. After delivery, link the user to the orchestrator's ai-slop-avoid checklist if the surrounding page chrome (header, footer, copy) needs validation — this skill produces *one artwork*, not a page.
 
@@ -114,6 +115,7 @@ Failure modes and how to recover live in [pipeline § Failure modes](references/
 ## Resources
 
 - [pipeline](references/TECH-pipeline.md) — full 7-step pipeline, density ramp, color formula, failure modes.
+> [TECH-pipeline.md] Step 1 — Load and resize · Step 2 — Build blurred background · Step 3 — Subject detection (rembg) · Step 4 — Pixel-grid overlay · Step 5 — Build the character grid · Step 6 — Composite three layers · Step 7 — Animate (JavaScript on `<canvas id="chars">`) · Failure modes · References
 
 Cross-skill:
 

@@ -60,10 +60,12 @@ Activate only on editorial-diagram intents that name one of the 13 canonical typ
 | **pyramid / funnel** | Ranked hierarchy or conversion drop-off. |
 
 **Selection rule:** ask *"would a reader learn more from this than from a well-written paragraph?"* If no, do not draw. Default to deletion over addition. Full per-type rules (canonical layout, anchor coordinates, concrete HTML+SVG scaffolds) live in [type-rules](references/type-rules.md).
+> [type-rules.md] Architecture · Flowchart · Sequence · State machine · ER / data model · Timeline · Swimlane · Quadrant · Nested · Tree · Layer stack · Venn · Pyramid / funnel · Primitives (cross-type) · Annotation callout — italic Instrument Serif + dashed Bézier leader · Sketchy filter — hand-drawn variant
 
 ## Design system (compact)
 
 Full spec in [design-system](references/design-system.md). Non-negotiables:
+> [design-system.md] Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
 
 - **Grid.** Every coordinate/width/gap divisible by **4px**. No shadows. Max `border-radius: 10px`. Borders 1px hairline only.
 - **Typography.** Three families, three roles: `Instrument Serif` (titles, italic callouts), `Geist Sans` (node names, labels), `Geist Mono` (technical sublabels).
@@ -78,7 +80,9 @@ To match the user's existing site:
 2. Route through `../amw-dev-browser/` (**never** raw WebFetch) to fetch homepage + DOM.
 3. Extract palette + font stack. Map to `paper`, `ink`, `muted`, `paper-2`, `accent`, `accent-fg`.
 4. Run WCAG AA contrast checks against [color-system](../amw-design-principles/color-system.md). Auto-propose adjustments for failures; never silently ship a failing pair.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 5. Show diff; on confirmation, write tokens to [style-guide](references/style-guide.md).
+> [style-guide.md] Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 
 **First-run gate.** If defaults still in place on first use, pause and ask: *"Run onboarding, paste tokens manually, or proceed with default (stone + rust)?"* Do not guess.
 
@@ -106,7 +110,16 @@ Every technique is in `./references/TECH-*.md`. Each contains: What it does · W
 ## Resources
 
 - Upstream: [amw-design-principles](../amw-design-principles/SKILL.md) (orchestrator), [color-system](../amw-design-principles/color-system.md), [typography-system](../amw-design-principles/typography-system.md), [spacing-rhythm](../amw-design-principles/spacing-rhythm.md), [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md), [amw-dev-browser](../amw-dev-browser/SKILL.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
+> [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - References: [type-rules](references/type-rules.md), [design-system](references/design-system.md), [troubleshooting](references/troubleshooting.md), [primitive-sketchy](references/primitive-sketchy.md), [primitive-annotation](references/primitive-annotation.md).
+> [primitive-annotation.md] When to use · Required SVG primitives · Canonical snippet · Parameter reference · Leader-line geometry · 4px grid still applies · Source citation
+> [primitive-sketchy.md] When to use · Required SVG primitives · Canonical snippet · Parameter reference · 4px grid still applies · Accessibility caveat · Source citation
+> [troubleshooting.md] Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill
+> [design-system.md] Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
+> [type-rules.md] Architecture · Flowchart · Sequence · State machine · ER / data model · Timeline · Swimlane · Quadrant · Nested · Tree · Layer stack · Venn · Pyramid / funnel · Primitives (cross-type) · Annotation callout — italic Instrument Serif + dashed Bézier leader · Sketchy filter — hand-drawn variant
 - Tools: `../../bin/amw-svg-render.py` (render-verify), `../../bin/amw-html-export.py` (HTML→PNG).
 
 ## Completion checklist
@@ -117,6 +130,7 @@ Verify every item before reporting complete. FAIL on any item triggers a remedia
 - At least one `TECH-*.md` from `references/` was consulted and cited.
 - Output passes the Non-negotiables section.
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Emitted HTML/SVG validated by `bin/amw-html-export.py` or `bin/amw-svg-render.py`.
 - Cross-skill hand-offs documented.
 - User-facing filename is descriptive English (e.g. `OAuth Sequence.html`).

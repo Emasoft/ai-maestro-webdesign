@@ -67,10 +67,12 @@ If `status=partial` because of an SPA-loading-skeleton extraction, present the s
 
 ## Cross-references
 
-- [amw-design-md-extractor-agent](agents/amw-design-md-extractor-agent.md)
-- [TECH-07-url-extraction](skills/amw-design-md/references/TECH-07-url-extraction.md)
-- [TECH-09-multipage-extraction](skills/amw-design-md/references/TECH-09-multipage-extraction.md)
-- [SKILL](skills/amw-dev-browser/SKILL.md)
+- [amw-design-md-extractor-agent](../agents/amw-design-md-extractor-agent.md)
+- [TECH-07-url-extraction](../skills/amw-design-md/references/TECH-07-url-extraction.md)
+> [TECH-07-url-extraction.md] What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
+- [TECH-09-multipage-extraction](../skills/amw-design-md/references/TECH-09-multipage-extraction.md)
+> [TECH-09-multipage-extraction.md] What it does · When to use · When NOT to use · Architecture · Session handling · Page-list strategy · A. User provides explicit URL list · B. Crawl mode (limited) · Per-page token aggregation · Colors · Typography · Components · Layout · Provenance annotations · Failure modes · Privacy and credential handling · Cross-references
+- [SKILL](../skills/amw-dev-browser/SKILL.md)
 - `bin/amw-design-md-from-url.sh`
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-contrast.py`

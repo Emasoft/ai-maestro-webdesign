@@ -143,7 +143,8 @@ window.glassControls = {
 };
 ```
 
-See `references/TECH-tuning.md` for the full tuning matrix (when to push each uniform up or down, and which uniform conflicts with which).
+See [TECH-tuning](references/TECH-tuning.md) for the full tuning matrix (when to push each uniform up or down, and which uniform conflicts with which).
+> [TECH-tuning.md] The four uniforms · Uniform conflicts · Suggested presets · When to NOT use this library · Performance notes
 
 ## Constraints
 
@@ -170,8 +171,10 @@ Skills that produce pages using this library MUST run this checklist before deli
 ## Cross-references
 
 - **Aesthetic presets that USE this skill:**
-  - [`skills/amw-design-system-presets/references/S-018-understated-elegance.md`](../amw-design-system-presets/references/S-018-understated-elegance.md) — soft / light variant.
-  - [`skills/amw-design-system-presets/references/S-034-liquid-glass.md`](../amw-design-system-presets/references/S-034-liquid-glass.md) — full visionOS variant.
+  - [S-018-understated-elegance](../amw-design-system-presets/references/S-018-understated-elegance.md) — soft / light variant.
+> [S-018-understated-elegance.md] Identity · Token block · "Breaks if" invariants · Canonical render-test pointer · Render-test verdict · Cross-references
+  - [S-034-liquid-glass](../amw-design-system-presets/references/S-034-liquid-glass.md) — full visionOS variant.
+> [S-034-liquid-glass.md] Identity · Token block · "Breaks if" invariants · Canonical render-test pointer · Render-test verdict · Cross-references
 - **Sibling aesthetic skills:**
-  - [`skills/amw-evangelion-design/SKILL.md`](../amw-evangelion-design/SKILL.md) — the polar-opposite aesthetic (severe geometry, no glass, restrained color).
-- **Orchestrator:** [`skills/amw-design-principles/SKILL.md`](../amw-design-principles/SKILL.md).
+  - [SKILL](../amw-evangelion-design/SKILL.md) — the polar-opposite aesthetic (severe geometry, no glass, restrained color).
+- **Orchestrator:** [SKILL](../amw-design-principles/SKILL.md).

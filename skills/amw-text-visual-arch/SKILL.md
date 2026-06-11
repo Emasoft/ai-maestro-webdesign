@@ -53,6 +53,7 @@ If any is missing, ask one bundled question — do not guess. A diagram that inv
 3. **Component diagram** — inside one service, break out modules / packages / classes.
 
 See [examples](./references/examples.md) for the full rendered ASCII of each level.
+> [examples.md] Context diagram · Container diagram · Component diagram
 
 ## Glyph and layout standards
 
@@ -104,11 +105,17 @@ Every emitted diagram MUST pass `../../bin/amw-validate-ascii.py` before deliver
 Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references. Open only the file whose label matches the current need.
 
 - [TECH-c4-zoom-levels](./references/TECH-c4-zoom-levels.md) — context / container / component framing
+> [TECH-c4-zoom-levels.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-consistent-layer-spacing](./references/TECH-consistent-layer-spacing.md) — fixed grid + 2-space layer separator
+> [TECH-consistent-layer-spacing.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-footnote-tags-deployment](./references/TECH-footnote-tags-deployment.md) — post-diagram SLAs / owners / repos
+> [TECH-footnote-tags-deployment.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-platform-component-tags](./references/TECH-platform-component-tags.md) — `[iOS]` `[Windows]` `[prod]` prefixes
+> [TECH-platform-component-tags.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-protocol-label-arrows](./references/TECH-protocol-label-arrows.md) — `HTTP`, `gRPC`, `L1 tx` on edges
+> [TECH-protocol-label-arrows.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [examples](./references/examples.md) — three rendered ASCII zoom-level diagrams
+> [examples.md] Context diagram · Container diagram · Component diagram
 
 <!-- end of references -->
 
@@ -120,6 +127,7 @@ Verify all items before reporting complete. FAIL on any item triggers a remediat
 - At least one `TECH-*.md` consulted and cited in the report.
 - Output passes Non-negotiables (below).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Output rendered/validated by the matching tool (`bin/amw-validate-ascii.py` here).
 - Cross-skill hand-offs documented in the report.
 - User-facing filename is descriptive English.
@@ -129,6 +137,7 @@ Verify all items before reporting complete. FAIL on any item triggers a remediat
 Two outputs per invocation:
 
 1. **Artifact(s)** — monospaced ASCII layered architecture diagrams pasted into PRs / ADRs / terminals. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-arch-<slug>/`).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts (path + 1-line · How to use · Next steps) · Checklist (PASS/FAIL/N/A per item) · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 

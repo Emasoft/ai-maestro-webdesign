@@ -11,6 +11,7 @@ version: 0.1.0
 > This skill is an executor. Its triggers are narrow — hand-drawn / Excalidraw / whiteboard-style educational illustration only. The orchestrator routes here for conceptual, illustration-heavy slide or document material where the deliberate rough-sketch aesthetic is the point; everything else stays outside this skill.
 >
 > **Documented exception to [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3 ("no AI-drawn illustrations").** That rule targets AI-painted people, landscapes, and product shots rendered in photoreal or vector-illustration style. This skill is the carved-out exception **only** because its output is tightly constrained: white background, hand-drawn Excalidraw roughness, concept-diagram / whiteboard use case, integrated labelled text. The constraint itself is what keeps the output from looking like generic AI-illustration slop. Do not use this skill for anything that does not meet all four of those constraints.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Overview
 
@@ -42,6 +43,7 @@ architecture / sequence diagram requests (route to the matching
 `../amw-diagram-*/` skill); SVG icon / logo / technical figure (route to
 `../amw-svg-creator/`); photoreal / vector-flat / character / mascot
 requests — refuse and cite [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Prerequisites
 
@@ -83,9 +85,12 @@ The full happy-path Python heredoc (≈50 LOC, calls Gemini Pro with the
 two reference images base64-embedded) and the canonical prompt-template
 shape live in
 [TECH-core-call-pattern](references/TECH-core-call-pattern.md).
+> [TECH-core-call-pattern.md] What it does · When to use · How it works · Reference invocation · Prompt template (always use this shape) · Gotchas · Cross-references
 
 Filled examples: [prompt-template-en](references/prompt-template-en.md) /
+> [prompt-template-en.md] Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
 [prompt-template-es](references/prompt-template-es.md).
+> [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
 
 ## Principles (load-bearing — preserve verbatim in every prompt)
 
@@ -115,6 +120,7 @@ ship un-verified output and do not invent a text-overlay fix without asking.
   variant for cheap composition iteration; text WILL be wrong — cannot ship.
 - **Two-phase Pillow overlay** for pinpoint text corrections — see
   [TECH-two-phase-visual-then-overlay](references/TECH-two-phase-visual-then-overlay.md).
+> [TECH-two-phase-visual-then-overlay.md] What it does · When to use · How it works · Phase 1 — visual-only generation · Phase 2 — local text overlay via Pillow · Minimal example · Gotchas · Cross-references
 - **White background only.** Slides assume their own background.
 - **Minimum font size:** 24 px in rendered slide output (1920×1080);
   print equivalent at final DPI. Regenerate with "LARGER TEXT" if too small.
@@ -125,17 +131,23 @@ ship un-verified output and do not invent a text-overlay fix without asking.
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator (three hard
   rules apply; "three variants" means three concepts BEFORE any Gemini call).
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — exception
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
   to item 3 within stated constraints; never extend beyond Excalidraw.
 - [color-system](../amw-design-principles/color-system.md) —
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
   [typography-system](../amw-design-principles/typography-system.md) — palette + type floors.
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - [SKILL](../amw-ascii-sketch/SKILL.md) — pre-Gemini composition pass.
 - Sibling routers: [SKILL](../amw-diagram-editorial/SKILL.md), [SKILL](../amw-diagram-architecture/SKILL.md),
   [SKILL](../amw-diagram-svg/SKILL.md), [SKILL](../amw-svg-creator/SKILL.md).
 - `/amw-doctor` — reports `GEMINI_API_KEY` presence.
 - `/amw-init` Section 7 — optional Pillow install.
 - [CATALOG](references/CATALOG.md) — single entry into all `TECH-*.md`.
+> [CATALOG.md] Decision tree (top-down) · Per-technique TOC index · Cross-references
 - [prompt-template-en](references/prompt-template-en.md) /
+> [prompt-template-en.md] Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
   [prompt-template-es](references/prompt-template-es.md) — filled examples.
+> [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
 - `scripts/generate.py` — two-phase fallback generator with Pillow.
 - Source: Ray Amjad — narrative-prompt approach.
 
@@ -151,6 +163,7 @@ ship un-verified output and do not invent a text-overlay fix without asking.
 ## Technique selection and references
 
 See [CATALOG](references/CATALOG.md) for the full decision tree (top-down,
+> [CATALOG.md] Decision tree (top-down) · Per-technique TOC index · Cross-references
 by user-intent keyword) and the per-technique TOC index. Every technique in
 this skill is documented as a single `TECH-*.md` file under `./references/`.
 Read only the file whose topic matches the current need — do not load the
@@ -161,7 +174,9 @@ whole reference set.
 ## Examples
 
 See [prompt-template-en](references/prompt-template-en.md) and
+> [prompt-template-en.md] Example concept: "Realism vs Naturalism — art history lesson" · Notes on this shape
 [prompt-template-es](references/prompt-template-es.md) for filled examples
+> [prompt-template-es.md] Ejemplo de concepto: "Modernismo, Generación del 98 y Vanguardias — clase de literatura" · Notas sobre esta estructura
 (Realism vs Naturalism · Modernismo / Generación del 98 / Vanguardias).
 
 ## Completion checklist
@@ -181,6 +196,7 @@ Before reporting a job complete, verify (FAIL on any item triggers a remediation
 TWO outputs (artifact PNG + job-completion report). Full contract in
 [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md)
 and [project-output-routing](../amw-design-principles/references/project-output-routing.md).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 Report path: `$MAIN_ROOT/reports/webdesigner/<ts>_<slug>_<hash>.md`.
 Every artifact MUST be linked from the report.
 
@@ -199,5 +215,6 @@ Every artifact MUST be linked from the report.
 ## Error Handling
 
 See [TECH-error-handling](references/TECH-error-handling.md) for the full
+> [TECH-error-handling.md] What it does · When to use · How it works · Symptom table · Cross-references
 symptom → cause → recovery table (8 known failure modes, one canonical
 recovery each).

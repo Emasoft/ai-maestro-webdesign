@@ -64,6 +64,7 @@ Every ASCII pattern maps to an HTML element, a canonical starter-component sourc
    - `__edit_mode_set_keys` carries partial updates only (TECH-06).
    - `/*EDITMODE-BEGIN*/.../*EDITMODE-END*/` stays valid JSON with double-quoted keys AND values (TECH-04).
 7. **React/Babel pins** — if and ONLY if the wireframe requires React (live state, interactive charts). Use the exact CDN URLs + integrity hashes in [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) (TECH-01). Name every styles object with a component prefix (TECH-02).
+> [react-babel-pins.md] Required CDN URLs · Styles-object naming rule · Sharing components across Babel files · Common error map
 8. **AI-slop gate** — mentally walk `ai-slop-avoid.md` top to bottom. Self-check every rule 1..26 and the density principle. Any FAIL → revise the section and re-check. Record PASS per rule in the file header comment. (TECH-19..TECH-30)
 9. **Smoke test** — optionally load in `dev-browser` and check console for zero errors. Do NOT run this inside the plan phase if the user just asked for a static file.
 10. **Save** to `<cwd>/<Descriptive Filename>.html` (Title-Case, no `v2`/`v3`). Return the file path + AI-slop checklist + a one-line summary.
@@ -71,12 +72,14 @@ Every ASCII pattern maps to an HTML element, a canonical starter-component sourc
 ## AI-slop avoidance gate (checklist, in order)
 
 Run these before saving — each is pulled from [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md):
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 1. No purple-blue `linear-gradient(135deg, #667eea, #764ba2)` (TECH-19); 2. no `border-left: 4px solid` on cards (TECH-20); 3. no AI-drawn SVG illustrations — sized gray placeholder instead (TECH-21); 4. no emoji carpet-bombing (TECH-22); 5. no default Inter/Roboto/Arial/system-ui/Fraunces/Poppins body font (TECH-24); 6. max 3 font weights (TECH-25); 7. no alternating white/pale-gray bands (TECH-26); 8. no "3 features in a row, icon each" hero (TECH-27); 9. no fabricated testimonials (TECH-28); 10. no `scrollIntoView({behavior:'smooth'})` (TECH-29); 11. borders ≥ `rgba(primary, 0.3)` or solid (TECH-52); 12. every element earns its place (TECH-30).
 
 ## Starter-component cross-reference
 
 Canonical chrome lives in `../amw-design-principles/starter-components/`: `browser-window.html` (default desktop chrome, TECH-08), `ios-frame.html` / `android-frame.html` (mobile viewports, TECH-09), `macos-window.html` (sidebar + main shell, TECH-11), `deck-stage.html` (multi-screen deck, TECH-10), `design-canvas.html` (free-standing canvas), `animations.html` (timeline core ~50 LOC — use FIRST before Popmotion, TECH-12), `tweaks-block.html` (live-edit protocol, TECH-04/05/06/13), and [react-babel-pins](../amw-design-principles/starter-components/react-babel-pins.md) (version lock, TECH-01/02/03).
+> [react-babel-pins.md] Required CDN URLs · Styles-object naming rule · Sharing components across Babel files · Common error map
 
 ## Output
 
@@ -130,9 +133,13 @@ external_services:
 - [SKILL](../amw-ascii-validator/SKILL.md) — the mandatory validation gate (wraps `bin/amw-validate-ascii.py` + `bin/amw-ascii-render.py`).
 - `../amw-design-principles/starter-components/` — canonical chrome + tweaks protocol.
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — output-ban list (final gate).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - [color-system](../amw-design-principles/color-system.md) — oklch tokens, WCAG contrast, palette structure.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [typography-system](../amw-design-principles/typography-system.md) — type scale + font stacks (no Inter/Roboto/Arial default).
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - [spacing-rhythm](../amw-design-principles/spacing-rhythm.md) — 8pt grid, radius, shadow tokens, hit-target rules.
+> [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
 - `../../bin/amw-ascii-parse.py` — parser.
 - `../../bin/amw-validate-ascii.py` — validator.
 - [SKILL](../amw-dev-browser/SKILL.md) — preview pipeline (optional).

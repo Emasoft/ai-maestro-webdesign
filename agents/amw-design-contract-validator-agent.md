@@ -36,7 +36,8 @@ I weight BLOCK above FLAG above PASS strictly. A single BLOCK from the mechanica
 
 ### What I know
 
-- The full Persistent Design Contract schema version 1, as documented in `skills/amw-design-md/references/TECH-design-contract.md`: required top-level sections (meta, user_intent, brand_tokens, ia, legal, target_stack, decisions_log), required meta fields (schema_version, contract_id, created_at, updated_at, phase), phase enum values (discovery, fan-out, post-fan-out, frozen).
+- The full Persistent Design Contract schema version 1, as documented in [TECH-design-contract](../skills/amw-design-md/references/TECH-design-contract.md): required top-level sections (meta, user_intent, brand_tokens, ia, legal, target_stack, decisions_log), required meta fields (schema_version, contract_id, created_at, updated_at, phase), phase enum values (discovery, fan-out, post-fan-out, frozen).
+> [TECH-design-contract.md] What it does · How it relates to phase-a-frozen-spec.md · JSON schema (version 1) · `meta` · `user_intent` · `brand_tokens` · `ia` · `legal` · `target_stack` · `decisions_log` · Lifecycle · Validator (BLOCK / FLAG / PASS) · Storage and versioning · Hard invariants · Cross-references
 - The BLOCK / FLAG / PASS severity model from design-forge's `references/contract-validator.md` (MIT direct-port): BLOCK = at least one hard rule violated; FLAG = required fields present but advisory fields weak / empty / inconsistent; PASS = required fields present + advisory fields strong.
 - The mechanical validator's exit codes (0 PASS / 1 FLAG / 2 BLOCK / 64 invocation error) and `--json` output schema.
 - The semantic-coherence check categories: (a) brand_tokens vs user_intent industry-fit, (b) legal vs ia coverage, (c) decisions_log internal consistency (no contradictory locked decisions for the same field), (d) target_stack vs ia complexity-fit, (e) timestamps monotonicity (updated_at >= created_at on every section).
@@ -143,14 +144,15 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
    - Both PASS → verdict PASS.
 
 6. **Read related skill files for cross-checks.**
-   - Read `skills/amw-design-md/references/TECH-design-contract.md` for schema reference if any finding is ambiguous.
+   - Read [TECH-design-contract](../skills/amw-design-md/references/TECH-design-contract.md) for schema reference if any finding is ambiguous.
      > [TECH-design-contract.md] What it does · How it relates to phase-a-frozen-spec.md · JSON schema (version 1) · `meta` · `user_intent` · `brand_tokens` · `ia` · `legal` · `target_stack` · `decisions_log` · Lifecycle · Validator (BLOCK / FLAG / PASS) · Storage and versioning · Hard invariants · Cross-references
-   - Read `skills/amw-design-principles/references/phase-a-frozen-spec.md` if the contract is about to be frozen for fan-out.
+   - Read [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) if the contract is about to be frozen for fan-out.
      > [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 
 7. **Write the verdict artifact.** Produce a structured JSON file at `output_dir/contract-validation-<checkpoint>-<timestamp>.json` with: mechanical_findings (array), semantic_findings (array), verdict (BLOCK | FLAG | PASS), per-finding citations (JSON path + line number when available).
 
 8. **Assemble return contract.** Populate YAML header per [sub-agent-return-contract](../skills/amw-design-principles/references/sub-agent-return-contract.md). Write full markdown report to `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>-amw-design-contract-validator-<checkpoint>.md`.
+> [sub-agent-return-contract.md] Schema · Field semantics · Markdown body structure · How main-agent consumes the contract · Contract invariants (enforced by smoke tests)
    > [sub-agent-return-contract.md] Schema · Field semantics · `agent` — required, string · `phase` — required, enum `A | B` · `status` — required, enum `ok | partial | failed` · `confidence` — required, enum `high | medium | low` · `execution_time_ms` — optional, int · `blocking_issues` — required, list of strings · `warnings` — required, list of strings · `artifact_paths` — required, list of objects · `recommendations` — required, list of strings · `next_action` — required, string · `report_path` — required, string · Markdown body structure · How main-agent consumes the contract · Contract invariants
 
 ---
@@ -180,6 +182,7 @@ Action: status=failed with `blocking_issues = ["contract JSON is malformed: <std
 
 ### Iteration cap (one-shot)
 Per [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md), I am a one-shot validation agent — I do not retry, regenerate, or self-fix. I emit a verdict and main-agent acts on it. `max_iterations: 1`, `attempts_count: 1`, `attempts_log: []`.
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 > [iteration-budget.md] Canonical caps by loop type · What "attempt" means · `attempts_log[]` telemetry contract · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
 
 ---
@@ -189,8 +192,10 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
 | Always | `bin/amw-design-contract-validate.py` invoked via Bash | mechanical BLOCK/FLAG/PASS verdict |
-| Always | `skills/amw-design-md/references/TECH-design-contract.md` | schema reference; field-by-field semantics |
+| Always | [TECH-design-contract](../skills/amw-design-md/references/TECH-design-contract.md) | schema reference; field-by-field semantics |
+> [TECH-design-contract.md] What it does · How it relates to phase-a-frozen-spec.md · JSON schema (version 1) · `meta` · `user_intent` · `brand_tokens` · `ia` · `legal` · `target_stack` · `decisions_log` · Lifecycle · Validator (BLOCK / FLAG / PASS) · Storage and versioning · Hard invariants · Cross-references
 | Pre-fan-out checkpoint | [phase-a-frozen-spec](../skills/amw-design-principles/references/phase-a-frozen-spec.md) | confirm contract is freeze-ready |
+> [phase-a-frozen-spec.md] Schema · Producers · Consumers · Mutability · Path conventions · Worked example · Cross-references
 | Legal section semantic check | (knowledge only — `amw-legal-expert-agent` owns content) | jurisdictions ↔ mandatory_elements consistency |
 | Decisions log integrity check | (no external reference; pure JSON walk) | detect duplicate locks without supersedes |
 
@@ -421,4 +426,5 @@ Every No answer in categories A–E must be returned with the exact JSON path (e
 - [agent-interaction-patterns](../skills/amw-design-principles/references/agent-interaction-patterns.md)
   > Topology invariants · Phase A data flow · Phase B data flow · What main-agent does between sub-agent calls · Error propagation · Why this topology (instead of peer-to-peer) · Enforcement
 - [iteration-budget](../skills/amw-design-principles/references/iteration-budget.md)
+> [iteration-budget.md] Canonical caps by loop type · What "attempt" means · [`attempts_log[]` telemetry contract](#attempts_log-telemetry-contract) · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references
   > Canonical caps by loop type · What "attempt" means · `attempts_log[]` telemetry contract · What happens when the cap is reached · What this is NOT · How agents apply this · Cross-references

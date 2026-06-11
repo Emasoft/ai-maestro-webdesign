@@ -66,7 +66,8 @@ Do NOT fire on: "validate my plugin", "lint my plugin", "is my plugin marketplac
 
 ## Audit procedure
 
-See `references/drift-procedure.md` for the detailed step-by-step. Summary:
+See [drift-procedure](references/drift-procedure.md) for the detailed step-by-step. Summary:
+> [drift-procedure.md] Phase 0 — Resolve plugin root and inventory skills · Phase 1 — Source-map resolution · Phase 2 — Per-upstream HEAD lookup · Phase 3 — Diff per pin · Phase 4 — Classification · Phase 5 — Diff summary for STALE skills · Phase 6 — Emit the plan · Phase 7 — Self-test (optional, on demand) · Anti-patterns (don't do)
 
 1. **Collect pins.** For every `skills/<name>/SKILL.md` in the plugin, read frontmatter `source:` (list of upstream paths) and `source_version:` (commit SHA). Flag skills missing pins as **UNPINNED** (separate finding — these can never be drift-audited).
 2. **Resolve upstream.** For each unique upstream repo, get `git -C <upstream> rev-parse --short HEAD`. If equal to the pin → mark all skills using this upstream as CLEAN candidates.
@@ -129,7 +130,8 @@ Verdict: 2 STALE → re-distill by hand; 40 PIN-ONLY → bulk bump; 1 UNPINNED �
 
 ## References
 
-- `references/drift-procedure.md` — detailed step-by-step drift-detection algorithm, source-map resolution, diff interpretation.
+- [drift-procedure](references/drift-procedure.md) — detailed step-by-step drift-detection algorithm, source-map resolution, diff interpretation.
+> [drift-procedure.md] Phase 0 — Resolve plugin root and inventory skills · Phase 1 — Source-map resolution · Phase 2 — Per-upstream HEAD lookup · Phase 3 — Diff per pin · Phase 4 — Classification · Phase 5 — Diff summary for STALE skills · Phase 6 — Emit the plan · Phase 7 — Self-test (optional, on demand) · Anti-patterns (don't do)
 
 ## Provenance
 

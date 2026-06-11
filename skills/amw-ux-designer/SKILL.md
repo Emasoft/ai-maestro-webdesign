@@ -25,6 +25,7 @@ See `## Usage` below.
 ## Examples
 
 See [TECH-ux-persona-template](references/TECH-ux-persona-template.md) for a complete persona example ("Sarah, The Busy Parent") and [TECH-ux-process-discover](references/TECH-ux-process-discover.md) for a user-research plan example.
+> [TECH-ux-persona-template.md] What it does · When to use · How it works · Minimal example · Good persona · Bad persona · Gotchas · Cross-references
 
 ## Activation
 
@@ -80,18 +81,29 @@ Each TECH file under `./references/` follows the standard TOC: What it does · W
 
 **UX process phases (5):**
 - [TECH-ux-process-discover](./references/TECH-ux-process-discover.md) — Phase 1: Discover & Research
+> [TECH-ux-process-discover.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-define](./references/TECH-ux-process-define.md) — Phase 2: Define
+> [TECH-ux-process-define.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-ideate](./references/TECH-ux-process-ideate.md) — Phase 3: Ideate & Design
+> [TECH-ux-process-ideate.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-prototype](./references/TECH-ux-process-prototype.md) — Phase 4: Prototype & Test
+> [TECH-ux-process-prototype.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-ux-process-handoff](./references/TECH-ux-process-handoff.md) — Phase 5: Handoff & Iterate
+> [TECH-ux-process-handoff.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 
 **Persona + rule references:**
 - [TECH-ux-persona-template](./references/TECH-ux-persona-template.md) — persona template + good vs bad examples
+> [TECH-ux-persona-template.md] What it does · When to use · How it works · Minimal example · Good persona · Bad persona · Gotchas · Cross-references
 - [TECH-ux-rule-research](./references/TECH-ux-rule-research.md) — interviews + personas + synthesis
+> [TECH-ux-rule-research.md] What it does · When to use · How it works · Interview planning · During interviews · Synthesis · Good vs bad questions · Minimal example · Gotchas · Cross-references
 - [TECH-ux-rule-accessibility](./references/TECH-ux-rule-accessibility.md) — WCAG AA + inclusive design
+> [TECH-ux-rule-accessibility.md] What it does · When to use · How it works · WCAG AA (minimum floor) — four POUR pillars · Inclusive design patterns (beyond compliance) · Testing checklist · Minimal example · Gotchas · Cross-references
 - [TECH-ux-rule-ia](./references/TECH-ux-rule-ia.md) — information architecture
+> [TECH-ux-rule-ia.md] What it does · When to use · How it works · Navigation structure · Navigation patterns · Mobile specifics · Content organization · Information scent · Search as navigation · Minimal example · Gotchas · Cross-references
 - [TECH-ux-rule-interaction](./references/TECH-ux-rule-interaction.md) — flows + microcopy
+> [TECH-ux-rule-interaction.md] What it does · When to use · How it works · Flow best practices · Multi-step flows · Error recovery · Microcopy · Specific rules · Minimal example · Gotchas · Cross-references
 - [TECH-ux-rule-visual](./references/TECH-ux-rule-visual.md) — visual hierarchy + design system
+> [TECH-ux-rule-visual.md] What it does · When to use · How it works · Establishing hierarchy · Typography scale · Color usage · Layout · Design-system essentials · Component documentation · Minimal example · Gotchas · Cross-references
 
 <!-- end of references -->
 
@@ -103,6 +115,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 - At least one `TECH-*.md` consulted and cited in the report.
 - Output passes Non-negotiables (below).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Cross-skill hand-offs documented.
 - User-facing filename is descriptive English.
 
@@ -111,6 +124,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 Two outputs per invocation:
 
 1. **Artifact(s)** — UX methodology deliverables (personas, journey maps, IA sitemaps, wireframe instructions). Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/references/` or `./design/wireframes/` → `/tmp/amw-ux-designer-<slug>/`).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts · Checklist · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 
@@ -119,8 +133,11 @@ Two outputs per invocation:
 - [SKILL](../amw-ux-flows/SKILL.md) — PRD → wireframes pipeline
 - [SKILL](../amw-ux-evaluator/SKILL.md) — end-of-process validation
 - [question-templates](../amw-design-principles/question-templates.md) — patterns for user research
+> [question-templates.md] Universal must-ask (every design task) · Task-specific additions · Questions NOT to ask · Suggested format · Design Read — declare before iterating · Tip
 - [design-heuristics](../amw-design-principles/design-heuristics.md) — Gestalt/Fitts/Hick laws
+> [design-heuristics.md] I. Gestalt's five principles (organizing the visual field) · II. Fitts's Law · III. Hick's Law · IV. Miller's Law (7 ± 2) · V. Jakob's Law · VI. The four dimensions of visual hierarchy · VII. F-Pattern vs Z-Pattern reading · VIII. Peak-End Rule · IX. Aesthetic-Usability Effect · Self-check list · X. Refactoring-UI atomic audit rules (T-054)
 - [TECH-ux-laws-encyclopedia](../amw-design-principles/references/TECH-ux-laws-encyclopedia.md) — 31 laws (Fitts, Hick, Miller, Doherty, Goal-Gradient, Peak-End, Cognitive Load, all Gestalt, Norman's affordance/signifier/mapping/constraints/feedback, Fogg, Jakob, Pareto, etc.) — cite by name when justifying persona, journey-map, or usability-test design choices.
+> [TECH-ux-laws-encyclopedia.md] Motor and perceptual laws (Fitts, Hick-Hyman, Doherty) · Memory and cognition (Miller, Cognitive Load, Information Foraging, Chunking) · Motivation and emotion (Goal-Gradient, Von Restorff, Zeigarnik, Peak-End, Aesthetic-Usability, Jakob, Pareto) · Gestalt perception (Proximity, Similarity, Closure, Continuity, Common Region, Common Fate, Figure-Ground) · Attention and habituation (Banner Blindness, Serial Position) · Behavioral models (Fogg B=MAT, Sigmoid Adoption) · Norman's vocabulary (Mental Model, Affordance, Signifier, Mapping, Constraints, Feedback) · Meta-laws of software (Tesler, Postel, Conway, Hofstadter) · Cross-references
 - `../amw-design-principles/starter-components/design-canvas.html` — 8pt-grid canvas for handoff
 
 ## Non-negotiables

@@ -27,7 +27,8 @@ Convert any supported diagram to a different format using the canonical N×N con
 | **mermaid** | direct | via SVG | direct | — | direct |
 | **PNG** | **REFUSED** | **REFUSED** | **REFUSED** | **REFUSED** | — |
 
-Full routing rules: [conversion-matrix](skills/amw-diagram-formats/references/conversion-matrix.md).
+Full routing rules: [conversion-matrix](../skills/amw-diagram-formats/references/conversion-matrix.md).
+> [conversion-matrix.md] Full N×N table · Cell semantics · PNG-as-source refusal (mandatory) · PNG-as-target pipelines (all supported) · Dispatch algorithm · Per-cell implementation notes · Tools index (required backends) · Related references
 
 ## PNG hard rule
 

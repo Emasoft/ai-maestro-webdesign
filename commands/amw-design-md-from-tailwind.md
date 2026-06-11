@@ -70,8 +70,9 @@ If the config uses dynamic features the static evaluator cannot resolve (Zod sch
 
 ## Cross-references
 
-- [amw-design-md-extractor-agent](agents/amw-design-md-extractor-agent.md)
-- [TECH-10-tailwind-conversion](skills/amw-design-md/references/TECH-10-tailwind-conversion.md)
+- [amw-design-md-extractor-agent](../agents/amw-design-md-extractor-agent.md)
+- [TECH-10-tailwind-conversion](../skills/amw-design-md/references/TECH-10-tailwind-conversion.md)
+> [TECH-10-tailwind-conversion.md] What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
 - `bin/amw-design-md-from-tailwind.mjs` (Node port — the live implementation)
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-contrast.py`

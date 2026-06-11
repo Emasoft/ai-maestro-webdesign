@@ -113,6 +113,7 @@ Example A (simple pipeline), Example B (fan-out/fan-in), and Example C (multi-li
 - [SKILL](../amw-ascii-validator/SKILL.md) — mandatory validation gate; `../../bin/amw-validate-ascii.py` — validator (Python, group-aware width, FIX hints, Windows-compatible).
 - [SKILL](../amw-ascii-sketch/SKILL.md) — upstream peer (wireframe layouts vs flow diagrams); [SKILL](../amw-ascii-to-svg/SKILL.md) — downstream (box → SVG); [SKILL](../amw-diagram-svg/SKILL.md) — direct-SVG path; [SKILL](../amw-ascii-diagrams-reference/SKILL.md) — classic-ASCII `+--+` counterpart for legacy contexts.
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — misaligned boxes are a form of slop.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Error Handling
 

@@ -196,4 +196,5 @@ Apply on top of a raster (photo / illustration / screenshot) to convert it into 
   [amw-liquid-glass](../amw-liquid-glass/SKILL.md).
 - **Image-overlay implementation primitives (when ready to ship):** the
   [amw-hypercomp](../amw-hypercomp/SKILL.md) skill ships a TS / SVG-filter compiler for image effects; it is the recommended runtime for the 17 overlays catalogued here.
-- **Shader-type-specific deep dive:** see `references/TECH-shader-types.md`.
+- **Shader-type-specific deep dive:** see [TECH-shader-types](references/TECH-shader-types.md).
+> [TECH-shader-types.md] `mesh-gradient` · `voronoi` · `liquid-metal` · `chrome` · `pulsar` · `black-hole` · `glass` · `spiral` · `particles` · `fireworks` · `plasma` · Library / runtime choice · Accessibility checklist · The mathematical / geometric primitive that drives the look. · The default-tasteful parameter range (what to suggest as a starting point). · The dial that, when overdriven, ruins the effect. · Library-agnostic implementation hints.

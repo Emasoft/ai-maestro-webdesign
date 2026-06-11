@@ -33,7 +33,8 @@ This skill ships:
 - **Typography** instrumentation rules (condensed sans + tabular mono).
 - **Composition** patterns and the six layout archetypes.
 - **Motion** vocabulary (state-driven, not ornamental).
-- A pitfalls reference at `references/TECH-pitfalls.md`.
+- A pitfalls reference at [TECH-pitfalls](references/TECH-pitfalls.md).
+> [TECH-pitfalls.md] Too literal — copying frames instead of extracting principles · Information overload without hierarchy · Missing context cues — users get lost in complexity · Style over function — looks cool, but unusable · Ignoring accessibility — colour and contrast issues · Discipline comparison — NERV UI vs generic sci-fi
 
 It does **not** ship: licensed franchise glyphs, Japanese text as decoration, exact recreations of NERV HQ panels, or generic "neon cyberpunk." The whole point of the skill is the discipline that separates the look from generic sci-fi.
 
@@ -249,7 +250,8 @@ Rules:
 - Pass WCAG AA contrast (4.5:1 body text, 3:1 large) on every hot-on-dark pairing.
 - Add label / icon / shape cues to every colour-coded signal — never rely on red-vs-green alone.
 
-See `references/TECH-pitfalls.md` for the five common failure modes (too literal / information overload / missing context / style-over-function / accessibility) with worked examples.
+See [TECH-pitfalls](references/TECH-pitfalls.md) for the five common failure modes (too literal / information overload / missing context / style-over-function / accessibility) with worked examples.
+> [TECH-pitfalls.md] Too literal — copying frames instead of extracting principles · Information overload without hierarchy · Missing context cues — users get lost in complexity · Style over function — looks cool, but unusable · Ignoring accessibility — colour and contrast issues · Discipline comparison — NERV UI vs generic sci-fi
 
 ## Review checklist
 

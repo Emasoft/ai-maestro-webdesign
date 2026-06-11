@@ -170,14 +170,14 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 
 After drafting the `## Overview` (§1) prose for any path (A, B, C, or D):
 
-1. Draft 6–10 Design Decision Rules per the format and dimension checklist in `skills/amw-design-md/references/design-decision-rules.md`. Each rule must: name a dimension, state the brand's default bias, and explain why that bias connects to the brand identity.
+1. Draft 6–10 Design Decision Rules per the format and dimension checklist in [design-decision-rules](../skills/amw-design-md/references/design-decision-rules.md). Each rule must: name a dimension, state the brand's default bias, and explain why that bias connects to the brand identity.
 2. Apply the genericness test from §VII of that reference: mentally swap the brand's palette and verify each rule would sound wrong or inapplicable for the swapped palette. If any rule passes the genericness test (still sounds correct with a different palette), rewrite it until it fails.
 3. The rules are inserted as the last sub-section of `## Overview` under the heading `### Design Decision Rules`, immediately after the Key Characteristics bullet list.
 4. Minimum 6 rules. If the input source is sparse (brief with fewer than 3 populated categories), document the gap in `warnings` and produce the maximum rules the source supports.
 
 ### Writing-voice quality check (mandatory after all prose sections are drafted)
 
-After all prose sections are drafted (Overview, Colors, Typography, Layout, Shapes, Components, Do's and Don'ts, Agent Prompt Guide), run a 7-point quality check against `skills/amw-design-md/references/writing-voice.md`:
+After all prose sections are drafted (Overview, Colors, Typography, Layout, Shapes, Components, Do's and Don'ts, Agent Prompt Guide), run a 7-point quality check against [writing-voice](../skills/amw-design-md/references/writing-voice.md):
 
 1. **Specificity** — every color description and typography rule names a specific token value AND distinguishes it from a generic variant of the same choice.
 2. **Peer comparison** — at least 2 comparative claims position the brand against category defaults or named peers.

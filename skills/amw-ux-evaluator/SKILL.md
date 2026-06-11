@@ -41,6 +41,7 @@ Do **not** activate on generic design intent ("design a landing page", "make it 
 2. Score the three dimensions — Position, Visual Weight, Spacing — using concrete selector + computed-style evidence; each dimension gets Pass / Warn / Fail.
 3. Produce a structured Markdown report with every Fail/Warn citing the selector, computed-style value, and the convention violated; prioritize findings as P1 (UX-breaking), P2 (suboptimal), P3 (polish).
 4. When invoked by an agent (not via `/amw-eval` direct), ALSO emit a YAML scorecard sidecar (`<eval-report>.scorecard.yaml`) per [TECH-uxeval-scorecard](references/TECH-uxeval-scorecard.md). The YAML carries the same per-dimension verdicts as the Markdown but adds explicit `severity` tiers and an `overall.verdict` that downstream agents gate on.
+> [TECH-uxeval-scorecard.md] What this is · When to emit · File naming and location · Schema — the YAML 1.2 contract · Field semantics · Severity vs priority — the distinction · How the verdict aggregates · Worked example — full YAML · Consumer contracts · Cross-references
 
 ## Usage
 
@@ -93,16 +94,24 @@ Each dimension gets one of: **Pass** (matches convention), **Warn** (acceptable 
 Every technique is in `./references/TECH-uxeval-*.md`. Each contains: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
 - [TECH-uxeval-3-dimension-framework](./references/TECH-uxeval-3-dimension-framework.md) — Position / Visual Weight / Spacing rubric
+> [TECH-uxeval-3-dimension-framework.md] What it does · When to use · How it works · Verdict rubric per dimension · Evaluation workflow · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-button-conventions](./references/TECH-uxeval-button-conventions.md) — button design rules
+> [TECH-uxeval-button-conventions.md] What it does · When to use · How it works · Position · Visual weight · Spacing · Labels · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-form-conventions](./references/TECH-uxeval-form-conventions.md) — labels / submit / errors / spacing
+> [TECH-uxeval-form-conventions.md] What it does · When to use · How it works · Position · Visual weight · Spacing · Accessibility floor · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-navigation-conventions](./references/TECH-uxeval-navigation-conventions.md) — logo / primary / utilities
+> [TECH-uxeval-navigation-conventions.md] What it does · When to use · How it works · Position (top bar, LTR) · Theme toggle placement (industry cross-check) · Visual weight · Utility control visual weight · Spacing · Mobile patterns · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-output-format](./references/TECH-uxeval-output-format.md) — structured evaluation report
+> [TECH-uxeval-output-format.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-uxeval-scorecard](./references/TECH-uxeval-scorecard.md) — machine-parseable severity-tiered YAML scorecard sidecar (T-097); emitted alongside the Markdown report in agent-orchestrated mode
+> [TECH-uxeval-scorecard.md] What this is · When to emit · File naming and location · Schema — the YAML 1.2 contract · Field semantics · Severity vs priority — the distinction · How the verdict aggregates · Worked example — full YAML · Consumer contracts · Cross-references
 - [TECH-uxeval-priority-rubric](./references/TECH-uxeval-priority-rubric.md) — P1 / P2 / P3
+> [TECH-uxeval-priority-rubric.md] What it does · When to use · How it works · Assignment rule · Output structure · Minimal example · Gotchas · Cross-references
 
 ## Quick-lookup conventions
 
 Full reference in [balsamiq-button-principles](references/balsamiq-button-principles.md). Summary:
+> [balsamiq-button-principles.md] Core Principles · Use Conventional Labels · Say Exactly What Happens · Primary and Secondary Should Look Different · Primary Action on the Right · Use Adequate Spacing · Make Buttons Look Clickable · Size Appropriately · Use Icons Wisely · Consider Loading States · Error Prevention · Button Hierarchy Summary · Common Mistakes
 
 - **Buttons:** primary right + filled + brand color; secondary left + ghost/outline; utility far right, icon-only. ≥ 24 px between groups, 8–12 px intra-group, ≥ 44 × 44 px mobile touch. Labels: "Sign Up" not "Get Started"; "Delete Account" not "Proceed"; verb-first.
 - **Navigation:** logo left, primary nav centre or after logo, utilities (search / auth / theme) right. Active state clearly distinguished; nav does not compete with content.

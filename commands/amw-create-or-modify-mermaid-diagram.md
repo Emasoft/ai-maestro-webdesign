@@ -5,7 +5,8 @@ description: "Shortcut for users who know they want a Mermaid source file create
 
 # /amw-create-or-modify-mermaid-diagram
 
-Thin dispatcher over `skills/amw-mermaid-diagram/` (create + modify — SOURCE authoring) and [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) (shared modify pipeline). Emits exactly one `.mmd` (Mermaid source) file. Rendering to SVG/PNG/ASCII is delegated to `skills/amw-mermaid-render/` via `bin/amw-mermaid-render.sh` — NOT emitted by this command.
+Thin dispatcher over `skills/amw-mermaid-diagram/` (create + modify — SOURCE authoring) and [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md) (shared modify pipeline). Emits exactly one `.mmd` (Mermaid source) file. Rendering to SVG/PNG/ASCII is delegated to `skills/amw-mermaid-render/` via `bin/amw-mermaid-render.sh` — NOT emitted by this command.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 ## Dispatch
 
@@ -16,8 +17,10 @@ Thin dispatcher over `skills/amw-mermaid-diagram/` (create + modify — SOURCE a
    - Empty `$ARGUMENTS` → ask the user for a brief OR an existing file path.
 
 2. **Route:**
-   - Create path → [SKILL](skills/amw-mermaid-diagram/SKILL.md) pipeline. Grammar type is selected from brief cues (flowchart default for "flow"/"process"; sequenceDiagram for "request/response"/"handshake"; erDiagram for "schema"; etc — see [mermaid](skills/amw-diagram-formats/references/mermaid.md) §2).
-   - Modify path → shared 6-step pipeline at [modify-flow](skills/amw-diagram-formats/references/modify-flow.md): detect → `bin/amw-parse-mermaid-diagram.py` → IR-patch → `bin/amw-diagram-ir.py emit --format mermaid` → `bin/amw-mermaid-lint.sh`. Retry budget = 3. Atomic move on PASS.
+   - Create path → [SKILL](../skills/amw-mermaid-diagram/SKILL.md) pipeline. Grammar type is selected from brief cues (flowchart default for "flow"/"process"; sequenceDiagram for "request/response"/"handshake"; erDiagram for "schema"; etc — see [mermaid](../skills/amw-diagram-formats/references/mermaid.md) §2).
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
+   - Modify path → shared 6-step pipeline at [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md): detect → `bin/amw-parse-mermaid-diagram.py` → IR-patch → `bin/amw-diagram-ir.py emit --format mermaid` → `bin/amw-mermaid-lint.sh`. Retry budget = 3. Atomic move on PASS.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 3. **Optional flags:**
    - `--type flowchart|sequence|state|class|er|gantt|pie|journey|mindmap` — force the grammar type (create path only).
@@ -28,9 +31,11 @@ Thin dispatcher over `skills/amw-mermaid-diagram/` (create + modify — SOURCE a
 
 ## Cross-references
 
-- [SKILL](skills/amw-mermaid-diagram/SKILL.md) — create + modify (source authoring).
-- [SKILL](skills/amw-mermaid-render/SKILL.md) — rendering skill (source → SVG/PNG/ASCII). THIS COMMAND DELEGATES RENDERING; it does not emit rendered output itself.
-- [mermaid](skills/amw-diagram-formats/references/mermaid.md) — authoritative Mermaid format spec + 40-technique catalog.
-- [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline.
+- [SKILL](../skills/amw-mermaid-diagram/SKILL.md) — create + modify (source authoring).
+- [SKILL](../skills/amw-mermaid-render/SKILL.md) — rendering skill (source → SVG/PNG/ASCII). THIS COMMAND DELEGATES RENDERING; it does not emit rendered output itself.
+- [mermaid](../skills/amw-diagram-formats/references/mermaid.md) — authoritative Mermaid format spec + 40-technique catalog.
+> [mermaid.md] Format definition · Supported grammars · Themes · mmdc CLI flags (17 total) · Output paths · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes · Anti-patterns
+- [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - `bin/amw-mermaid-lint.sh`, `bin/amw-parse-mermaid-diagram.py`, `bin/amw-diagram-ir.py`, `bin/amw-mermaid-render.sh` — backing tools.
 - `/amw-convert-any-diagram-format` — natural next step if user wants the Mermaid source rendered to a different format.

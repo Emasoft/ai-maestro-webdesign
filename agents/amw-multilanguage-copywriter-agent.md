@@ -304,7 +304,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
 
 - **Do NOT issue `/amw-<command>` prompts from inside my agent.** Forbidden: `"Run /amw-sketch"`, `"Invoke /amw-ascii-to-html"`, `"Call /amw-convert-any-diagram-format"`.
 - **Do NOT use broad design vocabulary in my operations / return text.** Forbidden phrases: "design a headline", "build a landing page". I only use narrow, technical, copywriting-domain phrasing.
-- **Do NOT invoke `skills/amw-design-principles/SKILL.md` directly.** The orchestrator is upstream of me. I read specific references (`typography-system.md`, `ai-slop-avoid.md` for copy-slop patterns) when needed.
+- **Do NOT invoke [SKILL](../skills/amw-design-principles/SKILL.md) directly.** The orchestrator is upstream of me. I read specific references (`typography-system.md`, `ai-slop-avoid.md` for copy-slop patterns) when needed.
 - **Do NOT spawn peer sub-agents.** I return to main-agent; main-agent routes my output to wireframe-builder (Phase B) or back to me with adjustments.
 
 ---

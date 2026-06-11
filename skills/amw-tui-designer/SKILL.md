@@ -26,8 +26,10 @@ The upstream skill covers React + SwiftUI + CSS in one document; this adaptation
 
 1. Confirm the user wants a *deliberate* retro/terminal aesthetic — not a generic "dark theme" or "make it cool". If the intent is just dark mode, hand back to the orchestrator.
 2. Pick **one** of the three signature palettes (phosphor green, cyberpunk neon, amber CRT) — full hex tables in [palettes](references/TECH-palettes.md). Do NOT mix palettes; the aesthetic depends on a tight 3–5-color range.
+> [TECH-palettes.md] Palette 1 — Phosphor Green (classic terminal) · Palette 2 — Cyberpunk Neon (cyan + magenta) · Palette 3 — Amber CRT (warm terminal) · Typography · Copy voice · Tuimorphic (React library)
 3. Choose typography: monospace family (GNU Unifont / IBM Plex Mono / JetBrains Mono / SF Mono / Consolas). Use **box-drawing characters** (`╭╮╰╯│─━┃┏┓┗┛═║╔╗╚╝`) for frames; ASCII-fallback (`+-|`) when the target may render on legacy terminals.
 4. Apply the CRT effect stack from [crt-effects](references/TECH-crt-effects.md): scanlines (subtle, 10–15 % opacity), neon glow (≤ 4 `text-shadow` layers), optional CRT curvature (`perspective` + `rotateX`), optional flicker (`@keyframes` only, never JS-driven).
+> [TECH-crt-effects.md] Scanlines overlay · Neon glow — text and borders · CRT curvature · Flicker animation · WebGL CRT (when CSS is insufficient) · Effect-pattern reference · Performance considerations · Accessibility — non-negotiable · Pitfalls and prevention · When CRT effects backfire
 5. Write copy in the terminal voice — UPPERCASE for headers/labels/status, lowercase for command input, sentence-case for body. Use `[SYS]` / `[ERR]` / `[INF]` / `[NET]` prefixes for messages. Avoid "please" / "sorry" / emojis. Full vocabulary in [palettes § copy voice](references/TECH-palettes.md#copy-voice).
 6. If a React surface, install Tuimorphic (`npm install tuimorphic`) and wrap with `<div className="theme-dark tint-green">`. Component list and tints in [palettes § Tuimorphic](references/TECH-palettes.md#tuimorphic-react-library).
 7. Validate accessibility (a hard gate — see Non-negotiables): WCAG 4.5:1 contrast, full keyboard navigation, `prefers-reduced-motion` removes flicker + scanlines, focus indicators on every interactive element.
@@ -57,6 +59,7 @@ Do NOT invoke for:
 
 - **Required (web):** a modern browser supporting CSS `text-shadow`, `box-shadow`, `@keyframes`, `repeating-linear-gradient`, `perspective`, `prefers-reduced-motion`. All evergreen browsers.
 - **Optional (React):** `react` ≥ 16.8, `react-dom` ≥ 16.8, and `npm install tuimorphic` if using the component library. Without Tuimorphic, the CSS recipes in [crt-effects](references/TECH-crt-effects.md) are framework-agnostic.
+> [TECH-crt-effects.md] Scanlines overlay · Neon glow — text and borders · CRT curvature · Flicker animation · WebGL CRT (when CSS is insufficient) · Effect-pattern reference · Performance considerations · Accessibility — non-negotiable · Pitfalls and prevention · When CRT effects backfire
 - **Out of scope:** iOS / SwiftUI / Metal shaders. The upstream skill covered them; this adaptation does not.
 - **Out of scope:** native terminal apps (TUIs in the Unix sense). This skill is the *web* terminal aesthetic, not a tool for building real terminal applications.
 
@@ -67,6 +70,7 @@ REFERENCE + EXECUTOR. Invoked by the orchestrator during **Phase B** when an app
 ## Output
 
 This skill produces no standalone artifacts — it supplies aesthetic recipes. The downstream artifact (HTML / React / CSS) is produced by `amw-wireframe-builder-agent` or directly by the orchestrator using the recipes in [crt-effects](references/TECH-crt-effects.md).
+> [TECH-crt-effects.md] Scanlines overlay · Neon glow — text and borders · CRT curvature · Flicker animation · WebGL CRT (when CSS is insufficient) · Effect-pattern reference · Performance considerations · Accessibility — non-negotiable · Pitfalls and prevention · When CRT effects backfire
 
 ## Error Handling
 
@@ -92,7 +96,9 @@ Failure modes and prevention live in [crt-effects § Pitfalls](references/TECH-c
 ## Resources
 
 - [palettes](references/TECH-palettes.md) — three signature palettes (phosphor green / cyberpunk neon / amber CRT), typography, copy voice, Tuimorphic component matrix.
+> [TECH-palettes.md] Palette 1 — Phosphor Green (classic terminal) · Palette 2 — Cyberpunk Neon (cyan + magenta) · Palette 3 — Amber CRT (warm terminal) · Typography · Copy voice · Tuimorphic (React library)
 - [crt-effects](references/TECH-crt-effects.md) — CSS recipes (scanlines, neon glow, CRT curvature, flicker), pitfalls, accessibility escape hatches.
+> [TECH-crt-effects.md] Scanlines overlay · Neon glow — text and borders · CRT curvature · Flicker animation · WebGL CRT (when CSS is insufficient) · Effect-pattern reference · Performance considerations · Accessibility — non-negotiable · Pitfalls and prevention · When CRT effects backfire
 
 Cross-skill:
 

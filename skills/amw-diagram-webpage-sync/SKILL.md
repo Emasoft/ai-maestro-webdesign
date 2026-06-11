@@ -8,8 +8,11 @@ version: 0.1.0
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Modify pipeline (authoritative):** [modify-flow](../amw-diagram-formats/references/modify-flow.md).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 > **IR schema:** [ir-schema](../amw-diagram-formats/references/ir-schema.md).
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 > **HTML format spec:** [html](../amw-diagram-formats/references/html.md).
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 
 This skill owns the **reverse leg** of the webpage round-trip: a user has edited a diagram (ASCII / SVG / Mermaid), and wants the webpage regenerated from it. The MVP strategy is **full re-emission** — run the ascii-to-html pipeline end-to-end, back up the old `.html` to `.bak`, and show a structural diff of what changed.
 
@@ -111,8 +114,11 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Resources
 
 - [modify-flow](../amw-diagram-formats/references/modify-flow.md) — shared 6-step pipeline (§7.1 documents the webpage-sync composition).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR schema consumed.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 - [html](../amw-diagram-formats/references/html.md) — HTML format spec used by the re-emit step.
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 - [SKILL](../amw-ascii-to-html/SKILL.md) — terminal step of the re-emit pipeline.
 - [SKILL](../amw-webpage-to-diagram/SKILL.md) — forward-leg pair.
 - `../../bin/amw-html-diff.py` — HTML structural diff (this skill's dedicated tool).

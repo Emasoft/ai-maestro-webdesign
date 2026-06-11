@@ -83,17 +83,17 @@ It does **not** ship: full component implementations, opinionated layout templat
 }
 ```
 
-Apply dark theme by overriding the same role tokens under `@media (prefers-color-scheme: dark)` — see `references/TECH-01-hct-palette.md`.
+Apply dark theme by overriding the same role tokens under `@media (prefers-color-scheme: dark)` — see [TECH-01-hct-palette](references/TECH-01-hct-palette.md).
 
 ## Decision tree
 
 | If the user asks for ... | Read this reference |
 |---|---|
-| Color tokens / dynamic color / seed -> palette generation | `references/TECH-01-hct-palette.md` |
-| Hover / focus / pressed overlay opacity, ripple values | `references/TECH-02-state-layers.md` |
-| Elevation, surface-tint overlay, when to use shadows | `references/TECH-03-tonal-elevation.md` |
-| Shape scale, type scale, spacing grid | `references/TECH-04-shape-and-type.md` |
-| Per-component token mapping (button, card, text field, ...) | `references/TECH-05-component-tokens.md` |
+| Color tokens / dynamic color / seed -> palette generation | [TECH-01-hct-palette](references/TECH-01-hct-palette.md) |
+| Hover / focus / pressed overlay opacity, ripple values | [TECH-02-state-layers](references/TECH-02-state-layers.md) |
+| Elevation, surface-tint overlay, when to use shadows | [TECH-03-tonal-elevation](references/TECH-03-tonal-elevation.md) |
+| Shape scale, type scale, spacing grid | [TECH-04-shape-and-type](references/TECH-04-shape-and-type.md) |
+| Per-component token mapping (button, card, text field, ...) | [TECH-05-component-tokens](references/TECH-05-component-tokens.md) |
 
 ## Hard rules MD3 enforces
 
@@ -120,16 +120,23 @@ These are non-negotiable when the user asks for MD3:
 
 ## Resources
 
-- [`references/TECH-01-hct-palette.md`](references/TECH-01-hct-palette.md) — HCT model, seed-to-scheme generation, dynamic color, contrast levels, baseline light/dark schemes
-- [`references/TECH-02-state-layers.md`](references/TECH-02-state-layers.md) — Interaction state overlays (hover 8% / focus 10% / pressed 16%), state-layer color selection per component, ripple guidance
-- [`references/TECH-03-tonal-elevation.md`](references/TECH-03-tonal-elevation.md) — 5 elevation levels mapped to surface-container ladder + tonal-overlay percentages, shadow values when needed
-- [`references/TECH-04-shape-and-type.md`](references/TECH-04-shape-and-type.md) — 7-step shape scale + `full`, 15 type styles + 15 emphasized, 4dp grid spacing tokens
-- [`references/TECH-05-component-tokens.md`](references/TECH-05-component-tokens.md) — Per-component token override patterns (button, FAB, card, text field, app bar, navigation, dialog, snackbar)
+- [TECH-01-hct-palette](references/TECH-01-hct-palette.md) — HCT model, seed-to-scheme generation, dynamic color, contrast levels, baseline light/dark schemes
+> [TECH-01-hct-palette.md] HCT color space · The 5 tonal palettes · Role-to-tone mapping · Color pairing rules · Fixed accent colors (Add-on) · Dynamic color (user-generated) · Generating a scheme from a seed (JavaScript) · Color harmonization · User-controlled contrast (May 2025) · Baseline static schemes (no dynamic color) · Verification
+- [TECH-02-state-layers](references/TECH-02-state-layers.md) — Interaction state overlays (hover 8% / focus 10% / pressed 16%), state-layer color selection per component, ripple guidance
+> [TECH-02-state-layers.md] The 4 interaction states and their opacities · State-layer color selection (what color the overlay is) · CSS implementation (web, custom) · Outlined / text variant — transparent resting · Jetpack Compose · `@material/web` component overrides · Ripple · Accessibility gotchas · Verification
+- [TECH-03-tonal-elevation](references/TECH-03-tonal-elevation.md) — 5 elevation levels mapped to surface-container ladder + tonal-overlay percentages, shadow values when needed
+> [TECH-03-tonal-elevation.md] The 5 elevation levels · The surface-container ladder · Why tonal, not shadow · When to add shadows on top · Hover and focus elevation increase · Jetpack Compose · Flutter · Surface-tint role · Verification
+- [TECH-04-shape-and-type](references/TECH-04-shape-and-type.md) — 7-step shape scale + `full`, 15 type styles + 15 emphasized, 4dp grid spacing tokens
+> [TECH-04-shape-and-type.md] Shape: corner-radius scale · Type: the 15-style scale · Spacing: the 4dp grid · Verification
+- [TECH-05-component-tokens](references/TECH-05-component-tokens.md) — Per-component token override patterns (button, FAB, card, text field, app bar, navigation, dialog, snackbar)
+> [TECH-05-component-tokens.md] Token override convention · Component token tables — Buttons, FAB and extended FAB, Icon button, Card, Text fields, Top app bar, Navigation, Dialog, Snackbar, Chips, Switch and checkbox · Compose component mapping · Component import on the web · Verification
 
 ## Cross-references
 
-- Companion preset (single-file token bundle for a quick apply): `../amw-design-system-presets/references/S-008-material-3.md`
+- Companion preset (single-file token bundle for a quick apply): [S-008-material-3](../amw-design-system-presets/references/S-008-material-3.md)
+> [S-008-material-3.md] Identity · Token block · "Breaks if" invariants · Canonical render-test pointer · Render-test verdict · Cross-references · Attribution
 - Tokens companion file format for hand-off: `../amw-design-md/` (DESIGN.md emission with MD3 tokens)
-- Orchestrator + AI-slop rules: `../amw-design-principles/SKILL.md`, `../amw-design-principles/ai-slop-avoid.md`
+- Orchestrator + AI-slop rules: [SKILL](../amw-design-principles/SKILL.md), [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md)
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 <!-- End of amw-material-3 SKILL.md. MIT, adapted from material-3-skill (CWTI Ltd 2026). -->

@@ -57,7 +57,8 @@ Three framings:
 ### Responsibility boundaries
 
 - **In scope:** HTML-to-MP4 rendering via Hyperframes, monorepo presence verification (package.json + CLI health check), project-dir scaffolding when only `html_scene_path` is provided, pre-render gate sequence (`lint → validate → inspect`), shell-out to `npx hyperframes render`, MP4 validation (file exists, non-trivial size, no FFmpeg error in stderr), artifact reporting.
-- **Out of scope:** HTML composition authoring (wireframe-builder or user), audio mixing / VO generation (scope of `skills/amw-hyperframes-bridge/references/TECH-hyperframes-capture-step-5-vo.md` if the user wants it — but I apply it only if the HTML already references audio tracks), caption files / SRT generation, post-FX, uploading, platform-specific encoding tweaks (I accept those as parameters, not infer them).
+- **Out of scope:** HTML composition authoring (wireframe-builder or user), audio mixing / VO generation (scope of [TECH-hyperframes-capture-step-5-vo](../skills/amw-hyperframes-bridge/references/TECH-hyperframes-capture-step-5-vo.md) if the user wants it — but I apply it only if the HTML already references audio tracks), caption files / SRT generation, post-FX, uploading, platform-specific encoding tweaks (I accept those as parameters, not infer them).
+> [TECH-hyperframes-capture-step-5-vo.md] What it does · When to use · How it works · Gate · Minimal example · Gotchas · Cross-references
 - **Explicitly forbidden:** Silent fallback to `html-export.py`, direct Playwright calls, any "poor man's video" path. The alternatives exist for OUTPUT of single frames (PNG/PDF), not sequences; substituting them produces wrong output.
 
 ---

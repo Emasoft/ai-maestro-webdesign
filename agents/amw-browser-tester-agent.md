@@ -248,7 +248,7 @@ In priority order:
    For each completed scenario that produced a final-state screenshot (i.e., not INCONCLUSIVE due to navigation failure), run a visual-pixel slop audit:
 
    1. Run `bash bin/amw-self-review-screenshot.sh <artifact_url> --label <scenario-slug>` → emits the desktop screenshot path on stdout under `$MAIN_ROOT/reports/batch9-slop-review/<ts>/<scenario-slug>/`. Reuse the already-captured screenshot from step 4.c when the scenario produced one (avoids a redundant render); invoke `amw-self-review-screenshot.sh` only when no usable screenshot exists for that scenario.
-   2. Dispatch `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) with `screenshot_path`, the project `brief` from the input contract, and `severity_gate: high`.
+   2. Dispatch `amw-slop-verifier-agent` (spec: [amw-slop-verifier-agent](../agents/amw-slop-verifier-agent.md)) with `screenshot_path`, the project `brief` from the input contract, and `severity_gate: high`.
    3. Record the verdict as one row in the scenario-test report's **Slop audit** section:
 
       | Scenario | Screenshot path | Verdict | HIGH rules fired |
@@ -346,7 +346,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | "Core Web Vitals / LCP / INP / CLS / TBT / performance budget" | `skills/amw-dev-browser/` + `web-vitals` UMD injection | RUM-style measurement on a single page-load. Not a Lighthouse trace (no opportunities, no treemap). For full Lighthouse, user runs PageSpeed Insights manually. |
 | "Broken link / 404 / dead anchor check" | `skills/amw-dev-browser/` — `dom` subcommand for extraction + `shot` for verification | Internal links only; external links reported as count to avoid leaking session. |
 | "WCAG 2.1 AA full audit" | **OUT OF SCOPE** — route to `amw-accessibility-auditor-agent` | I do a functional keyboard-nav check only. |
-| Visual-pixel slop audit (after each scenario) | `amw-slop-verifier-agent` (spec: `agents/amw-slop-verifier-agent.md`) + `bin/amw-self-review-screenshot.sh` | input: final-state screenshot from scenario + project brief · output: `✅ pass` or `❌ slop detected:` verdict folded as one row into the test report's Slop audit section |
+| Visual-pixel slop audit (after each scenario) | `amw-slop-verifier-agent` (spec: [amw-slop-verifier-agent](../agents/amw-slop-verifier-agent.md)) + `bin/amw-self-review-screenshot.sh` | input: final-state screenshot from scenario + project brief · output: `✅ pass` or `❌ slop detected:` verdict folded as one row into the test report's Slop audit section |
 | UX scorecard format spec | [TECH-uxeval-scorecard](../skills/amw-ux-evaluator/references/TECH-uxeval-scorecard.md) | T-097 — YAML sidecar schema, severity tiers (blocker/high/medium/low), aggregation rule for `overall.verdict`; parse with `yaml.safe_load()` after `amw-ux-evaluator` runs |
 > [TECH-uxeval-scorecard.md] What this is · When to emit · File naming and location · Schema — the YAML 1.2 contract · Field semantics · Severity vs priority — the distinction · How the verdict aggregates · Worked example — full YAML · Consumer contracts · Cross-references
 | "on-page SEO audit" | **OUT OF SCOPE** — route to `amw-seo-strategist-agent` | Different authority. |

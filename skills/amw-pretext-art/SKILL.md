@@ -17,18 +17,18 @@ Standard plugin runtime — no skill-specific prerequisites beyond the global pl
 ## Instructions
 
 1. Recognize that this skill is a **redirect stub** — it contains no operational logic and emits no artifacts.
-2. Re-route the incoming request immediately to `skills/amw-pretext/SKILL.md`.
+2. Re-route the incoming request immediately to [SKILL](../amw-pretext/SKILL.md).
 3. In that skill, identify the matching `category: art` technique from the 78-technique catalog (kinetic typography, shaped containers, calligrams, wavy baseline, text-on-path, poster grid, typographic ASCII, and all other pretext effects).
 4. Follow the TECH reference file for the selected technique (found under `skills/amw-pretext/references/`).
 
-Route every art-focused pretext request to `skills/amw-pretext/SKILL.md` and pick the matching `category: art` technique from its catalog.
+Route every art-focused pretext request to [SKILL](../amw-pretext/SKILL.md) and pick the matching `category: art` technique from its catalog.
 
 ## Examples
 
 **Concrete example — kinetic typography request:**
 
 - **Input:** "make the heading shrink and reflow as the user resizes the window" (legacy `pretext-art` phrasing).
-- **Operation:** redirect stub recognizes the request, routes immediately to `skills/amw-pretext/SKILL.md`. Decision tree there points at `TECH-33-kinetic-width-animation.md`.
+- **Operation:** redirect stub recognizes the request, routes immediately to [SKILL](../amw-pretext/SKILL.md). Decision tree there points at `TECH-33-kinetic-width-animation.md`.
 - **Output:** the redirect emits no artifact itself; the chosen TECH file's "Minimal example" section produces a runnable JS module that drives the kinetic reflow.
 
 **Concrete example — calligram request:**
@@ -37,7 +37,7 @@ Route every art-focused pretext request to `skills/amw-pretext/SKILL.md` and pic
 - **Operation:** redirect to `skills/amw-pretext/`; choose `TECH-38-calligram-shape.md` (or `TECH-39-glyph-mask-calligram.md` / `TECH-44-outline-calligram.md` depending on visual brief).
 - **Output:** SVG calligram emitted by the destination TECH file's example pipeline. This stub itself emits nothing.
 
-See `skills/amw-pretext/SKILL.md` for the full 78-technique catalog with minimal runnable examples in each TECH file.
+See [SKILL](../amw-pretext/SKILL.md) for the full 78-technique catalog with minimal runnable examples in each TECH file.
 
 ## Output
 
@@ -45,7 +45,7 @@ This stub produces no artifacts — it redirects. All output is produced by `ski
 
 ## Error Handling
 
-If this stub is invoked instead of `amw-pretext`: re-route the request to `skills/amw-pretext/SKILL.md`. This file contains no operational logic.
+If this stub is invoked instead of `amw-pretext`: re-route the request to [SKILL](../amw-pretext/SKILL.md). This file contains no operational logic.
 
 ## Resources
 
@@ -54,16 +54,16 @@ If this stub is invoked instead of `amw-pretext`: re-route the request to `skill
 
 The full pretext capability — Canvas / SVG creative text effects AND all API / measurement / layout / integration / tables / 3D / workflow / consult techniques — now lives at:
 
-**[`skills/amw-pretext/SKILL.md`](../amw-pretext/SKILL.md)**
+**[SKILL](../amw-pretext/SKILL.md)**
 
-The original 8 pretext-art effects (kinetic / shaped / wavy / tapering / poster-grid / custom / text-on-path / per-line-metrics) are catalogued as TECH files inside `skills/amw-pretext/references/`, alongside ~70 other techniques. See `skills/amw-pretext/SKILL.md` and its references catalog for the routing decision tree.
+The original 8 pretext-art effects (kinetic / shaped / wavy / tapering / poster-grid / custom / text-on-path / per-line-metrics) are catalogued as TECH files inside `skills/amw-pretext/references/`, alongside ~70 other techniques. See [SKILL](../amw-pretext/SKILL.md) and its references catalog for the routing decision tree.
 
 ## Activation
 
-No dedicated slash command and no active implementation — this skill is a **redirect stub** only. Any request landing here is routed immediately to `skills/amw-pretext/SKILL.md`, which is invoked by the `design-principles` orchestrator during **Phase B** for all creative text / kinetic typography / calligram deliverables.
+No dedicated slash command and no active implementation — this skill is a **redirect stub** only. Any request landing here is routed immediately to [SKILL](../amw-pretext/SKILL.md), which is invoked by the `design-principles` orchestrator during **Phase B** for all creative text / kinetic typography / calligram deliverables.
 
 This skill is **autonomous and self-contained** — any agent (the main-agent, a sub-agent, or an external orchestrator) can use it by reading this SKILL.md and its references. The skill's techniques are NOT limited to what matching commands expose.
 
 ## Action required
 
-Route every art-focused pretext request to **[`skills/amw-pretext/SKILL.md`](../amw-pretext/SKILL.md)** and pick the matching `category: art` technique from its catalog.
+Route every art-focused pretext request to **[SKILL](../amw-pretext/SKILL.md)** and pick the matching `category: art` technique from its catalog.

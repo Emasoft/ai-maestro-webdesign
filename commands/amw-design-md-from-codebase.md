@@ -67,8 +67,9 @@ If extraction-notes flags multiple competing stacks, recommend re-running with `
 
 ## Cross-references
 
-- [amw-design-md-extractor-agent](agents/amw-design-md-extractor-agent.md)
-- [TECH-08-codebase-extraction](skills/amw-design-md/references/TECH-08-codebase-extraction.md)
+- [amw-design-md-extractor-agent](../agents/amw-design-md-extractor-agent.md)
+- [TECH-08-codebase-extraction](../skills/amw-design-md/references/TECH-08-codebase-extraction.md)
+> [TECH-08-codebase-extraction.md] What it does · When to use · What it scans · Inputs · Extraction heuristics · Color extraction · Typography extraction · Spacing extraction · Rounded extraction · Component extraction · Output · Failure modes · When this is the wrong tool · Cross-references
 - `bin/amw-design-md-from-codebase.py`
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-contrast.py`

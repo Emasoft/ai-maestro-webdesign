@@ -50,6 +50,7 @@ A full controlled hex-picker example (picker + matching `HexColorInput` + expens
 ## Examples
 
 The worked example — a controlled hex picker with a matching `HexColorInput` and an expensive save deferred to `onChangeEnd` — lives in [styling-and-integration](./references/styling-and-integration.md) § Worked example.
+> [styling-and-integration.md] Styling (CSS class hooks) · CSP nonce · Worked example · Error handling
 
 ## Output
 
@@ -58,6 +59,7 @@ This skill produces no standalone artifacts — it provides `react-colorful` API
 ## Error Handling
 
 The failure-mode playbook (uncontrolled/read-only picker from a missing `onChange`, format mismatch, jank from heavy work in `onChange`, CSP nonce errors) lives in [styling-and-integration](./references/styling-and-integration.md) § Error handling.
+> [styling-and-integration.md] Styling (CSS class hooks) · CSP nonce · Worked example · Error handling
 
 ## Trigger conditions
 

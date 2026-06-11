@@ -40,7 +40,7 @@ Mixed inputs (URL + DESIGN.md to grade implementation fidelity against intent) a
 
 ## The 8-dimension rubric
 
-The canonical rubric definitions, scoring criteria, and evidence requirements live in `references/TECH-rubric.md`. Load that file before any audit; do NOT score from memory. The 8 dimensions in canonical order:
+The canonical rubric definitions, scoring criteria, and evidence requirements live in [TECH-rubric](references/TECH-rubric.md). Load that file before any audit; do NOT score from memory. The 8 dimensions in canonical order:
 
 1. **Palette** — colour-system coherence, OKLCH structure, chromatic balance, dark/light parity
 2. **Typography** — type-scale ratio, family pairing, vertical-rhythm anchoring, optical adjustments
@@ -66,10 +66,10 @@ The **overall grade** is the unweighted arithmetic mean of the 8 dimensions, rou
 ## Workflow
 
 1. **Gather artifact.** URL → fetch with `amw-dev-browser` (snapshot DOM, computed styles, fold and full-page screenshots). Local HTML → headless render via the same browser. DESIGN.md → parse and identify which dimensions are spec-only.
-2. **Load rubric.** Read `references/TECH-rubric.md` in full. Do NOT skip to a single dimension — the cross-dimension calibration notes at the bottom of the rubric matter for consistent scoring.
+2. **Load rubric.** Read [TECH-rubric](references/TECH-rubric.md) in full. Do NOT skip to a single dimension — the cross-dimension calibration notes at the bottom of the rubric matter for consistent scoring.
 3. **Score each dimension.** For each of the 8 dimensions in order:
    - Identify the concrete evidence (token values, CSS rules, computed contrast ratios, screenshot crops).
-   - Apply the per-dimension scoring criteria from `references/TECH-rubric.md`.
+   - Apply the per-dimension scoring criteria from [TECH-rubric](references/TECH-rubric.md).
    - Record: dimension name, score 0-10, evidence excerpt (≤120 chars), grade letter.
    - If evidence is insufficient (e.g. motion dimension on a static DESIGN.md), score NULL and explain in evidence.
 4. **Compute overall.** Arithmetic mean of the 8 scores. Skip NULL dimensions and divide by the number of scored dimensions (note the partial coverage in the report-card footer).
@@ -115,7 +115,7 @@ The JSON shape is canonical for downstream consumers (e.g. `amw-design-battle` r
 ## Non-negotiables
 
 1. **Evidence-backed scoring.** Every non-NULL score MUST cite a concrete excerpt. "Looks balanced" / "feels coherent" are NOT evidence. If you cannot point to a token value, computed style, contrast ratio, or screenshot region, the score is NULL.
-2. **Rubric is the contract.** Always load `references/TECH-rubric.md` before scoring. Do NOT score from memory; cross-dimension calibration drifts within 5 audits.
+2. **Rubric is the contract.** Always load [TECH-rubric](references/TECH-rubric.md) before scoring. Do NOT score from memory; cross-dimension calibration drifts within 5 audits.
 3. **NULL is better than guessed.** When a dimension cannot be evaluated against the available artifact (e.g. motion on a static spec), mark NULL and explain in evidence. Never invent a score to keep the table tidy.
 4. **No weighting unless the user asks.** Equal-weight mean is the default and the report-card footer says so. Custom weighting requires explicit user input and is logged in the footer.
 5. **Badge is self-contained.** SVG must render in a stripped README — no external font fetches, no `<script>` tags, no remote resources. Use the system-font fallback stack.
@@ -124,7 +124,9 @@ The JSON shape is canonical for downstream consumers (e.g. `amw-design-battle` r
 
 ## Resources
 
-- [`references/TECH-rubric.md`](references/TECH-rubric.md) — canonical 8-dimension scoring rubric (read before every audit)
+- [TECH-rubric](references/TECH-rubric.md) — canonical 8-dimension scoring rubric (read before every audit)
+> [TECH-rubric.md] Palette · Typography · Rhythm · Hierarchy · Motion · Accessibility · Consistency · Signature · Cross-dimension calibration notes · NULL handling · Versioning
 - Companion skills: [`amw-design-battle`](../amw-design-battle/SKILL.md) (two-site comparison), [`amw-design-remix`](../amw-design-remix/SKILL.md) (reskin extracted designs), [`amw-design-drift-audit`](../amw-design-drift-audit/SKILL.md) (spec-fidelity audit)
 - Input pipelines: [`amw-dev-browser`](../amw-dev-browser/SKILL.md), [`amw-design-extract`](../amw-design-extract/SKILL.md), [`amw-design-md`](../amw-design-md/SKILL.md)
 - Style vocabulary: [`amw-design-system-presets`](../amw-design-system-presets/references/catalogue.md)
+> [catalogue.md] How the author-agent uses this · Index — 45 styles across 8 aesthetic positions · Selecting styles — quick decision rules · Wave 2 — Round 4 additions (S-010b, S-046..S-083)

@@ -60,7 +60,8 @@ If multiple surfaces are present, audit each independently AND report any cross-
 
 ## Audit procedure
 
-See `references/audit-procedure.md` for the detailed step-by-step. Summary:
+See [audit-procedure](references/audit-procedure.md) for the detailed step-by-step. Summary:
+> [audit-procedure.md] Phase 0 — Parse the token surface · Phase 1 — Color drift (CIEDE2000 ΔE<3) · Phase 2 — Scale drift (off-step values) · Phase 3 — Magic numbers (single-use tokens) · Phase 4 — Cross-surface conflicts · Phase 5 — Emit report
 
 1. **Parse** the input surface into a normalized list of `(token-name, category, value, source-location)` tuples.
 2. **Category-1 (color drift)** — for every pair of colors in the same category (background / text / border / brand), compute CIEDE2000 ΔE. Cluster pairs with ΔE<3.0. A cluster of 2+ tokens with low ΔE is a drift finding.
@@ -114,8 +115,10 @@ Magic numbers (top finding):
 
 ## References
 
-- `references/audit-procedure.md` — detailed step-by-step audit algorithm (color clustering, scale inference, magic-number detection).
-- `references/ciede2000-implementation.md` — pure-Python CIEDE2000 ΔE implementation (no external deps) for color-drift detection.
+- [audit-procedure](references/audit-procedure.md) — detailed step-by-step audit algorithm (color clustering, scale inference, magic-number detection).
+> [audit-procedure.md] Phase 0 — Parse the token surface · Phase 1 — Color drift (CIEDE2000 ΔE<3) · Phase 2 — Scale drift (off-step values) · Phase 3 — Magic numbers (single-use tokens) · Phase 4 — Cross-surface conflicts · Phase 5 — Emit report
+- [ciede2000-implementation](references/ciede2000-implementation.md) — pure-Python CIEDE2000 ΔE implementation (no external deps) for color-drift detection.
+> [ciede2000-implementation.md] Implementation · Validation · Why CIEDE2000 instead of CIE76 / Lab Euclidean
 
 ## Provenance
 

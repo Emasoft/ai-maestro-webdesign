@@ -5,7 +5,8 @@ description: "Shortcut for users who know they want a standalone SVG diagram cre
 
 # /amw-create-or-modify-svg-diagram
 
-Thin dispatcher over `skills/amw-svg-diagram/` (create path) and [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) (modify path). Emits exactly one standalone `.svg` file (well-formed XML, self-contained, no remote resources).
+Thin dispatcher over `skills/amw-svg-diagram/` (create path) and [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md) (modify path). Emits exactly one standalone `.svg` file (well-formed XML, self-contained, no remote resources).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 ## Dispatch
 
@@ -15,8 +16,9 @@ Thin dispatcher over `skills/amw-svg-diagram/` (create path) and [modify-flow](s
    - Empty `$ARGUMENTS` → ask the user for a brief OR an existing file path.
 
 2. **Route:**
-   - Create path → [SKILL](skills/amw-svg-diagram/SKILL.md) pipeline. Further sub-dispatch by `--kind`: `arch` → `skills/amw-diagram-architecture/` (layered); default `freeform` → `skills/amw-diagram-svg/` (node-and-edge).
-   - Modify path → shared 6-step pipeline at [modify-flow](skills/amw-diagram-formats/references/modify-flow.md): detect → `bin/amw-parse-svg-diagram.py` → IR-patch → `bin/amw-diagram-ir.py emit --format svg` → `bin/amw-validate-svg-diagram.sh` + `bin/amw-svg-render.py render/finish`. Retry budget = 3. Atomic move on PASS.
+   - Create path → [SKILL](../skills/amw-svg-diagram/SKILL.md) pipeline. Further sub-dispatch by `--kind`: `arch` → `skills/amw-diagram-architecture/` (layered); default `freeform` → `skills/amw-diagram-svg/` (node-and-edge).
+   - Modify path → shared 6-step pipeline at [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md): detect → `bin/amw-parse-svg-diagram.py` → IR-patch → `bin/amw-diagram-ir.py emit --format svg` → `bin/amw-validate-svg-diagram.sh` + `bin/amw-svg-render.py render/finish`. Retry budget = 3. Atomic move on PASS.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 3. **Optional flags:**
    - `--kind arch|freeform` — pick the create-path backend.
@@ -26,12 +28,14 @@ Thin dispatcher over `skills/amw-svg-diagram/` (create path) and [modify-flow](s
 
 ## Cross-references
 
-- [SKILL](skills/amw-svg-diagram/SKILL.md) — create + modify dispatcher.
-- [svg](skills/amw-diagram-formats/references/svg.md) — authoritative SVG format spec + 54-technique catalog.
-- [modify-flow](skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline.
-- [SKILL](skills/amw-svg-creator/SKILL.md) — GATED icons / logos / patterns (NOT a dispatch target here).
-- [SKILL](skills/amw-diagram-svg/SKILL.md) — create-path backend (freeform).
-- [SKILL](skills/amw-diagram-architecture/SKILL.md) — create-path backend (layered arch).
-- [SKILL](skills/amw-ascii-to-svg/SKILL.md) — upstream when input is ASCII.
+- [SKILL](../skills/amw-svg-diagram/SKILL.md) — create + modify dispatcher.
+- [svg](../skills/amw-diagram-formats/references/svg.md) — authoritative SVG format spec + 54-technique catalog.
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
+- [modify-flow](../skills/amw-diagram-formats/references/modify-flow.md) — shared modify pipeline.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
+- [SKILL](../skills/amw-svg-creator/SKILL.md) — GATED icons / logos / patterns (NOT a dispatch target here).
+- [SKILL](../skills/amw-diagram-svg/SKILL.md) — create-path backend (freeform).
+- [SKILL](../skills/amw-diagram-architecture/SKILL.md) — create-path backend (layered arch).
+- [SKILL](../skills/amw-ascii-to-svg/SKILL.md) — upstream when input is ASCII.
 - `bin/amw-validate-svg-diagram.sh`, `bin/amw-parse-svg-diagram.py`, `bin/amw-diagram-ir.py`, `bin/amw-svg-render.py` — backing tools.
 - `/amw-preview` — optional next step for preview.

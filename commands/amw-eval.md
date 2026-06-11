@@ -23,7 +23,7 @@ Open the page in `dev-browser` at desktop 1440×900. If it's a URL, wait for net
 
 ### 2. Three-dimension analysis (ux-evaluator)
 
-Run the three-dimension framework from [SKILL](skills/amw-ux-evaluator/SKILL.md):
+Run the three-dimension framework from [SKILL](../skills/amw-ux-evaluator/SKILL.md):
 
 **Position**
 - Primary CTA location (Z-pattern terminal? F-pattern first-row?).
@@ -32,13 +32,15 @@ Run the three-dimension framework from [SKILL](skills/amw-ux-evaluator/SKILL.md)
 - Content hierarchy visible in the top 600 pixels.
 
 **Visual Weight**
-- Hero text size vs body ratio (Major Third / Perfect Fourth / Golden? Per [typography-system](skills/amw-design-principles/typography-system.md)).
+- Hero text size vs body ratio (Major Third / Perfect Fourth / Golden? Per [typography-system](../skills/amw-design-principles/typography-system.md)).
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - Color weight — primary accent occupies < 10% of page area?
 - Figure-ground — exactly one focal element per viewport?
 - Evidence of visual hierarchy depth ≥ 3 levels (size + weight + spacing + color combined, not any single dimension).
 
 **Spacing**
-- Spacing values on 4pt / 8pt grid per [spacing-rhythm](skills/amw-design-principles/spacing-rhythm.md)? Scan computed styles for any non-grid values (13px, 7px, 17px) and flag.
+- Spacing values on 4pt / 8pt grid per [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md)? Scan computed styles for any non-grid values (13px, 7px, 17px) and flag.
+> [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
 - Section gap > section-internal gap? (External > internal rule.)
 - Alignment — is the body copy left-aligned (Chinese + Latin rule) and paginated against a baseline grid?
 
@@ -46,7 +48,7 @@ Each dimension gets a verdict: **Pass / Warn / Fail** with the evidence.
 
 ### 3. SEO + performance snapshot
 
-From [SKILL](skills/amw-seo/SKILL.md) evaluation framework + dev-browser inspection:
+From [SKILL](../skills/amw-seo/SKILL.md) evaluation framework + dev-browser inspection:
 
 - `<title>` length, `<meta description>` presence.
 - `<h1>` count (should be 1).
@@ -61,7 +63,8 @@ These are hints, not a full Lighthouse run. Document the limitation.
 
 ### 4. AI-slop compliance
 
-One-pass scan against [ai-slop-avoid](skills/amw-design-principles/ai-slop-avoid.md):
+One-pass scan against [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md):
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 - Check the 26 items via DOM patterns (CSS selectors, style strings, text content signatures).
 - List only matches — silent on passes.

@@ -115,6 +115,8 @@ See [SKILL](../amw-diagram-webpage-sync/SKILL.md) for a complete round-trip exam
 ## Error Handling
 
 Each mode's error table lives in its reference file (full TOCs in "Per-mode reference files" above): STRUCTURAL in [structural-mode](./references/structural-mode.md) § Error Handling; SPATIAL in [spatial-mode](./references/spatial-mode.md) § Error Handling (incl. exit `1`/`2`/`3` codes + the static-fallback limitation).
+> [spatial-mode.md] Overview · Instructions · Pipeline (6 steps) · Fallback (no dev-browser) · Error Handling · Output
+> [structural-mode.md] Overview · Instructions · Pipeline (7 steps) · Error Handling · Output
 
 ## Resources
 

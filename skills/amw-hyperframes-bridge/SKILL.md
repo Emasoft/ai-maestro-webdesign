@@ -98,6 +98,9 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    npx hyperframes inspect --json  # abort if any errors (non-zero exit with --strict)
    ```
    See [TECH-hyperframes-cli-lint](./references/TECH-hyperframes-cli-lint.md), [TECH-hyperframes-cli-validate](./references/TECH-hyperframes-cli-validate.md), [TECH-hyperframes-cli-inspect](./references/TECH-hyperframes-cli-inspect.md).
+> [TECH-hyperframes-cli-inspect.md] What it does · When to use · How it works · Flags · Output (JSON mode) · Minimal example · Opt-out attributes · Gotchas · Cross-references
+> [TECH-hyperframes-cli-validate.md] What it does · When to use · How it works · Output · When warnings appear · Minimal example · Gotchas · Cross-references
+> [TECH-hyperframes-cli-lint.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
    >
    > **Gate-sequence note:** The bridge's sequence (`lint → validate → inspect → render`) intentionally extends upstream's (`lint → inspect → preview → render` — see the upstream Hyperframes CLI SKILL.md inside the vendored `external/hyperframes/` monorepo) by adding `validate` for unattended Phase B pipelines and dropping `preview` (a developer-loop primitive).
 
@@ -107,6 +110,7 @@ If both are provided, `project_dir` wins. If neither is provided, fail immediate
    npx hyperframes render --output <abs-mp4-path>
    ```
    Additional flags as needed (`--fps`, `--quality`, `--format`, `--hdr`, etc.) — see [TECH-hyperframes-cli-render](./references/TECH-hyperframes-cli-render.md).
+> [TECH-hyperframes-cli-render.md] What it does · When to use · How it works · Flags · Quality guidance · Transparent video · Minimal example · Workers tuning · Gotchas · Cross-references
 
 5. **Return the MP4 path** to the caller. If the project dir was a temp scaffold (`html_scene_path` path), remove it after the report is written.
 
@@ -130,6 +134,7 @@ Full reference index: [INDEX.md](./references/INDEX.md) — 32 TECH-*.md files g
 ## Examples
 
 See the worked examples in the per-step reference files under `./references/TECH-hyperframes-capture-step-*.md` (7-step website-to-video pipeline) and the composition authoring guide at [TECH-hyperframes-composition-core](./references/TECH-hyperframes-composition-core.md).
+> [TECH-hyperframes-composition-core.md] What it does · When to use · How it works · Approach (narrative order) · Single-file skeleton · Visual Identity Gate (MUST — before writing HTML) · Gotchas · Cross-references
 
 ## Output
 

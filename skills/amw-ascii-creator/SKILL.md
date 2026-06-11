@@ -59,6 +59,7 @@ Use when the brief describes a RECTANGULAR artifact — dashboard, mobile frame,
 Workflow:
 
 1. Parse the brief: frame width (60/66/72/78), required elements, banned-char substitutions (see [style-presets-and-banned-chars](./references/style-presets-and-banned-chars.md)).
+> [style-presets-and-banned-chars.md] Style presets (orthogonal to mode selection) · Banned characters (severity-rated — enforced by validate-ascii.py) · Cross-references
 2. Substitute banned chars BEFORE authoring — do NOT rely on the validator to flag them.
 3. Author using either pure-ASCII (`+---+`) OR Unicode box-drawing (`+---+`, T-junctions, corner glyphs). Mixing them in one artifact breaks alignment — pick one and stay consistent.
 4. Write to `/tmp/ascii-creator-<slug>.txt`.
@@ -76,9 +77,22 @@ Typical iteration counts: simple wireframe 1, dashboard 2-3, dense editorial 3-5
 Every technique lives in `./references/` (same TOC: *What it does · When to use · How it works · Minimal example · Gotchas · Cross-references*):
 
 - [TECH-78-column-cap](./references/TECH-78-column-cap.md), [TECH-bus-connectors](./references/TECH-bus-connectors.md), [TECH-cell-spanning](./references/TECH-cell-spanning.md), [TECH-eval-rubric-six-axes](./references/TECH-eval-rubric-six-axes.md)
+> [TECH-eval-rubric-six-axes.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-cell-spanning.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-bus-connectors.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-78-column-cap.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-json-render-four-modes](./references/TECH-json-render-four-modes.md), [TECH-lane-labeled-diagrams](./references/TECH-lane-labeled-diagrams.md), [TECH-multi-line-box-body](./references/TECH-multi-line-box-body.md)
+> [TECH-multi-line-box-body.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-lane-labeled-diagrams.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-json-render-four-modes.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-render-mode-diagram](./references/TECH-render-mode-diagram.md), [TECH-render-mode-layers](./references/TECH-render-mode-layers.md), [TECH-render-mode-sequence](./references/TECH-render-mode-sequence.md), [TECH-render-mode-table](./references/TECH-render-mode-table.md)
+> [TECH-render-mode-table.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-render-mode-sequence.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-render-mode-layers.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
+> [TECH-render-mode-diagram.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-sequence-notes](./references/TECH-sequence-notes.md), [style-presets-and-banned-chars](./references/style-presets-and-banned-chars.md)
+> [style-presets-and-banned-chars.md] Style presets (orthogonal to mode selection) · Banned characters (severity-rated — enforced by validate-ascii.py) · Cross-references
+> [TECH-sequence-notes.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 <!-- end of references -->
 
 ## Output
@@ -88,6 +102,7 @@ Exactly one validated perfect-ASCII `.txt` file with a descriptive English filen
 ## Style presets and banned characters
 
 The four presets (`detallado` / `unicode` / `clasico` / `compacto`) and the full validator-enforced ban-list (severity-rated CRITICAL/HIGH/MEDIUM + always-banned emoji/CJK) live at [style-presets-and-banned-chars](./references/style-presets-and-banned-chars.md).
+> [style-presets-and-banned-chars.md] Style presets (orthogonal to mode selection) · Banned characters (severity-rated — enforced by validate-ascii.py) · Cross-references
 
 ## Prerequisites
 
@@ -127,6 +142,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 | Validator reports `WIDTH_MISMATCH` on every line | Pad each line with trailing spaces to match the max-width line |
 | Validator reports `VERTICAL_MISALIGNED` | Nested box corners drift between rows; lock each `\|` to an explicit column number |
 | Validator reports `WIDE_CHAR` | Emoji / CJK / filled triangle — substitute per the [banned-char ban-list](./references/style-presets-and-banned-chars.md) |
+> [style-presets-and-banned-chars.md] Style presets (orthogonal to mode selection) · Banned characters (severity-rated — enforced by validate-ascii.py) · Cross-references
 | Validator reports `FORBIDDEN_CHAR_MEDIUM` | Variable-width triangle or long arrow — substitute per the ban-list |
 | Mode classification wrong | Brief mixes structural + freeform; split into two invocations |
 | User wants THREE variants OR HTML | Wrong skill — route to `../amw-ascii-sketch/` or `../amw-ascii-to-html/` respectively |
@@ -134,6 +150,7 @@ See the worked examples in the per-mode sub-sections above and in references/.
 ## Modify flow (shared)
 
 When the user points at an existing `.txt` / `.ascii` / `.md` file and asks to edit it (rather than author from scratch), this skill runs the **shared modify pipeline** instead of Mode A or Mode B. The pipeline is: detect format → parse to IR (`bin/amw-diagram-ir.py parse`) → diff-aware IR patch → re-render (`bin/amw-diagram-ir.py emit --format ascii`) → re-validate (`bin/amw-validate-ascii.py`). The full, authoritative 6-step spec — including retry budget, atomic-move semantics, per-format emitter fast paths, and ASCII-specific patching guidance (§5.1) — lives at [modify-flow](../amw-diagram-formats/references/modify-flow.md). Do NOT re-implement the pipeline locally.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
 User intents that trigger the modify path (vs. create):
 

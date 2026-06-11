@@ -34,7 +34,7 @@ Inspect `$ARGUMENTS`:
 
 ### 2. Spawn `amw-design-md-author-agent`
 
-Pass the structured input contract per [amw-design-md-author-agent](agents/amw-design-md-author-agent.md) §5. Wait for the agent's YAML return contract.
+Pass the structured input contract per [amw-design-md-author-agent](../agents/amw-design-md-author-agent.md) §5. Wait for the agent's YAML return contract.
 
 ### 3. If `input_type=interview`, conduct the 5-question interview
 
@@ -73,10 +73,12 @@ After the agent returns, show:
 
 ## Cross-references
 
-- [amw-design-md-author-agent](agents/amw-design-md-author-agent.md)
-- [SKILL](skills/amw-design-md/SKILL.md)
-- [canonical-spec-google-alpha](skills/amw-design-md/references/canonical-spec-google-alpha.md)
-- `skills/amw-design-md/references/canonical-template.md`
+- [amw-design-md-author-agent](../agents/amw-design-md-author-agent.md)
+- [SKILL](../skills/amw-design-md/SKILL.md)
+- [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md)
+> [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
+- [canonical-template](../skills/amw-design-md/references/canonical-template.md)
+> [canonical-template.md] Filling guide · Cross-references
 - `bin/amw-design-md-lint.sh` (lint gate)
 - `bin/amw-design-md-contrast.py` (WCAG check)
 - `bin/amw-design-md-emit-companions.py` (companions)

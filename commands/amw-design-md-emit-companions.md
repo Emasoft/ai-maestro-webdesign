@@ -65,6 +65,7 @@ The script emits the requested files:
 
 ## Cross-references
 
-- [TECH-12-companion-files](skills/amw-design-md/references/TECH-12-companion-files.md)
+- [TECH-12-companion-files](../skills/amw-design-md/references/TECH-12-companion-files.md)
+> [TECH-12-companion-files.md] What it does · The four companions · `tokens.css` — CSS custom properties · `tokens.json` — W3C Design Tokens format · `component-inventory.md` — human-readable component list · `usage-prompt.md` — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Additional companion: `design-showcase.html` (visual QA) · Synchronization rule · Cross-references
 - `bin/amw-design-md-emit-companions.py`
 - `bin/amw-design-md-lint.sh`

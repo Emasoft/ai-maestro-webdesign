@@ -15,6 +15,7 @@ Produces ASCII state machines and user-journey storyboards that model stateful p
 ## Examples
 
 See [examples](./references/examples.md) for skeleton and annotated-with-metrics forms.
+> [examples.md] Standard legend · Skeleton · Annotated form with metrics and dashboards
 
 ## Activation
 
@@ -49,6 +50,7 @@ If any is missing, ask one bundled question. Fabricating states or triggers sile
 ## Diagram format
 
 Standard legend, skeleton, and annotated-with-metrics example all live in [examples](./references/examples.md). Quick legend: `[STATE]` brackets, `(start)` / `(end)` / `((STATE))` (absorbing), `-->` solid + label, `..>` optional, `--[guard: x] trigger/action--> [NEXT]`. The annotated form adds `metric: <name> (link)` below each transition so the state machine stays falsifiable.
+> [examples.md] Standard legend · Skeleton · Annotated form with metrics and dashboards
 
 ## Glyph and width standards
 
@@ -108,10 +110,15 @@ Every diagram MUST pass `../../bin/amw-validate-ascii.py` before delivery. Flow:
 Each TECH file under `./references/` follows the standard TOC: What it does · When to use · How it works · Minimal example · Gotchas · Cross-references.
 
 - [TECH-state-guards-and-actions](./references/TECH-state-guards-and-actions.md) — `[guard]` prefix + `/{action}` suffix
+> [TECH-state-guards-and-actions.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-state-machine-legend](./references/TECH-state-machine-legend.md) — `[STATE]` boxes + `-->` / `..>` arrows
+> [TECH-state-machine-legend.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-every-state-has-ingress-egress](./references/TECH-every-state-has-ingress-egress.md) — verification rule for correctness
+> [TECH-every-state-has-ingress-egress.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-metrics-per-transition](./references/TECH-metrics-per-transition.md) — link every edge to a dashboard
+> [TECH-metrics-per-transition.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [examples](./references/examples.md) — skeleton + annotated-with-metrics rendered diagrams
+> [examples.md] Standard legend · Skeleton · Annotated form with metrics and dashboards
 
 <!-- end of references -->
 
@@ -123,6 +130,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 - At least one `TECH-*.md` consulted and cited in the report.
 - Output passes Non-negotiables (below).
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Output validated by `bin/amw-validate-ascii.py`.
 - Cross-skill hand-offs documented.
 - User-facing filename is descriptive English.
@@ -132,6 +140,7 @@ Verify all items before reporting complete. FAIL on any triggers a remediation l
 Two outputs per invocation:
 
 1. **Artifact(s)** — monospaced ASCII state machines + journey storyboards. Output path is determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (user-supplied path → framework convention → existing `./design/` → `./design/diagrams/` → `/tmp/amw-text-visual-state-<slug>/`).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
 2. **Job-completion report** — `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<slug>_<8-char-hash>.md` containing: Inputs · Method · Artifacts · Checklist · Deviations. Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. **Every artifact MUST be linked from the report.**
 

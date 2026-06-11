@@ -45,11 +45,12 @@ When the user supplies BOTH a named style AND a new primary colour, both are app
 
 ## The two remix modes
 
-The detailed technical contract for both modes lives in `references/TECH-theme-swap.md`. Load that file before any remix. Summary here:
+The detailed technical contract for both modes lives in [TECH-theme-swap](references/TECH-theme-swap.md). Load that file before any remix. Summary here:
+> [TECH-theme-swap.md] Mode 1 — Named-vocabulary remix · Mode 2 — OKLCH hue rotation · Combined Mode 1 + Mode 2 · Render-test contract · Anti-patterns (do not do) · Versioning
 
 ### Mode 1 — Named-vocabulary remix
 
-1. **Identify the target style.** Read `skills/amw-design-system-presets/references/catalogue.md` to confirm the style ID. If the user supplied a description only (e.g. "make it brutalist"), match to the closest catalogue entry and confirm with the user before continuing.
+1. **Identify the target style.** Read [catalogue](../amw-design-system-presets/references/catalogue.md) to confirm the style ID. If the user supplied a description only (e.g. "make it brutalist"), match to the closest catalogue entry and confirm with the user before continuing.
 2. **Load the preset's token block.** Read the full `S-NNN-<slug>.md` file. The Token Block section is the authoritative source for the new bundle.
 3. **Identify which source tokens to preserve.** The source design's BRAND identity (logo wordmark colour, brand name typography if it is part of the wordmark, registered colour like Coca-Cola red) overrides the preset. Other source tokens (component colours, body text, accents) are REPLACED by the preset's tokens.
 4. **Emit the merged bundle.** Output is a complete token set: preset tokens + preserved brand tokens, with conflicts resolved in favour of brand tokens per `amw-design-system-presets/SKILL.md` non-negotiable §5.
@@ -71,7 +72,7 @@ The hue-rotation mode preserves the source design's structural identity (typogra
 
 1. **Determine remix mode.** If the user named a style (catalogue entry), Mode 1. If the user supplied a colour, Mode 2. If both, Mode 1 with the user's colour driving the palette swap atop the preset's structure.
 2. **Load source tokens.** Parse the source artifact (DESIGN.md, JSON, URL, or HTML) into a canonical internal token shape.
-3. **Run the remix algorithm** (Mode 1 or 2 per above, fully specified in `references/TECH-theme-swap.md`).
+3. **Run the remix algorithm** (Mode 1 or 2 per above, fully specified in [TECH-theme-swap](references/TECH-theme-swap.md)).
 4. **Verify invariants** (Mode 1: the preset's "breaks-if" rules; Mode 2: WCAG-AA contrast on the rotated palette).
 5. **Emit deliverables.**
 
@@ -126,7 +127,7 @@ The `remix-tokens.json` shape:
 
 ## Non-negotiables
 
-1. **The catalogue is canonical for Mode 1.** Read `skills/amw-design-system-presets/references/catalogue.md` to resolve the target style. Do NOT remix into an unnamed "brutalist-like" thing from memory — pick the catalogue entry.
+1. **The catalogue is canonical for Mode 1.** Read [catalogue](../amw-design-system-presets/references/catalogue.md) to resolve the target style. Do NOT remix into an unnamed "brutalist-like" thing from memory — pick the catalogue entry.
 2. **Brand tokens override preset tokens** (Mode 1). The source design's wordmark colour, brand-name font, and other identity-defining tokens are PRESERVED. The preset fills the structural slots (radius, shadow, motion, scale).
 3. **OKLCH preservation in Mode 2.** Lightness and chroma are preserved per-token; only hue rotates. Neutrals stay neutral.
 4. **Gamut clamping is required, not optional.** If any rotated colour exits sRGB or P3, clamp chroma down. Record the clamp.
@@ -145,8 +146,10 @@ The `remix-tokens.json` shape:
 
 ## Resources
 
-- [`references/TECH-theme-swap.md`](references/TECH-theme-swap.md) — full Mode 1 and Mode 2 algorithms, OKLCH math, gamut clamping, brand-token preservation rules
-- The named-vocabulary catalogue: [`amw-design-system-presets/references/catalogue.md`](../amw-design-system-presets/references/catalogue.md)
+- [TECH-theme-swap](references/TECH-theme-swap.md) — full Mode 1 and Mode 2 algorithms, OKLCH math, gamut clamping, brand-token preservation rules
+> [TECH-theme-swap.md] Mode 1 — Named-vocabulary remix · Mode 2 — OKLCH hue rotation · Combined Mode 1 + Mode 2 · Render-test contract · Anti-patterns (do not do) · Versioning
+- The named-vocabulary catalogue: [catalogue](../amw-design-system-presets/references/catalogue.md)
+> [catalogue.md] How the author-agent uses this · Index — 45 styles across 8 aesthetic positions · Selecting styles — quick decision rules · Wave 2 — Round 4 additions (S-010b, S-046..S-083)
 - The render-test scaffold: [`amw-design-system-presets/references/_test-skeleton.html`](../amw-design-system-presets/references/_test-skeleton.html)
 - Input pipelines: [`amw-design-extract`](../amw-design-extract/SKILL.md), [`amw-design-md`](../amw-design-md/SKILL.md), [`amw-dev-browser`](../amw-dev-browser/SKILL.md)
 - Companion remix-adjacent skills: [`amw-design-grade`](../amw-design-grade/SKILL.md), [`amw-design-battle`](../amw-design-battle/SKILL.md)

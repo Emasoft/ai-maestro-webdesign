@@ -9,6 +9,7 @@ version: 0.1.0
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **GATED — icons / logos / technical SVG / patterns / animations only.**
 > Characters, scenes, mascots, portraits, avatars, people, animals, and any "draw me X" illustration request are **forbidden** by [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3 ("AI-drawn SVG illustrations / mascots / scenes"). If the user asks for any of those, STOP and explain: "design-principles bans AI-drawn character/scene SVG; use a real asset or a placeholder box instead." Do not attempt a "quick one" or a "simplified" version — the ban is absolute.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 
 ## Overview
 
@@ -57,6 +58,7 @@ interiors / environments); animals (any body plan); abstract decorative
 art ("hand-drawn", "painterly", "mood piece"); anything substituting for a
 real stock / commissioned illustration. On any of these: stop, cite
 [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) item 3, and
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 offer (1) a placeholder box, (2) routing to [SKILL](../amw-design-principles/SKILL.md), or (3) real assets outside this plugin.
 
 ## Trigger conditions (narrow, technical)
@@ -97,6 +99,7 @@ WRITE SVG → RENDER → VIEW PNG → ASSESS → FIX → RENDER → VIEW → ...
 
 Apply these in the SVG while building. Each is expanded in
 [advanced-techniques](references/advanced-techniques.md) and the matching
+> [advanced-techniques.md] Filter Chain Cookbook · feTurbulence Parameter Guide · feComponentTransfer Color Grading · Material Simulation · Illustration Composition Templates · Atmospheric and Environmental Effects · Icons with Depth · Logos with Dimension · Animation (CSS + SMIL) · Data Visualizations · Patterns and Backgrounds · Power Features Reference · Character Construction Templates
 `TECH-*.md` file in `references/`.
 
 - **Multi-stop gradients (4+ stops)** — two-stop is flat; use 4-8 with hue
@@ -128,12 +131,17 @@ Apply these in the SVG while building. Each is expanded in
 ## Resources
 
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — item 3 is the gating rule; re-read if tempted to stretch scope.
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - [color-system](../amw-design-principles/color-system.md) — use `oklch` tokens; never raw `#000` / `#fff`.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [typography-system](../amw-design-principles/typography-system.md) — SVG text follows the plugin's type scale.
+> [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - `../../bin/amw-svg-render.py` — the render-verify-finish loop (subcommands: `render`, `finish`, `status`, `reset`).
 - [SKILL](../amw-diagram-svg/SKILL.md) / [SKILL](../amw-ascii-to-svg/SKILL.md) — upstream sources.
 - [CATALOG](references/CATALOG.md) — full per-TECH index.
+> [CATALOG.md] Decision tree (top-down) · Per-technique TOC index · Cross-references
 - [advanced-techniques](references/advanced-techniques.md) — historical cookbook from the upstream skill. **Character-construction sections are OUT OF SCOPE** for this GATED skill; consult only when debugging a shared filter technique.
+> [advanced-techniques.md] Filter Chain Cookbook · feTurbulence Parameter Guide · feComponentTransfer Color Grading · Material Simulation · Illustration Composition Templates · Atmospheric and Environmental Effects · Icons with Depth · Logos with Dimension · Animation (CSS + SMIL) · Data Visualizations · Patterns and Backgrounds · Power Features Reference · Character Construction Templates
 - [README](examples/README.md) — in-scope examples (icons, logos, patterns, data-vis, animations). Character examples archived to `docs_dev/examples_archive/svg-creator-characters/`.
 
 ## Non-negotiables
@@ -150,11 +158,13 @@ Apply these in the SVG while building. Each is expanded in
 ## Error Handling
 
 See [TECH-error-handling](references/TECH-error-handling.md) for the full
+> [TECH-error-handling.md] What it does · When to use · Symptom table · Cross-references
 symptom → cause → fix table (9 known failure modes, one canonical fix each).
 
 ## Technique selection and references
 
 See [CATALOG](references/CATALOG.md) for the full decision tree (top-down,
+> [CATALOG.md] Decision tree (top-down) · Per-technique TOC index · Cross-references
 by user-intent keyword) and the per-TECH index. Every technique in this
 skill is a single `TECH-*.md` file under `./references/`. Read only the
 file whose topic matches the current need.
@@ -169,6 +179,7 @@ Before reporting complete (FAIL on any item triggers a remediation loop):
 - At least one `TECH-*.md` consulted and cited.
 - Output passes `## Non-negotiables`.
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Output rendered/validated via `bin/amw-svg-render.py`.
 - Cross-skill hand-offs documented.
 - Filename is descriptive English (`Logo — Acme Badge.svg`, not `out.svg`).
@@ -178,5 +189,6 @@ Before reporting complete (FAIL on any item triggers a remediation loop):
 TWO outputs (artifact SVG + job-completion report). Full contract in
 [skill-completion-and-output-contract](../amw-design-principles/references/skill-completion-and-output-contract.md)
 and [project-output-routing](../amw-design-principles/references/project-output-routing.md).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 Report path: `$MAIN_ROOT/reports/webdesigner/<ts>_<slug>_<hash>.md`.
 Every artifact MUST be linked from the report.
