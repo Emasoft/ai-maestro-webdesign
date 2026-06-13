@@ -155,6 +155,8 @@ When the recipe does not cover a situation, fall back to these in order. Higher-
 
 6. **Low-fi iteration is cheaper than Phase B rework.** When in doubt during Phase A, iterate. When in doubt during Phase B, stop and re-ask the user rather than ship.
 
+7. **Recall before acting; capture after learning.** Before debugging a recurring problem or making a non-obvious design / architecture decision, invoke the **amw-memory-recall** skill — search the project memory by SYMPTOM ("have we hit this before?") so a prior solution is reused, not re-derived. After solving something non-obvious, or on receiving a correction from the user, invoke **amw-memory-write** to capture it (one fact, symptom-indexed description). The full protocol is `rules/memory-protocol.md`.
+
 ---
 
 ## 7. Operations (nominal workflow)
