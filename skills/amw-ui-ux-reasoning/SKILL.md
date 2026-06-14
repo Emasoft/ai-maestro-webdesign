@@ -66,31 +66,22 @@ All outputs are descriptive anchors, not production tokens. Any palette chosen h
 
 1. Confirm activation: only proceed if design-principles has already attempted Rule 1 context-gathering and found no anchors.
 2. Acknowledge the fallback in one sentence: "No anchors found — three visual-DNA candidates from 67 styles / 161 palettes / 57 font pairings, filtered against ai-slop."
-3. Present three style candidates (name, 3-5 keywords, best-for, one-sentence feel), pre-filtered against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
-> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
+3. Present three style candidates — each: name, 3-5 keywords, best-for, one-sentence feel — pre-filtered against the **ai-slop-avoid** checklist (link + TOC under Overview above).
 4. Present three palette candidates (mood tag, primary/secondary/CTA/background/text, one-sentence industry fit) and three font-pair candidates (heading + body, pairing rationale, tone).
-5. Ask the user to pick one from each column (or mix); do not emit HTML, ASCII wireframes, or CSS — those belong to `../amw-ascii-sketch/`.
+5. Ask the user to pick one from each column, or mix across columns; do not emit HTML, ASCII wireframes, or CSS — those belong to `../amw-ascii-sketch/`.
+
+This skill's only job is to collapse an infinite-choice space into a confirmable shortlist — never a single recommendation.
 
 ## Usage
 
-When design-principles routes here, emit exactly one response:
-
-1. **Acknowledge the fallback** (one sentence).
-2. **Three style candidates** — each: name, 3-5 keywords, best-for, one-sentence feel.
-3. **Three palette candidates** — each: mood tag, primary/secondary/CTA/background/text, one-sentence industry fit.
-4. **Three font-pair candidates** — each: heading + body, why the pair works, tone.
-5. **Ask the user to pick one from each column, or mix across columns.**
-
-Do not generate HTML, ASCII wireframes, or CSS. This skill's only job is to collapse an infinite-choice space into a confirmable shortlist.
+See **Instructions** above — when design-principles routes here, emit exactly one response covering all five steps (acknowledge fallback → 3 style → 3 palette → 3 font-pair candidates → ask the user to pick one from each column, or mix). For each font-pair candidate state heading + body, why the pair works, tone.
 
 ## Non-negotiables
 
 - **Never runs on the happy path.** If any anchor exists (reference URL, brand doc, existing component, screenshot), skip this skill entirely.
-- **Every candidate is screened against [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) BEFORE emission.** Inter, Roboto, Arial, system-default stacks are never proposed. Purple-blue linear gradients, rounded-card + 4px accent bar, AI-illustrated mascots — all filtered out at source.
-> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
+- **Every candidate is screened against ai-slop-avoid BEFORE emission** (link + full checklist embedded under Overview). Inter, Roboto, Arial, system-default stacks are never proposed. Purple-blue linear gradients, rounded-card + 4px accent bar, AI-illustrated mascots — all filtered out at source.
 - **At least three candidates per dimension.** Never a single recommendation — matches design-principles Rule 2.
-- **Palettes must be oklch-convertible** per [color-system](../amw-design-principles/color-system.md). If a palette can't be cleanly re-expressed in oklch, drop it.
-> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+- **Palettes must be oklch-convertible** per **color-system** (link + TOC under Library inventory). If a palette can't be cleanly re-expressed in oklch, drop it.
 - **Font pairings must satisfy [typography-system](../amw-design-principles/typography-system.md)** — two-family limit, full weight coverage, Google-Fonts-available.
 > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 - **Does not emit HTML or code.** Output is named anchors. Handoff to `../amw-ascii-sketch/` is mandatory.
@@ -128,7 +119,7 @@ Verify every item before reporting complete. FAIL triggers a remediation loop.
 - Inputs captured verbatim (no silent paraphrasing).
 - At least one `TECH-*.md` from `references/` was consulted and cited.
 - Output passes the Non-negotiables section.
-- No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+- No AI-slop per the **ai-slop-avoid** checklist (link + TOC under Overview).
 - Cross-skill hand-offs documented.
 - User-facing filename is descriptive English.
 
@@ -150,7 +141,8 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Ever
 
 ## Resources
 
-- Upstream: [amw-design-principles](../amw-design-principles/SKILL.md) (orchestrator), [color-system](../amw-design-principles/color-system.md), [typography-system](../amw-design-principles/typography-system.md), [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md), [question-templates](../amw-design-principles/question-templates.md).
+- Upstream: [amw-design-principles](../amw-design-principles/SKILL.md) (orchestrator); **color-system**, **typography-system**, **ai-slop-avoid** (each linked with its TOC embedded above); and [question-templates](../amw-design-principles/question-templates.md).
+> [question-templates.md] Universal must-ask (every design task) · Task-specific additions · Questions NOT to ask · Suggested format · Quick questions before we start · Design Read — declare before iterating · Tip
 - Downstream: [amw-ascii-sketch](../amw-ascii-sketch/SKILL.md) — resumes variant exploration with picked anchors.
 
 ## Error Handling
