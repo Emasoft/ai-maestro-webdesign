@@ -7,146 +7,51 @@ version: 0.1.0
 # AMW Design.md
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
-> This skill owns the DESIGN.md format end-to-end (author, parse, lint, validate, audit, convert, emit companions). It does NOT replace the orchestrator. DESIGN.md is one of several optional input formats accepted by the plugin (peer to ASCII wireframes, mockup images, slideshows, URL "copy this style" briefs, and prose). Triggers are DESIGN.md-specific only.
+> **This skill was split into five focused children.** It now routes to them and exists for backward compatibility — the `/amw-design-md-*` commands and every existing cross-reference still resolve here. DESIGN.md is one of several optional input/output formats the plugin accepts (peer to ASCII wireframes, mockup images, slideshows, URL "copy this style" briefs, and prose).
 
-## Overview
+## What this skill is now
 
-Owns the DESIGN.md format end-to-end: author, lint, validate, audit, convert, and emit companion files (tokens.css, tokens.json, component-inventory.md). Supports both the official Variant 1 (`<@google/design.md>`) and the community 9-section Variant 2.
+A router. The DESIGN.md capability (author, lint, extract, audit, convert, emit companions) outgrew a single skill's token budget, so it was split into five domain skills. Pick the child that matches the operation:
+
+| If you want to… | Use |
+|---|---|
+| Look up the **format** — the two specs, templates, frontmatter schema, the 13 authoring rules, the CLAUDE.md adoption snippet | [amw-design-md-spec](../amw-design-md-spec/SKILL.md) |
+| **Author** a new DESIGN.md from a brief / interview / brand archetype / 5-question flow (lint + WCAG-AA contrast gate, extended sections, `{token.ref}` interpolation, STYLE-REFERENCES.md, CJK) | [amw-design-md-author](../amw-design-md-author/SKILL.md) |
+| **Extract** a DESIGN.md from a live URL / Tailwind config / codebase / Figma (component + state detection, asset export, fingerprinting) | [amw-design-md-extract](../amw-design-md-extract/SKILL.md) |
+| **Lint / validate / audit / score** a DESIGN.md (5-pass audit, quality rubric, validation-failure recovery, ai-slop check, diff) | [amw-design-md-audit](../amw-design-md-audit/SKILL.md) |
+| **Convert / apply / export** — Variant 2→1, emit companions (tokens.css/json, inventory, usage-prompt), showcase HTML, DTCG export, token-enforcement, cross-project library, as-input to the wireframe-builder | [amw-design-md-convert](../amw-design-md-convert/SKILL.md) |
 
 ## Activation
 
-Callable directly via the nine `/amw-design-md-*` commands. Also invoked by the orchestrator when the user provides a DESIGN.md file as input or asks for one as a deliverable. In main-agent mode the orchestrator may delegate to one of three sub-agents (`amw-design-md-author-agent`, `amw-design-md-extractor-agent`, `amw-design-md-auditor-agent`) which read this SKILL.md and its references to do their job.
-
-This skill is **autonomous and self-contained** — any agent can read this SKILL.md and the referenced files and execute the recipes without re-routing through the orchestrator.
+Any agent landing here should read the table above and dispatch to the matching child SKILL.md, which is **autonomous and self-contained**. The `/amw-design-md-*` commands continue to work; in main-agent mode the orchestrator delegates to one of three sub-agents (`amw-design-md-author-agent`, `amw-design-md-extractor-agent`, `amw-design-md-auditor-agent`), which read the relevant child skill's SKILL.md and references to do their job.
 
 ## Position in flow
 
-INPUT or OUTPUT (peer status). DESIGN.md is one of six input formats the plugin accepts (peer to ASCII wireframe, mockup image, slideshow, URL "copy this style", prose). When the user provides a DESIGN.md, the parser/validator path here normalizes it into canonical tokens for downstream Phase B agents (notably `amw-wireframe-builder-agent`). When the user asks for a DESIGN.md as the deliverable, the author path here produces a Variant 1 file (plus optional companions).
+INPUT or OUTPUT (peer status). DESIGN.md is one of six input formats the plugin accepts (peer to ASCII wireframe, mockup image, slideshow, URL "copy this style", prose). When the user provides a DESIGN.md, the parse/validate path ([audit](../amw-design-md-audit/SKILL.md) + [convert](../amw-design-md-convert/SKILL.md)) normalizes it into canonical tokens for downstream Phase B agents (notably `amw-wireframe-builder-agent`). When the user asks for a DESIGN.md as the deliverable, the [author](../amw-design-md-author/SKILL.md) or [extract](../amw-design-md-extract/SKILL.md) path produces a Variant 1 file (plus optional companions via [convert](../amw-design-md-convert/SKILL.md)).
 
 ## What this skill is NOT
 
 - Not a brand database. The pre-paywall snapshot of 58 example DESIGN.md files lives in `docs_dev/extracted/google-labs/awesome-design-md-pre-paywall-main/` and is reference-only.
 - Not a UI generator. After extracting tokens or authoring a DESIGN.md, the actual HTML is built by `amw-wireframe-builder-agent` via the `amw-ascii-to-html` skill.
-- Not the orchestrator. Generic "design system" requests route to `amw-design-principles`. Only DESIGN.md-specific requests reach here.
+- Not the orchestrator. Generic "design system" requests route to `amw-design-principles`. Only DESIGN.md-specific requests reach the children.
 
-## Trigger conditions
+## Hard rules (inherited by every child)
 
-Fires on: "create/author/make a DESIGN.md"; "extract DESIGN.md from <url|tailwind config|codebase>"; "lint/validate my DESIGN.md"; "audit/five-pass-audit DESIGN.md"; "convert Variant 2 DESIGN.md to Variant 1"; "emit DESIGN.md companions / tokens.css / tokens.json"; "diff two DESIGN.md files".
+1. Variant 1 (official `<@google/design.md>`) is the canonical output format. Variant 2 is accepted as input via the [convert](../amw-design-md-convert/SKILL.md) converter.
+2. Every authored / extracted DESIGN.md MUST pass `bin/amw-design-md-lint.sh` before delivery; lint failure halts delivery. WCAG-AA contrast failures (via `bin/amw-design-md-contrast.py`) go to `warnings`, not silent omission.
+3. No paywalled service, no API key beyond what `amw-dev-browser` already requires, no Chrome extension.
+4. No child re-emits broad design vocabulary in tool-call text — that would re-trigger the orchestrator. See [skill-invocation-protocol](../amw-design-principles/references/skill-invocation-protocol.md).
 
-Does NOT fire on generic "design a landing page" / "extract design tokens from <url>" / "build a token spec" / "make a UI" — those route to `amw-design-principles` (orchestrator) or `amw-design-extract`.
+## Reference material not (yet) owned by a child
 
-## How it works
-
-The skill ships:
-
-- **Two canonical specs** — [canonical-spec-google-alpha](references/canonical-spec-google-alpha.md) (Variant 1, official `<@google/design.md>`, primary) and [community-9-section-spec](references/community-9-section-spec.md) (Variant 2, VoltAgent community 9-section, accepted-with-mapping).
-- **TECH-NN reference files** under `references/TECH-*.md` covering frontmatter, color tokens, typography tokens, component tokens, token references, do/don'ts authoring, URL extraction, codebase extraction, multi-page extraction, Tailwind conversion, validation/lint, companion files, V2→V1 conversion, validation failure recovery, DESIGN.md as input, Figma tokens bridge, DTCG export, Figma input path ([TECH-18](references/TECH-18-figma-input-path.md)), apply / token-enforcement ([TECH-19](references/TECH-19-design-md-apply.md)), cross-project design library ([TECH-20](references/TECH-20-design-library.md)), and CJK localization ([TECH-cjk-localization](references/TECH-cjk-localization.md)).
-- **Three templates** under `references/` — Variant 1 skeleton, Variant 2 skeleton, and a CLAUDE.md snippet for projects that adopt DESIGN.md.
-- **Two audit/quality docs** — [review-rubric](references/review-rubric.md) (DESIGN.md quality scoring) and [audit-passes](references/audit-passes.md) (5-pass audit: structural / drift / a11y / completeness / consistency).
-- **Ten bin scripts** under `<plugin-root>/bin/amw-design-md-*` — pure-local Python and TypeScript ports plus thin shell wrappers around the official `npx @google/design.md` CLI.
-
-## Prerequisites
-
-Standard plugin runtime — no skill-specific prerequisites beyond the global plugin dependencies.
-
-## Instructions
-
-1. Identify the requested operation: author, lint/validate, extract from URL, extract from Tailwind config, extract from codebase, audit, convert Variant 2 → Variant 1, emit companion files, or diff two revisions.
-2. For authoring: read [canonical-template](references/canonical-template.md), fill from brief/interview/codebase/URL using the appropriate bin script, then validate with `bin/amw-design-md-lint.sh`.
-3. For extraction: choose `bin/amw-design-md-from-url.sh`, `bin/amw-design-md-from-tailwind.mjs`, or `bin/amw-design-md-from-codebase.py` based on the source type.
-4. For auditing: spawn `amw-design-md-auditor-agent`; the auditor runs the 5-pass audit and writes a `<file>.critique.md` adjacent to the input.
-5. For companion file generation: run `bin/amw-design-md-emit-companions.py` to produce `tokens.css`, `tokens.json`, `component-inventory.md`, and `usage-prompt.md`.
-6. Validate every DESIGN.md output before delivery; fail fast if the linter reports errors.
-
-## Operations the skill exposes
-
-### Author a DESIGN.md
-Read [canonical-template](references/canonical-template.md). Fill from a brief / interview / codebase scan / URL extraction (delegating to one of the bin scripts as appropriate). Validate via `bin/amw-design-md-lint.sh` before declaring done.
-
-### Lint / validate a DESIGN.md
-Run `bin/amw-design-md-lint.sh <path>` for the official linter. Run `bin/amw-design-md-validate.py <path>` for offline pure-Python validation (frontmatter + section order + token-reference resolution).
-
-### Extract a DESIGN.md from a live URL
-Invoke `bin/amw-design-md-from-url.sh <url> -o <output-path>` which delegates DOM and computed-style extraction to the plugin's existing `amw-dev-browser` skill, then emits Variant 1 frontmatter.
-
-### Extract a DESIGN.md from a Tailwind config
-Run `node bin/amw-design-md-from-tailwind.mjs --config <tailwind.config.ts> --css <globals.css> --out <DESIGN.md>`. Pure-local Node.js port of the upstream tool. Resolves CSS-var references and annotates color pairs with WCAG-AA contrast.
-
-### Extract a DESIGN.md from a codebase scan
-Run `bin/amw-design-md-from-codebase.py <project-root>`. Pure-Python scanner that detects shadcn/Tailwind/Chakra/vanilla-CSS/styled-components and emits a draft DESIGN.md.
-
-### Audit a DESIGN.md
-Spawn `amw-design-md-auditor-agent`. The auditor runs the 5-pass audit per [audit-passes](references/audit-passes.md) and writes a `<file>.critique.md` adjacent to the input.
-
-### Convert Variant 2 → Variant 1
-Run `bin/amw-design-md-convert-v2-to-v1.py <variant2.md> <variant1.md>`. Maps the 9-section community format to the canonical 8-section + YAML frontmatter format.
-
-### Emit companion files
-Run `bin/amw-design-md-emit-companions.py <DESIGN.md> --out-dir <output-dir>`. Emits `tokens.css` (CSS custom properties), `tokens.json` (W3C Design Tokens), `component-inventory.md`, and `usage-prompt.md`.
-
-### Generate a visual showcase HTML
-Run `bin/amw-design-md-showcase.py <DESIGN.md> -o <out.html>`. Emits a self-contained single-file HTML showcase that renders every color token (swatches + WCAG-AA contrast badges for `X` / `on-X` pairs), every typography role (live specimens at the declared size / weight / line-height), every spacing / rounded / elevation step (visual demos), and every declared component (rendered button / input / card / chip examples with resolved token references). Author-side QA aid used before delivery. Pure stdlib (pyyaml optional). Output is fully offline-safe — no remote fonts, no remote stylesheets, no JS.
-
-### Diff two DESIGN.md revisions
-Run `bin/amw-design-md-diff.sh <a.md> <b.md>`. Wrapper around `npx @google/design.md diff`.
-
-## When the result is consumed downstream
-
-When the user provides a DESIGN.md and then proceeds to Phase B (HTML rendering), `amw-wireframe-builder-agent` reads the DESIGN.md, validates it via `bin/amw-design-md-lint.sh`, and treats its tokens as canonical. On lint failure, the wireframe-builder reports and STOPS — the DESIGN.md path is symmetric with brand-researcher's extracted tokens, ascii-sketch's approved variant, and prose. See [TECH-15-design-md-as-input](references/TECH-15-design-md-as-input.md).
-
-## Hard rules
-
-1. The skill produces Variant 1 (official `<@google/design.md>`) as canonical output by default. Variant 2 is accepted as input via the converter.
-2. The skill runs no paywalled service, no API key beyond what `amw-dev-browser` already requires, and no Chrome extension. The official CLI is `npx`-installable, no API key, no remote calls.
-3. The skill never re-emits broad design vocabulary in tool-call text — that would re-trigger the orchestrator. See [skill-invocation-protocol](../amw-design-principles/references/skill-invocation-protocol.md).
-4. Every authored DESIGN.md MUST pass `bin/amw-design-md-lint.sh` before being delivered. Lint failure halts delivery.
-5. WCAG-AA contrast checks via `bin/amw-design-md-contrast.py` are run on every authored DESIGN.md. Failures go to `warnings`, not silent omission.
-
-## Output
-
-Produces a single artifact at the path specified in §Operations — a DESIGN.md file (Variant 1) plus optional companion files.
-
-## Error Handling
-
-On failure, the skill emits a non-zero exit code or returns a structured error in the response. See bin/ scripts for tool-specific error semantics.
-
-## Examples
-
-**Author DESIGN.md from a brief (Variant 1):** Input "fintech dashboard, brand `#0F4C81`, secondary `#FFD23F`, Inter body / Manrope headings, WCAG AA." Lint gate runs `amw-design-md-lint.sh`; contrast pre-flight runs `amw-design-md-contrast.py`. Output: `DESIGN.md` (Variant 1) plus companions `tokens.css`, `tokens.json`, `component-inventory.md`, `usage-prompt.md`.
-
-**Extract DESIGN.md from a live URL:** Input `https://stripe.com`. `amw-design-md-from-url.sh` delegates to `amw-dev-browser/` for DOM + computed styles, then transcribes faithfully into Variant 1. Output: `stripe.DESIGN.md` with one-to-one source attribution.
-
-See worked examples in references/.
+Earlier design-md reference files that predate the split remain in `references/` here for backward compatibility (per-token TECH docs `TECH-02`…`TECH-13`, `TECH-16`, the brand fingerprint catalog `brand-*.md`, `TECH-86/91/94/96`, `TECH-design-contract.md`, the `TECH-extractor-*` color/dark-mode/pseudo-element/typography-role docs, `design-decision-rules.md`, `writing-voice.md`). They are not on any child's progressive-discovery path; consult them directly when a deep token-extraction or brand-fingerprint detail is needed.
 
 ## Resources
 
-- [ai-slop-avoid](./ai-slop-avoid.md) — DESIGN.md-specific anti-patterns (token authoring, structural, prose, Variant 2-specific, conversion, companion-file slop)
-- [canonical-spec-google-alpha](./references/canonical-spec-google-alpha.md) — Variant 1 spec, source-cited
-- [community-9-section-spec](./references/community-9-section-spec.md) — Variant 2 spec, source-cited
-- [extension-sections-10-14](./references/extension-sections-10-14.md) — optional Naming / Page Specs / Composite Components / Token Mapping / i18n
-- [canonical-template](./references/canonical-template.md) — Variant 1 skeleton
-- [community-9-section-template](./references/community-9-section-template.md) — Variant 2 skeleton
-- [claude-md-snippet](./references/claude-md-snippet.md) — CLAUDE.md addition for projects using DESIGN.md
-- [review-rubric](./references/review-rubric.md) — quality-scoring rubric
-- [audit-passes](./references/audit-passes.md) — 5-pass audit
-- [TECH-01-yaml-frontmatter](./references/TECH-01-yaml-frontmatter.md) through [TECH-17-dtcg-export](./references/TECH-17-dtcg-export.md) — per-technique reference files (frontmatter, tokens, extraction, validation, companions, V2→V1, DESIGN.md-as-input, Figma bridge, DTCG export)
-- [TECH-18-figma-input-path](./references/TECH-18-figma-input-path.md) — user-facing instructions for the Figma → DESIGN.md path (Tokens Studio export + pre-flight checklist)
-- [TECH-19-design-md-apply](./references/TECH-19-design-md-apply.md) — apply / token-enforcement pipeline (raw-hex sweep, raw-px sweep, typography sweep, WCAG pair-check, Do's/Don'ts enforcement) used at code-gen time
-- [TECH-20-design-library](./references/TECH-20-design-library.md) — proposed cross-project DESIGN.md library at `~/.config/ai-maestro/design-library/` with CLI verbs list / use / show / remove / diff / preview / add
-- [TECH-cjk-localization](./references/TECH-cjk-localization.md) — CJK localization (JP/KO/ZH)
-- [TECH-21-style-references-companion](./references/TECH-21-style-references-companion.md) — STYLE-REFERENCES.md 6-section companion (Design Lineage / Peer / Anti / Component Gallery / Style Vocabulary / Cross-Medium)
-- [TECH-22-section-10-11-extended](./references/TECH-22-section-10-11-extended.md) — optional §10 Iteration Guide (numbered) + §11 Known Gaps
-- [TECH-23-section-9-agent-prompt-guide](./references/TECH-23-section-9-agent-prompt-guide.md) — optional §9 Agent Prompt Guide (CSS snippets / authoring sentence / "do not use" / voice descriptor)
-- [TECH-24-authoring-rules-spec](./references/TECH-24-authoring-rules-spec.md) — DESIGN_MD_SPEC 13 authoring rules (section order, heading format, backticks, elevation columns, etc.)
-- [TECH-25-brand-archetypes](./references/TECH-25-brand-archetypes.md) — 5-archetype pre-fill library (Dark Technical / Luxury Automotive / Fintech / Developer Platform / AI ML)
-- [TECH-26-extended-sections-7-8](./references/TECH-26-extended-sections-7-8.md) — optional §7-ext Motion + §8-ext Accessibility for motion-heavy / a11y-heavy brands
-- [TECH-27-token-interpolation](./references/TECH-27-token-interpolation.md) — {token.ref} interpolation + dead-reference detection (P1 lint)
-- [TECH-28-three-path-routing](./references/TECH-28-three-path-routing.md) — Path A (existing DESIGN.md) / Path B (4-item interview → variants → write) / Path C (one-off + mention DESIGN.md once)
-- [TECH-extractor-component-detection](./references/TECH-extractor-component-detection.md) — component detection (T-091) + state detection (T-094): five codebase patterns (cva/union/interface/switch/object-map) + URL DOM-landmark + ARIA-role table + boolean-prop / pseudo-class / variant-enum state cascade
-- [TECH-extractor-icon-asset-export](./references/TECH-extractor-icon-asset-export.md) — inline SVG icon export with role assignment (T-093) + raster asset export with alt-text inference (T-095) + `DESIGN.assets.json` manifest
-- [TECH-extractor-fingerprinting](./references/TECH-extractor-fingerprinting.md) — deterministic SHA-256 fingerprint of the canonical token block (T-096): canonicalization recipe + interpretation guide + cross-project library lookup
+- [amw-design-md-spec](../amw-design-md-spec/SKILL.md) — format, specs, templates, frontmatter schema, 13 authoring rules
+- [amw-design-md-author](../amw-design-md-author/SKILL.md) — author from brief / interview / archetype; lint + contrast gate
+- [amw-design-md-extract](../amw-design-md-extract/SKILL.md) — extract from URL / Tailwind / codebase / Figma
+- [amw-design-md-audit](../amw-design-md-audit/SKILL.md) — lint / validate / 5-pass audit / quality score / ai-slop
+- [amw-design-md-convert](../amw-design-md-convert/SKILL.md) — V2→V1, companions, showcase, DTCG, token-enforcement, library, as-input
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator (this skill is downstream)
-- [SKILL](../amw-dev-browser/SKILL.md) — browser primitive used by URL extraction
-- [SKILL](../amw-design-extract/SKILL.md) — sibling URL-extraction skill (looser format; this skill is the strict-format counterpart)
-- `<plugin-root>/bin/amw-design-md-showcase.py` — DESIGN.md → self-contained HTML visual-QA showcase (color swatches + WCAG-AA badges, type specimens, spacing / rounded / elevation demos, rendered component examples). Pure stdlib (pyyaml optional). Author-side QA before delivery.
-- `<plugin-root>/bin/amw-design-md-*.{sh,py,mjs}` — ten bin scripts (lint, validate, contrast, emit-companions, showcase, from-url, from-tailwind, from-codebase, convert-v2-to-v1, diff)
+- `<plugin-root>/bin/amw-design-md-*.{sh,py,mjs}` — ten bin scripts (lint, validate, contrast, emit-companions, showcase, from-url, from-tailwind, from-codebase, convert-v2-to-v1, diff) shared by the children

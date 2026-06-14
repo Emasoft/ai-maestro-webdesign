@@ -60,7 +60,12 @@ ai-maestro-webdesign/
 │   ├── amw-text-visual-retro/         ASCII retro grids / milestone timelines / heatmaps
 │   ├── amw-dev-browser/               The ONLY browser-automation primitive (input)
 │   ├── amw-design-extract/            URL → design tokens via designlang (multi-format dump: Tailwind, shadcn, React, Figma, CSS-vars, W3C tokens)
-│   ├── amw-design-md/                 Author / lint / extract / audit / convert DESIGN.md (Variant 1 official @google/design.md + Variant 2 community 9-section)
+│   ├── amw-design-md/                 ROUTER (backward-compat) — DESIGN.md capability split into the 5 children below; frontmatter name/description preserved so `/amw-design-md-*` commands + cross-refs still resolve. Keeps 39 orphan token/brand-fingerprint refs in references/.
+│   ├── amw-design-md-spec/            DESIGN.md format/spec/templates/frontmatter/13-authoring-rules (Variant 1 official @google/design.md + Variant 2 community 9-section)
+│   ├── amw-design-md-author/          Author a DESIGN.md from brief/interview/archetype/5-Q flow; lint + WCAG-AA contrast gate; extended sections, {token.ref} interpolation, STYLE-REFERENCES.md, CJK
+│   ├── amw-design-md-extract/         Extract a DESIGN.md from URL / Tailwind / codebase / Figma (component+state detection, asset export, SHA-256 fingerprint); faithful transcription
+│   ├── amw-design-md-audit/           Lint / validate / 5-pass audit / quality-score / ai-slop check / diff a DESIGN.md; diagnoses, never repairs
+│   ├── amw-design-md-convert/         Convert V2→V1, emit companions (tokens.css/json, inventory, usage-prompt), showcase HTML, DTCG export, token-enforcement apply, cross-project library, as-input to wireframe-builder
 │   ├── amw-ui-ux-reasoning/           Fallback reasoning library
 │   ├── amw-ux-designer/               UX process methodology
 │   ├── amw-ux-flows/                  PRD → wireframes + Mermaid
