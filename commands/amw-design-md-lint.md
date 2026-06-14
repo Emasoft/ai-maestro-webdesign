@@ -66,7 +66,7 @@ Combine both outputs into a single report:
 
 - [TECH-11-validation-and-lint](../skills/amw-design-md/references/TECH-11-validation-and-lint.md)
 > [TECH-11-validation-and-lint.md] What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
-- [TECH-14-validation-failure-recovery](../skills/amw-design-md/references/TECH-14-validation-failure-recovery.md)
+- [TECH-14-validation-failure-recovery](../skills/amw-design-md-audit/references/TECH-14-validation-failure-recovery.md)
 > [TECH-14-validation-failure-recovery.md] What it does · Recovery flowchart · Failure categories · Structural failures (S* — P0, must fix before delivery) · Token-quality failures (T* — P1, must fix before final delivery) · Reference failures (R* — P0) · Accessibility failures (A* — P0 for body text, P1 for others) · Content-integrity failures (C* — P2, warn only) · Iteration cap · What recovery does NOT do · Manual recovery flow for users · Cross-references
 - `bin/amw-design-md-lint.sh`
 - `bin/amw-design-md-validate.py`

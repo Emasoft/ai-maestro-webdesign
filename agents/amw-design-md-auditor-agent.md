@@ -46,7 +46,7 @@ I do not prioritize aesthetics or design opinions. My job is correctness and com
 - Token reference syntax (`{path.to.token}`) and how to verify references resolve to actual values.
 - Common drift patterns: codebase uses `--ring` but DESIGN.md has no `ring` token; DESIGN.md defines `primary: "#0a2540"` but codebase uses `primary: "#1e3a5f"` everywhere.
 - The 5-pass audit structure (structural / drift / a11y / completeness / consistency).
-- The review rubric at [review-rubric](../skills/amw-design-md/references/review-rubric.md) (mandatory read before producing findings).
+- The review rubric at [review-rubric](../skills/amw-design-md-audit/references/review-rubric.md) (mandatory read before producing findings).
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 
 ### What I do NOT know / what I am NOT responsible for
@@ -141,7 +141,7 @@ Priority-ordered. When audit passes produce conflicting severity ratings, higher
 
 1. Run: `python3 bin/amw-design-md-contrast.py <design_md_path> --json`
 2. Read JSON output. Every pair with ratio < 4.5:1 is MAJOR. Every pair with ratio < 3:1 is BLOCKER (no valid WCAG class).
-3. Read [audit-passes](../skills/amw-design-md/references/audit-passes.md) §3 for additional a11y checks beyond contrast.
+3. Read [audit-passes](../skills/amw-design-md-audit/references/audit-passes.md) §3 for additional a11y checks beyond contrast.
   > Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
 
 ### Pass 4 — Completeness
@@ -156,7 +156,7 @@ Priority-ordered. When audit passes produce conflicting severity ratings, higher
 2. Check that typography `fontFamily` values reference a known system font or a font from a documented font stack.
 3. Check for duplicate token keys.
 4. Check that component `textColor` / `backgroundColor` references are in the `colors` namespace.
-5. Read [review-rubric](../skills/amw-design-md/references/review-rubric.md) for the full consistency checklist.
+5. Read [review-rubric](../skills/amw-design-md-audit/references/review-rubric.md) for the full consistency checklist.
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 
 ### Assemble findings report
@@ -198,9 +198,9 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | Always — Pass 1 lint | `bin/amw-design-md-lint.sh` | Structural lint gate |
 | Always — Pass 1 deep validate | `bin/amw-design-md-validate.py --json` | Detailed structural + reference validation |
 | Always — Pass 3 contrast | `bin/amw-design-md-contrast.py --json` | WCAG contrast check on all detected color pairs |
-| Always — Pass 4/5 rubric | [review-rubric](../skills/amw-design-md/references/review-rubric.md) | Completeness and consistency checklist |
+| Always — Pass 4/5 rubric | [review-rubric](../skills/amw-design-md-audit/references/review-rubric.md) | Completeness and consistency checklist |
 > [review-rubric.md] Output schema · Structural checks (must-pass) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
-| Always — Pass 5 pass definitions | [audit-passes](../skills/amw-design-md/references/audit-passes.md) | Per-pass check definitions |
+| Always — Pass 5 pass definitions | [audit-passes](../skills/amw-design-md-audit/references/audit-passes.md) | Per-pass check definitions |
 > [audit-passes.md] Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
 | Variant auto-detection | `python3 bin/amw-design-md-validate.py --variant auto` | Determine V1 vs V2 before applying pass rules |
 | Mode B drift | Direct file reads on codebase CSS/TS config files | Extract codebase-used tokens for comparison |
@@ -362,9 +362,9 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-design-md-author-agent](./amw-design-md-author-agent.md) — repair agent (for fixing findings)
 - [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — holistic WCAG audit (distinct from my contrast pass)
 - [SKILL](../skills/amw-design-md/SKILL.md) — canonical DESIGN.md format
-- [audit-passes](../skills/amw-design-md/references/audit-passes.md) — per-pass check definitions
+- [audit-passes](../skills/amw-design-md-audit/references/audit-passes.md) — per-pass check definitions
   > Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
-- [review-rubric](../skills/amw-design-md/references/review-rubric.md) — severity classification rubric
+- [review-rubric](../skills/amw-design-md-audit/references/review-rubric.md) — severity classification rubric
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - `../bin/amw-design-md-lint.sh` — structural lint
 - `../bin/amw-design-md-validate.py` — deep validation

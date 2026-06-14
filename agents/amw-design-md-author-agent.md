@@ -245,9 +245,9 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | Companion output requested | `bin/amw-design-md-emit-companions.py` | Generate tokens.css, tokens.json, component-inventory.md, usage-prompt.md |
 | Lint gate (all paths) | `bin/amw-design-md-lint.sh` | Structural + semantic validation before delivery |
 | Always — DESIGN.md format spec | [SKILL](../skills/amw-design-md/SKILL.md) | Canonical Variant 1 structure, section semantics, token contracts |
-| DESIGN.md spec details | [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) | Full field-level spec for every YAML key |
+| DESIGN.md spec details | [canonical-spec-google-alpha](../skills/amw-design-md-spec/references/canonical-spec-google-alpha.md) | Full field-level spec for every YAML key |
 > [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
-| Interview-to-token mapping ambiguity | [TECH-15-design-md-as-input](../skills/amw-design-md/references/TECH-15-design-md-as-input.md) | How agents parse and use DESIGN.md tokens |
+| Interview-to-token mapping ambiguity | [TECH-15-design-md-as-input](../skills/amw-design-md-convert/references/TECH-15-design-md-as-input.md) | How agents parse and use DESIGN.md tokens |
 > [TECH-15-design-md-as-input.md] What it does · When this TECH applies · The wireframe-builder's flow when DESIGN.md is the input · Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape · Component tokens — direct passthrough · Failure paths · DESIGN.md fails lint · DESIGN.md is Variant 2 · DESIGN.md missing required fields · CLAUDE.md-coupled projects · Companion-file consumption · Symmetry with non-DESIGN.md inputs · Cross-references
 | AI-slop final gate | [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) | Ensure no slop patterns in prose sections |
 > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
@@ -408,7 +408,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-design-md-extractor-agent](./amw-design-md-extractor-agent.md) — URL / Tailwind / codebase extraction peer (routes through main-agent)
 - [amw-wireframe-builder-agent](./amw-wireframe-builder-agent.md) — primary consumer of produced DESIGN.md
 - [SKILL](../skills/amw-design-md/SKILL.md) — canonical DESIGN.md format and token contracts
-- [canonical-spec-google-alpha](../skills/amw-design-md/references/canonical-spec-google-alpha.md) — full Variant 1 spec
+- [canonical-spec-google-alpha](../skills/amw-design-md-spec/references/canonical-spec-google-alpha.md) — full Variant 1 spec
   > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 - `../bin/amw-design-md-from-codebase.py` — codebase extraction driver
 - `../bin/amw-design-md-from-tailwind.mjs` — Tailwind config evaluation driver

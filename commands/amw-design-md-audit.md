@@ -72,9 +72,9 @@ If BLOCKER findings exist, recommend:
 ## Cross-references
 
 - [amw-design-md-auditor-agent](../agents/amw-design-md-auditor-agent.md)
-- [audit-passes](../skills/amw-design-md/references/audit-passes.md)
+- [audit-passes](../skills/amw-design-md-audit/references/audit-passes.md)
 > [audit-passes.md] Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
-- [review-rubric](../skills/amw-design-md/references/review-rubric.md)
+- [review-rubric](../skills/amw-design-md-audit/references/review-rubric.md)
 > [review-rubric.md] Output schema · Structural checks (must-pass) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - `bin/amw-design-md-lint.sh` (Pass 1 backbone)
 - `bin/amw-design-md-contrast.py` (Pass 3 backbone)
