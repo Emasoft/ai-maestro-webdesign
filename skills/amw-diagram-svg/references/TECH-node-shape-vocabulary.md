@@ -42,6 +42,7 @@ Canonical mapping:
 | Database | cylinder | `<ellipse>` + `<rect>` stacked | Flat-top, curved-bottom |
 | User / Actor | circle | `<circle>` | Large radius for primary actor |
 | Decision | diamond | `<polygon>` with 4 points | Rhombus — wider than tall |
+| Input / Output (I/O) | parallelogram | `<polygon>` with 4 points | Slanted rect — the classic flowchart I/O shape |
 | External system | rect with dashed stroke | `<rect stroke-dasharray="10 5">` | Indicates "outside our system" |
 
 **Example snippets**
@@ -77,6 +78,13 @@ Canonical mapping:
 
 ```xml
 <polygon points="500,400 580,480 500,560 420,480"
+         fill="#f1f5f9" stroke="#0f172a" stroke-width="4"/>
+```
+
+**Input / Output (parallelogram):**
+
+```xml
+<polygon points="430,440 610,440 570,520 390,520"
          fill="#f1f5f9" stroke="#0f172a" stroke-width="4"/>
 ```
 
