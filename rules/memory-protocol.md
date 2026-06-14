@@ -27,8 +27,8 @@ scope roots and runs `memgrep recall`, degrading to `grep -rliE` when the binary
 | Scope | Root | Git | Contains |
 |---|---|---|---|
 | **LOCAL** | `~/.claude/projects/<slug>/memory/` | never pushed | machine-private: local paths, hostnames, credential hints |
-| **PROJECT** | `<git-root>/memory/` | tracked + pushed | project knowledge any contributor needs — NO sensitive data |
-| **USER** | `~/.claude/memory/` | never in any repo | cross-project, machine-independent |
+| **PROJECT** | `<repo>/.claude/project/memory/` (namespaced under `.claude/`; needs gitignore exception `.claude/**` + `!.claude/project/memory/**`) | tracked + pushed (in-repo) | project knowledge any contributor needs — NO sensitive data |
+| **USER** | `~/.claude/plugins/data/ai-maestro-janitor-ai-maestro-plugins/memory/` (the janitor's FIXED data dir — hard-coded, NOT `${CLAUDE_PLUGIN_DATA}`, which is the running plugin's dir) | never in any repo | cross-project, machine-independent |
 
 **Write routing:** local/secret/machine-specific → LOCAL; project knowledge any dev needs →
 PROJECT; about the user across projects → USER; **UNSURE → LOCAL** (safe scope). **Recall

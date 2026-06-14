@@ -25,8 +25,8 @@ recurring alert, RECALL first. Compose the three scope roots and search them in 
 
 ```bash
 LOCAL_MEM="$HOME/.claude/projects/$(pwd | sed 's#/#-#g')/memory"    # machine-private (paths, hostnames, creds hints)
-PROJECT_MEM="$(git rev-parse --show-toplevel 2>/dev/null)/memory"  # git-tracked, shared by every dev
-USER_MEM="$HOME/.claude/memory"                                    # cross-project, machine-independent
+PROJECT_MEM="$(git rev-parse --show-toplevel 2>/dev/null || pwd)/.claude/project/memory"  # git-tracked, in-repo, namespaced
+USER_MEM="$HOME/.claude/plugins/data/ai-maestro-janitor-ai-maestro-plugins/memory"  # janitor's FIXED data dir (hard-coded, NOT ${CLAUDE_PLUGIN_DATA})
 ROOTS=""; for d in "$LOCAL_MEM" "$PROJECT_MEM" "$USER_MEM"; do [ -d "$d" ] && ROOTS="$ROOTS $d"; done
 SYMPTOM="the user's words / the error / the symptom"               # NOT the answer's jargon
 
@@ -44,7 +44,7 @@ Read the top 1–3 notes the recall returns — the answer is in their bodies.
 ## Scope precedence
 
 A note's scope is its path: **LOCAL** (`~/.claude/projects/<slug>/memory/`) > **PROJECT**
-(`<git-root>/memory/`) > **USER** (`~/.claude/memory/`). When two scopes state conflicting
+(`<repo>/.claude/project/memory/`) > **USER** (`~/.claude/plugins/data/ai-maestro-janitor-ai-maestro-plugins/memory/`). When two scopes state conflicting
 facts, the MORE SPECIFIC scope wins. If recall returns nothing, the memory does not exist
 yet — solve the problem, then capture it with `amw-memory-write`.
 

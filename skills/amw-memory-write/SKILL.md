@@ -26,8 +26,8 @@ the body gives the answer.
 | Signal in the fact | Scope | Root |
 |---|---|---|
 | local path / username / hostname / secret / machine-specific | **LOCAL** | `~/.claude/projects/<slug>/memory/` (never pushed) |
-| project knowledge any contributor needs (architecture, gotcha, lesson) | **PROJECT** | `<git-root>/memory/` (git-tracked — NO sensitive data) |
-| about the user, machine-independent, cross-project | **USER** | `~/.claude/memory/` |
+| project knowledge any contributor needs (architecture, gotcha, lesson) | **PROJECT** | `<repo>/.claude/project/memory/` (git-tracked in-repo, namespaced under `.claude/` — NO sensitive data) |
+| about the user, machine-independent, cross-project | **USER** | `~/.claude/plugins/data/ai-maestro-janitor-ai-maestro-plugins/memory/` (janitor's FIXED data dir, hard-coded — NOT `${CLAUDE_PLUGIN_DATA}`) |
 
 UNSURE → **LOCAL** (the safe scope; promotion to PROJECT is a deliberate later act).
 
