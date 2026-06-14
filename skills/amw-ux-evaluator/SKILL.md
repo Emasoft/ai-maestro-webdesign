@@ -40,8 +40,7 @@ Do **not** activate on generic design intent ("design a landing page", "make it 
 1. Gather context: identify the component (hero, navbar, CTA stack, form, pricing card), the evaluation trigger, and the input source (local HTML → `Read`; live URL → `../amw-dev-browser/`).
 2. Score the three dimensions — Position, Visual Weight, Spacing — using concrete selector + computed-style evidence; each dimension gets Pass / Warn / Fail.
 3. Produce a structured Markdown report with every Fail/Warn citing the selector, computed-style value, and the convention violated; prioritize findings as P1 (UX-breaking), P2 (suboptimal), P3 (polish).
-4. When invoked by an agent (not via `/amw-eval` direct), ALSO emit a YAML scorecard sidecar (`<eval-report>.scorecard.yaml`) per [TECH-uxeval-scorecard](references/TECH-uxeval-scorecard.md). The YAML carries the same per-dimension verdicts as the Markdown but adds explicit `severity` tiers and an `overall.verdict` that downstream agents gate on.
-> [TECH-uxeval-scorecard.md] What this is · When to emit · File naming and location · Schema — the YAML 1.2 contract · Field semantics · Severity vs priority — the distinction · How the verdict aggregates · Worked example — full YAML · Consumer contracts · Cross-references
+4. When invoked by an agent (not via `/amw-eval` direct), ALSO emit a YAML scorecard sidecar (`<eval-report>.scorecard.yaml`) with `severity` tiers and an `overall.verdict` downstream agents gate on — full contract in [TECH-uxeval-scorecard](references/TECH-uxeval-scorecard.md) (TOC embedded in the Technique catalog below).
 
 ## Usage
 
@@ -113,10 +112,12 @@ Every technique is in `./references/TECH-uxeval-*.md`. Each contains: What it do
 Full reference in [balsamiq-button-principles](references/balsamiq-button-principles.md). Summary:
 > [balsamiq-button-principles.md] Core Principles · Use Conventional Labels · Say Exactly What Happens · Primary and Secondary Should Look Different · Primary Action on the Right · Use Adequate Spacing · Make Buttons Look Clickable · Size Appropriately · Use Icons Wisely · Consider Loading States · Error Prevention · Button Hierarchy Summary · Common Mistakes
 
-- **Buttons:** primary right + filled + brand color; secondary left + ghost/outline; utility far right, icon-only. ≥ 24 px between groups, 8–12 px intra-group, ≥ 44 × 44 px mobile touch. Labels: "Sign Up" not "Get Started"; "Delete Account" not "Proceed"; verb-first.
-- **Navigation:** logo left, primary nav centre or after logo, utilities (search / auth / theme) right. Active state clearly distinguished; nav does not compete with content.
-- **Forms:** labels above/left of inputs; submit bottom, right-aligned or full-width; errors adjacent; label-to-input 0.25–0.5 rem; field-to-field 1–1.5 rem.
-- **Industry cross-check:** button order secondary LEFT, primary RIGHT (GitHub, Stripe, Google, Notion). Theme toggle far right after user menu or in settings (GitHub, VS Code Docs, Stripe Docs).
+Full rules in the `TECH-uxeval-*-conventions` refs (Technique catalog above). Summary:
+
+- **Buttons:** primary right + filled; secondary left + ghost; utility far right icon-only; ≥ 24 px between groups, ≥ 44 px mobile touch; verb-first labels.
+- **Navigation:** logo left, primary centre/after-logo, utilities right; active state distinct.
+- **Forms:** labels above/left, submit bottom-right or full-width, errors adjacent.
+- **Industry cross-check:** secondary LEFT / primary RIGHT (GitHub, Stripe, Google, Notion); theme toggle far-right after user menu.
 
 ## Completion checklist
 

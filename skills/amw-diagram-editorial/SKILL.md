@@ -59,13 +59,11 @@ Activate only on editorial-diagram intents that name one of the 13 canonical typ
 | **Venn** | Set overlap (2–3 circles). |
 | **pyramid / funnel** | Ranked hierarchy or conversion drop-off. |
 
-**Selection rule:** ask *"would a reader learn more from this than from a well-written paragraph?"* If no, do not draw. Default to deletion over addition. Full per-type rules (canonical layout, anchor coordinates, concrete HTML+SVG scaffolds) live in [type-rules](references/type-rules.md).
-> [type-rules.md] Architecture · Flowchart · Sequence · State machine · ER / data model · Timeline · Swimlane · Quadrant · Nested · Tree · Layer stack · Venn · Pyramid / funnel · Primitives (cross-type) · Annotation callout — italic Instrument Serif + dashed Bézier leader · Sketchy filter — hand-drawn variant
+**Selection rule:** ask *"would a reader learn more from this than from a well-written paragraph?"* If no, do not draw. Default to deletion over addition. Full per-type rules (canonical layout, anchor coordinates, concrete HTML+SVG scaffolds) live in [type-rules](references/type-rules.md) (TOC embedded under Resources).
 
 ## Design system (compact)
 
-Full spec in [design-system](references/design-system.md). Non-negotiables:
-> [design-system.md] Grid · Typography · Loading the fonts · Type scale · Colour discipline · Rules · Focal node vs standard node · Connection styling · Density calibration · Coordinate-level checklist
+Full spec in [design-system](references/design-system.md) (TOC embedded under Resources). Non-negotiables:
 
 - **Grid.** Every coordinate/width/gap divisible by **4px**. No shadows. Max `border-radius: 10px`. Borders 1px hairline only.
 - **Typography.** Three families, three roles: `Instrument Serif` (titles, italic callouts), `Geist Sans` (node names, labels), `Geist Mono` (technical sublabels).
@@ -79,8 +77,7 @@ To match the user's existing site:
 1. User invokes `"onboard editorial diagrams to https://<site>"`.
 2. Route through `../amw-dev-browser/` (**never** raw WebFetch) to fetch homepage + DOM.
 3. Extract palette + font stack. Map to `paper`, `ink`, `muted`, `paper-2`, `accent`, `accent-fg`.
-4. Run WCAG AA contrast checks against [color-system](../amw-design-principles/color-system.md). Auto-propose adjustments for failures; never silently ship a failing pair.
-> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
+4. Run WCAG AA contrast checks against [color-system](../amw-design-principles/color-system.md) (TOC embedded under Resources). Auto-propose adjustments for failures; never silently ship a failing pair.
 5. Show diff; on confirmation, write tokens to [style-guide](references/style-guide.md).
 > [style-guide.md] Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 
@@ -109,8 +106,7 @@ Every technique is in `./references/TECH-*.md`. Each contains: What it does · W
 
 ## Resources
 
-- Upstream: [amw-design-principles](../amw-design-principles/SKILL.md) (orchestrator), [color-system](../amw-design-principles/color-system.md), [typography-system](../amw-design-principles/typography-system.md), [spacing-rhythm](../amw-design-principles/spacing-rhythm.md), [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md), [amw-dev-browser](../amw-dev-browser/SKILL.md).
-> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
+- Upstream: [amw-design-principles](../amw-design-principles/SKILL.md) (orchestrator), [color-system](../amw-design-principles/color-system.md), [typography-system](../amw-design-principles/typography-system.md), [spacing-rhythm](../amw-design-principles/spacing-rhythm.md), [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) (its TOC is embedded under Completion checklist), [amw-dev-browser](../amw-dev-browser/SKILL.md).
 > [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
 > [typography-system.md] I. Modular type scale · II. Font-weight hierarchy (only 2–3 levels) · III. Line-height · IV. Letter-spacing · V. Font-pairing rules · VI. Recommended font stacks (avoiding AI slop) · VII. Fallback-stack syntax · VIII. Forbidden AI-giveaway fonts (T-043)
 > [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
@@ -140,6 +136,7 @@ Verify every item before reporting complete. FAIL on any item triggers a remedia
 This skill produces TWO kinds of output:
 
 1. **Artifact(s)** — editorial HTML + SVG diagram files. Output path determined by **project inference** per [project-output-routing](../amw-design-principles/references/project-output-routing.md) (priority: user-supplied → framework convention → `./design/<subtype>/` → generic fallback → `/tmp/amw-diagram-editorial-<slug>/` scratch).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 2. **Job-completion report** at `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md` with sections: Inputs, Method, Artifacts (each `- <path> — <desc> — **How to use:** <tip> — **Next steps:** <followup>`), Checklist (PASS/FAIL/N/A), Deviations.
 
 Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Every artifact MUST be linked from the report.

@@ -99,79 +99,44 @@ The discovery layer is unaffected — the trigger description does NOT mention "
 > [TECH-stitch-fallback-strategy.md] What it documents · When this file applies · Decision tree · Choosing between Nodes A and B when both apply · Worked example — MCP absent, user has a URL · Worked example — MCP absent, codebase only · Worked example — MCP absent, no source at all · Non-negotiables for the fallback path · Cross-references
 3. **Identify the user intent.** Map the trigger phrase to one of three operation classes documented in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md): pull-tokens, pull-components, pull-flow, push-tokens, push-components, push-flow.
 4. **Invoke the matching Stitch MCP tool call.** The canonical tool names live in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md). The skill does NOT hardcode tool names in this SKILL.md — the reference file is the single source of truth for the MCP surface so the skill stays portable when the upstream tool names evolve.
+> [TECH-stitch-design-language.md] What it documents · Stitch vocabulary · Canonical MCP tool surface · Translation table: Stitch ↔ amw · Worked example — pulling components into a DESIGN.md draft · Cross-references
 5. **Translate.** Map the returned Stitch payload onto amw-* canonical formats. For tokens that is the W3C token JSON consumed by `amw-design-extract`. For components that is the component-inventory.md format used by `amw-design-md`. For flows that is the Mermaid source consumed by `amw-mermaid-render`.
 6. **Hand off.** Write the translated artifact to the project's standard output path (see [project-output-routing](../amw-design-principles/references/project-output-routing.md)) and emit the path so the next skill or sub-agent can pick it up.
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 7. **Report.** Write the job-completion report to the standard reports location with sections: Inputs, Probe outcome, Method, Artifacts, Checklist, Deviations.
 
-## Usage
+## Usage and examples
 
-The skill is invoked indirectly through `amw-design-md-author-agent`, `amw-wireframe-builder-agent`, or `amw-design-extract` when those agents detect a Stitch trigger and route to this skill. There is no user-facing slash command at this scaffold stage — when the MCP becomes available a `/amw-stitch-sync` command may be added in a later wave.
-
-A direct invocation pattern (for sub-agents already inside Phase B) looks like this in pseudocode:
-
-```text
-1. probe = call mcp__stitch__ping or mcp__stitch__list_workspaces(limit=1)
-2. if probe is error:
-       emit fallback line and stop
-3. operation = classify_trigger(user_phrase)
-4. raw = call the matching mcp__stitch__* tool
-5. canonical = translate(raw, operation)
-6. write canonical to project output path
-7. return path
-```
-
-The canonical tool-name mapping for steps 4 and 5 lives in [TECH-stitch-design-language](./references/TECH-stitch-design-language.md). Edit that file, not this SKILL.md, when the upstream Stitch MCP changes its surface.
-
-## Examples
-
-Two illustrative scenarios — both run end-to-end, both exercise the fallback when the MCP is absent.
-
-### Scenario 1 — MCP reachable, pull tokens
-
-User says: "pull design tokens from stitch workspace acme-marketing into the project."
-
-1. Skill probes. Probe returns `{ "workspaces": ["acme-marketing", "acme-internal"] }`. Success.
-2. Skill classifies intent as `pull-tokens`.
-3. Skill calls the documented Stitch token-read tool (canonical name in TECH-stitch-design-language.md).
-4. Skill translates the returned payload to W3C tokens JSON.
-5. Skill writes `<project>/design/tokens/tokens.w3c.json` and emits the path.
-6. Skill reports completion with the workspace ID, the tool version, and the artifact path.
-
-### Scenario 2 — MCP absent, fallback
-
-User says: "pull design tokens from stitch."
-
-1. Skill probes. Probe returns "tool not found". Fail.
-2. Skill emits the fallback line.
-3. Caller (likely `amw-design-md-extractor-agent`) reads the fallback line and consults [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md).
-4. Caller asks the user for a URL or codebase to extract from, then routes to `amw-design-extract` or `amw-design-md-from-url.sh`.
-5. The Stitch-integration skill plays no further role in this run.
+Invoked indirectly through `amw-design-md-author-agent`, `amw-wireframe-builder-agent`, or `amw-design-extract` when those agents detect a Stitch trigger. No user-facing slash command at this scaffold stage. The direct Phase-B pseudocode invocation, plus two end-to-end worked scenarios (MCP reachable → pull tokens; MCP absent → fallback), live in [TECH-stitch-worked-examples](./references/TECH-stitch-worked-examples.md).
+> [TECH-stitch-worked-examples.md] Usage · Examples · Scenario 1 — MCP reachable, pull tokens · Scenario 2 — MCP absent, fallback
 
 ## Resources
 
-- [TECH-stitch-design-language](./references/TECH-stitch-design-language.md) — Stitch vocabulary, MCP tool surface, mapping to amw-* canonical formats.
-- [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md) — The fallback decision tree when the MCP is unavailable.
 - [SKILL](../amw-design-extract/SKILL.md) — Primary fallback for URL-based token extraction.
 - [SKILL](../amw-design-md/SKILL.md) — Sibling skill for canonical DESIGN.md authoring; consumes Stitch tokens when available.
 - [SKILL](../amw-ui-ux-reasoning/SKILL.md) — Last-resort fallback when no live source is reachable.
 - [project-output-routing](../amw-design-principles/references/project-output-routing.md) — Where Stitch-imported artifacts land.
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 
-## Non-negotiables
+The four `TECH-stitch-*` reference files (design-language, fallback-strategy, worked-examples, error-contract) — Stitch vocabulary + MCP tool surface, the fallback decision tree, the worked usage scenarios, and the operating contract + error cases respectively — are listed with their complete tables of contents in the [References](#references) section below.
 
-- **Probe first, always.** Never assume the MCP is reachable. Every invocation re-probes. The probe is read-only and bounded; it is cheap.
-- **One probe attempt per invocation.** No retry loop. No backoff. If the first probe fails, fall back. The caller can re-invoke after they fix the MCP.
-- **Discovery layer stays clean.** The trigger description does NOT mention "requires Stitch MCP". Trigger phrasing is what fires the skill; the failure surface is inside the skill body.
-- **No mocking.** If the MCP is absent, the skill emits the fallback line and stops. It never invents Stitch payloads, never reads cached payloads from disk, never silently downgrades to a different source without telling the caller.
-- **No credentials in the skill.** Authentication is owned by the MCP server's own config. This skill never asks the user for an API key, never reads one from the environment, never writes one to disk.
-- **Tool-name table lives in the reference file.** This SKILL.md describes the contract; the reference file holds the literal tool names so upstream changes do not require touching the SKILL itself.
-- **Fallback chain is deterministic.** When the MCP is absent, the documented chain in [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md) runs the same way every time. No probabilistic routing.
+## Non-negotiables and error handling
+
+The 7-bullet operating contract (probe first / one probe per invocation / clean discovery layer / no mocking / no credentials in the skill / tool-name table in the reference file / deterministic fallback chain) and the 5 enumerated error cases (probe timeout, tool-not-found, workspace-not-bound, malformed payload, multi-workspace) live together in [TECH-stitch-error-contract](./references/TECH-stitch-error-contract.md). Read that file before any push/pull operation.
+> [TECH-stitch-error-contract.md] Non-negotiables · Error Handling
 
 ## References
 
 Each technique is documented as a single reference file under `./references/`. Read only the file whose TOC matches the current need.
 
-- [TECH-stitch-design-language](./references/TECH-stitch-design-language.md) — What it documents · Stitch vocabulary · MCP tool surface · Translation table to amw-* formats · Worked example · Cross-references
-- [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md) — What it documents · Fallback decision tree · Per-fallback recipe · Worked example · Cross-references
+- [TECH-stitch-design-language](./references/TECH-stitch-design-language.md)
+> [TECH-stitch-design-language.md] What it documents · Stitch vocabulary · Canonical MCP tool surface · Translation table: Stitch ↔ amw · Worked example — pulling components into a DESIGN.md draft · Cross-references
+- [TECH-stitch-fallback-strategy](./references/TECH-stitch-fallback-strategy.md)
+> [TECH-stitch-fallback-strategy.md] What it documents · When this file applies · Decision tree · Choosing between Nodes A and B when both apply · Worked example — MCP absent, user has a URL · Worked example — MCP absent, codebase only · Worked example — MCP absent, no source at all · Non-negotiables for the fallback path · Cross-references
+- [TECH-stitch-worked-examples](./references/TECH-stitch-worked-examples.md)
+> [TECH-stitch-worked-examples.md] Usage · Examples · Scenario 1 — MCP reachable, pull tokens · Scenario 2 — MCP absent, fallback
+- [TECH-stitch-error-contract](./references/TECH-stitch-error-contract.md)
+> [TECH-stitch-error-contract.md] Non-negotiables · Error Handling
 
 ## Completion checklist
 
@@ -181,6 +146,7 @@ Verify every item before reporting complete. FAIL on any item should trigger a r
 - If MCP absent, the fallback line was emitted verbatim and the caller was informed of the decision tree.
 - If MCP reachable, the canonical tool name actually called is recorded in the report (not paraphrased).
 - Translated artifact written to the project's standard output path per [project-output-routing](../amw-design-principles/references/project-output-routing.md).
+> [project-output-routing.md] When to consult this doc · Detection order · Per-artifact-type default subpath · Reconciliation when multiple candidates match · Edge cases · Quick-reference algorithm (pseudo-code) · Cross-references
 - No mocking and no silent downgrade — every deviation from the nominal flow is documented in the report.
 - Hand-off documented: name the downstream skill or sub-agent that consumes the translated artifact.
 
@@ -192,11 +158,3 @@ This skill produces TWO kinds of output:
 2. **Job-completion report** at `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md` with sections: Inputs, Probe outcome, Method, Artifacts (each `- <path> — <desc>`), Checklist (PASS/FAIL/N/A), Deviations.
 
 Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Every artifact MUST be linked from the report.
-
-## Error Handling
-
-- **Probe timeout** — treat as MCP-absent. Emit the fallback line and stop. Do not retry.
-- **Tool returns "tool not found"** — the MCP server is running but does not expose the expected surface. Treat as MCP-absent; record the actual tool inventory in the report so the user can update the MCP.
-- **Workspace not bound** — the MCP is reachable but no workspace is configured. Emit a workspace-bind message instead of the standard fallback line, and direct the user to the MCP server's own configuration. Do NOT prompt for credentials from this skill.
-- **Tool returns malformed payload** — record the raw payload in the report (truncated to 2 KB), emit a clear translation-failure line, and yield to the caller. Do not attempt to recover.
-- **Multiple workspaces bound, user did not specify** — ask the user to choose. Do NOT pick a default; the wrong workspace is worse than asking.

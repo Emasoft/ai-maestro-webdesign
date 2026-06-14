@@ -9,21 +9,7 @@ author: ai-maestro-webdesign (direct-port from dannyjpwilliams/ui-sound-design-s
 > Executor skill. Triggers are sound-specific only — `amw-design-principles` routes here when audio interaction is in scope. Pairs with [amw-motion-designer-agent](../../agents/amw-motion-designer-agent.md) and [amw-sound-designer-agent](../../agents/amw-sound-designer-agent.md) for holistic interaction design.
 
 ```
-  ▁ ▃ ▅ ▇ ▅ ▃ ▁     ▁ ▃ ▅ ▇ ▅ ▃ ▁     ▁ ▃ ▅ ▇ ▅ ▃ ▁
-██╗   ██╗██╗    ███████╗ ██████╗ ██╗   ██╗███╗   ██╗██████╗
-██║   ██║██║    ██╔════╝██╔═══██╗██║   ██║████╗  ██║██╔══██╗
-██║   ██║██║    ███████╗██║   ██║██║   ██║██╔██╗ ██║██║  ██║
-██║   ██║██║    ╚════██║██║   ██║██║   ██║██║╚██╗██║██║  ██║
-╚██████╔╝██║    ███████║╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝
- ╚═════╝ ╚═╝    ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝
-      ░ ▒ ▓ █ ▓ ▒ ░     ░ ▒ ▓ █ ▓ ▒ ░     ░ ▒ ▓ █ ▓ ▒ ░
-       ██████╗ ███████╗███████╗██╗ ██████╗ ███╗   ██╗
-       ██╔══██╗██╔════╝██╔════╝██║██╔════╝ ████╗  ██║
-       ██║  ██║█████╗  ███████╗██║██║  ███╗██╔██╗ ██║
-       ██║  ██║██╔══╝  ╚════██║██║██║   ██║██║╚██╗██║
-       ██████╔╝███████╗███████║██║╚██████╔╝██║ ╚████║
-       ╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-  ▇ ▅ ▃ ▁ ▃ ▅ ▇     ▇ ▅ ▃ ▁ ▃ ▅ ▇     ▇ ▅ ▃ ▁ ▃ ▅ ▇
+▁▃▅▇█▇▅▃▁  U I   S O U N D   D E S I G N  ▁▃▅▇█▇▅▃▁
 ```
 
 Describe what your UI should sound like.

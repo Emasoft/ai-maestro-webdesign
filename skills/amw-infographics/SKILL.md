@@ -65,25 +65,10 @@ Pick a technique category, then look up the specific TECH file in [_index](refer
 
 Categories: Mode (3), Archetype (5), Playbook (5 content-type playbooks), Component (15), Chart (12), Color & typography (8), Copy (3), Aesthetic systems (3), Pre-delivery / quality (2), Pipeline / preview / export (4).
 
-## Prerequisites
+## Prerequisites + pipeline + examples
 
-- **runtime_binaries (system):** `python3 ≥ 3.8`.
-- **runtime_binaries (installed via `/amw-init`):** Playwright + Chromium (`python3 -m playwright install chromium --with-deps`), optional Inkscape or pdf2svg for SVG export.
-- **python_packages:** `playwright ≥ 1.40.0`.
-- **npm_packages:** none required.
-- **mcp_servers:** none.
-- **CDN assets (run-time):** Google Fonts (Bebas Neue, Teko, Orbitron, Montserrat), Phosphor Icons, optional Chart.js. Offline environments need the CDN resolvable — `html-export.py` spins up a local HTTP server so Playwright resolves them cleanly.
-- **Shared scripts:** `../../bin/amw-html-export.py` (PNG / PDF / SVG export), `../../bin/amw-preview-server.py` (Mode A live preview).
-
-## Examples
-
-`examples/` ships 15 rendered PNG reference outputs and `templates/` ships 24 fully-built reference HTML pieces with `{{PLACEHOLDER}}` variables.
-
-**Token-economics example (One-Shot mode):** Input: a tokenomics brief with allocation %, vesting schedule, and brand color. Routing: `token-economics.html` template, [TECH-token-economics-playbook](references/TECH-token-economics-playbook.md), [TECH-stacked-reference-archetype](references/TECH-stacked-reference-archetype.md), [TECH-svg-pie-chart](references/TECH-svg-pie-chart.md), [TECH-progress-bar-vesting](references/TECH-progress-bar-vesting.md). Output: HTML + retina PNG + PDF at 1080×1440 with 11 content blocks.
-> [TECH-progress-bar-vesting.md] What it does · When to use · HTML · CSS · The milestone marker trick · Labels row — above and below · Gradient fill · Gotchas · Cross-references
-> [TECH-svg-pie-chart.md] What it does · The color rule · Primary shades (preferred) · Brand complementary (max 2-3 hues) · SVG arc math · Segment calculator · Template — 4 segments · Legend — side-by-side · Gotchas · Cross-references
-> [TECH-stacked-reference-archetype.md] What it does · When to use · The shape · CSS implementation · The section-variety rule still applies · Gotchas · Cross-references
-> [TECH-token-economics-playbook.md] What it does · When to use · Color system · Typography · Standard component prevalence (across 62 pieces) · Visual properties · Signature layout pattern (portrait-tall, 10+ content blocks) · CSS variables · Font pair · Reference template · Density rule · Gotchas · Cross-references
+System `python3 ≥ 3.8`; Playwright + Chromium and `playwright ≥ 1.40.0` installed via `/amw-init`; CDN fonts/icons at run-time. Full dependency list, the token-economics One-Shot worked example, and the output/report schema are in [_pipeline-and-examples](references/_pipeline-and-examples.md).
+> [_pipeline-and-examples.md] Prerequisites · Examples · Output
 
 ## Resources
 
@@ -97,32 +82,42 @@ Categories: Mode (3), Archetype (5), Playbook (5 content-type playbooks), Compon
 - `../../bin/amw-html-export.py` — PNG / PDF / SVG export pipeline.
 - `../../bin/amw-preview-server.py` — Mode A live preview server, port 7883.
 - [design-brief](resources/design-brief.md) — 5-question intake framework + aesthetic decision table.
-> [design-brief.md] The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · From raw numbers: · From a topic brief: · Thesis formula: · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
+> [design-brief.md] The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
 - [style-details](resources/style-details.md) — full design system with component CSS patterns, type playbooks, reduction-pass rules.
 > [style-details.md] The Big Picture · Visual Treatments (radius, borders, shadows, spacing, decorations) · Composition Components (logos, progress bars, dense tables) · Composition Rules and Atmospheric Depth · Annotation, Typography, Reduction Pass · Reference Image Patterns (Vision Analysis — 12 real pieces)
 - [layout-patterns](resources/layout-patterns.md) — full layout and archetype scaffold library.
 > [layout-patterns.md] Layout Statistics · Your Dominant Infographic Types · Layout Recipes by Type · Composition Archetype CSS Implementations · Stats Bar / KPI Strip (74/175 = 42%)
 - [charts](resources/charts.md) — chart rules (bar / line / pie / radar / stat callouts) with annotation-first placement.
-> [charts.md] When to Use What · SVG Pie Chart (Token Allocation — Your Most-Used) · CSS Horizontal Bar Chart (Vesting / Allocation Strips) · Chart.js — Complex Charts via CDN · Pure CSS Progress Bar (Vesting Timeline) · Waffle Chart (% of Total — Pure HTML/CSS) · Slope Chart (Before/After — Inline SVG) · Annotated Bar Chart (SVG — Hero Bar + Benchmark) · Proportional Circles (SVG — Area = Value) · Dot Plot (SVG — Distribution / Individual Points)
+> [charts.md] When to Use What · 1. SVG Pie Chart (Token Allocation — Your Most-Used) · 2. CSS Horizontal Bar Chart (Vesting / Allocation Strips) · 3. Chart.js — Complex Charts via CDN · 4. Pure CSS Progress Bar (Vesting Timeline) · 5. Waffle Chart (% of Total — Pure HTML/CSS) · 6. Slope Chart (Before/After — Inline SVG) · 7. Annotated Bar Chart (SVG — Hero Bar + Benchmark) · 8. Proportional Circles (SVG — Area = Value) · 9. Dot Plot (SVG — Distribution / Individual Points)
 - [color-palettes](resources/color-palettes.md) — full palette library by content type.
+> [color-palettes.md] Key Statistics · Per-Type Signature Palettes · Brand Distinction Strategy · Your Signature Background Colors · Your Most-Used Accent Colors (Primary) · Palette Recipes (Named Collections) · Standout / High-Contrast Palettes · Glow Color Reference (Top confirmed glow colors) · Light Mode Palettes (When background: "light")
 - [font-pairings](resources/font-pairings.md) — display-font prevalence table and body-font pairings per type.
+> [font-pairings.md] Key Statistics · Your Font Rules (Non-Negotiable) · Your Core Display Fonts (Ranked by usage) · Your Body Font (Almost Always the Same) · Tested Font Pairings (Your Actual Combinations) · Typography Constants (Always Apply)
 - [platform-sizes](resources/platform-sizes.md) — 7 canvas sizes with per-platform adjustments and safe zones.
 > [platform-sizes.md] Quick Reference · Layout & Font Adjustments Per Platform · Font Size Scaling by Platform · Watermark / Attribution Rule by Platform · export.py Commands by Platform
 - [copy-guide](resources/copy-guide.md) — headline, callout, and label writing rules.
+> [copy-guide.md] The Core Rule · Stat Formatting Rules · Headline Formulas · Per-Component Word Budgets · Color-Coded Keyword Highlighting · Disclaimers & Source Citations · Badge & Tag Copy · Body Copy Rules — Bullets Over Paragraphs · Common Mistakes to Avoid
 - `templates/` — 24 reference templates (inventory in [_template-registry](references/_template-registry.md)).
+> [_template-registry.md] Crypto / Web3 (13 templates) · Generic (11 templates) · Template selection table · Cross-references
 - `examples/` — 15 rendered PNG reference outputs.
 - `evals/evals.json` — 5 scenario test prompts + expected outcomes.
 - [_index](references/_index.md) — flat catalog of every TECH file with one-line descriptions.
+> [_index.md] Modes (3) · Archetypes (5) · Playbooks (5 content-type playbooks) · Components (15) · Charts (10) · Color & typography (8) · Copy (3) · Aesthetic systems (3) · Pre-delivery / quality (2) · Pipeline / preview / export (3) · Cross-references
 - [_template-registry](references/_template-registry.md) — 24 template inventory + selection table.
+> [_template-registry.md] Crypto / Web3 (13 templates) · Generic (11 templates) · Template selection table · Cross-references
 - [_execution-modes](references/_execution-modes.md) — three execution modes with quality gate.
+> [_execution-modes.md] A. Interactive Builder · B. One-Shot · C. Guided Creative · Quality gate (before delivery) · Cross-references
 - [_design-dna](references/_design-dna.md) — non-negotiables derived from 175 real pieces.
+> [_design-dna.md] Density is the defining trait · Backgrounds are near-black · Palette is warm + cool together · Display fonts are all-caps condensed · Stacked Reference is the default composition · Section variety is mandatory · Arrows are load-bearing · Visible borders, not ghost borders · Tight spacing inside sections · Content format hierarchy · Cross-references
 - [_non-negotiables](references/_non-negotiables.md) — seven enforcement rules.
 > [_non-negotiables.md] Rules 1–7 · Cross-references
 - [_error-handling](references/_error-handling.md) — symptom-to-fix table for delivery failures.
+> [_error-handling.md] Symptom-to-fix table · Cross-references
 
 ## Error Handling
 
 Common build symptoms (output looks like a SaaS landing page / dashboard / slide deck, component demo repetition, floating-islands sections, Playwright missing, CDN font fallback, fabricated stats, wrong template, wrong light/dark mode, build interrupted, export font issues) and their fixes are catalogued in [_error-handling](references/_error-handling.md). The skill must consult that table when delivery fails the Quality Gate.
+> [_error-handling.md] Symptom-to-fix table · Cross-references
 
 ## Completion checklist
 
@@ -131,19 +126,14 @@ Before reporting a job complete, verify each item. FAIL on any item triggers a r
 - Inputs captured verbatim from the user (brief, URL, reference files) — no silent paraphrasing.
 - At least one `TECH-*.md` file from `references/` was consulted and is cited in the final report.
 - Output passes [_non-negotiables](references/_non-negotiables.md).
+> [_non-negotiables.md] Rules 1–7 · Cross-references
 - No AI-slop per [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md).
+> [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - Output rendered/validated by the matching tool (`bin/amw-html-export.py`).
 - Cross-skill hand-offs documented — every routed-through skill's SKILL.md + TECH file are named in the report.
 - User-facing filename is descriptive English (`Login Flow.html`, not `output.html`).
 
 ## Output
 
-This skill produces TWO kinds of output:
-
-1. **Artifact(s)** — HTML + retina PNG + print-ready PDF infographic posters. Output path determined by project inference per [project-output-routing](../amw-design-principles/references/project-output-routing.md): user-supplied path → framework convention → existing `./design/<subtype>/` → generic fallback `./design/infographics/` → last-resort scratch `/tmp/amw-infographics-<slug>/`. Every artifact is listed with its path in the report.
-
-2. **Job-completion report** — markdown at `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`. Contains: **Inputs** (user-provided + auto-detected), **Method** (TECH references consulted, pipeline steps), **Artifacts** (per-file bullet — `- <path> — <description> — How to use: <tip> — Next steps: <follow-up>`), **Checklist** (each item PASS/FAIL/N/A), **Deviations** (skipped or changed steps + rationale). The `<8-char-hash>` is the first 8 chars of SHA-256 of the inputs+artifacts list.
-
-Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`.
-
-**Every artifact MUST be linked from the report.** If an artifact is produced but not listed, the run is incomplete. `reports/webdesigner/` is for user-facing job outputs (distinct from `reports/audit/` which is for build-time audit artifacts).
+Two kinds of output: (1) **Artifact(s)** — HTML + retina PNG + print-ready PDF infographic posters, path chosen by project inference; (2) **Job-completion report** — markdown at `$MAIN_ROOT/reports/webdesigner/<YYYYMMDD_HHMMSS±HHMM>_<title-slug>_<8-char-hash>.md`. Every artifact MUST be linked from the report. Full output-routing rule + report schema (Inputs / Method / Artifacts / Checklist / Deviations + `$MAIN_ROOT` resolution) in [_pipeline-and-examples](references/_pipeline-and-examples.md).
+> [_pipeline-and-examples.md] Prerequisites · Examples · Output

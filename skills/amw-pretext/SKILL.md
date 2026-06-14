@@ -14,15 +14,8 @@ Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou
 
 ## Instructions
 
-1. Walk the `## Technique selection` decision tree below to identify the matching technique category (API function, measurement prerequisite, layout pattern, obstacle routing, kinetic typography, virtualized tables, 3D/motion, integration, workflow assembly).
-2. Open ONLY the relevant `references/TECH-NN-<slug>.md` file — do not load the whole catalog. The full per-tech index lives in [_index](references/_index.md).
-> [_index.md] API functions (TECH-01 — TECH-13) · Measurement prerequisites (TECH-14 — TECH-18) · Layout patterns / obstacle routing (TECH-19 — TECH-31) · Typography techniques (TECH-32 — TECH-44) · Motion / interactive demos (TECH-45 — TECH-55) · Tables (TECH-56 — TECH-58) · Integration patterns (TECH-59 — TECH-66) · Workflow assemblies (TECH-67 — TECH-71) · Consult / decision-routing (TECH-72 — TECH-78) · Cross-references
-3. Follow the TECH file's "How it works" section; call `prepare()` (or the appropriate pretext API function) exactly once before calling any layout function.
-4. Reuse the project's existing typography tokens — do not introduce new fonts or motion systems; pretext exposes per-line metrics but does not own typographic decisions.
-5. Handle the resize path explicitly: call `clearCache()` on font-change or after every `ResizeObserver` tick when measurement validity has changed.
-6. Validate the font-string parity constraint (same CSS font string in both pretext and the renderer) before shipping; see `TECH-18-font-string-parity.md`.
-
-See the `## How to use this skill` section below for the authoritative step-by-step decision workflow, and the `## Technique selection` tree to pick the relevant TECH reference file.
+The decide → pick → follow → build wrapper → handle resize → validate workflow runs in six steps: walk the `## Technique selection` tree to pick the category, open ONLY the matching `references/TECH-NN-<slug>.md` (never the whole catalog), call `prepare()` once before any layout call, reuse the project's typography tokens (pretext exposes metrics, not typographic decisions), call `clearCache()` on the resize path, and validate font-string parity before shipping. The full step-by-step procedure — with the TECH routing links — lives in [_how-to-use](references/_how-to-use.md).
+> [_how-to-use.md] Instructions · How to use this skill
 
 ## Activation
 
@@ -61,20 +54,7 @@ Then route by category (every technique below is one TECH file in `references/`;
 2. **Job-completion report** at `$MAIN_ROOT/reports/webdesigner/<ts±tz>_<title-slug>_<8-char-hash>.md` listing every artifact + the per-item checklist verdict.
 
 Full output contract (artifact-path inference rules, report shape, mandatory checklist) lives in [TECH-79-output-contract](./references/TECH-79-output-contract.md). Before reporting complete: every checklist item there MUST be PASS or N/A. Any FAIL triggers a remediation loop.
-
-## How to use this skill
-
-1. **Decide first:** read [TECH-72-use-pretext-decision-guide](references/TECH-72-use-pretext-decision-guide.md) — if CSS solves it (`line-clamp`, `text-overflow`, `text-wrap: balance`) there's no reason to add pretext.
-> [TECH-72-use-pretext-decision-guide.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
-2. **Pick the technique** from the decision tree above — one TECH file, not a monolithic dump. Use [_index](references/_index.md) for a flat lookup if you already know the slug.
-> [_index.md] API functions (TECH-01 — TECH-13) · Measurement prerequisites (TECH-14 — TECH-18) · Layout patterns / obstacle routing (TECH-19 — TECH-31) · Typography techniques (TECH-32 — TECH-44) · Motion / interactive demos (TECH-45 — TECH-55) · Tables (TECH-56 — TECH-58) · Integration patterns (TECH-59 — TECH-66) · Workflow assemblies (TECH-67 — TECH-71) · Consult / decision-routing (TECH-72 — TECH-78) · Cross-references
-3. **Follow the exact API path** documented in that TECH file. Do NOT improvise — pretext has sharp gotchas (lineHeight-in-px, font-string-parity, `system-ui` drift).
-4. **Build the wrapper module first** ([TECH-64](references/TECH-64-wrapper-module.md)) — this catches the #1 integration bug (lineHeight multiplier vs pixels).
-> [TECH-64-wrapper-module.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
-5. **Handle resize** ([TECH-66](references/TECH-66-resize-observer-pattern.md)) — re-layout never re-prepare.
-> [TECH-66-resize-observer-pattern.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
-6. **Validate against the font strategy** ([TECH-77](references/TECH-77-font-strategy.md)) — named fonts, `document.fonts.ready`, no `system-ui`.
-> [TECH-77-font-strategy.md] What it does · When to use · How it works · Minimal example · Suggested font pairings by mood (source: pretext-frontend-motion-main/references/font-strategy.md) · Gotchas · Cross-references
+> [TECH-79-output-contract.md] 1. Artifacts (work product) · 2. Job-completion report (mandatory) · Completion checklist (FAIL on any → remediation loop, do not deliver partial work)
 
 ## Prerequisites
 
