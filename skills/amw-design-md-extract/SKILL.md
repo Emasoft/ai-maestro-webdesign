@@ -49,13 +49,18 @@ Does NOT fire on "extract design tokens from <url>" (→ `amw-design-extract`), 
 - **Deterministic SHA-256 token-block fingerprint** (canonicalization recipe + interpretation + cross-project library lookup): [TECH-extractor-fingerprinting](references/TECH-extractor-fingerprinting.md).
   > Goal · Algorithm · Concrete recipe (pure-Python, no extra deps) · Interpretation guide · Non-goals (what fingerprinting is NOT) · Versioning the algorithm · Validation gate · Cross-references
 - **Figma input path** (Tokens Studio export + pre-flight checklist + mapping-coverage table + lossy surface): [TECH-18-figma-input-path](references/TECH-18-figma-input-path.md).
+> [TECH-18-figma-input-path.md] What it does · Why a dedicated Figma input path · Two supported workflows · Workflow A — Tokens Studio export from Figma · Workflow B — Local styles export via Figma plugin · Pre-flight checklist for the user · Mapping coverage table · Lossy surface — what does NOT round-trip · Failure paths · Cross-references
   > What it does · Why a dedicated Figma input path · Two supported workflows · Pre-flight checklist for the user · Mapping coverage table · Lossy surface — what does NOT round-trip · Failure paths · License and attribution · Cross-references
 
 ## Instructions
 
 1. Choose the input path: `bin/amw-design-md-from-url.sh`, `bin/amw-design-md-from-tailwind.mjs`, `bin/amw-design-md-from-codebase.py`, or the Figma path ([TECH-18](references/TECH-18-figma-input-path.md)) based on the source type.
+> [TECH-18-figma-input-path.md] What it does · Why a dedicated Figma input path · Two supported workflows · Workflow A — Tokens Studio export from Figma · Workflow B — Local styles export via Figma plugin · Pre-flight checklist for the user · Mapping coverage table · Lossy surface — what does NOT round-trip · Failure paths · Cross-references
 2. Run component + state detection per [TECH-extractor-component-detection](references/TECH-extractor-component-detection.md); export icons/assets per [TECH-extractor-icon-asset-export](references/TECH-extractor-icon-asset-export.md) when present.
+> [TECH-extractor-icon-asset-export.md] When this runs · Phase A — Discovery · Phase B — Role assignment (T-093 + T-095) · Phase C — Alt-text inference (T-095, raster only) · Phase D — Export · License + provenance · Privacy + robots compliance · What the extractor refuses to do · Cross-references
+> [TECH-extractor-component-detection.md] When the extractor runs component detection · Codebase detection — five patterns, in priority order · URL detection — DOM landmarks + ARIA roles · State detection (T-094) · shadcn / Radix specific signals · What the extractor skips · Confidence and fallbacks · Output — what lands in DESIGN.md · Validation gate · Cross-references
 3. Fingerprint the canonical token block ([TECH-extractor-fingerprinting](references/TECH-extractor-fingerprinting.md)) for cross-project library lookup.
+> [TECH-extractor-fingerprinting.md] Goal · Algorithm · Concrete recipe (pure-Python, no extra deps) · Interpretation guide · Non-goals (what fingerprinting is NOT) · Versioning the algorithm · Validation gate · Cross-references
 4. Validate the extracted Variant 1 file against the [spec](../amw-design-md-spec/SKILL.md) — hand off to [audit](../amw-design-md-audit/SKILL.md) for the lint gate. Fail fast if the linter reports errors.
 
 ## Hard rules
@@ -63,6 +68,7 @@ Does NOT fire on "extract design tokens from <url>" (→ `amw-design-extract`), 
 1. Extraction is faithful transcription into Variant 1 (official `<@google/design.md>`). Absent values are omitted, never invented.
 2. No paywalled service, no API key beyond what `amw-dev-browser` already requires, no Chrome extension. The official CLI is `npx`-installable, no remote calls.
 3. The skill never re-emits broad design vocabulary in tool-call text — that would re-trigger the orchestrator. See [skill-invocation-protocol](../amw-design-principles/references/skill-invocation-protocol.md).
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ## Examples
 
@@ -71,9 +77,13 @@ Does NOT fire on "extract design tokens from <url>" (→ `amw-design-extract`), 
 ## Resources
 
 - [TECH-extractor-component-detection](references/TECH-extractor-component-detection.md) — component detection (T-091) + state detection (T-094)
+> [TECH-extractor-component-detection.md] When the extractor runs component detection · Codebase detection — five patterns, in priority order · URL detection — DOM landmarks + ARIA roles · State detection (T-094) · shadcn / Radix specific signals · What the extractor skips · Confidence and fallbacks · Output — what lands in DESIGN.md · Validation gate · Cross-references
 - [TECH-extractor-icon-asset-export](references/TECH-extractor-icon-asset-export.md) — inline SVG icon export (T-093) + raster asset export (T-095) + `DESIGN.assets.json` manifest
+> [TECH-extractor-icon-asset-export.md] When this runs · Phase A — Discovery · Phase B — Role assignment (T-093 + T-095) · Phase C — Alt-text inference (T-095, raster only) · Phase D — Export · License + provenance · Privacy + robots compliance · What the extractor refuses to do · Cross-references
 - [TECH-extractor-fingerprinting](references/TECH-extractor-fingerprinting.md) — deterministic SHA-256 token-block fingerprint (T-096)
+> [TECH-extractor-fingerprinting.md] Goal · Algorithm · Concrete recipe (pure-Python, no extra deps) · Interpretation guide · Non-goals (what fingerprinting is NOT) · Versioning the algorithm · Validation gate · Cross-references
 - [TECH-18-figma-input-path](references/TECH-18-figma-input-path.md) — Figma → DESIGN.md (Tokens Studio export + pre-flight checklist)
+> [TECH-18-figma-input-path.md] What it does · Why a dedicated Figma input path · Two supported workflows · Workflow A — Tokens Studio export from Figma · Workflow B — Local styles export via Figma plugin · Pre-flight checklist for the user · Mapping coverage table · Lossy surface — what does NOT round-trip · Failure paths · Cross-references
 - [spec](../amw-design-md-spec/SKILL.md) · [author](../amw-design-md-author/SKILL.md) · [audit](../amw-design-md-audit/SKILL.md) · [convert](../amw-design-md-convert/SKILL.md) — sibling DESIGN.md skills
 - [SKILL](../amw-design-principles/SKILL.md) — orchestrator (this skill is downstream)
 - [SKILL](../amw-dev-browser/SKILL.md) — browser primitive used by URL extraction

@@ -174,8 +174,8 @@ When in doubt, include both. Their cost is twenty lines; their benefit is a codi
 
 ## Cross-references
 
-- [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — the 13 authoring rules including §10/§11 placement
+- [TECH-24-authoring-rules-spec](../../amw-design-md-spec/references/TECH-24-authoring-rules-spec.md) — the 13 authoring rules including §10/§11 placement
 - [TECH-21-style-references-companion](TECH-21-style-references-companion.md) — sister companion for lineage and voice
 - [TECH-23-section-9-agent-prompt-guide](TECH-23-section-9-agent-prompt-guide.md) — sister §9 optional section
-- [extension-sections-10-14](extension-sections-10-14.md) — broader optional-section family (10-14)
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — broader optional-section family (10-14)
 - [TECH-27-token-interpolation](TECH-27-token-interpolation.md) — token-reference linting that applies inside §10 and §11

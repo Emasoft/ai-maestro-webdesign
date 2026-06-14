@@ -23,13 +23,13 @@ status: stable
 
 ## What it does
 
-Documents the two supported paths for getting a Figma design-system file into the plugin's DESIGN.md format. Both paths are pure-local: no Figma API key, no remote calls, no headless browser. The user runs an open-source Figma plugin once inside Figma Desktop, exports JSON, then passes that JSON to `bin/amw-figma-tokens-import.py` (existing — see [TECH-16-figma-tokens-bridge](TECH-16-figma-tokens-bridge.md)).
+Documents the two supported paths for getting a Figma design-system file into the plugin's DESIGN.md format. Both paths are pure-local: no Figma API key, no remote calls, no headless browser. The user runs an open-source Figma plugin once inside Figma Desktop, exports JSON, then passes that JSON to `bin/amw-figma-tokens-import.py` (existing — see [TECH-16-figma-tokens-bridge](../../amw-design-md/references/TECH-16-figma-tokens-bridge.md)).
 
 This TECH supplies the **user-facing instructions and pre-flight checks**. The actual bin script and its CLI surface are documented in TECH-16.
 
 ## Why a dedicated Figma input path
 
-The plugin's six peer input formats (per the user-guidance principle in [TECH-15-design-md-as-input](TECH-15-design-md-as-input.md)) do not include a native "open a `.fig` file" route — Figma's binary format is proprietary, undocumented at the bytecode level, and gated by a paid API for programmatic read access. Importing a Figma source-of-truth therefore requires the user to first **emit a portable artifact** from Figma — that artifact is the open-source Tokens Studio JSON (MIT-licensed plugin) or the equivalent local-styles JSON from any other open-source exporter.
+The plugin's six peer input formats (per the user-guidance principle in [TECH-15-design-md-as-input](../../amw-design-md-convert/references/TECH-15-design-md-as-input.md)) do not include a native "open a `.fig` file" route — Figma's binary format is proprietary, undocumented at the bytecode level, and gated by a paid API for programmatic read access. Importing a Figma source-of-truth therefore requires the user to first **emit a portable artifact** from Figma — that artifact is the open-source Tokens Studio JSON (MIT-licensed plugin) or the equivalent local-styles JSON from any other open-source exporter.
 
 Closes the CLAUDE.md-flagged gap: previously the only ways into DESIGN.md were prose, URL, Tailwind config, codebase scan, or hand-authoring. Figma designs were left out unless the user transcribed by hand.
 
@@ -56,7 +56,7 @@ bin/amw-figma-tokens-import.py ~/Downloads/my-system.tokens.json \
   --name "My System"
 ```
 
-The importer auto-detects classic vs DTCG shape and single- vs multi-set wrappers. For multi-set files the default merges in `tokenSetOrder` order; pass `--set <name>` to pick exactly one. See [TECH-16-figma-tokens-bridge](TECH-16-figma-tokens-bridge.md) for the full CLI surface, mapping table, and round-trip stability contract.
+The importer auto-detects classic vs DTCG shape and single- vs multi-set wrappers. For multi-set files the default merges in `tokenSetOrder` order; pass `--set <name>` to pick exactly one. See [TECH-16-figma-tokens-bridge](../../amw-design-md/references/TECH-16-figma-tokens-bridge.md) for the full CLI surface, mapping table, and round-trip stability contract.
 
 ### Workflow B — Local styles export via Figma plugin
 
@@ -88,7 +88,7 @@ Before the agent runs `amw-figma-tokens-import.py`, verify with the user:
 | Does the JSON contain alias refs `{colors.primary}`? | Resolved eagerly on import — the emitted DESIGN.md has concrete values, not refs. |
 | Did the user include the brand name / system name? | Pass via `--name "<title>"`; otherwise derived from the input filename. |
 
-After import, run the standard three-step validation chain (see [TECH-11-validation-and-lint](TECH-11-validation-and-lint.md)):
+After import, run the standard three-step validation chain (see [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md)):
 
 ```bash
 bin/amw-design-md-lint.sh DESIGN.md
@@ -98,7 +98,7 @@ bin/amw-design-md-contrast.py DESIGN.md
 
 ## Mapping coverage table
 
-The full DESIGN.md slot ↔ Tokens Studio group mapping lives in [TECH-16-figma-tokens-bridge](TECH-16-figma-tokens-bridge.md) under "Schema mapping". A condensed view for quick reference:
+The full DESIGN.md slot ↔ Tokens Studio group mapping lives in [TECH-16-figma-tokens-bridge](../../amw-design-md/references/TECH-16-figma-tokens-bridge.md) under "Schema mapping". A condensed view for quick reference:
 
 | DESIGN.md slot | Tokens Studio group | Coverage |
 |---|---|---|
@@ -137,18 +137,18 @@ The Tokens Studio for Figma plugin is MIT-licensed. The user runs it locally ins
 
 If the user employs a different open-source exporter (Workflow B), the same principle applies — their exporter, their license obligations, their data. The plugin's only contract is "accept Tokens Studio JSON shape (classic or DTCG)".
 
-When committing or sharing the resulting DESIGN.md, the user should preserve Figma source attribution in the file's body — e.g. *"Tokens imported from `<design>.fig` via Tokens Studio v1.x on 2026-05-27"*. This is the same provenance convention used by [TECH-07-url-extraction](TECH-07-url-extraction.md) and [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md).
+When committing or sharing the resulting DESIGN.md, the user should preserve Figma source attribution in the file's body — e.g. *"Tokens imported from `<design>.fig` via Tokens Studio v1.x on 2026-05-27"*. This is the same provenance convention used by [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) and [TECH-08-codebase-extraction](../../amw-design-md/references/TECH-08-codebase-extraction.md).
 
 ## Cross-references
 
-- [TECH-16-figma-tokens-bridge](./TECH-16-figma-tokens-bridge.md) — bidirectional Tokens Studio ↔ DESIGN.md schema mapping, full CLI surface, round-trip stability table
-- [TECH-07-url-extraction](./TECH-07-url-extraction.md) — alternative extraction path (live URL → DESIGN.md)
-- [TECH-08-codebase-extraction](./TECH-08-codebase-extraction.md) — alternative extraction path (codebase scan → DESIGN.md)
-- [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — alternative extraction path (Tailwind config → DESIGN.md)
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — the post-import validation chain
-- [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how the imported DESIGN.md is consumed by wireframe-builder
-- [TECH-17-dtcg-export](./TECH-17-dtcg-export.md) — round-trip the imported DESIGN.md back out as canonical DTCG JSON
-- [TECH-19-design-md-apply](./TECH-19-design-md-apply.md) — token-enforcement during HTML synthesis
-- [TECH-20-design-library](./TECH-20-design-library.md) — saving the imported DESIGN.md to the cross-project library
+- [TECH-16-figma-tokens-bridge](../../amw-design-md/references/TECH-16-figma-tokens-bridge.md) — bidirectional Tokens Studio ↔ DESIGN.md schema mapping, full CLI surface, round-trip stability table
+- [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) — alternative extraction path (live URL → DESIGN.md)
+- [TECH-08-codebase-extraction](../../amw-design-md/references/TECH-08-codebase-extraction.md) — alternative extraction path (codebase scan → DESIGN.md)
+- [TECH-10-tailwind-conversion](../../amw-design-md/references/TECH-10-tailwind-conversion.md) — alternative extraction path (Tailwind config → DESIGN.md)
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — the post-import validation chain
+- [TECH-15-design-md-as-input](../../amw-design-md-convert/references/TECH-15-design-md-as-input.md) — how the imported DESIGN.md is consumed by wireframe-builder
+- [TECH-17-dtcg-export](../../amw-design-md-convert/references/TECH-17-dtcg-export.md) — round-trip the imported DESIGN.md back out as canonical DTCG JSON
+- [TECH-19-design-md-apply](../../amw-design-md-convert/references/TECH-19-design-md-apply.md) — token-enforcement during HTML synthesis
+- [TECH-20-design-library](../../amw-design-md-convert/references/TECH-20-design-library.md) — saving the imported DESIGN.md to the cross-project library
 - Tokens Studio for Figma (MIT): <https://github.com/tokens-studio/figma-plugin>
 - Figma plugin samples (MIT): <https://github.com/figma/plugin-samples>

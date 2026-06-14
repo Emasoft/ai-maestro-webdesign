@@ -178,7 +178,7 @@ When `DESIGN.md` is regenerated (e.g. via re-extraction from a refreshed URL), `
 
 ## Cross-references
 
-- [TECH-12-companion-files](TECH-12-companion-files.md) — the four core companions
+- [TECH-12-companion-files](../../amw-design-md/references/TECH-12-companion-files.md) — the four core companions
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — optional DESIGN.md sections (Iteration Guide / Known Gaps) that complement this file
 - [TECH-25-brand-archetypes](TECH-25-brand-archetypes.md) — pre-fill patterns the emitter uses to populate sections from a known archetype
 - [TECH-23-section-9-agent-prompt-guide](TECH-23-section-9-agent-prompt-guide.md) — DESIGN.md §9 Agent Prompt Guide overlaps with the §5 Style Vocabulary

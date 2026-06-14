@@ -234,8 +234,8 @@ The human author then reviews the pre-fills and accepts, edits, or rejects each.
 
 ## Cross-references
 
-- [TECH-07-url-extraction](TECH-07-url-extraction.md) — URL extraction pipeline that triggers archetype detection
-- [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) — codebase scan applies archetype detection from CSS-var patterns
+- [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) — URL extraction pipeline that triggers archetype detection
+- [TECH-08-codebase-extraction](../../amw-design-md/references/TECH-08-codebase-extraction.md) — codebase scan applies archetype detection from CSS-var patterns
 - [TECH-21-style-references-companion](TECH-21-style-references-companion.md) — STYLE-REFERENCES.md sections the archetype pre-fills populate
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — Iteration Guide / Known Gaps populated from archetype defaults
 - [TECH-26-extended-sections-7-8](TECH-26-extended-sections-7-8.md) — Motion section pre-fills derived from archetype motion signal

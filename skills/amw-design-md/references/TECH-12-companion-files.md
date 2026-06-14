@@ -304,7 +304,7 @@ When to (re-)generate the showcase:
 
 ## Synchronization rule
 
-Hard rule: companion files MUST stay in sync with DESIGN.md. The auditor agent's Pass 2 (drift) check (`X1`-`X6` of [review-rubric](review-rubric.md)) verifies this:
+Hard rule: companion files MUST stay in sync with DESIGN.md. The auditor agent's Pass 2 (drift) check (`X1`-`X6` of [review-rubric](../../amw-design-md-audit/references/review-rubric.md)) verifies this:
 
 - Every color in DESIGN.md appears in `tokens.json` with matching value.
 - Every CSS variable in `tokens.css` matches a DESIGN.md token.
@@ -316,9 +316,9 @@ Drift fails the audit. The fix is always: re-run the emitter, do not hand-edit.
 
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
   > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
-- [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how downstream agents consume the companion files
+- [TECH-15-design-md-as-input](../../amw-design-md-convert/references/TECH-15-design-md-as-input.md) — how downstream agents consume the companion files
   > What it does · When this TECH applies · The wireframe-builder's flow when DESIGN.md is the input · Token mapping — DESIGN.md to wireframe-builder's `brand_tokens` shape · Component tokens — direct passthrough · Failure paths · DESIGN.md fails lint · DESIGN.md is Variant 2 · DESIGN.md missing required fields · CLAUDE.md-coupled projects · Companion-file consumption · Symmetry with non-DESIGN.md inputs · Cross-references
-- [review-rubric](./review-rubric.md) — `X1`-`X6` drift checks
+- [review-rubric](../../amw-design-md-audit/references/review-rubric.md) — `X1`-`X6` drift checks
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 - `../../../bin/amw-design-md-emit-companions.py` — the four-canonical-companions emitter
 - `../../../bin/amw-design-md-showcase.py` — the visual-QA showcase emitter (sibling, single-file HTML)

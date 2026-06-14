@@ -17,7 +17,7 @@
 
 ## What it does
 
-Documents how `amw-design-md-extractor-agent` reads computed `box-shadow` values from a live URL, clusters them by **elevation depth**, and emits a normalized `shadows.depth-1..depth-5` block in the DESIGN.md frontmatter. Variant 1 DESIGN.md does not include shadows in its core schema, so this technique writes to the **extension namespace** `extensions.shadows` per [extension-sections-10-14](./extension-sections-10-14.md) — the elevation system becomes an optional extension token group.
+Documents how `amw-design-md-extractor-agent` reads computed `box-shadow` values from a live URL, clusters them by **elevation depth**, and emits a normalized `shadows.depth-1..depth-5` block in the DESIGN.md frontmatter. Variant 1 DESIGN.md does not include shadows in its core schema, so this technique writes to the **extension namespace** `extensions.shadows` per [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — the elevation system becomes an optional extension token group.
 
 The base flow (DOM walk + computed-style sampling) is shared with [TECH-07-url-extraction](TECH-07-url-extraction.md); this TECH focuses on the **classification + normalization** layer specific to shadows.
 
@@ -194,7 +194,7 @@ Classifier emits 4 depth levels (1, 2, 3, 4); `depth-5` is empty (no full-screen
   > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
 - [TECH-86-multi-page-extract](./TECH-86-multi-page-extract.md) — when shadows differ across pages, multi-page merge applies
 - [TECH-94-animation-extract](./TECH-94-animation-extract.md) — shadows often participate in hover transitions; extract together
-- [extension-sections-10-14](./extension-sections-10-14.md) — where extension namespaces live in Variant 1 DESIGN.md
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — where extension namespaces live in Variant 1 DESIGN.md
 - `../../../bin/amw-design-md-from-url.sh` — bin script that hosts this classifier
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
 - [amw-design-md-extractor-agent](../../../agents/amw-design-md-extractor-agent.md) — the agent that owns this flow

@@ -148,7 +148,7 @@ amw-design-library add stripe --from-figma-tokens /path/to/stripe.tokens.json
 amw-design-library add acme --from-url https://acme.example.com
 ```
 
-Mode B dispatches to `bin/amw-figma-tokens-import.py` (see [TECH-18-figma-input-path](TECH-18-figma-input-path.md)). Mode C dispatches to `bin/amw-design-md-from-url.sh` (see [TECH-07-url-extraction](TECH-07-url-extraction.md)). All modes run the standard validation chain after import; failures abort the add.
+Mode B dispatches to `bin/amw-figma-tokens-import.py` (see [TECH-18-figma-input-path](../../amw-design-md-extract/references/TECH-18-figma-input-path.md)). Mode C dispatches to `bin/amw-design-md-from-url.sh` (see [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md)). All modes run the standard validation chain after import; failures abort the add.
 
 After a successful add, the script optionally emits companions (`tokens.css`, `tokens.json`, `tokens.dtcg.json`, `component-inventory.md`, `usage-prompt.md`) when `--with-companions` is passed.
 
@@ -209,12 +209,12 @@ The agent never re-extracts from the live Linear site. The DESIGN.md is the sing
 
 ## Cross-references
 
-- [TECH-07-url-extraction](./TECH-07-url-extraction.md) — Mode C source for `amw-design-library add --from-url`
+- [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) — Mode C source for `amw-design-library add --from-url`
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — how the library's DESIGN.md is consumed downstream by wireframe-builder
-- [TECH-18-figma-input-path](./TECH-18-figma-input-path.md) — Mode B source for `amw-design-library add --from-figma-tokens`
+- [TECH-18-figma-input-path](../../amw-design-md-extract/references/TECH-18-figma-input-path.md) — Mode B source for `amw-design-library add --from-figma-tokens`
 - [TECH-19-design-md-apply](./TECH-19-design-md-apply.md) — apply pass enforces the library DESIGN.md's tokens at code-gen time
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — every `add` runs this chain before accepting the entry
-- [TECH-12-companion-files](./TECH-12-companion-files.md) — `--with-companions` emits these alongside the library DESIGN.md
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — every `add` runs this chain before accepting the entry
+- [TECH-12-companion-files](../../amw-design-md/references/TECH-12-companion-files.md) — `--with-companions` emits these alongside the library DESIGN.md
 - [TECH-17-dtcg-export](./TECH-17-dtcg-export.md) — optional tokens.dtcg.json in the library entry
 - `brand-catalog.md` + `brand-*.md` — ships-with-plugin reference systems (read-only, distinct from the user-local library at ~/.config/ai-maestro/design-library/)
 - ~/.claude/rules/use-safe-delete.md — the `remove` verb uses safe-delete, not `rm`

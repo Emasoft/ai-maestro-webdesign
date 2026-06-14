@@ -8,7 +8,6 @@ version: 0.1.0
 
 > **Orchestrated by:** [SKILL](../amw-design-principles/SKILL.md).
 > **Format spec (authoritative):** [html](../amw-diagram-formats/references/html.md).
-> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 > **Modify pipeline (authoritative):** [modify-flow](../amw-diagram-formats/references/modify-flow.md).
 > [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 
@@ -70,6 +69,7 @@ Full table + technique-level citations live in [html](../amw-diagram-formats/ref
 3. **IR operation:**
    - Create path → generate IR from the brief, route to [SKILL](../amw-diagram-editorial/SKILL.md) (13-archetype path) or [SKILL](../amw-infographics/SKILL.md) (dense editorial path) based on `--style` / brief cues, let the producer emit.
    - Modify path → apply the user's requested edit to the IR (text substitution on `nodes[*].label` for MVP; structural operations once Phase 1 lands — see [modify-flow](../amw-diagram-formats/references/modify-flow.md) §5.2).
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 4. **Re-render** via `bin/amw-diagram-ir.py emit --format html` (wraps the chosen producer for create path; emits the patched IR back to HTML for modify path).
 5. **Re-validate** via `bin/amw-validate-html-diagram.sh` (wraps `xmllint --html --noout` + `tidy -e -q -errors`; unified PASS/FAIL contract per [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md)). A FAIL aborts and leaves the original file untouched. Retry budget = 3 (per shared modify-flow).
 > [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
@@ -106,9 +106,13 @@ See more worked examples in [SKILL](../amw-diagram-editorial/SKILL.md) (editoria
 ## Resources
 
 - [html](../amw-diagram-formats/references/html.md) — authoritative HTML format spec + 100-technique catalog.
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 - [modify-flow](../amw-diagram-formats/references/modify-flow.md) — authoritative 6-step modify pipeline.
+> [modify-flow.md] The pipeline · Create vs modify dispatch · Step-by-step detail · Work directory and file naming · Per-format guidance · Conversion is a modify-flow variant · Composition with round-trip skills · Related references
 - [ir-schema](../amw-diagram-formats/references/ir-schema.md) — IR schema consumed by `bin/amw-diagram-ir.py`.
+> [ir-schema.md] Top-level shape · `nodes` · Well-known annotations · Raw-source fast path (MVP) · Lossy-conversion matrix · Versioning policy · Example IRs · Validation · Consumers
 - [validation-dispatcher](../amw-diagram-formats/references/validation-dispatcher.md) — unified validator output contract.
+> [validation-dispatcher.md] Unified output contract · Dispatch algorithm · PNG refusal message (fixed) · Per-format validator specs · Caller integration patterns · Known limitations (Phase 0) · Related references
 - [ai-slop-avoid](../amw-design-principles/ai-slop-avoid.md) — final output-ban gate (12 items).
 > [ai-slop-avoid.md] I. Visual style · II. Typography · III. Layout · IV. Content and copy · V. Interaction and motion · VI. Color · Self-check workflow · VII. Content density principle (positive stance) · VIII. Content anti-patterns (T-042) · IX. Anti-AI-cliché visual checklist (T-044) · X. Production-test tells (taste-skill, MIT)
 - `../amw-design-principles/starter-components/` — canonical chrome + tweaks protocol + React/Babel pins.
@@ -122,9 +126,13 @@ See more worked examples in [SKILL](../amw-diagram-editorial/SKILL.md) (editoria
 - Exactly one self-contained `.html` per invocation. Inline CSS + inline SVG. No external `<link>` to CDN CSS, no npm install, no bundler. ([html](../amw-diagram-formats/references/html.md) TECH-61)
 - Every emitted `.html` passes `bin/amw-validate-html-diagram.sh` AND the AI-slop-avoid 12-item checklist. A FAIL aborts; the original file is untouched.
 - Tweaks block (when included) preserves the three invariants verbatim — listener-before-announce, partial-keys only, valid JSON EDITMODE block. ([html](../amw-diagram-formats/references/html.md) §3)
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 - React/Babel pins are exact — `react@18.3.1`, `react-dom@18.3.1`, `<@babel/standalone@7.29.0>` — with integrity hashes. No `react@18` shorthand, no `type="module"`. ([html](../amw-diagram-formats/references/html.md) §4)
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 - `scrollIntoView` is banned everywhere. Use `window.scrollTo({top, behavior:'smooth'})` with manual offset. ([html](../amw-diagram-formats/references/html.md) TECH-29)
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 - Do NOT re-author the HTML spec inside this skill — reference [html](../amw-diagram-formats/references/html.md). If a rule is wrong, fix it there.
+> [html.md] Format definition · Starter-components mapping · Tweaks protocol invariants (HARD RULES) · React / Babel pin rules · AI-slop-avoid gate (12-item checklist) · ARIA / keyboard / a11y patterns · CSS custom properties (Tweaks-compatible) · Per-source breakdown of the technique catalog · Technique catalog · Migration note (2026-04-22)
 
 ## Error Handling
 

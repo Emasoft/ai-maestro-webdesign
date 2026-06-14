@@ -81,6 +81,7 @@ Every file under `references/` is a short catalogue of proven patterns (with wor
 2. Select the closest reference file using the category table or the technique tree below; do not re-invent patterns.
 3. Copy the matching pattern and substitute real identifiers from the user's code or brief.
 4. Decide context: classic `+--+` ASCII for source-file comments / maximum portability, Unicode box-drawing (`┌─┐`) for GitHub-rendered READMEs. (Preserve the host comment prefix when embedding — see [authoring-cheatsheet](references/authoring-cheatsheet.md).)
+> [authoring-cheatsheet.md] Character cheat-sheet · Extended connection-type vocabulary · Writing diagrams inside code comments · Non-negotiables · Common mistakes to avoid · Error Handling
 5. Validate with `bin/amw-validate-ascii.py`; if inside a comment block, re-validate after adding the language comment prefix.
 6. Emit the validated diagram; never present a FAIL output.
 

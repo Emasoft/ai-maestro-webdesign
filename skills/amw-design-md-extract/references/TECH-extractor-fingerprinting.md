@@ -211,7 +211,7 @@ def fingerprint_design_md(parsed_frontmatter: dict) -> str:
 | Two DESIGN.mds, different fingerprint, same hosts / brand | Design system drifted. Run `bin/amw-design-md-diff.sh` to see which tokens changed. |
 | Two DESIGN.mds, different fingerprint, different brands | Different design systems. No further inference. |
 | Same URL extracted twice, different fingerprint | Source changed between runs OR extractor non-determinism. Inspect extraction-notes sidecars to see which tokens differ. |
-| Fingerprint matches an entry in `~/.config/ai-maestro/design-library/` (cross-project DESIGN.md library, see [TECH-20-design-library](TECH-20-design-library.md)) | This is a known design system. The library entry's prose / brand-archetype labels can be reused. |
+| Fingerprint matches an entry in `~/.config/ai-maestro/design-library/` (cross-project DESIGN.md library, see [TECH-20-design-library](../../amw-design-md-convert/references/TECH-20-design-library.md)) | This is a known design system. The library entry's prose / brand-archetype labels can be reused. |
 
 ## Non-goals (what fingerprinting is NOT)
 
@@ -266,9 +266,9 @@ After the fingerprint is computed:
 - [TECH-extractor-icon-asset-export](TECH-extractor-icon-asset-export.md) —
   the asset manifest also receives the fingerprint for cross-pipeline
   reference
-- [TECH-11-validation-and-lint](TECH-11-validation-and-lint.md) — lint
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — lint
   must PASS before the fingerprint is treated as canonical
-- [TECH-20-design-library](TECH-20-design-library.md) — proposed
+- [TECH-20-design-library](../../amw-design-md-convert/references/TECH-20-design-library.md) — proposed
   cross-project library uses the fingerprint as a primary key
 - [SKILL](../../amw-design-extract/SKILL.md) — sibling URL-extraction skill
   whose loose-format output can also be fingerprinted via this same

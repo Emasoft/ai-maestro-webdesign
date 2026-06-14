@@ -143,6 +143,6 @@ Plus an `extraction-notes.md` adjacent file with:
   > What it does · When to use · Architecture · Inputs · What `dev-browser eval` returns · Heuristics for token extraction · Colors · Typography · Spacing · Radius · Components · Output structure · Failure modes and recovery · Validation gate · Cross-references
 - [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — Tailwind-specific extraction (more accurate for TW projects)
   > What it does · When to use · When NOT to use · Inputs · How it works (4-step pipeline) · Step 1 — Loader (loader.ts equivalent) · Step 2 — CSS-parser (css-parser.ts equivalent) · Step 3 — Mapper (mapper.ts equivalent) · Step 4 — Generator (generator.ts equivalent) · Component derivation · Worked example · Limitations · Validation · Cross-references
-- [audit-passes](./audit-passes.md) — Pass 2 (drift) uses this internally
+- [audit-passes](../../amw-design-md-audit/references/audit-passes.md) — Pass 2 (drift) uses this internally
   > Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
 - `../../../bin/amw-design-md-from-codebase.py` — the bin script

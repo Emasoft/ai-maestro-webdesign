@@ -104,6 +104,7 @@ Each TECH file under `./references/` contains a "Minimal example" section with n
 - [`../amw-design-principles/starter-components/animations.html`](../amw-design-principles/starter-components/animations.html) — Stage + Sprite timeline; pretext kinetic work composes with this, not with Framer Motion / GSAP (banned plugin-wide).
 - [SKILL](../amw-mermaid-render/SKILL.md) — pretext is NOT a diagram skill. For diagrams, the plugin has dedicated ASCII / Mermaid / SVG paths.
 - [_index](references/_index.md) — flat catalog of every TECH-NN file.
+> [_index.md] API functions (TECH-01 — TECH-13) · Measurement prerequisites (TECH-14 — TECH-18) · Layout patterns / obstacle routing (TECH-19 — TECH-31) · Typography techniques (TECH-32 — TECH-44) · Motion / interactive demos (TECH-45 — TECH-55) · Tables (TECH-56 — TECH-58) · Integration patterns (TECH-59 — TECH-66) · Workflow assemblies (TECH-67 — TECH-71) · Consult / decision-routing (TECH-72 — TECH-78) · Cross-references
 
 ## Non-negotiables
 

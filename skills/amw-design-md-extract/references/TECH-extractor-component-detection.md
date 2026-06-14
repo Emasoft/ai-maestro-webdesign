@@ -126,7 +126,7 @@ used when Patterns 1–4 returned empty.
 ## URL detection — DOM landmarks + ARIA roles
 
 The URL extractor delegates to `amw-dev-browser` (see
-[TECH-07-url-extraction](TECH-07-url-extraction.md)) and asks the live page
+[TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md)) and asks the live page
 for component candidates via this evaluation. Each landmark / role / pattern
 in the table maps to a canonical Variant 1 component-spec entry.
 
@@ -295,11 +295,11 @@ After component detection runs, the extractor:
 
 ## Cross-references
 
-- [TECH-04-component-tokens](TECH-04-component-tokens.md) — canonical
+- [TECH-04-component-tokens](../../amw-design-md/references/TECH-04-component-tokens.md) — canonical
   component-token schema this extractor targets
-- [TECH-07-url-extraction](TECH-07-url-extraction.md) — URL extraction
+- [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) — URL extraction
   pipeline that calls into the component-detection rules here
-- [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) — codebase
+- [TECH-08-codebase-extraction](../../amw-design-md/references/TECH-08-codebase-extraction.md) — codebase
   scan that calls into the five-pattern detector
 - [TECH-extractor-icon-asset-export](TECH-extractor-icon-asset-export.md) —
   paired skill for icons, logos, raster assets discovered during the same

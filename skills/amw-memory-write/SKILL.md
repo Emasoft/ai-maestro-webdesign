@@ -54,9 +54,10 @@ empty) — it is the landing zone for `[^N]` correction lessons.
 
 ## After writing
 
-Add a one-line pointer to `MEMORY.md` in the same memdir (`- [Title](file.md) — hook`), the
-index loaded each session. Before saving, recall first (`amw-memory-recall`) to UPDATE an
-existing note rather than duplicate it.
+Add a one-line pointer to `MEMORY.md` in the same memdir — a bullet of the form
+`- [Title]` linking the note filename `— hook` — the index loaded each session. Before
+saving, recall first (`amw-memory-recall`) to UPDATE an existing note rather than
+duplicate it.
 
 ## Correction protocol (don't delete — demote)
 

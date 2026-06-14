@@ -85,7 +85,7 @@ When DESIGN.md prose contains raw hex / px values instead of `{token.ref}` refer
 2. **Substitution failure.** Downstream emitters (e.g. `tokens.css` generator) cannot replace raw values — they only substitute `{token.ref}` patterns. Prose with raw values silently bypasses the substitution chain.
 3. **Translation friction.** When the DESIGN.md is translated to another language, prose with raw values produces tokenless translations. Prose with `{token.ref}` produces translations where the token references are preserved unchanged.
 
-Rule 12 of [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) enforces this: component definitions in §6 MUST cite tokens, never raw values. The same principle is recommended (warning-level) for all prose mentioning a color or spacing value.
+Rule 12 of [TECH-24-authoring-rules-spec](../../amw-design-md-spec/references/TECH-24-authoring-rules-spec.md) enforces this: component definitions in §6 MUST cite tokens, never raw values. The same principle is recommended (warning-level) for all prose mentioning a color or spacing value.
 
 ## Dead-reference detection
 
@@ -233,9 +233,9 @@ The check does not parse the full Markdown AST; it uses a regex `\{[a-z][a-z0-9_
 
 ## Cross-references
 
-- [TECH-05-token-references](TECH-05-token-references.md) — broader token-reference patterns
-- [TECH-11-validation-and-lint](TECH-11-validation-and-lint.md) — `bin/amw-design-md-validate.py` usage
-- [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — Rule 12 (components must cite tokens, not raw values)
+- [TECH-05-token-references](../../amw-design-md/references/TECH-05-token-references.md) — broader token-reference patterns
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — `bin/amw-design-md-validate.py` usage
+- [TECH-24-authoring-rules-spec](../../amw-design-md-spec/references/TECH-24-authoring-rules-spec.md) — Rule 12 (components must cite tokens, not raw values)
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — §10/§11 dead-reference enforcement
 - [TECH-23-section-9-agent-prompt-guide](TECH-23-section-9-agent-prompt-guide.md) — §9 CSS snippets dead-reference enforcement
 - [TECH-26-extended-sections-7-8](TECH-26-extended-sections-7-8.md) — §7-ext / §8-ext tables dead-reference enforcement

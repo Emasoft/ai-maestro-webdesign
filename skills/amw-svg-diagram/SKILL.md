@@ -120,11 +120,16 @@ See [SKILL](../amw-diagram-svg/SKILL.md) for freeform node-and-edge examples and
 ## Non-negotiables
 
 - Exactly one standalone `.svg` per invocation. Well-formed XML. `xmlns="http://www.w3.org/2000/svg"` on the root. ([svg](../amw-diagram-formats/references/svg.md) §1.1)
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 - No `<script>` in SVG output. No `<foreignObject>` with HTML. No remote `<image href="http...">`. ([svg](../amw-diagram-formats/references/svg.md) §1.3)
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 - Every emitted `.svg` passes `bin/amw-validate-svg-diagram.sh` AND render-verify (`bin/amw-svg-render.py render → finish` guard). A FAIL aborts; the original file is untouched.
 - Minimum 120-unit spacing on the active axis, 40-unit margin reserve — labels > 20 chars truncate with `...`. ([svg](../amw-diagram-formats/references/svg.md) TECH-SV-21 + TECH-SV-22)
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 - Animated SVGs carry the `@media (prefers-reduced-motion: reduce)` guard. ([svg](../amw-diagram-formats/references/svg.md) TECH-SV-25)
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 - Do NOT re-author the SVG spec inside this skill — reference [svg](../amw-diagram-formats/references/svg.md). If a rule is wrong, fix it there.
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 
 ## Error Handling
 
@@ -133,5 +138,6 @@ See [SKILL](../amw-diagram-svg/SKILL.md) for freeform node-and-edge examples and
 | `bin/amw-validate-svg-diagram.sh` FAIL | Unclosed tag, stray `&`, missing `xmlns`, `<script>` present | Return the validator report verbatim; do not guess-repair. |
 | `bin/amw-svg-render.py` refuses `finish` | `render` step was never called | Run `bin/amw-svg-render.py render <file>` first; visually inspect the PNG. |
 | `cairosvg` blank output | Content outside viewBox, unsupported filter | Reposition inside viewBox; simplify filters per [svg](../amw-diagram-formats/references/svg.md) §5.2. |
+> [svg.md] Format definition · Structural primitives (diagram-grade usage) · Viewport rules · Text rendering rules · Rasterization path · Validation · Per-source breakdown of the technique catalog · Technique catalog · Failure modes
 | Modify path hits retry budget 3 FAILs | Patch conflicts with existing SVG structure | Surface validator findings; ask the user to refine the edit. |
 | Parser returns empty IR (modify path) | SVG has no detectable diagram primitives (raw artwork) | Raw-source stub per `modify-flow.md` §5.3; warn that structural patching is unavailable. |

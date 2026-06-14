@@ -249,8 +249,8 @@ The official linter does NOT enforce §7-ext or §8-ext presence. The validator 
 ## Cross-references
 
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — sister optional sections §10 and §11
-- [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — Rule 1 (mandatory §7 Motion); extended sections augment but do not replace it
-- [extension-sections-10-14](extension-sections-10-14.md) — broader optional-section family (10-14)
-- [TECH-94-animation-extract](TECH-94-animation-extract.md) — extraction recipe for motion tokens populated into §7 and §7-ext
+- [TECH-24-authoring-rules-spec](../../amw-design-md-spec/references/TECH-24-authoring-rules-spec.md) — Rule 1 (mandatory §7 Motion); extended sections augment but do not replace it
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — broader optional-section family (10-14)
+- [TECH-94-animation-extract](../../amw-design-md/references/TECH-94-animation-extract.md) — extraction recipe for motion tokens populated into §7 and §7-ext
 - [TECH-25-brand-archetypes](TECH-25-brand-archetypes.md) — motion signal per archetype guides §7-ext pre-fill
 - [TECH-27-token-interpolation](TECH-27-token-interpolation.md) — token-ref linting applies inside extended tables

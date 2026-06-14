@@ -321,7 +321,7 @@ the rounded-md scale and the primary/secondary/tertiary color hierarchy.
   > Filling guide · Cross-references
 - [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — authoring the YAML frontmatter
   > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the linter and pure-Python validator
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — running the linter and pure-Python validator
   > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
 - `../../../bin/amw-design-md-lint.sh` — wrapper around the official @google design.md npm linter (invoked via npx)
 - `../../../bin/amw-design-md-validate.py` — pure-Python offline validator

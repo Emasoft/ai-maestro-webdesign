@@ -198,11 +198,11 @@ These are gold. They tell the agent things it could not infer from tokens alone.
 
 ## Cross-references
 
-- [review-rubric](./review-rubric.md) — rubric `T6` (minimum 3 of each)
+- [review-rubric](../../amw-design-md-audit/references/review-rubric.md) — rubric `T6` (minimum 3 of each)
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
-- [ai-slop-avoid](../ai-slop-avoid.md) — anti-patterns S13, S14
+- [ai-slop-avoid](../../amw-design-md-audit/references/ai-slop-avoid.md) — anti-patterns S13, S14
   > Token authoring slop · S1. Vibes without hex values · S2. Token name and prose name out of sync · S3. Unresolved token references · S4. Placeholder text never filled in · S5. Color names like "blue" or "red" instead of semantic roles · S6. Typography without a complete row · S7. fontWeight as a string when not a number · Structural slop · S8. Sections out of canonical order · S9. Duplicate section headings · S10. Missing the `## Colors` section · S11. YAML frontmatter not at line 1 · S12. YAML frontmatter that is not actually YAML · Prose slop · S13. Marketing copy where rules belong · S14. Do's and Don'ts that are vague · S15. The `## Overview` section is a wall of adjectives · Variant 2 — community 9-section specific · S16. Section 7 (Do's and Don'ts) with fewer than 3 dos and 3 don'ts · S17. Section 8 (Responsive Behavior) without explicit px breakpoints · S18. Section 9 (Agent Prompt Guide) missing a quick-color-reference · S19. Mermaid component-state diagram absent · Conversion slop · S20. Variant 2 → Variant 1 conversion that loses data · Companion-file slop · S21. tokens.css with hex values that don't match DESIGN.md frontmatter · S22. tokens.json that is not W3C Design Tokens format · Final delivery gate
-- [canonical-template](./canonical-template.md) — Variant 1 placeholder
+- [canonical-template](../../amw-design-md-spec/references/canonical-template.md) — Variant 1 placeholder
   > Filling guide · Cross-references
-- [community-9-section-template](./community-9-section-template.md) — Variant 2 placeholder
+- [community-9-section-template](../../amw-design-md-spec/references/community-9-section-template.md) — Variant 2 placeholder
   > Optional extension sections · Validation · Cross-references

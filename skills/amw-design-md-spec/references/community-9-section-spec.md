@@ -276,7 +276,7 @@ The 9-section template includes a `mermaid` block under Section 4 (Component Sty
 | YAML frontmatter | Yes, machine-readable tokens | No, all in prose/tables |
 | Section count | 8 | 9 (+ optional 10–14 from extensions) |
 | Token reference syntax | `{path.to.token}` curly braces | None — by-name in prose |
-| Linter | `npx @google/design.md lint` | Custom rubric ([review-rubric](review-rubric.md)) |
+| Linter | `npx @google/design.md lint` | Custom rubric ([review-rubric](../../amw-design-md-audit/references/review-rubric.md)) |
 | Section ordering | Fixed; reorder = error | Fixed; numbered |
 | Best for | Machine consumption, AI agent input | Human-first reference, brand handoff |
 
@@ -292,8 +292,8 @@ The plugin's default canonical output is Variant 1. Variant 2 is accepted as inp
   > Section 10 — Naming Convention (Page > Section > Block > Element) · Section 11 — Page Specifications · Section 12 — Composite Components · Section 13 — Token Mapping · Section 14 — i18n References · When to use these extensions · Cross-references · "What to build" (page-level specs, requirements) · Component composition (LoginPage as a unit, not just Button + Input) · Token-to-Tailwind / token-to-CSS-var mapping table · i18n string-resource mapping
 - [community-9-section-template](./community-9-section-template.md) — fillable Variant 2 skeleton
   > Optional extension sections · Validation · Cross-references
-- [review-rubric](./review-rubric.md) — Variant 2 quality scoring
+- [review-rubric](../../amw-design-md-audit/references/review-rubric.md) — Variant 2 quality scoring
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
-- [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
+- [TECH-13-converting-variant2-to-1](../../amw-design-md/references/TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
   > What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references
 - `../../../bin/amw-design-md-convert-v2-to-v1.py` — conversion bin script

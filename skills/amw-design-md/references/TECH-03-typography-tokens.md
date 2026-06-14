@@ -163,7 +163,7 @@ Companion `tokens.css` (emitted by `bin/amw-design-md-emit-companions.py`) bakes
 
 ## CJK considerations
 
-For Japanese / Chinese / Korean locale variants, the font stack and metrics are entirely different. See [TECH-cjk-localization](TECH-cjk-localization.md). Key points:
+For Japanese / Chinese / Korean locale variants, the font stack and metrics are entirely different. See [TECH-cjk-localization](../../amw-design-md-author/references/TECH-cjk-localization.md). Key points:
 
 - Add a JP/KO/ZH primary font BEFORE the Latin fallback: `"Noto Sans JP", "Hiragino Sans", "Public Sans"`.
 - Reduce body font-size by 1-2 px (CJK ideographs read smaller comfortably).
@@ -210,11 +210,11 @@ typography:
 
 ## Cross-references
 
-- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+- [TECH-01-yaml-frontmatter](../../amw-design-md-spec/references/TECH-01-yaml-frontmatter.md) — YAML rules
   > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-05-token-references](./TECH-05-token-references.md) — using `{typography.X}` in components
   > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
-- [TECH-cjk-localization](./TECH-cjk-localization.md) — CJK font / size / line-height adjustments
+- [TECH-cjk-localization](../../amw-design-md-author/references/TECH-cjk-localization.md) — CJK font / size / line-height adjustments
   > What it does · When to use · How it works · Typography (per language) · Layout · Punctuation + line breaking · Cultural symbolism · Microcopy patterns · Locale machinery · SEO impacts · Performance · Minimal example · Gotchas · Cross-references · Source attribution
-- [canonical-spec-google-alpha](canonical-spec-google-alpha.md) — full Typography spec
+- [canonical-spec-google-alpha](../../amw-design-md-spec/references/canonical-spec-google-alpha.md) — full Typography spec
   > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references

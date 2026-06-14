@@ -198,7 +198,7 @@ The user accepts the fallback or provides a corrected DESIGN.md.
 
 ## CLAUDE.md-coupled projects
 
-When a project uses DESIGN.md AND has `CLAUDE.md` snippet from [claude-md-snippet](claude-md-snippet.md), the wireframe-builder reads BOTH:
+When a project uses DESIGN.md AND has `CLAUDE.md` snippet from [claude-md-snippet](../../amw-design-md-spec/references/claude-md-snippet.md), the wireframe-builder reads BOTH:
 
 - DESIGN.md as the token source.
 - CLAUDE.md as additional do/don't rules layered on top.
@@ -227,11 +227,11 @@ In all 6 cases, the wireframe-builder's `brand_tokens` input contract is the sam
 ## Cross-references
 
 - [amw-wireframe-builder-agent](../../../agents/amw-wireframe-builder-agent.md) — the agent that consumes
-- [TECH-12-companion-files](./TECH-12-companion-files.md) — alternative consumption via tokens.css
+- [TECH-12-companion-files](../../amw-design-md/references/TECH-12-companion-files.md) — alternative consumption via tokens.css
   > What it does · The four companions · tokens.css — CSS custom properties · tokens.json — W3C Design Tokens format · component-inventory.md — human-readable component list · usage-prompt.md — Drop-in agent prompt · Inputs to the emitter · Resolution behavior · Synchronization rule · Cross-references
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — the lint gate
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — the lint gate
   > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
-- [TECH-13-converting-variant2-to-1](./TECH-13-converting-variant2-to-1.md) — V2 input handling
+- [TECH-13-converting-variant2-to-1](../../amw-design-md/references/TECH-13-converting-variant2-to-1.md) — V2 input handling
   > What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references
-- [claude-md-snippet](./claude-md-snippet.md) — coupled CLAUDE.md
+- [claude-md-snippet](../../amw-design-md-spec/references/claude-md-snippet.md) — coupled CLAUDE.md
   > Snippet — paste into the project's `CLAUDE.md` · Where this goes in CLAUDE.md · What `{{placeholders}}` get filled with · Cross-references

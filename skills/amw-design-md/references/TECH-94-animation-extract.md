@@ -19,7 +19,7 @@
 
 Documents how `amw-design-md-extractor-agent` reads `transition-*`, `animation-*`, and `transform` properties from a live URL, classifies each by **motion role** (entry, exit, hover, focus, page-transition), and emits a normalized `motion.{role}.{duration,easing}` block under `extensions.motion` in the DESIGN.md frontmatter.
 
-Variant 1 DESIGN.md does not specify a motion section in its core schema; motion lives in the extension namespace per [extension-sections-10-14](./extension-sections-10-14.md).
+Variant 1 DESIGN.md does not specify a motion section in its core schema; motion lives in the extension namespace per [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md).
 
 The base capture flow (DOM walk + computed-style sampling) is shared with [TECH-07-url-extraction](TECH-07-url-extraction.md); this TECH focuses on the **role classification + normalization** layer specific to motion.
 
@@ -202,7 +202,7 @@ Result: 4 populated motion roles + a reduced-motion entry. Prose note: "2 rules 
 - [TECH-86-multi-page-extract](./TECH-86-multi-page-extract.md) — when motion differs across pages, multi-page merge applies
 - [TECH-91-shadow-and-elevation-extract](./TECH-91-shadow-and-elevation-extract.md) — shadows often participate in hover transitions; extract together
 - [TECH-96-container-query-extract](./TECH-96-container-query-extract.md) — modern motion sometimes depends on container size; extract together for layered systems
-- [extension-sections-10-14](./extension-sections-10-14.md) — where extension namespaces live in Variant 1 DESIGN.md
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — where extension namespaces live in Variant 1 DESIGN.md
 - `../../../bin/amw-design-md-from-url.sh` — bin script that hosts this classifier
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
 - [amw-design-md-extractor-agent](../../../agents/amw-design-md-extractor-agent.md) — the agent that owns this flow

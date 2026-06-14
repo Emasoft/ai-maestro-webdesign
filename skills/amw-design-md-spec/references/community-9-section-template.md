@@ -6,12 +6,12 @@
 
 # Community 9-section DESIGN.md template (Variant 2)
 
-Copy the block below to a new `DESIGN.md`. Fill every `{{placeholder}}` with a real value. Do not leave `TBD`, `???`, or `<TODO>` — the review rubric ([review-rubric](review-rubric.md)) fails any file containing those.
+Copy the block below to a new `DESIGN.md`. Fill every `{{placeholder}}` with a real value. Do not leave `TBD`, `???`, or `<TODO>` — the review rubric ([review-rubric](../../amw-design-md-audit/references/review-rubric.md)) fails any file containing those.
 > [review-rubric.md] Output schema · Structural checks (must-pass) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 
 This format dominates the public DESIGN.md corpus (58-brand pre-paywall, 98-brand design-swatches). Use it when matching an existing collection style; otherwise prefer the canonical template.
 
-The XML boundary tags `<context>`, `<design_tokens>`, `<constraints>` are an enhancement that improves quality-rubric scores ([review-rubric](review-rubric.md) S2-S4). Keep them in delivered files.
+The XML boundary tags `<context>`, `<design_tokens>`, `<constraints>` are an enhancement that improves quality-rubric scores ([review-rubric](../../amw-design-md-audit/references/review-rubric.md) S2-S4). Keep them in delivered files.
 > [review-rubric.md] Output schema · Structural checks (must-pass) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
 
 ---
@@ -339,9 +339,9 @@ bash <plugin-root>/bin/amw-design-md-lint.sh DESIGN.v1.md
   > Document head (DESIGN_MD_SPEC L13-L17) · Section count and order (DESIGN_MD_SPEC L25-L36) · No YAML frontmatter · Section specifications · Section 1 — Visual Theme & Atmosphere (DESIGN_MD_SPEC L43-L67) · Section 2 — Color Palette & Roles (DESIGN_MD_SPEC L72-L106) · Section 3 — Typography Rules (DESIGN_MD_SPEC L108-L166) · Section 4 — Component Stylings (DESIGN_MD_SPEC L169-L216) · Section 5 — Layout Principles (DESIGN_MD_SPEC L219-L246) · Section 6 — Depth & Elevation · Section 7 — Do's and Don'ts · Section 8 — Responsive Behavior · Section 9 — Agent Prompt Guide · XML boundary tags (Variant 2 enhancement) · Mermaid component-state diagram · Comparison vs Variant 1 · Cross-references
 - [canonical-template](canonical-template.md) — Variant 1 template
   > Filling guide · Cross-references
-- [review-rubric](review-rubric.md) — Variant 2 quality scoring
+- [review-rubric](../../amw-design-md-audit/references/review-rubric.md) — Variant 2 quality scoring
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references
-- [audit-passes](audit-passes.md) — 5-pass audit
+- [audit-passes](../../amw-design-md-audit/references/audit-passes.md) — 5-pass audit
   > Pass 1 — Structural · Pass 2 — Drift · Pass 3 — Accessibility · Pass 4 — Completeness · Pass 5 — Consistency · Output file format · What the auditor does NOT do · Pre-flight checks · Cross-references
-- [TECH-13-converting-variant2-to-1](TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
+- [TECH-13-converting-variant2-to-1](../../amw-design-md/references/TECH-13-converting-variant2-to-1.md) — V2 → V1 conversion details
   > What it does · When to use · When NOT to use · Conversion overview · Token extraction from V2 prose · Colors · Typography · Spacing · Rounded · Components · Mermaid state diagram · Sections 8-9 merging · Information that may be lost · Inputs · Validation after conversion · Round-trip notes · Cross-references

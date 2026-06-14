@@ -56,11 +56,11 @@ Variant 1 has exactly 9 mandatory body sections, in this order:
 4. Spacing & Rhythm
 5. Surfaces & Elevation
 6. Components
-7. Motion (some authors fold this into §6; the spec recommends a dedicated §7 — see [TECH-26-extended-sections-7-8](TECH-26-extended-sections-7-8.md))
+7. Motion (some authors fold this into §6; the spec recommends a dedicated §7 — see [TECH-26-extended-sections-7-8](../../amw-design-md-author/references/TECH-26-extended-sections-7-8.md))
 8. Do's and Don'ts
-9. Agent Prompt Guide (per [TECH-23-section-9-agent-prompt-guide](TECH-23-section-9-agent-prompt-guide.md))
+9. Agent Prompt Guide (per [TECH-23-section-9-agent-prompt-guide](../../amw-design-md-author/references/TECH-23-section-9-agent-prompt-guide.md))
 
-Optional trailing sections §10 (Iteration Guide) and §11 (Known Gaps) per [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md).
+Optional trailing sections §10 (Iteration Guide) and §11 (Known Gaps) per [TECH-22-section-10-11-extended](../../amw-design-md-author/references/TECH-22-section-10-11-extended.md).
 
 Reordering, omitting, or renaming any of the 9 mandatory sections is a P0 lint error.
 
@@ -134,7 +134,7 @@ The Shadow Philosophy is a frequently-ignored brand-defining decision. Forcing i
 
 ### Rule 6 — Iteration Guide numbered list
 
-Section 10 (when present — see Rule 1 and [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md)) must use a numbered list `1.`, `2.`, `3.` — not bullets. The numbering signals priority order.
+Section 10 (when present — see Rule 1 and [TECH-22-section-10-11-extended](../../amw-design-md-author/references/TECH-22-section-10-11-extended.md)) must use a numbered list `1.`, `2.`, `3.` — not bullets. The numbering signals priority order.
 
 A bulleted §10 is a lint warning (not error) because the file is still parseable, but the ordering signal is lost.
 
@@ -142,7 +142,7 @@ A bulleted §10 is a lint warning (not error) because the file is still parseabl
 
 Section 8 contains both a "Do's" list and a "Don'ts" list. The two lists must have the SAME COUNT of items. Asymmetric lists (4 dos, 2 don'ts) is a lint warning — it suggests the author abandoned the section partway.
 
-Minimum count is 3 per side (per [TECH-06-do-donts](TECH-06-do-donts.md) "T6: minimum 3 dos and 3 don'ts"). The lint upper bound is 10 per side.
+Minimum count is 3 per side (per [TECH-06-do-donts](../../amw-design-md/references/TECH-06-do-donts.md) "T6: minimum 3 dos and 3 don'ts"). The lint upper bound is 10 per side.
 
 Canonical example:
 ```markdown
@@ -231,7 +231,7 @@ Incorrect:
 - Border-radius: `6px`
 ```
 
-Dead token references (`var(--primary)` when no `primary` token is declared) are P1 lint errors per [TECH-27-token-interpolation](TECH-27-token-interpolation.md).
+Dead token references (`var(--primary)` when no `primary` token is declared) are P1 lint errors per [TECH-27-token-interpolation](../../amw-design-md-author/references/TECH-27-token-interpolation.md).
 
 ### Rule 13 — Frontmatter precedes the H1
 
@@ -301,10 +301,10 @@ The V2 → V1 converter (`bin/amw-design-md-convert-v2-to-v1.py`) raises any V1-
 ## Cross-references
 
 - [TECH-01-yaml-frontmatter](TECH-01-yaml-frontmatter.md) — Rule 13 detail
-- [TECH-06-do-donts](TECH-06-do-donts.md) — Rule 7 detail
-- [TECH-11-validation-and-lint](TECH-11-validation-and-lint.md) — linter and validator usage
-- [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — Rule 6 (Iteration Guide)
-- [TECH-23-section-9-agent-prompt-guide](TECH-23-section-9-agent-prompt-guide.md) — Rule 9 detail
-- [TECH-26-extended-sections-7-8](TECH-26-extended-sections-7-8.md) — Rule 1 §7 Motion detail
-- [TECH-27-token-interpolation](TECH-27-token-interpolation.md) — Rule 12 detail
+- [TECH-06-do-donts](../../amw-design-md/references/TECH-06-do-donts.md) — Rule 7 detail
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — linter and validator usage
+- [TECH-22-section-10-11-extended](../../amw-design-md-author/references/TECH-22-section-10-11-extended.md) — Rule 6 (Iteration Guide)
+- [TECH-23-section-9-agent-prompt-guide](../../amw-design-md-author/references/TECH-23-section-9-agent-prompt-guide.md) — Rule 9 detail
+- [TECH-26-extended-sections-7-8](../../amw-design-md-author/references/TECH-26-extended-sections-7-8.md) — Rule 1 §7 Motion detail
+- [TECH-27-token-interpolation](../../amw-design-md-author/references/TECH-27-token-interpolation.md) — Rule 12 detail
 - [canonical-spec-google-alpha](canonical-spec-google-alpha.md) — full Variant 1 spec

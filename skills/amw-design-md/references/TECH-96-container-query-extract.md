@@ -233,7 +233,7 @@ The extracted DESIGN.md keeps viewport breakpoints from Tailwind config (TECH-10
 - [TECH-10-tailwind-conversion](./TECH-10-tailwind-conversion.md) — Tailwind viewport breakpoints (the OTHER responsive layer)
 - [TECH-86-multi-page-extract](./TECH-86-multi-page-extract.md) — when container usage differs across pages, multi-page merge applies
 - [TECH-94-animation-extract](./TECH-94-animation-extract.md) — modern motion sometimes depends on container size; extract together for layered systems
-- [extension-sections-10-14](./extension-sections-10-14.md) — where extension namespaces live in Variant 1 DESIGN.md
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — where extension namespaces live in Variant 1 DESIGN.md
 - `../../../bin/amw-design-md-from-url.sh` — bin script that hosts this classifier
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
 - [amw-design-md-extractor-agent](../../../agents/amw-design-md-extractor-agent.md) — the agent that owns this flow

@@ -41,6 +41,7 @@ INPUT or OUTPUT (peer status). DESIGN.md is one of six input formats the plugin 
 2. Every authored / extracted DESIGN.md MUST pass `bin/amw-design-md-lint.sh` before delivery; lint failure halts delivery. WCAG-AA contrast failures (via `bin/amw-design-md-contrast.py`) go to `warnings`, not silent omission.
 3. No paywalled service, no API key beyond what `amw-dev-browser` already requires, no Chrome extension.
 4. No child re-emits broad design vocabulary in tool-call text — that would re-trigger the orchestrator. See [skill-invocation-protocol](../amw-design-principles/references/skill-invocation-protocol.md).
+> [skill-invocation-protocol.md] The problem · The protocol · Examples · Enforcement
 
 ## Reference material not (yet) owned by a child
 

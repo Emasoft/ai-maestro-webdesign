@@ -130,11 +130,13 @@ This is the core translation layer. When the user uses subjective language, map 
 | Whoosh | 100–400ms | `references/sound-recipes.md#whoosh` | Page transition, slide | Filtered noise sweep |
 | Pop | 30–80ms | `references/sound-recipes.md#pop` | Add item, bubble, appear | Sine with pitch drop |
 | Custom | varies | [web-audio-building-blocks](references/web-audio-building-blocks.md) | Anything else | Compose from building blocks |
+> [web-audio-building-blocks.md] AudioContext Setup · Oscillator Types · Gain Envelopes (ADSR) · White Noise Generation · Filter Types (BiquadFilterNode) · Frequency Sweeps · Layering Oscillators · FM Synthesis (Bell/Metallic Tones) · Reusable Factory Pattern · Common Mistakes · Per-Sound-Type Parameter Bounds · Validation Checklist · Appendix — Tone.js abstractions: Setup, Synth Types, Recipes, Effects, Volume in Tone.js, Converting Tone.js to Vanilla Web Audio, When to Use Tone.js vs Vanilla
 
 ## Critical Implementation Rules
 
 ### AudioContext user-gesture requirement
 Browsers block audio until a user interaction (click, tap, keydown). Always initialize or resume the AudioContext inside an event handler. The singleton pattern in [web-audio-building-blocks](references/web-audio-building-blocks.md) handles this.
+> [web-audio-building-blocks.md] AudioContext Setup · Oscillator Types · Gain Envelopes (ADSR) · White Noise Generation · Filter Types (BiquadFilterNode) · Frequency Sweeps · Layering Oscillators · FM Synthesis (Bell/Metallic Tones) · Reusable Factory Pattern · Common Mistakes · Per-Sound-Type Parameter Bounds · Validation Checklist · Appendix — Tone.js abstractions: Setup, Synth Types, Recipes, Effects, Volume in Tone.js, Converting Tone.js to Vanilla Web Audio, When to Use Tone.js vs Vanilla
 
 ### Never ramp gain to zero
 `exponentialRampToValueAtTime(0, ...)` throws an error. Always ramp to `0.001` — it's inaudible but mathematically valid. This applies to every sound. No exceptions.
@@ -185,6 +187,7 @@ Use the `UISoundLibrary` class from [sound-recipes](references/sound-recipes.md)
 
 ### Tone.js abstractions
 For faster prototyping, Tone.js wraps the Web Audio API with higher-level synth types (`Tone.Synth`, `Tone.MetalSynth`, `Tone.NoiseSynth`, `Tone.MembraneSynth`). See the Tone.js appendix in [web-audio-building-blocks](references/web-audio-building-blocks.md) for recipe equivalents and a conversion guide back to vanilla Web Audio.
+> [web-audio-building-blocks.md] AudioContext Setup · Oscillator Types · Gain Envelopes (ADSR) · White Noise Generation · Filter Types (BiquadFilterNode) · Frequency Sweeps · Layering Oscillators · FM Synthesis (Bell/Metallic Tones) · Reusable Factory Pattern · Common Mistakes · Per-Sound-Type Parameter Bounds · Validation Checklist · Appendix — Tone.js abstractions: Setup, Synth Types, Recipes, Effects, Volume in Tone.js, Converting Tone.js to Vanilla Web Audio, When to Use Tone.js vs Vanilla
 
 ## Resources
 

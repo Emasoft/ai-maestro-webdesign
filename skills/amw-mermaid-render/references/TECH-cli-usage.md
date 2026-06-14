@@ -21,7 +21,7 @@ ASCII output through the alignment validator.
 
 The wrapper forwards all flags verbatim to the vendored `render.mjs`. The backend accepts 17 flags. Core flags: `--input` / `-i` (file or `-` for stdin), `--out` / `-o`, `--format` (svg|ascii), `--theme`, `--bg`/`--fg` (Mono Mode), `--line`/`--accent`/`--muted`/`--surface`/`--border` (7-color enriched), `--font`, `--transparent` (SVG only), `--use-ascii` (pure ASCII), `--padding-x`/`--padding-y`/`--box-border-padding` (ASCII only, default 5/5/1).
 
-Full per-flag detail: [TECH-custom-colors-override](references/TECH-custom-colors-override.md) and [TECH-ascii-padding-options](references/TECH-ascii-padding-options.md).
+Full per-flag detail: [TECH-custom-colors-override](TECH-custom-colors-override.md) and [TECH-ascii-padding-options](TECH-ascii-padding-options.md).
 
 ### stdin fallback and gotchas
 
@@ -53,7 +53,7 @@ bin/amw-mermaid-render.sh --input diagram.mmd --format svg --bg "#0f0f0f" --fg "
 bin/amw-mermaid-render.sh --input diagram.mmd --format svg --theme github-dark --transparent --out diagram.svg
 ```
 
-For per-flag color overrides see [TECH-custom-colors-override](references/TECH-custom-colors-override.md); for ASCII padding flags see [TECH-ascii-padding-options](references/TECH-ascii-padding-options.md).
+For per-flag color overrides see [TECH-custom-colors-override](TECH-custom-colors-override.md); for ASCII padding flags see [TECH-ascii-padding-options](TECH-ascii-padding-options.md).
 
 ### Batch render
 
@@ -61,4 +61,4 @@ For per-flag color overrides see [TECH-custom-colors-override](references/TECH-c
 node external/mermaid-render/scripts/batch.mjs --input-dir ./diagrams --output-dir ./rendered --format svg --theme tokyo-night --workers 4
 ```
 
-`--workers N` defaults to 4 (max ≈ CPU cores). Use for 3+ diagrams. `batch.mjs` has a different arg shape from the wrapper — invoke directly. Full details: [TECH-batch-rendering](references/TECH-batch-rendering.md).
+`--workers N` defaults to 4 (max ≈ CPU cores). Use for 3+ diagrams. `batch.mjs` has a different arg shape from the wrapper — invoke directly. Full details: [TECH-batch-rendering](TECH-batch-rendering.md).

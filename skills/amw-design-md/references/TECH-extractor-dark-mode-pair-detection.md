@@ -130,7 +130,7 @@ The asymmetry is recorded in the DESIGN.md prose as a warning ("`tertiary` extra
 
 ### Step 4 — Emit dual-scheme frontmatter
 
-Variant 1 DESIGN.md frontmatter is single-scheme by default. Dual-scheme output writes to the extension namespace `extensions.schemes` per [extension-sections-10-14](./extension-sections-10-14.md):
+Variant 1 DESIGN.md frontmatter is single-scheme by default. Dual-scheme output writes to the extension namespace `extensions.schemes` per [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md):
 
 ```yaml
 colors:
@@ -317,7 +317,7 @@ Prose note: "Dark-mode primary (`#7a85e6`) is a lightened variant of light-mode 
 - [TECH-07-url-extraction](./TECH-07-url-extraction.md) — base single-pass extraction flow this technique calls twice
 - [TECH-extractor-pseudo-element-extraction](./TECH-extractor-pseudo-element-extraction.md) — interaction states are scheme-dependent too; can be combined for full coverage
 - [TECH-02-color-tokens](./TECH-02-color-tokens.md) — see "Light + dark mode token pairs" — the authoring side of the same problem
-- [extension-sections-10-14](./extension-sections-10-14.md) — where the `extensions.schemes` namespace lives in DESIGN.md
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — where the `extensions.schemes` namespace lives in DESIGN.md
 - `../../../bin/amw-design-md-from-url.sh` — bin script that hosts this pass
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally
 - [amw-design-md-extractor-agent](../../../agents/amw-design-md-extractor-agent.md) — the agent that owns this flow

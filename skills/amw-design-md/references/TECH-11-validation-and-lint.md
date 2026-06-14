@@ -29,7 +29,7 @@ Documents the three validation tools the plugin runs on every authored or extrac
 
 ### 1. Official linter (`bin/amw-design-md-lint.sh`)
 
-Wrapper around `npx @google/design.md lint <file>`. Pure-Node, no API key, no remote calls. The official linter implements the rules from [canonical-spec-google-alpha](canonical-spec-google-alpha.md):
+Wrapper around `npx @google/design.md lint <file>`. Pure-Node, no API key, no remote calls. The official linter implements the rules from [canonical-spec-google-alpha](../../amw-design-md-spec/references/canonical-spec-google-alpha.md):
 > [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 
 - Frontmatter starts at line 1 with `---`.
@@ -125,7 +125,7 @@ Common lint failures and their fixes:
 |---|---|---|
 | `Frontmatter must start at line 1` | UTF-8 BOM, blank line, prose before `---` | Strip BOM, remove blank line, move `---` to line 1 |
 | `Duplicate section heading: ## Colors` | Two `## Colors` blocks | Merge them into one section |
-| `Section out of order: ## Components before ## Layout` | Author re-ordered | Restore canonical order from [canonical-spec-google-alpha](canonical-spec-google-alpha.md) |
+| `Section out of order: ## Components before ## Layout` | Author re-ordered | Restore canonical order from [canonical-spec-google-alpha](../../amw-design-md-spec/references/canonical-spec-google-alpha.md) |
 > [canonical-spec-google-alpha.md] File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
 | `Invalid color value: red` | CSS named color | Replace with hex |
 | `fontWeight must be a number: bold` | String weight | Replace with integer 100-900 |
@@ -133,7 +133,7 @@ Common lint failures and their fixes:
 | `Cycle in references: a → b → a` | Self-reference or cycle | Eliminate the cycle |
 | `Dimension must have unit: 12` | Bare number | Add unit: `12px` |
 
-See [TECH-14-validation-failure-recovery](TECH-14-validation-failure-recovery.md) for more detailed flowcharts.
+See [TECH-14-validation-failure-recovery](../../amw-design-md-audit/references/TECH-14-validation-failure-recovery.md) for more detailed flowcharts.
 
 ## Diff between two DESIGN.md files
 
@@ -162,11 +162,11 @@ This catches drift introduced by hand-edits before merge.
 
 ## Cross-references
 
-- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — frontmatter rules
+- [TECH-01-yaml-frontmatter](../../amw-design-md-spec/references/TECH-01-yaml-frontmatter.md) — frontmatter rules
   > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
 - [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution
   > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
-- [TECH-14-validation-failure-recovery](./TECH-14-validation-failure-recovery.md) — what to do when validation fails
+- [TECH-14-validation-failure-recovery](../../amw-design-md-audit/references/TECH-14-validation-failure-recovery.md) — what to do when validation fails
   > What it does · Recovery flowchart · Failure categories · Structural failures (S* — P0, must fix before delivery) · Token-quality failures (T* — P1, must fix before final delivery) · Reference failures (R* — P0) · Accessibility failures (A* — P0 for body text, P1 for others) · Content-integrity failures (C* — P2, warn only) · Iteration cap · What recovery does NOT do · Manual recovery flow for users · Cross-references
 - `../../../bin/amw-design-md-lint.sh`
 - `../../../bin/amw-design-md-validate.py`

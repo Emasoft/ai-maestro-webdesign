@@ -150,14 +150,17 @@ Resolve `$MAIN_ROOT` via `git worktree list | head -n1 | awk '{print $1}'`. Ever
 - **Delete nodes until it hurts, then delete one more.** Target density 4/10.
 - **Brand onboarding flows through `dev-browser`, not raw WebFetch.**
 - **oklch colors, WCAG AA.** All palette changes go through [color-system](../amw-design-principles/color-system.md) validation.
+> [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - **Do not substitute for `../amw-diagram-svg/`, `../amw-diagram-architecture/`, `../amw-svg-creator/`.**
 
 ## Error Handling
 
 Full symptom-to-fix table in [troubleshooting](references/troubleshooting.md). Common cases:
+> [troubleshooting.md] Symptom-to-fix table · Diagrams look generic / AI-generated · Colours don't match the user's site · Fonts fall back to Times / Arial · WCAG contrast fails on brand colour · Diagram is too dense / cluttered · Wrong type chosen · `bin/amw-svg-render.py` render check fails · Brand onboarding fetched the wrong palette · Diagram output opens blank · When NOT to use this skill
 
 - **Looks AI-generated:** coordinates off the 4px grid OR too many accent nodes → re-snap; reduce accent to 1–2 focal nodes.
 - **Colors don't match site:** brand onboarding never ran → re-run via `dev-browser`, or paste hex into [style-guide](references/style-guide.md).
+> [style-guide.md] Semantic color tokens (oklch) · Font stack · Grid + line rules · Brand onboarding flow
 - **Fonts fall back to Times/Arial:** missing Bunny Fonts `<link>` in `<head>` → add it.
 - **WCAG contrast fail:** no 4.5:1 pair at 12px → darken `ink` or lighten `paper`.
 - **Too dense:** > 8 nodes / density > 6/10 → delete non-essential, split, or switch to `nested` / `layer stack`.

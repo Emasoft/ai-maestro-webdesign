@@ -60,7 +60,7 @@ every reachable `<svg>` node. For each node it records:
 | `color` | `getComputedStyle(node).color` (for `fill="currentColor"` SVGs) |
 
 The DOM-traversal evaluation runs ONCE per page (see
-[TECH-07-url-extraction](TECH-07-url-extraction.md) for the `dev-browser eval`
+[TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) for the `dev-browser eval`
 contract).
 
 ### Inline SVG discovery (codebase)
@@ -332,9 +332,9 @@ no asset download is attempted.
 - [TECH-extractor-fingerprinting](TECH-extractor-fingerprinting.md) — uses
   the asset manifest as one of the canonicalized token blocks fed into the
   SHA-256 fingerprint
-- [TECH-07-url-extraction](TECH-07-url-extraction.md) — URL → DESIGN.md
+- [TECH-07-url-extraction](../../amw-design-md/references/TECH-07-url-extraction.md) — URL → DESIGN.md
   pipeline (icon discovery is the SVG-traversal pass of the same extraction)
-- [TECH-08-codebase-extraction](TECH-08-codebase-extraction.md) — codebase
+- [TECH-08-codebase-extraction](../../amw-design-md/references/TECH-08-codebase-extraction.md) — codebase
   scan that discovers assets/, public/, and inline SVGs
 - [SKILL](../../amw-dev-browser/SKILL.md) — browser primitive used by URL
   asset discovery

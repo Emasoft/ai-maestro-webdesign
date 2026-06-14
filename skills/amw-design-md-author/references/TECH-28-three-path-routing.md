@@ -139,7 +139,7 @@ The user picks ONE variant or asks for a fourth that combines elements. The orch
 After approval:
 
 1. The orchestrator spawns `amw-design-md-author-agent` with the approved variant's token bundle.
-2. The agent writes a full Variant 1 DESIGN.md per [canonical-spec-google-alpha](canonical-spec-google-alpha.md), filling each section from the approved variant.
+2. The agent writes a full Variant 1 DESIGN.md per [canonical-spec-google-alpha](../../amw-design-md-spec/references/canonical-spec-google-alpha.md), filling each section from the approved variant.
 3. The agent runs `bin/amw-design-md-lint.sh` and `bin/amw-design-md-validate.py` before declaring done.
 4. The agent emits companion files via `bin/amw-design-md-emit-companions.py`.
 5. The agent optionally emits `STYLE-REFERENCES.md` if the user's visual anchor and taboo answers in the 4-item interview were rich enough to populate sections 1-5 per [TECH-21-style-references-companion](TECH-21-style-references-companion.md).
@@ -212,10 +212,10 @@ Three paths is the minimum that:
 
 ## Cross-references
 
-- [TECH-15-design-md-as-input](TECH-15-design-md-as-input.md) — Path A token-consumption details
+- [TECH-15-design-md-as-input](../../amw-design-md-convert/references/TECH-15-design-md-as-input.md) — Path A token-consumption details
 - [TECH-21-style-references-companion](TECH-21-style-references-companion.md) — Path B STYLE-REFERENCES.md emission
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — Path B may emit §10/§11 from interview answers
-- [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — Path A and Path B writing rules
+- [TECH-24-authoring-rules-spec](../../amw-design-md-spec/references/TECH-24-authoring-rules-spec.md) — Path A and Path B writing rules
 - [TECH-25-brand-archetypes](TECH-25-brand-archetypes.md) — Path B variant generation uses archetype defaults
 - [TECH-27-token-interpolation](TECH-27-token-interpolation.md) — Path A token enforcement detail
 - [../../amw-design-principles/SKILL.md](../../amw-design-principles/SKILL.md) — orchestrator that applies this routing

@@ -26,7 +26,7 @@ behaviour. No verbatim code carried over.
 
 ## What it does
 
-Documents how the URL-extraction pipeline captures **interaction-state styles** in addition to the resting computed style. Variant 1 DESIGN.md has no `:hover` / `:focus` slot in the canonical schema, so the extracted state styles are written to the **extension namespace** `extensions.states` per [extension-sections-10-14](./extension-sections-10-14.md). A site whose hover state shifts a button from `#5e6ad2` → `#6f7be0` exposes brand information that a one-pass resting-state extractor misses entirely.
+Documents how the URL-extraction pipeline captures **interaction-state styles** in addition to the resting computed style. Variant 1 DESIGN.md has no `:hover` / `:focus` slot in the canonical schema, so the extracted state styles are written to the **extension namespace** `extensions.states` per [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md). A site whose hover state shifts a button from `#5e6ad2` → `#6f7be0` exposes brand information that a one-pass resting-state extractor misses entirely.
 
 State extraction runs on demand via the `--extract-states` flag of `bin/amw-design-md-from-url.sh`. Without that flag the extractor stays in its default fast path (resting state only). The flag enables a second probing pass that doubles to triples extraction time but captures the missing 30-40% of the design system that lives only in pseudo-classes.
 
@@ -246,7 +246,7 @@ The `resting` block duplicates the existing `components.<name>` block in the can
 
 - [TECH-07-url-extraction](./TECH-07-url-extraction.md) — base URL extraction flow this pass extends
 - [TECH-91-shadow-and-elevation-extract](./TECH-91-shadow-and-elevation-extract.md) — companion extension extractor; shadows often participate in hover states
-- [extension-sections-10-14](./extension-sections-10-14.md) — where the `extensions.states` namespace lives in DESIGN.md
+- [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — where the `extensions.states` namespace lives in DESIGN.md
 - [TECH-04-component-tokens](./TECH-04-component-tokens.md) — how components reference state-delta entries
 - `../../../bin/amw-design-md-from-url.sh` — bin script that hosts this pass
 - `../../../bin/amw-dev-browser-wrapper.sh` — browser primitive used internally

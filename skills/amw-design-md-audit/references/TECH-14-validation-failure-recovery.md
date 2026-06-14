@@ -170,7 +170,7 @@ These don't block delivery but reduce the rubric score:
 | Failure | Fix |
 |---|---|
 | `C1`: Placeholders remaining | Search-replace `{{...}}`, `TBD`, `FIXME` |
-| `C3`: Vague Do/Don't rules | Rewrite per [TECH-06-do-donts](TECH-06-do-donts.md) recipe |
+| `C3`: Vague Do/Don't rules | Rewrite per [TECH-06-do-donts](../../amw-design-md/references/TECH-06-do-donts.md) recipe |
 > [TECH-06-do-donts.md] What it does · Why this section matters · Hard rules · Variant 1 — Section 8 "Do's and Don'ts" · Variant 2 — Section 7 "Do's and Don'ts" · Minimum count · Each rule must be specific and actionable · Cover the high-leverage failure modes · Recipe for a good Do · Recipe for a good Don't · Brand-specific anti-patterns · Worked examples · Example A — Editorial minimalist (Variant 1 alternating style) · Example B — Developer SaaS (Variant 2 grouped style) · Common authoring mistakes · Cross-references
 | `C6`: File length out of range (200-1500 lines) | Either expand undeveloped sections or trim verbose ones |
 | `C7`: Section header with no prose underneath | Add a 1-paragraph philosophy note |
@@ -210,13 +210,13 @@ When a user is editing a DESIGN.md by hand and a validator fails:
 
 ## Cross-references
 
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — running the validators
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — running the validators
   > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
-- [TECH-01-yaml-frontmatter](./TECH-01-yaml-frontmatter.md) — YAML rules
+- [TECH-01-yaml-frontmatter](../../amw-design-md-spec/references/TECH-01-yaml-frontmatter.md) — YAML rules
   > What it does · When to use · Hard rules · Delimiters · Top-level fields · Value type rules · Token references · YAML quoting rules · Common gotchas · Worked example — minimal valid frontmatter · Worked example — token reference inside components · Validation · Cross-references
-- [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component property whitelist
+- [TECH-04-component-tokens](../../amw-design-md/references/TECH-04-component-tokens.md) — component property whitelist
   > What it does · Hard rules · Property whitelist (per spec.md L312-L319) · Variant naming convention · Composite token references allowed inside `components.*` · Common component patterns · Button (primary/secondary/ghost) · Input · Card · Chip / Badge · Hover-state derivation strategies · Anti-patterns · Cross-references
-- [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution rules
+- [TECH-05-token-references](../../amw-design-md/references/TECH-05-token-references.md) — reference resolution rules
   > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
 - [review-rubric](./review-rubric.md) — the rubric checks (S*, T*, R*, A*, C*)
   > Output schema · Structural checks (must-pass) · Variant 1 (canonical) · Variant 2 (community) · Token-quality checks (must-pass — both variants) · Sync checks (must-pass — when companion files exist) · Content-integrity checks (soft — affects score) · A11y checks (must-pass — both variants) · Scoring · What the rubric does NOT do · How `amw-design-md-author-agent` uses the rubric on its own output · Cross-references

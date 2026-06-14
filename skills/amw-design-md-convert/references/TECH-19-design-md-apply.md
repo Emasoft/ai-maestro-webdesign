@@ -103,7 +103,7 @@ Scan every `font-family`, `font-size`, `font-weight`, `line-height`, `letter-spa
 }
 ```
 
-A DESIGN.md that has emitted the [`tokens.css`](TECH-12-companion-files.md) companion makes this trivial — the companion already declares each typography slot as four CSS variables.
+A DESIGN.md that has emitted the [`tokens.css`](../../amw-design-md/references/TECH-12-companion-files.md) companion makes this trivial — the companion already declares each typography slot as four CSS variables.
 
 ### Pass 4 — WCAG contrast pair-check
 
@@ -120,7 +120,7 @@ Pairs below the required ratio get logged in `blocking_issues` (not `warnings` �
 
 ### Pass 5 — Do's and Don'ts enforcement
 
-Read the DESIGN.md's `## Do's and Don'ts` section (Variant 1 §8 / Variant 2 §7 — see [TECH-06-do-donts](TECH-06-do-donts.md)). For each Don't, run a heuristic check against the emitted HTML:
+Read the DESIGN.md's `## Do's and Don'ts` section (Variant 1 §8 / Variant 2 §7 — see [TECH-06-do-donts](../../amw-design-md/references/TECH-06-do-donts.md)). For each Don't, run a heuristic check against the emitted HTML:
 
 | Don't pattern | Heuristic check |
 |---|---|
@@ -163,7 +163,7 @@ For a given literal value `V` and DESIGN.md group `G` (e.g. `colors`):
 
 1. **Exact match.** If any slot `G.S` has `value == V`, rewrite to `var(--<group>-<S>)`. Stop.
 2. **Perceptual near-match** (colors only). Compute ΔE76 between `V` and every `G.S`. If the closest is `< 3.0`, rewrite and log a warning (`"#2664fd nudged to colors.primary (#2665fd, ΔE 0.4)"`). Stop.
-3. **Token-reference resolution.** If `V` is already a `{path.to.token}` alias, resolve to the literal first, then re-run the algorithm. See [TECH-05-token-references](TECH-05-token-references.md).
+3. **Token-reference resolution.** If `V` is already a `{path.to.token}` alias, resolve to the literal first, then re-run the algorithm. See [TECH-05-token-references](../../amw-design-md/references/TECH-05-token-references.md).
 4. **No match.** Leave the literal, add a warning listing the offending value. Escalate to user if `blocking_undeclared_values=true` is set.
 
 The algorithm is deterministic, side-effect free, and runs in O(n × |G|) per pass.
@@ -172,7 +172,7 @@ The algorithm is deterministic, side-effect free, and runs in O(n × |G|) per pa
 
 | Failure | Cause | Recovery |
 |---|---|---|
-| Pass 1/2/3 leaves > 10% of literals unresolved | DESIGN.md is incomplete or the artifact uses an extension surface (shadow / motion) the DESIGN.md doesn't cover | Extend the DESIGN.md with the missing slots (use [extension-sections-10-14](extension-sections-10-14.md)) and re-run apply. |
+| Pass 1/2/3 leaves > 10% of literals unresolved | DESIGN.md is incomplete or the artifact uses an extension surface (shadow / motion) the DESIGN.md doesn't cover | Extend the DESIGN.md with the missing slots (use [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md)) and re-run apply. |
 | Pass 4 reports `blocking_issues` | Color pair below WCAG-AA | Swap to the DESIGN.md's high-contrast alternative pair, OR add a `colors.on-<X>` slot, OR escalate to user with the failing pair. |
 | Pass 5 heuristic flags a Don't violation | Generated HTML repeats a banned pattern | Re-render the offending section; if the violation is intentional, document it in the agent's `warnings`. |
 | Apply loop doesn't converge (same warnings on second pass) | Token-resolution edge case or DESIGN.md mapping ambiguity | Hand-edit the artifact; do NOT re-run apply blindly. |
@@ -223,12 +223,12 @@ warnings:
 
 ## Cross-references
 
-- [TECH-05-token-references](./TECH-05-token-references.md) — the `{path}` alias syntax used in DESIGN.md component specs; apply resolves these eagerly before Pass 1
-- [TECH-06-do-donts](./TECH-06-do-donts.md) — what `## Do's and Don'ts` looks like; Pass 5 reads from this section
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — `bin/amw-design-md-contrast.py` is re-used in Pass 4
-- [TECH-12-companion-files](./TECH-12-companion-files.md) — the tokens.css companion declares the `var()` names that apply rewrites literals to
+- [TECH-05-token-references](../../amw-design-md/references/TECH-05-token-references.md) — the `{path}` alias syntax used in DESIGN.md component specs; apply resolves these eagerly before Pass 1
+- [TECH-06-do-donts](../../amw-design-md/references/TECH-06-do-donts.md) — what `## Do's and Don'ts` looks like; Pass 5 reads from this section
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — `bin/amw-design-md-contrast.py` is re-used in Pass 4
+- [TECH-12-companion-files](../../amw-design-md/references/TECH-12-companion-files.md) — the tokens.css companion declares the `var()` names that apply rewrites literals to
 - [TECH-15-design-md-as-input](./TECH-15-design-md-as-input.md) — the symmetric inverse: how DESIGN.md is read at the START of Phase B
-- [TECH-18-figma-input-path](./TECH-18-figma-input-path.md) — Figma → DESIGN.md (upstream); apply runs on the artifact built from the imported tokens
+- [TECH-18-figma-input-path](../../amw-design-md-extract/references/TECH-18-figma-input-path.md) — Figma → DESIGN.md (upstream); apply runs on the artifact built from the imported tokens
 - [TECH-20-design-library](./TECH-20-design-library.md) — cross-project DESIGN.md library; apply consumes the same DESIGN.md regardless of source
-- [ai-slop-avoid](../ai-slop-avoid.md) — Pass 5 escalation cases overlap with the slop checklist
+- [ai-slop-avoid](../../amw-design-md-audit/references/ai-slop-avoid.md) — Pass 5 escalation cases overlap with the slop checklist
 - [amw-wireframe-builder-agent](../../../agents/amw-wireframe-builder-agent.md) — primary consumer of this TECH

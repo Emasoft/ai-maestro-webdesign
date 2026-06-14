@@ -209,7 +209,7 @@ When §9 is present:
 ## Cross-references
 
 - [TECH-22-section-10-11-extended](TECH-22-section-10-11-extended.md) — sister optional sections §10 and §11
-- [TECH-12-companion-files](TECH-12-companion-files.md) — usage-prompt.md (auto-emitted; complement to §9)
-- [TECH-24-authoring-rules-spec](TECH-24-authoring-rules-spec.md) — 13 spec rules including §9 ordering
+- [TECH-12-companion-files](../../amw-design-md/references/TECH-12-companion-files.md) — usage-prompt.md (auto-emitted; complement to §9)
+- [TECH-24-authoring-rules-spec](../../amw-design-md-spec/references/TECH-24-authoring-rules-spec.md) — 13 spec rules including §9 ordering
 - [TECH-21-style-references-companion](TECH-21-style-references-companion.md) — `STYLE-REFERENCES.md §5 Style Vocabulary` overlaps with §9 Voice
 - [TECH-27-token-interpolation](TECH-27-token-interpolation.md) — token-ref linting inside §9 CSS snippets

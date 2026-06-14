@@ -82,7 +82,7 @@ System `python3 ≥ 3.8`; Playwright + Chromium and `playwright ≥ 1.40.0` inst
 - `../../bin/amw-html-export.py` — PNG / PDF / SVG export pipeline.
 - `../../bin/amw-preview-server.py` — Mode A live preview server, port 7883.
 - [design-brief](resources/design-brief.md) — 5-question intake framework + aesthetic decision table.
-> [design-brief.md] The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
+> [design-brief.md] The 5 Brief Questions · Question 2 → Aesthetic Decision Mapping · Question 3 → Platform Decision Mapping · Question 1 → Light/Dark Suitability · Thesis Extraction · From raw numbers: · From a topic brief: · Thesis formula: · Tone → Palette Mapping · Audience Sophistication → Density & Vocabulary · Skip-Brief Defaults · Brief → Design Decision Checklist
 - [style-details](resources/style-details.md) — full design system with component CSS patterns, type playbooks, reduction-pass rules.
 > [style-details.md] The Big Picture · Visual Treatments (radius, borders, shadows, spacing, decorations) · Composition Components (logos, progress bars, dense tables) · Composition Rules and Atmospheric Depth · Annotation, Typography, Reduction Pass · Reference Image Patterns (Vision Analysis — 12 real pieces)
 - [layout-patterns](resources/layout-patterns.md) — full layout and archetype scaffold library.

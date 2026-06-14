@@ -34,9 +34,13 @@ This skill owns three reference files. Each link below is followed by that file'
   - [createPrompter()](references/api.md#createprompter)
   - [Prompter (component)](references/api.md#prompter-component)
   - [prompt(render)](references/api.md#promptrender)
+> [api.md] createPrompter() · Prompter (component) · prompt(render) · Exported TypeScript types · The no-hooks-in-render caveat · Multiple prompters
   - [Exported TypeScript types](references/api.md#exported-typescript-types)
+> [api.md] createPrompter() · Prompter (component) · prompt(render) · Exported TypeScript types · The no-hooks-in-render caveat · Multiple prompters
   - [The no-hooks-in-render caveat](references/api.md#the-no-hooks-in-render-caveat)
+> [api.md] createPrompter() · Prompter (component) · prompt(render) · Exported TypeScript types · The no-hooks-in-render caveat · Multiple prompters
   - [Multiple prompters](references/api.md#multiple-prompters)
+> [api.md] createPrompter() · Prompter (component) · prompt(render) · Exported TypeScript types · The no-hooks-in-render caveat · Multiple prompters
 - [examples](references/examples.md) — worked code (custom host, confirm, shadcn host).
   - [Stateful prompt with a custom modal host](references/examples.md#stateful-prompt-with-a-custom-modal-host)
   - [Stateless confirm-style prompt](references/examples.md#stateless-confirm-style-prompt)
@@ -44,6 +48,7 @@ This skill owns three reference files. Each link below is followed by that file'
 - [troubleshooting](references/troubleshooting.md) — failure modes + non-negotiables.
   - [Common failure modes](references/troubleshooting.md#common-failure-modes)
   - [Non-negotiables](references/troubleshooting.md#non-negotiables)
+> [troubleshooting.md] Common failure modes · Non-negotiables
 
 ## Trigger conditions
 

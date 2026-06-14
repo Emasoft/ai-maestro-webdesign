@@ -179,13 +179,13 @@ Both should exit 0. Any error halts delivery per the skill's hard rules.
 
 - [canonical-spec-google-alpha](./canonical-spec-google-alpha.md) — full spec
   > File structure (spec.md L6-L8) · YAML frontmatter schema (spec.md L17-L40, L43-L58) · Top-level fields · Type definitions · Component property tokens (spec.md L312-L319) · Markdown body — the 8 fixed sections (spec.md L82-L92) · Section content guidance · Recommended token names (non-normative) (spec.md L334-L342) · Consumer behavior for unknown content (spec.md L344-L356) · Validation rules (per the official linter) · Worked example (full file) · Cross-references
-- [TECH-02-color-tokens](./TECH-02-color-tokens.md) — color authoring details
+- [TECH-02-color-tokens](../../amw-design-md/references/TECH-02-color-tokens.md) — color authoring details
   > What it does · When to use · Hard rules · At least primary required · Hex format · Recommended semantic names (non-normative) · Tonal-scale convention · Prose section authoring · Contrast checking · Common patterns · Light + dark mode token pairs · Brand-tinted shadows · Anti-patterns (from ai-slop-avoid.md) · Worked example · Cross-references
-- [TECH-03-typography-tokens](./TECH-03-typography-tokens.md) — typography authoring
+- [TECH-03-typography-tokens](../../amw-design-md/references/TECH-03-typography-tokens.md) — typography authoring
   > What it does · Hard rules · Required Typography sub-fields (per spec.md L64-L68) · fontSize units · fontWeight rules · lineHeight conventions · letterSpacing · fontFeature / fontVariation (OpenType) · Recommended level taxonomy · Variable fonts and weight axis · Font fallback chains · CJK considerations · Common patterns · Display + headline + body × 3 sizes (11 levels) · Compact 7-level (developer tools) · Marketing-rich 15-level (consumer brands) · Worked example — full row · Cross-references
-- [TECH-04-component-tokens](./TECH-04-component-tokens.md) — component-property authoring
+- [TECH-04-component-tokens](../../amw-design-md/references/TECH-04-component-tokens.md) — component-property authoring
   > What it does · Hard rules · Property whitelist (per spec.md L312-L319) · Variant naming convention · Composite token references allowed inside `components.*` · Common component patterns · Button (primary/secondary/ghost) · Input · Card · Chip / Badge · Hover-state derivation strategies · Anti-patterns · Cross-references
-- [TECH-05-token-references](./TECH-05-token-references.md) — reference resolution rules
+- [TECH-05-token-references](../../amw-design-md/references/TECH-05-token-references.md) — reference resolution rules
   > What it does · Hard rules · Syntax · Where references are valid · Resolution model · Scalar groups must point to primitives · Composite references allowed inside `components` · Self-references and cycles · What a resolved DESIGN.md looks like · When NOT to use references · Common errors · Validation · Cross-references
-- [TECH-11-validation-and-lint](./TECH-11-validation-and-lint.md) — validator usage
+- [TECH-11-validation-and-lint](../../amw-design-md/references/TECH-11-validation-and-lint.md) — validator usage
   > What it does · The three validators · Official linter (`bin/amw-design-md-lint.sh`) · Pure-Python offline validator (`bin/amw-design-md-validate.py`) · Contrast checker (`bin/amw-design-md-contrast.py`) · Standard validation chain · Lint failure → recovery · Diff between two DESIGN.md files · CI integration suggestion (out-of-scope but documented) · Cross-references
