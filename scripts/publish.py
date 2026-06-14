@@ -81,13 +81,13 @@ except ImportError:
         "Run `cpv standardize --force-templates` to refresh.",
         file=sys.stderr,
     )
-    def gh_with_retry(cmd, **kwargs):  # type: ignore[no-redef,misc]
+    def gh_with_retry(cmd, **kwargs):  # type: ignore[no-redef]
         kwargs.pop("max_attempts", None)
         kwargs.pop("backoff", None)
         kwargs.setdefault("check", True)
         kwargs.setdefault("capture_output", False)
         return subprocess.run(cmd, **kwargs)
-    def git_with_retry(cmd, **kwargs):  # type: ignore[no-redef,misc]
+    def git_with_retry(cmd, **kwargs):  # type: ignore[no-redef]
         kwargs.pop("max_attempts", None)
         kwargs.pop("backoff", None)
         kwargs.setdefault("check", True)
@@ -109,6 +109,7 @@ GREEN  = "\033[0;32m" if _C else ""
 YELLOW = "\033[1;33m" if _C else ""
 BLUE   = "\033[0;34m" if _C else ""
 BOLD   = "\033[1m" if _C else ""
+DIM    = "\033[2m" if _C else ""
 NC     = "\033[0m" if _C else ""
 
 
@@ -751,25 +752,42 @@ def run_gate(root: Path) -> int:
 def stage_bypass_guard() -> None:
     """Step 0: Reject any env var that could bypass a check. No exceptions.
 
-    TRDD-bbff5bc5 §6.1: the canonical names are PLUGIN_SKIP_*; CPV_SKIP_*
-    are kept as legacy aliases for one release.
+    Issue #22 hardening (v2.86.0): broadened from a fixed allowlist to
+    prefix-pattern matching. Any env var matching ``PLUGIN_SKIP_*``,
+    ``CPV_SKIP_*``, ``SKIP_*``, or named ``NO_VERIFY`` aborts the publish.
+    Closes the loophole where a fresh skip name (e.g. ``CPV_SKIP_GATE7``)
+    that was not in the original explicit list would silently slip past.
+
+    Two explicit infrastructure exemptions remain — both are read-only
+    overrides used by CPV's own integrity / auth subsystems and never
+    skip a gate:
+        * ``CPV_SKIP_GITHUB_INTEGRITY=1`` — used to bypass GitHub-anchored
+          integrity check (see cpv_integrity.py). The integrity check is
+          a defence against tampering, NOT a publish gate.
+        * ``CPV_SKIP_GH_AUTH_CHECK=1`` — used by `_ensure_gh_auth` to bypass
+          the `gh auth status` round-trip on flaky networks. Auth still
+          has to work for the actual `git push` / `gh release create`;
+          this only skips the precheck.
+
+    Both are documented exemptions, listed below and excluded from the
+    pattern match.
     """
     cprint(f"\n{BOLD}[0/11] Checking for bypass attempts...{NC}")
-    forbidden = [
-        # New canonical names (TRDD-bbff5bc5)
-        "PLUGIN_SKIP_TESTS", "PLUGIN_SKIP_LINT", "PLUGIN_SKIP_VALIDATE",
-        "PLUGIN_FORCE_PUBLISH", "PLUGIN_BYPASS_CHECKS",
-        # Legacy aliases — removed in next release.
-        "CPV_SKIP_TESTS", "CPV_SKIP_LINT", "CPV_SKIP_VALIDATE",
-        "CPV_FORCE_PUBLISH", "CPV_BYPASS_CHECKS",
-        # Generic bypass attempts — always rejected.
-        "SKIP_TESTS", "SKIP_LINT", "SKIP_VALIDATE", "NO_VERIFY",
+    # Explicit infrastructure exemptions — see docstring above.
+    exemptions = {"CPV_SKIP_GITHUB_INTEGRITY", "CPV_SKIP_GH_AUTH_CHECK"}
+    forbidden_prefixes = ("PLUGIN_SKIP_", "CPV_SKIP_", "SKIP_")
+    forbidden_exact = {"NO_VERIFY"}
+    attempted = [
+        v
+        for v in sorted(os.environ)
+        if (v.startswith(forbidden_prefixes) or v in forbidden_exact) and v not in exemptions
+        if os.environ.get(v)
     ]
-    attempted = [v for v in forbidden if os.environ.get(v)]
     if attempted:
         cprint(f"  {RED}BLOCKED: forbidden env vars set: {', '.join(attempted)}{NC}")
         cprint(f"  {RED}The publish pipeline enforces every check. "
                f"Fix failures, do not skip them.{NC}")
+        cprint(f"  {DIM}(infrastructure exemptions: {', '.join(sorted(exemptions))}){NC}")
         sys.exit(1)
     cprint(f"  {GREEN}No bypass vars set.{NC}")
 
@@ -802,6 +820,84 @@ def stage_lint(root: Path) -> None:
     run(["uv", "run", "mypy", "scripts/", "--ignore-missing-imports"], cwd=root)
     cprint(f"  {GREEN}Lint + typecheck passed.{NC}")
 
+# Issue #31 (v2.98.0): browser-orphan cleanup signatures.
+#
+# A pytest run that spawns Playwright / dev-browser pages can leave
+# behind dozens of `Chrome for Testing` / `chromium` / `headless_shell`
+# processes if the test code (or fixtures) forget to close pages. Over
+# a long debug session those orphans pile up, exhausting file
+# descriptors or RAM and eventually crashing the browser or making
+# the machine unresponsive. The baseline-diff cleanup below catches
+# every leak regardless of test-code quality. NEVER skips tests — the
+# iron rule (no plugin with issues pushed) is preserved.
+_BROWSER_ORPHAN_SIGNATURES = (
+    "Chrome for Testing",
+    "chrome-for-testing",
+    "headless_shell",
+    "Chromium.app/Contents",
+    "chromium-browser",
+    "/playwright/",
+    "playwright-core",
+)
+
+
+def _snapshot_browser_pids() -> set:
+    """Snapshot-then-grep — never live-grep — for browser-signature PIDs."""
+    try:
+        snap = subprocess.run(
+            ["ps", "-eo", "pid,command"],
+            capture_output=True, text=True, check=False, timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return set()
+    if snap.returncode != 0 or not snap.stdout:
+        return set()
+    pids = set()
+    for raw_line in snap.stdout.strip().split("\n")[1:]:
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            pid_str, cmd = line.split(None, 1)
+            pid = int(pid_str)
+        except (ValueError, IndexError):
+            continue
+        if any(sig in cmd for sig in _BROWSER_ORPHAN_SIGNATURES):
+            pids.add(pid)
+    return pids
+
+
+def _cleanup_browser_orphans(baseline_pids: set) -> int:
+    """Kill browser-signature PIDs that appeared since ``baseline_pids``.
+
+    Baseline-diff: PIDs in baseline are pre-existing (maintainer's own
+    daily browser) — NEVER killed. Only PIDs that came into existence
+    during the pytest run are candidates.
+    """
+    import signal
+    import time
+
+    current = _snapshot_browser_pids()
+    new_pids = current - baseline_pids
+    if not new_pids:
+        return 0
+    killed = 0
+    for pid in new_pids:
+        try:
+            os.kill(pid, signal.SIGTERM)
+            killed += 1
+        except (ProcessLookupError, PermissionError, OSError):
+            pass
+    if killed:
+        time.sleep(1.5)
+        for pid in new_pids:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except (ProcessLookupError, PermissionError, OSError):
+                pass
+    return killed
+
+
 def stage_tests(root: Path) -> None:
     """Step 3: Run pytest. MANDATORY — no skip, no exceptions.
 
@@ -810,6 +906,12 @@ def stage_tests(root: Path) -> None:
 
     Order: tests run BEFORE the CPV validator so behavioral regressions fail
     fast on unit tests before the structural validator inspects the manifest.
+
+    Issue #31 (v2.98.0): wrap the pytest invocation in a baseline-diff
+    browser-orphan cleanup so dev-browser / Playwright leaks do not
+    pile up Chrome-for-Testing processes. Tests still run
+    unconditionally — the cleanup is a safety net, not a skip
+    mechanism.
     """
     cprint(f"\n{BOLD}[3/11] Running tests...{NC}")
     test_dir = root / "tests"
@@ -817,7 +919,13 @@ def stage_tests(root: Path) -> None:
         cprint(f"  {RED}BLOCKED: tests/ directory missing.{NC}")
         cprint(f"  {RED}Every CPV plugin MUST ship a tests/ directory.{NC}")
         sys.exit(1)
-    r = run(["uv", "run", "pytest", "tests/", "-x", "-q", "--tb=short"], cwd=root, check=False)
+    baseline_browser_pids = _snapshot_browser_pids()
+    try:
+        r = run(["uv", "run", "pytest", "tests/", "-x", "-q", "--tb=short"], cwd=root, check=False)
+    finally:
+        killed = _cleanup_browser_orphans(baseline_browser_pids)
+        if killed:
+            cprint(f"  {YELLOW}Cleaned up {killed} orphaned browser process(es) spawned by pytest.{NC}")
     if r.returncode == 5:
         # pytest exit 5 = no tests collected. This is ALSO a block — no exceptions.
         cprint(f"  {RED}BLOCKED: pytest collected 0 tests.{NC}")
@@ -887,8 +995,8 @@ def _detect_layout(plugin_root: Path) -> tuple[str, dict]:
             content = notify_wf.read_text(encoding="utf-8")
         except OSError:
             content = ""
-        m_owner = re.search(r"^\\s*MARKETPLACE_OWNER:\\s*['\\\"]?([^'\\\"\\s]+)['\\\"]?\\s*$", content, re.MULTILINE)
-        m_repo = re.search(r"^\\s*MARKETPLACE_REPO:\\s*['\\\"]?([^'\\\"\\s]+)['\\\"]?\\s*$", content, re.MULTILINE)
+        m_owner = re.search(r"^\s*MARKETPLACE_OWNER:\s*[\"']?([^\"'\s]+)[\"']?\s*$", content, re.MULTILINE)
+        m_repo = re.search(r"^\s*MARKETPLACE_REPO:\s*[\"']?([^\"'\s]+)[\"']?\s*$", content, re.MULTILINE)
         return "A", {
             "notify_workflow": notify_wf,
             "mkt_owner": m_owner.group(1) if m_owner else None,
@@ -907,7 +1015,7 @@ def _gh_secret_exists(plugin_root: Path, secret_name: str) -> bool:
     if r.returncode != 0:
         return False
     for line in r.stdout.splitlines():
-        if line.split("\\t", 1)[0].strip() == secret_name:
+        if line.split("\t", 1)[0].strip() == secret_name:
             return True
     return False
 
@@ -918,7 +1026,7 @@ def _current_repo_slug(plugin_root: Path) -> str | None:
                        capture_output=True, text=True, timeout=30)
     if r.returncode != 0:
         return None
-    m = re.search(r"[:/]([^/:]+)/([^/]+?)(?:\\.git)?$", r.stdout.strip())
+    m = re.search(r"[:/]([^/:]+)/([^/]+?)(?:\.git)?$", r.stdout.strip())
     return f"{m.group(1)}/{m.group(2)}" if m else None
 
 
@@ -986,6 +1094,7 @@ def _remote_has_receiver_workflow(owner: str, repo: str) -> bool:
 
 
 def _plugin_in_remote_marketplace(mkt_json: dict, plugin_name: str, expected_repo: str | None) -> bool:
+    """Accept github/url/git source forms; match URL slug for url|git (issue #25 Defect A)."""
     plugins = mkt_json.get("plugins")
     if not isinstance(plugins, list):
         return False
@@ -995,12 +1104,20 @@ def _plugin_in_remote_marketplace(mkt_json: dict, plugin_name: str, expected_rep
         if entry.get("name") != plugin_name:
             continue
         source = entry.get("source")
-        if isinstance(source, dict):
-            stype = source.get("source") or source.get("type")
-            if stype != "github":
-                continue
+        if not isinstance(source, dict):
+            continue
+        stype = source.get("source") or source.get("type")
+        if stype == "github":
             if expected_repo is None or source.get("repo") == expected_repo:
                 return True
+        elif stype in ("url", "git"):
+            url = source.get("url")
+            if expected_repo is None:
+                return True
+            if isinstance(url, str):
+                norm = url.removesuffix(".git").rstrip("/")
+                if norm.endswith("/" + expected_repo) or norm.endswith(":" + expected_repo):
+                    return True
     return False
 
 
@@ -1054,7 +1171,7 @@ def stage_marketplace_registration(root: Path) -> None:
         slug = _current_repo_slug(root)
         if not _plugin_in_remote_marketplace(mkt_json, plugin_name, slug):
             cprint(f"  {RED}BLOCKED: plugin '{plugin_name}' not registered in {mkt_owner}/{mkt_repo} marketplace.json.{NC}")
-            cprint(f"  {RED}  Add an entry: {{\\\"name\\\": \\\"{plugin_name}\\\", \\\"source\\\": {{\\\"source\\\": \\\"github\\\", \\\"repo\\\": \\\"{slug}\\\"}}}}{NC}")
+            cprint(f"  {RED}  Add an entry: {{\"name\": \"{plugin_name}\", \"source\": {{\"source\": \"github\", \"repo\": \"{slug}\"}}}}{NC}")
             sys.exit(1)
         cprint(f"  {GREEN}Plugin registered in remote marketplace.json{NC}")
         if not _remote_has_receiver_workflow(mkt_owner, mkt_repo):
@@ -1096,7 +1213,7 @@ def stage_marketplace_registration(root: Path) -> None:
             sys.exit(1)
         if not any(isinstance(e, dict) and e.get("name") == plugin_name for e in entries):
             cprint(f"  {RED}BLOCKED: plugin '{plugin_name}' not registered in {mp_path}.{NC}")
-            cprint(f"  {RED}  Add: {{\\\"name\\\": \\\"{plugin_name}\\\", \\\"source\\\": \\\"./plugins/{plugin_name}\\\"}}{NC}")
+            cprint(f"  {RED}  Add: {{\"name\": \"{plugin_name}\", \"source\": \"./plugins/{plugin_name}\"}}{NC}")
             sys.exit(1)
         cprint(f"  {GREEN}Plugin '{plugin_name}' registered in parent marketplace.json{NC}")
         cprint(f"  {GREEN}Layout B marketplace registration verified.{NC}")
@@ -1222,7 +1339,7 @@ def stage_bump(root: Path, new_ver: str, dry_run: bool) -> None:
     cprint(f"  {GREEN}Version bumped to {new_ver}.{NC}")
 
 def stage_update_badges(root: Path, old_ver: str, new_ver: str, dry_run: bool) -> None:
-    """Step 7: Replace version badge in README.md.
+    """Step 8: Replace version badge in README.md.
 
     Strategy:
       1. Try exact-string substitution `version-<old>-blue` → `version-<new>-blue`
@@ -1380,7 +1497,7 @@ def stage_commit_and_push(root: Path, new_ver: str, dry_run: bool) -> None:
             cprint(f"  Would skip tag (already exists locally): {tag}")
         else:
             cprint(f"  Would tag: {tag}")
-        cprint("  Would push: origin HEAD --tags")
+        cprint(f"  Would push (atomic): origin HEAD {tag}")
         return
 
     if head_subject == expected_subject and tree_clean:
@@ -1398,19 +1515,22 @@ def stage_commit_and_push(root: Path, new_ver: str, dry_run: bool) -> None:
     # gh-auth precheck — fail fast with actionable error if gh missing/unauthed.
     owner, repo = _resolve_owner_repo(root)
     _ensure_gh_auth(owner, repo)
-    # Retry-wrap the push: a single transient github.com hiccup used to
-    # leave the repo in a half-published state. git_with_retry tolerates
-    # up to GIT_MAX_ATTEMPTS × GIT_BACKOFF_SEC of transient errors and
-    # returns immediately on a permanent error (4xx, non-fast-forward).
-    cprint(f"  {BLUE}$ git push origin HEAD --tags{NC}")
+    # Atomic push: commit + tag land together or not at all. Eliminates the
+    # half-published-state failure mode where `git push origin HEAD --tags`
+    # could push the commit, fail on the tag (rejected/network), and leave
+    # the remote with an unreleased commit + no tag. `--atomic` is a single
+    # transaction in the wire protocol; the server rolls back if any ref
+    # update fails. git_with_retry still wraps the call so transient
+    # network hiccups (4xx-class permanent errors fall through immediately).
+    cprint(f"  {BLUE}$ git push --atomic origin HEAD {tag}{NC}")
     git_with_retry(
-        ["git", "push", "origin", "HEAD", "--tags"],
+        ["git", "push", "--atomic", "origin", "HEAD", tag],
         cwd=str(root), capture_output=False,
     )
-    cprint(f"  {GREEN}Pushed {tag}.{NC}")
+    cprint(f"  {GREEN}Pushed {tag} atomically.{NC}")
 
 def stage_gh_release(root: Path, new_ver: str, dry_run: bool) -> None:
-    """Step 10: Create GitHub release via gh CLI.
+    """Step 11: Create GitHub release via gh CLI.
 
     TRDD-bbff5bc5 §5: re-runs the gh-auth precheck before `gh release
     create` so an auth state change between gates 10 and 11 (token
@@ -1443,10 +1563,25 @@ def stage_gh_release(root: Path, new_ver: str, dry_run: bool) -> None:
         cprint(result.stdout.strip())
     if result.stderr and result.stderr.strip():
         print(result.stderr.strip(), file=sys.stderr)
-    if result.returncode != 0:
-        cprint(f"  {RED}Failed to create release (exit code {result.returncode}).{NC}")
-    else:
+    if result.returncode == 0:
         cprint(f"  {GREEN}Release created.{NC}")
+        return
+    # `gh release create` returns an "already_exists" / "already exists"
+    # validation error when a release for this tag is already present. On a
+    # re-run or interrupted-publish recovery that is the idempotent-success
+    # outcome (the release IS there), so it must NOT abort — match either
+    # spelling gh emits, case-insensitively.
+    combined_err = f"{result.stdout or ''}\n{result.stderr or ''}"
+    if re.search(r"already[ _]exists", combined_err, re.IGNORECASE):
+        cprint(f"  {YELLOW}Release {tag} already exists — treating as success (idempotent re-run).{NC}")
+        return
+    # Any other non-zero exit is a genuine failure (auth revoked mid-pipeline,
+    # malformed notes file, network exhausted all retries). The tag is already
+    # pushed, but the documented final stage did NOT complete — abort so the
+    # pipeline does not falsely report success (fail-fast invariant).
+    cprint(f"  {RED}Failed to create release (exit code {result.returncode}).{NC}")
+    cprint(f"  {RED}  The tag {tag} is pushed; create the release manually or re-run after fixing the cause.{NC}")
+    sys.exit(1)
 
 
 # -- Main ----------------------------------------------------------------------
