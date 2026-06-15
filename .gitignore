@@ -63,7 +63,13 @@ external/*/.next/
 # Tool caches
 .rechecker/
 .tldr/
-.claude/
+# .claude/ holds tool-cache/state (settings, hooks) — ignore its contents,
+# EXCEPT the git-tracked PROJECT-scope wiki-memory under .claude/project/memory/
+# (ai-maestro memory 3-scope config; stood up by /janitor-memory-bootstrap).
+.claude/**
+!.claude/project/
+!.claude/project/memory/
+!.claude/project/memory/**
 .serena/
 .expect/
 

@@ -1,0 +1,1 @@
+- [architecture-hub](architecture-hub.md) — PROJECT-scope landing page: webdesign architecture overview + load-bearing invariants (orchestrator-priority, ASCII-first, dev-browser-only, the 3 hard rules, validation gates, memory system)
