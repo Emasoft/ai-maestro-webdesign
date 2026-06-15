@@ -356,6 +356,23 @@ The plugin now ships a full cross-format diagram authoring, conversion, comparis
 2. **`external/hyperframes/` submodule** — cloned 2026-04-26 from `https://github.com/heygen-com/hyperframes` (canonical fork) at v0.4.30 (244MB). Bridge skill + agent realigned to v0.4.30 in same session. The bridge previously documented an invalid `bun run render --input <html>` invocation — that was a pre-existing bug (the script never existed; `--input` was never a real flag). Fixed: render path is now `cd <project_dir> && npx hyperframes render --output <mp4>` with two contracts (default `html_scene_path` → bridge scaffolds a temp project; advanced `project_dir` → bridge uses directly). Pre-render gate sequence is now `lint → validate → inspect → render` (added `inspect` — new in v0.4.30 — for visual layout audit). New attribute `data-variable-values` documented for per-instance variable injection into sub-compositions.
 3. **Publishing** — eventual push to `Emasoft/ai-maestro-plugins` after runtime acceptance.
 
+## Claude Code compatibility (reviewed against v2.1.178, 2026-06-16)
+
+The plugin's shipped content was assessed against the Claude Code changelog through **v2.1.178** (2026-06-16). **Verdict: fully compatible — no shipped-content change warranted.** Verified: no reference to the removed `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` env var, no use of the renamed `/simplify` command (now `/code-review`), no deprecated model IDs, and `plugin.json` carries no stray `defaultEnabled`. Model pins are current family aliases (`sonnet` → 4.6, `opus` → 4.8) that resolve to the latest tier automatically.
+
+Plugin-author features introduced in that window were each assessed and **deliberately not adopted** — each is a poor fit for this plugin, not an oversight:
+
+| CC feature (version) | Decision | Why |
+|---|---|---|
+| `disallowed-tools` skill/command frontmatter (2.1.152) | not adopted | webdesign's two gated skills (`amw-svg-creator`, `amw-excalidraw-illustrations`) are gated by **scope / API-cost**, not tool-access; restricting tools wouldn't enforce either gate. A deliberate read-only tightening of the VETO/audit sub-agents' `tools:` is a possible future improvement — but it belongs in its own tested pass, not a drive-by. |
+| `defaultEnabled: false` in plugin.json (2.1.154) | not adopted | webdesign is a deliberately-installed full design system; it should be enabled on install, not opt-in. |
+| 5-level subagent nesting (2.1.172) | not adopted | delegation is **intentionally one-way / single-level** (main-agent → sub-agent → main-agent) for context isolation and loop-prevention; the deeper-nesting capability does not change that design. |
+| `Tool(param:value)` permission rules, e.g. `Agent(model:opus)` (2.1.178) | not adopted | the plugin ships no permission allow/deny list; permissions are the user's `settings.json` concern. |
+| Opus 4.8 default + high effort (2.1.154) | already aligned | sub-agents pin `model: sonnet` (cost), the orchestrator pins `model: opus` (→ 4.8). No `model:` pin names a deprecated tier. |
+| `SessionStart reloadSkills`/`sessionTitle`, `MessageDisplay` hook (2.1.152) | not adopted | the plugin ships one `UserPromptSubmit` nudge; none of these new hook surfaces are needed. |
+
+Re-run this assessment when bumping the plugin's minimum CC version, and update the reviewed-against version above.
+
 ## Session gotchas for future Claude instances
 
 - `SKILLS-TO-INTEGRATE/` is **read-only** by user directive — extract and adapt, do not modify sources.
