@@ -1,1 +1,2 @@
 - [architecture-hub](architecture-hub.md) — PROJECT-scope landing page: webdesign architecture overview + load-bearing invariants (orchestrator-priority, ASCII-first, dev-browser-only, the 3 hard rules, validation gates, memory system)
+- [cpv-gate-blocked-by-hyperframes-submodule](cpv-gate-blocked-by-hyperframes-submodule.md) — CPV `plugin .` reports INVALID/20 CRITICAL: all in the vendored external/hyperframes submodule, not webdesign's code; resolution is architectural (cpv#123 / publish-exclude), don't edit the submodule or mute CPV

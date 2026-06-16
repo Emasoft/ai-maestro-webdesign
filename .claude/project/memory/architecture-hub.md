@@ -23,4 +23,8 @@ PROJECT-scope wiki-memory hub for the **ai-maestro-webdesign** plugin (git-track
 - **Validation gates** — every ASCII emitter must pass `bin/amw-validate-ascii.py`; every HTML output is graded against `ai-slop-avoid.md` before delivery; diagrams pass `bin/amw-validate-diagram.sh`.
 - **Memory system** — webdesign uses the ai-maestro 3-scope wiki memory (LOCAL / PROJECT / USER). PROJECT scope = THIS dir. See `rules/memory-protocol.md` + the global `~/.claude/rules/markdown-memory-recall.md`; recall via `amw-memory-recall` (or the janitor's `janitor-memory-recall`).
 
+## Applies to (governed component notes)
+
+- [[cpv-gate-blocked-by-hyperframes-submodule]] — why `cpv ... plugin .` reports INVALID (the vendored submodule, not webdesign's own code) and how to resolve it.
+
 ## Notes and lessons learned
