@@ -90,14 +90,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Hyperframes vendored repo — managed as git submodule (see .gitmodules).
-# The submodule itself is git-tracked via the gitlink at external/hyperframes,
-# but its CONTENTS are upstream code that this plugin does not own. We tell
-# CPV's gitignore-aware scanners (htmlhint, hadolint, ruff, markdownlint,
-# absolute-path scan) to skip everything inside the submodule so the plugin's
-# own validation report only flags issues in code we can fix (RULE 0 forbids
-# editing vendored upstream sources). The submodule registration in
-# .gitmodules is unaffected — git still tracks the gitlink.
+# Hyperframes — EXTERNAL on-demand dependency, NOT vendored, NOT a submodule.
+# `/amw-init` (or the amw-hyperframes-bridge skill on first render) clones
+# https://github.com/heygen-com/hyperframes into this path at runtime; it is
+# never committed and never part of the published plugin (the bridge shells out
+# to `npx hyperframes`). Ignoring the whole tree keeps that runtime clone out of
+# git AND out of CPV's scanners — its upstream code (Dockerfiles, TS sources) is
+# heygen-com's, which this plugin neither owns nor may edit (RULE 0 + the
+# cross-project rule). Removed as a git submodule on 2026-06-21: the committed
+# gitlink made CPV scan the 244MB checkout and flag 20 CRITICAL / 20 MAJOR
+# upstream findings; making hyperframes a pure runtime dependency clears the gate.
 external/hyperframes/**
 
 # NOTE: external/mermaid-render/ is now OWNED first-party code (MIT, wrapping

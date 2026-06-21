@@ -25,11 +25,6 @@
     "claude-code"
   ],
   "cpv": {
-    "strip": {
-      "allowed_submodule_urls": [
-        "https://github.com/heygen-com/hyperframes.git"
-      ]
-    },
     "exclude_paths": [
       "skills/amw-shadcn-ui/docs/"
     ]
