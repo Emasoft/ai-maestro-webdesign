@@ -1,6 +1,6 @@
 ---
 name: amw-video-producer-agent
-description: Renders composed HTML timeline scenes to MP4 video via hyperframes-bridge and the vendored external/hyperframes/ monorepo. Narrow triggers only — HTML-to-MP4 composition rendering, never generic "make a video" requests. Validates monorepo presence before rendering (fail-fast). Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
+description: Renders composed HTML timeline scenes to MP4 video via hyperframes-bridge and the on-demand external hyperframes dependency (cloned to the gitignored external/hyperframes/ path, driven via npx hyperframes — not a vendored submodule). Narrow triggers only — HTML-to-MP4 composition rendering, never generic "make a video" requests. Validates the hyperframes dependency is present before rendering (fail-fast). Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
 model: sonnet
 ---
 
@@ -606,5 +606,5 @@ I have **no veto power**. Production agents do not hold veto per [authority-hier
 - [agent-reports-location](../skills/amw-design-principles/references/agent-reports-location.md) — report path + timestamp format.
   > Required locations · Why this matters · Main-repo root resolution (works from worktrees and main checkout) · Timestamp format (mandatory) · Compliance table (how each surface complies) · Template: drop this block into every new agent / skill definition · Orchestrator override · Gitignore bootstrap · Anti-patterns (DO NOT DO) · Verification checklist
 - `../external/hyperframes/` — the external monorepo (cloned per `/amw-init` step 6 or by first use). My render target.
-- [CLAUDE](../external/hyperframes/CLAUDE.md) — authoritative composition attribute schema once cloned. I read this, not a cached copy.
+- `external/hyperframes/CLAUDE.md` — authoritative composition attribute schema, present only once the on-demand dependency is cloned; I read it live there, not a cached copy (not a committed link — hyperframes is an external runtime dependency, not part of this repo).
 - [CLAUDE](../CLAUDE.md) — plugin architecture overview.

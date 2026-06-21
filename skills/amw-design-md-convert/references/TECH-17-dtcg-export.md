@@ -191,7 +191,7 @@ If a harmonize input has a leaf with `value` but no `type`, the exporter infers 
 | Value shape | Inferred `$type` |
 |---|---|
 | `^#[0-9A-Fa-f]{3,8}$` | `color` |
-| `^-?\d+(\.\d+)?(px|rem|em|%|pt|vw|vh)$` | `dimension` |
+| `^-?\d+(\.\d+)?(px\|rem\|em\|%\|pt\|vw\|vh)$` | `dimension` |
 | Integer or float | `number` |
 | Alias string | (left untagged — the consumer resolves the target's type) |
 | Other strings | (left untagged — validator will flag if no inheritance covers it) |

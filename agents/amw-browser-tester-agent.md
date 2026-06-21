@@ -245,17 +245,17 @@ In priority order:
 
 6.5. **Post-scenario slop audit (after the full scenario battery, before writing the report).**
 
-   For each completed scenario that produced a final-state screenshot (i.e., not INCONCLUSIVE due to navigation failure), run a visual-pixel slop audit:
+   For each completed scenario that produced a final-state screenshot (i.e., not INCONCLUSIVE due to navigation failure), run a visual-pixel slop audit, in order:
 
-   1. Run `bash bin/amw-self-review-screenshot.sh <artifact_url> --label <scenario-slug>` → emits the desktop screenshot path on stdout under `$MAIN_ROOT/reports/batch9-slop-review/<ts>/<scenario-slug>/`. Reuse the already-captured screenshot from step 4.c when the scenario produced one (avoids a redundant render); invoke `amw-self-review-screenshot.sh` only when no usable screenshot exists for that scenario.
-   2. Dispatch `amw-slop-verifier-agent` (spec: [amw-slop-verifier-agent](../agents/amw-slop-verifier-agent.md)) with `screenshot_path`, the project `brief` from the input contract, and `severity_gate: high`.
-   3. Record the verdict as one row in the scenario-test report's **Slop audit** section:
+   - **(a)** Run `bash bin/amw-self-review-screenshot.sh <artifact_url> --label <scenario-slug>` → emits the desktop screenshot path on stdout under `$MAIN_ROOT/reports/batch9-slop-review/<ts>/<scenario-slug>/`. Reuse the already-captured screenshot from step 4.c when the scenario produced one (avoids a redundant render); invoke `amw-self-review-screenshot.sh` only when no usable screenshot exists for that scenario.
+   - **(b)** Dispatch `amw-slop-verifier-agent` (spec: [amw-slop-verifier-agent](../agents/amw-slop-verifier-agent.md)) with `screenshot_path`, the project `brief` from the input contract, and `severity_gate: high`.
+   - **(c)** Record the verdict as one row in the scenario-test report's **Slop audit** section:
 
       | Scenario | Screenshot path | Verdict | HIGH rules fired |
       |---|---|---|---|
       | `<scenario-slug>` | `<path>` | `✅ pass` / `❌ slop detected:` | `[rule-ids]` or none |
 
-   4. A `❌ slop detected:` verdict for a scenario does NOT fail the scenario's own PASS/FAIL assertion — it is a separate advisory finding. Surface it in `recommendations` pointing main-agent to re-invoke `amw-wireframe-builder-agent` for a revision if any HIGH rule fired. Record the verifier's report path under `artifact_paths` with `purpose: "slop audit report for scenario <slug>"`.
+   - **(d)** A `❌ slop detected:` verdict for a scenario does NOT fail the scenario's own PASS/FAIL assertion — it is a separate advisory finding. Surface it in `recommendations` pointing main-agent to re-invoke `amw-wireframe-builder-agent` for a revision if any HIGH rule fired. Record the verifier's report path under `artifact_paths` with `purpose: "slop audit report for scenario <slug>"`.
 
 7. **Close session.** `Bash: bash bin/amw-dev-browser-wrapper.sh pass-through close` (or equivalent). Persistent sessions hold memory — always clean up.
 

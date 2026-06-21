@@ -101,7 +101,7 @@ ai-maestro-webdesign/
 │   ├── amw-vecui/                     vecui (MIT) — immutable vec2/rect math for JS-driven animated layouts
 │   └── amw-react-promptify/           react-promptify (MIT) — async createPrompter/prompt() value-returning modals
 ├── external/
-│   ├── hyperframes/               Vendored submodule — not in skills/
+│   ├── hyperframes/               On-demand external runtime dependency (gitignored; the bridge clones it / shells out to `npx hyperframes`, NOT a vendored submodule) — not in skills/
 │   └── mermaid-render/            Vendored wrapper for beautiful-mermaid npm package
 └── SKILLS-TO-INTEGRATE/           READ-ONLY source material; see docs_dev/ for inventories
 ```
@@ -353,7 +353,7 @@ The plugin now ships a full cross-format diagram authoring, conversion, comparis
 
 **Not yet done:**
 1. **Runtime acceptance tests** — behavioral scenarios `/amw-extract-style https://stripe.com`, `/amw-sketch "dashboard"`, `/amw-ascii-to-html`. Requires the plugin to be installed and dependencies via `/amw-init`. Out of build scope — user runs these.
-2. **`external/hyperframes/` submodule** — cloned 2026-04-26 from `https://github.com/heygen-com/hyperframes` (canonical fork) at v0.4.30 (244MB). Bridge skill + agent realigned to v0.4.30 in same session. The bridge previously documented an invalid `bun run render --input <html>` invocation — that was a pre-existing bug (the script never existed; `--input` was never a real flag). Fixed: render path is now `cd <project_dir> && npx hyperframes render --output <mp4>` with two contracts (default `html_scene_path` → bridge scaffolds a temp project; advanced `project_dir` → bridge uses directly). Pre-render gate sequence is now `lint → validate → inspect → render` (added `inspect` — new in v0.4.30 — for visual layout audit). New attribute `data-variable-values` documented for per-instance variable injection into sub-compositions.
+2. **`external/hyperframes/` on-demand external dependency** — NO longer a git submodule (the submodule was dropped 2026-06-21, commit 0a207db). `external/hyperframes/` is now a gitignored path that hyperframes-bridge clones on demand from `https://github.com/heygen-com/hyperframes` (canonical fork) at v0.4.30 (244MB) and shells out to via `npx hyperframes`; nothing under `external/hyperframes/` is committed or shipped. Bridge skill + agent are aligned to v0.4.30. The bridge previously documented an invalid `bun run render --input <html>` invocation — that was a pre-existing bug (the script never existed; `--input` was never a real flag). Render path is now `cd <project_dir> && npx hyperframes render --output <mp4>` with two contracts (default `html_scene_path` → bridge scaffolds a temp project; advanced `project_dir` → bridge uses directly). Pre-render gate sequence is `lint → validate → inspect → render` (added `inspect` — new in v0.4.30 — for visual layout audit). New attribute `data-variable-values` documented for per-instance variable injection into sub-compositions.
 3. **Publishing** — eventual push to `Emasoft/ai-maestro-plugins` after runtime acceptance.
 
 ## Claude Code compatibility (reviewed against v2.1.178, 2026-06-16)

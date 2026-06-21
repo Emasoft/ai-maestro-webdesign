@@ -1,15 +1,15 @@
-<!--
-Sources: Material 3 density (Apache-2.0, https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes) — direct-port of compact/comfortable/spacious naming; Carbon Design density tokens (Apache-2.0, IBM) — direct-port of multiplier-over-baseline approach.
-Synthesis novel to this plugin: 3-mode multiplier table over the plugin's 10-step spacing scale, breakpoint-driven vs user-toggle decision tree, density's interaction with type-scale, breaks-if invariants. Clean-room beyond the cited sources.
--->
-
 ---
 name: TECH-token-system-density-modes
 category: design-principles-tokens
 source: Material 3 + Carbon density direct-port of mode naming; clean-room synthesis of the multiplier table + breakpoint vs toggle decision (batch9 Wave 2 Round 3, T-082/T-083)
-license: this file = MIT (plugin license); Material 3 + Carbon are Apache-2.0 with attribution preserved in the HTML-comment header above
+license: this file = MIT (plugin license); Material 3 + Carbon are Apache-2.0 with attribution preserved in the HTML-comment header below
 also-in: TECH-token-system-spacing-and-grid.md (the 10-step spacing scale this density multiplies); TECH-motion-density.md (motion-density 3-tier system is the kinetic twin of this static-density system); TECH-dial-configuration.md (VISUAL_COMPLEXITY dial may co-vary with density mode)
 ---
+
+<!--
+Sources: Material 3 density (Apache-2.0, https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes) — direct-port of compact/comfortable/spacious naming; Carbon Design density tokens (Apache-2.0, IBM) — direct-port of multiplier-over-baseline approach.
+Synthesis novel to this plugin: 3-mode multiplier table over the plugin's 10-step spacing scale, breakpoint-driven vs user-toggle decision tree, density's interaction with type-scale, breaks-if invariants. Clean-room beyond the cited sources.
+-->
 
 # Token system — compact / comfortable / spacious density modes
 

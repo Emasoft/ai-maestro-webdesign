@@ -1,15 +1,15 @@
-<!--
-Sources: Material 3 elevation scale (Apache-2.0, https://m3.material.io/styles/elevation/tokens) — direct-port of the 0/1/2/3/4/5-dp tiers; Tailwind v4 shadow scale (MIT) — direct-port of step counts + role mapping; Bootstrap z-index layer table (MIT) — direct-port of layer assignments.
-Synthesis novel to this plugin: colored-shadow integration with TECH-named-color-shadow-techniques.md, radius-to-role mapping for chip/button/card/sheet, breaks-if invariants. Clean-room beyond the cited sources.
--->
-
 ---
 name: TECH-token-system-elevation-and-radius
 category: design-principles-tokens
 source: Material 3 elevation + Tailwind shadow + Bootstrap z-index direct-port (batch9 Wave 2 Round 3, T-079/T-080/T-081)
-license: this file = MIT (plugin license); Material 3 is Apache-2.0, Tailwind + Bootstrap are MIT — attribution preserved in the HTML-comment header above
+license: this file = MIT (plugin license); Material 3 is Apache-2.0, Tailwind + Bootstrap are MIT — attribution preserved in the HTML-comment header below
 also-in: TECH-named-color-shadow-techniques.md (colored shadow rule applies to every elevation tier — never raw black); TECH-material-language.md (1-2 material-moment budget caps how many elevated cards a page may have); TECH-css-variable-discipline.md (raw `shadow-lg` / `rounded-2xl` Tailwind utilities are NOT in the discipline gate but their values must derive from tokens)
 ---
+
+<!--
+Sources: Material 3 elevation scale (Apache-2.0, https://m3.material.io/styles/elevation/tokens) — direct-port of the 0/1/2/3/4/5-dp tiers; Tailwind v4 shadow scale (MIT) — direct-port of step counts + role mapping; Bootstrap z-index layer table (MIT) — direct-port of layer assignments.
+Synthesis novel to this plugin: colored-shadow integration with TECH-named-color-shadow-techniques.md, radius-to-role mapping for chip/button/card/sheet, breaks-if invariants. Clean-room beyond the cited sources.
+-->
 
 # Token system — z-index layers, elevation shadows, radius scale
 

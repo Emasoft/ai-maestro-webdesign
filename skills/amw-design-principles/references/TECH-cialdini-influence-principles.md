@@ -1,5 +1,3 @@
-<!-- Clean-room synthesis of Cialdini's published behavioural-influence research as commonly reproduced in marketing and conversion-rate-optimisation literature. No copyrighted book passages reproduced; concepts described in plugin-original prose. Authored for batch9 Wave 2 Round 4, T-166. -->
-
 ---
 name: TECH-cialdini-influence-principles
 category: design-principles-process
@@ -7,6 +5,8 @@ source: clean-room synthesis of Cialdini behavioural-influence research (batch9 
 license: MIT (plugin-original under ../../../LICENSE)
 also-in: TECH-influence-and-persuasion.md (sibling reference; R3 covered the 7-principle catalogue and CRO numbers; this file goes deep on each principle's UI surface and the ethical line); TECH-fogg-behavior-model.md (Trigger maps to Cialdini cues; Motivation maps to scarcity/social-proof); TECH-loss-aversion-pricing.md (anchoring + endowment compose with reciprocity for pricing pages); ai-slop-avoid.md (rejects fake-urgency + fake-testimonials)
 ---
+
+<!-- Clean-room synthesis of Cialdini's published behavioural-influence research as commonly reproduced in marketing and conversion-rate-optimisation literature. No copyrighted book passages reproduced; concepts described in plugin-original prose. Authored for batch9 Wave 2 Round 4, T-166. -->
 
 # Cialdini influence principles — deep UI surface
 

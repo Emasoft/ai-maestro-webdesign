@@ -63,6 +63,7 @@ import stat
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 # Load gh / git retry wrappers from the sibling module so every push +
 # `gh release create` survives transient github.com hiccups (the retry
@@ -81,18 +82,44 @@ except ImportError:
         "Run `cpv standardize --force-templates` to refresh.",
         file=sys.stderr,
     )
-    def gh_with_retry(cmd, **kwargs):  # type: ignore[no-redef]
-        kwargs.pop("max_attempts", None)
-        kwargs.pop("backoff", None)
-        kwargs.setdefault("check", True)
-        kwargs.setdefault("capture_output", False)
-        return subprocess.run(cmd, **kwargs)
-    def git_with_retry(cmd, **kwargs):  # type: ignore[no-redef]
-        kwargs.pop("max_attempts", None)
-        kwargs.pop("backoff", None)
-        kwargs.setdefault("check", True)
-        kwargs.setdefault("capture_output", False)
-        return subprocess.run(cmd, **kwargs)
+    # The fallback shims MUST declare the SAME signature as the real
+    # cpv_network_resilience wrappers — mypy enforces that conditional
+    # function variants (the try/except import fallback) be type-identical
+    # (error code "misc"). Keyword-only args mirror the originals; the
+    # retry-specific kwargs (max_attempts/backoff) are accepted and ignored
+    # since a no-op shim cannot retry.
+    def gh_with_retry(  # type: ignore[no-redef]
+        cmd: list[str],
+        *,
+        cwd: Any = None,
+        env: dict[str, str] | None = None,
+        check: bool = True,
+        capture_output: bool = False,
+        timeout: float | None = None,
+        max_attempts: int = 1,
+        backoff: float = 0.0,
+        print_cmd: bool = False,
+    ) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            cmd, cwd=cwd, env=env, check=check,
+            capture_output=capture_output, timeout=timeout, text=True,
+        )
+    def git_with_retry(  # type: ignore[no-redef]
+        cmd: list[str],
+        *,
+        cwd: Any = None,
+        env: dict[str, str] | None = None,
+        check: bool = True,
+        capture_output: bool = False,
+        timeout: float | None = None,
+        max_attempts: int = 1,
+        backoff: float = 0.0,
+        print_cmd: bool = False,
+    ) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            cmd, cwd=cwd, env=env, check=check,
+            capture_output=capture_output, timeout=timeout, text=True,
+        )
 
 # -- ANSI colors ---------------------------------------------------------------
 

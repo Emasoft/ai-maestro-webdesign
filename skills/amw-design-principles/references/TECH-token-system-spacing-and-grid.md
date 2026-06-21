@@ -1,15 +1,15 @@
-<!--
-Sources: Material Design 8dp grid (Apache-2.0, https://m2.material.io/design/layout/spacing-methods.html) — direct-port of the 4/8 baseline rationale; Tailwind v4 spacing scale (MIT, https://tailwindcss.com/docs/customizing-spacing) — direct-port of the named-step scale; Bootstrap 12-col grid + 6-breakpoint system (MIT) — direct-port of column/breakpoint counts.
-Synthesis novel to this plugin: density-mode multiplier (see TECH-token-system-density-modes.md), inline/block axis token split, breaks-if invariants. Clean-room beyond the cited sources.
--->
-
 ---
 name: TECH-token-system-spacing-and-grid
 category: design-principles-tokens
 source: Material 8dp + Tailwind step scale + Bootstrap 12-col direct-port (batch9 Wave 2 Round 3, T-076/T-077/T-078)
-license: this file = MIT (plugin license); upstreams are Apache-2.0 / MIT with attribution preserved in the HTML-comment header above
+license: this file = MIT (plugin license); upstreams are Apache-2.0 / MIT with attribution preserved in the HTML-comment header below
 also-in: TECH-token-system-density-modes.md (compact/comfortable/spacious multiplier table); TECH-css-variable-discipline.md (raw `p-4`/`gap-3` is OK, raw `px-[17px]` is not — only token-scaled values); TECH-landing-anatomy.md (section-rhythm spacing budget)
 ---
+
+<!--
+Sources: Material Design 8dp grid (Apache-2.0, https://m2.material.io/design/layout/spacing-methods.html) — direct-port of the 4/8 baseline rationale; Tailwind v4 spacing scale (MIT, https://tailwindcss.com/docs/customizing-spacing) — direct-port of the named-step scale; Bootstrap 12-col grid + 6-breakpoint system (MIT) — direct-port of column/breakpoint counts.
+Synthesis novel to this plugin: density-mode multiplier (see TECH-token-system-density-modes.md), inline/block axis token split, breaks-if invariants. Clean-room beyond the cited sources.
+-->
 
 # Token system — 4/8pt grid, spacing scale, responsive grid
 

@@ -175,8 +175,8 @@ before Wave 2.
   ux_scorecards[] block + Markdown summary table, §14 rule 11). Markdown
   report stays canonical human output; YAML is sidecar for agent gating.
 - 2026-05-26T15:25 — **Wave 1 Track F COMPLETE** (commit 4cd81ba; 8 files;
-  +3906). NEW skills/amw-ui-sound-design/ (T-001, 5 files: SKILL.md 213L
-  + sound-recipes.md 688L + web-audio-safety.md 318L + web-audio-building-
+  +3906). NEW skills/amw-ui-sound-design/ (T-001, 5 files: SKILL.md 213L +
+  sound-recipes.md 688L + web-audio-safety.md 318L + web-audio-building-
   blocks.md 696L + audio-file-references.md 162L — MIT direct-port from
   dannyjpwilliams/ui-sound-design-skill © 2026 Danny Williams; 16-row
   vocabulary bridge + 10-row sound categories + 9 recipes + 6 critical
@@ -204,8 +204,8 @@ before Wave 2.
   +882). NEW skills/amw-design-system-presets/ (T-004 — final P1 item):
   SKILL.md 146L (catalog-first router, per-style file contract,
   non-negotiables including catalog-first load + brand-tokens-override),
-  references/catalogue.md 143L (45 S-NNN rows across 8 aesthetic positions
-  + 10 quick-decision rules; placeholder positions marked for swarm to
+  references/catalogue.md 143L (45 S-NNN rows across 8 aesthetic positions +
+  10 quick-decision rules; placeholder positions marked for swarm to
   populate verbatim from upstream), references/_test-skeleton.html 411L
   (8 UI primitives — header/hero/3-card/quote/pricing/form/footer/modal —
   using ONLY var(--token) refs, no hard-coded hex/rgb/hsl), references/
@@ -213,9 +213,9 @@ before Wave 2.
   → render-mine → render-source → fcvvdp ≥ 9.5 → record verdict). EDIT
   .claude-plugin/plugin.json (traversal +1, now 47 entries).
 - **Wave 1 P1 INVENTORY 100% COMPLETE** — 20 of 20 techniques landed
-  (T-001 + T-004 + T-025 + T-029 + T-030 + T-040 + T-041 + T-042 + T-043
-  + T-044 + T-045 + T-046 + T-054 + T-063 + T-064 + T-084 + T-085 + T-088
-  + T-097 + T-139), plus the T-026 (sound-designer agent) + T-028
+  (T-001 + T-004 + T-025 + T-029 + T-030 + T-040 + T-041 + T-042 + T-043 +
+  T-044 + T-045 + T-046 + T-054 + T-063 + T-064 + T-084 + T-085 + T-088 +
+  T-097 + T-139), plus the T-026 (sound-designer agent) + T-028
   (sound-analyze bin) pulled in by T-001's natural scope. Brand library
   (T-040) also complete (14 brands). Touched skills pass CPV validate /
   ai-slop-check; touched bins pass pytest.

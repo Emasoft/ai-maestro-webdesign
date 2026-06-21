@@ -1,15 +1,15 @@
-<!--
-Sources: Material 3 color roles (Apache-2.0, https://m3.material.io/styles/color/roles) — direct-port of role names + on-* pairing semantics; Radix Colors 12-step scale (MIT) — direct-port of step semantics; WCAG 2.1 §1.4.3 §1.4.11 contrast ratios — public spec.
-Synthesis novel to this plugin: brand-voltage tie-in, plugin-token-prefix convention, breaks-if invariants. Clean-room beyond the cited sources.
--->
-
 ---
 name: TECH-token-system-color-roles
 category: design-principles-tokens
 source: Material 3 + Radix Colors direct-port (roles, on-* pairs); WCAG 2.1 pair-contrast invariants; clean-room synthesis for plugin conventions (batch9 Wave 2 Round 3, T-074/T-075)
-license: this file = MIT (plugin license); Material 3 source is Apache-2.0 with attribution preserved in the HTML-comment header above; Radix is MIT
+license: this file = MIT (plugin license); Material 3 source is Apache-2.0 with attribution preserved in the HTML-comment header below; Radix is MIT
 also-in: TECH-brand-voltage.md (the one accent hue feeds `primary`); TECH-named-color-shadow-techniques.md (near-black floor on `surface-dark-*`); TECH-css-variable-discipline.md (raw Tailwind color utilities banned — colors must be roles)
 ---
+
+<!--
+Sources: Material 3 color roles (Apache-2.0, https://m3.material.io/styles/color/roles) — direct-port of role names + on-* pairing semantics; Radix Colors 12-step scale (MIT) — direct-port of step semantics; WCAG 2.1 §1.4.3 §1.4.11 contrast ratios — public spec.
+Synthesis novel to this plugin: brand-voltage tie-in, plugin-token-prefix convention, breaks-if invariants. Clean-room beyond the cited sources.
+-->
 
 # Token system — semantic color roles and pair-contrast invariants
 

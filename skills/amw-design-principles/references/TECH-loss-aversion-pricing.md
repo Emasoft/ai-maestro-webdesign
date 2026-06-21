@@ -1,5 +1,3 @@
-<!-- Clean-room synthesis of Kahneman & Tversky's published prospect-theory and loss-aversion research as commonly reproduced in behavioural-economics and pricing literature. No copyrighted-book passages reproduced; concepts re-explained in plugin-original prose. Authored for batch9 Wave 2 Round 4, T-168. -->
-
 ---
 name: TECH-loss-aversion-pricing
 category: design-principles-process
@@ -7,6 +5,8 @@ source: clean-room synthesis of Kahneman-Tversky prospect theory and loss-aversi
 license: MIT (plugin-original under ../../../LICENSE)
 also-in: TECH-cialdini-influence-principles.md (anchoring composes with social proof; endowment composes with reciprocity); TECH-fogg-behavior-model.md (loss framing is a Motivation lever); TECH-microcopy-patterns.md (concrete pricing-CTA copy); TECH-form-validation-patterns.md (default checkbox states matter for opt-in/opt-out)
 ---
+
+<!-- Clean-room synthesis of Kahneman & Tversky's published prospect-theory and loss-aversion research as commonly reproduced in behavioural-economics and pricing literature. No copyrighted-book passages reproduced; concepts re-explained in plugin-original prose. Authored for batch9 Wave 2 Round 4, T-168. -->
 
 # Loss aversion — pricing, checkout, and default-state design
 

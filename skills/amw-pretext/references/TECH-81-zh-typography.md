@@ -1,12 +1,13 @@
-<!--
-  TECH-81-zh-typography — Chinese Web Typography (stub)
-  Sibling of TECH-80-ja-typography. Placeholder for forthcoming ZH-specific rules.
--->
 ---
 name: TECH-81-zh-typography
 category: cjk
 status: stub
 ---
+
+<!--
+  TECH-81-zh-typography — Chinese Web Typography (stub)
+  Sibling of TECH-80-ja-typography. Placeholder for forthcoming ZH-specific rules.
+-->
 
 ## Table of Contents
 

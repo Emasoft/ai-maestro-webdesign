@@ -1,5 +1,3 @@
-<!-- Clean-room synthesis of right-to-left web-design practice (typographic + iconographic + bidirectional-text patterns) commonly documented in MDN, W3C i18n drafts, and major-vendor RTL handoffs. No copyrighted material reproduced. Authored for batch9 Wave 2 Round 4, T-170. -->
-
 ---
 name: TECH-rtl-design-patterns
 category: design-principles-process
@@ -7,6 +5,8 @@ source: clean-room synthesis of RTL design practice (batch9 Wave 2 Round 4, T-17
 license: MIT (plugin-original under ../../../LICENSE)
 also-in: TECH-cross-cultural-design.md (cultural design context for non-Western audiences); TECH-css-modern-syntax.md (logical properties: margin-inline-start, padding-block-end); TECH-css-variable-discipline.md (RTL-aware tokens); typography-system.md (Arabic / Hebrew / Persian font-stack rules)
 ---
+
+<!-- Clean-room synthesis of right-to-left web-design practice (typographic + iconographic + bidirectional-text patterns) commonly documented in MDN, W3C i18n drafts, and major-vendor RTL handoffs. No copyrighted material reproduced. Authored for batch9 Wave 2 Round 4, T-170. -->
 
 # RTL design patterns — beyond mirroring the layout
 

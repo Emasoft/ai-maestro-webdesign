@@ -1,14 +1,15 @@
+---
+name: amw-ascii-pixel-art
+description: Image-to-animated-ASCII-art generator — Pillow + rembg + numpy 7-step pipeline producing a self-contained HTML file with a 60fps canvas (sine-pulse, diagonal shine, random flicker, hover ripple). Triggers on "image to ASCII art", "animated ASCII portrait", "ASCII pixel-effect HTML", "convert photo to ASCII canvas", "rembg ASCII output". Does NOT trigger on generic "ASCII art", "make a wireframe", "infographic", or layout sketching — those route to ascii-sketch/ascii-creator/infographics. Use when the goal is a single self-contained animated-canvas HTML produced from a portrait/object photo.
+version: 0.1.0
+---
+
 <!--
 ai-maestro-webdesign / skills / amw-ascii-pixel-art
 Adapted from Chris Korhonen's `ascii-pixel-art` skill in https://github.com/ckorhonen/claude-skills
 Original work © 2025 Chris Korhonen — MIT License (see SKILLS-TO-INTEGRATE/.../LICENSE).
 Adaptation © 2026 Emasoft — MIT License.
 -->
----
-name: amw-ascii-pixel-art
-description: Image-to-animated-ASCII-art generator — Pillow + rembg + numpy 7-step pipeline producing a self-contained HTML file with a 60fps canvas (sine-pulse, diagonal shine, random flicker, hover ripple). Triggers on "image to ASCII art", "animated ASCII portrait", "ASCII pixel-effect HTML", "convert photo to ASCII canvas", "rembg ASCII output". Does NOT trigger on generic "ASCII art", "make a wireframe", "infographic", or layout sketching — those route to ascii-sketch/ascii-creator/infographics. Use when the goal is a single self-contained animated-canvas HTML produced from a portrait/object photo.
-version: 0.1.0
----
 
 # ASCII Pixel-Art Generator
 

@@ -1,9 +1,3 @@
-<!--
-  Clean-room transcription. Source: blocked-B harvest entry #12 (`landing-page-builder-skill-main`)
-  industry x theme matrix, theme #9 "Industrial/Trust Authority Dark". Upstream license is unknown;
-  this file contains no source code, only the documented aesthetic intent (hue/lightness/chroma) and
-  derivations that follow generally-accepted dark-UI conventions.
--->
 ---
 id: S-046
 name: Industrial / Trust Authority
@@ -14,6 +8,13 @@ source_attribution: >
   transcription from documented hue/lightness/chroma values; no upstream code is reused.
 license: clean-room (upstream license unknown; derivations from public-domain oklch color values)
 ---
+
+<!--
+  Clean-room transcription. Source: blocked-B harvest entry #12 (`landing-page-builder-skill-main`)
+  industry x theme matrix, theme #9 "Industrial/Trust Authority Dark". Upstream license is unknown;
+  this file contains no source code, only the documented aesthetic intent (hue/lightness/chroma) and
+  derivations that follow generally-accepted dark-UI conventions.
+-->
 
 # S-046 — Industrial / Trust Authority
 

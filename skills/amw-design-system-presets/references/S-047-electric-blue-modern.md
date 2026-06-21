@@ -1,9 +1,3 @@
-<!--
-  Clean-room transcription. Source: blocked-B harvest entry #12 (`landing-page-builder-skill-main`)
-  industry x theme matrix, theme #14 "Electric Blue Modern". Upstream license is unknown;
-  this file contains no source code, only the documented aesthetic intent (hue/lightness/chroma)
-  and derivations consistent with generally-accepted light-UI conventions.
--->
 ---
 id: S-047
 name: Electric Blue Modern
@@ -14,6 +8,13 @@ source_attribution: >
   documented hue/lightness/chroma values; no upstream code is reused.
 license: clean-room (upstream license unknown; derivations from public-domain oklch color values)
 ---
+
+<!--
+  Clean-room transcription. Source: blocked-B harvest entry #12 (`landing-page-builder-skill-main`)
+  industry x theme matrix, theme #14 "Electric Blue Modern". Upstream license is unknown;
+  this file contains no source code, only the documented aesthetic intent (hue/lightness/chroma)
+  and derivations consistent with generally-accepted light-UI conventions.
+-->
 
 # S-047 — Electric Blue Modern
 

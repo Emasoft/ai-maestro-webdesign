@@ -1,8 +1,3 @@
-<!--
-Sources: Tailwind CSS v4 documentation (MIT, https://tailwindcss.com/docs) — direct-port of the v4 native-CSS feature surface, theme-block syntax, color-feature integration, container queries, source directive. The Tailwind project is MIT-licensed; this plugin is also MIT (../../../LICENSE).
-Synthesis novel to this plugin: the per-feature browser-support matrix, fallback strategies via @supports, the breaks-if invariants, and the cross-references to the wider amw-design-principles token system.
--->
-
 ---
 name: TECH-tailwind-v4-native-features
 category: design-principles-process
@@ -10,6 +5,11 @@ source: Tailwind v4 docs (direct-port with attribution, batch9 Wave 2 Round 4, T
 license: MIT (Tailwind v4 is MIT under upstream; plugin re-licenses under its own MIT — see ../../../LICENSE)
 also-in: TECH-css-modern-syntax.md (oklch / color-mix / container queries; this file covers the Tailwind v4 surface specifically); TECH-css-variable-discipline.md (how Tailwind v4 @theme integrates with the plugin's 3-tier token system); TECH-enterprise-system-overrides.md (Tailwind v4 in a multi-brand context); ../../amw-tailwind-4/SKILL.md (the executor skill — this reference is the pre-read)
 ---
+
+<!--
+Sources: Tailwind CSS v4 documentation (MIT, https://tailwindcss.com/docs) — direct-port of the v4 native-CSS feature surface, theme-block syntax, color-feature integration, container queries, source directive. The Tailwind project is MIT-licensed; this plugin is also MIT (../../../LICENSE).
+Synthesis novel to this plugin: the per-feature browser-support matrix, fallback strategies via @supports, the breaks-if invariants, and the cross-references to the wider amw-design-principles token system.
+-->
 
 # Tailwind v4 native-CSS features — what's new, when to use, fallback strategy
 

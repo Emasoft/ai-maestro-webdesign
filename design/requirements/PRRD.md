@@ -33,4 +33,3 @@ Rule citation form: `PRRD G<n>.<v>` or `PRRD S<n>.<v>`. See
 - **S6.1** — amw-dev-browser is the ONLY input-automation primitive for reading live-page state. Do not add Chrome DevTools MCP, Playwright MCP, or a new puppeteer wrapper; output-only render backends (export/preview) may keep their own engines.
 - **S7.1** — Every ASCII artifact MUST pass bin/amw-validate-ascii.py (alignment, width, wide-char, forbidden-char gate) before delivery.
 - **S8.1** — Gather design context (design system, brand tokens, or reference examples) before designing; the last-resort fallback is amw-ui-ux-reasoning, never guessing.
-

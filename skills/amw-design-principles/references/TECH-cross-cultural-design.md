@@ -1,7 +1,3 @@
-<!-- Clean-room rewrite from cross-cultural design literature (Five Phases color theory, Fibonacci spacing in Renaissance typography, Swiss-school typographic-waterfall scales). No upstream source code or proprietary content copied. Synthesised for batch9 Wave 2 Round 3, T-174. -->
-
-<!-- CJK exception: This TECH file contains Chinese characters (五行) by design, as linguistic subject matter for the Wu-Xing five-phase palette section. The plugin-wide CJK-clean check exempts this file (parallel to the existing exemption for skills/amw-pretext/references/TECH-80-ja-typography.md and skills/amw-pretext/references/TECH-16-cjk-keep-all.md). Document this carve-out in any future ai-slop-check.py update. -->
-
 ---
 name: TECH-cross-cultural-design
 category: design-principles-process
@@ -9,6 +5,10 @@ source: cross-cultural design literature (clean-room synthesis, batch9 Wave 2 Ro
 license: MIT (plugin-original under ../../../LICENSE)
 also-in: TECH-named-color-shadow-techniques.md (Wu-Xing maps to perceptual hue families differently than HSL); spacing-rhythm.md (Fibonacci is one of several spacing scales); typography-system.md (waterfall is one of several type-scale strategies)
 ---
+
+<!-- Clean-room rewrite from cross-cultural design literature (Five Phases color theory, Fibonacci spacing in Renaissance typography, Swiss-school typographic-waterfall scales). No upstream source code or proprietary content copied. Synthesised for batch9 Wave 2 Round 3, T-174. -->
+
+<!-- CJK exception: This TECH file contains Chinese characters (五行) by design, as linguistic subject matter for the Wu-Xing five-phase palette section. The plugin-wide CJK-clean check exempts this file (parallel to the existing exemption for skills/amw-pretext/references/TECH-80-ja-typography.md and skills/amw-pretext/references/TECH-16-cjk-keep-all.md). Document this carve-out in any future ai-slop-check.py update. -->
 
 # Cross-cultural design — Wu-Xing palette, Fibonacci spacing, typographic waterfall
 
