@@ -2,7 +2,7 @@
 name: TECH-tone-archetypes
 category: design-principles-aesthetic
 source: Bexa design-principles cluster (direct port, batch9 Wave 2 Round 2, T-050)
-license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see ../../../LICENSE)
+license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see the plugin root LICENSE file)
 also-in: TECH-voice-tone-archetypes.md (the 7 COPY tones for words — distinct from this file's 11 VISUAL archetypes); skills/amw-design-system-presets/references/catalogue.md (the 45 enumerated graphic presets that anchor these archetypes)
 ---
 

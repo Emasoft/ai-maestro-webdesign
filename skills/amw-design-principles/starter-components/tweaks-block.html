@@ -126,19 +126,19 @@ function applyTweak(key, value) {
 // ============================================
 // Bind controls
 // ============================================
-const $ = id => document.getElementById(id);
-$('tk-color').value = TWEAK_DEFAULTS.primaryColor;
-$('tk-size').value = TWEAK_DEFAULTS.fontSize;
-$('tk-radius').value = TWEAK_DEFAULTS.radius;
+const byId = id => document.getElementById(id);
+byId('tk-color').value = TWEAK_DEFAULTS.primaryColor;
+byId('tk-size').value = TWEAK_DEFAULTS.fontSize;
+byId('tk-radius').value = TWEAK_DEFAULTS.radius;
 
-$('tk-color').addEventListener('input', e => applyTweak('primaryColor', e.target.value));
-$('tk-size').addEventListener('input', e => applyTweak('fontSize', Number(e.target.value)));
-$('tk-radius').addEventListener('input', e => applyTweak('radius', Number(e.target.value)));
+byId('tk-color').addEventListener('input', e => applyTweak('primaryColor', e.target.value));
+byId('tk-size').addEventListener('input', e => applyTweak('fontSize', Number(e.target.value)));
+byId('tk-radius').addEventListener('input', e => applyTweak('radius', Number(e.target.value)));
 
 // Standalone use: press T to toggle the tweaks panel
 window.addEventListener('keydown', e => {
   if (e.key === 't' || e.key === 'T') {
-    $('tweaks-panel').classList.toggle('visible');
+    byId('tweaks-panel').classList.toggle('visible');
   }
 });
 </script>

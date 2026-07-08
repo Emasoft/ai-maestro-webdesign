@@ -2,7 +2,7 @@
 name: TECH-cross-cultural-design
 category: design-principles-process
 source: cross-cultural design literature (clean-room synthesis, batch9 Wave 2 Round 3, T-174)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-named-color-shadow-techniques.md (Wu-Xing maps to perceptual hue families differently than HSL); spacing-rhythm.md (Fibonacci is one of several spacing scales); typography-system.md (waterfall is one of several type-scale strategies)
 ---
 

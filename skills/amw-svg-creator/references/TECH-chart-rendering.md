@@ -2,7 +2,7 @@
 name: TECH-chart-rendering
 category: svg-dataviz
 source: amw-asset-generator-agent §9 (chart-rendering routing rows)
-also-in: ../docs/components/chart.mdx (shadcn-ui chart wrapper for Recharts), TECH-data-visualization-svg.md (hand-authored SVG bars/donuts)
+also-in: docs/components/chart.mdx (shadcn-ui chart wrapper for Recharts), TECH-data-visualization-svg.md (hand-authored SVG bars/donuts)
 ---
 
 # Chart rendering — library trade-off matrix

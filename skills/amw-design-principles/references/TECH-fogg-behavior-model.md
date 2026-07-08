@@ -2,7 +2,7 @@
 name: TECH-fogg-behavior-model
 category: design-principles-process
 source: clean-room synthesis of Fogg Behavior Model (batch9 Wave 2 Round 4, T-167)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-cialdini-influence-principles.md (Motivation lever maps to scarcity/social-proof; Trigger lever maps to authority/reciprocity); TECH-loss-aversion-pricing.md (Motivation through pain-avoidance framing); TECH-microcopy-patterns.md (Triggers are usually copy); TECH-form-validation-patterns.md (Ability barrier reduction)
 ---
 

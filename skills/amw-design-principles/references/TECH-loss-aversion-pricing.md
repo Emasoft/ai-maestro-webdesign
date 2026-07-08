@@ -2,7 +2,7 @@
 name: TECH-loss-aversion-pricing
 category: design-principles-process
 source: clean-room synthesis of Kahneman-Tversky prospect theory and loss-aversion research (batch9 Wave 2 Round 4, T-168)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-cialdini-influence-principles.md (anchoring composes with social proof; endowment composes with reciprocity); TECH-fogg-behavior-model.md (loss framing is a Motivation lever); TECH-microcopy-patterns.md (concrete pricing-CTA copy); TECH-form-validation-patterns.md (default checkbox states matter for opt-in/opt-out)
 ---
 

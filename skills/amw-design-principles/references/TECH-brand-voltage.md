@@ -2,7 +2,7 @@
 name: TECH-brand-voltage
 category: design-principles-color
 source: Bexa design-principles cluster (direct port, batch9 Wave 2 Round 2, T-047)
-license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see ../../../LICENSE)
+license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see the plugin root LICENSE file)
 also-in: TECH-brand-color-by-product.md (where the chromatic accent comes from); ai-slop-avoid.md (banned multi-accent "rainbow" patterns); bin/amw-ai-slop-check.py (mechanical enforcement — voltage-check rule is a known gap, see "Known gap" below)
 ---
 

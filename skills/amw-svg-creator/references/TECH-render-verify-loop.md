@@ -34,9 +34,9 @@ never rendered.
 ## The six steps
 
 ```
-1. WRITE SVG to /home/claude/draft.svg
-2. RENDER: python3 scripts/svg_loop.py render /home/claude/draft.svg
-   → produces /home/claude/svg_preview.png
+1. WRITE SVG to /tmp/draft.svg
+2. RENDER: python3 scripts/svg_loop.py render /tmp/draft.svg
+   → produces /tmp/svg_preview.png
 3. VIEW the PNG using the `view` tool (MANDATORY — you must actually look)
 4. ASSESS:
    - Positions correct?
@@ -44,7 +44,7 @@ never rendered.
    - Gradients working?
    - For characters: body parts connected?
 5. FIX — edit draft.svg, go back to step 2
-6. DELIVER: python3 scripts/svg_loop.py finish /home/claude/draft.svg output.svg
+6. DELIVER: python3 scripts/svg_loop.py finish /tmp/draft.svg output.svg
 ```
 
 ## Why the loop script
@@ -74,24 +74,24 @@ python3 scripts/svg_loop.py reset                  # start fresh
 ```bash
 # source: image-generation/svg-creator/SKILL.md
 # Write the SVG
-cat > /home/claude/draft.svg << 'SVGEOF'
+cat > /tmp/draft.svg << 'SVGEOF'
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">...</svg>
 SVGEOF
 
 # Render + view cycle
-python3 /path/to/skill/scripts/svg_loop.py render /home/claude/draft.svg
+python3 /path/to/skill/scripts/svg_loop.py render /tmp/draft.svg
 
 # View the preview PNG with the `view` tool
 
 # When satisfied — deliver
-python3 /path/to/skill/scripts/svg_loop.py finish /home/claude/draft.svg output-name.svg
+python3 /path/to/skill/scripts/svg_loop.py finish /tmp/draft.svg output-name.svg
 ```
 
 ## Gotchas
 
 - The `finish` command BLOCKS if no `render` was run — this is the
   whole point. Don't try to skip it.
-- `/home/claude/` is the canonical draft location in the sandbox.
+- `/tmp/` is the canonical draft location in the sandbox.
   Adapt for your actual temp directory.
 - Build characters incrementally (torso → legs → arms → head) — a
   single big SVG has too much coordinate math to fix in one pass.

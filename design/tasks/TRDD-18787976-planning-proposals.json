@@ -369,7 +369,7 @@
     "new_ref_file": "(none \u2014 no new reference file needed; this is a dedup-style trim, not a content relocation)",
     "sections_moved": [
      "Remove the 4 DUPLICATE TOC-embed lines that re-embed an already-embedded TOC: SKILL.md line 116 (2nd copy of color-system.md TOC; 1st copy at line 83), line 121 (2nd copy of design-system.md TOC; 1st at line 68), line 122 (2nd copy of type-rules.md TOC; 1st at line 63), line 133 (2nd copy of ai-slop-avoid.md TOC; 1st at line 113). Keep exactly one embed per linked reference file.",
-     "OPTIONAL for full TOC-contract compliance: add the currently-MISSING TOC embed for ../amw-design-principles/references/project-output-routing.md (linked at line 142 in the Output section but never embedded; 8 chapter titles, ~59 tokens, +1 line)."
+     "OPTIONAL for full TOC-contract compliance: add the currently-MISSING TOC embed for the amw-design-principles skill's references/project-output-routing.md (linked at line 142 in the Output section but never embedded; 8 chapter titles, ~59 tokens, +1 line)."
     ],
     "est_tokens_moved": 366
    }

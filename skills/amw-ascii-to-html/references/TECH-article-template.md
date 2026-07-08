@@ -2,7 +2,7 @@
 name: TECH-article-template
 category: ascii-to-html-content-templates
 source: amw-wireframe-builder-agent §9 (article-template routing rows)
-also-in: ../../amw-seo/SKILL.md (Article JSON-LD schema)
+also-in: amw-seo/SKILL.md (Article JSON-LD schema)
 ---
 
 # Article / blog post template

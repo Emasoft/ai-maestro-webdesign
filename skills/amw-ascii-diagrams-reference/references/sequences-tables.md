@@ -3,7 +3,7 @@
 - [Sequence Diagrams](#sequence-diagrams)
 - [Tables](#tables)
 
-> Reference library for the ASCII Diagrams Reference skill. Source: CHI'24 paper analysis. Every example validates against ../../bin/amw-validate-ascii.py.
+> Reference library for the ASCII Diagrams Reference skill. Source: CHI'24 paper analysis. Every example validates against the amw-validate-ascii.py validator.
 
 # Sequences, Timelines, and Tables
 

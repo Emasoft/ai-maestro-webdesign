@@ -1,7 +1,7 @@
 ---
 name: TECH-20-design-library
 category: workflow
-source: agents/amw-design-md-author-agent.md, agents/amw-design-md-extractor-agent.md, ../references/brand-catalog.md
+source: agents/amw-design-md-author-agent.md, agents/amw-design-md-extractor-agent.md, references/brand-catalog.md
 also-in: TECH-07-url-extraction.md, TECH-15-design-md-as-input.md, TECH-19-design-md-apply.md
 status: stable
 ---

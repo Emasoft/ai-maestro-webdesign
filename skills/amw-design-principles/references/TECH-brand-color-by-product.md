@@ -2,7 +2,7 @@
 name: TECH-brand-color-by-product
 category: design-principles-color
 source: Bexa design-principles cluster (direct port, batch9 Wave 2 Round 2, T-048)
-license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see ../../../LICENSE)
+license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see the plugin root LICENSE file)
 also-in: TECH-brand-voltage.md (the scarcity rule applied to the accent chosen here); skills/amw-design-principles/color-system.md (general palette guidance)
 ---
 

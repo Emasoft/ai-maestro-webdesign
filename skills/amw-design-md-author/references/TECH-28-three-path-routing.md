@@ -3,7 +3,7 @@ name: TECH-28-three-path-routing
 category: workflow
 source: awesome-design-md three-path routing pattern (MIT)
 license: MIT
-also-in: TECH-15-design-md-as-input.md, TECH-24-authoring-rules-spec.md, TECH-21-style-references-companion.md, ../../amw-design-principles/SKILL.md
+also-in: TECH-15-design-md-as-input.md, TECH-24-authoring-rules-spec.md, TECH-21-style-references-companion.md, amw-design-principles/SKILL.md
 status: stable
 ---
 

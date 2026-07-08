@@ -7,7 +7,7 @@ version: 0.1.0
 <!--
 ai-maestro-webdesign / skills / amw-ascii-pixel-art
 Adapted from Chris Korhonen's `ascii-pixel-art` skill in https://github.com/ckorhonen/claude-skills
-Original work © 2025 Chris Korhonen — MIT License (see SKILLS-TO-INTEGRATE/.../LICENSE).
+Original work © 2025 Chris Korhonen — MIT License (see the LICENSE in the upstream SKILLS-TO-INTEGRATE source).
 Adaptation © 2026 Emasoft — MIT License.
 -->
 

@@ -2,7 +2,7 @@
 name: TECH-19-design-md-apply
 category: integration
 source: agents/amw-wireframe-builder-agent.md, TECH-05-token-references.md, TECH-06-do-donts.md
-also-in: TECH-12-companion-files.md, TECH-15-design-md-as-input.md, ../ai-slop-avoid.md
+also-in: TECH-12-companion-files.md, TECH-15-design-md-as-input.md, ai-slop-avoid.md
 status: stable
 ---
 

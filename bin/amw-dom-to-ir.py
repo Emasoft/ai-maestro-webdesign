@@ -46,7 +46,7 @@ Extraction strategy overview (reference documentation)
        - style    : {"shape": "rect"}
        - annotations: [tag-name]  (e.g. ["nav"], ["main"], ["section"])
 4. **Inline SVG diagrams.** For every `<svg>` that is a child of one of those
-   landmarks, re-parse it via `bin/amw-parse-html-diagram.py` (subprocess) and
+   landmarks, re-parse it via bin/amw-parse-html-diagram.py (subprocess) and
    attach its nodes+edges as CHILDREN of the containing landmark node. The
    landmark node keeps its own identity; the SVG-derived nodes become
    additional IR nodes with an `annotations: ["from-inline-svg"]` marker.

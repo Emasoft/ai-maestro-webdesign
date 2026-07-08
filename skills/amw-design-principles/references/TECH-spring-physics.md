@@ -2,7 +2,7 @@
 name: TECH-spring-physics
 category: design-principles-motion
 source: Bexa design-principles cluster (direct port, batch9 Wave 2 Round 2, T-049)
-license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see ../../../LICENSE)
+license: MIT (Bexa upstream is MIT; plugin re-licenses under its own MIT — see the plugin root LICENSE file)
 also-in: TECH-motion-taxonomy.md (where spring fits among other motion types); TECH-motion-budgets.md (how many simultaneous springs are tolerable); TECH-reduced-motion.md (how spring motion degrades for users with prefers-reduced-motion)
 ---
 

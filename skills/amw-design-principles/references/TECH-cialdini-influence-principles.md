@@ -2,7 +2,7 @@
 name: TECH-cialdini-influence-principles
 category: design-principles-process
 source: clean-room synthesis of Cialdini behavioural-influence research (batch9 Wave 2 Round 4, T-166)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-influence-and-persuasion.md (sibling reference; R3 covered the 7-principle catalogue and CRO numbers; this file goes deep on each principle's UI surface and the ethical line); TECH-fogg-behavior-model.md (Trigger maps to Cialdini cues; Motivation maps to scarcity/social-proof); TECH-loss-aversion-pricing.md (anchoring + endowment compose with reciprocity for pricing pages); ai-slop-avoid.md (rejects fake-urgency + fake-testimonials)
 ---
 

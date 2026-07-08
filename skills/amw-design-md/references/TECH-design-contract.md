@@ -2,7 +2,7 @@
 name: TECH-design-contract
 category: orchestration
 source: design-forge-main/SKILL.md L64-L136, design-forge-main/references/contract-validator.md (MIT)
-also-in: ../../amw-design-principles/references/phase-a-frozen-spec.md, ../../amw-design-principles/references/agent-interaction-patterns.md
+also-in: amw-design-principles/references/phase-a-frozen-spec.md, amw-design-principles/references/agent-interaction-patterns.md
 status: stable
 ---
 

@@ -2,7 +2,7 @@
 name: TECH-rtl-design-patterns
 category: design-principles-process
 source: clean-room synthesis of RTL design practice (batch9 Wave 2 Round 4, T-170)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-cross-cultural-design.md (cultural design context for non-Western audiences); TECH-css-modern-syntax.md (logical properties: margin-inline-start, padding-block-end); TECH-css-variable-discipline.md (RTL-aware tokens); typography-system.md (Arabic / Hebrew / Persian font-stack rules)
 ---
 

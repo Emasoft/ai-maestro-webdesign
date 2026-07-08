@@ -2,7 +2,7 @@
 name: TECH-css-modern-syntax
 category: design-principles-process
 source: clean-room synthesis from MDN / CSS Working Drafts (batch9 Wave 2 Round 3, T-175)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-css-variable-discipline.md (how tokens layer with these features); TECH-enterprise-system-overrides.md (3-tier tokens benefit from light-dark / oklch); TECH-named-color-shadow-techniques.md (oklch unlocks perceptual-uniform palettes); ai-slop-avoid.md (rejects raw screen primaries — oklch is the alternative)
 ---
 

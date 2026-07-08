@@ -2,7 +2,7 @@
 name: TECH-06-do-donts
 category: authoring
 source: design.md-main/docs/spec.md L321-L332; design-md-builder/references/9-section-template.md L227-L243
-also-in: review-rubric.md, ../ai-slop-avoid.md
+also-in: review-rubric.md, ai-slop-avoid.md
 status: stable
 ---
 

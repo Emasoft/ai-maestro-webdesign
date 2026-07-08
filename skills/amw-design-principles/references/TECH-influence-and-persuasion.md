@@ -2,7 +2,7 @@
 name: TECH-influence-and-persuasion
 category: design-principles-process
 source: long-tail R-20 specialist-agent CRO corpus (direct port, batch9 Wave 2 Round 3, T-173)
-license: MIT (specialist-agent upstream is MIT; plugin re-licenses under its own MIT — see ../../../LICENSE)
+license: MIT (specialist-agent upstream is MIT; plugin re-licenses under its own MIT — see the plugin root LICENSE file)
 also-in: TECH-microcopy-patterns.md (CTA copy that compounds with social-proof + scarcity); TECH-form-validation-patterns.md (inline-validation conversion data); TECH-form-async-submit.md (perceived-wait + skeleton numbers); ai-slop-avoid.md (rejects fake-urgency / fake-testimonials)
 ---
 

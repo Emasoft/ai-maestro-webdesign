@@ -2,7 +2,7 @@
 name: TECH-enterprise-system-overrides
 category: design-principles-process
 source: clean-room synthesis (batch9 Wave 2 Round 3, T-171 + T-172 + T-169)
-license: MIT (plugin-original under ../../../LICENSE)
+license: MIT (plugin-original under the plugin root LICENSE file)
 also-in: TECH-override-policy.md (when overrides are allowed); TECH-css-variable-discipline.md (token naming conventions); TECH-deployment-targets.md (which target ecosystems exist); agent-authoring-philosophy.md (Tool→Copilot→Agent UX maps to amw-* agents)
 ---
 
