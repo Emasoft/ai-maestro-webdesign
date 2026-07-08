@@ -1,0 +1,14 @@
+{
+  // Rule config lives in .markdownlint.json (auto-discovered and merged).
+  // This cli2 config only declares which paths to EXCLUDE from the markdown
+  // lint pass. The vendored shadcn-ui upstream docs
+  // (skills/amw-shadcn-ui/vendor/, 200+ MDX from ui.shadcn.com) are tracked and
+  // shipped (the skill references them) but are NOT authored here — their
+  // upstream heading structure and hard tabs must not be rewritten, so they
+  // are excluded from STYLE linting. They live under a `vendor/` directory,
+  // CPV's recognized vendored convention (skillaudit's _SKIP_DIRS skips it too).
+  "ignores": [
+    "skills/amw-shadcn-ui/vendor/**",
+    "**/skills/amw-shadcn-ui/vendor/**"
+  ]
+}

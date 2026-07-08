@@ -55,6 +55,14 @@ read those lessons too — they are *why* the fact is the way it is and *what er
 repeat*. `memgrep recall` appends each note's resolved lessons automatically (one call yields
 body + every linked WHY); the grep fallback shows them inline in the file.
 
+## Checklist
+
+- [ ] Composed the three scope roots (LOCAL, PROJECT, USER).
+- [ ] Ran `memgrep recall` (or the grep fallback) with a symptom-indexed query — the user's words, not the answer's jargon.
+- [ ] Read the top 1–3 returned notes in full, including their `[^N]` lessons.
+- [ ] Applied the more-specific scope when two scopes conflicted (LOCAL > PROJECT > USER).
+- [ ] If recall returned nothing, solved the problem, then captured it via `amw-memory-write`.
+
 ## When to use
 
 - About to debug something that "feels familiar" → recall the symptom first.

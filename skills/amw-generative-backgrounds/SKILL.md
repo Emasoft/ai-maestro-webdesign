@@ -187,6 +187,14 @@ Apply on top of a raster (photo / illustration / screenshot) to convert it into 
 - **Avoid stacking multiple shaders.** Two heavy backgrounds on the same page compound GPU load and battery drain. Pick one.
 - **Image-overlay effects (ascii / dither / halftone / glitch) work on STATIC rasters too.** Don't pay shader cost for an aesthetic that a one-time canvas pass can produce.
 
+## Selection checklist
+
+- [ ] Confirmed the brief calls for a generative/animated background (not a static asset).
+- [ ] Chose one of the 11 background **types** using the selection matrix (type ↔ preset).
+- [ ] Chose any needed image-overlay **effect(s)** from the 17-effect catalog.
+- [ ] Reviewed the shader-heavy pitfalls (perf envelope, contrast, reduced-motion).
+- [ ] Handed the chosen type/effect vocabulary to the downstream implementer (this catalog ships the language, not the shader source).
+
 ## Cross-references
 
 - **Orchestrator:** [amw-design-principles](../amw-design-principles/SKILL.md).

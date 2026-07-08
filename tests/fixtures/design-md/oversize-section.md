@@ -12,8 +12,8 @@ colors:
 > wrong order (e.g. Typography appears before Colors, Components before
 > Elevation) AND `## Colors` appears twice. The validator must emit:
 >
->  - `[P0/S4.V1]` for each section that appears after a later canonical one;
->  - `[P0/S5.V1]` for the duplicate `## Colors`.
+> - `[P0/S4.V1]` for each section that appears after a later canonical one;
+> - `[P0/S5.V1]` for the duplicate `## Colors`.
 
 ## Overview
 

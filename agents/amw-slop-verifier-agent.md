@@ -295,7 +295,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
 
 - **Read the screenshot for pixel inspection.** `Read skills/amw-design-principles/ai-slop-avoid.md` before auditing to confirm the current rule set.
 - **Read supporting references directly.** `Read skills/amw-design-principles/references/component-taste.md`, `Read skills/amw-design-principles/references/pre-output-checklist.md`.
-- **Reference other amw-* agents by name when documenting data hand-offs** — "visual low-contrast observation escalated; `amw-accessibility-auditor-agent` runs the full WCAG 2.1 AA audit via main-agent."
+- **Reference other amw-* agents by name when documenting data hand-offs** — "visual low-contrast observation flagged; `amw-accessibility-auditor-agent` owns the full WCAG 2.1 AA audit (routed by the main-agent)."
 
 ### DON'T
 

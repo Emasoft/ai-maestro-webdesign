@@ -42,9 +42,9 @@ The prose carries opinion AND a contrast that anchors the choice. The reader sho
 Brand voice lives in opposition. A brand's identity is defined as much by what it refuses to do as by what it does. Always position the brand against 2–3 peers or category defaults:
 
 > "Where most fintech brands anchor on confident royal blue, this brand grounds on deep navy (`#0a1f3c`) — a color that reads as institutional and measured rather than aggressively modern."
-
+>
 > "Linear's canvas is near-black (`#08090a`). Where other dark-mode products drift toward mid-gray, Linear goes almost to absolute dark — signaling depth over comfort."
-
+>
 > "This is the opposite of the 'bold hero headline' convention. Weight 300 at 56px commands attention because it does not need to shout."
 
 A comparative claim gives the agent a default direction: when in doubt, bias against the category norm. A DESIGN.md with no comparative claims leaves the agent without that guidance.
@@ -58,9 +58,9 @@ The most common failure mode of brand-naive agents is over-applying the accent c
 Every accent or signature color must have its own scarcity sentence:
 
 > "Use `{colors.primary}` lavender only for: brand mark, primary CTA, focus ring, link emphasis. Nowhere else."
-
+>
 > "Reserve `{colors.ink-coral}` for primary CTAs and full-bleed callout-card moments. Do not scatter coral across decorative touches."
-
+>
 > "Workflow accent colors — Ship Red, Preview Pink, Develop Blue — appear only on workflow-step labels, never on buttons or navigation links."
 
 When you write this rule, it must appear in two places: the Overview section prose, and the Do's/Don'ts list. A scarcity rule buried in only one section often goes unread.
@@ -80,13 +80,13 @@ A strong Don't has three properties:
 Examples of strong Don'ts:
 
 > "Don't use `#000000` true black as the canvas." (Concrete — names the exact wrong hex.)
-
+>
 > "Don't pill-round CTAs." (Concrete — names the exact wrong shape.)
-
+>
 > "Don't use weight 600–700 for headline text — weight 300 is the brand voice." (Anti-default + reasoned.)
-
+>
 > "Don't introduce a second chromatic accent (orange, pink, teal for seasonal marketing). The system uses one accent color precisely because scarcity is its mechanism." (Anti-default + reasoned.)
-
+>
 > "Don't use a neutral gray shadow. Shadows must always be tinted." (Anti-default + alternative implied.)
 
 Weak Don'ts to avoid: "Don't make it ugly." "Don't be inconsistent." "Don't ignore accessibility." These are generic, unfalsifiable, and useless. Every Don't should describe a specific, plausible, on-brand mistake.

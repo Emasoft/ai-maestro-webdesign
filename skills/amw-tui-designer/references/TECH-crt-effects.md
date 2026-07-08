@@ -227,7 +227,7 @@ The retro aesthetic is a *visual* layer, not a functional one. Every accessibili
 | Performance tanks on mobile | Too many `box-shadow` layers, or full-screen WebGL shaders unthrottled | Cap layers; throttle WebGL to 30 fps on mobile |
 | Forms feel broken on CRT-curved screens | Barrel distortion applied to inputs/buttons | Apply curvature to the container, never to interactive children |
 | `box-shadow` clips at parent edges | Wrapper has `overflow: hidden` | Use `overflow: visible` on glow wrappers, or expand the wrapper padding |
-| Box-drawing chars render as `?` | Legacy terminal (VT100) — not a web concern | Fallback to `+-|` only when targeting terminal emulators; modern browsers render Unicode reliably |
+| Box-drawing chars render as `?` | Legacy terminal (VT100) — not a web concern | Fallback to `+-\|` only when targeting terminal emulators; modern browsers render Unicode reliably |
 
 ## When CRT effects backfire
 

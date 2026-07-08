@@ -10,17 +10,17 @@ version: 0.1.0
 
 ## Overview
 
-Lazy-loaded documentation corpus covering 50+ shadcn/ui components, theming, forms, charts, dark mode, registry, RTL, and per-framework installation (Next.js, Vite, Remix, Astro, Laravel, Gatsby). Reference-only skill — answers shadcn-specific implementation questions once `design-principles` has set intent. 201 MDX files organized under `docs/`. Does not produce designs; routes general UI intent back to the orchestrator.
+Lazy-loaded documentation corpus covering 50+ shadcn/ui components, theming, forms, charts, dark mode, registry, RTL, and per-framework installation (Next.js, Vite, Remix, Astro, Laravel, Gatsby). Reference-only skill — answers shadcn-specific implementation questions once `design-principles` has set intent. 201 MDX files organized under `vendor/`. Does not produce designs; routes general UI intent back to the orchestrator.
 
 ## Instructions
 
 1. Identify the specific shadcn/ui component or feature from the user's question (component name, theming, framework install, dark mode, registry, forms, charts, RTL).
-2. Read ONLY the relevant MDX file from `docs/`: component pages live under `docs/components/radix/<name>.mdx` (Radix-based) or `docs/components/base/<name>.mdx` (Base UI); install guides under `docs/installation/<framework>.mdx`.
+2. Read ONLY the relevant MDX file from `vendor/`: component pages live under `vendor/components/radix/<name>.mdx` (Radix-based) or `vendor/components/base/<name>.mdx` (Base UI); install guides under `vendor/installation/<framework>.mdx`.
 3. Extract the install command, component source, and usage pattern from that single file.
 4. If the question is cross-cutting (theming + a specific component), read the theming page plus the single component page only — never the whole directory.
 
 Full reading strategy, docs-corpus map, activation rules, and detailed notes: see [usage-guide](./references/usage-guide.md).
-> Position in flow · Trigger conditions · Activation · Prerequisites · Docs structure (docs/) · Reading strategy (authoritative 4-step) · Non-negotiables · Error handling
+> Position in flow · Trigger conditions · Activation · Prerequisites · Docs structure (vendor/) · Reading strategy (authoritative 4-step) · Non-negotiables · Error handling
 
 ## Prerequisites
 
@@ -31,9 +31,9 @@ Full reading strategy, docs-corpus map, activation rules, and detailed notes: se
 ## Examples
 
 **Input:** user asks "Show me the shadcn data-table component for Next.js."
-**Output:** read `docs/components/radix/data-table.mdx`, extract the install command (`npx shadcn@latest add data-table`), the component source TSX block, and the usage pattern. Hand back the three pieces without paraphrasing.
+**Output:** read `vendor/components/radix/data-table.mdx`, extract the install command (`npx shadcn@latest add data-table`), the component source TSX block, and the usage pattern. Hand back the three pieces without paraphrasing.
 
-See `docs/components/radix/data-table.mdx`, `docs/forms/`, `docs/dark-mode/next.mdx`, and `docs/installation/next.mdx` for worked code examples per component, framework, and feature.
+See `vendor/components/radix/data-table.mdx`, `vendor/forms/`, `vendor/dark-mode/next.mdx`, and `vendor/installation/next.mdx` for worked code examples per component, framework, and feature.
 
 ## Error Handling
 
@@ -51,5 +51,5 @@ This skill produces no standalone artifacts — it provides component source sni
   > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [SKILL](../amw-design-extract/SKILL.md) — extracted tokens from a shadcn-based site feed here
 - [usage-guide](./references/usage-guide.md) — extended usage notes
-  > Position in flow · Trigger conditions · Activation · Prerequisites · Docs structure (docs/) · Reading strategy (authoritative 4-step) · Non-negotiables · Error handling
-- `docs/` — the full shadcn/ui documentation corpus (201 MDX)
+  > Position in flow · Trigger conditions · Activation · Prerequisites · Docs structure (vendor/) · Reading strategy (authoritative 4-step) · Non-negotiables · Error handling
+- `vendor/` — the full shadcn/ui documentation corpus (201 MDX)

@@ -77,7 +77,7 @@ font-family:
   "Helvetica Neue",                          /* Western glyphs first (Apple/MUJI convention) */
   Arial,
   "Hiragino Kaku Gothic ProN",               /* macOS modern */
-  "Hiragino Sans",                           /* macOS newer (10.11+) */
+  "Hiragino Sans",                           /* macOS newer, 10.11 and up */
   "Yu Gothic",                               /* Windows 8.1+ / macOS modern */
   YuGothic,                                  /* macOS legacy alias (no quotes) */
   "Noto Sans JP",                            /* webfont fallback / Linux / Android */

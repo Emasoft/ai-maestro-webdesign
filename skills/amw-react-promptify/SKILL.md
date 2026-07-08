@@ -73,7 +73,7 @@ Worked code — a stateful custom-modal host, a stateless confirm-style prompt, 
 
 ## Output
 
-This skill produces no standalone artifacts — only `react-promptify` API answers and JSX snippets. Any UI embedding a prompter is assembled by `amw-wireframe-builder-agent` (with [shadcn-ui](../amw-shadcn-ui/SKILL.md) / [tailwind-4](../amw-tailwind-4/SKILL.md) for the surrounding chrome).
+This skill produces no standalone artifacts — only `react-promptify` API answers and JSX snippets. Any UI that hosts a prompter is assembled by `amw-wireframe-builder-agent` (with [shadcn-ui](../amw-shadcn-ui/SKILL.md) / [tailwind-4](../amw-tailwind-4/SKILL.md) for the surrounding chrome).
 
 ## Error Handling
 

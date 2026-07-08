@@ -77,7 +77,7 @@ A6. Assembly — combine approved components into final HTML
 
 Start the preview server only when it is not already running: probe the
 local liveness endpoint (`http://localhost:7783/__mtime__`) with a silent
-`curl`, and if that probe fails, launch `python scripts/preview_server.py`
+HTTP request, and if that probe fails, launch `python scripts/preview_server.py`
 in the background. (Source: `image-generation/create-infographics/SKILL.md`.)
 
 Tell the user once: *"Preview server running at http://localhost:7783.

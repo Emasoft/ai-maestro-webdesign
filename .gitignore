@@ -109,13 +109,18 @@ external/hyperframes/**
 # above. CPV scanners now lint it like any first-party code; the wrapper
 # scripts' benign process.argv / process.env CLI reads are expected.
 
-# NOTE: vendored shadcn-ui upstream docs (skills/amw-shadcn-ui/docs/, 201 MDX
+# NOTE: vendored shadcn-ui upstream docs (skills/amw-shadcn-ui/vendor/, 200+ MDX
 # from ui.shadcn.com) are deliberately NOT gitignored. They are tracked + shipped
-# (the skill references them) and CPV now treats a tracked+gitignored file as a
-# blocking MAJOR (gitignore must imply not-shipped). Per the CPV maintainer
-# (claude-plugins-validation#123): track-not-ignore + use `cpv.exclude_paths` in
-# plugin.json to skip them from STYLE/STRUCTURE rules; they are security-scanned
-# by design (vendored != trusted) — file any real MDX false-positive at CPV.
+# (the skill references them) and CPV treats a tracked+gitignored file as a
+# blocking MAJOR (gitignore must imply not-shipped). They live under a `vendor/`
+# directory — CPV's recognized vendored convention — so all of CPV's passes skip
+# them: STRUCTURAL (`is_vendored_path`/`cpv.exclude_paths`), SECURITY (skillaudit
+# `_SKIP_DIRS` skips a `vendor` segment) and STYLE (markdownlint via the
+# `.markdownlint-cli2.jsonc` `ignores`). They are third-party upstream MDX, not
+# authored here — their heading structure and hard tabs must not be rewritten.
+# Re-vendor from ui.shadcn.com into the same `vendor/` path. (CPV v2.151.0 does
+# NOT wire `cpv.exclude_paths` into the markdownlint or skillaudit passes — hence
+# the `vendor/` convention + the cli2 `ignores` do the actual excluding.)
 
 # Janitor heartbeat state (per-session, transient)
 .janitor/

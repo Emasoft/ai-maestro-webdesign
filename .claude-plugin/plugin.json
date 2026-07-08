@@ -32,7 +32,12 @@
   ],
   "cpv": {
     "exclude_paths": [
-      "skills/amw-shadcn-ui/docs/"
-    ]
+      "skills/amw-shadcn-ui/vendor/"
+    ],
+    "pipeline": {
+      "intentional_divergence": [
+        ".mega-linter.yml"
+      ]
+    }
   }
 }

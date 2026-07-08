@@ -165,7 +165,7 @@ The ramp lives in `design-tokens.json` under `typography.tracking-ramp` and is r
 | Pattern | Detector |
 |---|---|
 | Black shadow on chromatic surface | regex on `box-shadow.*rgba\(0,\s*0,\s*0` near non-neutral `background:` |
-| `#000`/`#000000`/`black` background | regex on `background(-color)?:\s*(#000(0{3})?|black)\b` |
+| `#000`/`#000000`/`black` background | regex on `background(-color)?:\s*(#000(0{3})?\|black)\b` |
 | Single-stop linear gradient on hero-sized container | DOM-aware check: container ≥ 480×240 AND only one `linear-gradient` in `background-image` |
 | `letter-spacing: 0` on font-size ≥ 32 px | computed-style heuristic; warns if size ≥ 32 AND tracking unset or > -0.005em |
 

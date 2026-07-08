@@ -202,7 +202,7 @@ Priority-ordered. When operations conflict, higher-priority criterion wins. When
 2. **Load synthesis spec.**
    - Read [SKILL](../skills/amw-ascii-to-html/SKILL.md) to load the 9-source component-detection table.
    - Read the TECH-NN references cited by the detection table for the patterns present in the ASCII (e.g., TECH-69 outer frame, TECH-70 button, TECH-73 peer-card row, TECH-82 pipe-table).
-   - If `target_stack` includes shadcn, read the specific component docs under `../skills/amw-shadcn-ui/docs/components/` for each component used.
+   - If `target_stack` includes shadcn, read the specific component docs under `../skills/amw-shadcn-ui/vendor/components/` for each component used.
    - If `target_stack` is `tailwind-v4`, read [SKILL](../skills/amw-tailwind-4/SKILL.md) for the v4-specific syntax (`@theme`, `@import "tailwindcss"`, color-interpolation changes).
 
 3. **Parse ASCII into IR.**
@@ -364,13 +364,13 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 | Condition | Skill to invoke (via file read, not command) | Purpose |
 |---|---|---|
 | Always (core translation) | [SKILL](../skills/amw-ascii-to-html/SKILL.md) + referenced TECH-NN docs | Component-detection table and pattern recipes |
-| `target_stack` includes `shadcn` | [SKILL](../skills/amw-shadcn-ui/SKILL.md) + `../skills/amw-shadcn-ui/docs/components/<component-slug>.mdx` for each component used | shadcn-specific API, theming, install patterns |
-| ASCII shows tabular data with sort / filter / pagination affordances (column headers with sort glyphs, pagination footer, filter inputs above table) | `../skills/amw-shadcn-ui/docs/components/base/data-table.mdx` (or `../skills/amw-shadcn-ui/docs/components/radix/data-table.mdx`) | Sortable / filterable / paginated TanStack-Table-backed shadcn data-table — `target_stack=shadcn` only; for vanilla, fall back to `<table>` with hand-coded sort handlers |
-| ASCII shows static tabular data (read-only, no interactivity) | `../skills/amw-shadcn-ui/docs/components/base/table.mdx` | Plain semantic `<table>` styling |
-| ASCII shows command palette / typeahead search overlay | `../skills/amw-shadcn-ui/docs/components/base/command.mdx` | cmdk-backed command menu |
-| ASCII shows date / range picker | `../skills/amw-shadcn-ui/docs/components/base/calendar.mdx` + `date-picker.mdx` | Calendar + date-picker combo |
-| ASCII shows combobox / autocomplete | `../skills/amw-shadcn-ui/docs/components/base/combobox.mdx` | Filterable select with keyboard nav |
-| ASCII shows toast / snackbar notification slot | `../skills/amw-shadcn-ui/docs/components/base/toast.mdx` (or `sonner.mdx`) | Toast notification system |
+| `target_stack` includes `shadcn` | [SKILL](../skills/amw-shadcn-ui/SKILL.md) + `../skills/amw-shadcn-ui/vendor/components/<component-slug>.mdx` for each component used | shadcn-specific API, theming, install patterns |
+| ASCII shows tabular data with sort / filter / pagination affordances (column headers with sort glyphs, pagination footer, filter inputs above table) | `../skills/amw-shadcn-ui/vendor/components/base/data-table.mdx` (or `../skills/amw-shadcn-ui/vendor/components/radix/data-table.mdx`) | Sortable / filterable / paginated TanStack-Table-backed shadcn data-table — `target_stack=shadcn` only; for vanilla, fall back to `<table>` with hand-coded sort handlers |
+| ASCII shows static tabular data (read-only, no interactivity) | `../skills/amw-shadcn-ui/vendor/components/base/table.mdx` | Plain semantic `<table>` styling |
+| ASCII shows command palette / typeahead search overlay | `../skills/amw-shadcn-ui/vendor/components/base/command.mdx` | cmdk-backed command menu |
+| ASCII shows date / range picker | `../skills/amw-shadcn-ui/vendor/components/base/calendar.mdx` + `date-picker.mdx` | Calendar + date-picker combo |
+| ASCII shows combobox / autocomplete | `../skills/amw-shadcn-ui/vendor/components/base/combobox.mdx` | Filterable select with keyboard nav |
+| ASCII shows toast / snackbar notification slot | `../skills/amw-shadcn-ui/vendor/components/base/toast.mdx` (or `sonner.mdx`) | Toast notification system |
 | ASCII shows article / blog post layout (long-form prose, byline, reading time, OG image) | [TECH-article-template](../skills/amw-ascii-to-html/references/TECH-article-template.md) + [SKILL](../skills/amw-seo/SKILL.md) for JSON-LD Article schema | semantic `<article>` / `<header>` / `<time datetime>`, reading-time computation, OG image dimensions, Twitter Card meta |
 > [TECH-article-template.md] What it does · Semantic structure · Reading-time computation · Open Graph + Twitter Card meta · JSON-LD Article schema · Body copy patterns · Accessibility · RSS / Atom feed · Multi-locale considerations · What the agent MUST do · What the agent MUST NOT do
 | `target_stack` is `tailwind-v4` | [SKILL](../skills/amw-tailwind-4/SKILL.md) | v4 syntax (`@theme`, `@import`, new color interpolation) |
@@ -463,7 +463,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
   ```
   Read skills/amw-ascii-to-html/SKILL.md
   Read skills/amw-ascii-to-html/references/TECH-01-responsive-breakpoints.md
-  Read skills/amw-shadcn-ui/docs/components/button.mdx
+  Read skills/amw-shadcn-ui/vendor/components/button.mdx
   Read skills/amw-tailwind-4/SKILL.md
   ```
 - **Run bin scripts directly for mechanical operations.** Every plugin script under `bin/` is a CLI tool I invoke through Bash:

@@ -65,6 +65,14 @@ When a fact turns out wrong: rewrite the body to the CORRECT current fact, and m
 (wrong) claim into a dated `[^N]` lesson under `## Notes and lessons learned` with its WHY.
 Superseded facts become lessons, never silent deletions.
 
+## Checklist
+
+- [ ] Recalled first (`amw-memory-recall`) to UPDATE an existing note rather than duplicate it.
+- [ ] Chose the scope by the routing rule (LOCAL for private data, PROJECT for shared, USER for cross-project).
+- [ ] Indexed the `description` by the QUESTION / symptom, with the answer in the body.
+- [ ] Included the `## Notes and lessons learned` section (and a dated `[^N]` lesson when correcting a prior fact).
+- [ ] Added the one-line pointer to `MEMORY.md` in the same memdir.
+
 ## When to use
 
 - Just solved a non-obvious problem that cost real time → capture the symptom + fix.

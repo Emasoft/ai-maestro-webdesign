@@ -8,7 +8,7 @@ Routing surface and quick instructions live in the parent `SKILL.md`. This refer
 - [Trigger conditions](#trigger-conditions)
 - [Activation](#activation)
 - [Prerequisites](#prerequisites)
-- [Docs structure (docs/)](#docs-structure-docs)
+- [Docs structure (vendor/)](#docs-structure-vendor)
 - [Reading strategy (authoritative 4-step)](#reading-strategy-authoritative-4-step)
 - [Non-negotiables](#non-negotiables)
 - [Error handling](#error-handling)
@@ -33,16 +33,16 @@ This skill is **autonomous and self-contained** — any agent (the main-agent, a
 - Optional companion skill: `../amw-tailwind-4/SKILL.md` — shadcn/ui is Tailwind-native
 - Runtime peers (in the user's target project, not the plugin): Radix UI primitives, Tailwind CSS, React Hook Form + Zod (for forms), Recharts (for charts)
 
-## Docs structure (docs/)
+## Docs structure (vendor/)
 
-- `docs/installation/` — per-framework install guides (Next.js, Vite, Remix, Astro, Laravel, Gatsby, TanStack Start, manual)
-- `docs/components/` — 50+ component guides documented across the 201 MDX files in this corpus, split into two variant roots: `docs/components/radix/` (Radix-primitive-based) and `docs/components/base/` (Base UI variant). For the authoritative component-slug list, list `docs/components/radix/` and `docs/components/base/` at runtime; the slug = the MDX filename without extension (e.g. `data-table.mdx` → component "data-table").
-- `docs/forms/` — Form + Zod schemas, validation, accessibility patterns
-- `docs/dark-mode/` — dark-mode recipes per framework (Next.js, Vite, Remix, Astro)
-- `docs/registry/` — registry schema, namespacing, custom component publishing
-- `docs/rtl/` — right-to-left layout guidance
-- `docs/changelog/` — version history
-- `docs/(root)/` — top-level pages (theming, CLI, monorepo, MCP, JavaScript usage, v4 migration, etc.)
+- `vendor/installation/` — per-framework install guides (Next.js, Vite, Remix, Astro, Laravel, Gatsby, TanStack Start, manual)
+- `vendor/components/` — 50+ component guides documented across the 201 MDX files in this corpus, split into two variant roots: `vendor/components/radix/` (Radix-primitive-based) and `vendor/components/base/` (Base UI variant). For the authoritative component-slug list, list `vendor/components/radix/` and `vendor/components/base/` at runtime; the slug = the MDX filename without extension (e.g. `data-table.mdx` → component "data-table").
+- `vendor/forms/` — Form + Zod schemas, validation, accessibility patterns
+- `vendor/dark-mode/` — dark-mode recipes per framework (Next.js, Vite, Remix, Astro)
+- `vendor/registry/` — registry schema, namespacing, custom component publishing
+- `vendor/rtl/` — right-to-left layout guidance
+- `vendor/changelog/` — version history
+- `vendor/(root)/` — top-level pages (theming, CLI, monorepo, MCP, JavaScript usage, v4 migration, etc.)
 
 ## Reading strategy (authoritative 4-step)
 
@@ -50,7 +50,7 @@ Input: a user question naming a specific shadcn component / feature / framework.
 Output: install command + component source + usage pattern, extracted from a single MDX file.
 
 1. Identify the component / feature from the question.
-2. Read ONLY the relevant MDX (e.g. `docs/components/radix/data-table.mdx`, `docs/installation/next.mdx`, `docs/dark-mode/next.mdx`).
+2. Read ONLY the relevant MDX (e.g. `vendor/components/radix/data-table.mdx`, `vendor/installation/next.mdx`, `vendor/dark-mode/next.mdx`).
 3. Extract install command, component source, usage pattern.
 4. Cross-cutting (theming + component): read theming page + single component page only.
 

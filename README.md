@@ -116,7 +116,7 @@ Scripts shared across skills live in `bin/` rather than being duplicated per-ski
 | `/amw-modify-webpage-from-diagram` | Regenerate an existing webpage from an edited diagram |
 | `/amw-modify-diagram-of-webpage` | Full round-trip: extract diagram, edit it, sync changes back into the page |
 
-## Quick start
+## Installation
 
 ```bash
 # 1. Install the plugin (once the marketplace is live)
@@ -125,10 +125,14 @@ Scripts shared across skills live in `bin/` rather than being duplicated per-ski
 # 2. Install runtime dependencies
 /amw-init
 
-# 3. Verify environment
+# 3. Verify the environment
 /amw-doctor
+```
 
-# 4. Try the sketch workflow
+## Usage
+
+```bash
+# Try the sketch workflow
 /amw-sketch dashboard for a devtools team
 ```
 

@@ -372,7 +372,7 @@ Hospitality project targeting English + French audiences, feature set includes b
 
 **My veto covers: regulatory mandatory elements — the specific on-page elements that applicable frameworks require to be present (cookie banner, privacy-link footer, accessibility statement, skip-link, mandated disclaimers, age gate, DMCA contact).**
 
-**Enforcement mechanism:** When I classify a finding as `mandatory_blocking`, I populate `blocking_issues` in the YAML return header and set `next_action = escalate_to_user` if the conflict cannot be resolved within the current main-agent context. The main-agent MUST NOT proceed to Phase B completion while `blocking_issues` from me remain open (see [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md)).
+**Enforcement mechanism:** When I classify a finding as `mandatory_blocking`, I populate `blocking_issues` in the YAML return header and set `next_action = escalate_to_user` if the conflict cannot be resolved within the current main-agent context. The main-agent MUST NOT proceed to Phase B completion while `blocking_issues` from me remain open — see [authority-hierarchy](../skills/amw-design-principles/references/authority-hierarchy.md).
 
 **Override authority:** Only the user can override my veto, via informed written acceptance surfaced by the main-agent. Main-agent logs the override as "user-accepted-risk" in the final job-completion report. Main-agent may NOT overrule my veto on its own authority.
 

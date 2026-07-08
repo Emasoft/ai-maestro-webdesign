@@ -37,7 +37,7 @@ Scope is strictly **command reference panels**. Not flowcharts (`../amw-text-vis
 - "bash + powershell cheat sheet"
 - "panel of common commands in ASCII"
 
-Do NOT activate on broad "make docs" or "write a guide" requests. A multi-paragraph onboarding doc with embedded commands is a documentation task, not a cheat-sheet panel.
+Do NOT activate on broad "make docs" or "write a guide" requests. A multi-paragraph onboarding doc with inline commands is a documentation job, not a cheat-sheet panel.
 
 ## Inputs expected
 

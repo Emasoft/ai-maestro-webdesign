@@ -165,11 +165,12 @@ function decodeWithFfmpeg(path) {
 
   const sampleRate = 44100;
   // SECURITY: pass args as an ARRAY via execFileSync (no shell) — NOT a shell
-  // string. With execSync the interpolated `"${path}"` lets a crafted filename
-  // (`x"; rm -rf ~ #`, `$(...)`, backticks) break out of the quotes and run
-  // arbitrary commands, and `path` is process.argv[2] (user/agent input). The
-  // array form hands argv straight to ffmpeg with zero shell parsing, so no
-  // filename can inject. stderr is discarded via stdio (replaces `2>/dev/null`).
+  // string. A shell-string exec of an interpolated filename lets a crafted
+  // name (embedded quote-breaks, command-substitution, or backtick sequences)
+  // escape the quotes and run arbitrary commands, and the filename is
+  // process.argv[2] (user/agent input). The array form hands argv straight to
+  // ffmpeg with zero shell parsing, so no filename can inject. stderr is
+  // discarded via the stdio option.
   const result = execFileSync(
     "ffmpeg",
     ["-i", path, "-f", "f32le", "-acodec", "pcm_f32le", "-ac", "1", "-ar", String(sampleRate), "pipe:1"],

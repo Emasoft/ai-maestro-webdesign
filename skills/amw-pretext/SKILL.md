@@ -14,7 +14,16 @@ Precision text-layout engine for when CSS flow is insufficient. Wraps `@chenglou
 
 ## Instructions
 
-The decide → pick → follow → build wrapper → handle resize → validate workflow runs in six steps: walk the `## Technique selection` tree to pick the category, open ONLY the matching `references/TECH-NN-<slug>.md` (never the whole catalog), call `prepare()` once before any layout call, reuse the project's typography tokens (pretext exposes metrics, not typographic decisions), call `clearCache()` on the resize path, and validate font-string parity before shipping. The full step-by-step procedure — with the TECH routing links — lives in [_how-to-use](references/_how-to-use.md).
+The decide → pick → follow → build → resize → validate workflow runs in six steps:
+
+1. Walk the `## Technique selection` tree to pick the category.
+2. Open ONLY the matching `references/TECH-NN-<slug>.md` (never the whole catalog).
+3. Call `prepare()` once before any layout call.
+4. Reuse the project's typography tokens (pretext exposes metrics, not typographic decisions).
+5. Call `clearCache()` on the resize path.
+6. Validate font-string parity before shipping.
+
+The full step-by-step procedure — with the TECH routing links — lives in [_how-to-use](references/_how-to-use.md).
 > [_how-to-use.md] Instructions · How to use this skill
 
 ## Activation

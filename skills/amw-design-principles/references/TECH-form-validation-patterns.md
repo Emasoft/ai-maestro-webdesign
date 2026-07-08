@@ -246,4 +246,4 @@ For single-field errors (one input invalid), skip the summary — the inline `ro
 - `TECH-form-multi-step.md` — error-step-navigation pattern that uses this validation API at step transitions.
 - `TECH-form-async-submit.md` — submit handling that integrates with the submit-while-invalid pattern.
 - `skills/amw-design-principles/color-system.md` — `danger.foreground` / `danger.background` tokens for error styling.
-- `skills/amw-shadcn-ui/docs/components/radix/field.mdx` — shadcn `FormMessage` API.
+- `skills/amw-shadcn-ui/vendor/components/radix/field.mdx` — shadcn `FormMessage` API.

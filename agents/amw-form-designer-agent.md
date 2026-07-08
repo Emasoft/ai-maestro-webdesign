@@ -178,7 +178,7 @@ Priority-ordered. When operations conflict, higher-priority criterion wins.
 1. **Verify preconditions.** Confirm `form_purpose`, `fields`, `locales`, `target_stack`, and `slug` are populated. Confirm any `payment_provider` field types have a corresponding `payment_provider` block.
 
 2. **Load form reference specs.**
-   - Read `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` (or the relevant form/input components) when `target_stack` includes shadcn.
+   - Read `../skills/amw-shadcn-ui/vendor/components/radix/field.mdx` (or the relevant form/input components) when `target_stack` includes shadcn.
    - Read [SKILL](../skills/amw-tailwind-4/SKILL.md) if `target_stack=tailwind-v4`.
    - Read [color-system](../skills/amw-design-principles/color-system.md) to resolve `danger`, `success`, and `muted` token semantics if `brand_tokens` are provided.
      > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
@@ -262,7 +262,7 @@ Per [iteration-budget](../skills/amw-design-principles/references/iteration-budg
 
 | Condition | Resource to read (via file read, not command) | Purpose |
 |---|---|---|
-| Always — shadcn stack | `../skills/amw-shadcn-ui/docs/components/radix/field.mdx`, `input.mdx`, `select.mdx`, `checkbox.mdx` | shadcn form component API |
+| Always — shadcn stack | `../skills/amw-shadcn-ui/vendor/components/radix/field.mdx`, `input.mdx`, `select.mdx`, `checkbox.mdx` | shadcn form component API |
 | Always — token resolution | [color-system](../skills/amw-design-principles/color-system.md), [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) | danger/success/muted token semantics, spacing |
 > [color-system.md] I. Always prefer oklch over rgb / hex / hsl · II. WCAG contrast — hard requirement · III. Palette structure (cap at 5–7 colors) · IV. Dark mode is not a simple inversion · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 > [spacing-rhythm.md] I. 8pt grid system · II. Fibonacci spacing rhythm (large-scale) · III. Vertical rhythm (baseline grid) · IV. Hit targets (tappable areas) · V. Alignment · VI. Three principles of whitespace · VII. Border radius · VIII. Shadow system · IX. Self-check
@@ -328,7 +328,7 @@ Per [skill-invocation-protocol](../skills/amw-design-principles/references/skill
 
 - **Read skill files for know-how.** When I need to produce a form that honors a skill's contract, I read the skill's `SKILL.md` and referenced files directly:
   ```
-  Read skills/amw-shadcn-ui/docs/components/radix/field.mdx
+  Read skills/amw-shadcn-ui/vendor/components/radix/field.mdx
   Read skills/amw-design-principles/color-system.md
   Read skills/amw-tailwind-4/SKILL.md
   ```
@@ -473,7 +473,7 @@ I have **NO veto power** over any other agent's recommendations. Veto power is h
 - [amw-accessibility-auditor-agent](./amw-accessibility-auditor-agent.md) — downstream WCAG audit of rendered form HTML
 - [amw-multilanguage-copywriter-agent](./amw-multilanguage-copywriter-agent.md) — error message copy for non-English locales
 - [amw-legal-expert-agent](./amw-legal-expert-agent.md) — mandatory consent fields (GDPR checkboxes, CAN-SPAM opt-in)
-- `../skills/amw-shadcn-ui/docs/components/radix/field.mdx` — shadcn form component API
+- `../skills/amw-shadcn-ui/vendor/components/radix/field.mdx` — shadcn form component API
 - [color-system](../skills/amw-design-principles/color-system.md) — danger/success token semantics
   > I. Always prefer oklch over rgb / hex / hsl · Why · Syntax · Comfort ranges · II. WCAG contrast — hard requirement · Checking tools · III. Palette structure (cap at 5–7 colors) · Standard 6-color framework · Rules · IV. Dark mode is not a simple inversion · Wrong approach · Right approach · V. Color temperature · VI. Palette inspiration libraries (use these instead of inventing) · VII. Self-check list
 - [spacing-rhythm](../skills/amw-design-principles/spacing-rhythm.md) — field gap and label-offset rules

@@ -17,7 +17,7 @@
 
 ## What it does
 
-Documents how `amw-design-md-extractor-agent` reads computed `box-shadow` values from a live URL, clusters them by **elevation depth**, and emits a normalized `shadows.depth-1..depth-5` block in the DESIGN.md frontmatter. Variant 1 DESIGN.md does not include shadows in its core schema, so this technique writes to the **extension namespace** `extensions.shadows` per [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — the elevation system becomes an optional extension token group.
+Documents how `amw-design-md-extractor-agent` reads computed `box-shadow` values from a live URL, clusters them by **elevation depth**, and emits a standardized `shadows.depth-1..depth-5` block in the DESIGN.md frontmatter. Variant 1 DESIGN.md does not include shadows in its core schema, so this technique writes to the **extension namespace** `extensions.shadows` per [extension-sections-10-14](../../amw-design-md-spec/references/extension-sections-10-14.md) — the elevation system becomes an optional extension token group.
 
 The base flow (DOM walk + computed-style sampling) is shared with [TECH-07-url-extraction](TECH-07-url-extraction.md); this TECH focuses on the **classification + normalization** layer specific to shadows.
 

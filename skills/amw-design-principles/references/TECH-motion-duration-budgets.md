@@ -61,7 +61,7 @@ Cross-reference with `TECH-motion-budgets.md` per-role table:
 | entry — above-fold | 250 ms | Short | Must complete before user begins reading |
 | entry — below-fold | 400 ms | Medium | Eye follows the entrance; trajectory matters |
 | page-transition | 500 ms | Medium/long boundary | Split-curve: 200 ms exit + 300 ms enter |
-| ambient | 2000–30000 ms | Loading-state territory but exempt — loops don't trigger doubt because they're never "complete" |
+| ambient | 2000–30000 ms | Long | Loading-state territory but exempt — loops don't trigger doubt because they're never "complete" |
 
 ## Code samples
 

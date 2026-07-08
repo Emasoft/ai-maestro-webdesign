@@ -245,5 +245,5 @@ export function ContactForm() {
 - `agents/amw-form-designer-agent.md` §9 — invoked when the form-designer agent's YAML return contains a `submit_state_machine` block.
 - `TECH-form-validation-patterns.md` — validation must pass before this submit path fires.
 - `TECH-form-multi-step.md` — final step's submit button uses this submit-state machine.
-- `skills/amw-shadcn-ui/docs/components/base/sonner.mdx` — toast component reference.
-- `skills/amw-shadcn-ui/docs/components/radix/dialog.mdx` — Dialog vs Modal vs Toast taxonomy.
+- `skills/amw-shadcn-ui/vendor/components/base/sonner.mdx` — toast component reference.
+- `skills/amw-shadcn-ui/vendor/components/radix/dialog.mdx` — Dialog vs Modal vs Toast taxonomy.

@@ -109,8 +109,8 @@ Apply these in the SVG while building. Each is expanded in
 - **Coloured shadows** — `#1e1b4b` / `#2d1b4e` / `#0d3b4f` (never black/grey).
 - **Drop-shadow filter** — `feGaussianBlur` → `feOffset` → `feFlood` →
   `feComposite` → `feMerge`; ALWAYS set `color-interpolation-filters="linearRGB"`.
-- **Noise texture** — `feTurbulence` (`fractalNoise`, `baseFrequency≈0.7`)
-  + `feColorMatrix saturate 0` + `feBlend soft-light` at 5-15 % opacity.
+- **Noise texture** — `feTurbulence` (`fractalNoise`, `baseFrequency≈0.7`) +
+  `feColorMatrix saturate 0` + `feBlend soft-light` at 5-15 % opacity.
 - **Animation timing** — pulses 1.2-1.8 s, spinners 0.8-1.2 s, progress
   0.4-0.8 s; always ship `prefers-reduced-motion` fallback.
 

@@ -382,7 +382,7 @@ Two checkout flows are A/B tested. Variant A uses default browser controls; vari
 
 **Related references.**
 
-- [Halo effects of fully developed visual hierarchies](#) — see `design-heuristics.md` §VI for visual hierarchy.
+- **Halo effects of fully developed visual hierarchies** — see `design-heuristics.md` §VI for visual hierarchy.
 
 ---
 
