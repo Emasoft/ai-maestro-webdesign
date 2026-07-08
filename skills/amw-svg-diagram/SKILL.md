@@ -1,7 +1,6 @@
 ---
 name: amw-svg-diagram
 description: Author OR edit a standalone SVG diagram — freeform node-and-edge, layered architecture, or structural flow. Triggers on "create SVG diagram", "modify SVG diagram", "edit .svg diagram", "render structure as SVG". Does NOT claim generic design / illustration / logo vocabulary — routes to design-principles / svg-creator. Dispatcher over diagram-svg (freeform) + diagram-architecture (layered). Use when authoring an SVG diagram. Trigger with /amw-create-or-modify-svg-diagram.
-version: 0.1.0
 ---
 
 # SVG Diagram — thin authoring + modify dispatcher

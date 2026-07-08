@@ -1,7 +1,6 @@
 ---
 name: amw-hypercomp
 description: hypercomp reference — TypeScript library compiling a chainable Effect API to SVG filters. Triggers on "hypercomp", "SVG filter", "SVG filter composition", "compose SVG filter effects", "feTurbulence", "feDisplacementMap", "feGaussianBlur", "feColorMatrix", "image-processing filter chain". Does NOT trigger on generic "add an effect" or broad design intent. Use when authoring or reading a hypercomp Effect chain or compiled SVG filter. Trigger with "hypercomp" or "SVG filter composition".
-version: 0.1.0
 ---
 
 # hypercomp — SVG Filter Composition Reference

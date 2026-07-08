@@ -1,7 +1,6 @@
 ---
 name: amw-text-visual-retro
 description: ASCII retrospective grids, milestone timelines, heatmaps for team retros, experiment readouts, launch post-mortems — pastes into PRs, GitHub Discussions, Slack. Triggers on "ASCII retro template", "text retrospective grid", "start-stop-continue in ASCII", "post-mortem grid as ASCII". Does NOT trigger on "retro", "post-mortem", "review" alone — those are docs tasks. ASCII only; passes amw-validate-ascii.py. Use when producing an ASCII retro grid or timeline. Trigger with "ASCII retro template".
-version: 0.1.0
 ---
 
 # Text-Visual Retro — ASCII retrospectives and readouts

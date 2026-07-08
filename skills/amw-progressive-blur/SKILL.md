@@ -1,7 +1,6 @@
 ---
 name: amw-progressive-blur
 description: progressive-blur reference — the MIT drop-in progressive (gradient) backdrop-blur React component (RadialBlur + LinearBlur). Covers the two components, their strength/steps/falloffPercentage/tint props, LinearBlur's side direction, the layered backdrop-filter plus gradient-mask mechanism, and the Chrome overflow + border-radius gotcha. Does NOT trigger on generic "add a blur", "make it blurry", or a uniform CSS filter blur. Use when wiring a progressive (gradient) backdrop-blur overlay.
-version: 0.1.0
 ---
 
 # progressive-blur Reference

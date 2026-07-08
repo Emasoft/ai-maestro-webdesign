@@ -1,7 +1,6 @@
 ---
 name: amw-ui-sound-design
 description: Programmatic UI sound design using Web Audio API. Activates on narrow audio-specific triggers — "design UI sound", "click sound", "notification chime", "toggle feedback", "hover sound", "success audio", "error audio", "whoosh effect", "UI sound library", "Web Audio API". Does NOT activate on broad design vocabulary ("design a page", "build a UI") — those route to amw-design-principles. Direct-port from MIT-licensed ui-sound-design-skill (© 2026 Danny Williams).
-version: 0.1.0
 author: ai-maestro-webdesign (direct-port from dannyjpwilliams/ui-sound-design-skill, MIT)
 ---
 

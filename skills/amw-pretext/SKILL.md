@@ -1,7 +1,6 @@
 ---
 name: amw-pretext
 description: Pretext-driven typography, text measurement, layout, virtualized tables, ASCII-on-canvas, calligrams, 3D/motion text. Triggers on "pretext", "@chenglou/pretext", "text-on-path", "balanced headline", "shrink-wrap text", "virtualized list", "kinetic typography", "auto-fit font". Does NOT claim generic design vocabulary — design-principles retains those. Use when applying pretext-based typography or layout. Trigger with "pretext".
-version: 0.1.0
 ---
 
 # Pretext

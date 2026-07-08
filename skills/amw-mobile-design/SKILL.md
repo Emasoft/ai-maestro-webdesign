@@ -10,7 +10,6 @@ description: >-
   design", "jetpack compose ui", "mobile a11y", "mobile screen design". Does
   NOT activate on generic "design a page", "responsive design", "small
   screen" — those route to amw-design-principles.
-version: 0.1.0
 author: ai-maestro-webdesign (mixed-source — clean-room mobile-app-design + MIT mobile-app-ui-design / industry-conventions)
 ---
 

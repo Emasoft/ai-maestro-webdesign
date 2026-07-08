@@ -1,7 +1,6 @@
 ---
 name: amw-skill-drift-audit
 description: Plugin-maintenance audit — pins every skill to a source commit via `source` / `source_version` frontmatter, detects DRIFT when the upstream source has moved since the pin, and emits a re-distill PLAN classifying each skill as CLEAN / PIN-ONLY / STALE. Read-only — never rewrites skills or bumps pins. Triggers on "audit skill drift", "check skill pins against upstream", "re-distill plan", "skill source-version drift", "is my plugin in sync with the source skills". Does NOT trigger on generic "audit my plugin" — those go to plugin-validation; this is specifically for distilled-from-upstream skill content.
-version: 0.1.0
 ---
 
 # Skill Drift Audit

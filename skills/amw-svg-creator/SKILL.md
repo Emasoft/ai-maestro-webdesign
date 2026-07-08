@@ -1,7 +1,6 @@
 ---
 name: amw-svg-creator
 description: Produce polished technical SVG — icons, logos, badges, patterns, data-vis primitives, animations — with a render-verify-deliver loop. Triggers on "SVG icon", "SVG logo", "SVG pattern", "SVG animation", "polished SVG finish". GATED — does NOT accept illustration, character, mascot, scene, portrait, avatar (banned by ai-slop-avoid.md item 3). Use when creating a polished SVG icon, logo, badge, or pattern. Trigger with "SVG icon".
-version: 0.1.0
 ---
 
 # SVG Creator (GATED)

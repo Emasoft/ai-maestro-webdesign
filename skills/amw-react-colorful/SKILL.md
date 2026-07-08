@@ -1,7 +1,6 @@
 ---
 name: amw-react-colorful
 description: react-colorful reference — the tiny dependency-free React/Preact color-picker component (HexColorPicker, RgbaColorPicker, HslColorPicker, HexColorInput, setNonce). Covers the 15 picker components, the controlled color/onChange/onChangeEnd props, the 6 color-model types, HexColorInput alpha/prefixed props, CSS class hooks, and the setNonce CSP helper. Does NOT trigger on generic color help, palette/token design, or choosing brand colors. Use when wiring a react-colorful color-picker widget.
-version: 0.1.0
 ---
 
 # react-colorful Reference

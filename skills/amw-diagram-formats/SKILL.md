@@ -1,7 +1,6 @@
 ---
 name: amw-diagram-formats
 description: Authoritative spec for ASCII / HTML / SVG / Mermaid formats, IR schema, conversion matrix, validation dispatcher, modify/diff pipelines. Triggers on "diagram IR schema", "format detection", "conversion matrix", "IR-level diff", "Mermaid format spec". Does NOT trigger on diagram creation — routes to ascii-creator / svg-diagram / html-diagram. References-only — NEVER emits diagrams. Use when looking up IR schema or format specs. Trigger with "diagram IR schema".
-version: 0.1.0
 ---
 
 # Diagram Formats — shared reference library

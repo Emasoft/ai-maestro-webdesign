@@ -1,7 +1,6 @@
 ---
 name: amw-webpage-to-diagram
 description: Extract a webpage (URL or local `.html`) as a diagram — two modes. STRUCTURAL emits a landmark/link graph as ASCII / SVG / Mermaid. SPATIAL emits an ASCII wireframe with boxes sized and positioned to match the page's visual layout (rendered-DOM geometry). Triggers on "diagram this URL", "structure of https://...", "sitemap from this HTML", "spatial layout of a page", "ascii wireframe of the layout". Refuses PNG; not generic "design a page". Use when extracting a webpage as a diagram.
-version: 0.1.0
 ---
 
 # Webpage to Diagram — DOM-to-IR extractor

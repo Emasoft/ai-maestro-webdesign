@@ -10,7 +10,6 @@ description: >-
   together. Does NOT activate on generic "glassmorphism", "frosted glass",
   "backdrop-filter blur", "transparent card" — those route to
   amw-design-principles or the S-034 Liquid Glass preset.
-version: 0.1.0
 author: ai-maestro-webdesign (direct-port from liquid-glass-js, MIT, Arman Dashar 2024)
 ---
 

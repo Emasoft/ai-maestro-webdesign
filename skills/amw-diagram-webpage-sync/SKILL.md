@@ -1,7 +1,6 @@
 ---
 name: amw-diagram-webpage-sync
 description: Re-emit an existing webpage (`.html`) from an edited diagram source (ASCII / SVG / Mermaid). Chains diagram → IR → ASCII → HTML, overwrites the page (originals to `.bak`), surfaces a diff. Triggers on "edit diagram in my webpage", "modify webpage from this diagram", "sync diagram into my HTML". Does NOT claim generic design vocabulary. Refuses raster-image-tag diagrams. Use when syncing a diagram back into a webpage. Trigger with /amw-modify-webpage-from-diagram.
-version: 0.1.0
 ---
 
 # Diagram Webpage Sync — round-trip re-emitter

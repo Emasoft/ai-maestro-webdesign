@@ -9,7 +9,6 @@ description: >-
   background", "fragment-shader hero", "GLSL background", "background effect
   catalog". Does NOT activate on generic "background", "gradient", "hero
   section", "wallpaper" — those route to amw-design-principles.
-version: 0.1.0
 author: ai-maestro-webdesign (clean-room, no upstream license)
 ---
 

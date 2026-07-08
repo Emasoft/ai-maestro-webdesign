@@ -1,7 +1,6 @@
 ---
 name: amw-diagram-compare
 description: Structural comparison of two diagrams — diff two flowcharts, compare v1/v2, find what changed, cross-format diagram diff. Triggers on "compare these diagrams", "diff two flowcharts", "what changed between v1 and v2", "structural diff of two diagrams". Source formats may differ (ASCII vs Mermaid is valid). PNG-as-input is refused. Does NOT claim generic design vocabulary — those route to design-principles. Use when comparing two diagrams structurally. Trigger with /amw-compare-diagrams.
-version: 0.1.0
 ---
 
 # Diagram Compare — IR-level structural diff

@@ -9,7 +9,6 @@ description: >-
   monitor", "breach warning ui", "reactor diagnostic screen", "psychograph",
   "title card sci-fi". Does NOT activate on generic "sci-fi", "cyberpunk",
   "dark mode", "tactical dashboard" — those route to amw-design-principles.
-version: 0.1.0
 author: ai-maestro-webdesign (direct-port from ckorhonen/claude-skills/evangelion-design, MIT, Chris Korhonen)
 ---
 

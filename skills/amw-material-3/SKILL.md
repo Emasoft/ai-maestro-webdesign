@@ -8,7 +8,6 @@ description: >-
   elevation", "state layer", "md-sys color", "MaterialTheme colors". Does NOT
   activate on generic "material design" or broad design vocabulary - those
   route to amw-design-principles.
-version: 0.1.0
 author: ai-maestro-webdesign (direct-port from material-3-skill, MIT, CWTI Ltd 2026)
 ---
 

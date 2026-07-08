@@ -1,7 +1,6 @@
 ---
 name: amw-hyperframes-bridge
 description: HTML composition to MP4 video rendering via the external Hyperframes monorepo. Triggers on "render HTML as video", "HTML to MP4", "website to video", "create video from HTML", "rasterize composition to mp4". Does NOT trigger on generic "animation" / "video" — those route to pretext or the user's pipeline. Use when rendering HTML to MP4 via Hyperframes. Trigger with "render HTML as video" or "HTML to MP4".
-version: 0.1.0
 ---
 
 # Hyperframes Bridge

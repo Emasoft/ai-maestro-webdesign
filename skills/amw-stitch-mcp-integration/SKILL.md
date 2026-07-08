@@ -1,7 +1,6 @@
 ---
 name: amw-stitch-mcp-integration
 description: Integrate with the Stitch MCP server for design-system extraction, component-library bridging, and design-flow handoff. Triggers on "stitch", "stitch design", "stitch flow", "stitch component library", "import from stitch", "export to stitch". Does NOT trigger on generic "design" or "component" — those route to amw-design-principles. Activates only when the Stitch MCP server is reachable; otherwise emits a clean fallback message and routes to amw-design-extract or amw-design-md-extractor-agent.
-version: 0.1.0
 ---
 
 # Stitch MCP Integration

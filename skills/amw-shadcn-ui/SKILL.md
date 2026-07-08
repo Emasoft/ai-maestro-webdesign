@@ -1,7 +1,6 @@
 ---
 name: amw-shadcn-ui
 description: shadcn/ui component usage, theming, forms, charts, and framework integration (Next.js / Vite / Remix / Astro / Laravel / Gatsby). Triggers on "shadcn component", "data-table", "shadcn form", "shadcn theme", "dark mode for shadcn", "install shadcn", registry questions, accessibility of Radix-based components, NOT generic "UI library" or "React component". Use when selecting, theming, or integrating a shadcn/ui component into a project. Trigger with explicit "shadcn" phrasing or component name.
-version: 0.1.0
 ---
 
 # shadcn/ui Reference

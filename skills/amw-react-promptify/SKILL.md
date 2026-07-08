@@ -1,7 +1,6 @@
 ---
 name: amw-react-promptify
 description: react-promptify reference — the dependency-free window.prompt replacement for React (createPrompter factory, the Prompter render-host, the async prompt() resolving to a typed value or null on cancel). Triggers on "react-promptify", "custom prompt modal", "window.prompt replacement", "createPrompter", "promise-based modal returning a value". Does NOT trigger on generic "add a modal", "open a dialog", or "make a form". Use when wiring a react-promptify async value-returning prompt flow.
-version: 0.1.0
 ---
 
 # react-promptify Reference

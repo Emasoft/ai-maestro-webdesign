@@ -1,7 +1,6 @@
 ---
 name: amw-mermaid-diagram
 description: Author OR edit Mermaid source — flowchart, sequenceDiagram, stateDiagram-v2, classDiagram, erDiagram, gantt, pie, journey, mindmap. Triggers on "create Mermaid diagram", "modify Mermaid at a file path", "edit .mmd file", "write mermaid source". Does NOT claim generic design vocabulary. Distinct from mermaid-render (renders only) — this skill OWNS AUTHORING + MODIFYING. Use when authoring/editing Mermaid source. Trigger with /amw-create-or-modify-mermaid-diagram.
-version: 0.1.0
 ---
 
 # Mermaid Diagram — thin authoring + modify skill

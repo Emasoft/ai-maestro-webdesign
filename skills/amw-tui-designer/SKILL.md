@@ -1,7 +1,6 @@
 ---
 name: amw-tui-designer
 description: Retro/cyberpunk/terminal aesthetic for web — three signature palettes (phosphor green / cyberpunk neon / amber CRT), monospace + box-drawing typography, CSS CRT effects (scanlines, neon glow, barrel distortion, flicker), terse-uppercase copy voice, and Tuimorphic React-library reference. Triggers on "phosphor terminal", "CRT effect", "scanlines + neon glow", "amber CRT", "cyberpunk terminal UI", "Tuimorphic", "retro hacker interface". Does NOT trigger on generic "retro design", "dark theme", or "make it look cool" — those route to amw-design-principles. Use when wiring a deliberate terminal/CRT aesthetic onto a web UI.
-version: 0.1.0
 ---
 
 <!--

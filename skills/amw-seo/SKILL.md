@@ -1,7 +1,6 @@
 ---
 name: amw-seo
 description: SEO + Core Web Vitals evaluation framework (E-E-A-T quality signals, LCP/INP/CLS, structured data, technical foundations). Triggers on "SEO", "core web vitals", "E-E-A-T", "structured data", "schema markup", "page performance ranking", "search ranking", NOT generic design intent. Use when evaluating or improving a webpage's SEO, Core Web Vitals, or structured data markup. Trigger with explicit "SEO", "core web vitals", or "structured data" phrasing.
-version: 0.1.0
 ---
 
 # SEO Evaluation Reference

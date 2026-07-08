@@ -1,7 +1,6 @@
 ---
 name: amw-vecui
 description: vecui reference — tiny immutable vec2 + rect math library (MIT) for JS-driven animated layouts CSS cannot express. Covers vec()/rect() factories, immutable operators (add/sub/mul/div/dot/cross/rotRad/rotDeg/norm/len/lookAt/angleTo) and rect.as.styleObject() for absolutely-positioned elements. Triggers on "vecui", "vec2 layout math", "vector math for layout". Does NOT trigger on generic "animate this", "lay out my page", or CSS layout. Use when doing JS-driven vec2/rect layout math.
-version: 0.1.0
 ---
 
 # vecui Reference — vec2 + rect math for JS-driven layouts

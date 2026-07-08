@@ -1,7 +1,6 @@
 ---
 name: amw-text-visual-arch
 description: Layered ASCII architecture diagrams (context, container, component level) for terminals, PRs, ADRs. Triggers on "ascii architecture diagram", "text-only system diagram", "terminal-safe architecture sketch", "ADR-embeddable diagram". Does NOT trigger on "architecture" / "system diagram" alone — routes to design-principles / diagram-architecture. ASCII only; passes amw-validate-ascii.py. Use when creating a terminal-safe ASCII architecture diagram. Trigger with "ascii architecture diagram".
-version: 0.1.0
 ---
 
 # Text-Visual Architecture — ASCII system diagrams
