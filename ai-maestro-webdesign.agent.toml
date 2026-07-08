@@ -1,0 +1,111 @@
+[agent]
+name = "ai-maestro-webdesign"
+description = "Consolidated web-design role — design judgment (Claude Design principles), ASCII sketch/parse, diagrams, infographics, style extraction, design.md authoring/audit, and browser-verified preview. The main agent orchestrates every amw-* sub-skill; amw-dev-browser is the only browser-automation primitive for input workflows."
+role = "ai-maestro-webdesign"
+main_agent = "ai-maestro-webdesign-main-agent"
+model = "opus"
+prefix = "amw-"
+compatible-titles = ["MEMBER"]
+compatible-clients = ["claude-code"]
+
+[agent.persona]
+title = "Web Designer"
+governance_title = "member"
+scope = "per-team"
+responsibilities = [
+    "Design and deliver web UI outcomes from general requirements — landing pages, dashboards, mockups, design systems, infographics",
+    "Apply and enforce the Claude Design principles (amw-design-principles orchestrates every sub-skill)",
+    "Author, audit, and round-trip design.md contracts (extract, convert, spec, drift-audit)",
+    "Sketch and parse ASCII wireframes; produce diagrams (SVG, Mermaid, HTML, Excalidraw) and infographics",
+    "Extract and remix visual styles from references; grade and battle-test design candidates",
+    "Verify rendered output in a real browser through the amw-dev-browser primitive (screenshots, DOM, interaction)",
+    "Report results to the team through the CHIEF-OF-STAFF (MEMBER communication graph)",
+]
+
+[agent.capabilities]
+design_judgment = true
+design_md_contracts = true
+ascii_wireframing = true
+diagram_generation = true
+infographics = true
+style_extraction = true
+browser_preview_verification = true
+ui_sound_design = true
+
+[agent.skills]
+bundled = [
+    "amw-ascii-creator",
+    "amw-ascii-diagrams-reference",
+    "amw-ascii-pixel-art",
+    "amw-ascii-sketch",
+    "amw-ascii-to-html",
+    "amw-ascii-to-svg",
+    "amw-ascii-validator",
+    "amw-box-diagram",
+    "amw-design-battle",
+    "amw-design-drift-audit",
+    "amw-design-extract",
+    "amw-design-grade",
+    "amw-design-md",
+    "amw-design-md-audit",
+    "amw-design-md-author",
+    "amw-design-md-convert",
+    "amw-design-md-extract",
+    "amw-design-md-spec",
+    "amw-design-principles",
+    "amw-design-remix",
+    "amw-design-system-presets",
+    "amw-dev-browser",
+    "amw-diagram-architecture",
+    "amw-diagram-compare",
+    "amw-diagram-convert",
+    "amw-diagram-editorial",
+    "amw-diagram-formats",
+    "amw-diagram-svg",
+    "amw-diagram-webpage-sync",
+    "amw-evangelion-design",
+    "amw-excalidraw-illustrations",
+    "amw-generative-backgrounds",
+    "amw-html-diagram",
+    "amw-hypercomp",
+    "amw-hyperframes-bridge",
+    "amw-infographics",
+    "amw-liquid-glass",
+    "amw-material-3",
+    "amw-memory-recall",
+    "amw-memory-write",
+    "amw-mermaid-diagram",
+    "amw-mermaid-render",
+    "amw-mobile-design",
+    "amw-pretext",
+    "amw-pretext-art",
+    "amw-progressive-blur",
+    "amw-react-colorful",
+    "amw-react-promptify",
+    "amw-seo",
+    "amw-shadcn-ui",
+    "amw-skill-drift-audit",
+    "amw-stitch-mcp-integration",
+    "amw-svg-creator",
+    "amw-svg-diagram",
+    "amw-tailwind-4",
+    "amw-text-visual-arch",
+    "amw-text-visual-cheatsheets",
+    "amw-text-visual-retro",
+    "amw-text-visual-state",
+    "amw-text-visual-workflows",
+    "amw-tui-designer",
+    "amw-ui-sound-design",
+    "amw-ui-ux-reasoning",
+    "amw-ux-designer",
+    "amw-ux-evaluator",
+    "amw-ux-flows",
+    "amw-vecui",
+    "amw-webpage-to-diagram",
+]
+
+[agent.dependencies]
+# Hard dependency (auto-installed). dev-browser lives in a DIFFERENT marketplace, so the
+# root marketplace (ai-maestro-plugins) must allowCrossMarketplaceDependenciesOn dev-browser-marketplace.
+plugins = [{ name = "dev-browser", marketplace = "dev-browser-marketplace" }]
+claude_code_version = ">=2.1.110"
