@@ -8,7 +8,6 @@ description: >-
   palette to OKLCH around <color>", "swap theme to swiss", "art-deco variant
   of this site". Does NOT activate on broad design vocabulary ("design a
   page", "build a UI") — those route to amw-design-principles.
-version: 0.1.0
 author: ai-maestro-webdesign (clean-room)
 ---
 

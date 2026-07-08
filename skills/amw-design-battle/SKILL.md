@@ -9,7 +9,6 @@ description: >-
   design audit", "which site has better design", "design comparison card".
   Does NOT activate on broad design vocabulary ("design a page", "build a
   UI") — those route to amw-design-principles.
-version: 0.1.0
 author: ai-maestro-webdesign (clean-room)
 ---
 

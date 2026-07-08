@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-audit
 description: Lint, validate, and audit a DESIGN.md for quality and consistency. Triggers on "lint/validate my DESIGN.md", "audit/five-pass-audit DESIGN.md", "score DESIGN.md quality", "DESIGN.md anti-patterns". Does NOT trigger on authoring or generic design. Use to gate a DESIGN.md before delivery or diagnose problems.
-version: 0.1.0
 ---
 
 # AMW Design.md — Audit

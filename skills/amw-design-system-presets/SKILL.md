@@ -10,7 +10,6 @@ description: >-
   activate on broad design vocabulary ("design a page", "build a UI") — those
   route to amw-design-principles. Read references/catalogue.md first to
   shortlist matching styles.
-version: 0.1.0
 author: ai-maestro-webdesign (curated catalogue; per-style attributions live in each S-NNN file)
 ---
 

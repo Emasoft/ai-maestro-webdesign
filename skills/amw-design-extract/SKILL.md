@@ -1,7 +1,6 @@
 ---
 name: amw-design-extract
 description: Extract a design system (colors, fonts, spacing, shadows, tokens) from a live URL using the `designlang` CLI. Triggers on "extract design tokens", "copy the style of", "get colors and fonts from URL", "reverse-engineer design system", "generate tailwind config from site". Does NOT trigger on generic "design", "style my page" — those route to design-principles. Use when extracting a design system from a live URL. Trigger with /amw-extract-style.
-version: 0.1.0
 ---
 
 # Design Extract

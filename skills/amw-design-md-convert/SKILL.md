@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-convert
 description: Convert, apply, and export a DESIGN.md and its companions. Triggers on "convert Variant 2 DESIGN.md to Variant 1", "emit DESIGN.md companions / tokens.css / tokens.json", "apply DESIGN.md tokens / enforce tokens", "DESIGN.md DTCG export", "cross-project DESIGN.md library". Use to transform a DESIGN.md into downstream artifacts or enforce its tokens at code-gen.
-version: 0.1.0
 ---
 
 # AMW Design.md — Convert

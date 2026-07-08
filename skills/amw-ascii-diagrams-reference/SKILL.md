@@ -1,7 +1,6 @@
 ---
 name: amw-ascii-diagrams-reference
 description: Professional ASCII diagrams using `+--+ | -` for code comments, docs, ADRs — flowcharts, state machines, trees, data-structure layouts, network topologies, sequences, tables. Triggers on "ASCII flowchart", "state-machine diagram", "tree view", "packet layout", "network topology ASCII". Does NOT trigger on broad design vocabulary — those route to `design-principles`. Use when authoring technical ASCII diagrams for docs/ADRs. Trigger with /amw-create-or-modify-ascii-diagram.
-version: 0.1.0
 ---
 
 # ASCII Diagrams Reference

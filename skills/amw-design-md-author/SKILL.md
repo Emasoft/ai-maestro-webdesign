@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-author
 description: Author a DESIGN.md from a brief, interview, archetype, or 5-question flow. Triggers on "create/author/make a DESIGN.md", "DESIGN.md from brief", "brand archetype DESIGN.md", "DESIGN.md agent prompt guide", "DESIGN.md i18n/CJK". Does NOT trigger on extraction-from-source or generic design. Use to write a new DESIGN.md with the lint+contrast gate.
-version: 0.1.0
 ---
 
 # AMW Design.md — Author

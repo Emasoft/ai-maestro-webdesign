@@ -1,7 +1,6 @@
 ---
 name: amw-design-drift-audit
 description: Audit a Tailwind config / CSS custom-properties file / tokens.json for design-token DRIFT — near-duplicate color clusters (CIEDE2000 ΔE<3), off-scale spacing/radius values, single-use magic numbers — and emit a harmonization recommendation report. Audit-only (never modifies the source). Triggers on "audit design tokens for drift", "find duplicate colors", "check spacing scale consistency", "harmonize tokens", "tokens.json drift audit", "tailwind config drift". Does NOT trigger on generic "design" / "style" / "design system" — those route to design-principles or design-extract/design-md.
-version: 0.1.0
 ---
 
 # Design Drift Audit

@@ -1,7 +1,6 @@
 ---
 name: amw-dev-browser
 description: Browser automation and page-state capture via the `dev-browser` CLI. Triggers on "go to URL", "click on", "fill form", "take screenshot", "scrape", "automate the browser", "test the website", "inspect DOM", "mobile screenshot". Does NOT trigger on design vocabulary — those route to `design-principles`. Use when automating a browser, taking screenshots, filling forms, or scraping. Trigger with /amw-preview.
-version: 0.1.0
 ---
 
 # Dev Browser

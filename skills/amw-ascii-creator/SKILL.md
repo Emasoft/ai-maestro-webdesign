@@ -1,7 +1,6 @@
 ---
 name: amw-ascii-creator
 description: Produce ONE validated perfect-ASCII artifact from a brief — structured via bin/amw-ascii-render.py, freeform via validate-iterate loop. Triggers on "ASCII diagram of", "ASCII wireframe of", "perfect ASCII of", "build ASCII mockup". Does NOT trigger on generic design intent — routes to design-principles → ascii-sketch. FINISHING skill — one validated .txt file delivered. Use when finalizing a single ASCII artifact to file. Trigger with /amw-create-or-modify-ascii-diagram.
-version: 0.1.0
 ---
 
 # ASCII Creator

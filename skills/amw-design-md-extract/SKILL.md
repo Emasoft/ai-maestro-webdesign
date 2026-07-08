@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-extract
 description: Extract a DESIGN.md from a live URL, Tailwind config, codebase scan, or Figma export. Triggers on "extract DESIGN.md from URL/Tailwind/codebase/Figma", "DESIGN.md fingerprint", "detect components for DESIGN.md". Does NOT trigger on generic "extract design tokens" (that routes to amw-design-extract). Use to faithfully transcribe an existing source into Variant 1.
-version: 0.1.0
 ---
 
 # AMW Design.md — Extract

@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-spec
 description: DESIGN.md format spec, templates, and authoring rules. Triggers on "DESIGN.md spec", "DESIGN.md template/skeleton", "DESIGN.md frontmatter", "DESIGN.md section order / authoring rules", "adopt DESIGN.md in CLAUDE.md". Variant 1 (official @google/design.md) + Variant 2 (community 9-section). Does NOT trigger on generic "design system". Use to look up the canonical format, fill a skeleton, or check the 13 authoring rules.
-version: 0.1.0
 ---
 
 # AMW Design.md — Spec
