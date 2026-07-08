@@ -1,6 +1,6 @@
 [project]
 name = "ai-maestro-webdesign"
-version = "0.1.0"
+version = "0.1.1"
 description = "Consolidated web-design plugin: design judgment (Claude Design principles), ASCII sketch/parse, diagrams, infographics, style extraction, and preview."
 readme = "README.md"
 license = "MIT"
