@@ -138,7 +138,10 @@ for vp in "${VPS[@]}"; do
     overall=1
   fi
   jod="$(printf '%s' "$line" | grep -oE 'JOD [0-9.]+' | awk '{print $2}' | head -1)"
-  echo "| $vp | ${jod:-?} | $res |" >> "$verdict"
+  # printf with %s placeholders (not echo interpolation): tool-derived values are
+  # individually quoted arguments — no word-splitting/glob risk, and no echo
+  # flag/escape ambiguity if a value ever starts with '-' or contains '\'.
+  printf '| %s | %s | %s |\n' "$vp" "${jod:-?}" "$res" >> "$verdict"
   echo "→ $ID $vp: ${jod:-?} ($res)" >&2
 done
 

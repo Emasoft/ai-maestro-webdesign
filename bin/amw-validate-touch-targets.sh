@@ -150,10 +150,13 @@ scan_tailwind() {
           # Compute pixel size for the suggestion.
           n="$(echo "$match" | grep -oE '[0-9]+')"
           px=$((n * 4))
+          # printf with %s placeholders (not echo interpolation): each scanner-derived
+          # value is its own quoted argument, so it can never be word-split, glob-
+          # expanded, or misread as an echo flag/escape — same output, safer plumbing.
           if [ "$px" -lt 24 ]; then
-            echo "EMIT|$file|$linenum|tailwind $match (= ${px}px) on interactive element|use w-11/h-11 (44px) minimum; WCAG 2.5.8 24px hard floor"
+            printf 'EMIT|%s|%s|tailwind %s (= %spx) on interactive element|use w-11/h-11 (44px) minimum; WCAG 2.5.8 24px hard floor\n' "$file" "$linenum" "$match" "$px"
           else
-            echo "EMIT|$file|$linenum|tailwind $match (= ${px}px) on interactive element|use w-11/h-11 (44px) minimum; iOS HIG / WCAG 2.5.5 AAA"
+            printf 'EMIT|%s|%s|tailwind %s (= %spx) on interactive element|use w-11/h-11 (44px) minimum; iOS HIG / WCAG 2.5.5 AAA\n' "$file" "$linenum" "$match" "$px"
           fi
         fi
       done
