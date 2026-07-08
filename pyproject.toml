@@ -34,5 +34,5 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Emasoft/ai-maestro-plugins"
-Repository = "https://github.com/Emasoft/ai-maestro-plugins"
+Homepage = "https://github.com/Emasoft/ai-maestro-webdesign"
+Repository = "https://github.com/Emasoft/ai-maestro-webdesign"

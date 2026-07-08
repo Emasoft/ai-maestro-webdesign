@@ -7,8 +7,8 @@
     "email": "713559+Emasoft@users.noreply.github.com",
     "url": "https://github.com/Emasoft"
   },
-  "homepage": "https://github.com/Emasoft/ai-maestro-plugins",
-  "repository": "https://github.com/Emasoft/ai-maestro-plugins",
+  "homepage": "https://github.com/Emasoft/ai-maestro-webdesign",
+  "repository": "https://github.com/Emasoft/ai-maestro-webdesign",
   "license": "MIT",
   "keywords": [
     "webdesign",
@@ -23,6 +23,12 @@
     "style-extraction",
     "amw-design-principles",
     "claude-code"
+  ],
+  "dependencies": [
+    {
+      "name": "dev-browser",
+      "marketplace": "dev-browser-marketplace"
+    }
   ],
   "cpv": {
     "exclude_paths": [
