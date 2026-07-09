@@ -63,9 +63,12 @@ uv sync --extra dev
 # 4. Run the test suite
 uv run pytest tests/ -v
 
-# 5. Run linters before committing
-uv run ruff check .
-uv run mypy .
+# 5. Run the linters before committing. These are the exact two commands
+#    the Release workflow gates on. Keep the scripts/ scope: a repo-wide
+#    "mypy ." also walks the gitignored docs_dev/ backups and aborts on
+#    duplicate module names, which is a false failure, not a real one.
+uv run ruff check scripts/
+uv run mypy scripts/ --ignore-missing-imports
 ```
 
 Node-based tooling (`bun`, `playwright`, `dev-browser`) is only needed
