@@ -235,11 +235,6 @@ def _infer_component_property_type(prop: str) -> str:
     return "string"
 
 
-def _is_alias(value: Any) -> bool:
-    """True iff the value is exactly a `{path.to.token}` reference string."""
-    return isinstance(value, str) and ALIAS_RE.match(value.strip()) is not None
-
-
 def _alias_path(value: str) -> str | None:
     """Extract `a.b.c` from `{a.b.c}`. Returns None if not an alias."""
     m = ALIAS_RE.match(value.strip())
