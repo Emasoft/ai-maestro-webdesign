@@ -1,0 +1,16 @@
+# gitleaks false-positive allowlist — ai-maestro-webdesign
+#
+# Both fingerprints below are documentation examples living in git history at
+# commit c3e4bd53, confirmed non-secret by inspecting the source at that commit:
+#
+#  1) agents/amw-component-library-architect-agent.md:183 (generic-api-key) —
+#     a CSS border-radius design-token list ("radius-full=9999px", etc.) that
+#     coincidentally matched the generic-api-key heuristic. Not a credential.
+#
+#  2) skills/amw-shadcn-ui/docs/registry/authentication.mdx:318 (curl-auth-header) —
+#     a shadcn-ui auth docs curl example: `Authorization: Bearer your_token`.
+#     "your_token" is a literal placeholder, not a real token.
+#
+# Fingerprints are commit-pinned (git history is immutable) so they stay stable.
+c3e4bd538e302a1d4623cf9638822bd9b411e276:agents/amw-component-library-architect-agent.md:generic-api-key:183
+c3e4bd538e302a1d4623cf9638822bd9b411e276:skills/amw-shadcn-ui/docs/registry/authentication.mdx:curl-auth-header:318

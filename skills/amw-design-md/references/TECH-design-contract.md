@@ -214,7 +214,7 @@ These paths mirror design-forge's `.design-forge/contract/current.md` + versione
 
 ## Cross-references
 
-- [contract-validator.md (design-forge source, MIT)](../../../reports_dev/batch9/extracted/design-forge-main/references/contract-validator.md) — the original BLOCK / FLAG / PASS spec this TECH ports.
+- **contract-validator.md** — the design-forge upstream source (MIT) this TECH ports (original BLOCK / FLAG / PASS spec; a build-time distillation input, not shipped in the plugin).
 - [phase-a-frozen-spec.md](../../amw-design-principles/references/phase-a-frozen-spec.md) — the single-run, immutable counterpart of this contract.
 - [agent-interaction-patterns.md](../../amw-design-principles/references/agent-interaction-patterns.md) — how the contract flows from main-agent to sub-agents.
 - [authority-hierarchy.md](../../amw-design-principles/references/authority-hierarchy.md) — who can veto a contract decision (`amw-legal-expert-agent`, `amw-accessibility-auditor-agent`).
