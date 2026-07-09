@@ -156,6 +156,17 @@ emit_check() {
     reports_dev/*|*/reports_dev/*|reports/batch*|*/reports/batch*) return ;;
   esac
 
+  # Skip refs into `external/hyperframes/` — an on-demand EXTERNAL runtime
+  # dependency, cloned by `/amw-init` (or on first render) into a gitignored path
+  # and never committed or shipped. The cited paths are correct and useful to a
+  # reader; they simply do not exist in a fresh checkout, so a literal existence
+  # check always false-reports them. Same class as the `reports_dev/` provenance
+  # skip above. Deliberately NARROW — `external/mermaid-render/` IS vendored and
+  # committed, so refs into it must stay validated.
+  case "$ref" in
+    external/hyperframes|external/hyperframes/*|*/external/hyperframes|*/external/hyperframes/*) return ;;
+  esac
+
   # Skip glob-pattern refs (e.g. `brand-*.md`) — a literal existence check on a
   # wildcard path is meaningless; the `*` marks a documented FAMILY of files,
   # not one concrete path.
@@ -197,6 +208,40 @@ emit_check() {
       fi
       ;;
   esac
+
+  # Bare-basename "see also" fallback.
+  #
+  # A slash-less `<name>.md` inside a Cross-references bullet cites a sibling doc
+  # BY NAME, not by path. A later reorg split the reference corpus across sibling
+  # skills (e.g. `amw-design-md` -> `amw-design-md-spec`), so the named file now
+  # legitimately lives under a DIFFERENT skill's `references/` dir and BOTH
+  # positional guesses above miss it. Resolve such refs by searching the shipped
+  # `skills/` + `agents/` trees for that exact filename. This is what makes the
+  # check reorg-proof instead of re-breaking on every doc move.
+  #
+  # Deliberately NOT applied to refs containing `/`: a path-bearing ref must
+  # resolve exactly as written, so genuine wrong-path typos and references into
+  # non-shipped trees (e.g. `external/hyperframes/...`) still fail loudly. Drop
+  # that restriction and this fallback would silently green-light broken paths.
+  if [ ! -e "$resolved" ]; then
+    case "$ref" in
+      */*) ;;  # path-bearing: no fallback, must resolve exactly as written
+      *)
+        local root hit
+        hit=''
+        for root in "$PLUGIN_ROOT/skills" "$PLUGIN_ROOT/agents"; do
+          [ -d "$root" ] || continue
+          hit="$(find "$root" -type f -name "$ref" 2>/dev/null | head -n 1)"
+          if [ -n "$hit" ]; then
+            break
+          fi
+        done
+        if [ -n "$hit" ]; then
+          return
+        fi
+        ;;
+    esac
+  fi
 
   if [ ! -e "$resolved" ]; then
     # Path is recorded relative to plugin root for legibility.
