@@ -53,7 +53,7 @@ collects the names and projects we depend on, with gratitude.
   v4 utilities, directives, and v3→v4 migration path. Note: the
   *documentation site* content at tailwindcss.com is source-available
   but not open-source, so the full MDX docs snapshot is not bundled —
-  users must run `scripts/sync_tailwind_docs.py --accept-docs-license`
+  users must run `skills/amw-tailwind-4/scripts/sync_tailwind_docs.py --accept-docs-license`
   and accept that separate license before syncing it locally.
 - **[@google/design.md](https://github.com/google-labs/design.md)**
   (Apache License 2.0) by Google Labs — the official DESIGN.md format
