@@ -189,4 +189,4 @@ The anti-reference board is as important as the reference board. Many designs fa
 - `skills/amw-design-extract/SKILL.md` — token extraction skill
 - `skills/amw-dev-browser/SKILL.md` — only browser primitive
 - `skills/amw-design-md/SKILL.md` — DESIGN.md authoring / lint / contrast / convert
-- `skills/amw-design-md/references/canonical-spec-google-alpha.md` — Variant 1 DESIGN.md schema
+- `skills/amw-design-md-spec/references/canonical-spec-google-alpha.md` — Variant 1 DESIGN.md schema
