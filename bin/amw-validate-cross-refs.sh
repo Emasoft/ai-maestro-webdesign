@@ -146,6 +146,23 @@ emit_check() {
     *'{'*|*'}'*|*'<'*|*'>'*) return ;;
   esac
 
+  # Skip PROVENANCE references into the build-time distillation dirs. Skills
+  # carry `source:` frontmatter and "distilled from" cross-refs pointing at the
+  # gitignored `reports_dev/…` / `reports/batch…` inputs they were harvested
+  # from (the amw-skill-drift-audit skill consumes these pins to audit drift
+  # against upstream). Those inputs are intentionally NOT shipped in the plugin,
+  # so an on-disk existence check always false-reports them as MISSING.
+  case "$ref" in
+    reports_dev/*|*/reports_dev/*|reports/batch*|*/reports/batch*) return ;;
+  esac
+
+  # Skip glob-pattern refs (e.g. `brand-*.md`) — a literal existence check on a
+  # wildcard path is meaningless; the `*` marks a documented FAMILY of files,
+  # not one concrete path.
+  case "$ref" in
+    *'*'*) return ;;
+  esac
+
   # Skip refs that look like inline-code language tokens or shell flags
   # (`bash`, `python3`, `--strict`, etc.). Heuristic: must contain '/' or '.' or
   # start with '~'.

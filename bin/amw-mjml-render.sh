@@ -42,7 +42,7 @@ case "${1:-}" in
   -h|--help)  usage ;;
 esac
 
-[ $# -ge 1 ] && [ $# -le 2 ] || usage
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then usage; fi
 input="$1"
 [ -r "$input" ] || { echo "ERROR: cannot read: $input" >&2; exit 2; }
 
