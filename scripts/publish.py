@@ -2,8 +2,9 @@
 """Unified publish pipeline: bypass-guard -> lint -> validate (remote CPV) -> test -> bump -> badge -> changelog -> commit -> push -> release.
 
 Modes:
-  --gate                  Pre-push gate: orchestrator check + lint + validate + tests
-                          only (no bump/push). Called by git-hooks/pre-push automatically.
+  --gate                  Pre-push gate: orchestrator check + lint (ruff/jscpd/
+                          actionlint/mypy) + validate + tests only (no bump/push).
+                          Called by git-hooks/pre-push automatically.
   --install-hook          Install git-hooks/pre-push into .git/hooks/ and set core.hooksPath.
   --install-branch-rules  Apply the cpv-branch-rules GitHub ruleset to the origin
                           (server-side CI enforcement — run once after first push).
@@ -35,6 +36,12 @@ Gate stages (--gate mode, called by pre-push hook):
        may initiate a push (verified via process ancestry, NOT env vars).
    G1. Version bump check (local vs remote, auto-detects origin/HEAD)
    G2. Lint (ruff)
+   G2b. Copy-paste check (jscpd, parity with ci.yml Mega-Linter COPYPASTE_JSCPD;
+        WARNs+skips if jscpd/npx unavailable so a push is never false-blocked)
+   G2c. Workflow lint (actionlint, parity with ci.yml Lint job; WARNs+skips if
+        actionlint unavailable so a push is never false-blocked)
+   G2d. Type-check (mypy scripts/ --ignore-missing-imports, parity with ci.yml
+        Lint job; WARNs+skips if mypy unavailable so a push is never false-blocked)
    G3. Validate (uvx cpv-remote-validate plugin . --strict)
    G4. Tests (pytest)
 
@@ -63,7 +70,6 @@ import stat
 import subprocess
 import sys
 from pathlib import Path
-from typing import Any
 
 # Load gh / git retry wrappers from the sibling module so every push +
 # `gh release create` survives transient github.com hiccups (the retry
@@ -71,7 +77,13 @@ from typing import Any
 # from the canonical CPV install via gen_cpv_network_resilience_py().
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 try:
-    from cpv_network_resilience import gh_with_retry, git_with_retry
+    # `pyright: ignore[reportAssignmentType]` (on the import line itself):
+    # the typed real import and the ImportError fallback shims below are
+    # conditional variants of the same names; Pyright flags the typed import as
+    # not assignable to the fallback's loose declared type (its mypy counterpart
+    # is the [no-redef, misc] on the shims). Suppress exactly that — the
+    # standard import-fallback idiom. issue #151.
+    from cpv_network_resilience import gh_with_retry, git_with_retry  # pyright: ignore[reportAssignmentType]
 except ImportError:
     # Fallback: scripts/cpv_network_resilience.py was not shipped with this
     # plugin (older scaffold). Define no-op shims so publish.py still works,
@@ -82,44 +94,25 @@ except ImportError:
         "Run `cpv standardize --force-templates` to refresh.",
         file=sys.stderr,
     )
-    # The fallback shims MUST declare the SAME signature as the real
-    # cpv_network_resilience wrappers — mypy enforces that conditional
-    # function variants (the try/except import fallback) be type-identical
-    # (error code "misc"). Keyword-only args mirror the originals; the
-    # retry-specific kwargs (max_attempts/backoff) are accepted and ignored
-    # since a no-op shim cannot retry.
-    def gh_with_retry(  # type: ignore[no-redef]
-        cmd: list[str],
-        *,
-        cwd: Any = None,
-        env: dict[str, str] | None = None,
-        check: bool = True,
-        capture_output: bool = False,
-        timeout: float | None = None,
-        max_attempts: int = 1,
-        backoff: float = 0.0,
-        print_cmd: bool = False,
-    ) -> subprocess.CompletedProcess[str]:
-        return subprocess.run(
-            cmd, cwd=cwd, env=env, check=check,
-            capture_output=capture_output, timeout=timeout, text=True,
-        )
-    def git_with_retry(  # type: ignore[no-redef]
-        cmd: list[str],
-        *,
-        cwd: Any = None,
-        env: dict[str, str] | None = None,
-        check: bool = True,
-        capture_output: bool = False,
-        timeout: float | None = None,
-        max_attempts: int = 1,
-        backoff: float = 0.0,
-        print_cmd: bool = False,
-    ) -> subprocess.CompletedProcess[str]:
-        return subprocess.run(
-            cmd, cwd=cwd, env=env, check=check,
-            capture_output=capture_output, timeout=timeout, text=True,
-        )
+    # `misc` is needed alongside `no-redef`: under `mypy --strict` the typed
+    # real import (cpv_network_resilience) and these minimal fallback shims are
+    # conditional variants of the same name with NON-IDENTICAL signatures, which
+    # `--strict` reports as [misc] ("All conditional function variants must have
+    # identical signatures"); the combined code suppresses exactly that, the
+    # standard import-fallback idiom (cf. the tomli fallback at
+    # cpv_lint_engine.py with [no-redef,import-not-found]).
+    def gh_with_retry(cmd, **kwargs):  # type: ignore[no-redef, misc]
+        kwargs.pop("max_attempts", None)
+        kwargs.pop("backoff", None)
+        kwargs.setdefault("check", True)
+        kwargs.setdefault("capture_output", False)
+        return subprocess.run(cmd, **kwargs)
+    def git_with_retry(cmd, **kwargs):  # type: ignore[no-redef, misc]
+        kwargs.pop("max_attempts", None)
+        kwargs.pop("backoff", None)
+        kwargs.setdefault("check", True)
+        kwargs.setdefault("capture_output", False)
+        return subprocess.run(cmd, **kwargs)
 
 # -- ANSI colors ---------------------------------------------------------------
 
@@ -151,8 +144,15 @@ def run(
 ) -> subprocess.CompletedProcess[str]:
     """Run a command, stream output, fail-fast on error."""
     cprint(f"  {BLUE}$ {' '.join(cmd)}{NC}")
-    result = subprocess.run(cmd, cwd=str(cwd) if cwd else None, text=True,
-                            capture_output=capture, timeout=300)
+    # A subprocess exceeding `timeout` raises TimeoutExpired; without this it
+    # would die with a raw traceback instead of the styled fail-fast message
+    # every other failure path uses. Catch it and exit 1.
+    try:
+        result = subprocess.run(cmd, cwd=str(cwd) if cwd else None, text=True,
+                                capture_output=capture, timeout=300)
+    except subprocess.TimeoutExpired:
+        cprint(f"  {RED}Command timed out after 300s: {' '.join(cmd)}{NC}")
+        sys.exit(1)
     if check and result.returncode != 0:
         cprint(f"  {RED}Command failed (exit {result.returncode}){NC}")
         sys.exit(result.returncode)
@@ -349,6 +349,22 @@ def update_self_marketplace_json(root: Path, new_ver: str) -> tuple[bool, str]:
         return True, f"marketplace.json (metadata + self-entry) -> {new_ver}"
     return True, f"marketplace.json (metadata only — no self-entry matched) -> {new_ver}"
 
+def _project_block(content: str) -> tuple[int, int] | None:
+    """Char span of the [project] table body, or None if absent.
+
+    The project version lives in the [project] table. A whole-file first-match
+    for `version = "..."` writes the WRONG version when a [tool.X] table with
+    its own top-level `version` (e.g. [tool.commitizen]) precedes [project].
+    When there is no [project] table (poetry keeps it under [tool.poetry]),
+    return None so the caller falls back to the legacy whole-file first-match.
+    """
+    m = re.search(r'^\[project\]\s*$', content, re.MULTILINE)
+    if not m:
+        return None
+    start = m.end()
+    nxt = re.search(r'^\[', content[start:], re.MULTILINE)
+    return start, (start + nxt.start() if nxt else len(content))
+
 def update_pyproject_toml(root: Path, new_ver: str) -> tuple[bool, str]:
     """Write version to pyproject.toml."""
     pp = root / "pyproject.toml"
@@ -356,13 +372,25 @@ def update_pyproject_toml(root: Path, new_ver: str) -> tuple[bool, str]:
         return False, "pyproject.toml not found"
     try:
         content = pp.read_text(encoding="utf-8")
-        updated = re.sub(
-            r'^(version\s*=\s*")[^"]*(")',
-            rf'\g<1>{new_ver}\2',
-            content,
-            count=1,
-            flags=re.MULTILINE,
-        )
+        block = _project_block(content)
+        if block is not None:
+            lo, hi = block
+            replaced = re.sub(
+                r'^(version\s*=\s*")[^"]*(")',
+                rf'\g<1>{new_ver}\2',
+                content[lo:hi],
+                count=1,
+                flags=re.MULTILINE,
+            )
+            updated = content[:lo] + replaced + content[hi:]
+        else:
+            updated = re.sub(
+                r'^(version\s*=\s*")[^"]*(")',
+                rf'\g<1>{new_ver}\2',
+                content,
+                count=1,
+                flags=re.MULTILINE,
+            )
         if updated == content:
             return False, "pyproject.toml: version field not found"
         pp.write_text(updated, encoding="utf-8")
@@ -425,10 +453,14 @@ def check_version_consistency(root: Path) -> tuple[bool, str]:
         except (json.JSONDecodeError, OSError):
             versions["marketplace.json"] = None
 
-    # pyproject.toml
+    # pyproject.toml — read from the [project] table body when present, else
+    # fall back to the whole-file first-match (poetry-style layouts).
     pp = root / "pyproject.toml"
     if pp.is_file():
-        m = re.search(r'^version\s*=\s*"([^"]*)"', pp.read_text(encoding="utf-8"), re.MULTILINE)
+        pp_text = pp.read_text(encoding="utf-8")
+        blk = _project_block(pp_text)
+        hay = pp_text[blk[0]:blk[1]] if blk is not None else pp_text
+        m = re.search(r'^version\s*=\s*"([^"]*)"', hay, re.MULTILINE)
         versions["pyproject.toml"] = m.group(1) if m else None
 
     found = {k: v for k, v in versions.items() if v is not None}
@@ -439,6 +471,27 @@ def check_version_consistency(root: Path) -> tuple[bool, str]:
         return True, f"All versions match: {unique.pop()}"
     details = ", ".join(f"{k}={v}" for k, v in found.items())
     return False, f"Version mismatch: {details}"
+
+def _sync_uv_lock(root: Path) -> None:
+    """Re-resolve ``uv.lock`` against the freshly-bumped ``pyproject.toml``.
+
+    Without this, every release leaves ``uv.lock`` stale by one version
+    (``pyproject.toml`` says e.g. ``2.66.2`` but ``uv.lock`` still pins the
+    root package at ``2.66.1``). The NEXT publish then runs an outer
+    ``uv run``/``uv lock``/``uv sync`` which re-syncs that single root-version
+    line in place, DIRTYING the working tree — and Gate 1 (clean-tree check)
+    aborts that publish before it does anything (issue #149). Co-locating the
+    sync in do_bump (the only place pyproject.toml is written) guarantees the
+    lock can never be stale after a successful bump. Idempotent; silently
+    skipped when neither ``uv`` nor ``uv.lock`` is present (plugins authored
+    without uv, or a host where uv isn't installed). ``check=False`` so a uv
+    hiccup degrades to a no-op instead of aborting the bump.
+    """
+    if not (root / "uv.lock").is_file():
+        return
+    if shutil.which("uv") is None:
+        return
+    run(["uv", "lock"], root, check=False)
 
 def do_bump(root: Path, new_ver: str, dry_run: bool = False) -> bool:
     """Orchestrate all version updates. Detects Layout C (marketplace.json at repo root)
@@ -470,7 +523,13 @@ def do_bump(root: Path, new_ver: str, dry_run: bool = False) -> bool:
     for ok, msg in py_results:
         cprint(f"  {'OK' if ok else 'FAIL'}: {msg}")
 
-    return ok1 and ok2 and ok_mp
+    ok = ok1 and ok2 and ok_mp
+    if ok:
+        # Bump succeeded — bring uv.lock's root version along so the
+        # post-publish tree is clean and the NEXT publish's outer `uv run`
+        # doesn't re-sync uv.lock and trip Gate 1 (issue #149).
+        _sync_uv_lock(root)
+    return ok
 
 
 # -- Hook installer ------------------------------------------------------------
@@ -550,7 +609,7 @@ def install_branch_rules(root: Path) -> int:
             [
                 "uvx",
                 "--from",
-                "git+https://github.com/Emasoft/claude-plugins-validation",
+                "git+https://github.com/Emasoft/claude-plugins-validation@v2.153.4",
                 "--with",
                 "pyyaml",
                 "cpv-setup-branch-rules",
@@ -727,6 +786,87 @@ def run_gate(root: Path) -> int:
         return 1
     cprint(f"  {GREEN}Lint passed.{NC}")
 
+    # Gate 2b: Copy-paste detection (jscpd) — PARITY with ci.yml Mega-Linter COPYPASTE_JSCPD.
+    # CI's Lint job fails on jscpd duplication over the .jscpd.json threshold; surface it locally
+    # BEFORE the bump/tag/push. jscpd needs Node/npx; if it cannot be obtained, DEGRADE to a
+    # non-blocking WARNING (CI still enforces it) — a green gate then does NOT guarantee green CI
+    # for the copy-paste dimension (issue #143). NEVER false-block a push on a tool-install failure.
+    cprint(f"\n{BLUE}[G2b] Copy-paste check (jscpd, parity with CI)...{NC}")
+    jscpd_bin = shutil.which("jscpd")
+    # Resolve npx ONCE into a variable so mypy narrows it (a second
+    # shutil.which("npx") call INSIDE the list keeps the element typed
+    # `str | None`, making base_cmd `list[str | None]` → subprocess.run
+    # [arg-type] under --strict). issue #151.
+    npx_bin = shutil.which("npx")
+    base_cmd = [jscpd_bin] if jscpd_bin else ([npx_bin, "--yes", "jscpd"] if npx_bin else None)
+    if base_cmd is None:
+        cprint(f"  {YELLOW}WARNING: jscpd/npx not found — copy-paste check SKIPPED locally.{NC}")
+        cprint(f"  {YELLOW}CI's Mega-Linter WILL enforce it (.jscpd.json threshold). A green gate does")
+        cprint(f"  {YELLOW}NOT guarantee green CI for the copy-paste dimension (issue #143). Install")
+        cprint(f"  {YELLOW}Node/npx for full local parity.{NC}")
+    else:
+        # Probe distinguishes 'jscpd unavailable/uninstallable' (WARN) from 'jscpd ran, found dupes' (BLOCK).
+        probe = subprocess.run(base_cmd + ["--version"], cwd=str(root),
+                               capture_output=True, text=True, timeout=180)
+        if probe.returncode != 0:
+            cprint(f"  {YELLOW}WARNING: jscpd could not run (npx fetch/install failed) — SKIPPED locally.{NC}")
+            cprint(f"  {YELLOW}CI's Mega-Linter WILL enforce it; green gate != green CI for copy-paste (issue #143).{NC}")
+        else:
+            cp = subprocess.run(base_cmd + ["."], cwd=str(root), timeout=300).returncode
+            if cp != 0:
+                cprint(f"  {RED}BLOCKED: jscpd found copy-paste duplication over the .jscpd.json threshold{NC}")
+                cprint(f"  {RED}(parity with CI Mega-Linter). Reduce duplication or raise the threshold in .jscpd.json.{NC}")
+                return 1
+            cprint(f"  {GREEN}Copy-paste check passed.{NC}")
+
+    # Gate 2c: Workflow-syntax lint (actionlint) — PARITY with ci.yml Lint job.
+    # CI runs actionlint on .github/workflows/*; surface a workflow-syntax error
+    # locally BEFORE the bump/tag/push. actionlint is a single static binary; if it
+    # is not on PATH, DEGRADE to a non-blocking WARNING (CI still enforces it) — a
+    # green gate then does NOT guarantee green CI for the workflow-syntax dimension.
+    # NEVER false-block a push on a missing-tool case (the issue #143 pattern).
+    cprint(f"\n{BLUE}[G2c] Workflow lint (actionlint, parity with CI)...{NC}")
+    wf_dir = root / ".github" / "workflows"
+    has_workflows = wf_dir.is_dir() and (any(wf_dir.glob("*.yml")) or any(wf_dir.glob("*.yaml")))
+    actionlint_bin = shutil.which("actionlint")
+    if not has_workflows:
+        cprint(f"  {GREEN}No workflows to lint — skipped.{NC}")
+    elif actionlint_bin is None:
+        cprint(f"  {YELLOW}WARNING: actionlint not found — workflow lint SKIPPED locally.{NC}")
+        cprint(f"  {YELLOW}CI's Lint job WILL enforce it. A green gate does NOT guarantee green CI")
+        cprint(f"  {YELLOW}for the workflow-syntax dimension. Install actionlint for full parity.{NC}")
+    else:
+        al = subprocess.run([actionlint_bin], cwd=str(root), timeout=120).returncode
+        if al != 0:
+            cprint(f"  {RED}BLOCKED: actionlint found workflow-syntax errors (parity with CI Lint job).{NC}")
+            return 1
+        cprint(f"  {GREEN}Workflow lint passed.{NC}")
+
+    # Gate 2d: Static type-check (mypy) — PARITY with ci.yml Lint job
+    # (`uv run mypy scripts/ --ignore-missing-imports`). Surface a type error
+    # locally BEFORE the bump/tag/push. A `--version` probe distinguishes
+    # 'mypy unavailable' (WARN + skip, never false-block) from 'mypy ran, found
+    # errors' (BLOCK) — the issue #143 degrade-gracefully pattern.
+    cprint(f"\n{BLUE}[G2d] Type-check (mypy, parity with CI)...{NC}")
+    mypy_bin = shutil.which("mypy")
+    mypy_cmd = [mypy_bin] if mypy_bin else (["uv", "run", "mypy"] if shutil.which("uv") else None)
+    if mypy_cmd is None:
+        cprint(f"  {YELLOW}WARNING: mypy/uv not found — type-check SKIPPED locally.{NC}")
+        cprint(f"  {YELLOW}CI's Lint job WILL enforce it; a green gate does NOT guarantee green CI for types.{NC}")
+    else:
+        probe = subprocess.run(mypy_cmd + ["--version"], cwd=str(root),
+                               capture_output=True, text=True, timeout=120)
+        if probe.returncode != 0:
+            cprint(f"  {YELLOW}WARNING: mypy could not run — type-check SKIPPED locally.{NC}")
+            cprint(f"  {YELLOW}CI's Lint job WILL enforce it; green gate != green CI for types.{NC}")
+        else:
+            mt = subprocess.run(mypy_cmd + ["scripts/", "--ignore-missing-imports"],
+                                cwd=str(root), timeout=300).returncode
+            if mt != 0:
+                cprint(f"  {RED}BLOCKED: mypy found type errors in scripts/ (parity with CI Lint job).{NC}")
+                return 1
+            cprint(f"  {GREEN}Type-check passed.{NC}")
+
     # Gate 3: Validate via REMOTE CPV validator. MANDATORY — no skip, no exceptions.
     # CORNERSTONE: a plugin cannot be pushed unless validation passes with 0
     # blocking issues (WARNING allowed). The validator is ALWAYS fetched from
@@ -737,7 +877,7 @@ def run_gate(root: Path) -> int:
         return 1
     ve = subprocess.run(
         ["uvx", "--from",
-         "git+https://github.com/Emasoft/claude-plugins-validation",
+         "git+https://github.com/Emasoft/claude-plugins-validation@v2.153.4",
          "--with", "pyyaml",
          "cpv-remote-validate", "plugin", ".", "--strict"],
         cwd=str(root), timeout=600).returncode
@@ -969,7 +1109,7 @@ def stage_validate(root: Path) -> None:
 
     Cornerstone rule: a plugin cannot be pushed unless validation passes
     with 0 issues (WARNING allowed). The validator is ALWAYS fetched from
-    GitHub (git+https://github.com/Emasoft/claude-plugins-validation) via
+    GitHub (git+https://github.com/Emasoft/claude-plugins-validation@v2.153.4) via
     uvx so a local tampered copy cannot weaken the rules. No exceptions.
 
     Order: runs AFTER lint + tests so behavioral regressions fail fast
@@ -984,7 +1124,7 @@ def stage_validate(root: Path) -> None:
     # on CRITICAL(1), MAJOR(2), MINOR(3), NIT(4); WARNING(5+) passes.
     run([
         "uvx", "--from",
-        "git+https://github.com/Emasoft/claude-plugins-validation",
+        "git+https://github.com/Emasoft/claude-plugins-validation@v2.153.4",
         "--with", "pyyaml",
         "cpv-remote-validate", "plugin", ".", "--strict",
     ], cwd=root)
@@ -1624,7 +1764,7 @@ def main() -> int:
     # no flags runs the full publish pipeline with an auto-detected bump type.
     mode_group = parser.add_mutually_exclusive_group()
     mode_group.add_argument("--gate", action="store_true",
-                            help="Pre-push gate mode: lint + validate + tests only (no bump/push)")
+                            help="Pre-push gate mode: lint + copy-paste (jscpd) + validate + tests only (no bump/push)")
     mode_group.add_argument("--install-hook", action="store_true",
                             help="Install pre-push hook into .git/hooks/ and set core.hooksPath")
     mode_group.add_argument("--install-branch-rules", action="store_true",

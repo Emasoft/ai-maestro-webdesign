@@ -10,6 +10,7 @@
   "homepage": "https://github.com/Emasoft/ai-maestro-webdesign",
   "repository": "https://github.com/Emasoft/ai-maestro-webdesign",
   "license": "MIT",
+  "marketplace": "ai-maestro-plugins",
   "keywords": [
     "webdesign",
     "ui",
