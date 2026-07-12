@@ -2,7 +2,7 @@
 name: cpv-gate-blocked-by-hyperframes-submodule
 description: "CPV full plugin validation says INVALID / 20 CRITICAL / security gate fails / plugin won't pass / publishing blocked — is webdesign's own code broken? why so many critical security findings?"
 ocd: 2026-06-16
-lmd: 2026-06-19
+lmd: 2026-07-13
 metadata:
   node_type: memory
   type: project
@@ -20,7 +20,7 @@ metadata:
 2. ~~Configure `cpv.strip.extract[]`~~ — **RULED OUT (verified 2026-06-19, CPV 2.132.0): `cpv.strip.extract` is an install-SIZE optimization, NOT a security control — it does NOT remove content from the security scan, so it does NOT clear the CRITICAL/MAJOR gate.**[^3] (Neither does the existing `cpv.strip.allowed_submodule_urls`, which only whitelists the URL for the gitmodules validator; it strips/excludes nothing.) Only options 1 and 3 below actually clear the gate.
 3. **Drop the vendored submodule entirely** — the bridge runs `npx hyperframes` at RUNTIME (see `skills/amw-hyperframes-bridge/`), so the 244MB gitlink is dev-only reference. Cleanest; loses the local source reference.
 
-Verified 2026-06-16 (CPV 2.126.26): tally CRITICAL=20 MAJOR=24 MINOR=30 NIT=42; in-submodule CRITICAL=20/20, MAJOR=20/24, MINOR=12/30, NIT=12/42. This session's own 3 commits passed `project-scope` validation cleanly (VALID, 0 findings). Re-verified 2026-06-19 (CPV 2.132.0, full publish-readiness run): INVALID — 20 CRITICAL + 20 MAJOR ALL in the submodule, 0 in own code; own code = 15 MINOR + 31 NIT (the #123 doc/lint/mypy FPs, cpv#132–135 category). Only deinit (1) or drop (3) clears the gate; no push performed. Governed by [[architecture-hub]].
+Verified 2026-06-16 (CPV 2.126.26): tally CRITICAL=20 MAJOR=24 MINOR=30 NIT=42; in-submodule CRITICAL=20/20, MAJOR=20/24, MINOR=12/30, NIT=12/42. This session's own 3 commits passed `project-scope` validation cleanly (VALID, 0 findings). Re-verified 2026-06-19 (CPV 2.132.0, full publish-readiness run): INVALID — 20 CRITICAL + 20 MAJOR ALL in the submodule, 0 in own code; own code = 15 MINOR + 31 NIT (the #123 doc/lint/mypy FPs, cpv#132–135 category). Only deinit (1) or drop (3) clears the gate; no push performed. See also: [[cpv-publish-pipeline-canon]] — the publish PIPELINE / canon / release-provenance axis, distinct from this SECURITY gate. Governed by [[architecture-hub]].
 
 ## Notes and lessons learned
 
