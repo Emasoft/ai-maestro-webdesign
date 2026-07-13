@@ -1,6 +1,6 @@
 {
   "name": "ai-maestro-webdesign",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Consolidated web-design plugin: design judgment (Claude Design principles), ASCII sketch/parse, diagrams, infographics, style extraction, and preview. amw-design-principles orchestrates every sub-skill; amw-dev-browser is the only browser-automation primitive for input workflows.",
   "author": {
     "name": "Emasoft",
