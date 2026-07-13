@@ -1,9 +1,9 @@
 ---
 trdd-id: K3N7QW82
 title: Add the MEMBER governance graph to the webdesign main-agent persona
-column: complete
+column: published
 created: 2026-07-13T09:39:20+0200
-updated: 2026-07-13T10:02:23+0200
+updated: 2026-07-13T10:14:00+0200
 current-owner: webdesign-claude
 assignee: webdesign-claude
 priority: 2
@@ -66,11 +66,22 @@ external-refs: ["github.com/Emasoft/ai-maestro/issues/41"]
   the core's `team-governance` skill land in the agent's workdir, so it is **not
   inoperable** — but the plugin is leaning on the environment for something the
   spec puts on the persona.
-- **NEXT ACTION (one concrete step, runnable as written):**
-  `uv run scripts/publish.py --patch` → v0.1.7. That is the ONLY step left. It
-  also carries the two docs commits already sitting unpushed on `main`
-  (`3269491` wikimem page, `dc59b72` TRDD bookkeeping). On success set
-  `column: published`.
+- **NEXT ACTION: none — TERMINAL.** Shipped in **v0.1.7** (`94387bb`, tag `v0.1.7`,
+  release live 2026-07-13T08:07:48Z). CI green on every job (Lint, Validate, Test,
+  Test matrix ×4, Workflow Security; Commitlint skipped — it is PR-only). The
+  `cross-refs` workflow DID run this time (the change touches `agents/**`, which
+  matches its `paths:` filter) and passed. The publish also carried the two docs
+  commits that had been sitting unpushed (`3269491`, `dc59b72`).
+- **Done alongside, same session (not part of this TRDD's scope but recorded so
+  nobody re-does it):** `main` had **zero** branch protection — now carries the
+  repo's canonical `cpv-branch-rules` ruleset (id 18863945), installed via
+  `publish.py --install-branch-rules`. Deliberately NOT the janitor's
+  `baseline-*` pair: GitHub UNIONS rulesets on the same branch, so adding it would
+  have layered `required_linear_history` + a 1-approval requirement on top of a
+  pipeline that direct-pushes to `main`. Verified after install: bypass_actors =
+  RepositoryRole id5 / mode `always` (so publish.py still pushes), PR approvals
+  required = 0, and all three required contexts (Lint/Validate/Test) map to real
+  ci.yml jobs — no check that can never pass.
 - **Load-bearing facts / do NOT "fix" these:**
   - `model: opus` in the main-agent frontmatter is **CORRECT** (ecosystem norm:
     autonomous pins sonnet, web-scenario-tester pins opus). Leave it.
