@@ -1,9 +1,9 @@
 ---
 trdd-id: MHJL3HY2
 title: Conform ai-maestro-webdesign to the role-plugin spec — dependencies + scaffolding
-column: blocked
+column: complete
 created: 2026-07-09T11:41:41+0200
-updated: 2026-07-09T11:41:41+0200
+updated: 2026-07-13T09:39:20+0200
 current-owner: webdesign-claude
 assignee: webdesign-claude
 priority: 3
@@ -27,37 +27,57 @@ implementation-commits: [51ab529, fb6d408, 2c96a18]
 external-refs: ["github.com/Emasoft/ai-maestro/issues/41"]
 ---
 
-## ⏵ STATE — READ THIS FIRST ON RESUME (authoritative; supersedes the body) — 2026-07-09
+## ⏵ STATE — READ THIS FIRST ON RESUME (authoritative; supersedes the body) — 2026-07-13
 
-- **Current state:**
-  - Scaffolding slice — **DONE + verified**. Present at repo root:
-    `ai-maestro-webdesign.agent.toml` (51ab529, MEMBER role profile),
-    `CHANGELOG.md` (pre-existing), and `CODE_OF_CONDUCT.md` /
-    `CONTRIBUTING.md` / `SECURITY.md` / `ACKNOWLEDGMENTS.md`
-    (fb6d408 + path-fix 2c96a18). Mirror the `ai-maestro-maintainer-agent`
-    v1.7.2 reference shape, adapted to webdesign.
-  - Dependencies slice — **BLOCKED on ai-maestro#41** (OPEN, 0 comments as
-    of 2026-07-09). `plugin.json` still declares **no `dependencies` field**.
-- **NEXT ACTION (when #41 is answered):**
-  1. If the ruling says role-plugins MUST declare the core, add
-     `"dependencies": [ { "name": "ai-maestro-plugin"[, "version": "<per-ruling>"] } ]`
-     to `.claude-plugin/plugin.json` (Q1 decides pinned vs floating).
-  2. Resolve **keep-vs-deprecate the `amw-memory-*` skills** per Q1b — current
-     lean is **KEEP** (standalone-publish self-containment). Only deprecate if
-     the ruling makes `ai-maestro-plugin` a hard runtime requirement that
-     supersedes standalone installability.
-  3. Re-run CPV validate (`remote_validation.py plugin . --strict`), bump
-     version, update CHANGELOG, commit.
+**COMPLETE.** ai-maestro#41 was ANSWERED and CLOSED (2026-07-09). Both slices of
+this TRDD are resolved. The ruling ALSO surfaced a separate gap that is NOT in
+this TRDD's scope — it is tracked as its own slice (see "Follow-up" below).
+
+- **Q1 / dependencies slice — RESOLVED BY RULING, no manifest edit required.**
+  The core plugin is *never* required in the manifest, so there is no
+  `dependencies` field to add. `plugin.json` is correct as-is.
+- **Q1b / `amw-memory-*` keep-vs-deprecate — KEEP, pending R24.** The governing
+  proposal (R24 in ai-maestro#37, "plugins ship no per-plugin memory skills")
+  is **UNRATIFIED** — no rule number, no governance-owner decision. The ruling
+  explicitly declines to rule as if it were law and says: leave `amw-memory-*`
+  in place, marked *pending R24 ratification*. **Do NOT deprecate them.** The
+  live argument for KEEP is a non-AI-Maestro user installing webdesign
+  standalone without the janitor.
+- **Q2 / mandatory artifacts — scaffolding slice DONE.** Only two things make a
+  role-plugin valid: (a) `<plugin>.agent.toml` with `compatible-titles` +
+  `compatible-clients`, and (b) a main-agent `.md` **whose persona carries the
+  governance rules**. `CHANGELOG` / `CONTRIBUTING` / `CODE_OF_CONDUCT` /
+  `SECURITY` / `ACKNOWLEDGMENTS` are **publishing hygiene, NOT role-plugin
+  validity** — shipping them was harmless and good, but none of them gate it.
+- **Q3 / canonical spec** — there is no CPV role-plugin profile. The executable
+  spec that actually rejects you is ai-maestro's `services/role-plugin-service.ts`.
+- **Independent review @ 9afc116 — PASS on the manifest half:**
+  `ai-maestro-webdesign.agent.toml` parses, all required fields present,
+  `compatible-titles = ["MEMBER"]`, Fourfold Identity matches on all four points,
+  the `[agent.skills].bundled` list is EXACTLY the 68 skill dirs on disk (zero
+  drift), all 23 sub-agents carry the `amw-` prefix.
+
+- **Follow-up (NOT this TRDD): main-agent governance gap → TRDD-K3N7QW82.**
+  The ruling's unrequested review found `agents/ai-maestro-webdesign-main-agent.md`
+  **FAILS condition (b)** — it carries ZERO governance content (no MEMBER role,
+  no COS gateway, no R6 v3 communication graph). That is the one real remaining
+  conformance gap. Tracked separately; do not reopen this TRDD for it.
+
 - **Load-bearing facts:**
+  - `model: opus` in the main-agent frontmatter is **CORRECT** and matches the
+    ecosystem norm (autonomous pins sonnet, web-scenario-tester pins opus).
+    **Do NOT "fix" it.**
   - `.agent.toml` is named `ai-maestro-webdesign.agent.toml` (the
     `<plugin>.agent.toml` convention), NOT `.agent.toml`.
-  - webdesign is intentionally **self-contained for standalone marketplace
-    publish** — this is the crux of Q1b.
-- **SUPERSEDED — do NOT carry forward:** any earlier claim that scaffolding
-  meta-files were missing (they now exist) or that `.agent.toml` was absent.
-- **Durable artifacts:** ai-maestro#41 body (the 4 questions Q1/Q1b/Q2/Q3);
-  reference plugin at
-  `~/.claude/plugins/cache/ai-maestro-plugins/ai-maestro-maintainer-agent/1.7.2/`.
+- **SUPERSEDED — do NOT carry forward:**
+  - "Dependencies slice is BLOCKED / `plugin.json` must declare
+    `dependencies: [ai-maestro-plugin]`" — **WRONG**. The ruling says the core is
+    never required in the manifest; there is nothing to add.
+  - "Deprecate `amw-memory-*` if the core becomes a hard requirement" —
+    **moot**; R24 is unratified and the ruling says KEEP.
+  - Any claim that the scaffolding meta-files or `.agent.toml` are missing.
+- **Durable artifacts:** the ai-maestro#41 ruling comment (the authoritative
+  Q1/Q1b/Q2/Q3 answers + the independent review).
 
 ## Context
 
