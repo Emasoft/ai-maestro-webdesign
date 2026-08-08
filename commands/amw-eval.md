@@ -72,7 +72,7 @@ One-pass scan against [ai-slop-avoid](../skills/amw-design-principles/ai-slop-av
 
 ### 5. Scoring
 
-Produce a single verdict letter grade and the full breakdown:
+Produce a single verdict letter grade and the full breakdown. The block below is an **illustrative shape only** — reproduce its structure and section order, never its values. Every number in it is invented filler:
 
 ```
 # UX Evaluation — <filename or URL>

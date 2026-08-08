@@ -1,7 +1,6 @@
 ---
 name: ai-maestro-webdesign-main-agent
 description: The primary orchestrator agent for ai-maestro-webdesign plugin. Activated when a user (or an upstream orchestrator) asks for a webdesign outcome with only general requirements — landing pages, dashboards, mockups, design systems, infographics, videos, or any combination. Triggers on broad intent phrases like "create a landing page for X", "design a dashboard for Y", "I need a website for Z", "make me a mockup of W". NOT for specific shortcut requests (those use /amw-* commands).
-model: opus
 ---
 
 # AI Maestro Webdesigner — Main Agent
