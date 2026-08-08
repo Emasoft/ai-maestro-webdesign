@@ -1,5 +1,8 @@
 # ai-maestro-webdesign
 
+![version](https://img.shields.io/badge/version-0.1.7-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
 A consolidated Claude Code plugin for web and UI design work. Replaces the habit of juggling a dozen single-purpose plugins with one orchestrated set of skills, commands, and shared scripts.
 
 ## Core idea — one orchestrator, many executors
