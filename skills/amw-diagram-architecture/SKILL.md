@@ -30,7 +30,7 @@ Do NOT fire on: generic "design X" / "sketch the UI" (→ `design-principles`); 
 ## Prerequisites
 
 - **runtime_binaries (system):** none — the pipeline is pure text-to-diagram, driven by an LLM call.
-- **API access:** Claude (a capable modern Sonnet or Opus model — e.g. `claude-sonnet-4-6` or newer Opus) for the graph-generation LLM call. When running inside Claude.ai or Claude Code, the platform supplies authentication; embedded or standalone callers must supply their own `ANTHROPIC_API_KEY`.
+- **API access:** Claude (a capable modern Sonnet or Opus model — e.g. `claude-sonnet-5` or newer Opus) for the graph-generation LLM call. When running inside Claude.ai or Claude Code, the platform supplies authentication; embedded or standalone callers must supply their own `ANTHROPIC_API_KEY`.
 - **Optional downstream:** `../../bin/amw-svg-render.py` for the render-verify-finish loop when the output path is SVG or PNG.
 
 ## Interface

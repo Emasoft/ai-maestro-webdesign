@@ -17,7 +17,8 @@ Hard rules for every emission from this skill. Failure on any item triggers a re
 
 ## Model & output
 
-- **Model freshness.** Use a capable modern Claude Sonnet or Opus (e.g. `claude-sonnet-4-6` or newer). NEVER pin the legacy dated Sonnet-4 snapshot from the 2025-05 series — that snapshot is outdated and scheduled for retirement. Update the model string in [prompts](./prompts.md) whenever Anthropic ships a newer production model.
+- **Model freshness.** Use a capable modern Claude Sonnet or Opus (e.g. `claude-sonnet-5` or a newer Opus). NEVER pin a dated snapshot suffix — use the bare catalogue ID (`claude-sonnet-5`, never `claude-sonnet-5-20260xxx`), and note that `claude-sonnet-latest` / `claude-opus-latest` do not exist. Update the model string in [prompts](./prompts.md) whenever Anthropic ships a newer production model.
+- **No assistant prefill.** NEVER force JSON-first output with a trailing `{ role: "assistant", content: "{" }` turn — it returns **HTTP 400** on every current model (Sonnet 5, Opus 5, Fable 5, and the 4.6/4.7/4.8 family). Constrain the shape with `output_config.format` instead; see [TECH-structured-outputs-json](./TECH-structured-outputs-json.md).
 - **No prose wrapper by default.** The output IS the diagram. Add narration only when the caller explicitly asks for it.
 
 ## Palette coherence

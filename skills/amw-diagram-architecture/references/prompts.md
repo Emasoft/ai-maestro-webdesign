@@ -75,12 +75,17 @@ async function generateArchitecture(description) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: "claude-sonnet-4-6",
+      model: "claude-sonnet-5",
       max_tokens: 2000,
       system: SYSTEM_PROMPT,  // verbatim string above
+      output_config: {
+        format: {
+          type: "json_schema",
+          schema: GRAPH_SCHEMA  // see TECH-graph-json-schema.md
+        }
+      },
       messages: [
-        { role: "user",      content: description },
-        { role: "assistant", content: "{" }  // prefill forces JSON-first output
+        { role: "user", content: description }
       ]
     })
   });
@@ -88,27 +93,29 @@ async function generateArchitecture(description) {
   const data = await response.json();
   if (data.error) throw new Error(data.error.message);
 
-  // The model's reply continues from "{" — prepend it back before parsing
-  const raw = "{" + data.content.find(b => b.type === "text").text;
+  // output_config.format guarantees the first text block is valid JSON.
+  // repairAndParse stays as defence-in-depth, not as the primary mechanism.
+  const raw = data.content.find(b => b.type === "text").text;
   return repairAndParse(raw);
 }
 ```
 
-The assistant prefill (`content: "{"`) guarantees the model's response begins
-inside the JSON object. The caller must prepend `"{"` to the returned text
-before parsing. This eliminates all prose preamble.
+`output_config.format` constrains the response to the graph schema, so the
+reply is valid JSON with no prose preamble and nothing to prepend.
 
-Use a current capable Claude Sonnet or Opus model (e.g. `claude-sonnet-4-6`
-or a newer Opus model). Do NOT pin the legacy dated Sonnet-4 snapshot from
-the 2025-05 series — it is outdated and scheduled for retirement.
+> **Do NOT use an assistant prefill here.** A trailing
+> `{ role: "assistant", content: "{" }` turn — the technique this file used to
+> document — now returns **HTTP 400** on Sonnet 5, Opus 5, Fable 5 and the
+> whole 4.6/4.7/4.8 family. Structured outputs are its replacement. See
+> [TECH-structured-outputs-json](TECH-structured-outputs-json.md).
 
-**Bump cadence for the `model` field.** Re-check this pin quarterly. Update
-it when the snapshot is more than 6 months old, or sooner if Anthropic
-flags the current snapshot as deprecated. When running on a platform that
-exposes a non-dated alias (`claude-sonnet-latest` / `claude-opus-latest`),
-prefer the alias — the platform routes to the current best snapshot and
-removes the manual-bump requirement. Keep a named-snapshot pin only when
-the caller explicitly needs reproducible behaviour across deployments.
+**Model pin.** `claude-sonnet-5` is the current Sonnet-tier ID. Use the exact
+ID strings from the Claude model catalogue and **never append a date suffix**
+(`claude-sonnet-5`, never `claude-sonnet-5-20260xxx`). There is no
+`claude-sonnet-latest` / `claude-opus-latest` alias — those do not exist; an
+earlier revision of this file recommended them in error. Re-check this pin
+whenever Anthropic ships a newer production model, per
+[non-negotiables](./non-negotiables.md) → Model freshness.
 
 ---
 

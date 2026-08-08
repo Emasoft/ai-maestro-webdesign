@@ -1,119 +1,53 @@
 ---
 name: TECH-assistant-prefill-json
 category: architecture-graph
+status: superseded
+superseded-by: TECH-structured-outputs-json
 source: SKILLS-TO-INTEGRATE/diagrams-skills/architecture-canvas/references/prompts.md
 also-in:
 ---
-## Table of Contents
 
-- [What it does](#what-it-does)
-- [When to use](#when-to-use)
-- [How it works](#how-it-works)
-- [Minimal example](#minimal-example)
-- [Gotchas](#gotchas)
-- [Cross-references](#cross-references)
+# TECH-assistant-prefill-json — SUPERSEDED
 
-# TECH-assistant-prefill-json
+> **DO NOT USE THIS TECHNIQUE. It returns HTTP 400 on every current Claude model.**
+>
+> Use **[TECH-structured-outputs-json](TECH-structured-outputs-json.md)** instead.
 
-## What it does
+This file is retained as a redirect so its existing cross-references keep
+resolving. The technique it used to document has been removed from the API.
 
-Uses the Claude API's **assistant prefill** feature to force the model's
-output to begin inside a JSON object — no prose preamble, no markdown
-fences, no apology text. Prepend `"{" ` to the assistant's content, run
-the call, then prepend `"{"` back to the response text before parsing.
+## What changed
 
-## When to use
-
-- **Every graph-generation call.** The system prompt tells the model to
-  return raw JSON, but LLMs periodically slip in explanatory prose. The
-  prefill is the mechanical guard against that.
-- **Any other call** where the output must be structured JSON with no
-  surrounding text — config generation, tool-call-like responses,
-  schema-validated answers.
-
-## How it works
-
-Claude API messages with prefill:
+Forcing JSON-first output with a trailing assistant turn —
 
 ```javascript
-const response = await fetch("https://api.anthropic.com/v1/messages", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    model: "claude-sonnet-4-6",
-    max_tokens: 2000,
-    system: SYSTEM_PROMPT,
-    messages: [
-      { role: "user",      content: description },
-      { role: "assistant", content: "{" }            // prefill
-    ]
-  })
-});
-
-const data = await response.json();
-if (data.error) throw new Error(data.error.message);
-
-// The model's reply continues from "{" — prepend it back before parsing
-const raw = "{" + data.content.find(b => b.type === "text").text;
-return repairAndParse(raw);
+{ role: "assistant", content: "{" }   // ← no longer valid
 ```
 
-The prefill guarantees:
+— is a **last-assistant-turn prefill**. Prefills were removed from the Claude
+API and now return **HTTP 400** on Sonnet 5, Opus 5, Fable 5, and the entire
+4.6 / 4.7 / 4.8 family. There is no model still in the catalogue on which this
+skill's documented call pattern would have worked.
 
-- The model's response begins inside the JSON object — no prose preamble.
-- The first token it emits is constrained to "valid JSON continuation".
-- Any apology text or "here's your diagram:" prefix is eliminated.
+The replacement is **structured outputs** (`output_config.format` with a
+`json_schema`), which constrains the whole object rather than just the first
+token, and needs no client-side re-prepending of `"{"`.
 
-## Minimal example
+## Migrating a caller
 
-User description → assistant reply (with prefill):
+1. Delete the trailing `{ role: "assistant", content: "{" }` message.
+2. Add `output_config: { format: { type: "json_schema", schema: GRAPH_SCHEMA } }`.
+3. **Delete the `"{" +` prepend** before parsing — the response is now the
+   complete object, and prepending produces `{{…` which fails to parse.
+4. Keep `repairAndParse` as defence-in-depth for truncation.
 
-```
-User: "analytics SaaS with web + mobile + api + postgres"
-
-Assistant (with prefill "{"): continues emitting...
-"title": "Analytics SaaS", "subtitle": "...", "layers": [...], ...}
-```
-
-After the call, client prepends `"{"` and parses:
-
-```javascript
-const raw = "{" + responseText;
-// raw = '{"title": "Analytics SaaS", ...}'
-JSON.parse(raw);   // works
-```
-
-## Gotchas
-
-- **Do not prefill with `{"`** (quote after brace). Prefill `"{"` only —
-  the opening brace, nothing else. The model will emit the first key's
-  quote, its name, etc.
-- **Prepend `"{"` when parsing.** The prefill text itself is NOT echoed
-  in `response.content`; it's the STARTING point from which the model
-  continued. So the returned text starts with `"title":...`, not
-  `{"title":...`.
-- **Still run `repairAndParse`.** Even with the prefill, models
-  occasionally close a JSON string with a literal newline, forget a
-  comma, or include a stray markdown fence. See
-  [TECH-json-repair-recipe](TECH-json-repair-recipe.md) for the recovery logic.
-- **Set `max_tokens` high enough.** A 10-node graph serialises to ~800
-  tokens; cap at 2000 to allow for Stage 1 expansion (descriptions,
-  labels). Running out of tokens mid-object produces unparseable
-  output that repair can't always recover.
-- **Prefill works on Claude, not generic LLMs.** If this skill is ever
-  ported to a different provider, the equivalent trick is usually a
-  strict `response_format: json_schema` — but even that is imperfect;
-  re-test the prompt under the new model before trusting it.
+Full pattern and gotchas: [TECH-structured-outputs-json](TECH-structured-outputs-json.md).
 
 ## Cross-references
 
-- [prompts](prompts.md) — the full API call pattern
+- [TECH-structured-outputs-json](TECH-structured-outputs-json.md) — **the replacement; read this instead**
+- [prompts](prompts.md) — the full API call pattern (already migrated)
   > System Prompt · API Call Pattern · JSON Repair
-- [TECH-json-repair-recipe](TECH-json-repair-recipe.md) — downstream repair if parsing still
-  > What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
-  fails
-- [TECH-stage1-graph-validation](TECH-stage1-graph-validation.md) — structural validation after parse
-  > What it does · When to use · How it works · 1 Layer count · 2 Node count · 3 Layer balance · 4 Node label quality · 5 Edge integrity · 6 ID integrity · 7 Layer order sequence · Minimal example · Gotchas · Cross-references
+- [TECH-json-repair-recipe](TECH-json-repair-recipe.md) — downstream repair if parsing still fails
 - [TECH-graph-json-schema](TECH-graph-json-schema.md) — the target schema
-  > What it does · When to use · How it works · Constraints · Minimal example · Gotchas · Cross-references
 - [[SKILL](../SKILL.md)](../SKILL.md) — parent skill
