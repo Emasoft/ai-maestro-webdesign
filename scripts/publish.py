@@ -587,6 +587,29 @@ def _get_origin_slug(root: Path) -> str | None:
     return f"{parts[0]}/{parts[1]}"
 
 
+def _ratified_baseline_rulesets(slug: str) -> list[str] | None:
+    """Names of ratified `baseline-*` rulesets on the origin, or None if unknown.
+
+    None means the query itself failed — the caller MUST treat that as "cannot
+    prove it is safe" and refuse, not as "none present". See the guard in
+    install_branch_rules for why the distinction is load-bearing.
+    """
+    try:
+        r = subprocess.run(
+            ["gh", "api", f"repos/{slug}/rulesets", "--jq", "[.[].name]"],
+            capture_output=True, text=True, check=False,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if r.returncode != 0:
+        return None
+    try:
+        names = json.loads(r.stdout or "[]")
+    except json.JSONDecodeError:
+        return None
+    return [n for n in names if isinstance(n, str) and n.startswith("baseline-")]
+
+
 def install_branch_rules(root: Path) -> int:
     """Apply the cpv-branch-rules ruleset to the repo's GitHub origin.
 
@@ -596,6 +619,21 @@ def install_branch_rules(root: Path) -> int:
     gate that enforces CI as a required status check — the local pre-push
     hook alone is bypassable with `git push --no-verify`, but a ruleset is
     enforced by GitHub itself.
+
+    REFUSES on a repo already carrying the ratified `baseline-*` pair. Verified
+    against cpv-setup-branch-rules at v2.153.4: that script contains ZERO
+    occurrences of "baseline-", hardcodes RULESET_NAME = "cpv-branch-rules",
+    and classifies any ruleset carrying pull_request / required_status_checks /
+    required_signatures / code_quality as "legacy" — then prints
+    `gh api --method DELETE .../rulesets/<id>` for each. `baseline-pr-and-checks`
+    matches that shape exactly (pull_request + required_status_checks), so
+    running this on a baseline repo hands the operator a command that deletes
+    the ratified PR-and-checks gate. `baseline-history-protect` does NOT match
+    (deletion + non_fast_forward only), which is what makes the failure
+    partial and easy to miss: the loud rule survives, the gating one is named
+    for deletion. Removing a baseline ruleset is a Tier-2 governance change
+    that requires MANAGER approval, so this path must never make it a
+    copy-paste away. Upstream: claude-plugins-validation#203.
     """
     cprint(f"\\n{BOLD}Installing branch-protection ruleset...{NC}")
     slug = _get_origin_slug(root)
@@ -604,6 +642,24 @@ def install_branch_rules(root: Path) -> int:
         cprint(f"  {YELLOW}Set `git remote add origin <url>` first, then retry.{NC}")
         return 1
     cprint(f"  Target repo: {slug}")
+
+    # Fail CLOSED: an unreadable ruleset list cannot prove the baseline is
+    # absent, and the cost of a false refusal (re-run after fixing gh auth) is
+    # trivial next to the cost of a false proceed (a deleted protection gate).
+    baseline = _ratified_baseline_rulesets(slug)
+    if baseline is None:
+        cprint(f"  {RED}Could not read the ruleset list for {slug} — refusing.{NC}")
+        cprint(f"  {YELLOW}Check `gh auth status`, then retry.{NC}")
+        return 1
+    if baseline:
+        cprint(f"  {RED}REFUSED — {slug} already carries the ratified baseline:{NC}")
+        for name in baseline:
+            cprint(f"    - {name}")
+        cprint(f"  {YELLOW}cpv-setup-branch-rules knows nothing about `baseline-*`. It would{NC}")
+        cprint(f"  {YELLOW}install `cpv-branch-rules` alongside them and print a DELETE for{NC}")
+        cprint(f"  {YELLOW}`baseline-pr-and-checks` as a 'legacy' ruleset. Deleting it is a{NC}")
+        cprint(f"  {YELLOW}Tier-2 governance change and is not this script's to propose.{NC}")
+        return 1
     try:
         r = subprocess.run(
             [
