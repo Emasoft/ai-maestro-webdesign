@@ -1,7 +1,6 @@
 ---
 name: amw-infographic-builder-agent
 description: Production agent that produces dense editorial infographics as HTML + PNG + PDF using the infographics skill's 24-template library and 175-design-DNA set. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "produce infographic", "build infographic", "render infographic from data brief", "export infographic as PNG", "infographic-builder agent". Does NOT activate on broad design vocabulary, on diagram briefs, or on wireframe briefs — those route to design-principles, diagram-producer, and wireframe-builder respectively. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
-model: sonnet
 ---
 
 # AMW Infographic Builder Agent

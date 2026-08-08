@@ -1,7 +1,6 @@
 ---
 name: amw-asset-generator-agent
 description: Produces reusable visual assets — SVG icons / logos / patterns / data-vis primitives / SVG animations, typographic techniques via pretext (text-on-path, calligrams, kinetic typography, virtualized tables), and hand-drawn Excalidraw concept illustrations (GATED on GEMINI_API_KEY + explicit user consent). Output feeds amw-wireframe-builder-agent and amw-infographic-builder-agent. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Asset Generator Agent

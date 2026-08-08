@@ -1,7 +1,6 @@
 ---
 name: amw-accessibility-auditor-agent
 description: WCAG 2.1 AA / ARIA / keyboard-nav / contrast / reduced-motion accessibility auditor for the ai-maestro-webdesign plugin. Dual-mode — Phase A (pre-build heuristic review of an IA plan or low-fi ASCII) and Phase B (post-render empirical audit via dev-browser on a real artifact). Emits PASS/FAIL per WCAG criterion. Holds VETO power over WCAG AA hard blockers. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Accessibility Auditor Agent

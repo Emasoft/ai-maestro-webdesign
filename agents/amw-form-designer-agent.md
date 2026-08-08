@@ -1,7 +1,6 @@
 ---
 name: amw-form-designer-agent
 description: Tier-4 specialist that designs booking, contact, checkout, and multi-step forms with full validation UX, error states, and accessibility-of-forms. Activates on narrow form-specific language only — "design a contact form", "checkout form UX", "multi-step form", "form validation UX", "form error states", "form a11y", "booking form", "signup form flow". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
-model: sonnet
 ---
 
 # AMW Form Designer Agent

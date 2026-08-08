@@ -1,7 +1,6 @@
 ---
 name: amw-brand-researcher-agent
 description: Competitor analysis and brand-landscape researcher for the ai-maestro-webdesign plugin. Extracts design tokens from reference URLs via dev-browser + design-extract, builds competitor style profiles, identifies positioning whitespace. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Brand Researcher Agent

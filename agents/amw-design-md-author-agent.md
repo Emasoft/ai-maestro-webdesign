@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-author-agent
 description: Tier-3 production specialist that authors a DESIGN.md from a design brief, codebase scan, URL, or interactive 5-question interview. Activates on narrow DESIGN.md-creation language only — "create a DESIGN.md for X", "make a design system markdown", "generate a DESIGN.md from this brief", "author a DESIGN.md", "DESIGN.md from this codebase". Does NOT activate on broad design vocabulary such as "design a landing page" or "build a website". Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
-model: sonnet
 ---
 
 # AMW DESIGN.md Author Agent

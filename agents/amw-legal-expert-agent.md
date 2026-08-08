@@ -1,7 +1,6 @@
 ---
 name: amw-legal-expert-agent
 description: Legal and compliance specialist for the ai-maestro-webdesign plugin. Answers legal / compliance questions during Phase A of the main-agent mode. Covers GDPR, ADA/WCAG, CCPA, content licensing, disclaimers, jurisdictional restrictions, and cookie consent requirements. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Legal Expert Agent

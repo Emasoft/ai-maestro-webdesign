@@ -1,7 +1,6 @@
 ---
 name: amw-video-producer-agent
 description: Renders composed HTML timeline scenes to MP4 video via hyperframes-bridge and the on-demand external hyperframes dependency (cloned to the gitignored external/hyperframes/ path, driven via npx hyperframes — not a vendored submodule). Narrow triggers only — HTML-to-MP4 composition rendering, never generic "make a video" requests. Validates the hyperframes dependency is present before rendering (fail-fast). Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Video Producer Agent

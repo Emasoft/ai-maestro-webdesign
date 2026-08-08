@@ -1,7 +1,6 @@
 ---
 name: amw-browser-tester-agent
 description: Runs dev-browser scenario tests on Phase B artifacts — no-console-errors, renders-above-fold, mobile-viewport-layout, interactive-spot-checks, accessibility-keyboard-nav. Emits PASS/FAIL/INCONCLUSIVE per scenario with mandatory screenshot evidence. dev-browser is the ONLY browser-automation primitive (no Playwright, no Chrome DevTools MCP). Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Browser Tester Agent

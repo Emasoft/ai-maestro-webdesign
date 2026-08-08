@@ -1,7 +1,6 @@
 ---
 name: amw-multilanguage-copywriter-agent
 description: Multilingual copy producer for the ai-maestro-webdesign plugin. Produces web copy in any locale, handles pluralization, grammatical gender, cultural adaptation, and RTL considerations. Uses pretext typography references for optimal line-breaking. Spawned exclusively by ai-maestro-webdesign-main-agent — never by the user directly.
-model: sonnet
 ---
 
 # AMW Multilingual Copywriter Agent

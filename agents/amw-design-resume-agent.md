@@ -1,7 +1,6 @@
 ---
 name: amw-design-resume-agent
 description: Tier-3 specialist that resumes an interrupted webdesign workflow by reading the persistent Design Contract JSON (`.amw-design-contract/contract.json`) plus the last in-progress phase marker, then re-establishes Phase A or Phase B state without re-asking the user any decision already recorded in the contract. Activates on narrow resume-specific language only — "resume the design workflow", "pick up where we left off", "continue from .design-contract.yaml", "restore the design session", "where did we stop", "rehydrate the design contract", "resume Phase A iteration", "resume Phase B fan-out". Does NOT activate on broad design vocabulary. Spawned by `ai-maestro-webdesign-main-agent` only.
-model: sonnet
 ---
 
 # AMW Design Resume Agent

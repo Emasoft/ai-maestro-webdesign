@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-extractor-agent
 description: Tier-3 production specialist that extracts a Variant 1 DESIGN.md from one of three concrete inputs — a live URL, a Tailwind config + globals.css pair, or a project codebase. Activates on narrow extraction phrases only — "extract DESIGN.md from <url>", "extract DESIGN.md from this Tailwind config", "extract DESIGN.md from this codebase", "DESIGN.md from <url>", "scrape DESIGN.md from this site", "build a DESIGN.md from our Tailwind config", "scan codebase into DESIGN.md". Does NOT activate on broad design vocabulary such as "extract design tokens" or "design a landing page" — those route to amw-design-extract or amw-design-principles. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly. Has NO veto power.
-model: sonnet
 ---
 
 # AMW DESIGN.md Extractor Agent

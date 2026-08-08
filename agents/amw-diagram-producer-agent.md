@@ -1,7 +1,6 @@
 ---
 name: amw-diagram-producer-agent
 description: Production agent that produces diagrams in any of 5 supported formats (ASCII, HTML, SVG, Mermaid, PNG — PNG is output-only, never input). Owns the format-selection decision based on audience + medium + content type. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "produce diagram", "build diagram", "render diagram", "convert diagram format", "diagram-producer agent". Does NOT activate on broad design vocabulary — those route to design-principles. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
-model: sonnet
 ---
 
 # AMW Diagram Producer Agent

@@ -1,7 +1,6 @@
 ---
 name: amw-email-designer-agent
 description: Tier-4 specialist that designs transactional and marketing email templates using table-layout responsive HTML and MJML, with full email-client constraint awareness (Outlook/Gmail/Apple Mail rendering matrix), dark-mode variants, plain-text fallback, and CAN-SPAM/CASL compliance footers. Activates on narrow email-specific language only — "design a confirmation email", "email template", "transactional email", "welcome email", "MJML template", "email client testing", "abandoned-cart email", "digest email". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
-model: sonnet
 ---
 
 # AMW Email Designer Agent

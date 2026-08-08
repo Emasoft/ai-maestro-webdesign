@@ -1,7 +1,6 @@
 ---
 name: amw-design-md-auditor-agent
 description: Tier-2 discovery specialist that performs a 5-pass audit of a DESIGN.md file — structural integrity, token drift against codebase, accessibility (WCAG contrast), section completeness, and cross-token consistency. Activates on narrow DESIGN.md-audit language only — "audit DESIGN.md", "review DESIGN.md", "check DESIGN.md", "validate DESIGN.md", "DESIGN.md drift check", "check DESIGN.md against codebase". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly. Has NO veto power.
-model: sonnet
 ---
 
 # AMW DESIGN.md Auditor Agent

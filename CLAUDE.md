@@ -173,9 +173,10 @@ New sub-agents follow the pattern `amw-<role>-agent.md` and are placed in `agent
 ### Delegation rule (hard invariants)
 
 1. Sub-agents NEVER interact with the user directly. All user communication flows through `ai-maestro-webdesign-main-agent`.
-2. Delegation is one-way: main-agent → sub-agent → main-agent. Sub-agents do NOT call peer sub-agents directly (prevents loops and keeps context isolated).
+2. Delegation is one-way: main-agent → sub-agent → main-agent. Sub-agents do NOT call peer `amw-*` sub-agents directly (prevents loops and keeps context isolated). **One-way is not the same as single-level** — a sub-agent MAY fan out to `general-purpose` workers for bounded sub-work, per `skills/amw-design-principles/references/skill-invocation-protocol.md`. What is forbidden is a peer or upward call, not depth.
 3. Sub-agents return structured YAML headers per the canonical schema; main-agent parses the header mechanically and only reads the full markdown body when the summary is insufficient.
 4. Veto-holding sub-agents (legal-expert, accessibility-auditor) block Phase B forward progress on their veto domain until user override or resolution.
+5. Only `ai-maestro-webdesign-main-agent.md` carries a `model:` key (`opus`). The 23 `amw-*` sub-agents carry **none** and inherit the session model — role-plugins spec **RP-VAL-06**. Do not re-add per-agent pins.
 
 ---
 
@@ -356,20 +357,27 @@ The plugin now ships a full cross-format diagram authoring, conversion, comparis
 2. **`external/hyperframes/` on-demand external dependency** — NO longer a git submodule (the submodule was dropped 2026-06-21, commit 0a207db). `external/hyperframes/` is now a gitignored path that hyperframes-bridge clones on demand from `https://github.com/heygen-com/hyperframes` (canonical fork) at v0.4.30 (244MB) and shells out to via `npx hyperframes`; nothing under `external/hyperframes/` is committed or shipped. Bridge skill + agent are aligned to v0.4.30. The bridge previously documented an invalid `bun run render --input <html>` invocation — that was a pre-existing bug (the script never existed; `--input` was never a real flag). Render path is now `cd <project_dir> && npx hyperframes render --output <mp4>` with two contracts (default `html_scene_path` → bridge scaffolds a temp project; advanced `project_dir` → bridge uses directly). Pre-render gate sequence is `lint → validate → inspect → render` (added `inspect` — new in v0.4.30 — for visual layout audit). New attribute `data-variable-values` documented for per-instance variable injection into sub-compositions.
 3. **Publishing** — eventual push to `Emasoft/ai-maestro-plugins` after runtime acceptance.
 
-## Claude Code compatibility (reviewed against v2.1.178, 2026-06-16)
+## Claude Code compatibility (reviewed against v2.1.224, 2026-08-08)
 
-The plugin's shipped content was assessed against the Claude Code changelog through **v2.1.178** (2026-06-16). **Verdict: fully compatible — no shipped-content change warranted.** Verified: no reference to the removed `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` env var, no use of the renamed `/simplify` command (now `/code-review`), no deprecated model IDs, and `plugin.json` carries no stray `defaultEnabled`. Model pins are current family aliases (`sonnet` → 4.6, `opus` → 4.8) that resolve to the latest tier automatically.
+The plugin's shipped content was assessed against the Claude Code changelog through **v2.1.224**. **Verdict: compatible — one shipped-content change was warranted and applied** (the model-pin row below). Every exposure claim here was re-checked against the repo this pass, not recalled:
 
-Plugin-author features introduced in that window were each assessed and **deliberately not adopted** — each is a poor fit for this plugin, not an oversight:
+- **Zero `context:` frontmatter keys** anywhere in `agents/`, `skills/`, or `commands/` — 2.1.218's `context: fork` → run-in-background default cannot reach this plugin. (Probe the key anchored at column 0, `grep -rn '^context:'`; an unanchored search matches every CSS `background:` declaration in the infographic palettes.)
+- **Zero agent names containing `:`** — 2.1.222 now rejects those at load; nothing here is affected.
+- The single shipped hook (`hooks/hooks.json`, one `UserPromptSubmit` nudge) declares **no `if:` conditions** — 2.1.214's hook-matcher glob narrowing does not apply.
+- The plugin ships **no permission allow/deny list** — the 2.1.210 / 2.1.214 permission-rule changes are the user's `settings.json` concern.
+- No reference to the removed `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` env var, no use of the renamed `/simplify` or `/review` commands (both are now `/code-review`, 2.1.222), no `ultraplan` reference (removed 2.1.222), and `plugin.json` carries no stray `defaultEnabled`.
 
 | CC feature (version) | Decision | Why |
 |---|---|---|
-| `disallowed-tools` skill/command frontmatter (2.1.152) | not adopted | webdesign's two gated skills (`amw-svg-creator`, `amw-excalidraw-illustrations`) are gated by **scope / API-cost**, not tool-access; restricting tools wouldn't enforce either gate. A deliberate read-only tightening of the VETO/audit sub-agents' `tools:` is a possible future improvement — but it belongs in its own tested pass, not a drive-by. |
+| Opus 5 default + family-alias resolution (2.1.219, alias step-down fixed 2.1.222) | **adopted — content changed** | `sonnet` / `opus` are family aliases resolving to the *current* tier: today `opus` → Opus 5, `sonnet` → Sonnet 5. Per the ai-maestro role-plugins spec **RP-VAL-06**, the 23 `amw-*` sub-agents now carry **no `model:` key** and inherit the session model; only `agents/ai-maestro-webdesign-main-agent.md` pins `model: opus` (**RP-MODEL-01**), matching `model = "opus"` in `ai-maestro-webdesign.agent.toml`. |
+| Subagent nesting + concurrency (2.1.217 disabled nesting by default, capped concurrency at 20; 2.1.219 restored a depth-3 default; 2.1.224 removed the 200-per-session spawn cap) | no change needed | The plugin's delegation rule is **one-way, not single-level**. A sub-agent must never call a peer `amw-*` agent (loop prevention, context isolation) but **may** fan out to `general-purpose` workers for bounded sub-work — see `skills/amw-design-principles/references/skill-invocation-protocol.md`. That is main-agent → sub-agent → worker, which the depth-3 default covers with room to spare. |
+| `disallowed-tools` skill/command frontmatter (2.1.152) | not adopted | Verified: all four read-only/VETO candidates (`amw-accessibility-auditor-agent`, `amw-legal-expert-agent`, `amw-design-md-auditor-agent`, `amw-slop-verifier-agent`) write their findings to `reports/webdesigner/`, so denying Write would break them. The two gated skills (`amw-svg-creator`, `amw-excalidraw-illustrations`) are gated by **scope / API cost**, not tool access — restricting tools enforces neither gate. |
 | `defaultEnabled: false` in plugin.json (2.1.154) | not adopted | webdesign is a deliberately-installed full design system; it should be enabled on install, not opt-in. |
-| 5-level subagent nesting (2.1.172) | not adopted | delegation is **intentionally one-way / single-level** (main-agent → sub-agent → main-agent) for context isolation and loop-prevention; the deeper-nesting capability does not change that design. |
-| `Tool(param:value)` permission rules, e.g. `Agent(model:opus)` (2.1.178) | not adopted | the plugin ships no permission allow/deny list; permissions are the user's `settings.json` concern. |
-| Opus 4.8 default + high effort (2.1.154) | already aligned | sub-agents pin `model: sonnet` (cost), the orchestrator pins `model: opus` (→ 4.8). No `model:` pin names a deprecated tier. |
-| `SessionStart reloadSkills`/`sessionTitle`, `MessageDisplay` hook (2.1.152) | not adopted | the plugin ships one `UserPromptSubmit` nudge; none of these new hook surfaces are needed. |
+| `Tool(param:value)` permission rules, e.g. `Agent(model:opus)` (2.1.178) | not adopted | the plugin ships no permission allow/deny list. |
+| `archive` plugin source with SHA-256 pinning (2.1.224) | not adopted | distribution is the `Emasoft/ai-maestro-plugins` marketplace over a git source, which stays the canonical install path; an archive source would be a second, divergent one. |
+| `SessionStart reloadSkills` / `sessionTitle`, `MessageDisplay` hook (2.1.152) | not adopted | the plugin ships one `UserPromptSubmit` nudge; none of these new hook surfaces are needed. |
+
+**Maintenance tool, not a shipped feature:** `/claude-api prompt-audit` (2.1.221) audits prompt text for patterns written for older models. Run it **read-only** against `skills/`, `agents/`, and `commands/`, landing findings in gitignored `reports_dev/` — never apply its diff wholesale, since much of this plugin's imperative language is load-bearing (validator gates, satisfaction gates, veto rules).
 
 Re-run this assessment when bumping the plugin's minimum CC version, and update the reviewed-against version above.
 

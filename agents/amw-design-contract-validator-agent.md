@@ -1,7 +1,6 @@
 ---
 name: amw-design-contract-validator-agent
 description: Tier-4 specialist that validates the Persistent Design Contract JSON document at session-checkpoint moments (end of Phase A discovery, before every Phase B fan-out, after any locked-decision update). Activates on narrow contract-validation-specific language only — "validate the design contract", "check the persistent contract", "contract BLOCK FLAG PASS", "is the contract ready for Phase B", "contract self-check", "design-forge contract validator", "session contract audit". Does NOT activate on broad design vocabulary. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly. Carries the LLM self-check prompt that pairs with bin/amw-design-contract-validate.py for semantic findings the mechanical validator cannot catch.
-model: sonnet
 ---
 
 # AMW Design Contract Validator Agent

@@ -1,7 +1,6 @@
 ---
 name: amw-wireframe-builder-agent
 description: Production agent that converts an approved, validator-PASS ASCII wireframe into production-ready HTML with brand tokens, shadcn/ui integration, Tailwind v4 styling, and responsive fit. Activates in Phase B only — main-agent spawns it after the satisfaction-gate token is emitted. Narrow triggers — "build wireframe HTML", "produce HTML from approved ASCII", "render approved wireframe", "convert approved ASCII to production HTML". Does NOT activate on broad design vocabulary — those route to design-principles. Spawned exclusively by ai-maestro-webdesign-main-agent; never invoked by the user directly.
-model: sonnet
 ---
 
 # AMW Wireframe Builder Agent
