@@ -43,7 +43,7 @@ against a working copy at 1.5.0.
 **Conformance point of record — 2026-08-08, webdesign v0.1.9.**
 `design/specs/role-plugins-spec.md` @ `governance-rules`, blob
 `7757c76f75fc249e3b2ac9df72b37bc4833d9dad`, `spec-version: 1.0.1`.
-A different blob sha means the spec moved: re-read it before citing any clause.
+A different blob sha means the spec moved: re-read it before citing any clause. [^2]
 
 
 ^ATOM-BE2Y-JJYJ [desc:"the canonical six-sha fingerprint does NOT cover role-plugins-spec.md — watching it would leave webdesign's governing doc unwatched", keywords: does_the_six_sha_fingerprint_cover_us which_files_are_in_the_canonical_fingerprint is_role-plugins-spec_in_the_fingerprint what_should_webdesign_actually_watch, type: project, ocd: 2026-08-08, lmd: 2026-08-08]
@@ -61,3 +61,4 @@ listing `GOVERNANCE-RULES.md` inside it — seven items called six — and omitt
 ## Notes and lessons learned
 
 [^1]: [id:ATOM-LVBG-L3ED, status:valid, keywords:"a_spec_clause_I_cited_was_reversed why_did_we_ship_a_wrong_citation is_the_served_spec_the_current_spec an_amendment_not_served_is_not_published pin_the_spec-version_in_every_citation", ocd:2026-08-08, lmd:2026-08-08] DO NOT cite a clause from this spec without also reading its `spec-version:` line and pinning that version in the citation, BECAUSE an amendment the authority does not SERVE is not published however correct its text — webdesign shipped v0.1.8 citing RP-MODEL-01 from spec-version 1.0.0 hours before learning 1.0.1 had REVERSED that exact clause, and nothing in the 1.0.0 fetch hinted a newer text existed. DO record the blob sha + spec-version you conformed against (this page's atom), and re-check the blob before re-citing.
+[^2]: [id:ATOM-4Z10-7ZEM, status:valid, keywords:"the_blob_sha_moved_what_changed is_a_changed_sha_enough_to_act_on do_I_need_to_re-read_after_a_sha_change stamp_is_a_prompt_not_a_substitute", ocd:2026-08-08, lmd:2026-08-08] DO NOT treat a changed blob sha as telling you WHAT changed, BECAUSE a sha is a one-bit signal — it says these bytes differ, never which clause moved or whether the change even touches you. The stamp is a prompt to RE-READ, not a substitute for reading. DO re-fetch the document and re-check the specific clauses you cite whenever the sha differs from the recorded one; and keep the read-DATE beside the sha, because an undated pin cannot go stale, it can only be silently wrong.
