@@ -47,7 +47,7 @@ Three stacked sections:
 Week 1      Week 2      Week 3      Week 4
 |-----------|-----------|-----------|-----------|
 Plan        Build       QA          Launch      Post
-@alice      @dev-team   @qa-team    @launch     @all
+<owner>     <team>      <team2>     <launch>    <everyone>
 
 Highlights:
   Week 2 -- migration framework shipped (PR #123)
@@ -55,8 +55,8 @@ Highlights:
   Week 4 -- soft launch succeeded, +12% DAU
 
 Actions:
-  [ ] Fix incident #42 runbook (@oncall, due 04-28)
-  [ ] Remove dead migration code (@db-team, due 05-05)
+  [ ] Fix incident #42 runbook (<oncall>, due 04-28)
+  [ ] Remove dead migration code (<team>, due 05-05)
 ```
 
 ## Gotchas

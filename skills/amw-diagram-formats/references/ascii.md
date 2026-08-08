@@ -84,7 +84,7 @@ Inline bracketed tokens carry semantic meaning (picked up by parsers and the HTM
 | `[ ]` | Unchecked | `<input type="checkbox">` |
 | `(*)` | Radio selected | `<input type="radio" checked>` |
 | `( )` | Radio unselected | `<input type="radio">` |
-| `(@alice)` | Owner / assignee | `<span class="owner">` |
+| `(@<owner>)` | Owner / assignee | `<span class="owner">` |
 | `<placeholder>` | Template variable | `<input placeholder>` |
 
 ---
@@ -230,7 +230,7 @@ TECH-36 tree-branch-pipes: `+-- src/` / `|   +-- utils/` / `|   |   +-- helpers.
 
 TECH-37 swimlane-grid: `+------+------+` header row splitting two columns with named lanes `Went Well | Needs Attention` | source: tools-visual-retro/SKILL.md:19-24 | applies-to: retro grids, pros/cons, A/B comparison inside the frame
 TECH-38 heatmap-intensity-markers: `[++]` / `[+]` / `[~]` / `[!]` inline markers for relative intensity | source: tools-visual-retro/SKILL.md:27 | applies-to: heat signals, severity key, quality grades
-TECH-39 owner-tag: `(@alice)` appended right of action items for attribution | source: tools-visual-retro/SKILL.md:29 | applies-to: assigned alerts, task owners, responsibility indicators
+TECH-39 owner-tag: `(@<owner>)` appended right of action items for attribution | source: tools-visual-retro/SKILL.md:29 | applies-to: assigned alerts, task owners, responsibility indicators
 TECH-40 metric-delta: `+12% DAU` / `-4% churn` inline adjacent to the label, sign-prefixed | source: tools-visual-retro/SKILL.md:28 | applies-to: change columns in KPI grids, trend callouts
 TECH-41 protocol-label-arrow: `---- HTTP ---->` / `---- gRPC ---->` edge label on the arrow line | source: tools-visual-ascii-arch/SKILL.md:25 | applies-to: architecture edges, annotated service calls
 TECH-42 async-squiggle: `~~>` on async events vs `==>` on sync calls | source: tools-visual-workflows/SKILL.md:24 | applies-to: event bus, pub/sub, webhooks

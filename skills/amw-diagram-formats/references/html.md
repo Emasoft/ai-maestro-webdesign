@@ -356,7 +356,7 @@ TECH-72 T-junction-to-grid: `┬/┴` columns → CSS `grid-template-columns: re
 TECH-73 three-peer-row-to-grid-3: 3 same-width cards side-by-side 3 spaces apart → `grid-template-columns: repeat(3, 1fr)` | source: ascii-creator/references/techniques.md:TECH-14 | applies-to: KPI triplet, feature triplet
 TECH-74 dropdown-glyph-to-select: `▾` inside button frame → `<select>` OR `<button aria-haspopup="listbox" aria-expanded="false">` | source: ascii-creator/references/techniques.md + ascii-parse.py:classify | applies-to: "you ▾" / "Week ▾" patterns
 TECH-75 bracket-marker-alert: `[!]` / `[*]` inline marker → `role="alert"` card with semantic severity icon | source: ascii-creator/references/techniques.md:TECH-38 | applies-to: alert cards with `[!]` prefix
-TECH-76 owner-tag-parens: `(@sre-oncall)` → `<span class="owner" aria-label="Assigned to SRE on-call">@sre-oncall</span>` | source: ascii-creator/references/techniques.md:TECH-39 | applies-to: attribution labels
+TECH-76 owner-tag-parens: `(@<oncall>)` → `<span class="owner" aria-label="Assigned to SRE on-call">@<oncall></span>` | source: ascii-creator/references/techniques.md:TECH-39 | applies-to: attribution labels
 TECH-77 metric-delta-sign: `+12% DAU` / `-4% churn` sign-prefixed → `<span class="delta delta-positive">` or `delta-negative` | source: ascii-creator/references/techniques.md:TECH-40 | applies-to: KPI delta rows
 TECH-78 sparkline-axis-to-svg: `│ ────────── │` axis-like row → inline `<svg>` polyline (placeholder when no real data) | source: ascii-creator/references/techniques.md | applies-to: KPI card axis row
 TECH-79 numbered-stage-to-ol: `1. ALERT` / `2. TRIAGE` → `<ol>` with `<li>` — never `<ul>` | source: ascii-creator/references/techniques.md:TECH-11 | applies-to: numbered stage lists

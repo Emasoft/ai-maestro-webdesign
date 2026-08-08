@@ -13,15 +13,15 @@ Three retro template archetypes — grid (categories side-by-side), milestone ti
 Use for `start/stop/continue`, `went well / needs attention`, `4Ls` (liked / learned / lacked / longed-for), or any two-to-four-category split.
 
 ```
-+----------------------------+-----------------------------+
-| Went Well                  | Needs Attention             |
-+----------------------------+-----------------------------+
-| Deploy automation shipped  | Flaky tests blocked 3 PRs   |
-| @alice, done               | @bob owns fix (due 04-28)   |
-|                            |                             |
-| +12% DAU post-launch       | Support ticket backlog +40% |
-| metric: dau_daily          | @triage-team to prioritize  |
-+----------------------------+-----------------------------+
++----------------------------+-------------------------------+
+| Went Well                  | Needs Attention               |
++----------------------------+-------------------------------+
+| Deploy automation shipped  | Flaky tests blocked 3 PRs     |
+| <owner>, done              | <owner2> owns fix (due 04-28) |
+|                            |                               |
+| +12% DAU post-launch       | Support ticket backlog +40%   |
+| metric: dau_daily          | <team> to prioritize          |
++----------------------------+-------------------------------+
 ```
 
 ## 2. Milestone timeline
@@ -32,7 +32,7 @@ Use for launch post-mortems or experiment readouts where the story is temporal.
 Week 1      Week 2      Week 3      Week 4
 |-----------|-----------|-----------|-----------|
 Plan        Build       QA          Launch      Post
-@alice      @dev-team   @qa-team    @launch     @all
+<owner>     <team>      <team2>     <launch>    <everyone>
 
 Highlights:
   Week 2 -- migration framework shipped (PR #123)
@@ -40,8 +40,8 @@ Highlights:
   Week 4 -- soft launch succeeded, +12% DAU
 
 Actions:
-  [ ] Fix incident #42 runbook (@oncall, due 04-28)
-  [ ] Remove dead migration code (@db-team, due 05-05)
+  [ ] Fix incident #42 runbook (<oncall>, due 04-28)
+  [ ] Remove dead migration code (<team>, due 05-05)
 ```
 
 ## 3. Heatmap

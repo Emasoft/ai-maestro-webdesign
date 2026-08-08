@@ -11,7 +11,7 @@ Every row maps an ASCII pattern → HTML element → which starter-component is 
 | 3 peer cards side-by-side | `<div class="row-3"><div class="card">...</div>×3</div>` CSS `grid-cols-3` | — | `--space-*`, gap | TECH-73, TECH-72 |
 | Pipe-table w/ `----\|----` rule | `<table><thead><th scope="col">` | create-infographics table primacy | `--text`, `--bg` | TECH-82, TECH-54, TECH-49 |
 | `[!]` / `[*]` prefix inside card | `<article role="alert" aria-live="polite" class="alert alert-warn">` | — | `--danger`, `--primary` | TECH-75, TECH-47 |
-| `(@name)` attribution tag | `<span class="owner">@name</span>` with `aria-label` | — | `--text-muted` | TECH-76 |
+| `(@<owner>)` attribution tag | `<span class="owner">@<owner></span>` with `aria-label` | — | `--text-muted` | TECH-76 |
 | `→ action` inline route line | `<ul class="route-list"><li>` with `::before { content:"→ "; }` | — | `--text`, `--primary` | TECH-80 |
 | `[ Text ]` / `[__ placeholder __]` | `<button>` / `<input>` with `<label for>` | form patterns | `--primary`, `--bg` | TECH-95, TECH-50 |
 | `[x] Text` / `[ ] Text` / `(o)` `( )` | `<input type="checkbox">` / `<input type="radio">` | form patterns | focus-ring | TECH-95, TECH-44 |

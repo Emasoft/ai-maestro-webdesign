@@ -33,12 +33,12 @@ parentheses after the node, not on a following prose line.
 
 | Annotation | Form | Placement |
 |---|---|---|
-| Owner | `@alice` / `@qa-team` | Inside or right after the node |
+| Owner | `<owner>` / `<team2>` | Inside or right after the node |
 | Tool / command | `gh pr checks` / `kubectl rollout` | Appended in parens |
 | SLA | `<15min` / `<24h` / `<3 days` | Appended in parens |
 | Environment tag | `[prod]` / `[staging]` | Prefix the tool/command |
 
-Combine them: `[ Run migrations ] (@db-team, <15min, prod-only)`.
+Combine them: `[ Run migrations ] (<team>, <15min, prod-only)`.
 
 ## Minimal example
 
@@ -53,7 +53,7 @@ Combine them: `[ Run migrations ] (@db-team, <15min, prod-only)`.
   |            |
   v            v
 [ Request review ]    [ Fix and push ]
-  (@reviewers, <24h)    (@author, <15min)
+  (<reviewers>, <24h)    (<author>, <15min)
 ```
 
 ## Gotchas
@@ -61,7 +61,7 @@ Combine them: `[ Run migrations ] (@db-team, <15min, prod-only)`.
 - Parenthetical metadata belongs on the same line as the node or on the
   line directly below. Putting it in a separate paragraph breaks the
   eye-tracking from node to annotation.
-- `@someone` without a verified mapping to a real handle is fabrication —
+- `<owner>` without a verified mapping to a real handle is fabrication —
   ask the user for owners before filling in.
 - SLA notation: prefer unambiguous forms (`<24h` not `fast`). The reader
   doesn't know what "fast" means in this team's culture.

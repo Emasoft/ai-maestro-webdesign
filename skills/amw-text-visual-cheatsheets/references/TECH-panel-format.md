@@ -132,7 +132,7 @@ End every panel with:
 
 - A last-tested date: `Last verified: 2026-04-22 on macOS 14 / Windows 11.`
 - Link(s) to source docs if applicable: `See: https://cli.github.com/manual/`.
-- Owner / reviewer tag if cross-team: `Owner: @platform-team.`
+- Owner / reviewer tag if cross-team: `Owner: @<team>.`
 
 Stale cheat sheets are worse than no cheat sheet. The footer forces accountability.
 

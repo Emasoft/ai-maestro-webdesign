@@ -40,7 +40,7 @@ Do NOT activate on broad "write up the retro" — that is a documentation task t
 
 1. **Retro categories** — e.g. `Went Well`, `Needs Attention`, `Risks`, `Next Bets`, `Metrics`. Or a template name (`start/stop/continue`, `4Ls`, `mad/sad/glad`, `KPT`).
 2. **Highlights and quantitative results** — short bullets per category, and key metric deltas (e.g. `+12% DAU`, `p99 latency -180ms`, `2 incidents this sprint`).
-3. **Owners and follow-up items** — action items per bullet with `@owner` and optional due date.
+3. **Owners and follow-up items** — action items per bullet with `<owner>` and optional due date.
 4. **Distribution target** — PR description, GitHub Discussion, Slack, Notion, canonical project doc. Determines width and format.
 
 If any is missing, ask one bundled question. Retros that invent action items or fabricate owners erode team trust; ask rather than guess.
@@ -61,7 +61,8 @@ Three shapes — pick one per artifact, do not merge them. See [examples](./refe
 - **Heatmap markers:** `[ ]`  `[~]`  `[+]`  `[++]`  `[!]` — exactly this set, each rendered as a 3-char token so columns line up. No emoji.
 - **No variable-width glyphs** (`▼ ▲ ▶ ◀ ⟶ ⇒`).
 - **Metric format:** `+12% DAU`, `-180ms p99`, `2 incidents`. Prefix sign always. No rounding to suspiciously clean numbers.
-- **Owner format:** `@name` consistently. If the team is `@platform-team`, not `platform-team`.
+- **Owner format:** `<owner>` consistently. Use `<team>` for a team, never a bare, untagged name.
+- **GitHub destination:** if this artifact is pasted into a GitHub PR or Discussion, a bare `@handle` outside a code span pages that real account — including hyphenated team handles. Write the owner's name plain, or keep it inside backticks, before it ever leaves this document.
 - **Due date format:** ISO-8601 short (`2026-04-28`) or kebab-short (`04-28`) — be consistent within a single artifact.
 
 ## Extended connection types
@@ -84,7 +85,7 @@ When the retro shows causal relationships, use this arrow vocab. Pick one style 
 Every action item has three required fields, or it is not an action item:
 
 1. **What.** `[ ] Fix incident #42 runbook`.
-2. **Who.** `@oncall` or a named person.
+2. **Who.** `<oncall>` or a named person.
 3. **When.** `due 04-28` or `due next retro`.
 
 Entries without one of these are noise. If the user hasn't named a date or owner for a bullet, ask — do not default them to `TBD` unless the user explicitly wants a TBD placeholder row.
@@ -116,7 +117,7 @@ Each TECH file under `./references/` follows the standard TOC: What it does · W
 > [TECH-metric-delta-inline.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [TECH-milestone-timeline](./references/TECH-milestone-timeline.md) — weekly timeline + highlights + actions
 > [TECH-milestone-timeline.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
-- [TECH-owner-action-items](./references/TECH-owner-action-items.md) — `[ ] <action> (@owner, due YYYY-MM-DD)`
+- [TECH-owner-action-items](./references/TECH-owner-action-items.md) — `[ ] <action> (<owner>, due YYYY-MM-DD)`
 > [TECH-owner-action-items.md] What it does · When to use · How it works · Minimal example · Gotchas · Cross-references
 - [examples](./references/examples.md) — three rendered template archetypes
 > [examples.md] Grid (categories side-by-side) · Milestone timeline · Heatmap

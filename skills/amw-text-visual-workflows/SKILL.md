@@ -41,7 +41,7 @@ Do NOT activate on broad design vocabulary. If the user says "draw a diagram" or
 
 1. **Workflow steps** — the ordered actions, roles involved, and decision points.
 2. **Target medium** — GitHub PR, Slack, Notion, terminal log, README. Determines max width (GitHub ≈ 100, Slack ≈ 80, terminal ≈ 78–80).
-3. **Metadata to annotate** — owners (`@alice`), tooling (`gh pr checks`), SLA markers (`<24h`), environment tags (`[prod]`).
+3. **Metadata to annotate** — owners (`<owner>`), tooling (`gh pr checks`), SLA markers (`<24h`), environment tags (`[prod]`).
 
 If any of the three is missing, ask one question to get it. Do not guess — a diagram that fabricates owners or SLAs is a silent trust failure.
 
@@ -61,7 +61,8 @@ Three shapes — pick one per block. See [examples](./references/examples.md) fo
 - **Max one blank line between subsections** of the same diagram.
 - **No emoji in structural glyphs.** Emoji render at variable width across platforms and will silently misalign the frame on the day the user previews it. For status badges, use `[!]` (warning), `[x]` (done), `[ ]` (todo), `(*)` (current), `*` (highlight).
 - **No `▼ ▲ ▶ ◀ ⟶ ⇒`.** These are variable-width in most monospaced fonts. Use `v ^ > <` and `->` / `=>` / `-->` / `==>`.
-- **Metadata in parentheses, not inline prose.** `[ Run migrations ] (@db-team, <15min, prod-only)` — not a sentence on the next line.
+- **Metadata in parentheses, not inline prose.** `[ Run migrations ] (<team>, <15min, prod-only)` — not a sentence on the next line.
+- **Owner tags are not live mentions.** These diagrams paste straight into GitHub PRs — a bare `@handle` outside a code span there pages the real account behind it, including hyphenated team names like `@db-team`. Keep owner/team fields as placeholders (`<owner>`, `<team>`) or, once filled in, write the name plain or inside backticks.
 
 ## Extended connection types
 
@@ -159,7 +160,7 @@ No dedicated slash command. Triggered by phrases like "ASCII flowchart of the re
 - No variable-width glyphs (`▼ ▲ ▶ ◀ ⟶ ⇒`) or decorative emoji inside structural frames.
 - One archetype per diagram. Do not combine flowchart + timeline in a single block — split into two diagrams.
 - Every decision branch is labeled. No unlabeled arrows leaving a `{ decision? }` node.
-- Every actor / owner / SLA is either present or the user was asked for it. Do not fabricate `@someone` or `<24h`.
+- Every actor / owner / SLA is either present or the user was asked for it. Do not fabricate `<owner>` or `<24h`.
 - Does NOT emit HTML or SVG. This skill is ASCII only.
 
 ## Error Handling

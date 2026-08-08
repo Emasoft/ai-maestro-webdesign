@@ -35,22 +35,22 @@ highlights with owners and metric deltas.
 - 2 columns of equal width, outer frame `+---+---+`.
 - Header row with category names.
 - Body rows with bullet items per cell.
-- Owners `(@name)` appended to each action-bearing item.
+- Owners `(<owner>)` appended to each action-bearing item.
 - Metric deltas (`+12% DAU`, `-180ms p99`) inline.
 
 ## Minimal example
 
 ```
 // Source: cc-plugin-text-visualizations-main/skills/tools-visual-retro/SKILL.md lines 17-24 + text-visual-retro/SKILL.md lines 45-55
-+----------------------------+-----------------------------+
-| Went Well                  | Needs Attention             |
-+----------------------------+-----------------------------+
-| Deploy automation shipped  | Flaky tests blocked 3 PRs   |
-| @alice, done               | @bob owns fix (due 04-28)   |
-|                            |                             |
-| +12% DAU post-launch       | Support ticket backlog +40% |
-| metric: dau_daily          | @triage-team to prioritize  |
-+----------------------------+-----------------------------+
++----------------------------+-------------------------------+
+| Went Well                  | Needs Attention               |
++----------------------------+-------------------------------+
+| Deploy automation shipped  | Flaky tests blocked 3 PRs     |
+| <owner>, done              | <owner2> owns fix (due 04-28) |
+|                            |                               |
+| +12% DAU post-launch       | Support ticket backlog +40%   |
+| metric: dau_daily          | <team> to prioritize          |
++----------------------------+-------------------------------+
 ```
 
 ## Gotchas
@@ -59,7 +59,7 @@ highlights with owners and metric deltas.
 - 3-column grid (`start / stop / continue`) uses the same pattern but
   fits only if the cells are narrow (~25 cols each) — long bullets
   don't fit.
-- Action items need owners; bullets without `@someone` are observations,
+- Action items need owners; bullets without `<owner>` are observations,
   not commitments.
 
 ## Cross-references

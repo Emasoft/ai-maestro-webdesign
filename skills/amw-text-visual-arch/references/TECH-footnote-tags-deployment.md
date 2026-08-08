@@ -37,20 +37,20 @@ Below the diagram code fence, add a clearly-labeled footnote block:
 
 ```
 **Component details:**
-- Auth Service: owner @sec-team | repo github.com/org/auth | SLA 99.9%
+- Auth Service: owner <team> | repo github.com/org/auth | SLA 99.9%
   | runbook wiki/auth-runbook
-- Orders Service: owner @commerce-team | repo github.com/org/orders | SLA 99.5%
+- Orders Service: owner <team2> | repo github.com/org/orders | SLA 99.5%
 - Stripe: vendor | escalation support@stripe.com
 ```
 
 Or a fixed-width table below the diagram:
 
 ```
-Service         | Owner         | SLA   | Runbook
+Service         | Owner         | SLA   | Runbook    
 ----------------|---------------|-------|------------
-Auth Service    | @sec-team     | 99.9% | wiki/auth
-Orders Service  | @commerce     | 99.5% | wiki/orders
-Stripe          | vendor        | n/a   | -
+Auth Service    | <team>        | 99.9% | wiki/auth  
+Orders Service  | <team2>       | 99.5% | wiki/orders
+Stripe          | vendor        | n/a   | -          
 ```
 
 ## Minimal example
@@ -62,8 +62,8 @@ Stripe          | vendor        | n/a   | -
 +----------------+       +-----------------+
 
 Component details:
-- Web UI: owner @frontend, repo github.com/org/web, SLA 99.5%
-- API Gw: owner @platform, repo github.com/org/gw, SLA 99.9%
+- Web UI: owner <team3>, repo github.com/org/web, SLA 99.5%
+- API Gw: owner <team4>, repo github.com/org/gw, SLA 99.9%
 ```
 
 ## Gotchas

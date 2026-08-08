@@ -13,7 +13,7 @@ also-in: cc-plugin-text-visualizations-main/README.md
 - [Gotchas](#gotchas)
 - [Cross-references](#cross-references)
 
-# TECH-owner-action-items — `[ ] <action> (@owner, due YYYY-MM-DD)`
+# TECH-owner-action-items — `[ ] <action> (<owner>, due YYYY-MM-DD)`
 
 ## What it does
 
@@ -47,10 +47,10 @@ When an action is done, update `[ ]` → `[x]` in place.
 ```
 // Source: cc-plugin-text-visualizations-main/skills/tools-visual-retro/SKILL.md line 41 + text-visual-retro/SKILL.md lines 70-73
 Actions:
-  [ ] Fix incident #42 runbook (@oncall, due 04-28)
-  [ ] Remove dead migration code (@db-team, due 05-05)
-  [x] Publish post-mortem doc (@alice, due 04-25)        ← already done
-  [ ] Schedule 30-min debrief with SRE team (@manager, due 05-01)
+  [ ] Fix incident #42 runbook (<oncall>, due 04-28)
+  [ ] Remove dead migration code (<team>, due 05-05)
+  [x] Publish post-mortem doc (<owner>, due 04-25)        ← already done
+  [ ] Schedule 30-min debrief with SRE team (<manager>, due 05-01)
 ```
 
 ## Gotchas

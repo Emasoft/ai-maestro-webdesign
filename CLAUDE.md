@@ -284,6 +284,28 @@ Three classes, all surfaced by `/amw-doctor`:
 
 ## Non-obvious conventions
 
+### GitHub writes: self-ID byline, and no `@` in anything templated (R22 / R23)
+
+Every AI Maestro agent writes to GitHub through the **shared repo-owner `gh` auth**, so a comment
+signed by nobody is indistinguishable from one written by the owner personally. **R22** — every
+issue, comment, PR, review, and release note this repo posts opens with a one-line
+self-identification, e.g. *"This is the Claude responsible for the ai-maestro-webdesign project."*
+
+**R23** — an `@name` outside a code span **pages a real account**. It fires at a word boundary,
+so `@foo-bar` and `@janitor.` page just as `@janitor` does; it does not fire before a `/`, which
+is why `@types/node` and `@chenglou/pretext` are inert. Backticks make a mention safe **where it
+sits** — and that is exactly why they are not enough for a **template**: template text gets copied
+*out* of its backticks into a GitHub comment box, where the sigil goes live. So anything this
+plugin emits as a pattern for someone else to fill in carries **no `@` at all**; use an
+angle-bracket placeholder (`<owner>`), which cannot form a mention because `@<` is not a word
+boundary.
+
+This bites hardest in the ASCII skills (`amw-text-visual-*`), whose stated output destination is
+"PR descriptions, GitHub Discussions, Slack" — their action-item lines are designed to be lifted
+out of the fenced block, which is the moment a handle stops being inert. Canon lives in
+`Emasoft/ai-maestro` (`design/specs/governance-spec.md` normative,
+`docs/GOVERNANCE-RULES.md` provenance) and in `~/.claude/rules/github-mentions.md`.
+
 ### Tweaks postMessage protocol (hard rules, preserved from original)
 See the `<!-- HARD INVARIANTS -->` comment at the top of `skills/amw-design-principles/starter-components/tweaks-block.html` for the three invariants any editor must preserve (listener-before-post ordering, partial-update-only payloads, valid-JSON editmode block).
 

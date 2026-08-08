@@ -37,7 +37,7 @@ structure.
 - Top row: time markers (`Day 0`, `Day 3`, `Day 7`, `Day 14`, ...).
 - Middle row: `|---------|---------|---------|` with bars at each anchor.
 - Third row: event / phase labels (`Plan`, `Build`, `QA`, `Launch`).
-- Fourth row (optional): owner handles (`@alice`, `@bob`, `@cara`).
+- Fourth row (optional): owner handles (`<owner>`, `<owner2>`, `<owner3>`).
 
 ## Minimal example
 
@@ -54,7 +54,7 @@ With owners:
 Day 0     Day 3     Day 7     Day 14
 |---------|---------|---------|
 Plan      Build     QA        Launch
-@alice    @bob      @cara     @dana
+<owner>   <owner2>  <owner3>  <owner4>
 ```
 
 ## Gotchas

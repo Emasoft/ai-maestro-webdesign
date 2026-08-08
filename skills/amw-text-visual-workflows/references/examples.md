@@ -51,7 +51,7 @@ Use when time ordering and calendar position are the point (launch schedules, on
 Day 0     Day 3     Day 7     Day 14
 |---------|---------|---------|
 Plan      Build     QA        Launch
-@alice    @bob      @cara     @dana
+<owner>   <owner2>  <owner3>  <owner4>
 ```
 
 The vertical bars `|` mark the anchor dates; horizontal dashes `-` fill the gap proportional to the interval, not to character count. Annotate each anchor with owner / phase label underneath.
