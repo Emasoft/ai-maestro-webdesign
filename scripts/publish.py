@@ -141,17 +141,24 @@ def cprint(msg: str) -> None:
 
 def run(
     cmd: list[str], cwd: Path | None = None, *, check: bool = True, capture: bool = False,
+    timeout: int = 300,
 ) -> subprocess.CompletedProcess[str]:
-    """Run a command, stream output, fail-fast on error."""
+    """Run a command, stream output, fail-fast on error.
+
+    `timeout` is per-call because 300s does not fit every gate. The remote-CPV
+    step in particular needs longer (see its call site), and the gate-mode copy
+    of that same command already hardcodes 600s — this parameter is what lets
+    the publish path match it instead of silently disagreeing.
+    """
     cprint(f"  {BLUE}$ {' '.join(cmd)}{NC}")
     # A subprocess exceeding `timeout` raises TimeoutExpired; without this it
     # would die with a raw traceback instead of the styled fail-fast message
     # every other failure path uses. Catch it and exit 1.
     try:
         result = subprocess.run(cmd, cwd=str(cwd) if cwd else None, text=True,
-                                capture_output=capture, timeout=300)
+                                capture_output=capture, timeout=timeout)
     except subprocess.TimeoutExpired:
-        cprint(f"  {RED}Command timed out after 300s: {' '.join(cmd)}{NC}")
+        cprint(f"  {RED}Command timed out after {timeout}s: {' '.join(cmd)}{NC}")
         sys.exit(1)
     if check and result.returncode != 0:
         cprint(f"  {RED}Command failed (exit {result.returncode}){NC}")
@@ -1178,12 +1185,18 @@ def stage_validate(root: Path) -> None:
         sys.exit(1)
     # Fetch CPV from GitHub and run validate_plugin remotely. --strict blocks
     # on CRITICAL(1), MAJOR(2), MINOR(3), NIT(4); WARNING(5+) passes.
+    # timeout=600 to match the gate-mode copy of this exact command (see the G3
+    # block, which already hardcodes 600). Measured on this repo: CPV alone runs
+    # in 67-123s over three consecutive runs, but in-pipeline it repeatedly blew
+    # the generic 300s budget — step 3 is a 238-test suite that spawns browsers,
+    # and this heavy scan runs straight afterwards against that contention. The
+    # 300s blanket killed four releases in a row on a validation that PASSES.
     run([
         "uvx", "--from",
         "git+https://github.com/Emasoft/claude-plugins-validation@v2.153.4",
         "--with", "pyyaml",
         "cpv-remote-validate", "plugin", ".", "--strict",
-    ], cwd=root)
+    ], cwd=root, timeout=600)
     cprint(f"  {GREEN}Validation passed (0 blocking issues).{NC}")
 
 
