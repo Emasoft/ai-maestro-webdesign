@@ -144,7 +144,7 @@ Scripts shared across skills live in `bin/` rather than being duplicated per-ski
 - **No Chrome DevTools MCP, no Playwright MCP for interactive automation.** `amw-dev-browser` is the only browser-automation primitive for input workflows. The rendering skills still use Playwright/Puppeteer internally for their output pipelines — that is output emission, not interactive automation.
 - **No AI-drawn character illustrations.** `amw-svg-creator` is gated to icons, logos, technical diagrams, patterns, and animations. Character and scene illustration goes through real-asset or placeholder workflows instead — see the orchestrator's AI-slop rule #3.
 - **No Framer Motion or GSAP for animation.** Starter components use a 50-LOC timeline engine; Popmotion is the only approved library fallback.
-- **No automated test suite.** Verification is behavioral — each phase has acceptance scenarios.
+- **No automated test suite for the *live* workflows.** The repo does ship a pytest suite (`tests/`, run as a publish gate), but it covers the `bin/` scripts and validators — not the workflows that need a real browser, a network fetch, or an installed runtime dependency. Those stay behavioral: each phase has acceptance scenarios the user runs.
 
 ## Build status
 
