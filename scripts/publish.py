@@ -1279,6 +1279,33 @@ def _read_plugin_name(plugin_root: Path) -> str:
     return plugin_root.name
 
 
+def _dependency_tag(plugin_root: Path, version: str) -> str:
+    """Return `{name}--v{version}` — note the DOUBLE hyphen.
+
+    Since Claude Code 2.1.110 a version-constrained plugin dependency
+    resolves only against this ref; the plain `v{version}` tag is ignored,
+    so a dependent pinning a version fails to install and is then disabled.
+    The failure is invisible from the publisher's side — already-installed
+    dependents keep working and every local check stays green.
+
+    Reads `name` STRICTLY rather than reusing `_read_plugin_name`, whose
+    directory-name fallback is correct for a display label and wrong for a
+    ref: this checkout is `AI-MAESTRO-WEBDESIGN-AGENT` while the plugin is
+    `ai-maestro-webdesign`, so the fallback would mint a permanent,
+    publicly-pushed tag that resolves nothing. Abort instead.
+    """
+    pj = plugin_root / ".claude-plugin" / "plugin.json"
+    try:
+        name = json.loads(pj.read_text(encoding="utf-8")).get("name")
+    except (OSError, json.JSONDecodeError) as e:
+        cprint(f"  {RED}Cannot read {pj} for the dependency tag: {e}{NC}")
+        sys.exit(1)
+    if not isinstance(name, str) or not name:
+        cprint(f"  {RED}plugin.json has no usable 'name' — cannot mint the dependency tag.{NC}")
+        sys.exit(1)
+    return f"{name}--v{version}"
+
+
 def _fetch_remote_marketplace_json(owner: str, repo: str) -> dict | None:
     gh = shutil.which("gh")
     if gh is None:
@@ -1706,12 +1733,20 @@ def stage_changelog(root: Path, new_ver: str, dry_run: bool) -> None:
     cprint(f"  {GREEN}CHANGELOG.md updated with {tag}.{NC}")
 
 def stage_commit_and_push(root: Path, new_ver: str, dry_run: bool) -> None:
-    """Step 10: Commit, tag, push. Idempotent on commit + tag.
+    """Step 10: Commit, tag, push. Idempotent on commit + both tags.
+
+    TWO tags are minted for every release and pushed in the SAME atomic
+    transaction: the human-facing `v{ver}` and the machine-facing
+    `{name}--v{ver}` that plugin dependency resolution requires (see
+    `_dependency_tag`). They must never diverge — a release carrying one ref
+    and not the other is exactly the silent breakage the second tag exists
+    to prevent, so one `--atomic` push is what guarantees all-or-nothing.
 
     Idempotency: if HEAD's subject is already `chore: bump version to <new_ver>`
     AND the working tree is clean, skip the commit step (interrupted-publish
-    recovery). If the tag already exists locally, skip the tag step. The push
-    always runs — that is what brings the remote into sync.
+    recovery). Each tag is skipped independently if it already exists locally
+    — a repo mid-backfill may have one and not the other. The push always
+    runs — that is what brings the remote into sync.
 
     TRDD-bbff5bc5 §5: gh-auth precheck runs BEFORE the first push so the
     user gets an actionable error if their gh CLI is unauthed/lacks push
@@ -1719,21 +1754,24 @@ def stage_commit_and_push(root: Path, new_ver: str, dry_run: bool) -> None:
     """
     cprint(f"\n{BOLD}[10/11] Committing and pushing...{NC}")
     tag = f"v{new_ver}"
+    dep_tag = _dependency_tag(root, new_ver)
     expected_subject = f"chore: bump version to {new_ver}"
     head_subject = _head_commit_message(root)
     tree_clean = _git_porcelain_clean(root)
     tag_exists = _local_tag_exists(root, tag)
+    dep_tag_exists = _local_tag_exists(root, dep_tag)
 
     if dry_run:
         if head_subject == expected_subject and tree_clean:
             cprint(f"  Would skip commit (HEAD already '{expected_subject}', tree clean)")
         else:
             cprint(f"  Would commit: {expected_subject}")
-        if tag_exists:
-            cprint(f"  Would skip tag (already exists locally): {tag}")
-        else:
-            cprint(f"  Would tag: {tag}")
-        cprint(f"  Would push (atomic): origin HEAD {tag}")
+        for t, exists in ((tag, tag_exists), (dep_tag, dep_tag_exists)):
+            if exists:
+                cprint(f"  Would skip tag (already exists locally): {t}")
+            else:
+                cprint(f"  Would tag: {t}")
+        cprint(f"  Would push (atomic): origin HEAD {tag} {dep_tag}")
         return
 
     if head_subject == expected_subject and tree_clean:
@@ -1743,27 +1781,31 @@ def stage_commit_and_push(root: Path, new_ver: str, dry_run: bool) -> None:
         run(["git", "add", "-A"], cwd=root)
         run(["git", "commit", "-m", expected_subject], cwd=root)
 
-    if tag_exists:
-        cprint(f"  {YELLOW}Tag {tag} already exists locally — skipping tag step.{NC}")
-    else:
-        run(["git", "tag", "-a", tag, "-m", f"Release {tag}"], cwd=root)
+    for t, exists in ((tag, tag_exists), (dep_tag, dep_tag_exists)):
+        if exists:
+            cprint(f"  {YELLOW}Tag {t} already exists locally — skipping tag step.{NC}")
+        else:
+            run(["git", "tag", "-a", t, "-m", f"Release {tag}"], cwd=root)
 
     # gh-auth precheck — fail fast with actionable error if gh missing/unauthed.
     owner, repo = _resolve_owner_repo(root)
     _ensure_gh_auth(owner, repo)
-    # Atomic push: commit + tag land together or not at all. Eliminates the
-    # half-published-state failure mode where `git push origin HEAD --tags`
-    # could push the commit, fail on the tag (rejected/network), and leave
-    # the remote with an unreleased commit + no tag. `--atomic` is a single
-    # transaction in the wire protocol; the server rolls back if any ref
-    # update fails. git_with_retry still wraps the call so transient
-    # network hiccups (4xx-class permanent errors fall through immediately).
-    cprint(f"  {BLUE}$ git push --atomic origin HEAD {tag}{NC}")
+    # Atomic push: commit + BOTH tags land together or not at all. Eliminates
+    # the half-published-state failure mode where `git push origin HEAD --tags`
+    # could push the commit, fail on a tag (rejected/network), and leave
+    # the remote with an unreleased commit + no tag — or, worse for the
+    # dependency tag, with `v{ver}` present and `{name}--v{ver}` missing,
+    # which looks like a complete release while silently breaking every
+    # version-constrained dependent. `--atomic` is a single transaction in
+    # the wire protocol; the server rolls back if any ref update fails.
+    # git_with_retry still wraps the call so transient network hiccups
+    # (4xx-class permanent errors fall through immediately).
+    cprint(f"  {BLUE}$ git push --atomic origin HEAD {tag} {dep_tag}{NC}")
     git_with_retry(
-        ["git", "push", "--atomic", "origin", "HEAD", tag],
+        ["git", "push", "--atomic", "origin", "HEAD", tag, dep_tag],
         cwd=str(root), capture_output=False,
     )
-    cprint(f"  {GREEN}Pushed {tag} atomically.{NC}")
+    cprint(f"  {GREEN}Pushed {tag} + {dep_tag} atomically.{NC}")
 
 def stage_gh_release(root: Path, new_ver: str, dry_run: bool) -> None:
     """Step 11: Create GitHub release via gh CLI.
