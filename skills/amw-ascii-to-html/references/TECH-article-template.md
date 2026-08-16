@@ -146,7 +146,7 @@ In `<head>`:
 <!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:site"        content="@brand">
-<meta name="twitter:creator"     content="@janedoe">
+<meta name="twitter:creator"     content="@owner-slot">
 <meta name="twitter:title"       content="How we cut LCP from 4.2s to 1.1s">
 <meta name="twitter:description" content="A pragmatic teardown of font-loading, image-preloading, and server-push tradeoffs.">
 <meta name="twitter:image"       content="https://brand.com/og/cut-lcp-to-1-1s.png">

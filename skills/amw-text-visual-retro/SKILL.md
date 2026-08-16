@@ -62,7 +62,7 @@ Three shapes — pick one per artifact, do not merge them. See [examples](./refe
 - **No variable-width glyphs** (`▼ ▲ ▶ ◀ ⟶ ⇒`).
 - **Metric format:** `+12% DAU`, `-180ms p99`, `2 incidents`. Prefix sign always. No rounding to suspiciously clean numbers.
 - **Owner format:** `<owner>` consistently. Use `<team>` for a team, never a bare, untagged name.
-- **GitHub destination:** if this artifact is pasted into a GitHub PR or Discussion, a bare `@handle` outside a code span pages that real account — including hyphenated team handles. Write the owner's name plain, or keep it inside backticks, before it ever leaves this document.
+- **GitHub destination:** if this artifact is pasted into a GitHub PR or Discussion, an at-sign before a name, outside a code span, pages that real account — including hyphenated team names. Write the owner's name plain, or keep it inside backticks, before it ever leaves this document.
 - **Due date format:** ISO-8601 short (`2026-04-28`) or kebab-short (`04-28`) — be consistent within a single artifact.
 
 ## Extended connection types

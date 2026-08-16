@@ -37,7 +37,7 @@ Each item carries its own font shorthand; a `break: 'never'` flag keeps the frag
 import { prepareRichInline, walkRichInlineLineRanges, materializeRichInlineLineRange } from '@chenglou/pretext/rich-inline'
 const prepared = prepareRichInline([
   { text: 'Ship ', font: '500 17px Inter' },
-  { text: '@maya', font: '700 12px Inter', break: 'never', extraWidth: 22 },
+  { text: '@user-slot', font: '700 12px Inter', break: 'never', extraWidth: 22 },
   { text: "'s feature", font: '500 17px Inter' },
 ])
 walkRichInlineLineRanges(prepared, 320, range => {

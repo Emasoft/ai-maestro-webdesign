@@ -62,7 +62,7 @@ Three shapes — pick one per block. See [examples](./references/examples.md) fo
 - **No emoji in structural glyphs.** Emoji render at variable width across platforms and will silently misalign the frame on the day the user previews it. For status badges, use `[!]` (warning), `[x]` (done), `[ ]` (todo), `(*)` (current), `*` (highlight).
 - **No `▼ ▲ ▶ ◀ ⟶ ⇒`.** These are variable-width in most monospaced fonts. Use `v ^ > <` and `->` / `=>` / `-->` / `==>`.
 - **Metadata in parentheses, not inline prose.** `[ Run migrations ] (<team>, <15min, prod-only)` — not a sentence on the next line.
-- **Owner tags are not live mentions.** These diagrams paste straight into GitHub PRs — a bare `@handle` outside a code span there pages the real account behind it, including hyphenated team names like `@db-team`. Keep owner/team fields as placeholders (`<owner>`, `<team>`) or, once filled in, write the name plain or inside backticks.
+- **Owner tags are not live mentions.** These diagrams paste straight into GitHub PRs — an at-sign before a name, outside a code span, pages the real account behind it. That fires at a word boundary, so hyphenated team names are live too, and the innocuous-sounding ones are the trap: plausible placeholders are usually registered accounts. Keep owner/team fields as placeholders (`<owner>`, `<team>`); once filled in, write the name plain or inside backticks.
 
 ## Extended connection types
 

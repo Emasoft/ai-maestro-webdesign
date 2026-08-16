@@ -35,7 +35,7 @@ Long-form notes with inline @mentions, hashtag chips, code spans, and emoji that
 // Source: pretext-text-measurement/SKILL.md — Use Case 3
 const prepared = prepareRichInline([
   { text: 'Ship ', font: '500 17px Inter' },
-  { text: '@maya', font: '700 12px Inter', break: 'never', extraWidth: 22 },
+  { text: '@user-slot', font: '700 12px Inter', break: 'never', extraWidth: 22 },
   { text: "'s feature", font: '500 17px Inter' },
   { text: 'urgent', font: '600 12px Inter', break: 'never', extraWidth: 16 },
 ])
