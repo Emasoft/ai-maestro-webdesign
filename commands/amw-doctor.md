@@ -48,6 +48,14 @@ Run the following checks in parallel where possible, collect the results, and pr
 | `GEMINI_API_KEY` | `[ -n "$GEMINI_API_KEY" ] && echo set \|\| echo unset` | Required by `excalidraw-illustrations`. Get one from https://aistudio.google.com/. Every Gemini call is billed to the user's own Google account. Unset is fine if the user does not plan to generate hand-drawn illustrations. |
 | Pillow (optional) | `python3 -c "import PIL; print(PIL.__version__)" 2>/dev/null \|\| echo missing` | Optional — only needed by `excalidraw-illustrations` two-phase text-overlay fallback (`scripts/generate.py`). Install via `/amw-init` Section 7. |
 
+### 3b. Skill-trigger collision report (repo-health, informational)
+
+Run `python3 bin/amw-skill-trigger-collision.py` and print the `summary` counts
+(total/high/medium/low). Do not fail the doctor run on them — the HIGH count is
+gated by the pytest ratchet in `tests/test_skill_trigger_collisions.py`
+(baseline frozen at the measured debt; new collisions fail CI). Surface the
+counts here so a rising number is visible before the ratchet trips.
+
 ### 4. Hyperframes version check
 
 If `external/hyperframes/` is present, read the CLI package version and soft-warn if it is below 0.4.30. This is informational — do not fail the doctor run.

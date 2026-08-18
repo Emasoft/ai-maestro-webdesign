@@ -1,9 +1,9 @@
 ---
 trdd-id: NN3X00Q6
 title: Wire amw-skill-trigger-collision.py into an actual gate
-column: todo
+column: completed
 created: 2026-08-18T19:52:25+0200
-updated: 2026-08-18T19:52:25+0200
+updated: 2026-08-18T20:15:00+0200
 current-owner: webdesign-session
 task-type: infra
 approval-tier: 0
