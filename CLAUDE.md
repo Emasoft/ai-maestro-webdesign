@@ -314,6 +314,16 @@ out of the fenced block, which is the moment a handle stops being inert. Canon l
 `Emasoft/ai-maestro` (`design/specs/governance-spec.md` normative,
 `docs/GOVERNANCE-RULES.md` provenance) and in `~/.claude/rules/github-mentions.md`.
 
+### GitHub rulesets: the ratified pair PLUS baseline-tag-protect
+
+This repo carries THREE active rulesets, not two. Beyond the ratified baseline pair
+(`baseline-history-protect` id 18894431, `baseline-pr-and-checks` id 18863945) there is
+**`baseline-tag-protect`** (id 18894433, target: tag, rules: `deletion` + `update` on
+`refs/tags/v*.*.*`, enforcement: active). It protects published release tags from deletion or
+rewrite — additive-only (it tightens, never loosens). Approval record: `TRDD-676DDBYL`
+(design/archived/), Tier-2 authorized by the hub during the 2026-08 Phase-2 remediation. Do not
+remove it, and do not treat its presence as unexplained drift when re-applying the baseline pair.
+
 ### Tweaks postMessage protocol (hard rules, preserved from original)
 See the `<!-- HARD INVARIANTS -->` comment at the top of `skills/amw-design-principles/starter-components/tweaks-block.html` for the three invariants any editor must preserve (listener-before-post ordering, partial-update-only payloads, valid-JSON editmode block).
 

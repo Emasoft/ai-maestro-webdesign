@@ -1,9 +1,9 @@
 ---
 trdd-id: 676DDBYL
 title: Document the baseline-tag-protect ruleset and record its approval
-column: todo
+column: completed
 created: 2026-08-18T19:52:25+0200
-updated: 2026-08-18T19:52:25+0200
+updated: 2026-08-18T20:24:00+0200
 current-owner: webdesign-session
 task-type: docs
 approval-tier: 2
