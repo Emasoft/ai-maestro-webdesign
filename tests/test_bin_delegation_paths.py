@@ -64,14 +64,32 @@ def test_python_fstring_sibling_refs_resolve() -> None:
     assert not missing, "unresolved f-string sibling refs:\n" + "\n".join(missing)
 
 
+def _flag_shell_ref(name: str, real: set[str]) -> str | None:
+    """Return a diagnosis for a broken shell sibling ref, or None if it's fine.
+
+    Two bug shapes (TRDD-XDFOJS0O widened the second in — a plant of a
+    fully-nonexistent amw- sibling previously passed 4/4):
+    - unprefixed rename residue: `name` missing but `amw-name` exists;
+    - fully-missing amw sibling: an `amw-*` basename that exists under NO name.
+    Vendor / external refs (e.g. $VENDOR_DIR/scripts/render.mjs) do not carry
+    the amw- prefix and are deliberately ignored — that exemption is why the
+    missing-check is scoped to amw-* basenames instead of every basename.
+    """
+    if name in real:
+        return None
+    if f"amw-{name}" in real:
+        return f"{name} -> use amw-{name}"
+    if name.startswith("amw-"):
+        return f"{name} -> no such sibling in bin/"
+    return None
+
+
 def test_shell_sibling_refs_resolve() -> None:
     """Every executed `$VAR/.../name` sibling ref in bin/*.sh resolves.
 
-    Generic over the holding variable name. A ref is flagged as a BUG only when
-    its basename is absent from bin/ AND the amw-prefixed form exists — i.e. an
-    unprefixed reference to a renamed sibling (the exact bug this guards). Vendor
-    / external refs (e.g. $VENDOR_DIR/scripts/render.mjs) whose basename is not a
-    bin sibling are correctly ignored. Comment lines are skipped.
+    Generic over the holding variable name. Flags both unprefixed rename
+    residue AND amw-* refs that exist under no name (see _flag_shell_ref).
+    Comment lines are skipped.
     """
     real = {p.name for p in BIN.iterdir() if p.is_file()}
     missing: list[str] = []
@@ -80,9 +98,26 @@ def test_shell_sibling_refs_resolve() -> None:
             if line.lstrip().startswith("#"):
                 continue
             for name in _SH_REF.findall(line):
-                if name not in real and f"amw-{name}" in real:
-                    missing.append(f"{f.name}:{i}: {name} -> use amw-{name}")
-    assert not missing, "unprefixed shell sibling refs:\n" + "\n".join(missing)
+                diag = _flag_shell_ref(name, real)
+                if diag:
+                    missing.append(f"{f.name}:{i}: {diag}")
+    assert not missing, "broken shell sibling refs:\n" + "\n".join(missing)
+
+
+def test_shell_ref_flagger_positive_controls() -> None:
+    """The shell-ref flagger fires on both bug shapes and stays quiet on vendor refs."""
+    real = {"amw-validate-ascii.py", "amw-mermaid-render.sh"}
+    # bug shape 1: unprefixed rename residue
+    assert _flag_shell_ref("validate-ascii.py", real) == (
+        "validate-ascii.py -> use amw-validate-ascii.py"
+    )
+    # bug shape 2: fully-nonexistent amw sibling (the hole this test closes)
+    assert _flag_shell_ref("amw-totally-fake-script.py", real) == (
+        "amw-totally-fake-script.py -> no such sibling in bin/"
+    )
+    # non-bugs: existing sibling, and a vendor ref without the amw- prefix
+    assert _flag_shell_ref("amw-validate-ascii.py", real) is None
+    assert _flag_shell_ref("render.mjs", real) is None
 
 
 def test_the_scan_actually_finds_references() -> None:

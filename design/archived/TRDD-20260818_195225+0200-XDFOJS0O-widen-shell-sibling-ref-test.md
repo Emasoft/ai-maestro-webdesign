@@ -1,9 +1,9 @@
 ---
 trdd-id: XDFOJS0O
 title: Widen test_shell_sibling_refs_resolve to catch fully-missing siblings
-column: todo
+column: completed
 created: 2026-08-18T19:52:25+0200
-updated: 2026-08-18T19:52:25+0200
+updated: 2026-08-18T20:08:00+0200
 current-owner: webdesign-session
 task-type: bugfix
 approval-tier: 0
