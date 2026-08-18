@@ -154,7 +154,7 @@ before Wave 2.
   4041 lines + 85-line catalog. Author-agent loads at most 3 per request.
 - 2026-05-26T15:00 — **Wave 1 Track D COMPLETE** (commit aec54ba; 3 files;
   +451/-28). bin/amw-design-md-from-url.sh +T-088 3-tier cascade (curl →
-  dev-browser → manual), --mode auto|curl|dev-browser|manual,
+  dev-browser → manual), --mode accepting auto, curl, dev-browser, or manual,
   --wait-for-selector, --screenshot OUT.png, --from-snapshot PATH;
   shellcheck-clean; one dead `primary_hex` line removed. agents/amw-design-
   md-extractor-agent.md +T-084 screenshot-override + T-085 re-screenshot-on-
