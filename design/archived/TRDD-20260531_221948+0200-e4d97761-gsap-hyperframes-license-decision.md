@@ -1,9 +1,9 @@
 ---
 trdd-id: e4d97761-ecfc-4619-bcc3-7054ce9ab76e
 title: GSAP-via-hyperframes licensing decision — accept, video-path-only
-status: completed
+column: completed
 created: 2026-05-31T22:19:48+0200
-updated: 2026-05-31T22:19:48+0200
+updated: 2026-08-18T19:52:25+0200
 ---
 
 # TRDD-e4d97761 — GSAP-via-hyperframes licensing decision (accept, video-path-only)

@@ -1,9 +1,9 @@
 ---
 trdd-id: 6d8ffed6-e51f-4be4-a4ff-cc86278b6e2d
 title: Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
-status: completed
+column: completed
 created: 2026-05-25T18:48:46+0200
-updated: 2026-05-26T21:30:00+0200
+updated: 2026-08-18T19:52:25+0200
 ---
 
 # TRDD-6d8ffed6 — Batch 9 integration — harvest 260 items, reimplement, verify via fcvvdp screenshot-parity
