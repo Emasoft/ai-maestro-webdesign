@@ -1,9 +1,10 @@
 ---
 trdd-id: 8ED76GM5
 title: Migrate the two v1 status TRDDs to v2 column frontmatter
-column: todo
+column: completed
 created: 2026-08-18T19:52:25+0200
-updated: 2026-08-18T19:52:25+0200
+updated: 2026-08-18T19:56:00+0200
+implementation-commits: [36ba629]
 current-owner: webdesign-session
 task-type: docs
 approval-tier: 0
