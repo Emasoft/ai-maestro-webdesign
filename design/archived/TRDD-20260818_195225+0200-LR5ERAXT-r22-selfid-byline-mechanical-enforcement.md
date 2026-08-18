@@ -1,9 +1,9 @@
 ---
 trdd-id: LR5ERAXT
 title: Give R22 self-ID byline a mechanical enforcement surface
-column: todo
+column: completed
 created: 2026-08-18T19:52:25+0200
-updated: 2026-08-18T19:52:25+0200
+updated: 2026-08-18T20:20:00+0200
 current-owner: webdesign-session
 task-type: infra
 approval-tier: 0
