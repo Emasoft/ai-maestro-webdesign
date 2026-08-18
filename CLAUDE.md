@@ -17,7 +17,7 @@ ai-maestro-webdesign/
 ├── CLAUDE.md                    THIS FILE — guidance for future Claude sessions
 ├── LICENSE                      MIT (plugin); sub-skill originals preserved per-skill
 ├── .gitignore
-├── agents/                      Agent layer — 1 main-agent + 19 amw-* specialized sub-agents (4 tiers)
+├── agents/                      Agent layer — 1 main-agent + 23 amw-* specialized sub-agents (4 tiers)
 │   ├── ai-maestro-webdesign-main-agent.md  Tier 1 — PRIMARY ORCHESTRATOR (main-agent mode, user-facing)
 │   │                                         -- Tier 2 — Discovery / Research (Phase A primarily) --
 │   ├── amw-legal-expert-agent.md             Legal/compliance specialist (VETO on mandatory elements)
@@ -40,7 +40,11 @@ ai-maestro-webdesign/
 │   ├── amw-form-designer-agent.md            Booking/contact/checkout/multi-step forms; validation UX; form a11y
 │   ├── amw-email-designer-agent.md           Transactional + marketing emails (MJML, table-layout, dark-mode)
 │   ├── amw-motion-designer-agent.md          Page transitions + scroll animations + microinteractions; reduced-motion
-│   └── amw-component-library-architect-agent.md  Design tokens + variant matrix + Style Dictionary / Figma-tokens export
+│   ├── amw-component-library-architect-agent.md  Design tokens + variant matrix + Style Dictionary / Figma-tokens export
+│   ├── amw-slop-verifier-agent.md            Vision-based AI-slop verdict on rendered screenshots (Tier 2, no veto)
+│   ├── amw-design-resume-agent.md            Resume interrupted workflow from the Design Contract JSON (Tier 3)
+│   ├── amw-design-contract-validator-agent.md  Design Contract BLOCK/FLAG/PASS validation at checkpoints (Tier 4)
+│   └── amw-sound-designer-agent.md           UI sound design via amw-ui-sound-design (Tier 4, no veto)
 ├── bin/                         Shared scripts invoked by multiple skills
 ├── commands/                    Slash commands (/amw-*)
 ├── hooks/hooks.json             One UserPromptSubmit nudge
@@ -131,6 +135,7 @@ The philosophy and template are canonical at `skills/amw-design-principles/refer
 | `amw-seo-strategist-agent` | Keyword research + IA (A); on-page audit + structured data (B) | no |
 | `amw-user-research-analyst-agent` | Persona synthesis, user-journey maps from research artifacts | no |
 | `amw-design-md-auditor-agent` | DESIGN.md 5-pass audit (structural / drift / a11y / completeness / consistency); diagnoses, never repairs | no |
+| `amw-slop-verifier-agent` | Vision-based AI-slop verdict (screenshot + brief → pass / slop-detected, all 7 ai-slop-avoid categories) | no |
 
 ### Tier 3 — Production / Execution sub-agents (Phase B only)
 
@@ -144,6 +149,7 @@ The philosophy and template are canonical at `skills/amw-design-principles/refer
 | `amw-browser-tester-agent` | amw-dev-browser scenario tests + amw-ux-evaluator for Phase B verification |
 | `amw-design-md-author-agent` | Author Variant 1 DESIGN.md from a brief / codebase / URL / 5-Q interview; lint gate + WCAG contrast pre-flight |
 | `amw-design-md-extractor-agent` | Extract Variant 1 DESIGN.md from a live URL / Tailwind config / codebase scan; faithful transcription only |
+| `amw-design-resume-agent` | Resume an interrupted workflow from the persistent Design Contract JSON without re-asking recorded decisions |
 
 ### Tier 4 — Specialists (Phase B, on-demand)
 
@@ -153,6 +159,8 @@ The philosophy and template are canonical at `skills/amw-design-principles/refer
 | `amw-email-designer-agent` | Transactional + marketing emails (MJML, table-layout responsive, dark-mode, plain-text fallback) | no |
 | `amw-motion-designer-agent` | Page transitions + scroll-driven animations + microinteractions; prefers-reduced-motion compliance | no |
 | `amw-component-library-architect-agent` | Design tokens authoring + variant matrix + design-system handoff exports (JSON / Style Dictionary / Figma tokens) | no |
+| `amw-design-contract-validator-agent` | Design Contract JSON validation at checkpoints (BLOCK / FLAG / PASS; pairs with bin/amw-design-contract-validate.py) | no |
+| `amw-sound-designer-agent` | UI sound for click / hover / toggle / success / error interactions via amw-ui-sound-design | no |
 
 Tier 4 specialists have NO veto power. They produce specs / exports that Tier 3 producers (typically `amw-wireframe-builder-agent`) consume for final rendering. `amw-email-designer-agent` is the exception — it owns its own render path because email is not a webpage. Tier 4 agents are spawned on-demand only when domain-specific intent is detected (no forms ⇒ no form-designer; no motion ⇒ no motion-designer).
 
@@ -343,7 +351,7 @@ The plan lives at `~/.claude/plans/jazzy-skipping-engelbart.md`. Completed 2026-
 - **Group E (E1)** — 3 NEW ASCII skills: amw-ascii-sketch (plan-phase loop), amw-ascii-to-svg, amw-ascii-to-html. DONE.
 - **Group F** — Structural verification (CJK residue, frontmatter validity, banned-ref scan, model-pin scan, file counts). DONE.
 
-**Inventory addendum (react-components integration, 2026-05-24):** +5 React-component reference skills (`amw-react-colorful`, `amw-progressive-blur`, `amw-hypercomp`, `amw-vecui`, `amw-react-promptify`, all MIT, sourced from `SKILLS-TO-INTEGRATE/react-components/`) and +1 bin script (`amw-page-to-ascii-layout.py`). `amw-webpage-to-diagram` gained a second SPATIAL mode (rendered-DOM geometry → ASCII wireframe). `framer-motion-theatre` was evaluated and SKIPPED (proprietary Theatre.js/Framer-Motion deps + no-Framer-Motion rule); `figma-copy-as-markdown` was NOT ported (unlicensed) — its capability was reimplemented clean-room as the SPATIAL mode. Current totals: 46 skill dirs (45 live + `amw-pretext-art` deprecated redirect), 38 bin scripts, 29 slash commands, 20 agents.
+**Inventory addendum (react-components integration, 2026-05-24):** +5 React-component reference skills (`amw-react-colorful`, `amw-progressive-blur`, `amw-hypercomp`, `amw-vecui`, `amw-react-promptify`, all MIT, sourced from `SKILLS-TO-INTEGRATE/react-components/`) and +1 bin script (`amw-page-to-ascii-layout.py`). `amw-webpage-to-diagram` gained a second SPATIAL mode (rendered-DOM geometry → ASCII wireframe). `framer-motion-theatre` was evaluated and SKIPPED (proprietary Theatre.js/Framer-Motion deps + no-Framer-Motion rule); `figma-copy-as-markdown` was NOT ported (unlicensed) — its capability was reimplemented clean-room as the SPATIAL mode. Current totals (re-counted 2026-08-18): 68 skill dirs, 52 bin scripts, 29 slash commands, 24 agents (1 main + 23 sub).
 
 **Final inventory (after diagrams-skills synthesis round + cross-format build + pretext unification, 2026-04-24):** 40 SKILL.md files (amw-pretext-art now redirects to the new unified `amw-pretext/` skill; +1 new `amw-pretext/` with 78 `references/TECH-NN-*.md` files across 11 categories: api, measure, layout, typography, art, motion, tables, 3d, integrate, workflow, consult), 201 shadcn MDX docs preserved, 24 infographic templates, 15 infographic examples, 8 infographic resources, 9 translated starter-components, 7 CHI'24 ASCII-archetype reference files, 20 slash commands, 33 bin scripts, 1 hook, 1 plugin.json, 1 external vendored backend (amw-mermaid-render). Zero CJK in text files. No outdated model pins. All sub-skills reference the orchestrator explicitly.
 
