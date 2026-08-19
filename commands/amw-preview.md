@@ -32,6 +32,23 @@ Call `dev-browser` twice:
 
 Also capture console logs and any network failures → `/tmp/amw-preview-<slug>-console.txt`.
 
+### 3b. Push the preview into the AI Maestro dashboard side panel (when available)
+
+If `bin/amw-panel-preview.sh` reports the AI Maestro panel CLI is available (exit 0 on
+`status`), also push the live preview to the human's web browser panel so they see it
+without leaving the dashboard:
+
+- Self-contained HTML → `bin/amw-panel-preview.sh show --html-file <path>`
+- Served via the local preview server → `bin/amw-panel-preview.sh show --url <http-url>`
+- After each subsequent edit iteration → `bin/amw-panel-preview.sh refresh`
+- Drain click feedback the human generated inside the panel with
+  `bin/amw-panel-preview.sh feedback` and fold it into the report.
+
+The panel is a LIVE surface, not a queue: a response with `"delivered": 0` means no
+dashboard had the panel open and the push was DROPPED — say so in the report instead of
+claiming the preview was shown. Outside an AI Maestro environment (exit 3) skip this
+step silently; dev-browser screenshots remain the canonical verification path.
+
 ### 4. Self-check against design-principles
 
 Load [ai-slop-avoid](../skills/amw-design-principles/ai-slop-avoid.md) in lightweight mode (scan for matches, don't reload the whole file into main context). Check the rendered page for the most common slop signals:

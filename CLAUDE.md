@@ -279,6 +279,7 @@ Cross-skill utilities live in `bin/`, not duplicated inside each skill:
 | `amw-validate-cross-refs.sh` | CI-time gate; called by maintainers / `/amw-doctor` |
 | `amw-skill-trigger-collision.py` | pytest ratchet gate (`tests/test_skill_trigger_collisions.py`, HIGH baseline frozen) + informational report in `/amw-doctor` §3b |
 | `amw-html-section-count.py` | amw-wireframe-builder-agent, amw-infographic-builder-agent, amw-design-md-author-agent (replaces LLM-based section/heading audits) |
+| `amw-panel-preview.sh` | /amw-preview step 3b, any Phase-A/B flow that shows the human a live HTML preview (wraps the frozen `aimaestro-panel.sh` server CLI — the spec-mandated surface, `~/ai-maestro/design/specs/aimaestro-scripts-spec.md`; exits 3 outside an AI Maestro environment, callers then fall back to dev-browser) |
 
 When extracting a utility from a source skill, prefer upgrading it to `bin/` if at least two skills benefit. Skill-specific one-offs stay in the skill's own folder.
 
