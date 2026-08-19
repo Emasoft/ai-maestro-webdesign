@@ -129,7 +129,10 @@ if [ -n "$API_KEY" ]; then
   CURL_OPTS+=(--header "Authorization: Bearer ${API_KEY}")
 fi
 
-if ! curl "${CURL_OPTS[@]}" --output "$TMP" --write-out '%{http_code}' "$URL" > "${TMP}.code" 2>&1; then
+# ${CURL_OPTS[@]+…}: always non-empty today, but bin/ policy after 1f9dbbd is
+# the bash-3.2-safe guarded spelling everywhere (enforced by
+# tests/test_no_bash4isms_in_bin.py).
+if ! curl ${CURL_OPTS[@]+"${CURL_OPTS[@]}"} --output "$TMP" --write-out '%{http_code}' "$URL" > "${TMP}.code" 2>&1; then
   printf 'ERROR: network failure invoking %s\n' "$URL" >&2
   exit 3
 fi
