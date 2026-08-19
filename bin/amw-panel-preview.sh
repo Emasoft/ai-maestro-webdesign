@@ -23,11 +23,11 @@
 #
 # AUTH SHAPE (verified by the hub's authed e2e, 2026-08-19): `show` is
 # set+open = TWO strict POSTs. An AGENT caller (AID_AUTH + governance title)
-# is authorized for both. A USER caller's AIMAESTRO_SUDO_TOKEN is one-shot /
-# one-op, so the second POST 403s (sudo_required) — USER callers must use the
-# per-op verbs (set via the CLI, then `open`) minting a fresh token right
-# before each op; the USER sudo quota is 2 outstanding tokens, so two failed
-# calls 429 (sudo_token_quota_exceeded) for 60 s.
+# is authorized for both. A USER caller's owner-approval is one-shot / one-op,
+# so the second POST is refused (HTTP 403) — USER callers must use the CLI's
+# per-op verbs (set, then `open`), approving each op right before it; the
+# owner-approval quota is 2 outstanding, so two refused calls are rate-limited
+# (HTTP 429) for 60 s. Details: aimaestro-panel.sh's own usage text.
 #
 # NOTE: the panel is a LIVE surface, not a queue. "delivered" counts connected
 # panel CHANNELS = dashboards currently showing THIS agent — not "panel
