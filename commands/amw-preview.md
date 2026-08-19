@@ -44,10 +44,14 @@ without leaving the dashboard:
 - Drain click feedback the human generated inside the panel with
   `bin/amw-panel-preview.sh feedback` and fold it into the report.
 
-The panel is a LIVE surface, not a queue: a response with `"delivered": 0` means no
-dashboard had the panel open and the push was DROPPED — say so in the report instead of
-claiming the preview was shown. Outside an AI Maestro environment (exit 3) skip this
-step silently; dev-browser screenshots remain the canonical verification path.
+The panel is a LIVE surface, not a queue: `delivered` counts dashboards currently showing
+this agent, so `"delivered": 0` means nobody has this agent active and the push was
+DROPPED — say so in the report instead of claiming the preview was shown (a push after
+`close` re-opens the panel; that still counts as delivered). `show` is two strict server
+ops (set + open) — fine for an agent caller (AID_AUTH); a human running this by hand with
+a one-shot sudo token must use the CLI's per-op verbs with a fresh token each. Outside an
+AI Maestro environment (exit 3) skip this step silently; dev-browser screenshots remain
+the canonical verification path.
 
 ### 4. Self-check against design-principles
 
