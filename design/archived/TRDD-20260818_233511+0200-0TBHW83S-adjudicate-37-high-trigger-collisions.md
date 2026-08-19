@@ -1,9 +1,9 @@
 ---
 trdd-id: 0TBHW83S
 title: Adjudicate the 37 frozen HIGH skill-trigger collisions
-column: backburner
+column: completed
 created: 2026-08-18T23:35:11+0200
-updated: 2026-08-18T23:35:11+0200
+updated: 2026-08-19T10:40:00+0200
 current-owner: webdesign-session
 task-type: audit
 approval-tier: 0
@@ -32,3 +32,7 @@ in the test as debt is paid; each drop must come with the fix that earned it.
 - `HIGH_BASELINE` lowered to the residual justified-noise count, test green.
 - No skill description re-claims the broad design vocabulary owned by
   amw-design-principles.
+
+## Approval log
+
+- 2026-08-19T10:40:00+0200 — COMPLETED by webdesign-session (Tier 0). All 37 HIGHs adjudicated (17 REAL fixed, 19 NOISE via principled detector corrections, 1 justified residual); HIGH_BASELINE 37 -> 1; suite 245 passed/6 skipped. Verdicts: reports/trigger-collision-adjudication/. Commit 68fe6a2.
