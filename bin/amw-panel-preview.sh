@@ -52,12 +52,15 @@ fi
 
 case "$verb" in
   show)
-    # set the content, then open the panel so the human actually sees it
-    "$PANEL_CLI" set "$agent" "${args[@]}"
+    # set the content, then open the panel so the human actually sees it.
+    # ${args[@]+…} not "${args[@]}": under `set -u` on the system /bin/bash
+    # (3.2.57) an EMPTY array expansion is "unbound variable" — every no-flag
+    # verb died before reaching the CLI (hub e2e report 20260819_150341).
+    "$PANEL_CLI" set "$agent" ${args[@]+"${args[@]}"}
     "$PANEL_CLI" open "$agent"
     ;;
   refresh|close|status|feedback)
-    "$PANEL_CLI" "$verb" "$agent" "${args[@]}"
+    "$PANEL_CLI" "$verb" "$agent" ${args[@]+"${args[@]}"}
     ;;
   *)
     echo "amw-panel-preview: unknown verb '$verb' (show|refresh|close|status|feedback)" >&2

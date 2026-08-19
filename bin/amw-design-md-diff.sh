@@ -54,4 +54,6 @@ if ! command -v npx >/dev/null 2>&1; then
   exit 2
 fi
 
-exec npx --yes "@google/design.md" diff "$LEFT" "$RIGHT" "${EXTRA_ARGS[@]}"
+# ${EXTRA_ARGS[@]+…}: empty-array "${arr[@]}" is "unbound variable" under
+# set -u on the system /bin/bash 3.2 (TRDD-0TBHW83S follow-up, hub e2e 20260819).
+exec npx --yes "@google/design.md" diff "$LEFT" "$RIGHT" ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}

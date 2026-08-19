@@ -69,4 +69,6 @@ fi
 
 # The official package is "@google/design.md".
 # Quote the package name because of the @scoped form.
-exec npx --yes "@google/design.md" lint "$INPUT" "${EXTRA_ARGS[@]}"
+# ${EXTRA_ARGS[@]+…}: empty-array "${arr[@]}" is "unbound variable" under
+# set -u on the system /bin/bash 3.2 (hub e2e 20260819).
+exec npx --yes "@google/design.md" lint "$INPUT" ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}

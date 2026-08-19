@@ -135,7 +135,10 @@ fi
 # On first run this triggers an in-place `npm install` inside $VENDOR_DIR
 # (see scripts/render.mjs::loadBeautifulMermaid). That is idempotent and
 # only affects $VENDOR_DIR/node_modules/ which is gitignored at the root.
-if ! node "$VENDOR_DIR/scripts/render.mjs" "${ARGS[@]}"; then
+# ${ARGS[@]+…}: zero args + TTY stdin leaves ARGS empty, and empty-array
+# "${arr[@]}" is "unbound variable" under set -u on /bin/bash 3.2 — the crash
+# would pre-empt render.mjs's own usage error.
+if ! node "$VENDOR_DIR/scripts/render.mjs" ${ARGS[@]+"${ARGS[@]}"}; then
   exit 1
 fi
 

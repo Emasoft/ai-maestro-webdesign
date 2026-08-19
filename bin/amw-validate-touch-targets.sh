@@ -163,7 +163,9 @@ scan_tailwind() {
 }
 
 # Walk the scan paths.
-for p in "${PATHS[@]}"; do
+# ${PATHS[@]+…}: PATHS stays empty when the default dir is absent; empty-array
+# "${arr[@]}" is "unbound variable" under set -u on /bin/bash 3.2.
+for p in ${PATHS[@]+"${PATHS[@]}"}; do
   if [ ! -e "$p" ]; then
     printf 'Path does not exist, skipping: %s\n' "$p" >&2
     continue

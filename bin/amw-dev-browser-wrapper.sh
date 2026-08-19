@@ -69,7 +69,9 @@ run_db_script() { # script_text
   local script; script="$(mktemp "$OUT_DIR/db-script-XXXXXX.js")"
   printf '%s' "$1" > "$script"
   local rc=0
-  dev-browser "${HEADLESS_FLAGS[@]}" --timeout "$SCRIPT_TIMEOUT_S" run "$script" || rc=$?
+  # ${HEADLESS_FLAGS[@]+…}: HEADFUL=1 empties the array, and empty-array
+  # "${arr[@]}" is "unbound variable" under set -u on /bin/bash 3.2.
+  dev-browser ${HEADLESS_FLAGS[@]+"${HEADLESS_FLAGS[@]}"} --timeout "$SCRIPT_TIMEOUT_S" run "$script" || rc=$?
   rm -f "$script"
   return "$rc"
 }

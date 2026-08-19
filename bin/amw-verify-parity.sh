@@ -122,7 +122,9 @@ verdict="$OUT_DIR/verdict.md"
 
 overall=0
 IFS=',' read -ra VPS <<< "$VIEWPORTS"
-for vp in "${VPS[@]}"; do
+# ${VPS[@]+…}: an empty $VIEWPORTS leaves VPS empty; empty-array "${arr[@]}"
+# is "unbound variable" under set -u on /bin/bash 3.2.
+for vp in ${VPS[@]+"${VPS[@]}"}; do
   w="${vp%x*}"; h="${vp#*x}"
   s="$OUT_DIR/source-$vp.png"
   m="$OUT_DIR/mine-$vp.png"

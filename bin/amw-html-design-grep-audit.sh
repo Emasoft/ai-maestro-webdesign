@@ -110,7 +110,9 @@ _strict_bail_if_needed() {
 # Find all candidate files first.
 FILES_TMP="$(mktemp -t amw-audit-files-XXXXXX)"
 trap 'rm -f "$FILES_TMP" "$COUNTER_FILE"' EXIT
-for p in "${PATHS[@]}"; do
+# ${PATHS[@]+…}: PATHS stays empty when the default dir is absent; empty-array
+# "${arr[@]}" is "unbound variable" under set -u on /bin/bash 3.2.
+for p in ${PATHS[@]+"${PATHS[@]}"}; do
   [ -e "$p" ] || continue
   find "$p" \( -name '*.html' -o -name '*.htm' -o -name '*.tsx' -o -name '*.jsx' \
               -o -name '*.ts' -o -name '*.js' -o -name '*.astro' -o -name '*.vue' \
