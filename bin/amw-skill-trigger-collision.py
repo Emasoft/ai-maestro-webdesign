@@ -53,6 +53,15 @@ from pathlib import Path
 # The orchestrator file. Collisions involving it are demoted from high → medium.
 ORCHESTRATOR = "skills/amw-design-principles/SKILL.md"
 
+# Documented ROUTER skills: their description deliberately spans the triggers
+# of their child skills for backward compatibility (CLAUDE.md: amw-design-md
+# "ROUTER (backward-compat) — frontmatter name/description preserved so
+# /amw-design-md-* commands + cross-refs still resolve"). A router-vs-child
+# overlap is by design, not a routing ambiguity → demoted to low.
+ROUTERS = {
+    "skills/amw-design-md/SKILL.md": "skills/amw-design-md-",
+}
+
 # Words that, alone, are too generic to count. Any phrase that is exactly one
 # of these is dropped before collision detection.
 STOPWORDS = {
@@ -137,7 +146,12 @@ def extract_phrases(description: str) -> list[str]:
         r"activates? (in|on|when|only)|activation (is|when)|"
         r"spawned exclusively|never invoked|narrow triggers?|"
         r"does not activate( on)?|does NOT activate( on)?|"
-        r"trigger (when|on|phrases?)|main-agent (only|spawns?)"
+        r"trigger (when|on|phrases?)|main-agent (only|spawns?)|"
+        # Anti-trigger disclaimers and generic scope framing are NOT trigger
+        # phrases — a "Does NOT claim X — routes to Y" sentence describes what
+        # the skill refuses, so two skills sharing that boilerplate cannot
+        # cause the router to ambiguously dispatch (TRDD-0TBHW83S).
+        r"does not claim|not (for|when)|use when|routes? to"
         r")\b[^.;]*[.;]?",
     )
     description = boilerplate.sub(" ", description)
@@ -189,6 +203,20 @@ def severity_for(phrase: str, files: list[str]) -> str:
     word_count = len(phrase.split())
     only_low_signal = all(w in LOW_SIGNAL for w in phrase.split())
 
+    # Agent-vs-agent overlap cannot cause router ambiguity: sub-agents are
+    # dispatched BY NAME by the main-agent (CLAUDE.md delegation rule), never
+    # selected by description matching — shared persona boilerplate like
+    # "no veto power" is expected (TRDD-0TBHW83S).
+    if all(f.startswith("agents/") for f in files):
+        return "low"
+
+    # Documented router-vs-own-children overlap is by design (see ROUTERS).
+    for router, child_prefix in ROUTERS.items():
+        if router in files and all(
+            f == router or f.startswith(child_prefix) for f in files
+        ):
+            return "low"
+
     if only_low_signal and word_count <= 2:
         return "low"
     if has_orch and in_canon:
@@ -214,7 +242,12 @@ def is_legitimate_delegation(agent_file: Path, skill_file: Path) -> bool:
         rel = skill_file.relative_to(agent_file.parent.parent)
     except ValueError:
         return False
-    return str(rel) in body
+    # Agents reference a skill either by its SKILL.md path or by any file
+    # under the skill's directory (commonly "../skills/<name>/references/…"),
+    # so match the skill DIRECTORY, not only the SKILL.md file — the strict
+    # form missed real delegations (TRDD-0TBHW83S: amw-design-md-extractor-agent
+    # cites ../skills/amw-design-md-extract/references/ but never SKILL.md).
+    return str(rel) in body or (str(rel.parent) + "/") in body
 
 
 def main() -> int:

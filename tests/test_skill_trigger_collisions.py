@@ -22,9 +22,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TOOL = ROOT / "bin" / "amw-skill-trigger-collision.py"
 
-# Measured 2026-08-18 (summary: total=105 high=37 medium=0 low=68). Frozen debt —
-# ratchet DOWN only; raising this number needs its own TRDD.
-HIGH_BASELINE = 37
+# Adjudicated 2026-08-19 (TRDD-0TBHW83S): the 37 frozen HIGHs were paid down to
+# 1 justified residual — "diagram modify diagram" (amw-html-diagram vs
+# amw-svg-diagram), where the stopword filter deletes the very token (HTML/SVG)
+# that disambiguates the real triggers "modify HTML diagram" / "modify SVG
+# diagram". Verdicts: reports/trigger-collision-adjudication/. Ratchet DOWN
+# only; raising this number needs its own TRDD.
+HIGH_BASELINE = 1
 
 
 def _run() -> dict:

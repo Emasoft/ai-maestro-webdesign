@@ -1,6 +1,6 @@
 ---
 name: amw-html-diagram
-description: Author OR edit an HTML-rendered diagram — editorial architecture / flowchart / sequence / state / ER / timeline / swimlane / quadrant / tree / layer / venn, or an infographic page. Triggers on "create HTML diagram", "modify HTML diagram", "render structure as HTML", "edit .html diagram". Does NOT claim generic design / UI / landing-page vocabulary — routes to design-principles. Use when authoring an HTML diagram. Trigger with /amw-create-or-modify-html-diagram.
+description: Author OR edit an HTML-rendered diagram of any editorial type (the type list is owned by amw-diagram-editorial; the format spec by amw-diagram-formats), or an infographic page. Triggers on "create HTML diagram", "modify HTML diagram", "render structure as HTML", "edit .html diagram". Does NOT claim generic design / UI / landing-page vocabulary — routes to design-principles. Use when authoring an HTML diagram. Trigger with /amw-create-or-modify-html-diagram.
 ---
 
 # HTML Diagram — thin authoring + modify dispatcher
